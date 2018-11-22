@@ -727,7 +727,7 @@ class HotelMembershipController extends Controller {
             }
         }
         
-        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_for,tb_pkg.package_description  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_for,tb_pkg.package_description, tb_pkg.package_price_type  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
         $dataPackage = \DB::select($htoelPkgQry);
 		$this->data['packages'] = $dataPackage;
 		$adsdataPackage = array();
@@ -802,7 +802,7 @@ class HotelMembershipController extends Controller {
 		}
 
 		
-		$mainPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_description  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+		$mainPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_description,tb_pkg.package_price_type   from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
 		$dataPackage = \DB::select($mainPkgQry);        
 		$this->data['packages'] = $dataPackage;
 		

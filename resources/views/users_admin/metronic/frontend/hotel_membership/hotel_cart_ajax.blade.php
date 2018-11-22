@@ -14,8 +14,9 @@
     <tbody>
     	{{--*/ $subTotal = 0; $orderTotal = 0; $package_for = array(2); /*--}}
     	@foreach($packages as $package)
+        @if($package->package_price_type!=1)
 		{{--*/ $subTotal += $package->package_price; /*--}}
-        
+        @endif
         <tr>
             <td class="overview-td">
             @if($package->package_image!='')
@@ -29,9 +30,9 @@
                             if($user->own_hotel_setup==0){    
                     ?>
                         
-                        <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
+                        <a href="javascript:void(0);" onclick="javascript:removeItemFromCart({{$package->id}});"><i class="fa fa-trash"></i></a>
                     <?php }elseif(($user->own_hotel_setup==1) && ($package->package_for !=1) ){ ?>
-                        <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
+                        <a href="javascript:void(0);" onclick="javascript:removeItemFromCart({{$package->id}});"><i class="fa fa-trash"></i></a>
                     <?php } } ?>
                 </div>
                 <div>
@@ -42,9 +43,21 @@
                 </div>
             </td>
             
-            <td class="overview-td">1</td>
-            <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span></td>
-            <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span></td>
+            <td class="overview-td m--align-center">1</td>
+            <td class="overview-td">
+            @if($package->package_price_type!=1)
+                <span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span>
+            @else
+                Price on Request
+            @endif
+            </td>
+            <td class="overview-td">
+            @if($package->package_price_type!=1)
+                <span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span>
+            @else
+                Price on Request
+            @endif
+            </td>
         </tr>
         @endforeach
 		

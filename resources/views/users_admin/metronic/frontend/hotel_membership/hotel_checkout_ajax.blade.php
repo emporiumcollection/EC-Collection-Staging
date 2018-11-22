@@ -13,7 +13,9 @@
             <tbody>
             	{{--*/ $subTotal = 0; $orderTotal = 0; /*--}}
             	@foreach($packages as $package)
+                @if($package->package_price_type!=1)
     			{{--*/ $subTotal += $package->package_price; /*--}}
+                @endif
                 <tr>                    
                     <td>
                     	<div class="product-title-and-remove-option">
@@ -24,9 +26,21 @@
                         </div>
                     </td>
                
-                    <td class="overview-td">1</td>
-                    <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span></td>
-                    <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span></td>
+                    <td class="overview-td m--align-center">1</td>
+                    <td class="overview-td">
+                    @if($package->package_price_type!=1)
+                        <span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span>
+                    @else
+                         Price on Request
+                    @endif
+                    </td>                    
+                    <td class="overview-td">
+                    @if($package->package_price_type!=1)
+                        <span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span>
+                    @else
+                         Price on Request
+                    @endif
+                    </td>
                 </tr>
                 @endforeach
     			@foreach($adspackages as $package)

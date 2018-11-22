@@ -199,8 +199,10 @@ class CustomerController extends Controller {
                             $ucdata['user_id'] = $user_id;
                             $userId = $user_id;
                             
+                            $clint_number = date('y')."101".str_pad($userId, 5, 0, STR_PAD_LEFT);
+                            
                             \Auth::loginUsingId($userId);
-                            \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
+                            \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s"), 'client_number'=>$clint_number));
                             \Session::put('uid', $userId);
                             \Session::put('gid', $user_data['group_id']);
                             \Session::put('eid', $user_data['email']);
@@ -250,9 +252,11 @@ class CustomerController extends Controller {
                     }
                     $ucdata['user_id'] = $user_id;
                     $userId = $user_id; 
+                    
+                    $clint_number = date('y')."101".str_pad($userId, 5, 0, STR_PAD_LEFT);
                      
                     \Auth::loginUsingId($userId);
-                    \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
+                    \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s"), 'client_number'=>$clint_number));
                     \Session::put('uid', $userId);
                     \Session::put('gid', $user_data['group_id']);
                     \Session::put('eid', $user_data['email']);
@@ -1899,6 +1903,39 @@ $html .= '</div>';
         $return_array['status'] = 'success';
         $return_array['message'] = 'Successfully completed wizard!';
         echo json_encode($return_array);
+        exit;
+    }
+    public function priceonrequest(Request $request){
+        $firstname = $request->input('onrequest_firstname'); 
+        $lastname = $request->input('onrequest_lastname'); 
+        $email = $request->input('onrequest_email'); 
+        $phoneumber = $request->input('onrequest_phoneumber');         
+                            
+        $edata = array();        
+        $edata['firstname'] = $firstname;
+        $edata['lastname'] = $lastname;
+        $edata['email'] = $email;
+        $edata['phoneumber'] = $phoneumber;
+        
+        $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+        $emlData['email'] = CNF_SUPERADMIN_EMAIL;
+        //$emlData['email'] = trim($request->input('email'));
+        $emlData['subject'] = 'Price on Request';
+        
+        $etemp = 'price_on_request';
+        
+        \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
+            $message->from($emlData['frmemail'], CNF_APPNAME);
+
+            $message->to($emlData['email']);
+
+            $message->subject($emlData['subject']);
+        });
+        
+        $response = array('status' => 'success', 'message' => 'Mail sent successfully');
+        
+        echo json_encode($response);
+        
         exit;
     }
 }

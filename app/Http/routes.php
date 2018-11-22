@@ -335,6 +335,9 @@ Route::group(['middleware' => 'auth'], function()
 	
 	Route::get('fetchpackagedetails/{pckid}', 'HomeController@fetchpackagedetails');
 	Route::get('userorder_downloadinvoicepdf/{ordid}', 'UserorderController@ordersdownloadinvoicepdf');
+    
+    Route::get('userorderdownloadinvoicepdf/{ordid}', 'UserorderController@userordersdownloadinvoicepdf');
+    
 	Route::post('delete_menu_image', 'Sximo\MenuController@deleteMenuImage');
 	Route::get('restaurant_reservations/{id}', 'RestaurantController@restroReservations');
 	Route::get('bar_reservations/{id}', 'BarController@barReservations');
@@ -371,6 +374,9 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('save_hotel_architect_info', 'PropertiesController@saveHotelArchitectInfo');
     Route::post('save_hotel_social_info', 'PropertiesController@saveHotelSocialInfo');
     Route::post('check_hotel_setup', 'PropertiesController@checkHotelSetup');
+    
+    Route::post('priceonrequest', 'CustomerController@priceonrequest');
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

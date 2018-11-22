@@ -732,7 +732,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                            									{{$package->package_title}} 
+                                                                                                @if($package->package_price_type!=1)
+                                                                                                    Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                                                                @else
+                                                                                                    Price: Price on Request
+                                                                                                @endif
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -750,7 +755,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             <p>{!! nl2br($package->package_description) !!}</p>
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                @if($package->package_price_type!=1)  
                                                                                                                     <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                @else
+                                                                                                                    <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>   
+                                                                                                                @endif
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -789,7 +798,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 </div>
                                                                                                 @if($package->package_for==0 || $package->package_for==1)                                                                                                          
                                                                                                 <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
-                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
+                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
                                                                                                 </div>
                                                                                                   
                                                                                                 @endif
@@ -802,7 +811,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                     @endif
                                                                                     {{--*/ $k++;  /*--}}
                                                                                     @endforeach
-                                                            						<!--end::Item-->     
+                                                            						<!--end::Item-->
+                                                                                    @if($m==0)
+                                                                                    <div class="col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                                        <p>Currently no packages in this section.</p>
+                                                                                    </div>
+                                                                                    @endif 
                                                                                 </div>
                                                                             </div>
                                                     					    <div class="tab-pane" id="reservation_distribution">
@@ -817,16 +831,21 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                         } 
                                                                                     ?>
                                                                                     {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                                                                    {{--*/ $sn=0; /*--}}
                                                                                     @foreach($packages as $key=>$package)
                                                                                     @if($package->package_category=="Reservation_Distribution")
-                                                                                    {{--*/ $sn=0; /*--}}
                                                             						<div class="m-accordion__item">
                                                             							<div class="m-accordion__item-head <?php echo ($sn==0) ? '' : 'collapsed' ?>"  role="tab" id="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_reservation_distribution_{{ $k }}_body" aria-expanded="    false">
                                                             								<span class="m-accordion__item-icon">
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                            									{{$package->package_title}} 
+                                                                                                @if($package->package_price_type!=1)  
+                                                                                                Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                                                                @else
+                                                                                                    Price: Price on Request
+                                                                                                @endif
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -844,7 +863,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             <p>{!! nl2br($package->package_description) !!}</p>
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                @if($package->package_price_type!=1)  
                                                                                                                     <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                @else
+                                                                                                                    <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>   
+                                                                                                                @endif
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -881,7 +904,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 </div>
                                                                                                 @if($package->package_for==0 || $package->package_for==1)                                                                                                          
                                                                                                 <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
-                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
+                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
                                                                                                 </div>
                                                                                                   
                                                                                                 @endif
@@ -894,7 +917,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                     @endif
                                                                                     {{--*/ $k++;  /*--}}
                                                                                     @endforeach
-                                                            						<!--end::Item-->     
+                                                            						<!--end::Item--> 
+                                                                                    @if($sn==0)
+                                                                                    <div class="col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                                        <p>Currently no packages in this section.</p>
+                                                                                    </div>
+                                                                                    @endif       
                                                                                 </div>
                                                                             </div>
                                                                             <div class="tab-pane" id="sales_marketing">
@@ -911,7 +939,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                            									{{$package->package_title}} 
+                                                                                                @if($package->package_price_type!=1)  
+                                                                                                    Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} 
+                                                                                                @else
+                                                                                                    Price: Price on Request
+                                                                                                @endif
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -931,7 +964,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                @if($package->package_price_type==1)
+                                                                                                                    <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>
+                                                                                                                @else
                                                                                                                     <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                @endif
+                                                                                                                    
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -990,8 +1028,8 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                         @endif */ ?>
                                                                                                     </div>
                                                                                                     @if($package->package_for==0 || $package->package_for==1)                                                                                                           
-                                                                                                    <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
-                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
+                                                                                                    <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">                                                                                                    
+                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
                                                                                                     </div>
                                                                                                     
                                                                                                     @endif
@@ -1004,7 +1042,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                     @endif
                                                                                     {{--*/ $k++; /*--}}
                                                                                     @endforeach
-                                                            						<!--end::Item-->     
+                                                            						<!--end::Item-->
+                                                                                    @if($kn==0)
+                                                                                    <div class="col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                                        <p>Currently no packages in this section.</p>
+                                                                                    </div>
+                                                                                    @endif        
                                                                                 </div>
                                                                             </div>
                                                                             
@@ -1026,7 +1069,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                            									{{$package->package_title}} 
+                                                                                                @if($package->package_price_type!=1)  
+                                                                                                Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                                                                @else
+                                                                                                    Price: Price on Request
+                                                                                                @endif
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -1046,7 +1094,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                @if($package->package_price_type==1)
+                                                                                                                    <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>
+                                                                                                                @else
                                                                                                                     <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                @endif
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -1084,7 +1136,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                     </div>
                                                                                                     @if($package->package_for==0)                                                                                                    
                                                                                                     <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
-                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" class="btn btn-success">Add to cart</a>
                                                                                                     </div>
                                                                                                     @endif
                                                                                                 </div>
@@ -1096,7 +1148,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                     @endif
                                                                                     {{--*/ $k++; /*--}}
                                                                                     @endforeach
-                                                            						<!--end::Item-->     
+                                                            						<!--end::Item-->
+                                                                                    @if($yn==0)
+                                                                                    <div class="col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                                        <p>Currently no packages in this section.</p>
+                                                                                    </div>
+                                                                                    @endif     
                                                                                 </div>
                                                                             </div>
                                                 
@@ -1249,7 +1306,65 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
     		</div>
     	</div>
     </div>
-    <!-- End Commission modal popup -->    
+    <!-- End Commission modal popup --> 
+    <!-- Price Request modal popup -->
+    <div class="modal fade" id="priceonrequesr_modal" tabindex="-1" role="dialog" aria-labelledby="priceonrequestModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+                {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'priceonrequest_form' ,'files' => true)) !!}
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="priceonrequestModalLabel">
+    					Price On Request
+    				</h5>
+    				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">
+    						×
+    					</span>
+    				</button>
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">                        
+                        <div class="m-portlet__body">
+                        
+                            <div class="m-form__section m-form__section--first">
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">First Name</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_firstname" class="form-control" placeholder="First name" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Last Name</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_lastname" class="form-control" placeholder="Last name" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Email</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_email" class="form-control" placeholder="Email" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Phone Number</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_phoneumber" class="form-control" placeholder="Phone Number" required="required" />
+                                    </div> 
+                                </div>
+                            </div>
+                                                 
+                        </div>
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">
+    				<button type="button" class="btn btn-secondary" id="contractclosebtn" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">SEND</button>
+    			</div>
+                {!! Form::close() !!} 
+    		</div>
+    	</div>
+    </div>
+    <!-- End Price Request modal popup -->   
 @stop
 
 {{-- For custom style  --}}
@@ -1569,6 +1684,8 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
 
 {{-- For custom script --}}
 @section('custom_js_script')
+<script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
+
     @parent
     <script>
         /*Dropzone.autoDiscover = false;*/    
@@ -1598,6 +1715,32 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
 				}
              });*/
             
+                           
+                $('#priceonrequest_form').validate({
+        			submitHandler: function (form) {
+        				 $.ajax({
+                            url:"{{URL::to('priceonrequest')}}",
+                            type:'POST',
+                            dataType:'json',
+                            data:$(form).serializeArray(),                   
+                            success:function(response){
+                                if(response.status == 'success'){
+                                    toastr.success(response.message);
+                                    $("#priceonrequesr_modal").modal('hide'); 
+                                }
+                                else{
+                                    toastr.error(response.message);
+                                }
+                            }
+                        });
+        				return false;
+        			}
+        		
+            });
+            
+            $(".priceonrequest").click(function(){
+               $("#priceonrequesr_modal").modal('show'); 
+            });
             
             $(".rad_accept_all").click(function(){
                if($(".rad_accept_all").is(":checked")){                    
@@ -1902,9 +2045,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
             xhttp.send();
         
         } 
-        function removeItemFromCart(PackageID,PackagePrice){    
+        function removeItemFromCart(PackageID){    
 
-            var PackagePrice=PackagePrice;
+            //var PackagePrice=PackagePrice;
             var PackageID=PackageID;
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -1923,7 +2066,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                 }); 
             }
             };
-            xhttp.open("GET", "{{ URL::to('removecartitem')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
+            xhttp.open("GET", "{{ URL::to('removecartitem')}}?cart[package][id]="+PackageID+"&cart[package][qty]=1&cart[package][type]=hotel", true);
             xhttp.send();
     
         }

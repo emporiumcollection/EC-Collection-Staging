@@ -502,6 +502,16 @@ public function generateInvoice($ordid)
 				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
+                $company_postal_code = '';
+                if($companydet->company_postal_code > 0){
+                    $company_postal_code = $companydet->company_postal_code;
+                }
+                $comp_name = '';
+                $comp_vat_id = '';
+                if($userInfo->european){
+                    $comp_vat_id = 'Vat IDNr. : '.$companydet->company_tax_number;
+                }
+                
 				$html = '<style> 
                         .main { margin:2px; width:100%; font-family: arial, sans-serif; } 
                         .page-break { page-break-after: always; } 
@@ -640,21 +650,13 @@ public function generateInvoice($ordid)
                             <td width="48%" align="left">
                                     
 
-                                <table width="100%" >
-                                    <tr>                                         
-                                        <td>
-
-
-                                        <p>'. $companydet->company_address .' . '.$companydet->company_address2 .'
-
-                                        <br/>'.$companydet->company_city .'<br/>
-
-                                        '. $companydet->company_postal_code.' . '.$companydet->company_country .'
-                                        </p>
-
-                                        </td>
+                                <table width="100%" >                                    
+                                    <tr>
+                                        <td>Vat IDNr. Emporium-Voyage : DE 271302029</td>
                                     </tr>
-                                    
+                                    <tr>
+                                        <td>'.$comp_vat_id.'</td>
+                                    </tr>
                                 </table>
                                  
                                  </td>
@@ -675,11 +677,23 @@ public function generateInvoice($ordid)
                                                 <td  align="right" class="alnRight" >'. $invoice_num->content .'</td>
                                             </tr>
                                             <tr>
-                                            
-                                            <td   align="right" width="200px">Contact&nbsp;Person:</td>
-                                            <td  align="right" width="10px">&nbsp;&nbsp;</td>
-                                            <td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
-                                            </tr>
+											
+											<td   align="right" width="200px">Contact&nbsp;Person:</td>
+											<td  align="right" width="10px">&nbsp;&nbsp;</td>
+											<td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'</td>
+											</tr>
+                                            <tr>
+											
+											<td   align="right" width="200px">E-Mail:</td>
+											<td  align="right" width="10px">&nbsp;&nbsp;</td>
+											<td  align="right" class="alnRight">'. $userInfo->email .'</td>
+											</tr>
+                                            <tr>
+											
+											<td   align="right" width="200px">Client&nbsp;Number:</td>
+											<td  align="right" width="10px">&nbsp;&nbsp;</td>
+											<td  align="right" class="alnRight">'. $userInfo->client_number.'</td>
+											</tr>
                                         </table>
                                      
                                     </td>
@@ -709,17 +723,24 @@ public function generateInvoice($ordid)
                     {
                         $title = '';
                         $pacpric = 0;
+                        $pacprice_show = '';
                         if($oitem->deduct_first_booking)
                         {
                             $subtract_text = '(Subtract membership fee from my first booking commission)';
                         } 
-                        $pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+                        $pchkdet = \DB::table('tb_packages')->select('package_title','package_price', 'package_price_type')->where('id', $oitem->package_id)->first();
                         if(!empty($pchkdet))
                         {
                             $title = $pchkdet->package_title;
-                            $pacpric = $pchkdet->package_price;
+                            if($pchkdet->package_price_type!=1){
+							 $pacpric = $pchkdet->package_price;
+                             $pacprice_show = $currency->content.$pchkdet->package_price;
+                            }else{
+                              $pacpric =0;  
+                              $pacprice_show = "Price on Request";
+                            }
                         }
-                        $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
+                        $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$pacprice_show.'</td></tr>';
                     }
                     elseif($oitem->package_type=='advert')
                     {

@@ -155,6 +155,11 @@
                     @endif
                     
                     <!--begin:: Widgets/Activity-->
+                    <div class="col-md-12 col-xs-12">
+                        <span class="m-form__help">
+                            Hotel can only be activated once approved by administrator.
+                        </span> 
+                    </div>                    
 					<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
@@ -164,8 +169,8 @@
     										<input type="checkbox" name="switch_property" id="switch_property" />
     										<span></span>
     									</label>
-    								</span>                                    
-								</div>
+    								</span>                                                                       
+								</div>                                
 							</div>
                             <div class="m-portlet__head-tools">
 								<ul class="m-portlet__nav">

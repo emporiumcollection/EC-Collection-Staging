@@ -2698,7 +2698,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #384ad7;
+    /*background-color: #384ad7;*/
+    background-color: #252525;
     border-color: #2e40d4
 }
 
@@ -2719,7 +2720,8 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #2e40d4;
+    /*background-color: #2e40d4;*/
+    background-color: #252525;
     border-color: #293ccc
 }
 
@@ -10637,7 +10639,8 @@ a.text-dark:hover {
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #384ad7;
+    /*background-color: #384ad7;*/
+    background-color: #252525;
     border-color: #2e40d4
 }
 
@@ -55089,4 +55092,7 @@ i.m-menu__link-icon.fa {
     margin: 10px 0 0 0;
     font-size: 1rem;
     font-weight: 500;
+}
+.setting-box-hotel .grid_link-text:hover{
+    color:#252525;
 }
