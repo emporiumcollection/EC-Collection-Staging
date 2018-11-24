@@ -2814,10 +2814,10 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                         <form class="m-form">
                         <div class="m-portlet__body" style="padding: 0px;">
                             <div class="form-group m--align-center">
-                                You Have not completee the hotel setup yet.
+                                Welcome back !You have not completed the hotel setup yet.
                             </div>
                             <div class="form-group m--align-center">
-                                Are you want to continue?
+                                Please continue your Hotel Setup to start taking reservations.
                              </div>            
 							 
                         </div>
