@@ -19,7 +19,7 @@
 												<li class="m-menu__item "  aria-haspopup="true">
 													<a  href="header/actions.html" class="m-menu__link ">
 														<i class="m-menu__link-icon flaticon-file"></i>
-														<span class="m-menu__link-text">
+														<?php /* <span class="m-menu__link-text">
 															Create New Post
 														</span>
 													</a>
@@ -413,7 +413,7 @@
 																</a>
 															</li>
 														</ul>
-													</li> */ ?>
+													</li>
 												</ul>
 											</div>
 										</div>
@@ -579,7 +579,7 @@
 																		System Settings
 																	</span>
 																</a>
-															</li>
+															</li> */ ?>
 														</ul>
 													</div>
 												</li>
