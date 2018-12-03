@@ -4,7 +4,8 @@
 
 <link href="{{ asset('sximo/css/bookingSys.css')}}" rel="stylesheet">
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
