@@ -166,38 +166,7 @@ $(function () {
                                                 <input id="number_of_nights" min="0" name="number_of_nights" type="number" value="{{$number_of_nights}}">
                                             </div>
                                         </div>
-                                        <div class="booking-form-all-fields-row-2">
-                                            <div class="input-field1">
-                                                ROOMS
-                                            </div>
-                                            <div class="input-field2">
-                                                <div class="booking-form-heading">Number of adults(s)</div>
-                                                <select name="booking_adults[]" class="booking-form-select-inputs-style">
-                                                    <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
-                                                    <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
-                                                    <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
-
-                                                    <option {{ ($adults!='' && $adults==4) ? 'selected' : '' }}>4</option>
-                                                    <option {{ ($adults!='' && $adults==5) ? 'selected' : '' }}>5</option>
-                                                     <option {{ ($adults!='' && $adults==6) ? 'selected' : '' }}>6</option>
-                                                </select>
-                                            </div>
-                                            <div class="right-input-align2">
-                                                <div class="booking-form-heading">Number of Children</div>
-                                                <select name="booking_children[]" class="number_of_children booking-form-select-inputs-style">
-                                                    <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
-                                                    <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
-                                                    <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
-                                                    <option {{ ($childs!='' && $childs==3) ? 'selected' : '' }}>3</option>
-                                                    
-                                                    <option {{ ($childs!='' && $childs==4) ? 'selected' : '' }}>4</option>
-                                                    <option {{ ($childs!='' && $childs==5) ? 'selected' : '' }}>5</option>
-                                                    <option {{ ($childs!='' && $childs==6) ? 'selected' : '' }}>6</option>
-                                                </select>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="add-new-room-btn booking-add-room">ADD ROOM</a>
-                                        </div>
+                                        
                                         <div class="clearfix"></div>
                                         <!--                                        <div id="accordion-speical-code">
                                                                                     <div class="panel panel-default">
@@ -232,7 +201,7 @@ $(function () {
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="click1" data-prevent-click="1" data-toggle="collapse" data-parent="#booking-form-accordion" href="#collapse2">YOUR ROOM</a>
+                                        <a class="click1" data-prevent-click="1" data-toggle="collapse" data-parent="#booking-form-accordion" href="#collapse2">YOUR SUITE</a>
                                     </h4>
                                 </div>
                                 <div id="collapse2" class="panel-collapse collapse">
@@ -407,6 +376,44 @@ $(function () {
                                                                                             </ul>
                                                                                         </div>
                                                                                     </div>-->
+                                        </div>
+                                        <div class="booking-form-all-fields-row-2">
+                                            <div class="input-field1">
+                                                SUITES
+                                            </div>
+                                            <div class="input-field2" style="display: none;">
+                                                <div class="booking-form-heading">Type</div>
+                                                <select name="booking_Room_type[]" class="booking-form-select-inputs-style">
+                                                    <option value="0">Select</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-field2">
+                                                <div class="booking-form-heading">Number of adults(s)</div>
+                                                <select name="booking_adults[]" class="booking-form-select-inputs-style">
+                                                    <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
+                                                    <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
+                                                    <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
+
+                                                    <option {{ ($adults!='' && $adults==4) ? 'selected' : '' }}>4</option>
+                                                    <option {{ ($adults!='' && $adults==5) ? 'selected' : '' }}>5</option>
+                                                     <option {{ ($adults!='' && $adults==6) ? 'selected' : '' }}>6</option>
+                                                </select>
+                                            </div>
+                                            <div class="right-input-align2">
+                                                <div class="booking-form-heading">Number of Children</div>
+                                                <select name="booking_children[]" class="number_of_children booking-form-select-inputs-style">
+                                                    <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
+                                                    <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
+                                                    <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
+                                                    <option {{ ($childs!='' && $childs==3) ? 'selected' : '' }}>3</option>
+                                                    
+                                                    <option {{ ($childs!='' && $childs==4) ? 'selected' : '' }}>4</option>
+                                                    <option {{ ($childs!='' && $childs==5) ? 'selected' : '' }}>5</option>
+                                                    <option {{ ($childs!='' && $childs==6) ? 'selected' : '' }}>6</option>
+                                                </select>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <a href="#" class="add-new-room-btn booking-add-room">ADD SUITE</a>
                                         </div>
                                         <div class="form-group">
                                             <input type="button" class="step-2 margin-top-25 validate-btn" value="SUBMIT YOUR ROOM">
@@ -1837,18 +1844,33 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     event.preventDefault();
 
                     var html = '<div class="parent-rad-div"><div class="input-field1">';
-                    html += 'ROOMS  <a href="#" class="rad-booking-trash-icon" onclick="return radRemoveRooms(this);"><i class="fa fa-trash"></i></a>';
+                    html += 'SUITE  <a href="#" class="rad-booking-trash-icon" onclick="return radRemoveRooms(this);"><i class="fa fa-trash"></i></a>';
                     html += '</div>';
-                    html += '<div class="input-field2">';
+                    
+                    html += '<div class="input-field_more_room2">';
+                    html += '<div class="booking-form-heading">Type</div>';
+                    html += '<select name="booking_Room_type[]" class="booking-form-select-inputs-style">';
+                    html += '<option value="0"></option>';
+                    <?php foreach($propertyDetail['typedata'] as $key => $type){ ?>
+                           html += '<option value="<?php echo $type->id; ?>"><?php echo $type->category_name; ?></option>'; 
+                    <?php } ?>
+                   
+                    html += '</select>';
+                    html += '</div>';
+                    
+                    html += '<div class="input-field_more_room2">';
                     html += '<div class="booking-form-heading">Number of adults(s)</div>';
-                    html += '<select name="booking_adults[]" class="booking-form-select-inputs-style">';
-                    html += '<option>0</option>';
+                    html += '<select name="booking_adults[]" class="booking-form-select-inputs-style">';                    
                     html += '<option>1</option>';
                     html += '<option>2</option>';
                     html += '<option>3</option>';
+                    html += '<option>4</option>';
+                    html += '<option>5</option>';
+                    html += '<option>6</option>';
                     html += '</select>';
                     html += '</div>';
-                    html += '<div class="right-input-align2">';
+                    
+                    html += '<div class="input-field_more_room2">';
                     html += '<div class="booking-form-heading">Number of Children</div>';
                     html += '<select name="booking_children[]" class="booking-form-select-inputs-style">';
                     html += '<option>0</option>';

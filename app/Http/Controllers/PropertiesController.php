@@ -1272,7 +1272,12 @@ class PropertiesController extends Controller {
         $this->data['active'] = $active;
         $this->data['pid'] = $property_id;
         $this->data['property_data'] = \DB::table('tb_properties')->where('id', $property_id)->first();
-        $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->where('tab_slug', '<>', 'calendar')->orderBy('id', 'asc')->get();
+        if(\Session::get('gid')==5){
+            //$tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->where('tab_slug', '<>', 'calendar')->orderBy('id', 'asc')->get();
+            $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->orderBy('id', 'asc')->get();
+        }else{
+            $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->orderBy('id', 'asc')->get();
+        }
         if (!empty($tabs)) {
             foreach ($tabs as $tab) {
                 $tabdata[$tab->tab_slug] = $tab;
@@ -1347,6 +1352,8 @@ class PropertiesController extends Controller {
             return view($file_name, $this->data);
         } elseif ($active == 'calendar') {
             $this->data['cat_types'] = $this->find_categories_room($property_id);
+            
+            $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
             
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
             $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_calendar':'properties.settings_calendar'; 
@@ -2102,14 +2109,23 @@ class PropertiesController extends Controller {
             $cat_types = $cat_types_temp->get();
             if (!empty($cat_types)) {
                 $c = 0;
+                $arrrooms = array();
                 foreach ($cat_types as $type) {
                     $cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $property_id)->where('category_id', $type->id)->get();
                     if (!empty($cat_rooms)) {
                         $cats[$c]['data'] = $type;
                         foreach ($cat_rooms as $room) {
                             $cats[$c]['rooms'][] = $room;
+                            //$arrrooms['room'] = $room;
+                            //$reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_properties_category_rooms.room_name')->leftJoin('tb_properties_category_rooms', 'tb_reservations.room_id', '=', 'tb_properties_category_rooms.id')->where('tb_reservations.property_id', $property_id)->where('tb_reservations.room_id', $room->id)->get();
+                            
+                            //$arrrooms['reservation'] = $reservations;
+                            
+                            //$cats[$c]['rooms'][] = $arrrooms;
                         }
+                        
                     }
+                    
                     /* $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $property_id)->where('tb_properties_images.category_id', $type->id)->where('tb_properties_images.type', 'Rooms Images')->get();
                       $filen = array();
                       if(!empty($fileArr))
@@ -4210,5 +4226,276 @@ function property_images_wetransfer(Request $request) {
         exit;
     }
     
+    public function confirmreservation(Request $request){
+        $id = (int) $request->input('id');
+        //if($id > 0)
+    }
+    function get_b2ccategory_rooms_reservations(Request $request) {
+        $property_id = $request->input('pid');
+        $caltype = $request->input('caltype');
+        $cal_start = $request->input('calstart');
+        $cal_end = $request->input('calend');
+        if($property_id != '' && $property_id > 0) {
+            $cats = array();
+            $cat_types_temp = \DB::table('tb_properties_category_types')->where('property_id', $property_id)->where('status', 0);
+            if($caltype != 'all') {
+                $cat_types_temp->where('id', $caltype);
+            }
+            $cat_types = $cat_types_temp->get();
+            
+            if (!empty($cat_types)) {
+                $c = 0;
+                foreach ($cat_types as $type) {
+                    $cats[$c]['data'] = $type;
+                     
+                    $reservations = \DB::table('tb_reservations')->select('*', \DB::raw('COUNT(td_reserved_rooms.type_id) as total_rooms'))->join('td_reserved_rooms','tb_reservations.id','=','td_reserved_rooms.reservation_id')->where('property_id', $property_id)->where('td_reserved_rooms.type_id', $type->id)->where('tb_reservations.checkin_date','>=', $cal_start)->where('tb_reservations.checkin_date','<=', $cal_end)->groupBy('td_reserved_rooms.reservation_id','td_reserved_rooms.type_id')->get();
+                    
+                    $cats[$c]['reservation'] = $reservations;
+                    
+                    $c++;
+                }
+            }
+            
+            
+            
+            if (empty($cats)) {
+                $res['status'] = 'error';
+                $res['errors'] = 'No Room Added For This Property.';
+                return json_encode($res);
+            } else {
+                $res['status'] = 'success';
+                $res['cat_types'] = $cats;
+                return json_encode($res);
+            }
+        }else{
+            $res['status'] = 'error';
+            $res['errors'] = 'Property Not Found.';
+            return json_encode($res);
+        }
+    }
     
+    function get_reservation_details(Request $request){
+        $ids = (array) $request->input('ids');
+        //print_r($ids);
+        $final_array = array();
+        $arr_reservation = array();
+        $arr_reser = array();
+        $arr_reserved = array();
+        $cnt = 0;
+        if(count($ids) > 0){            
+            $reservations = \DB::table('tb_reservations')->whereIn('tb_reservations.id', $ids)->get();  
+            foreach($reservations as $res){
+                $t_array = array();
+                $t_array["details"] = $res;
+                
+                //get all booked rooms of every reservation
+                $rid = $res->id;
+                $reserved_rooms = \DB::table('td_reserved_rooms')->where('td_reserved_rooms.reservation_id', $rid)->get();
+                foreach($reserved_rooms as $si_room){
+                    $tc_array = array();
+                    $tc_array = $si_room;
+                    
+                    //get available rooms from db
+                    $cid = $si_room->type_id;
+                    $cat_rooms = \DB::table('tb_properties_category_rooms')->where('tb_properties_category_rooms.category_id', $cid)->get();
+                    $tc_array->total_available_rooms = (int) count($cat_rooms);
+                    if($tc_array->total_available_rooms > 0){
+                        $tc_array->available_rooms = $cat_rooms;
+                        $tc_array->is_room_availabe = 1;
+                    }else
+                    {
+                        $tc_array->available_rooms = array();
+                        $tc_array->is_room_availabe = 0;
+                    }
+                    //End
+                    
+                    $t_array["rooms"][] = $tc_array;
+                }                
+                //End
+                
+                
+                $final_array[] = $t_array;
+            }
+            
+            /*echo "<pre>";
+            print_r($final_array);
+            die;
+            foreach($ids as $id){
+                $reservations = \DB::table('tb_reservations')->where('tb_reservations.id', $id)->get();  
+                 
+                if(!empty($reservations)){
+                    foreach($reservations as $res){
+                        $arr_reser['reservation'] = $res;
+                        $rid = $res->id;
+                        
+                        $reserved_rooms = \DB::table('td_reserved_rooms')->where('td_reserved_rooms.reservation_id', $rid)->get();
+                        if(!empty($reserved_rooms)){
+                            foreach($reserved_rooms as $rooms){
+                                $arr_reserved['room'][] = $rooms;
+                                
+                                $cid = $rooms->type_id;
+                                $cat_rooms = \DB::table('tb_properties_category_rooms')->where('tb_properties_category_rooms.category_id', $cid)->get();
+                                $arr_reserved['cat_rooms'][] = $cat_rooms; 
+                            }
+                            $arr_reser['category_room'][] = $arr_reserved;
+                        }
+                        $arr_reservation['reservations'][] = $arr_reser;
+                        $cnt++;
+                    }
+                    
+                }
+                
+                $final_array[] = $arr_reservation;
+            }*/
+            
+        }
+        if (empty($final_array)) {
+            $response['status'] = 'error';
+            $response['errors'] = 'No Room Added For This Property.';
+            return json_encode($response);
+        } else {
+            $response['status'] = 'success';
+            $response['reservations'] = $final_array;
+            return json_encode($response);
+        }
+        //return json_encode($final_array);
+    }
+    
+    function get_b2ccategory_rooms_reservations_old(Request $request) {
+        $property_id = $request->input('pid');
+        $caltype = $request->input('caltype');
+
+        if ($property_id != '' && $property_id > 0) {
+            $cats = array();
+            $cat_types_temp = \DB::table('tb_properties_category_types')->where('property_id', $property_id)->where('status', 0);
+            if ($caltype != 'all') {
+                $cat_types_temp->where('id', $caltype);
+            }
+            $cat_types = $cat_types_temp->get();
+            if (!empty($cat_types)) {
+                $c = 0;
+                $arrrooms = array();
+                foreach ($cat_types as $type) {
+                    $cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $property_id)->where('category_id', $type->id)->get();
+                    //if (!empty($cat_rooms)) {
+                        $cats[$c]['data'] = $type;
+                        //foreach ($cat_rooms as $room) {
+                            //$cats[$c]['rooms'][] = $room;
+                            //$arrrooms['room'] = $cat_rooms;
+                            $new_array = array();
+                            $final_array = array();
+                            $reservations = \DB::table('tb_reservations')->where('property_id', $property_id)->where('type_id', $type->id)->get();
+                            if(!empty($reservations)){
+                                foreach($reservations as $reserv){
+                                    $rid = $reserv->id;
+                                    $reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types','tb_properties_category_types.id','=','td_reserved_rooms.type_id')->where('td_reserved_rooms.reservation_id', $rid)->get();
+                                    
+                                    if(!empty($reserved_rooms)){  
+                                        foreach($reserved_rooms as $res_rm){
+                                            $cat_res_rooms = \DB::table('tb_properties_category_rooms')->where('category_id', $res_rm->id)->get();
+                                        }
+                                    }
+                                    
+                                    $new_array['reserved_rooms'] = $reserved_rooms; 
+                                    $new_array['booking'] =  $reserv;  
+                                    $final_array[] = $new_array;                            
+                                }
+                            }
+                            $cats[$c]['reservation'] = $final_array;
+                            
+                            $cats[$c]['rooms'] = $cat_rooms;
+                        //}
+                        
+                    //}
+                    
+                    /* $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $property_id)->where('tb_properties_images.category_id', $type->id)->where('tb_properties_images.type', 'Rooms Images')->get();
+                      $filen = array();
+                      if(!empty($fileArr))
+                      {
+                      $f=0;
+                      foreach($fileArr as $file)
+                      {
+                      $cats[$c]['imgs'][$f] = $file;
+                      $cats[$c]['imgs'][$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                      $f++;
+                      }
+                      }
+
+                      $cat_amenty = \DB::table('tb_properties_category_amenities')->where('property_id', $property_id)->where('cat_id', $type->id)->first();
+                      if(!empty($cat_amenty))
+                      {
+                      $cats[$c]['amenty'] = $cat_amenty;
+                      }
+
+                      $cat_amenty = \DB::table('tb_properties_category_amenities')->where('property_id', $property_id)->where('cat_id', $type->id)->first();
+                      if(!empty($cat_amenty))
+                      {
+                      $cats[$c]['amenties'] = $cat_amenty->amenity_ids;
+                      } */
+                    $c++;
+                }
+            }
+
+            if (empty($cats)) {
+                $res['status'] = 'error';
+                $res['errors'] = 'No Room Added For This Property.';
+                return json_encode($res);
+            } else {
+                $res['status'] = 'success';
+                $res['cat_types'] = $cats;
+                return json_encode($res);
+            }
+        } else {
+            $res['status'] = 'error';
+            $res['errors'] = 'Property Not Found.';
+            return json_encode($res);
+        }
+    }
+    function user_arrival_departure(Request $request){
+        
+        $reportfor = $request->input('reportfor');
+        $arrival_departure =  $request->input('arrival_departure');
+        
+        $uid = \Session::get('uid');
+        $property_ids = array();
+        if($uid > 0){
+            $assigned_property = \DB::table('tb_properties_users')->where('user_id', $uid)->get();
+            if(!empty($assigned_property)){
+                foreach($assigned_property as $prop){
+                    $property_ids[] = $prop->property_id;
+                }
+            }
+        }
+        $current_date = date('Y-m-d');
+        if(trim($reportfor)=='today'){
+            $current_date = date('Y-m-d');
+            //$arrival_dep_arr = \DB::table('')
+            if(!empty($property_ids)){
+                
+                if($arrival_departure=="arrival"){
+                    $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.checkin_date', $current_date)->get();
+                }else{
+                    $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.checkout_date', $current_date)->get();                    
+                }                
+                                
+            }
+        }else{
+            
+            $from_date = date('Y-m-01');            
+            $to_date = date("Y-m-t", strtotime($current_date));
+            $to_from=array($from_date, $to_date);
+            
+                       
+            if($arrival_departure=="arrival"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('checkin_date', $to_from)->get(); 
+            }else{
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('checkout_date', $to_from)->get(); 
+            }            
+            
+        }
+        $res['status'] = 'success';
+        $res['reservations'] = $reservations;
+        
+        return json_encode($res);
+    }
 }

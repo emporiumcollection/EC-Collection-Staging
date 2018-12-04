@@ -151,6 +151,13 @@ a:hover, a:focus, a:active{
     float: right;
     width: 180px;
 }
+
+.input-field_more_room2 {
+    float: left;
+    margin-left: 31px;
+    width: 110px;
+}
+
 .input-field2 > input {
     border: 1px solid #b3b3b3;
     border-radius: 3px;

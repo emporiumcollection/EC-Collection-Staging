@@ -22527,7 +22527,7 @@ button:focus {
     background: #a99f7d;
     border-color: #a99f7d;
     color: #fff;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .btn.btn-default i,
 .btn.btn-secondary i {
@@ -55095,4 +55095,25 @@ i.m-menu__link-icon.fa {
 }
 .setting-box-hotel .grid_link-text:hover{
     color:#252525;
+}
+
+.setting-box-advert{
+    background-color: #eeeeee;
+    text-align: center;
+    width: 23%;
+    margin: 5px;
+    padding: 21px 25px;
+}
+.setting-box-advert .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #d2d0d0;
+}
+.setting-box-advert .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
 }

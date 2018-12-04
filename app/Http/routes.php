@@ -377,6 +377,13 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::post('priceonrequest', 'CustomerController@priceonrequest');
     
+    Route::post('confirmreservation', 'PropertiesController@confirmreservation');
+    
+    Route::post('get_b2ccategory_rooms_reservations', 'PropertiesController@get_b2ccategory_rooms_reservations');
+    
+    Route::post('get_reservation_details', 'PropertiesController@get_reservation_details');
+    
+    Route::post('user_arrival_departure', 'PropertiesController@user_arrival_departure');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

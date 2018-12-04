@@ -51,7 +51,7 @@ class PostarticleController extends Controller {
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-		$filter .= ' AND cat_id="'.$categ.'"';
+		//$filter .= ' AND cat_id="'.$categ.'"';
 
 		
 		$page = $request->input('page', 1);

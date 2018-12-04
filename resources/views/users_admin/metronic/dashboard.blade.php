@@ -45,9 +45,6 @@
     				<button type="button" class="btn m-btn--pill m-subheader-search__submit-btn">
     					Search Bookings
     				</button>
-    				<a href="#" class="m-subheader-search__link m-link">
-    					Advance Search
-    				</a>
     			</div>
     		</div>
     	</form>
@@ -63,50 +60,174 @@
     </li>
 @stop
 
-@section('content')
-    <?php /* @if(!empty($pageslider))
-    <section class="sliderSection termConditionSlider">
-        <div id="restaurantSlider" class="carousel" data-ride="carousel">
-        <!-- Indicators -->
-        <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                @foreach($pageslider as $key => $slider_row)
-                  <div class="item {{($key == 0)? 'active' : ''}}" style="background:url({{url('uploads/slider_images/'.$slider_row->slider_img)}}) center center no-repeat; background-size:cover;">
-                    <div class="carousel-caption">
-                      <a href="{{$slider_row->slider_link}}">
-                      <h1>{{$slider_row->slider_title}}</h1>
-                      <h4>{{$slider_row->slider_description}}</h4>    
-                      </a>                  
-                    </div>
-                  </div>
-                @endforeach
-            </div>
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#restaurantSlider" data-slide="prev">
-          <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon">
-        </a>
-        <a class="right carousel-control" href="#restaurantSlider" data-slide="next">
-          <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
-        </a>
-        </div>
-        <span class="scrollNextDiv"><a class="scrollpage" href="#membershpipStepSec">Scroll Down</a></span>
-    </section>
-    @endif */ ?>
-    
+@section('content')    
     <!--Begin::Section_portlet-->
         <div class="parent_hotel_name">
             <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
 						<h3 class="m-subheader__title m-subheader__title--separator">
-							Hotel Name
+							{{$hotel_name}}
 						</h3>
 					</div>
 				</div>
 			</div>
-        
+            
+            <div class="row">
+				<div class="col-sm-12 col-md-4 col-xl-4">
+					<div class="col-md-12">
+                    @if(!empty($blogs))
+                    <div id="b2cblog_carousel" class="rad-carousel">
+                         
+                        <ol class="carousel-indicators">
+                            @foreach($blogs as $key => $blog_row)
+                            <li data-target="#Carousel" data-slide-to="{{$key}}" class="{{($key == 0)? 'active' : ''}}"></li>
+                            @endforeach
+                        </ol>
+                         
+                        <!-- Carousel items -->
+                        <div class="rad-carousel-inner">
+                        @foreach($blogs as $key => $blog_row)    
+                        <div class="item {{($key == 0)? 'active' : ''}}">
+                        	<div class="row">
+                            <div class="col-md-12">
+                                <a href="{{$blog_row->external_link}}" class="thumbnail">                                
+                                    <img src="{{url('/uploads/article_imgs/'.$blog_row->featured_image)}}" alt="{{$blog_row->title_pos_1}}" style="max-width:100%;">
+                                </a>
+                            </div>
+                            <div class="col-md-12" style="margin: 10px 0px;">
+                                <h2>{{$blog_row->title_pos_1}}</h2>
+                            </div>                	  
+                            <div class="col-md-12">
+                                <p>{{str_limit(strip_tags($blog_row->description_pos_1), 100)}}</p>
+                            </div>
+                            <div class="col-md-12 m--align-right">
+                                <a href="#">Read More</a>
+                            </div>                              
+                        	</div><!--.row-->
+                        </div><!--.item-->
+                        @endforeach 
+                         
+                        </div><!--.carousel-inner-->
+                          <a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
+                          <a data-slide="next" href="#Carousel" class="right carousel-control">></a>
+                    </div><!--.Carousel-->
+                    @endif
+                    </div>
+                    
+                    <!--begin:: Widgets/Announcements 2-->                    
+				</div>
+                
+                <div class="col-sm-12 col-md-8 col-xl-8">
+                   @if(!empty($pageslider))
+                    <div id="b2cdash_carousel" class="carousel slide">
+                         
+                        <ol class="carousel-indicators">
+                            @foreach($pageslider as $key => $slider_row)
+                            <li data-target="#Carousel" data-slide-to="{{$key}}" class="{{($key == 0)? 'active' : ''}}"></li>
+                            @endforeach
+                        </ol>
+                         
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                        @foreach($pageslider as $key => $slider_row)    
+                        <div class="item {{($key == 0)? 'active' : ''}}">
+                        	<div class="row">
+                        	  <div class="col-md-12">
+                                <a href="{{$slider_row->slider_link}}" class="thumbnail">                            
+                                    <div class="b2c-banner-text">{{$slider_row->slider_title}}</div>
+                                    <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}" style="max-width:100%;">
+                                </a>
+                              </div>                	  
+                        	</div><!--.row-->
+                        </div><!--.item-->
+                        @endforeach 
+                         
+                        </div><!--.carousel-inner-->
+                          <a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
+                          <a data-slide="next" href="#Carousel" class="right carousel-control">></a>
+                    </div><!--.Carousel-->
+                    @endif
+                </div> 
+                <div class="col-sm-12 col-md-4 col-xl-4">                    
+                    <img src="{{URL::to('images/advert.png')}}" alt="Advertising" style="width: 100%; margin: 5px;" />
+                </div>
+                <div class="col-sm-12 col-md-8 col-xl-8">
+                
+                    <div class="row">
+                        <div class="setting-box-advert">
+                            <a href="{{ URL::to('properties') }}">
+                                <i class="grid_icon flaticon-profile-1"></i>																	
+                    			<span class="grid_link-text">
+                    				Property Management
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert">
+                            <a href="{{ URL::to('user/settings') }}">
+                                <i class="grid_icon flaticon-settings-1"></i>																	
+                    			<span class="grid_link-text">
+                    				Reservation Management
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert">
+                            <a href="{{ URL::to('container')}}">
+                    			<i class="grid_icon flaticon-mail-1"></i>																	
+                    			<span class="grid_link-text">
+                    				Container
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert">
+                            <a href="#" id="dash_communication">
+                    			<i class="grid_icon flaticon-computer"></i>																	
+                    			<span class="grid_link-text">
+                    				Modules/Packages
+                    			</span>
+                    		</a>
+                        </div>
+                        
+                        
+                        <div class="setting-box-advert">
+                            <a href="#">
+                                <i class="grid_icon flaticon-profile-1"></i>																	
+                    			<span class="grid_link-text">
+                    				Arrivals/Departures
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert">
+                            <a href="#">
+                                <i class="grid_icon flaticon-settings-1"></i>																	
+                    			<span class="grid_link-text">
+                    				Cancelations
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert">
+                            <a href="#">
+                    			<i class="grid_icon flaticon-mail-1"></i>																	
+                    			<span class="grid_link-text">
+                    				Sales Reports
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert">
+                            <a href="#" id="dash_communication">
+                    			<i class="grid_icon flaticon-computer"></i>																	
+                    			<span class="grid_link-text">
+                    				Quality Assurance
+                    			</span>
+                    		</a>
+                        </div>
+                        
+                    </div>
+                </div>                		
+			</div>
+            
         <!-- Second Row -->
-			<div class="row">
+			<?php /*<div class="row">
 				<div class="col-sm-12 col-md-4 col-xl-4">
 					
                     
@@ -152,6 +273,8 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                     
                     
 				</div>
+                
+                
 				<div class="col-sm-12 col-md-4 col-xl-4">
 					<!--begin:: Widgets/Authors Profit-->
 					<div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
@@ -457,12 +580,12 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 								</div>
 								<!--end:: Packages-->
                     
-                </div>
+                </div>  
                 				
-			</div>
+			</div>*/ ?>
         </div>
     <!-- Third Row -->
-        <div class="parent_notifications">           
+        <?php /* <div class="parent_notifications">           
             <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
@@ -1401,7 +1524,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                     </div>
                     
 				</div>
-        </div>
+        </div> */ ?>
 				<!--End::Section-->
                 
 		    <!-- End First Row -->   
@@ -1418,7 +1541,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 			</div> 
             
 			<div class="row">
-				<div class="col-sm-12 col-md-4 col-xl-4">
+				<?php /* <div class="col-sm-12 col-md-4 col-xl-4">
 					<!--begin:: Widgets/Activity-->
 					<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
 						<div class="m-portlet__head">
@@ -1544,9 +1667,9 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 						</div>
 					</div>
 					<!--end:: Widgets/Activity-->
-				</div>	
+				</div>	*/ ?>
                 
-                <div class="col-sm-12 col-md-4 col-xl-4">
+                <div class="col-sm-12 col-md-8 col-xl-8">
                     <!--begin:: Widgets/Sale Reports-->
 					<div class="m-portlet m-portlet--full-height ">
 						<div class="m-portlet__head">
@@ -1558,14 +1681,90 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 								</div>
 							</div>
 							<div class="m-portlet__head-tools">
-								<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                                <div class="arrival_departure">
+                                    <select class="form-control" name="dd_arrival_departure" id="dd_arrival_departure">
+                                        <option value="arrival">Arrival</option>
+                                        <option value="departure">Departure</option>
+                                    </select>
+                                </div>
+								<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm">
 									<li class="nav-item m-tabs__item">
-										<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget11_tab1_content" role="tab">
+										<a class="nav-link m-tabs__link active m_tab1_content" data-reportfor='today'>
 											Today
 										</a>
 									</li>
 									<li class="nav-item m-tabs__item">
-										<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget11_tab2_content" role="tab">
+										<a class="nav-link m-tabs__link m_tab1_content" data-reportfor='month'>
+											Month
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="m-portlet__body">
+							<div class="m-widget11">
+										<div class="table-responsive">
+											<!--begin::Table-->
+											<table class="table">
+												<!--begin::Thead-->
+												<thead>
+													<tr>														
+														<td>
+															Guest Name
+														</td>
+														<td>
+															Adult #
+														</td>	
+                                                        <td>
+															Child #
+														</td>													
+														<td class="m--align-right">
+															Date of Arrival
+														</td>
+                                                        <td class="m--align-right">
+															Date of Departure
+														</td>
+													</tr>
+												</thead>
+												<!--end::Thead-->
+<!--begin::Tbody-->
+												<tbody id="table_data">
+													
+												</tbody>
+												<!--end::Tbody-->
+											</table>
+											<!--end::Table-->
+										</div>
+										
+									</div>
+						</div>
+					</div> 
+					<!--end:: Widgets/Sale Reports-->
+                    <?php /* <!--begin:: Widgets/Sale Reports-->
+					<div class="m-portlet m-portlet--full-height ">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<h3 class="m-portlet__head-text">
+										Guest Arrivals | Departures
+									</h3>
+								</div>
+							</div>
+							<div class="m-portlet__head-tools">
+                                <div class="arrival_departure">
+                                    <select class="form-control" name="dd_arrival_departure" id="dd_arrival_departure">
+                                        <option value="arrival">Arrival</option>
+                                        <option value="departure">Departure</option>
+                                    </select>
+                                </div>
+								<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+									<li class="nav-item m-tabs__item">
+										<a class="nav-link m-tabs__link active m_tab1_content" data-toggle="tab" data-reportfor='today' href="#m_widget11_tab1_content" role="tab">
+											Today
+										</a>
+									</li>
+									<li class="nav-item m-tabs__item">
+										<a class="nav-link m-tabs__link m_tab1_content" data-toggle="tab" data-reportfor='month' href="#m_widget11_tab2_content" role="tab">
 											Month
 										</a>
 									</li>
@@ -1818,8 +2017,8 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 							</div>
 							<!--End::Tab Content-->
 						</div>
-					</div>
-					<!--end:: Widgets/Sale Reports-->
+					</div> 
+					<!--end:: Widgets/Sale Reports--> */ ?>
                 </div>
                 
                 <div class="col-sm-12 col-md-4 col-xl-4">
@@ -1945,7 +2144,154 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 					</div>
 					<!--end:: Widgets/Adwords Stats-->
                 </div>
-                						
+                <!-- Calendar Start -->
+                <div class="col-sm-12 col-md-12 col-xl-12">
+                    
+                        
+                        <div class="sbox-content calendar"> 
+        					{{--*/ $days_start = date('Y-m-d', mktime(0, 0, 0, date("m") , date("d") - 5, date("Y"))); 
+        						   $days_end = date('Y-m-d', mktime(0, 0, 0, date("m") , date("d") + 20, date("Y")));
+        					/*--}}
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+        					<form id="cal-dates" method="POST">
+        						<div class="controls">
+        							<section>
+        								<div class="control-group no-grow">
+        									<button id="calendar-show-button" type="button" onclick="find_reservation_dates();"><i class="fa fa-repeat" style=""></i></button>
+        								</div>
+        
+        								<div class="control-group">
+        									<button onclick="dateOffset('prev');" type="button"><i class="fa fa-caret-left"></i></button>
+        									<input id="cal-start" name="cal-start" type="text" class="date hasDatepicker" value="{{$days_start}}">
+        									<input id="cal-end" name="cal-end" type="text" class="date hasDatepicker" value="{{$days_end}}">
+        									<button onclick="dateOffset('next');" type="button"><i class="fa fa-caret-right"></i></button>
+        								</div>
+        							</section>
+        							
+        							<section>
+        								<div class="control-group tools">
+        									<button type="button" onclick="dateOffset('week');">Week</button>
+        									<button type="button" onclick="dateOffset('month');">Month</button>
+        								</div>
+        							</section>
+        
+        							<section>
+        								<div class="control-group">
+        									<select name="cal-room-type" id="cal-room-type" onchange="find_reservation_dates();">
+        										<option value="all">Show all</option>
+        										@if(!empty($cat_types))
+        											@foreach($cat_types as $typec)
+        												<option value="{{$typec['data']->id}}">{{$typec['data']->category_name}}</option>
+        											@endforeach
+        										@endif
+        									</select>
+        
+        									<select name="cal-coloring" onchange="find_reservation_dates();">
+        										<option value="1">Color by Room</option>
+        										<option value="2" selected="">Color by Source</option>
+        									</select>
+        								</div>
+        							</section>
+        
+        							<section>
+        								<div class="control-group tools">
+        									<button type="button" onclick="calStartUnavail()" title="New Out of Order">
+        										<img src="https://app.base7booking.com/images/icons/construction.png">
+        									</button>
+        									<button type="button" onclick="calStartPrice()" title="ADR">
+        										<img src="https://app.base7booking.com/images/icons/money.png">
+        									</button>
+        									<button type="button" onclick="calSplit()" title="Split">
+        										<img style="height: 16px" src="https://app.base7booking.com/images/icons/cut.png">
+        									</button>
+        									<button type="button" onclick="v1.openRestrictions()" title="Restrictions">
+        										<img style="height: 16px" src="https://app.base7booking.com/images/restriction.png">
+        									</button>
+        									<button type="button" onclick="v1.openCustomPrice()" title="Custom Price">
+        										<img style="height: 16px" src="https://app.base7booking.com/images/yield.png">
+        									</button>
+        								</div>
+        							</section>
+        
+        							
+        						</div>
+        					</form>
+                            </div>
+                            <?php /* <div class="col-sm-12 col-md-12 col-lg-12">
+                                <section>
+    								<button type="button" class="b7 info new-reservation" title="New Reservation">New Reservation</button>
+    							</section>
+                            </div> */ ?>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+            					<div style="margin-left: 150px; ; height: 13px; border-bottom: none;"></div>
+            					<div class="row no_border ">
+            						<div class="cols first white_border_left"></div>
+            						<div class="datcalendartop">
+            							
+            						</div>
+            						<div class="clr"></div>
+            					</div>
+			               
+            					<div id="catrooms">					
+            						@if(!empty($cat_types))
+            							@foreach($cat_types as $typec)
+            								@if(array_key_exists('rooms', $typec))
+            								{{--*/ $tp=20; /*--}}
+            									@foreach($typec['rooms'] as $typeroom)
+            										<div class="row first">
+            											 <div class="cols first right_border_gray">
+            												<span class="room_number">{{$typeroom->room_name}}</span> 
+            												<span class="room_name">
+            													<span class="room_title">{{$typec['data']->cat_short_name}} </span>
+            													<img  class="status_red" src="https://app.base7booking.com/images/icons/broom.png" > </span>
+            												<div class="clr"></div>
+            											</div>
+            											 <div class="cols right_border_gray"></div>
+            											 <div class="cols right_border_gray"></div>
+            											 <div class="cols right_border_gray weekend_days"></div>
+            											 <div class="cols right_border_gray weekend_days"></div>
+            											 <div class="clr"></div>
+            										</div>
+            										{{--*/ $tp = $tp+20; /*--}}
+            									@endforeach
+            								@endif
+            							@endforeach
+            						@endif
+            					</div>
+			
+            					<div class="row last empty_row">
+            					</div>
+            					<div class="row no_border ">
+            						<div class="cols first white_border_left"></div>
+            						<div class="datcalendarbottom">
+            							
+            						</div>
+            						<div class="clr"></div>
+            					</div>
+            					<div class="separate_row">
+            					</div>
+            					
+            					<!--<div class="row no_border">
+            						<div class="cols first white_border_left" >Guset</div>
+            						<div class="cols top_border_black bottom_border_black left_border_black ">0</div>
+            						<div class="cols top_border_black bottom_border_black left_border_black">0</div>
+            						<div class="cols top_border_black bottom_border_black left_border_black ">0</div>
+            						<div class="cols top_border_black bottom_border_black left_border_black right_border_black  ">0</div>
+            						<div class="clr"></div>
+            					</div>
+            					<div class="row no_border">
+            						<div class="cols first white_border_left">Room Available</div>
+            						<div class="cols bottom_border_black left_border_black ">7</div>
+            						<div class="cols bottom_border_black left_border_black">7</div>
+            						<div class="cols bottom_border_black left_border_black ">7</div>
+            						<div class="cols bottom_border_black left_border_black right_border_black  ">7</div>
+            						<div class="clr"></div>
+            					</div> -->
+		                    </div>
+                        </div>
+                    
+                </div>
+                <!-- Calendar End -->						
 			</div>
 		</div>
         <div class="parent_sales_and_marketing">
@@ -2832,13 +3178,264 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     		</div>
     	</div>
     </div>    
- <!--end: modal pop up-->   
+ <!--end: modal pop up-->  
+ <!-- Reservation model -->
+<div class="modal fade" id="reservationsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+        <h5 class="modal-title" id="guesttitle">Booked Details</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  </div>
+      
+      <div class="modal-body">
+        <div class="m-portlet m-portlet--full-height" style="padding: 0px; margin-bottom: 0px;">
+            <form class="m-form">
+                <div class="m-portlet__body" style="padding: 0px;">
+                    <div id="bookingdetailbody">
+		
+	                </div>
+                </div>
+            </form>
+        </div>
+      </div>
+      
+	  
+	</div>
+  </div>
+</div> 
+<!-- End reservation model -->
 @stop
 {{-- For custom style  --}}
 @section('style')
     @parent
     <link href="//www.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('sximo/css/bookingSys.css')}}" rel="stylesheet">
     <style>
+    	.cursor{cursor:col-resize;}
+    	.selectedCell{background:pink;}
+        .BookedCell{background:pink; cursor: pointer; }
+        .selectedCell span{ cursor: pointer; }
+    	.optionbox {
+    		-moz-user-select: none;
+    		-webkit-user-select: none;
+    		-ms-user-select: none;
+    		padding: 8px;
+    		cursor: pointer;
+    		background-color: #eee;
+    		border-radius: 3px;
+    		border: 1px solid #dadada;
+    		line-height: 18px;
+    		display: inline-block;
+    	}
+        .m-content>div:nth-child(even) .row {
+            background: none !important;
+            padding: 10px 15px;
+        }
+    </style>
+    <style>
+    
+    .carousel {
+      position: relative;
+    }
+    
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      height:400px;
+      overflow: hidden;
+    }
+    
+    .carousel-inner > .item {      
+      position: absolute;
+      height:400px;
+      display: none;
+      -webkit-transition: 0.6s ease-in-out left;
+              transition: 0.6s ease-in-out left;
+    }
+    
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      line-height: 1;
+    }
+    
+    .carousel-inner > .active,
+    .carousel-inner > .next,
+    .carousel-inner > .prev {
+      display: block;
+    }
+    
+    .carousel-inner > .active {
+      left: 0;
+    }
+    
+    .carousel-inner > .next,
+    .carousel-inner > .prev {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    
+    .carousel-inner > .next {
+      left: 100%;
+    }
+    
+    .carousel-inner > .prev {
+      left: -100%;
+    }
+    
+    .carousel-inner > .next.left,
+    .carousel-inner > .prev.right {
+      left: 0;
+    }
+    
+    .carousel-inner > .active.left {
+      left: -100%;
+    }
+    
+    .carousel-inner > .active.right {
+      left: 100%;
+    }
+    
+    .carousel-control {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 15%;
+      font-size: 20px;
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+    
+    .carousel-control.left {
+      background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+      background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0), color-stop(rgba(0, 0, 0, 0.0001) 100%));
+      background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+    }
+    
+    .carousel-control.right {
+      right: 0;
+      left: auto;
+      background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
+      background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0), color-stop(rgba(0, 0, 0, 0.5) 100%));
+      background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    }
+    
+    .carousel-control:hover,
+    .carousel-control:focus {
+      color: #ffffff;
+      text-decoration: none;
+      opacity: 0.9;
+      filter: alpha(opacity=90);
+    }
+    
+    .carousel-control .icon-prev,
+    .carousel-control .icon-next,
+    .carousel-control .glyphicon-chevron-left,
+    .carousel-control .glyphicon-chevron-right {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 5;
+      display: inline-block;
+    }
+    
+    .carousel-control .icon-prev,
+    .carousel-control .icon-next {
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      margin-left: -10px;
+      font-family: serif;
+    }
+    
+    .carousel-control .icon-prev:before {
+      content: '\2039';
+    }
+    
+    .carousel-control .icon-next:before {
+      content: '\203a';
+    }
+    
+    .carousel-indicators {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      z-index: 15;
+      width: 60%;
+      padding-left: 0;
+      margin-left: -30%;
+      text-align: center;
+      list-style: none;
+    }
+    
+    .carousel-indicators li {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 1px;
+      text-indent: -999px;
+      cursor: pointer;
+      border: 1px solid #ffffff;
+      border-radius: 10px;
+    }
+    
+    .carousel-indicators .active {
+      width: 12px;
+      height: 12px;
+      margin: 0;
+      background-color: #ffffff;
+    }
+    
+    .carousel-caption {
+      position: absolute;
+      right: 15%;
+      bottom: 20px;
+      left: 15%;
+      z-index: 10;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    }
+    
+    .carousel-caption .btn {
+      text-shadow: none;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .carousel-control .icon-prev,
+      .carousel-control .icon-next {
+        width: 30px;
+        height: 30px;
+        margin-top: -15px;
+        margin-left: -15px;
+        font-size: 30px;
+      }
+      .carousel-caption {
+        right: 20%;
+        left: 20%;
+        padding-bottom: 30px;
+      }
+      .carousel-indicators {
+        bottom: 20px;
+      }
+    }
+    
     .carousel-control {
         position: absolute;
     }
@@ -2885,12 +3482,101 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     .m-nav-grid>.m-nav-grid__row>.m-nav-grid__item{
         padding: .75rem .75rem;
     }
+    
+    .carousel {
+        margin-bottom: 0;
+        /*padding: 0 40px 30px 40px;*/
+    }
+    /* The controlsy */
+    .carousel-control {
+    	left: 30px;
+        height: 40px;
+    	width: 40px;
+        background: none repeat scroll 0 0 #222222;
+        border: 4px solid #FFFFFF;
+        border-radius: 23px 23px 23px 23px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .carousel-control.right {
+    	right: 30px;
+    }
+    
+    .carousel-control2 {
+    	left: 30px;
+        height: 40px;
+    	width: 40px;
+        background: none repeat scroll 0 0 #222222;
+        border: 4px solid #FFFFFF;
+        border-radius: 23px 23px 23px 23px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .carousel-control2.right {
+    	right: 30px;
+    }
+    /* The indicators */
+    .carousel-indicators {
+    	right: 50%;
+    	top: auto;
+    	bottom: -10px;
+    	margin-right: -19px;
+        display: none;
+    }
+    /* The colour of the indicators */
+    .carousel-indicators li {
+    	background: #cecece;
+    }
+    .carousel-indicators .active {
+    background: #428bca;
+    }
+    
+    .rad-carousel{
+        position: relative;
+    }
+    .rad-carousel-inner {      
+      position: relative;
+      height:400px;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .rad-carousel-inner > .item {
+      position: absolute;
+      height:400px;
+      display: none;
+      -webkit-transition: 0.6s ease-in-out left;
+              transition: 0.6s ease-in-out left;
+    }
+    
+    .rad-carousel-inner > .item > img,
+    .rad-carousel-inner > .item > a > img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      line-height: 1;
+    }
+    
+    .m-content>div:nth-child(even) .row{
+        padding: 0px 0px !important;
+    }
+    .m-content>div:nth-child(even) .row {
+        margin: 0px;
+    }
+    .rad-carousel .carousel-control{
+        top: 25% !important;
+    }
     </style>
 @endsection
 
 {{-- For custom style  --}}
 @section('custom_js_script')
     @parent      
+    <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script>
@@ -2899,9 +3585,9 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                     $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
             <?php }else if($logged_user->new_user == 1){ ?>
                     window.location.href = "{{URL::to('whoiam')}}";
-            <?php }else if($logged_user->hotel_setup_complete == 0){ ?>
+            <?php }/*else if($logged_user->hotel_setup_complete == 0){ ?>
                     $("#confirm_model").modal({backdrop: 'static', keyboard: false}, 'show');
-            <?php } ?>
+            <?php }*/ ?>
             
             $("#yeshotelsetupbtn").click(function(){
                 <?php if($logged_user->property_info_setup == 0){ if($pid > 0){ ?>
@@ -2978,7 +3664,1008 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                 }
             });
             
+            // settings
+              var $slider = $('#b2cdash_carousel .carousel-inner'); // class or id of carousel slider
+              var $slide = '.item'; // could also use 'img' if you're not using a ul
+              var $transition_time = 1000; // 1 second
+              var $time_between_slides = 4000; // 4 seconds
+            
+              function slides(){
+                return $slider.find($slide);
+              }
+            
+              slides().fadeOut();
+            
+              // set active classes
+              slides().first().addClass('active');
+              slides().first().fadeIn($transition_time);
+            
+              // auto scroll 
+              $interval = setInterval( 
+                function(){
+                if(slides().length > 1){
+                  var $i = $slider.find($slide + '.active').index();
+                                      
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);
+            
+                  if (slides().length == $i + 1) $i = -1; // loop to start
+            
+                  slides().eq($i + 1).fadeIn($transition_time);
+                  slides().eq($i + 1).addClass('active');
+                  }
+                }
+                , $transition_time +  $time_between_slides 
+              );
+            
+            
+            $("#b2cdash_carousel .left").click(function(){
+                var $i = $slider.find($slide + '.active').index();
+                if($i - 1 >= 0){ 
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);                  
+                  slides().eq($i - 1).fadeIn($transition_time);
+                  slides().eq($i - 1).addClass('active');
+                }
+            });
+            
+            $("#b2cdash_carousel .right").click(function(){
+                var $i = $slider.find($slide + '.active').index();
+                if($i + 1 < slides().length){ 
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);
+                  slides().eq($i + 1).fadeIn($transition_time);
+                  slides().eq($i + 1).addClass('active');
+                }
+            });
+            
+            
+            // settings
+              var $slider2 = $('#b2cblog_carousel .rad-carousel-inner'); // class or id of carousel slider
+              var $slide2 = '.item'; // could also use 'img' if you're not using a ul
+              var $transition_time2 = 4000; // 1 second
+              var $time_between_slides2 = 4000; // 4 seconds
+            
+              function slides2(){
+                return $slider2.find($slide2);
+              }
+            
+              slides2().fadeOut();
+            
+              // set active classes
+              slides2().first().addClass('active');
+              slides2().first().fadeIn($transition_time2);
+            
+              // auto scroll 
+              $interval = setInterval( 
+                function(){
+                if(slides2().length > 1){
+                  var $i = $slider2.find($slide2 + '.active').index();
+                                      
+                  slides2().eq($i).removeClass('active');
+                  slides2().eq($i).fadeOut($transition_time);
+            
+                  if (slides2().length == $i + 1) $i = -1; // loop to start
+            
+                  slides2().eq($i + 1).fadeIn($transition_time2);
+                  slides2().eq($i + 1).addClass('active');
+                  }
+                }
+                , $transition_time2 +  $time_between_slides2
+              );
+            
+            
+            $("#b2cblog_carousel .left").click(function(){
+                var $i = $slider2.find($slide2 + '.active').index();
+                if($i - 1 >= 0){ 
+                  slides2().eq($i).removeClass('active');
+                  slides2().eq($i).fadeOut($transition_time2);                  
+                  slides2().eq($i - 1).fadeIn($transition_time2);
+                  slides2().eq($i - 1).addClass('active');
+                }
+            });
+            
+            $("#b2cblog_carousel .right").click(function(){
+                var $i = $slider2.find($slide2 + '.active').index();
+                if($i + 1 < slides2().length){ 
+                  slides2().eq($i).removeClass('active');
+                  slides2().eq($i).fadeOut($transition_time2);
+                  slides2().eq($i + 1).fadeIn($transition_time2);
+                  slides2().eq($i + 1).addClass('active');
+                }
+            });
+            arrival_depart();
+            $(".m_tab1_content").click(function(){
+                $(".m_tab1_content").removeClass('active');
+                $(this).addClass('active');
+                arrival_depart();
+            });
+            function arrival_depart(){
+                //$obj = $(".m_tab1_content.active");
+                var reportfor = $(".m_tab1_content.active").attr('data-reportfor');
+                var arrival_departure = $("#dd_arrival_departure").val();
+                //console.log($obj);
+                $.ajax({
+                    url:"{{URL::to('user_arrival_departure')}}",
+                    type:'POST',
+                    dataType:'json',
+                    data:{'reportfor':reportfor, 'arrival_departure':arrival_departure}, 
+                    beforeSend: function() {
+                      $("#table_data").html('<tr class="m--align-center"><td colspan="5"><div class="m-loader m-loader--brand"></div></td></tr>');
+                    },                   
+                    success:function(response){
+                        var html = '';
+                        $("#table_data").html('');
+                        if(response.status == 'success'){
+                            
+                            var reservations = response.reservations;
+                            if(reservations.length > 0){
+                                $.each(reservations, function(key, val){
+                                    console.log(val);
+                                     
+                                    html += '<tr><td>'+val.first_name+' '+val.last_name+'</td><td class="m--align-center">'+val.total_adults+'</td><td class="m--align-center">'+val.total_child+'</td><td class="m--align-right m--font-brand">'+val.checkin_date+'</td><td class="m--align-right m--font-brand">'+val.checkout_date+'</td></tr>';													
+								});	
+                                			
+                            }else{
+                                html += '<tr class="m--align-center"><td colspan="5">Currently no record found</td></tr>';													
+								
+                            }
+                            $("#table_data").html(html);
+                        }
+                        else{
+                            toastr.error(response.message);
+                        }
+                    }
+                });
+            }
+            
+            
+            
+/*            $(document).on('click', '.btn', function (){
+                var frmid = $(this).parents('form.add_new_reserve_setup').attr('id');
+        		  $('#'+frmid).validate({
+        			submitHandler: function (form) {
+        				 save_reserve_forms_data(frmid);
+        				 return false; // required to block normal submit since you used ajax
+        			 }
+        		 });
+        	 });
+        	 
+        	 
+        	 $(document).on('click', '#catrooms .scell', function (){ 
+        		var clickcell = $(this); console.log(clickcell);
+        		var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        		var cdate = clickcell.attr('data-date');
+        		var cnum = clickcell.attr('data-cell-number');
+        		var roomid = clickcell.parents('.row').attr('data-roomid');
+        		var roomname = clickcell.parents('.row').attr('data-roomname');
+        		var roomcat = clickcell.parents('.row').attr('data-roomcat');
+        		var srartdateform = JSON.parse(cdate);
+        		var chkin = srartdateform.year+'-'+srartdateform.month+'-'+srartdateform.date;
+        		var enddate = startdate = chkindate = chkoutdate = '';
+                
+                clickcell.addClass('selectedCell');
+                
+        		if($('#startid').val()!='')
+        		{
+        			$('#endid').val(cnum);
+        			if($('#startid').val()>cnum)
+        			{
+        				var startdateval = $('#chkin').val();
+        				$('#chkin').val(chkin);
+        				$('#chkout').val(startdateval);
+        				chkindate = chkin;
+        				chkoutdate = startdateval;
+        				enddate = new Date(startdateval);
+        				startdate = new Date(chkin);
+        			}
+        			else
+        			{
+        				$('#chkout').val(chkin);
+        				var startdateval = $('#chkin').val();
+        				chkindate = startdateval;
+        				chkoutdate = chkin;
+        				startdate = new Date(startdateval);
+        				enddate = new Date(chkin);
+        			}
+        			var headingt = roomname+' '+roomcat+' / '+startdate.getDate()+' '+ monthNames[startdate.getMonth()]+' - '+enddate.getDate()+' '+ monthNames[enddate.getMonth()]+' '+enddate.getFullYear();
+        			$('#myModalLabel').html(headingt);
+        			
+        			newclientForm(chkindate,chkoutdate,roomid);
+        			$('#newreserve').modal('show');
+        		}
+        		else{
+        			$('#startid').val(cnum);
+        			$('#catrooms .row').removeClass('active');
+        			clickcell.parents('.row').addClass('active');
+        			$('#roomid').val(roomid);
+        			$('#chkin').val(chkin);
+        		}
+        			
+        		
+        	 });
+        	 
+        	 $(document).on('mouseover', '#catrooms .active .scell', function (){
+        		$( this ).addClass('selectedCell');
+        	});*/
+        	
+        	$(document).on('click', '.new-reservation', function (){
+        		$('.scell').addClass('cursor');
+        		$('.scell').removeClass('selectedCell');
+        	});
+        	
+        	find_reservation_dates();
+            
+            
         }); 
+        
+        function newclientForm(chkin,chkout,roomid)
+    	{
+    		if(chkin!='' && chkout!='' && roomid!='')
+    		{
+    			var clintfrm = '';
+    			clintfrm += '<form class="m-form m-form--label-align-left- m-form--state- columns" id="addclient" method="post">';
+    			clintfrm += '<input type="hidden" name="chkin" id="chkin" value="'+chkin+'">';
+    			clintfrm += '<input type="hidden" name="chkout" id="chkout" value="'+chkout+'">';
+    			clintfrm += '<input type="hidden" name="roomid" id="roomid" value="'+roomid+'">';
+    			clintfrm += '<input type="hidden" name="property_id" value="{{$pid}}">';
+    			clintfrm += '<input type="hidden" name="actionName" value="client">';
+    			clintfrm += '<div class="modal-body">';
+    			clintfrm += '<fieldset>';
+    			clintfrm += '<div class="form-group m-form__group row">';
+    			clintfrm += '<div class="col-md-4">';
+    			clintfrm += '<label>Title</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<select name="title" style="width: 100%; padding:5px;">';
+    			clintfrm += '<option></option>';
+    			clintfrm += '<option value="Mr">Mr</option>';
+    			clintfrm += '<option value="Ms">Ms</option>';
+    			clintfrm += '<option value="Mrs">Mrs</option>';
+    			clintfrm += '</select>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="col-md-4"></div>';
+    			clintfrm += '<div class="col-md-4">';
+    			clintfrm += '<button type="button" class="b7 small info mbot float-right" onclick="open_searchClient_form(\'addclient\');"><i class="fa fa-search"></i> Search Client</button>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="form-group row">';
+    			clintfrm += '<div class="col-md-4">';
+    			clintfrm += '<label>Company</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<input name="company" class="form-control" type="text" value="" required="required">';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="form-group row">';
+    			clintfrm += '<div class="col-md-4">';
+    			clintfrm += '<label>Firstname</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<input name="firstname" class="form-control" type="text" value="" required="required">';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="col-md-4">';
+    			clintfrm += '<label>Lastname</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<input name="lastname" class="form-control" type="text" value="">';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="form-group row">';
+    			clintfrm += '<div class="col-md-4">';
+    			clintfrm += '<label>Email</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<input name="email" class="form-control" type="email" value="">';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="col-md-4">';
+    			clintfrm += '<label>Cellphone</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<input name="cellphone" class="form-control" type="text" value="">';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="form-group row">';
+    			clintfrm += '<div class="col-md-7">';
+    			clintfrm += '<label>Country</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<input name="country" class="form-control" type="text" value="" >';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="form-group row">';
+    			clintfrm += '<div class="col-md-12">';
+    			clintfrm += '<label>Comment</label>';
+    			clintfrm += '<div class="field-input">';
+    			clintfrm += '<textarea id="book-comment" name="comment" style="width: 100%; height: 60px; box-sizing: border-box"></textarea>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '</div>';
+    			clintfrm += '</fieldset>';
+    			clintfrm += '</div>';
+    			clintfrm += '<div class="modal-footer">';
+    			clintfrm += '<button type="submit" class="btn btn-primary" onclick="open_booking_form(\'addclient\');" >OK</button>';
+    			clintfrm += '<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>';
+    			clintfrm += '</div>';
+    			clintfrm += '</form>';
+    			$('#reserforms').html(clintfrm);
+    		}
+    	}
+    	
+    	function open_searchClient_form(form_id)
+    	{
+    		if(form_id!='')
+    		{
+    			var chkin = $('#'+form_id+' input[name="chkin"]').val();
+    			var chkout = $('#'+form_id+' input[name="chkout"]').val();
+    			var roomid = $('#'+form_id+' input[name="roomid"]').val();
+    			
+    			var searchclientfrm = '';
+    			searchclientfrm += '<form class="columns search_client_setup" id="searchClient" method="post">';
+    			searchclientfrm += '<input type="hidden" name="chkin" id="chkin" value="'+chkin+'">';
+    			searchclientfrm += '<input type="hidden" name="chkout" id="chkout" value="'+chkout+'">';
+    			searchclientfrm += '<input type="hidden" name="roomid" id="roomid" value="'+roomid+'">';
+    			searchclientfrm += '<input type="hidden" name="property_id" value="{{$pid}}">';
+    			searchclientfrm += '<div class="modal-body">';
+    			searchclientfrm += '<fieldset>';
+    			searchclientfrm += '<div class="form-group row">';
+    			searchclientfrm += '<div class="col-md-4">';
+    			searchclientfrm += '<label>Search Clients</label>';
+    			searchclientfrm += '<div class="field-input">';
+    			searchclientfrm += '<input type="text" name="searchclient" value="" />';
+    			searchclientfrm += '</div>';
+    			searchclientfrm += '</div>';
+    			searchclientfrm += '</div>';
+    			searchclientfrm += '</fieldset>';
+    			searchclientfrm += '</div>';
+    			searchclientfrm += '<div class="modal-footer">';
+    			searchclientfrm += '<button type="submit" class="btn btn-primary" >OK</button>';
+    			searchclientfrm += '<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>';
+    			searchclientfrm += '</div>';
+    			searchclientfrm += '</form>';
+    			$('#reserforms').html(searchclientfrm);
+    		}
+    	}
+    	
+    	function open_booking_form(form_id)
+    	{
+    		if(form_id!='')
+    		{
+    			var chkin = $('#'+form_id+' input[name="chkin"]').val();
+    			var chkout = $('#'+form_id+' input[name="chkout"]').val();
+    			var roomid = $('#'+form_id+' input[name="roomid"]').val();
+    			var title = $('#'+form_id+' select[name="title"]').val();
+    			var company = $('#'+form_id+' input[name="company"]').val();
+    			var firstname = $('#'+form_id+' input[name="firstname"]').val();
+    			var lastname = $('#'+form_id+' input[name="lastname"]').val();
+    			var email = $('#'+form_id+' input[name="email"]').val();
+    			var cellphone = $('#'+form_id+' input[name="cellphone"]').val();
+    			var country = $('#'+form_id+' input[name="country"]').val();
+    			var comment = $('#'+form_id+' textarea[name="comment"]').val();
+    			var clientdata = { 'act':'new','title':title,'company':company,'firstname':firstname,'lastname':lastname,'email':email,'cellphone':cellphone,'country':country,'comment':comment };
+    			
+    			var reservfrm = '';
+    			reservfrm += '<form class="columns add_new_reserve_setup" id="addreservation" method="post">';
+    			reservfrm += '<input type="hidden" name="chkin" id="chkin" value="'+chkin+'">';
+    			reservfrm += '<input type="hidden" name="chkout" id="chkout" value="'+chkout+'">';
+    			reservfrm += '<input type="hidden" name="roomid" id="roomid" value="'+roomid+'">';
+    			reservfrm += '<input type="hidden" name="property_id" value="{{$pid}}">';
+    			reservfrm += '<input type="hidden" name="actionName" value="reserve">';
+    			reservfrm += '<input type="hidden" name="clientData" value=\''+JSON.stringify(clientdata)+'\'>';
+    			reservfrm += '<div class="modal-body">';
+    			reservfrm += '<fieldset>';
+    			reservfrm += '<div class="form-group row">';
+    			reservfrm += '<div class="col-md-6">';
+    			reservfrm += '<div class="row">';
+    			reservfrm += '<div class="col-md-12">';
+    			reservfrm += '<label>Stay Type</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<select name="staytype" class="form-control" style="width: 100%; padding:5px;" required="required">';
+    			reservfrm += '<option></option>';
+    			reservfrm += '<option value="Business">Business</option>';
+    			reservfrm += '<option value="Leisure">Leisure</option>';
+    			reservfrm += '<option value="Residency">Residency</option>';
+    			reservfrm += '</select>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="row">';
+    			reservfrm += '<div class="col-md-12">';
+    			reservfrm += '<label>Source</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<select name="source" class="form-control" style="width: 100%; padding:5px;">';
+    			reservfrm += '<option></option>';
+    			reservfrm += '<option value="Direct reservation">Direct reservation</option>';
+    			reservfrm += '<option value="Email">Email</option>';
+    			reservfrm += '<option value="Hotel Next Door">Hotel Next Door</option>';
+    			reservfrm += '<option value="Hotel Website">Hotel Website</option>';
+    			reservfrm += '<option value="Recommended">Recommended</option>';
+    			reservfrm += '<option value="Return Customer">Return Customer</option>';
+    			reservfrm += '<option value="Telephone">Telephone</option>';
+    			reservfrm += '<option value="Tourist Office">Tourist Office</option>';
+    			reservfrm += '<option value="Walk-In">Walk-In</option>';
+    			reservfrm += '</select>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-6">';
+    			reservfrm += '<label>Comment</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<textarea id="book-comment" class="form-control" name="comment" style="width: 100%; height: 60px; box-sizing: border-box"></textarea>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="row">';
+    			reservfrm += '<div class="col-md-12">';
+    			reservfrm += '<div class="field-input optionbox">';
+    			reservfrm += '<input type="checkbox" name="pre"> pre-reservation';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="row">';
+    			reservfrm += '<div class="col-md-12">';
+    			reservfrm += '<hr>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="form-group row">';
+    			reservfrm += '<div class="col-md-6">';
+    			reservfrm += '<div class="row">';
+    			reservfrm += '<div class="col-md-4">';
+    			reservfrm += '<label>Adults</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<select name="adult" class="form-control" style="width: 100%; padding:5px;" required="required">';
+    			reservfrm += '<option value="0">0</option>';
+    			reservfrm += '<option value="1">1</option>';
+    			reservfrm += '<option value="2">2</option>';
+    			reservfrm += '</select>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-4">';
+    			reservfrm += '<label>Junior</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<select name="junior" class="form-control" style="width: 100%; padding:5px;">';
+    			reservfrm += '<option value="0">0</option>';
+    			reservfrm += '<option value="1">1</option>';
+    			reservfrm += '</select>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-4">';
+    			reservfrm += '<label>Baby</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<select name="baby" class="form-control" style="width: 100%; padding:5px;">';
+    			reservfrm += '<option value="0">0</option>';
+    			reservfrm += '<option value="1">1</option>';
+    			reservfrm += '</select>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-6">';
+    			reservfrm += '<label>Guests Names</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<input type="text" class="form-control" value="" name="guest_list" required="required">';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="form-group row">';
+    			reservfrm += '<div class="col-md-6">';
+    			reservfrm += '<label>Check-in Comment</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<textarea class="form-control" name="chkin_comment" style="width: 100%; height: 60px; box-sizing: border-box"></textarea>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-6">';
+    			reservfrm += '<label>Check-out Comment</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<textarea class="form-control" name="chkout_comment" style="width: 100%; height: 60px; box-sizing: border-box"></textarea>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="row">';
+    			reservfrm += '<div class="col-md-2">';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += 'Options:';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-4">';
+    			reservfrm += '<div class="field-input optionbox">';
+    			reservfrm += '<input type="checkbox" name="option1"> Upper level rooms';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-3">';
+    			reservfrm += '<div class="field-input optionbox">';
+    			reservfrm += '<input type="checkbox" name="option2"> Baby cot';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="row">';
+    			reservfrm += '<div class="col-md-12">';
+    			reservfrm += '<hr>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="form-group row">';
+    			reservfrm += '<div class="col-md-3">';
+    			reservfrm += '<label>Price</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<input type="text" class="form-control" value="95.00" name="price">';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="col-md-3">';
+    			reservfrm += '<label>Mode</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<select name="price_mode" class="form-control" style="width: 100%; padding:5px;">';
+    			reservfrm += '<option value="daily">Daily</option>';
+    			reservfrm += '<option value="weekly">Weekly</option>';
+    			reservfrm += '<option value="monthly">Monthly</option>';
+    			reservfrm += '<option value="fixed">Fixed</option>';
+    			reservfrm += '</select>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="form-group row">';
+    			reservfrm += '<div class="col-md-6">';
+    			reservfrm += '<label>Board</label>';
+    			reservfrm += '<div class="field-input">';
+    			reservfrm += '<select name="board" class="form-control" style="width: 100%; padding:5px;">';
+    			reservfrm += '<option></option>';
+    			reservfrm += '<option value="1">Breakfast</option>';
+    			reservfrm += '</select>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</div>';
+    			reservfrm += '</fieldset>';
+    			reservfrm += '</div>';
+    			reservfrm += '<div class="modal-footer">';
+    			reservfrm += '<button type="submit" class="btn btn-primary" >OK</button>';
+    			reservfrm += '<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>';
+    			reservfrm += '</div>';
+    			reservfrm += '</form>';
+    			$('#reserforms').html(reservfrm);
+    		}
+    	}
+    
+    	function save_reserve_forms_data(formid)
+    	{
+    		if(formid!='')
+    		{
+    			$.ajax({
+    			  url: "{{ URL::to('add_new_reservation')}}",
+    			  type: "post",
+    			  data: $('#'+formid).serializeArray(),
+    			  dataType: "json",
+    			  success: function(data){
+    				var html = '';
+    				if(data.status=='error')
+    				{
+    					alert('error');
+    				}
+    				else
+    				{
+    					html += '<div class="modal-body">';
+    					html += '<h2>Reservation Submitted Successfully!</h2>';
+    					html += '</div>';
+    					html += '<div class="modal-footer">';
+    					html += '<button type="button" class="btn btn-default" data-dismiss="modal" >CLOSE</button>';
+    					html += '</div>';
+    					$('#reserforms').html(html);
+    				}
+    			  }
+    			});
+    		}
+    	}
+    	
+    	function dateOffset(act)
+    	{
+    		var cal_start = $('#cal-start').val();
+    		var cal_end = $('#cal-end').val();
+    		var current_date = new Date(cal_start);
+    		var end_date = new Date(cal_end);
+    		var d = m = '';
+    		if(act=='prev')
+    		{
+    			current_date.setDate(current_date.getDate()-1);
+    			d = ("0" + current_date.getDate()).slice(-2);
+    			m = ("0" + (current_date.getMonth() + 1)).slice(-2);
+    			$('#cal-end').val(current_date.getFullYear() + '-' + m + '-' + d);
+    			
+    			current_date.setDate(current_date.getDate()-25);
+    			d = ("0" + current_date.getDate()).slice(-2);
+    			m = ("0" + (current_date.getMonth() + 1)).slice(-2);
+    			$('#cal-start').val(current_date.getFullYear() + '-' + m + '-' + d);
+    		}
+    		else if(act=='next')
+    		{
+    			end_date.setDate(end_date.getDate()+1);
+    			d = ("0" + end_date.getDate()).slice(-2);
+    			m = ("0" + (end_date.getMonth() + 1)).slice(-2);
+    			$('#cal-start').val(end_date.getFullYear() + '-' + m + '-' + d);
+    			
+    			end_date.setDate(end_date.getDate()+25);
+    			d = ("0" + end_date.getDate()).slice(-2);
+    			m = ("0" + (end_date.getMonth() + 1)).slice(-2);
+    			$('#cal-end').val(end_date.getFullYear() + '-' + m + '-' + d);
+    		}
+    		else if(act=='week')
+    		{
+    			var start = start || 1;
+    			var today = new Date();
+    			var day = today.getDay() - start;
+    			var date = today.getDate() - day;
+    			var StartDate = new Date(today.setDate(date));
+    			
+    			d = ("0" + StartDate.getDate()).slice(-2);
+    			m = ("0" + (StartDate.getMonth() + 1)).slice(-2);
+    			$('#cal-start').val(StartDate.getFullYear() + '-' + m + '-' + d);
+    			
+    			var EndDate = new Date(today.setDate(date + 6));
+    			d = ("0" + EndDate.getDate()).slice(-2);
+    			m = ("0" + (EndDate.getMonth() + 1)).slice(-2);
+    			$('#cal-end').val(EndDate.getFullYear() + '-' + m + '-' + d);
+    		}
+    		else if(act=='month')
+    		{
+    			var date = new Date();
+    			var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    			d = ("0" + firstDay.getDate()).slice(-2);
+    			m = ("0" + (firstDay.getMonth() + 1)).slice(-2);
+    			$('#cal-start').val(firstDay.getFullYear() + '-' + m + '-' + d);
+    			
+    			var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    			d = ("0" + lastDay.getDate()).slice(-2);
+    			m = ("0" + (lastDay.getMonth() + 1)).slice(-2);
+    			$('#cal-end').val(lastDay.getFullYear() + '-' + m + '-' + d);
+    		}
+    		find_reservation_dates();
+    	}
+    	
+    	function find_reservation_dates()
+    	{
+    		var cal_room_type = $('#cal-room-type').val();
+            var cal_start = $('#cal-start').val();
+    		var cal_end = $('#cal-end').val();
+            
+    		$.ajax({
+    		  url: "{{ URL::to('get_b2ccategory_rooms_reservations')}}",
+    		  type: "post",
+    		  data: 'caltype='+cal_room_type+'&pid={{$pid}}&calstart='+cal_start+'&calend='+cal_end,
+    		  dataType: "json",
+    		  success: function(data){
+    			var html = '';
+    			if(data.status=='error')
+    			{
+    				$('.page-content-wrapper #formerrors').html(data.errors);
+    				$('#catrooms').html('');
+    				window.scrollTo(0, 0);
+    			}
+    			else
+    			{
+    				$('.page-content-wrapper #formerrors').html('');
+    				var cal_start = $('#cal-start').val();
+    				var cal_end = $('#cal-end').val();
+    				var current_date = new Date(cal_start);
+    				var end_date = new Date(cal_end);
+    				var end_date_time = end_date.getTime();
+    				var today = new Date();
+    				var tophtml = bothtml = roomhtml = dhtml = '';
+    				var cellCount = 1;
+    				while (current_date.getTime() <= end_date_time) {
+    					var day = current_date.getDay();
+    					var iweekend = dweekend = '';
+    					var itoday = '';
+    					if(day === 6 || day === 0)
+    					{
+    						iweekend = 'weekend';
+    						dweekend = 'weekend_days';
+    					}
+    					if(today.getDate()==current_date.getDate() && today.getMonth()==current_date.getMonth() && today.getFullYear()==current_date.getFullYear())
+    					{
+    						itoday = 'today';
+    					}
+    					tophtml += '<div class="cols top_border_black left_border_black '+iweekend+' '+itoday+'">'+current_date.getDate()+'</div>';
+    					
+    					bothtml += '<div class="cols bottom_border_black left_border_black '+iweekend+' '+itoday+'">'+current_date.getDate()+'</div>';
+    					
+    					var d = ("0" + current_date.getDate()).slice(-2);
+    					var m = ("0" + (current_date.getMonth() + 1)).slice(-2);
+    					var dateData = {'year':current_date.getFullYear(),'month':m,'date':d};
+    						
+    					
+    					dhtml += '<div class="cols right_border_gray scell '+dweekend+'" data-cell-number="'+cellCount+'" data-date=\''+JSON.stringify(dateData)+'\'></div>';
+    					
+    					current_date.setDate(current_date.getDate()+1);
+    					cellCount++;
+    				}
+    				$('.datcalendartop').html(tophtml);
+    				$('.datcalendarbottom').html(bothtml);
+    				
+    				$.each(data.cat_types, function(idx, tobj) { 
+    				    //$.each(tobj.rooms, function(idx, obj) {
+    						roomhtml += '<div class="row first row'+tobj.data.id+'" data-roomname="'+tobj.data.category_name+'" data-roomcat="'+tobj.data.category_name+'" data-roomid="'+tobj.data.id+'">';
+    						roomhtml += '<div class="cols first right_border_gray">';
+    						roomhtml += '<span class="room_number">'+tobj.data.category_name+'</span>'; 
+    						roomhtml += '<span class="room_name">';
+    						roomhtml += '<span class="room_title">'+tobj.data.cat_short_name+'</span>';
+    						roomhtml += '<img  class="status_red" src="https://app.base7booking.com/images/icons/broom.png" > </span>';
+    						roomhtml += '<div class="clr"></div>';
+    						roomhtml += '</div>';
+    						roomhtml += get_room_reserved(tobj.reservation);
+    						roomhtml += '<div class="clr"></div>';
+    						roomhtml += '</div>';
+    					//});
+    					/*$.each(tobj.rooms, function(idx, obj) {
+    						roomhtml += '<div class="row first row'+obj['room'].id+'" data-roomname="'+obj['room'].room_name+'" data-roomcat="'+tobj.data.category_name+'" data-roomid="'+obj['room'].id+'">';
+    						roomhtml += '<div class="cols first right_border_gray">';
+    						roomhtml += '<span class="room_number">'+obj['room'].room_name+'</span>'; 
+    						roomhtml += '<span class="room_name">';
+    						roomhtml += '<span class="room_title">'+tobj.data.cat_short_name+'</span>';
+    						roomhtml += '<img  class="status_red" src="https://app.base7booking.com/images/icons/broom.png" > </span>';
+    						roomhtml += '<div class="clr"></div>';
+    						roomhtml += '</div>';
+    						roomhtml += get_room_reserved(obj['reservation']);
+    						roomhtml += '<div class="clr"></div>';
+    						roomhtml += '</div>';
+    					}); */
+    				});
+    				$('#catrooms').html(roomhtml);
+    			}
+    		  }
+    		});
+    	}
+        
+        var bookedDetails = new Array();
+        var bookedNumbersDetails = new Array();
+        function isInArray(value, array) {
+          return array.indexOf(value) > -1;
+        }
+        
+        function clickonBooking(event,clickedDate){
+            event.stopImmediatePropagation();
+            event.stopPropagation();
+            
+            if(typeof bookedNumbersDetails[clickedDate] != 'undefined'){
+                var bookingNums = bookedNumbersDetails[clickedDate];
+                //console.log(bookingNums);
+                $.ajax({
+    			  url: "{{ URL::to('get_reservation_details')}}",
+    			  type: "post",
+    			  data: {'ids':bookingNums},
+    			  dataType: "json",
+    			  success: function(data){
+    				var html = '';
+    				if(data.status=='error')
+    				{
+    					
+    				}
+    				else
+    				{
+    					var resp = data.reservations;
+                        var bookedhtml ='';
+                        var $sr_no = 1;
+                        $.each(resp, function(rdid, rdval){
+                            if(typeof rdval.details != 'undefined'){
+                                var detail = rdval.details;  
+                                
+                                bookedhtml += '<div class="col-sm-12 col-md-12"><i class="flaticon-user-ok"></i><span style="font-size:16px"></span></div>';
+                                bookedhtml += '<div class="col-sm-12 col-md-12 m--align-right"><button class="btn btn-primary btn-sm" id="confirmReservation" type="button" onclick="confirm_reservation('+detail.id+');">Confirm</button>&nbsp;<button class="btn btn-danger btn-sm" id="confirmRejected" type="button" onclick="rejected_reservation('+detail.id+');">Rejected</button></div>'; 
+                                bookedhtml += '<div style="background: #eeeeee; padding: 5px 0px;">';
+                                    bookedhtml += '<div class="col-sm-12 col-md-12">';
+                                        bookedhtml += '<div class="row">';
+                                        
+                                        bookedhtml += '<div class="col-sm-12 col-md-12">';
+                                        bookedhtml += '<table>';
+                                        $.each(rdval.rooms,function(reid,reval){                            
+                                            bookedhtml += '<tr>';
+                                                bookedhtml += '<td>';
+                                                    bookedhtml += 'Room'+$sr_no;
+                                                bookedhtml += '</td>';
+                                                bookedhtml += '<td>';
+                                                    bookedhtml += detail.category_name;
+                                                bookedhtml += '</td>';
+                                                bookedhtml += '<td>';
+                                                    bookedhtml += '<div class="col-sm-8 col-md-8"><select class="form-control" id="dd_rooms">';
+                                                        bookedhtml += '<option value="0">Select</option>'
+                                                        $.each(reval.available_rooms,function(arid,arval){
+                                                            bookedhtml += '<option value="'+arval.id+'">'+arval.room_name+'</option>'
+                                                        });
+                                                    bookedhtml += '</select></div>';  
+                                                bookedhtml += '</td>';
+                                            bookedhtml += '</tr>';
+                                            $sr_no++;
+                                        });
+                                        bookedhtml += '</table>';
+                                        bookedhtml += '</div>';
+                                        
+                                            
+                                            bookedhtml += '<div class="col-sm-4 col-md-4">'+detail.checkin_date+' <br />'+detail.checkout_date+'</div>';
+                                        bookedhtml += '</div>';  
+                                    bookedhtml += '</div>';
+                                    bookedhtml += '<div class="col-sm-12 col-md-12">{{($currency->content!='') ? $currency->content : "$"}}'+detail.price+'</div>';
+                                    bookedhtml += '<div class="col-sm-12 col-md-12">Email</div>'; 
+                                bookedhtml += '</div>';
+                                
+                                bookedhtml += '<div class="col-sm-12 col-md-12">Reservartion: '+detail.booking_number+' </div>'; 
+                                bookedhtml += '<div class="col-sm-12 col-md-12">';
+                                        bookedhtml += '<div class="row">';
+                                            bookedhtml += '<div class="col-sm-8 col-md-8">'+detail.room_name+'</div>';  
+                                            bookedhtml += '<div class="col-sm-4 col-md-4">'+detail.checkin_date+' <br />'+detail.checkout_date+'</div>';
+                                        bookedhtml += '</div>';  
+                                    bookedhtml += '</div>';
+                                bookedhtml += '<div class="col-sm-12 col-md-12">{{($currency->content!='') ? $currency->content : "$"}}'+detail.price+'</div>'; 
+                                 
+                                bookedhtml += '<div class="col-sm-12 col-md-12" style="font-size:11px;">created: '+detail.created_date+'</div>';
+                                bookedhtml += '<div class="col-sm-12 col-md-12"><hr /></div>';
+                                              
+                            }
+                        });
+                        
+                        $("#bookingdetailbody").html(bookedhtml);
+                        $("#reservationsmodal").modal('show');
+                        
+    				}
+    			  }
+    			});
+            }
+            
+            return false;
+        }
+        
+        function clickonBookingpopuphtml(contentArray){ 
+            
+            bookedhtml = '';
+            $sr_no = 1;
+            if(typeof bookedDetails[clickedDate] != 'undefined'){
+                
+                var arrBookedDet = bookedDetails[clickedDate];
+                
+                $.each(arrBookedDet,function(bid,bval){
+                    //bookedhtml += '<div class="col-sm-12 col-md-12"><i class="flaticon-user-ok"></i><span style="font-size:16px">'+bval.data.guest_names+'</span></div>';
+                    bookedhtml += '<div class="col-sm-12 col-md-12"><i class="flaticon-user-ok"></i><span style="font-size:16px"></span></div>';
+                    bookedhtml += '<div class="col-sm-12 col-md-12 m--align-right"><button class="btn btn-primary btn-sm" id="confirmReservation" type="button" onclick="confirm_reservation('+bval.id+');">Confirm</button>&nbsp;<button class="btn btn-danger btn-sm" id="confirmRejected" type="button" onclick="rejected_reservation('+bval.id+');">Rejected</button></div>'; 
+                    bookedhtml += '<div style="background: #eeeeee; padding: 5px 0px;">';
+                        bookedhtml += '<div class="col-sm-12 col-md-12">';
+                            bookedhtml += '<div class="row">';
+                            
+                            bookedhtml += '<div class="col-sm-12 col-md-12">';
+                            bookedhtml += '<table>';
+                            $.each(bval.reserved_rooms,function(reid,reval){                            
+                                bookedhtml += '<tr>';
+                                    bookedhtml += '<td>';
+                                        bookedhtml += 'Room'+$sr_no;
+                                    bookedhtml += '</td>';
+                                    bookedhtml += '<td>';
+                                        bookedhtml += reval.category_name;
+                                    bookedhtml += '</td>';
+                                    bookedhtml += '<td>';
+                                        bookedhtml += '<div class="col-sm-8 col-md-8"><select class="form-control" id="dd_rooms"><option value="0">Select</option></select></div>';  
+                                    bookedhtml += '</td>';
+                                bookedhtml += '</tr>';
+                                $sr_no++;
+                            });
+                            bookedhtml += '</table>';
+                            bookedhtml += '</div>';
+                            
+                                
+                                bookedhtml += '<div class="col-sm-4 col-md-4">'+bval.checkin_date+' <br />'+bval.checkout_date+'</div>';
+                            bookedhtml += '</div>';  
+                        bookedhtml += '</div>';
+                        bookedhtml += '<div class="col-sm-12 col-md-12">{{($currency->content!='') ? $currency->content : "$"}}'+bval.price+'</div>';
+                        bookedhtml += '<div class="col-sm-12 col-md-12">Email</div>'; 
+                    bookedhtml += '</div>';
+                    
+                    bookedhtml += '<div class="col-sm-12 col-md-12">Reservartion: '+bval.booking_number+' </div>'; 
+                    bookedhtml += '<div class="col-sm-12 col-md-12">';
+                            bookedhtml += '<div class="row">';
+                                bookedhtml += '<div class="col-sm-8 col-md-8">'+bval.room_name+'</div>';  
+                                bookedhtml += '<div class="col-sm-4 col-md-4">'+bval.checkin_date+' <br />'+bval.checkout_date+'</div>';
+                            bookedhtml += '</div>';  
+                        bookedhtml += '</div>';
+                    bookedhtml += '<div class="col-sm-12 col-md-12">{{($currency->content!='') ? $currency->content : "$"}}'+bval.price+'</div>'; 
+                     
+                    bookedhtml += '<div class="col-sm-12 col-md-12" style="font-size:11px;">created: '+bval.created_date+'</div>';
+                    bookedhtml += '<div class="col-sm-12 col-md-12"><hr /></div>';
+                });
+                $("#bookingdetailbody").html(bookedhtml);
+                $("#reservationsmodal").modal('show');
+            }
+    
+            return false;
+        }
+        
+        function get_room_reserved(obj){ 
+            var cal_start = $('#cal-start').val();
+    		var cal_end = $('#cal-end').val();
+    		var current_date = new Date(cal_start);
+    		var end_date = new Date(cal_end);
+    		var end_date_time = end_date.getTime();
+    		var today = new Date();
+    		var tophtml = bothtml = roomhtml = dhtml = '';
+    		var cellCount = 1;
+            var bookedDates = new Array();
+            //console.log(obj);
+            //get booked dates tobj.reservation
+            $.each(obj,function(tid,tval){ 
+                var tchecIndate = new Date(tval.checkin_date);
+                var tchecOutdate = new Date(tval.checkout_date);
+                while (tchecIndate.getTime() <= tchecOutdate) {
+                    var tttdate = tchecIndate.getFullYear()+'-'+(tchecIndate.getMonth() + 1)+'-'+tchecIndate.getDate();
+                    if(!isInArray(tttdate,bookedDates)){bookedDates.push(tttdate);}
+                    tchecIndate.setDate(tchecIndate.getDate()+1);
+                    
+                    if((typeof bookedDetails[tttdate]) == 'undefined'){ bookedDetails[tttdate] = new Array(); }
+                    if((typeof bookedNumbersDetails[tttdate]) == 'undefined'){ bookedNumbersDetails[tttdate] = new Array(); }
+                    if(!isInArray(tval.id,bookedNumbersDetails[tttdate])){bookedNumbersDetails[tttdate].push(tval.id); bookedDetails[tttdate].push(tval);}
+                    //bookedDetails[tttdate].push(tval);
+                }
+            }); 
+            //end
+            console.log(bookedNumbersDetails,' final');
+    		while (current_date.getTime() <= end_date_time) {
+    			var day = current_date.getDay();
+    			var iweekend = dweekend = '';
+    			var itoday = '';
+    			if(day === 6 || day === 0)
+    			{
+    				iweekend = 'weekend';
+    				dweekend = 'weekend_days';
+    			}
+    			if(today.getDate()==current_date.getDate() && today.getMonth()==current_date.getMonth() && today.getFullYear()==current_date.getFullYear())
+    			{
+    				itoday = 'today';
+    			}
+    			tophtml += '<div class="cols top_border_black left_border_black '+iweekend+' '+itoday+'">'+current_date.getDate()+'</div>';
+    			
+    			bothtml += '<div class="cols bottom_border_black left_border_black '+iweekend+' '+itoday+'">'+current_date.getDate()+'</div>';
+    			
+    			var d = ("0" + current_date.getDate()).slice(-2);
+    			var m = ("0" + (current_date.getMonth() + 1)).slice(-2);
+    			var dateData = {'year':current_date.getFullYear(),'month':m,'date':d};
+                
+                var ttdate = current_date.getFullYear()+'-'+(current_date.getMonth() + 1)+'-'+current_date.getDate();
+                //console.log(bookedDates,ttdate);
+                    if(isInArray(ttdate,bookedDates)){
+                        var totalReservations = 0;
+                        var reservationIds = new Array();                    
+                        var currentObj = bookedDetails[ttdate];
+                        dhtml += '<div class="cols right_border_gray scell selectedCell BookedCell '+dweekend+'" data-cell-number="'+cellCount+'" data-date=\''+JSON.stringify(dateData)+'\' onclick="return clickonBooking(event,\''+ttdate+'\');"><span>'+bookedDetails[ttdate].length+'</span></div>';                                        
+                    }else{
+                        dhtml += '<div class="cols right_border_gray scell '+dweekend+'" data-cell-number="'+cellCount+'" data-date=\''+JSON.stringify(dateData)+'\'></div>';
+                    }                 
+                
+    			current_date.setDate(current_date.getDate()+1);
+    			cellCount++;
+    	   }
+           return dhtml;
+        }
+        function confirm_reservation(id){
+            if(id!='')
+    		{
+    			$.ajax({
+    			  url: "{{ URL::to('confirmreservation')}}",
+    			  type: "post",
+    			  data: {'id':id},
+    			  dataType: "json",
+    			  success: function(data){
+    				var html = '';
+    				if(data.status=='error')
+    				{
+    					alert('error');
+    				}
+    				else
+    				{
+    					html += '<div class="modal-body">';
+    					html += '<h2>Reservation Submitted Successfully!</h2>';
+    					html += '</div>';
+    					html += '<div class="modal-footer">';
+    					html += '<button type="button" class="btn btn-default" data-dismiss="modal" >CLOSE</button>';
+    					html += '</div>';
+    					$('#reserforms').html(html);
+    				}
+    			  }
+    			});
+    		}
+        }
+        
     </script>
 @endsection
 @section('script')
