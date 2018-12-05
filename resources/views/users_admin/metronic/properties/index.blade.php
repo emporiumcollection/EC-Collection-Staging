@@ -104,7 +104,7 @@
             <!--end:: hotel contracts alert -->
             @endif
             
-            <div class="col-md-12 col-xs-12 m--align-center"> 
+            <div class="col-md-12 col-xs-12 m--align-right"> 
                 <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Setup Documentation</a></div>
             </div>
             

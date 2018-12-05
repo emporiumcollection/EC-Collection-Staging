@@ -1273,8 +1273,8 @@ class PropertiesController extends Controller {
         $this->data['pid'] = $property_id;
         $this->data['property_data'] = \DB::table('tb_properties')->where('id', $property_id)->first();
         if(\Session::get('gid')==5){
-            //$tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->where('tab_slug', '<>', 'calendar')->orderBy('id', 'asc')->get();
-            $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->orderBy('id', 'asc')->get();
+            $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->where('tab_slug', '<>', 'calendar')->orderBy('id', 'asc')->get();
+            //$tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->orderBy('id', 'asc')->get();
         }else{
             $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->orderBy('id', 'asc')->get();
         }
@@ -4497,5 +4497,112 @@ function property_images_wetransfer(Request $request) {
         $res['reservations'] = $reservations;
         
         return json_encode($res);
+    }
+    function reservations(Request $request){
+        $u_id = \Session::get('uid');
+          
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+        
+        $this->data['cat_types'] = $this->find_categories_room($prop_id);
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.reservations':'properties.reservations'; 
+        
+        return view($file_name, $this->data);
+    }
+    function qualityassurances(Request $request){
+        $u_id = \Session::get('uid');
+          
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.qualityassurance':'properties.qualityassurance'; 
+        
+        return view($file_name, $this->data);
+    }
+    function salesreport(Request $request){
+        $u_id = \Session::get('uid');
+          
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.salesreport':'properties.salesreport'; 
+        
+        return view($file_name, $this->data);
+    }
+    function arrivaldeparture(Request $request){
+        $u_id = \Session::get('uid');
+          
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.arrivaldeparture':'properties.arrivaldeparture'; 
+        
+        return view($file_name, $this->data);
+    }
+    function cancelations(Request $request){
+        $u_id = \Session::get('uid');
+          
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.cancelations':'properties.cancelations'; 
+        
+        return view($file_name, $this->data);
     }
 }

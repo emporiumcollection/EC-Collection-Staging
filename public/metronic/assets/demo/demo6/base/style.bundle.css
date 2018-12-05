@@ -55048,6 +55048,7 @@ i.m-menu__link-icon.fa {
         padding: 50px;
     }
 }
+
 .search-cal-top{
     top: 15px !important;
 }
@@ -55097,23 +55098,619 @@ i.m-menu__link-icon.fa {
     color:#252525;
 }
 
-.setting-box-advert{
-    background-color: #eeeeee;
+.setting-box-advert1{
+    background-color: #d9a0af;
     text-align: center;
     width: 23%;
-    margin: 5px;
-    padding: 21px 25px;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
 }
-.setting-box-advert .grid_icon{
+.setting-box-advert1 .grid_icon{
     text-align: center;
     font-size: 25px;
-    color: #d2d0d0;
+    color: #503030;
 }
-.setting-box-advert .grid_link-text{
+.setting-box-advert1 .grid_link-text{
     display: block;
     line-height: 1;
     text-align: center;
     margin: 10px 0 0 0;
     font-size: 1rem;
     font-weight: 500;
+    color: #000;
 }
+.setting-box-advert1 a:hover{
+    text-decoration: none !important;
+}
+
+.setting-box-advert2{
+    background-color: #f2d5e3;
+    text-align: center;
+    width: 23%;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
+}
+.setting-box-advert2 .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert2 a:hover{
+    text-decoration: none !important;
+}
+.setting-box-advert2 .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.setting-box-advert3{
+    background-color: #648da6;
+    text-align: center;
+    width: 23%;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
+}
+.setting-box-advert3 .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert3 .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-advert3 a:hover{
+    text-decoration: none !important;
+}
+.setting-box-advert4{
+    background-color: #90a2b6;
+    text-align: center;
+    width: 23%;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
+}
+.setting-box-advert4 .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert4 a:hover{
+    text-decoration: none !important;
+}
+.setting-box-advert4 .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-advert5{
+    background-color: #f2ccc1;
+    text-align: center;
+    width: 23%;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
+}
+.setting-box-advert5 .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert5 .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-advert5 a:hover{
+    text-decoration: none !important;
+}
+.setting-box-advert6{
+    background-color: #345c7d;
+    text-align: center;
+    width: 23%;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
+}
+.setting-box-advert6 .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert6 .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-advert6 a:hover{
+    text-decoration: none !important;
+}
+.setting-box-advert7{
+    background-color: #6c5a7b;
+    text-align: center;
+    width: 23%;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
+}
+.setting-box-advert7 .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert7 .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-advert7 a:hover{
+    text-decoration: none !important;
+}
+.setting-box-advert8{
+    background-color: #c06c83;
+    text-align: center;
+    width: 23%;
+    margin: 6px;
+    padding: 15px 25px;
+    min-height: 109px;
+}
+.setting-box-advert8 .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert8 .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-advert8 a:hover{
+    text-decoration: none !important;
+}
+.advert_img{
+}
+@media (min-width:1600px) {
+    
+    .setting-box-advert1{
+        background-color: #d9a0af;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert1 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert1 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert1 a:hover{
+        text-decoration: none !important;
+    }
+    
+    .setting-box-advert2{
+        background-color: #f2d5e3;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert2 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert2 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert2 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    
+    .setting-box-advert3{
+        background-color: #648da6;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert3 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert3 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert3 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert4{
+        background-color: #90a2b6;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert4 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert4 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert4 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert5{
+        background-color: #f2ccc1;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert5 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert5 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert5 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert6{
+        background-color: #345c7d;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert6 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert6 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert6 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert7{
+        background-color: #6c5a7b;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert7 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert7 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert7 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert8{
+        background-color: #c06c83;
+        text-align: center;
+        width: 23%;
+        margin: 8px;
+        padding: 24px 25px;
+        min-height: 129px;
+    }
+    .setting-box-advert8 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert8 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert8 a:hover{
+        text-decoration: none !important;
+    }
+    
+}
+@media (min-width:2000px) {
+    
+    .setting-box-advert1{
+        background-color: #d9a0af;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert1 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert1 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert1 a:hover{
+        text-decoration: none !important;
+    }
+    
+    .setting-box-advert2{
+        background-color: #f2d5e3;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert2 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert2 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert2 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    
+    .setting-box-advert3{
+        background-color: #648da6;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert3 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert3 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert3 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert4{
+        background-color: #90a2b6;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert4 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert4 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert4 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert5{
+        background-color: #f2ccc1;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert5 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert5 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert5 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert6{
+        background-color: #345c7d;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert6 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert6 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert6 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert7{
+        background-color: #6c5a7b;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert7 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert7 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert7 a:hover{
+        text-decoration: none !important;
+    }
+    .setting-box-advert8{
+        background-color: #c06c83;
+        text-align: center;
+        width: 23%;
+        margin: 9px;
+        padding: 45px 25px;
+        min-height: 170px;
+    }
+    .setting-box-advert8 .grid_icon{
+        text-align: center;
+        font-size: 35px;
+        color: #503030;
+    }
+    .setting-box-advert8 .grid_link-text{
+        display: block;
+        line-height: 1;
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .setting-box-advert8 a:hover{
+        text-decoration: none !important;
+    }
+    
+}    

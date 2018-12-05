@@ -1011,5 +1011,36 @@ class HotelMembershipController extends Controller {
         exit();
         //return view('frontend.hotel_membership.hotel_cart', $this->data);
     }
-    
+    public function packages(Request $request) {
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();        
+        $packages_ids = array();
+        foreach($this->data['packages'] as $si_package){
+            $packages_ids[] = $si_package->id;
+        }        
+        $this->data['moduleDetails'] = \DB::table('tb_module')->get();
+        
+        //get contract during signup
+        $this->data['userContracts'] = array();
+        $this->data['common_contracts'] = array();
+        $this->data['package_contracts'] = array();
+        if(count($packages_ids) > 0){
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $resetContracts = array();
+            foreach($usersContracts as $si_contract){
+                $resetContracts[$si_contract->contract_id] = $si_contract;
+            }
+            $this->data['userContracts'] = $resetContracts;
+            $contracts = \CommonHelper::get_default_contracts('packages','default',0,$packages_ids);
+            $this->data['common_contracts'] = $contracts['common'];
+            $this->data['package_contracts'] = $contracts['packages_wise'];
+        }            
+        //End
+        //echo "<pre>"; print_r($this->data['common_contracts']);print_r($this->data['package_contracts']);die;
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.packages':'frontend.hotel_membership.packages';      
+        
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_package', $this->data);
+    }
 }

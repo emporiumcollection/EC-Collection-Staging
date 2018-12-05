@@ -384,6 +384,13 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('get_reservation_details', 'PropertiesController@get_reservation_details');
     
     Route::post('user_arrival_departure', 'PropertiesController@user_arrival_departure');
+    
+    Route::get('reservations', 'PropertiesController@reservations');
+    Route::get('hotelpackages', 'Frontend\HotelMembershipController@packages');
+    Route::get('qualityassurances', 'PropertiesController@qualityassurances');
+    Route::get('salesreport', 'PropertiesController@salesreport');
+    Route::get('arrivaldeparture', 'PropertiesController@arrivaldeparture');
+    Route::get('cancelations', 'PropertiesController@cancelations');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
