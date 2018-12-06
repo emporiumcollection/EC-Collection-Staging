@@ -163,7 +163,7 @@
                 		</a>
                     </div>
                     <div class="setting-box-advert3">
-                        <a href="{{ URL::to('container')}}">
+                        <a href="{{ URL::to('hotelcontainer')}}">
                 			<i class="grid_icon flaticon-mail-1"></i>																	
                 			<span class="grid_link-text">
                 				Container
@@ -184,15 +184,15 @@
                         <a href="{{URL::to('arrivaldeparture')}}">
                             <i class="grid_icon flaticon-profile-1"></i>																	
                 			<span class="grid_link-text">
-                				Arrivals/Departures
+                				Arrivals, Departures &amp; Cancelations
                 			</span>
                 		</a>
                     </div>
                     <div class="setting-box-advert6">
-                        <a href="{{URL::to('cancelations')}}">
+                        <a href="{{URL::to('advertising')}}">
                             <i class="grid_icon flaticon-settings-1"></i>																	
                 			<span class="grid_link-text">
-                				Cancelations
+                				Advertising
                 			</span>
                 		</a>
                     </div>

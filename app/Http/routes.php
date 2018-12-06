@@ -390,7 +390,9 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('qualityassurances', 'PropertiesController@qualityassurances');
     Route::get('salesreport', 'PropertiesController@salesreport');
     Route::get('arrivaldeparture', 'PropertiesController@arrivaldeparture');
-    Route::get('cancelations', 'PropertiesController@cancelations');
+    Route::get('advertising', 'PropertiesController@advertising');
+    
+    Route::get('hotelcontainer', 'ContainerController@hotelcontainer');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

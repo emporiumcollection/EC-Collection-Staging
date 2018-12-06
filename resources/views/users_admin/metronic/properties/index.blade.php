@@ -310,7 +310,7 @@
 								</div>
 								<div class="m-widget17__stats">
 									<div class="m-widget17__items m-widget17__items-col1">
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block1_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -321,11 +321,11 @@
                                         			</span>
                                         		</a>
                                                  <br />
-                                                <div style="margin-top: 20px; font-size: 15px;">Start here</div>
+                                                <div class="start">Start here</div>
 											</span>
 											
 										</div>
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block6_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -341,7 +341,7 @@
 										</div>
 									</div>
 									<div class="m-widget17__items m-widget17__items-col1">
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block2_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -355,7 +355,7 @@
 											</span>
 											
 										</div>
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block7_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -371,7 +371,7 @@
 										</div>
 									</div>
                                     <div class="m-widget17__items m-widget17__items-col1">
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block3_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -385,7 +385,7 @@
 											</span>
 											
 										</div>
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block8_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -401,7 +401,7 @@
 										</div>
 									</div>
                                     <div class="m-widget17__items m-widget17__items-col1">
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block4_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -415,7 +415,7 @@
 											</span>
 											
 										</div>
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block9_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -430,7 +430,7 @@
 										</div>
 									</div>
                                     <div class="m-widget17__items m-widget17__items-col1">
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block5_bg">
 											<span class="m-widget17__icon">
 												
 											</span>
@@ -443,7 +443,7 @@
                                         		</a>
 											</span>											
 										</div>
-										<div class="m-widget17__item">
+										<div class="m-widget17__item property_block10_bg">
 											<span class="m-widget17__icon">
 												
 											</span>

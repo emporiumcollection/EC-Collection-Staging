@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Property  <small>Arrivals &nbsp; Departures</small>
+    Property  <small>Arrivals, Departures &amp; Cancelations</small>
 @stop
 
 @section('breadcrumb')
@@ -15,7 +15,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('arrivaldeparture')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Arrivals &nbsp; Departures </span> 
+            <span class="m-nav__link-text"> Arrivals, Departures &amp; Cancelations </span> 
         </a> 
     </li>
 @stop
@@ -23,7 +23,7 @@
 @section('content')
 <div class="row">
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-        <h2>Arrivals &nbsp; Departures</h2>
+        <h2>Arrivals, Departures &amp; Cancelations</h2>
     </div> 
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
@@ -31,14 +31,14 @@
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
     </div> 
-    <div class="col-sm-12 col-md-4 col-xl-4">
+    <div class="col-sm-12 col-md-12 col-xl-12">
         <!--begin:: Widgets/Sale Reports-->
 		<div class="m-portlet m-portlet--full-height ">
 			<div class="m-portlet__head">
 				<div class="m-portlet__head-caption">
 					<div class="m-portlet__head-title">
 						<h3 class="m-portlet__head-text">
-							Guest Arrivals | Departures
+							Guest Arrivals, Departures &amp; Cancelations
 						</h3>
 					</div>
 				</div>
@@ -47,11 +47,17 @@
                         <select class="form-control" name="dd_arrival_departure" id="dd_arrival_departure">
                             <option value="arrival">Arrival</option>
                             <option value="departure">Departure</option>
+                            <option value="departure">Cancelations</option>
                         </select>
                     </div>
 					<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm">
 						<li class="nav-item m-tabs__item">
-							<a class="nav-link m-tabs__link active m_tab1_content" data-reportfor='today'>
+							<a class="nav-link m-tabs__link active m_tab1_content" data-reportfor='all'>
+								All
+							</a>
+						</li>
+                        <li class="nav-item m-tabs__item">
+							<a class="nav-link m-tabs__link m_tab1_content" data-reportfor='today'>
 								Today
 							</a>
 						</li>
@@ -103,13 +109,13 @@
 		</div> 
 		<!--end:: Widgets/Sale Reports-->
     </div>	
-    <div class="col-sm-12 col-md-8 col-xl-8">
+    <?php /* <div class="col-sm-12 col-md-8 col-xl-8">
         <div class="m-portlet m-portlet--mobile ">
 			<div class="m-portlet__head">
 				<div class="m-portlet__head-caption">
 					<div class="m-portlet__head-title">
 						<h3 class="m-portlet__head-text">
-							Exclusive Datatable Plugin
+							Guest Arrivals | Departures | Cancelations
 						</h3>
 					</div>
 				</div>
@@ -198,7 +204,7 @@
 				<!--end: Datatable -->
 			</div>
 		</div>
-    </div>					
+    </div>	*/ ?>				
 			
 </div>
 @stop

@@ -4584,7 +4584,7 @@ function property_images_wetransfer(Request $request) {
         
         return view($file_name, $this->data);
     }
-    function cancelations(Request $request){
+    function advertising(Request $request){
         $u_id = \Session::get('uid');
           
         $prop_id = 0;
@@ -4601,7 +4601,32 @@ function property_images_wetransfer(Request $request) {
         $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.cancelations':'properties.cancelations'; 
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.advertising':'properties.advertising'; 
+        
+        return view($file_name, $this->data);
+    }
+    function hotelcontainer(Request $request){
+        $u_id = \Session::get('uid');
+          
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*',  \DB::raw("(CASE WHEN (tb_container_files.file_display_name = '') THEN tb_container_files.file_name ELSE tb_container_files.file_display_name END) as file_display_name"), 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop_id)->get();
+        
+        
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.hotelcontainer':'properties.hotelcontainer'; 
         
         return view($file_name, $this->data);
     }

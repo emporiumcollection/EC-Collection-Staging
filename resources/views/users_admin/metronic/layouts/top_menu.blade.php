@@ -172,27 +172,20 @@
 																		</a>
 																	</div>
                                                                     <div class="m-nav-grid__row">
-																		<a href="{{URL::to('cancelations')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
-																			<span class="m-nav-grid__text">
-																				Cancelations
-																			</span>
-																		</a>
 																		<a href="{{URL::to('arrivaldeparture')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-clipboard"></i>
 																			<span class="m-nav-grid__text">
-																				Arrivals & Departures
+																				Arrivals, Departures &amp; Cancelations
 																			</span>
 																		</a>
-																	</div>
-                                                                    <div class="m-nav-grid__row">
-																		<a href="#" class="m-nav-grid__item">
+                                                                        <a href="{{URL::to('advertising')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
 																			<span class="m-nav-grid__text">
 																				Advertising
 																			</span>
 																		</a>
 																	</div>
+                                                                    
 																</div>
 															</div>
 														</div>

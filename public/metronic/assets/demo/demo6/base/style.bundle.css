@@ -55716,3 +55716,44 @@ i.m-menu__link-icon.fa {
     }
     
 }    
+.property_block1_bg{
+    background: #7D6A68 !important;
+}
+.m-widget17__subtitle a {
+    color: #000 !important;
+}
+.m-widget17__subtitle a:hover {
+    text-decoration: none;
+}
+.m-widget17__subtitle .start{
+    margin-top: 20px; 
+    font-size: 15px;
+    color: #000 !important;
+}
+.property_block2_bg{
+    background: #FD9987 !important;
+}
+.property_block3_bg{
+    background: #955B4F !important;
+}
+.property_block4_bg{
+    background: #E3C2BD !important;
+}
+.property_block5_bg{
+    background: #FDD9D2 !important;
+}
+.property_block6_bg{
+    background: #CBB1A8 !important;
+}
+.property_block7_bg{
+    background: #E4C8C1 !important;
+}
+.property_block8_bg{
+    background: #DFD9D2 !important;
+}
+.property_block9_bg{
+    background: #CC907F !important;
+}
+.property_block10_bg{
+    background: #C8A9A9 !important;
+}
