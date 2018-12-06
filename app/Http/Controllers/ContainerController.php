@@ -496,6 +496,7 @@ class ContainerController extends Controller {
 				}
 			}
 		}
+        $this->data['check_images'] = true;
 		//print "<pre>";
 		//print_r($this->data['rowData']);
 		if(!empty($this->data['rowData']))
@@ -7708,7 +7709,10 @@ class ContainerController extends Controller {
     				}
     			}
     		}
-        
+            $this->data['check_images'] = true;
+        }
+        else{
+            $this->data['check_images'] = false;
         }
                 
 		//print "<pre>";

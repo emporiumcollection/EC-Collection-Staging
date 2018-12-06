@@ -32,6 +32,9 @@
 <?php $imgfancy = array();
 	$filType = array('jpg'=>'JPEG image', 'jpeg'=>'JPEG image', 'JPG'=>'JPEG image', 'png'=>'PNG image', 'gif'=>'GIF image', 'xls'=>'Excel spreadsheet', 'eps'=>'EPS Image', 'mp4'=>'MPEG-4 video', 'mkv'=>'Matroska Video', 'flv'=>'Flash Video', 'avi'=>'Audio Video', 'wma'=>'Windows Media Audio', 'wmp'=>'Windows Media Player', 'psd'=>'PSD Image', 'pdf'=>'PDF document', 'ppt'=>'PowerPoint presentation', 'mp3'=>'MP3 audio', 'tif'=>'TIFF image', 'doc'=>'Word document', 'docx'=>'Word document', 'bmp'=>'Bitmap image', 'cad'=>'CAD image', 'zip'=>'Compress document');
  ?>
+ 
+ @if($check_images)
+ 
 <div class="row">
 	<div class="col-sm-3">	
 		<div class="row">
@@ -259,7 +262,13 @@
 		</div>
 	</div>
 </div>
-
+@else
+<div class="row">
+	<div class="col-sm-12 m--align-center">	
+        Currently no data found for this property.
+    </div>
+</div>    
+@endif
 <div id="showallmodals"> </div>
 
 <!-- New File Modal -->
