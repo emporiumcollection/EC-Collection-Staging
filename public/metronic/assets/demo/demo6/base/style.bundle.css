@@ -19656,7 +19656,8 @@ strong {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    padding: 3.3rem .75rem
+    /*padding: 3.3rem .75rem*/
+    padding: .75rem .75rem;
 }
 
 .m-nav-grid>.m-nav-grid__row>.m-nav-grid__item:hover {
@@ -54586,7 +54587,8 @@ body.m-content--skin-light2 {
 /*update colors*/
 .m-brand.m-brand--skin-light,
 .m-grid__item.m-grid__item--fluid.m-wrapper {
-    background: #fff !important;
+    /*background: #fff !important;*/
+    background: #eee7e1 !important;    
 }
 .m-header .m-header-head {    
     -webkit-box-shadow: none;

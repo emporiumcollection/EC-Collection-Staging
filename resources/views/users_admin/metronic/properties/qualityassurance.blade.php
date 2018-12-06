@@ -13,16 +13,12 @@
     </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
-        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Reservation & Distribution </span> 
+        <a href="{{ URL::to('qualityassurances')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Quality Assurance </span> 
         </a> 
     </li>
     <li class="m-nav__separator"> - </li>
-    <li class="m-nav__item"> 
-        <a href="{{ URL::to('reservations')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Reservations </span> 
-        </a> 
-    </li>
+    
 @stop
 
 @section('content')

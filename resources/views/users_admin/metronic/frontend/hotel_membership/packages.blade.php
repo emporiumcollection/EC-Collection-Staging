@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Packages <small>view</small>
+    Packages <small>Modules/Packages</small>
 @stop
 
 @section('breadcrumb')
@@ -13,20 +13,14 @@
     </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
-        <a href="{{ URL::to('dashboard')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Membership &amp; Support Services </span> 
-        </a> 
-    </li>
-    <li class="m-nav__separator"> - </li>
-    <li class="m-nav__item"> 
-        <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text breadcrumb-end"> Choose Your Package </span> 
+        <a href="{{ URL::to('hotelpackages')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Modules/Packages </span> 
         </a> 
     </li>
 @stop
 
 @section('content')
-    <div class="row">
+    <?php /* <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <h3 class="main-heading">{{ Lang::get('core.user_packages_heading')}}</h3>
         </div>
@@ -43,8 +37,17 @@
                </div>
             </div>
         </div>
-    </div>
+    </div> */ ?>
 	<div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>Modules/Packages</h2>
+        </div> 
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+        </div>
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <hr />
+        </div> 
         <div class="col-md-12 col-xs-12">
        	    <div class="m-portlet m-portlet--full-height">
 				<!--<div class="m-portlet__head">

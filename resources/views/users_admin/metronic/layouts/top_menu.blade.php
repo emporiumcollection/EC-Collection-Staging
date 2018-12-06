@@ -144,13 +144,13 @@
 															<div class="m-scrollable" data-scrollable="false" data-height="380" data-mobile-height="200">
 																<div class="m-nav-grid m-nav-grid--skin-light">
 																	<div class="m-nav-grid__row">
-																		<a href="{{ URL::to('dashboard')}}" class="m-nav-grid__item">
+																		<a href="{{ URL::to('properties') }}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-dashboard"></i>
 																			<span class="m-nav-grid__text">
 																				Property Management
 																			</span>
 																		</a>
-																		<a href="{{ URL::to('')}}" class="m-nav-grid__item">
+																		<a href="{{ URL::to('reservations') }}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-imac"></i>
 																			<span class="m-nav-grid__text">
 																				Reservation Management
@@ -158,13 +158,13 @@
 																		</a>
 																	</div>
 																	<div class="m-nav-grid__row">
-																		<a href="{{ URL::to('core/elfinder')}}" class="m-nav-grid__item">
+																		<a href="{{URL::to('salesreport')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
 																			<span class="m-nav-grid__text">
 																				Sales Reports
 																			</span>
 																		</a>
-																		<a href="#" class="m-nav-grid__item">
+																		<a href="{{ URL::to('hotelpackages') }}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-clipboard"></i>
 																			<span class="m-nav-grid__text">
 																				View Modules
@@ -172,13 +172,13 @@
 																		</a>
 																	</div>
                                                                     <div class="m-nav-grid__row">
-																		<a href="{{ URL::to('core/elfinder')}}" class="m-nav-grid__item">
+																		<a href="{{URL::to('cancelations')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
 																			<span class="m-nav-grid__text">
 																				Cancelations
 																			</span>
 																		</a>
-																		<a href="#" class="m-nav-grid__item">
+																		<a href="{{URL::to('arrivaldeparture')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-clipboard"></i>
 																			<span class="m-nav-grid__text">
 																				Arrivals & Departures
@@ -186,7 +186,7 @@
 																		</a>
 																	</div>
                                                                     <div class="m-nav-grid__row">
-																		<a href="{{ URL::to('core/elfinder')}}" class="m-nav-grid__item">
+																		<a href="#" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
 																			<span class="m-nav-grid__text">
 																				Advertising

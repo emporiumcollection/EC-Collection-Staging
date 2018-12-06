@@ -235,7 +235,7 @@
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/calendar')}}" class="m-nav__link">
 																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Calender
+																		Reservation Management
 																	</span>
 																</a>
 														    </li> 
