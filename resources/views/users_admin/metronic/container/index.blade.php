@@ -270,10 +270,8 @@
 		</div>
 	</div>
     @else
-    <div class="row">
-    	<div class="col-sm-12 m--align-center">	
-            Currently no data found for this property.
-        </div>
+    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">    		
+        Currently no data found for this property.        
     </div>    
     @endif
 </div>

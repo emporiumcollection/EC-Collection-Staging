@@ -55099,6 +55099,53 @@ i.m-menu__link-icon.fa {
 .setting-box-hotel .grid_link-text:hover{
     color:#252525;
 }
+.setting-box-advert{
+    background-color: #f2f2f2;
+    text-align: center;
+    width: 23%;
+    margin: 0px 15px 16px 0px;
+    padding: 25px 25px;
+    min-height: 123px;
+}
+.setting-box-advert .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-advert .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-green-advert{
+    background-color: #6fbf40;
+    text-align: center;
+    width: 23%;
+    margin: 0px 15px 16px 0px;
+    padding: 25px 25px;
+    min-height: 123px;
+}
+.setting-box-green-advert .grid_icon{
+    text-align: center;
+    font-size: 25px;
+    color: #503030;
+}
+.setting-box-green-advert .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+.setting-box-green-advert a:hover{
+    text-decoration: none !important;
+}
 
 .setting-box-advert1{
     background-color: #d9a0af;
@@ -55795,3 +55842,27 @@ i.m-menu__link-icon.fa {
     color: #000;
 }
 /* ----- End Dashboard changes --- */
+.tbl{
+    display: table;
+}
+.tbl-row{
+    display: table-row;
+    vertical-align: middle;
+}
+.tbl-cell1{
+    width: 40px; height: 40px; display: table-cell;
+}
+.tbl-cell2{
+    display: table-cell;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+.adv-bg-green{
+    background: #6fbf40;  
+}
+.adv-bg-gray{
+    background: #f2f2f2;  
+}
+.adv-top-dd{
+    padding-bottom: 10px; width: 200px;
+}

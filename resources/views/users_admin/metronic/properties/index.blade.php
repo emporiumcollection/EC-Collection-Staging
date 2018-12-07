@@ -290,7 +290,7 @@
                                         			</span>
                                         		</a>
                                                  <br />
-                                                <div class="start">Start here</div>
+                                                <div class="start"><i class="fa fa-home"></i></div>
 											</span>
 											
 										</div>
