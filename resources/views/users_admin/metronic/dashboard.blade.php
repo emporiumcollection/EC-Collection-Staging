@@ -64,7 +64,7 @@
         
         <div class="row">
 			<div class="col-sm-12 col-md-4 col-xl-4">
-				<div class="col-md-12">
+				
                 @if(!empty($blogs))
                 <div id="b2cblog_carousel" class="rad-carousel">
                      
@@ -84,137 +84,139 @@
                                 <img src="{{url('/uploads/article_imgs/'.$blog_row->featured_image)}}" alt="{{$blog_row->title_pos_1}}" style="max-width:100%;">
                             </a>
                         </div>
-                        <div class="col-md-12" style="margin: 10px 0px;">
-                            <h2>{{$blog_row->title_pos_1}}</h2>
-                        </div>                	  
                         <div class="col-md-12">
-                            <p>{{str_limit(strip_tags($blog_row->description_pos_1), 100)}}</p>
+                            <div class="heading">
+                                <a href="#">{{$blog_row->title_pos_1}}</a>
+                            </div>
+                        </div>   
+                                    	  
+                        <div class="col-md-12">
+                            <div class="blog-desc">
+                                <p>{{str_limit(strip_tags($blog_row->description_pos_1), 100)}}</p>
+                            </div>
                         </div>
-                        <div class="col-md-12 m--align-right">
-                            <a href="#">Read More</a>
+                        <div class="col-md-12">
+                            <a href="#" class="blog-readmore">Continue Reading</a>
                         </div>                              
                     	</div><!--.row-->
                     </div><!--.item-->
                     @endforeach 
                      
                     </div><!--.carousel-inner-->
-                      <a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
-                      <a data-slide="next" href="#Carousel" class="right carousel-control">></a>
+                      <!--<a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
+                      <a data-slide="next" href="#Carousel" class="right carousel-control">></a> -->
                 </div><!--.Carousel-->
                 @endif
-                </div>
+                
                 
                 <!--begin:: Widgets/Announcements 2-->                    
 			</div>
             
             <div class="col-sm-12 col-md-8 col-xl-8">
-               @if(!empty($pageslider))
-                <div id="b2cdash_carousel" class="carousel slide">
-                     
-                    <ol class="carousel-indicators">
-                        @foreach($pageslider as $key => $slider_row)
-                        <li data-target="#Carousel" data-slide-to="{{$key}}" class="{{($key == 0)? 'active' : ''}}"></li>
-                        @endforeach
-                    </ol>
-                     
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                    @foreach($pageslider as $key => $slider_row)    
-                    <div class="item {{($key == 0)? 'active' : ''}}">
-                    	<div class="row">
-                    	  <div class="col-md-12">
-                            <a href="{{$slider_row->slider_link}}" class="thumbnail">                            
-                                <div class="b2c-banner-text">{{$slider_row->slider_title}}</div>
-                                <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}" style="max-width:100%;">
-                            </a>
-                          </div>                	  
-                    	</div><!--.row-->
-                    </div><!--.item-->
-                    @endforeach 
-                     
-                    </div><!--.carousel-inner-->
-                      <a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
-                      <a data-slide="next" href="#Carousel" class="right carousel-control">></a>
-                </div><!--.Carousel-->
-                @endif
+                <div class="dashboard-right-top">
+                    @if(!empty($pageslider))
+                        <div id="b2cdash_carousel" class="carousel slide">
+                             
+                            <ol class="carousel-indicators">
+                                @foreach($pageslider as $key => $slider_row)
+                                <li data-target="#Carousel" data-slide-to="{{$key}}" class="{{($key == 0)? 'active' : ''}}"></li>
+                                @endforeach
+                            </ol>
+                             
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                            @foreach($pageslider as $key => $slider_row)    
+                            <div class="item {{($key == 0)? 'active' : ''}}">
+                            	<div class="row">
+                            	  <div class="col-md-12">
+                                    <a href="{{$slider_row->slider_link}}" class="thumbnail">                            
+                                        <div class="b2c-banner-text">{{$slider_row->slider_title}}</div>
+                                        <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}" style="max-width:100%;">
+                                    </a>
+                                  </div>                	  
+                            	</div><!--.row-->
+                            </div><!--.item-->
+                            @endforeach 
+                             
+                            </div><!--.carousel-inner-->
+                              <!--<a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
+                              <a data-slide="next" href="#Carousel" class="right carousel-control">></a>-->
+                        </div><!--.Carousel-->
+                    @endif
+                </div>
+                <div class="dashboard-right-bottom">
+                    <div class="row" style="margin-left: 0px;">
+                        <div class="setting-box-advert1">
+                            <a href="{{ URL::to('properties') }}">
+                                <i class="grid_icon fa fa-home fa-2x"></i>																	
+                    			<span class="grid_link-text">
+                    				Property Management
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert2">
+                            <a href="{{ URL::to('reservations') }}">
+                                <i class="grid_icon flaticon-graphic-2"></i>																	
+                    			<span class="grid_link-text">
+                    				Reservation Management
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert3">
+                            <a href="{{ URL::to('hotelcontainer')}}">
+                    			<i class="grid_icon flaticon-layers"></i>																	
+                    			<span class="grid_link-text">
+                    				Container
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert4">
+                            <a href="{{ URL::to('hotelpackages') }}" id="dash_communication">
+                    			<i class="grid_icon flaticon-share"></i>																	
+                    			<span class="grid_link-text">
+                    				Membership &amp; Support Services
+                    			</span>
+                    		</a>
+                        </div>
+                        
+                        
+                        <div class="setting-box-advert5">
+                            <a href="{{URL::to('arrivaldeparture')}}">
+                                <i class="grid_icon flaticon-transport"></i>																	
+                    			<span class="grid_link-text">
+                    				Arrivals, Departures &amp; Cancelations
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert6">
+                            <a href="{{URL::to('advertising')}}">
+                                <i class="grid_icon flaticon-statistics"></i>																	
+                    			<span class="grid_link-text">
+                    				Advertising
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert7">
+                            <a href="{{URL::to('salesreport')}}">
+                    			<i class="grid_icon flaticon-graph"></i>																	
+                    			<span class="grid_link-text">
+                    				Sales Reports
+                    			</span>
+                    		</a>
+                        </div>
+                        <div class="setting-box-advert8">
+                            <a href="{{URL::to('qualityassurances')}}" id="dash_communication">
+                    			<i class="grid_icon flaticon-pie-chart"></i>																	
+                    			<span class="grid_link-text">
+                    				Quality Assurance
+                    			</span>
+                    		</a>
+                        </div>
+                        
+                    </div>
+                </div>
             </div> 
-            <div class="col-sm-12 col-md-4 col-xl-4">  
-                <div class="advert_img">                  
-                    <img src="{{URL::to('images/advert.png')}}" alt="Advertising" style="width: 100%; margin: 5px;" />
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-8 col-xl-8">
-            
-                <div class="row" style="margin-left: 0px;">
-                    <div class="setting-box-advert1">
-                        <a href="{{ URL::to('properties') }}">
-                            <i class="grid_icon flaticon-profile-1"></i>																	
-                			<span class="grid_link-text">
-                				Property Management
-                			</span>
-                		</a>
-                    </div>
-                    <div class="setting-box-advert2">
-                        <a href="{{ URL::to('reservations') }}">
-                            <i class="grid_icon flaticon-settings-1"></i>																	
-                			<span class="grid_link-text">
-                				Reservation Management
-                			</span>
-                		</a>
-                    </div>
-                    <div class="setting-box-advert3">
-                        <a href="{{ URL::to('hotelcontainer')}}">
-                			<i class="grid_icon flaticon-mail-1"></i>																	
-                			<span class="grid_link-text">
-                				Container
-                			</span>
-                		</a>
-                    </div>
-                    <div class="setting-box-advert4">
-                        <a href="{{ URL::to('hotelpackages') }}" id="dash_communication">
-                			<i class="grid_icon flaticon-computer"></i>																	
-                			<span class="grid_link-text">
-                				Modules/Packages
-                			</span>
-                		</a>
-                    </div>
-                    
-                    
-                    <div class="setting-box-advert5">
-                        <a href="{{URL::to('arrivaldeparture')}}">
-                            <i class="grid_icon flaticon-profile-1"></i>																	
-                			<span class="grid_link-text">
-                				Arrivals, Departures &amp; Cancelations
-                			</span>
-                		</a>
-                    </div>
-                    <div class="setting-box-advert6">
-                        <a href="{{URL::to('advertising')}}">
-                            <i class="grid_icon flaticon-settings-1"></i>																	
-                			<span class="grid_link-text">
-                				Advertising
-                			</span>
-                		</a>
-                    </div>
-                    <div class="setting-box-advert7">
-                        <a href="{{URL::to('salesreport')}}">
-                			<i class="grid_icon flaticon-mail-1"></i>																	
-                			<span class="grid_link-text">
-                				Sales Reports
-                			</span>
-                		</a>
-                    </div>
-                    <div class="setting-box-advert8">
-                        <a href="{{URL::to('qualityassurances')}}" id="dash_communication">
-                			<i class="grid_icon flaticon-computer"></i>																	
-                			<span class="grid_link-text">
-                				Quality Assurance
-                			</span>
-                		</a>
-                    </div>
-                    
-                </div>
-            </div>                		
+                           		
 		</div>
     </div>
 	
@@ -702,7 +704,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     }
     .rad-carousel-inner {      
       position: relative;
-      height:400px;
+      height:680px;
       width: 100%;
       overflow: hidden;
     }
@@ -924,7 +926,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
               slides2().first().addClass('active');
               slides2().first().fadeIn($transition_time2);
             
-              // auto scroll 
+              /*// auto scroll 
               $interval = setInterval( 
                 function(){
                 if(slides2().length > 1){
@@ -940,7 +942,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   }
                 }
                 , $transition_time2 +  $time_between_slides2
-              );
+              );*/
             
             
             $("#b2cblog_carousel .left").click(function(){

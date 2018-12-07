@@ -55104,7 +55104,7 @@ i.m-menu__link-icon.fa {
     background-color: #d9a0af;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin: 0px 16px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55130,7 +55130,7 @@ i.m-menu__link-icon.fa {
     background-color: #f2d5e3;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin: 0px 16px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55156,7 +55156,7 @@ i.m-menu__link-icon.fa {
     background-color: #648da6;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin: 0px 16px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55181,7 +55181,7 @@ i.m-menu__link-icon.fa {
     background-color: #90a2b6;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin:  0px 0px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55206,7 +55206,7 @@ i.m-menu__link-icon.fa {
     background-color: #f2ccc1;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin: 0px 16px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55231,7 +55231,7 @@ i.m-menu__link-icon.fa {
     background-color: #345c7d;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin: 0px 16px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55256,7 +55256,7 @@ i.m-menu__link-icon.fa {
     background-color: #6c5a7b;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin: 0px 16px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55281,7 +55281,7 @@ i.m-menu__link-icon.fa {
     background-color: #c06c83;
     text-align: center;
     width: 23%;
-    margin: 6px;
+    margin: 0px 0px 16px 0px;
     padding: 15px 25px;
     min-height: 109px;
 }
@@ -55302,15 +55302,14 @@ i.m-menu__link-icon.fa {
 .setting-box-advert8 a:hover{
     text-decoration: none !important;
 }
-.advert_img{
-}
+
 @media (min-width:1600px) {
     
     .setting-box-advert1{
         background-color: #d9a0af;
         text-align: center;
-        width: 23%;
-        margin: 8px;
+        width: 23%;        
+        margin: 0px 21px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55336,7 +55335,7 @@ i.m-menu__link-icon.fa {
         background-color: #f2d5e3;
         text-align: center;
         width: 23%;
-        margin: 8px;
+        margin: 0px 21px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55362,7 +55361,7 @@ i.m-menu__link-icon.fa {
         background-color: #648da6;
         text-align: center;
         width: 23%;
-        margin: 8px;
+        margin: 0px 21px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55387,7 +55386,7 @@ i.m-menu__link-icon.fa {
         background-color: #90a2b6;
         text-align: center;
         width: 23%;
-        margin: 8px;
+        margin: 0px 0px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55412,7 +55411,7 @@ i.m-menu__link-icon.fa {
         background-color: #f2ccc1;
         text-align: center;
         width: 23%;
-        margin: 8px;
+        margin: 0px 21px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55437,7 +55436,7 @@ i.m-menu__link-icon.fa {
         background-color: #345c7d;
         text-align: center;
         width: 23%;
-        margin: 8px;
+        margin: 0px 21px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55462,7 +55461,7 @@ i.m-menu__link-icon.fa {
         background-color: #6c5a7b;
         text-align: center;
         width: 23%;
-        margin: 8px;
+        margin: 0px 21px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55487,7 +55486,7 @@ i.m-menu__link-icon.fa {
         background-color: #c06c83;
         text-align: center;
         width: 23%;
-        margin: 8px;
+        margin: 0px 0px 21px 0px;
         padding: 24px 25px;
         min-height: 129px;
     }
@@ -55757,3 +55756,42 @@ i.m-menu__link-icon.fa {
 .property_block10_bg{
     background: #C8A9A9 !important;
 }
+/* ---- Dashboard changes ---- */
+.dashboard-right-bottom{
+    margin-top: 30px;
+}
+.heading{    
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin: 10px 0px 0px 0px;
+    font-size: 1.75rem;
+    line-height: 45px;
+}
+.heading a{
+    color:#000;
+    text-decoration: none;    
+}
+.heading a:hover{
+    color:#000;
+    text-decoration: none;
+}
+.blog-desc{
+    margin: 20px 0px;
+}
+
+.blog-readmore {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(198, 159, 115, 0.7);
+    padding: 1em 2.5em;
+    margin-top: 1.8em;
+    display: inline-block;
+    color: #000;
+}
+.blog-readmore:hover {
+    background: rgba(198,159,115,0.2);
+    text-decoration: none;
+    color: #000;
+}
+/* ----- End Dashboard changes --- */

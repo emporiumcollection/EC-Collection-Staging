@@ -43,7 +43,15 @@
 											<div class="caption folder">
 												<a data-action-open="folder" rel_row="{{$row['id']}}" href="#">{{(strlen($row['name']) > 8) ? substr($row['name'],0,8)."~" : $row['name']}}</a>
 												<img src="{{URL::to('uploads/images/information.png')}}" style="cursor:pointer;" class="screenshot" rel="{{($row['title']!='')?$row['title']:''}}" rel2="{{($row['description']!='')?$row['description']:''}}" title="{{$row['name']}}" />
-												
+												@if($row['assign_front']=='yes')
+													<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Frontend" onclick="frontend_grid(this,'folder','{{$row['id']}}',1);" />
+												@else
+													@if($row['hotel_help_update']==1)
+														<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate" onclick="hotelhelp_grid(this,'folder','{{$row['id']}}',0);" />
+													@else
+														<img src="{{URL::to('uploads/images/not_activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Activate Frontend" onclick="frontend_grid(this,'folder','{{$row['id']}}',0);" />
+													@endif
+												@endif
 											</div>
 											
 											<?php $folderPic = ($row['cover_img']!='')? URL::to('uploads/folder_cover_imgs/thumb_'.$row['cover_img']): URL::to('uploads/images/folder_big.png');
@@ -78,7 +86,16 @@
 											<div class="caption {{$imgclass}}">
 												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" class="lfile" href="#" title="{{$row['name']}}">{{strlen($fname) > 5 ? substr($fname,0,2)."~.".$ext : $fname}}</a>
 												<img src="{{URL::to('uploads/images/information.png')}}" style="cursor:pointer;" class="screenshot" rel="{{($row['title']!='')?$row['title']:''}}" rel2="{{($row['description']!='')?$row['description']:''}}" title="{{$fname}}" />
-												
+												@if($row['assign_front']=='yes')
+													<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Frontend" onclick="frontend_grid(this,'file','{{$row['id']}}',1);" />
+												@else
+													<img src="{{URL::to('uploads/images/not_activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Activate Frontend" onclick="frontend_grid(this,'file','{{$row['id']}}',0);" />
+												@endif
+												@if($row['assign_lightbox']=='yes')
+													<img src="{{URL::to('uploads/images/activated_lightbox.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Lightbox" onclick="lightbox_grid(this,'{{$row['id']}}',1);" />
+												@else
+													<img src="{{URL::to('uploads/images/not_activated_lightbox.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Activate Lightbox" onclick="lightbox_grid(this,'{{$row['id']}}',0);" />
+												@endif
 											</div>
 											<?php if($ext=="pdf")
 											{
@@ -1213,12 +1230,12 @@ $(function(){
 				}
 			});
 			
-			/*$( "#container_sortable" ).sortable({
+			$( "#container_sortable" ).sortable({
 				stop: function() {
 				update_container_sort_num();
 			  }
 			});
-			$( "#container_sortable" ).disableSelection();*/
+			$( "#container_sortable" ).disableSelection();
 		});
 		
 		function update_container_sort_num()

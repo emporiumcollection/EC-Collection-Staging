@@ -145,13 +145,13 @@
 																<div class="m-nav-grid m-nav-grid--skin-light">
 																	<div class="m-nav-grid__row">
 																		<a href="{{ URL::to('properties') }}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-dashboard"></i>
+																			<i class="m-nav-grid__icon fa fa-home"></i>
 																			<span class="m-nav-grid__text">
 																				Property Management
 																			</span>
 																		</a>
 																		<a href="{{ URL::to('reservations') }}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-imac"></i>
+																			<i class="m-nav-grid__icon flaticon-graphic-2"></i>
 																			<span class="m-nav-grid__text">
 																				Reservation Management
 																			</span>
@@ -159,27 +159,27 @@
 																	</div>
 																	<div class="m-nav-grid__row">
 																		<a href="{{URL::to('salesreport')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
+																			<i class="m-nav-grid__icon flaticon-graph"></i>
 																			<span class="m-nav-grid__text">
 																				Sales Reports
 																			</span>
 																		</a>
 																		<a href="{{ URL::to('hotelpackages') }}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-clipboard"></i>
+																			<i class="m-nav-grid__icon flaticon-share"></i>
 																			<span class="m-nav-grid__text">
-																				View Modules
+																				Membership &amp; Support Services
 																			</span>
 																		</a>
 																	</div>
                                                                     <div class="m-nav-grid__row">
 																		<a href="{{URL::to('arrivaldeparture')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-clipboard"></i>
+																			<i class="m-nav-grid__icon flaticon-transport"></i>
 																			<span class="m-nav-grid__text">
 																				Arrivals, Departures &amp; Cancelations
 																			</span>
 																		</a>
                                                                         <a href="{{URL::to('advertising')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
+																			<i class="m-nav-grid__icon flaticon-statistics"></i>
 																			<span class="m-nav-grid__text">
 																				Advertising
 																			</span>
