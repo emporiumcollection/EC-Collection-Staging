@@ -162,24 +162,48 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
+																
 																	@if($img->file_type=="application/pdf")
+                                                                    <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_name}}" target="_blank">
 																		<img src="{{URL::to('uploads/images/bigpage_white_acrobat.png')}}">
+                                                                    </a>
 																	@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                    <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
 																		<img src="{{URL::to('uploads/images/doc.png')}}">
+                                                                    </a>
 																	@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                    <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
 																		<img src="{{URL::to('uploads/images/xls.png')}}">
-																		
+																	</a>	
 																	@else
+                                                                    <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
 																		<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
+                                                                    </a>
 																	@endif
 																	
-																</a>
+																
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">{{$img->file_display_name}}</a>
+																@if($img->file_type=="application/pdf")
+                                                                <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_display_name}}" target="_blank">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
+																	{{$img->file_display_name}}
+																</a>	
+																@else
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@endif
+                                                                
 															</p>
 														</td>
 														<td>
@@ -286,14 +310,45 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto" >
+                                                                @if($img->file_type=="application/pdf")
+                                                                <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_name}}" target="_blank">
+																	<img src="{{URL::to('uploads/images/bigpage_white_acrobat.png')}}">
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">
+																	<img src="{{URL::to('uploads/images/doc.png')}}">
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">
+																	<img src="{{URL::to('uploads/images/xls.png')}}">
+																</a>	
+																@else
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
-																</a>
+                                                                </a>
+																@endif
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">{{$img->file_display_name}}</a>
+																@if($img->file_type=="application/pdf")
+                                                                <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_display_name}}" target="_blank">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">
+																	{{$img->file_display_name}}
+																</a>	
+																@else
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@endif
+                                                                
 															</p>
 														</td>
 														<td>
@@ -399,14 +454,46 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa" >
+                                                                @if($img->file_type=="application/pdf")
+                                                                <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_name}}" target="_blank">
+																	<img src="{{URL::to('uploads/images/bigpage_white_acrobat.png')}}">
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">
+																	<img src="{{URL::to('uploads/images/doc.png')}}">
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">
+																	<img src="{{URL::to('uploads/images/xls.png')}}">
+																</a>	
+																@else
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
-																</a>
+                                                                </a>
+																@endif
+																
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">{{$img->file_display_name}}</a>
+                                                                @if($img->file_type=="application/pdf")
+                                                                <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_display_name}}" target="_blank">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">
+																	{{$img->file_display_name}}
+																</a>	
+																@else
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@endif
+																
 															</p>
 														</td>
 														<td>
@@ -512,14 +599,45 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts" >
+                                                                @if($img->file_type=="application/pdf")
+                                                                <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_name}}" target="_blank">
+																	<img src="{{URL::to('uploads/images/bigpage_white_acrobat.png')}}">
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts">
+																	<img src="{{URL::to('uploads/images/doc.png')}}">
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts">
+																	<img src="{{URL::to('uploads/images/xls.png')}}">
+																</a>	
+																@else
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts">
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
-																</a>
+                                                                </a>
+																@endif																
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts">{{$img->file_display_name}}</a>
+																@if($img->file_type=="application/pdf")
+                                                                <a href="{{URL::to('flipview')}}/{{$img->id}}" title="{{$img->file_display_name}}" target="_blank">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts>
+																	{{$img->file_display_name}}
+                                                                </a>
+																@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.spre")
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts">
+																	{{$img->file_display_name}}
+																</a>	
+																@else
+                                                                <a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts">
+																	{{$img->file_display_name}}
+                                                                </a>
+																@endif
+                                                                
 															</p>
 														</td>
 														<td>

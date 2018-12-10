@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>    
     <li class="m-nav__item"> 
         <a href="{{ URL::to('advertising')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Advertising </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Advertising </span> 
         </a> 
     </li>
 @stop

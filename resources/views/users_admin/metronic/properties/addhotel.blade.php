@@ -20,7 +20,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Properties </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Properties </span> 
         </a> 
     </li>
 @stop

@@ -20,7 +20,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> DL-<?php echo date('d.m.y', strtotime($row->created_date)); ?>-{{ $row->id }} </span> 
+            <span class="m-nav__link-text breadcrumb-end"> DL-<?php echo date('d.m.y', strtotime($row->created_date)); ?>-{{ $row->id }} </span> 
         </a> 
     </li>
 @stop

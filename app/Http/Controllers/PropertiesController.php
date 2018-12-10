@@ -153,6 +153,24 @@ class PropertiesController extends Controller {
             $this->data['common_contracts'] = $hotels_contract['common'];
             //echo "<pre>";print_r($hotels_contract);die;
             //End 
+            
+            
+            $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id', 'tb_container_files.file_title', 'tb_container_files.file_description')->whereIn('tb_properties_images.property_id', $hotelIds)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+            //print_r($fileArr); die;
+            $propertiesArr =array();
+            $pr = 0;
+            foreach ($fileArr as $file) {
+                
+                if(!isset($propertiesArr[$file->property_id])){ $propertiesArr[$file->property_id] = array(); }
+                //$propertiesArr[$file->property_id][$file->id] = $file;
+                
+                $propertiesArr[$file->property_id]['propimage'][$pr] = $file;
+                $propertiesArr[$file->property_id]['propimage'][$pr]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                $propertiesArr[$file->property_id]['propimage'][$pr]->imgsrccon = (new ContainerController)->getContainerUserPath($file->folder_id);
+                $pr++;
+            }
+            $this->data['propertiesImgArr'] = $propertiesArr;                                            
+                      
         }
         //print_r($this->data['userContracts']);die;
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
@@ -4629,5 +4647,75 @@ function property_images_wetransfer(Request $request) {
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.hotelcontainer':'properties.hotelcontainer'; 
         
         return view($file_name, $this->data);
+    }
+    public function flipview(Request $request, $id){
+        
+        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*',  \DB::raw("(CASE WHEN (tb_container_files.file_display_name = '') THEN tb_container_files.file_name ELSE tb_container_files.file_display_name END) as file_display_name"), 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.id', $id)->get();
+        $filepath = '';
+        if(!empty($fileArr)){
+            foreach($fileArr as $img){                
+                $filepath = (new ContainerController)->getThumbpath($img->folder_id).$img->file_name;
+            }
+        }
+        
+        if($filepath!='')
+		{
+		    $path = $filepath;			
+				$flipimgs = array();
+				$fl=0;
+					
+					$flipimgs[$fl]['imgpath'] = $path;
+					$flipimgs[$fl]['imgname'] = '';
+					$flipimgs[$fl]['file_type'] = 'application/pdf';
+					$flipimgs[$fl]['folder'] = '';
+					
+				$this->data['flips'] = $flipimgs;
+				$this->data['fliptype'] = 'high';
+                
+				return view('users_admin.metronic.properties.flipbook', $this->data);
+			
+		}
+		else
+		{ 
+		    $return = 'properties/?return=' . self::returnUrl();
+			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
+		}
+    }
+    public function conatinerflip(Request $request, $id){
+        
+        //$fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*',  \DB::raw("(CASE WHEN (tb_container_files.file_display_name = '') THEN tb_container_files.file_name ELSE tb_container_files.file_display_name END) as file_display_name"), 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_container_files.id', $id)->get();
+        
+        $fileArr = \DB::table('tb_container_files')->where('tb_container_files.id', $id)->get();
+        
+        //print_r($fileArr); die;
+        $filepath = '';
+        if(!empty($fileArr)){
+            foreach($fileArr as $img){                
+                $filepath = (new ContainerController)->getThumbpath($img->folder_id).$img->file_name;
+            }
+        }
+        
+        if($filepath!='')
+		{
+		    $path = $filepath;			
+				$flipimgs = array();
+				$fl=0;
+					
+					$flipimgs[$fl]['imgpath'] = $path;
+					$flipimgs[$fl]['imgname'] = '';
+					$flipimgs[$fl]['file_type'] = 'application/pdf';
+					$flipimgs[$fl]['folder'] = '';
+					
+				$this->data['flips'] = $flipimgs;
+				$this->data['fliptype'] = 'high';
+                
+				return view('users_admin.metronic.properties.flipbook', $this->data);
+			
+		}
+		else
+		{ 
+		    $return = 'properties/?return=' . self::returnUrl();
+			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
+		}
     }
 }

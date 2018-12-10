@@ -101,11 +101,19 @@
 											{
 												$imgclass = "bigpdf";
 											}?>
+                                            @if($ext=="pdf")
+                                                <div class="thumb cinner{{$imgclass}}" <?php if($isImg==1) { ?> style="background: url('{{URL::to('uploads/thumbs/').'/thumb_'.$fid.'_'.$row['name']}}') no-repeat  center center; background-size:100px auto;" <?php } ?>>
+    												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="{{URL::to('conatinerflip')}}/{{$row['id']}}" class="screenshot fancybox-buttons" rel="{{URL::to('uploads/thumbs/').'/format_'.$fid.'_'.$row['name']}}" title="{{$fname}}" rel2="{{$fname}}" data-fancybox-group="button" target="_blank">
+    													&nbsp;
+    												</a>
+											    </div>
+                                            @else
 											<div class="thumb cinner{{$imgclass}}" <?php if($isImg==1) { ?> style="background: url('{{URL::to('uploads/thumbs/').'/thumb_'.$fid.'_'.$row['name']}}') no-repeat  center center; background-size:100px auto;" <?php } ?>>
 												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="#" class="screenshot fancybox-buttons" rel="{{URL::to('uploads/thumbs/').'/format_'.$fid.'_'.$row['name']}}" title="{{$fname}}" rel2="{{$fname}}" data-fancybox-group="button">
 													&nbsp;
 												</a>
 											</div>
+                                            @endif
 											<div class="info">
 												<label><input type="checkbox" value="file-{{$row['id']}}-{{$ext}}" name="compont[]" id="compont" class="no-border check-files ff"></label>
 												@if(($row['tiff_files']!='') && !empty($row['tiff_files']))

@@ -260,11 +260,13 @@
 <script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 
 <script>
+jQuery.noConflict();
 $(document).ready(function () {
 	
 	$('.datepic').datepicker({
 			numberOfMonths: 2,
-			showButtonPanel: true
+			showButtonPanel: true,
+			format: 'yyyy-mm-dd'
 	});
 
     $(document).on('click', '.addseason', function (){

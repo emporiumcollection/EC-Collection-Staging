@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('qualityassurances')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Quality Assurance </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Quality Assurance </span> 
         </a> 
     </li>
     <li class="m-nav__separator"> - </li>

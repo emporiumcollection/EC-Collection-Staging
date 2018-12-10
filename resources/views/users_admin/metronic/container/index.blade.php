@@ -12,15 +12,10 @@
         </a> 
     </li>
     <li class="m-nav__separator"> - </li>
+    
     <li class="m-nav__item"> 
-        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Reservation & Distribution </span> 
-        </a> 
-    </li>
-    <li class="m-nav__separator"> - </li>
-    <li class="m-nav__item"> 
-        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Properties </span> 
+        <a href="{{ URL::to('hotelcontainer')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text breadcrumb-end"> Container </span> 
         </a> 
     </li>
 @stop

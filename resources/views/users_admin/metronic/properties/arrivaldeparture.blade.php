@@ -15,7 +15,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('arrivaldeparture')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Arrivals, Departures &amp; Cancelations </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Arrivals, Departures &amp; Cancelations </span> 
         </a> 
     </li>
 @stop

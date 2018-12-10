@@ -20,7 +20,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Property Management System </span> 
+            <span class="m-nav__link-text  breadcrumb-end"> Property Management System </span> 
         </a> 
     </li>
 @stop
@@ -55,6 +55,11 @@
                     $hcontract_ids[] = $shotelcontrat->contract_id;
                 }
             }
+            $bg_img = '';
+            if(isset($propertiesImgArr[$row->id])){ 
+                $bg_img = $propertiesImgArr[$row->id]['propimage'][0]->imgsrc.''.$propertiesImgArr[$row->id]['propimage'][0]->file_name; 
+            }
+            
             /*--}}
             
             @if((count($hotelcontract) > 0))
@@ -122,7 +127,7 @@
                     </div> */ ?>
                     <!--end:: contracts popup start -->
                     @endif
-                    
+                                                          
                     <!--begin:: Widgets/Activity-->
                     <div class="col-md-12 col-xs-12">
                         <span class="m-form__help">
@@ -241,7 +246,7 @@
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
-																<a href="#" class="m-nav__link">
+																<a href="{{URL::to('advertising')}}" class="m-nav__link">
 																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
 																		Become Featured
@@ -249,7 +254,7 @@
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
-																<a href="#" class="m-nav__link">
+																<a href="https://emporium-collection.com/" class="m-nav__link" target="_blank">
 																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
 																		Get Help
@@ -265,12 +270,13 @@
 								</ul>
 							</div>
 						</div>
+                        
 						<div class="m-portlet__body">
 							<div class="m-widget17">
 								<div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-danger">
 									<div class="m-widget17__chart" style="height:360px;">
                                         
-                                        <div class="" style="background: url(http://staging.emporium-voyage.com/uploads/container_user_files/locations/hh/property-images/64070036634-63502574132.jpeg); width: 100%; background-size: cover; height:300px; opacity: 50%;">
+                                        <div class="" style="background: url({{$bg_img}}); width: 100%; background-size: cover; height:300px; opacity: 50%;">
                                         <div class="hotel_name">
                                             {{$row->property_name}}
                                         </div>
@@ -389,7 +395,7 @@
 												
 											</span>
 											<span class="m-widget17__subtitle">
-												<a href="#">
+												<a href="{{URL::to('advertising')}}">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
                                         				Become Featured
@@ -417,7 +423,7 @@
 												
 											</span>
 											<span class="m-widget17__subtitle">
-												<a href="#" class="m-nav__link">
+												<a href="https://emporium-collection.com/" class="m-nav__link" target="_blank">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
                                         				Get Help
@@ -474,6 +480,23 @@
     </div>
 </div>
 @endforeach
+
+<div class="modal fade" id="property_approve_msg_modal" tabindex="-1" role="dialog" aria-labelledby="property_approve" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="m-portlet__body">
+                    <p>Your hotel is being reviewed. A Property consultant will contact you once your hotel has been approved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @stop
 {{-- For custom style  --}}
@@ -654,9 +677,9 @@ $(document).ready(function () {
     
     $("#switch_property").click(function(){
       if($("#switch_property").is(":checked")){
-        
+        $("#property_approve_msg_modal").modal('show');  
       }else{
-        
+        $("#property_approve_msg_modal").modal('hide'); 
       }      
     });
 });

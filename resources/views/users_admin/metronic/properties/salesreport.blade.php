@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('salesreport')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Sales & Marketing </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Sales & Marketing </span> 
         </a> 
     </li>    
 @stop
