@@ -77,10 +77,21 @@
                     <!-- Carousel items -->
                     <div class="rad-carousel-inner">
                     @foreach($blogs as $key => $blog_row)    
+                    <?php 
+                        $final_url = '#';
+                        $ext_url = trim($blog_row->external_link);
+                        if(strlen($ext_url)>0){                        
+                            if(strpos($ext_url, 'http://') !== 0) {
+                              $final_url = 'http://' . $ext_url;
+                            } else {
+                              $final_url = $ext_url;
+                            }  
+                        } 
+                    ?>
                     <div class="item {{($key == 0)? 'active' : ''}}">
                     	<div class="row">
                         <div class="col-md-12">
-                            <a href="{{$blog_row->external_link}}" class="thumbnail">                                
+                            <a href="{{$final_url}}" class="thumbnail" target="_blank">                                
                                 <img src="{{url('/uploads/article_imgs/'.$blog_row->featured_image)}}" alt="{{$blog_row->title_pos_1}}" style="max-width:100%;">
                             </a>
                         </div>
@@ -92,11 +103,11 @@
                                     	  
                         <div class="col-md-12">
                             <div class="blog-desc">
-                                <p>{{str_limit(strip_tags($blog_row->description_pos_1), 100)}}</p>
+                                <p>{{str_limit(strip_tags($blog_row->description_pos_1), 255)}}</p>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <a href="#" class="blog-readmore">Continue Reading</a>
+                            <a href="{{$final_url}}" class="blog-readmore">Continue Reading</a>
                         </div>                              
                     	</div><!--.row-->
                     </div><!--.item-->
@@ -148,7 +159,7 @@
                     <div class="row" style="margin-left: 0px;">
                         <div class="setting-box-advert1">
                             <a href="{{ URL::to('properties') }}">
-                                <i class="grid_icon fa fa-home fa-2x"></i>																	
+                                <i class="grid_icon fa fa-home fa-2x font-34"></i>																	
                     			<span class="grid_link-text">
                     				Property Management
                     			</span>
@@ -704,17 +715,16 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     }
     .rad-carousel-inner {      
       position: relative;
-      height:680px;
+      /*height:680px;*/
       width: 100%;
       overflow: hidden;
     }
     
     .rad-carousel-inner > .item {
-      position: absolute;
-      height:400px;
+      /*position: absolute;
+      height:400px;*/
       display: none;
-      -webkit-transition: 0.6s ease-in-out left;
-              transition: 0.6s ease-in-out left;
+      
     }
     
     .rad-carousel-inner > .item > img,
@@ -913,7 +923,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
             // settings
               var $slider2 = $('#b2cblog_carousel .rad-carousel-inner'); // class or id of carousel slider
               var $slide2 = '.item'; // could also use 'img' if you're not using a ul
-              var $transition_time2 = 4000; // 1 second
+              var $transition_time2 = 1000; // 1 second
               var $time_between_slides2 = 4000; // 4 seconds
             
               function slides2(){
@@ -926,14 +936,14 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
               slides2().first().addClass('active');
               slides2().first().fadeIn($transition_time2);
             
-              /*// auto scroll 
+              // auto scroll 
               $interval = setInterval( 
                 function(){
                 if(slides2().length > 1){
                   var $i = $slider2.find($slide2 + '.active').index();
                                       
                   slides2().eq($i).removeClass('active');
-                  slides2().eq($i).fadeOut($transition_time);
+                  slides2().eq($i).fadeOut(0);
             
                   if (slides2().length == $i + 1) $i = -1; // loop to start
             
@@ -942,7 +952,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   }
                 }
                 , $transition_time2 +  $time_between_slides2
-              );*/
+              );
             
             
             $("#b2cblog_carousel .left").click(function(){

@@ -31,7 +31,20 @@
     </div>
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
-    </div>              
+    </div>    
+    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-right" style="padding-bottom: 10px;">
+        <div class="row">
+            <div class="col-sm-2 col-md-7 col-xl-7 m--align-right"></div>            
+            <div class="col-sm-5 col-md-2 col-xl-2 m--align-right">
+                <select class="form-control" name="dd_report">
+                    <option>Select Report</option>
+                </select>
+            </div>
+            <div class="col-sm-5 col-md-3 col-xl-3 m--align-right">
+                <a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Documentation</a>
+            </div>
+        </div>
+    </div>            
     <div class="col-sm-12 col-md-4 col-xl-4">
 		<!--begin:: Widgets/Activity-->
 		<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">

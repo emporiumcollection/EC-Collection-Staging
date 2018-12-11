@@ -24,12 +24,12 @@
 
 <div class="sbox animated fadeInRight">
 	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
-<div class="sbox-tools" >
-		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
-		@if(Session::get('gid') ==1)
-			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
-		@endif 
-		</div>
+        <div class="sbox-tools" >
+    		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
+    		@if(Session::get('gid') ==1)
+    			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
+    		@endif 
+        </div>
 	</div>
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
@@ -115,10 +115,11 @@
 						<a  href="{{ URL::to('properties_settings/'.$row->id.'/property_images') }}" class="tips btn btn-xs btn-success" title="Property Images"><i class="fa fa-file-image-o"></i></a>
 						<a  href="#" onclick="getseasonrates({{$row->id}});" class="tips btn btn-xs btn-success" title="Rates" data-toggle="modal" data-target="#psrModal"><i class="fa fa-usd"></i></a>
                         @if($row->approved==1)
-							<a  href="#" class="tips btn btn-xs btn-success" title="Click to Unapprove " onclick="change_approval(this,'approved','{{$row->id}}',0);"><i class="fa fa-check "></i></a>
+							<a  href="#" class="tips btn btn-xs btn-info" title="Click to Unapprove " onclick="change_approval(this,'approved','{{$row->id}}',0);"><i class="fa fa-check "></i></a>
 						@else
-							<a  href="#" class="tips btn btn-xs btn-danger" title="Click to Approve " onclick="change_approval(this,'approved','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
+							<a  href="#" class="tips btn btn-xs btn-warning" title="Click to Approve " onclick="change_approval(this,'approved','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
 						@endif
+                        
                         <a href="{{ URL::to('properties/viewcontract/'.$row->id.'?return='.$return) }}" title="View Contract" class="tips btn btn-xs btn-success" ><i class="fa fa-eye"></i></a>
 				</td>				 
                 </tr>

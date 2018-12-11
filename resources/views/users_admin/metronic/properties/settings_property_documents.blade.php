@@ -61,7 +61,122 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
         <!--begin::Portlet-->
 		<div class="m-portlet">
-			<div class="m-portlet__body">
+            <div class="m-portlet__head">				
+				<div class="m-portlet__head-tools margin-left-98">
+					<ul class="m-portlet__nav bg-gray">
+						<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
+							<a href="#" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl">
+								<i class="fa fa-bars m--font-light"></i>
+							</a>
+							<div class="m-dropdown__wrapper" style="z-index: 101;">
+								<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 18px;"></span>
+								<div class="m-dropdown__inner">
+									<div class="m-dropdown__body">
+										<div class="m-dropdown__content">
+											<ul class="m-nav">
+												<li class="m-nav__section m-nav__section--first">
+													<span class="m-nav__section-text">
+														Quick Actions
+													</span>
+												</li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties/update/2309?return=" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Hotel/Property
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/types" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Room Types
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/rooms" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Rooms
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/seasons" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Seasons
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/calendar" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Reservation Management
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/price" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Price
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/property_documents" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Property Documents
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/property_images" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Images
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/gallery_images" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Galleries
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="http://localhost:8181/emporium-staging-forge/public/advertising" class="m-nav__link">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Become Featured
+														</span>
+													</a>
+											    </li> 
+                                                <li class="m-nav__item">
+													<a href="https://emporium-collection.com/" class="m-nav__link" target="_blank">
+														<i class="m-nav__link-icon"></i>
+														<span class="m-nav__link-text">
+															Get Help
+														</span>
+													</a>
+											    </li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="m-portlet__body">                
 				<ul class="nav nav-tabs" role="tablist">
                     @if(!empty($tabss))
         				@foreach($tabss as $key=>$val)
@@ -128,7 +243,7 @@
 												<i class="glyphicon glyphicon-ban-circle"></i>
 												<span>Cancel upload</span>
 											</button>
-											<a class="btn btn-success" @if(!empty($imgs)) href="{{URL::to('folders/'.$hotel_broch[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+											<a class="btn btn-success" @if(!empty($hotel_broch)) href="{{URL::to('folders/'.$hotel_broch[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 												<span>Re-Order</span>
 											</a>
 											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('hb');" >
@@ -276,7 +391,7 @@
 												<i class="glyphicon glyphicon-ban-circle"></i>
 												<span>Cancel upload</span>
 											</button>
-											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$restru_menu[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+											<a class="btn btn-success" @if(!empty($restru_menu)) href="{{URL::to('folders/'.$restru_menu[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 												<span>Re-Order</span>
 											</a>
 											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('rm');" >
@@ -420,7 +535,7 @@
 												<i class="glyphicon glyphicon-ban-circle"></i>
 												<span>Cancel upload</span>
 											</button>
-											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$spa_broch[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+											<a class="btn btn-success" @if(!empty($spa_broch)) href="{{URL::to('folders/'.$spa_broch[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 												<span>Re-Order</span>
 											</a>
 											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('sb');" >
@@ -565,7 +680,7 @@
 												<i class="glyphicon glyphicon-ban-circle"></i>
 												<span>Cancel upload</span>
 											</button>
-											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$hotelcontacts[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+											<a class="btn btn-success" @if(!empty($hotelcontacts)) href="{{URL::to('folders/'.$hotelcontacts[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 												<span>Re-Order</span>
 											</a>
 											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('hc');" >

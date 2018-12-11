@@ -55349,6 +55349,9 @@ i.m-menu__link-icon.fa {
 .setting-box-advert8 a:hover{
     text-decoration: none !important;
 }
+.font-34{
+    font-size: 34px !important;
+}
 
 @media (min-width:1600px) {
     
@@ -55554,7 +55557,9 @@ i.m-menu__link-icon.fa {
     .setting-box-advert8 a:hover{
         text-decoration: none !important;
     }
-    
+    .font-34 {
+        font-size: 50px !important;
+    }
 }
 @media (min-width:2000px) {
     
@@ -55760,7 +55765,9 @@ i.m-menu__link-icon.fa {
     .setting-box-advert8 a:hover{
         text-decoration: none !important;
     }
-    
+    .font-34 {
+        font-size: 50px !important;
+    }
 }    
 .property_block1_bg{
     background: #7D6A68 !important;
@@ -55809,7 +55816,7 @@ i.m-menu__link-icon.fa {
 }
 .heading{    
     border-bottom: 1px solid rgba(0, 0, 0, .1);
-    margin: 10px 0px 0px 0px;
+    /*margin: 10px 0px 0px 0px;*/
     font-size: 1.75rem;
     line-height: 45px;
 }
@@ -55822,7 +55829,7 @@ i.m-menu__link-icon.fa {
     text-decoration: none;
 }
 .blog-desc{
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
 
 .blog-readmore {
@@ -55832,7 +55839,7 @@ i.m-menu__link-icon.fa {
     text-transform: uppercase;
     border: 1px solid rgba(198, 159, 115, 0.7);
     padding: 1em 2.5em;
-    margin-top: 1.8em;
+    
     display: inline-block;
     color: #000;
 }
@@ -55865,4 +55872,7 @@ i.m-menu__link-icon.fa {
 }
 .adv-top-dd{
     padding-bottom: 10px; width: 200px;
+}
+.margin-left-98{
+    margin-left: 98%;
 }

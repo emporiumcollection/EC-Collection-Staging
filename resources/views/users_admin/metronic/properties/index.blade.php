@@ -140,7 +140,7 @@
 								<div class="m-portlet__head-title">
 									<span class="m-switch m-switch--outline m-switch--success switch-btn-bot-pad">
     									<label>
-    										<input type="checkbox" name="switch_property" id="switch_property" />
+    										<input type="checkbox" name="switch_property" <?php echo ($row->approved) ? 'checked="checked"' : ''; ?> id="switch_property" />
     										<span></span>
     									</label>
     								</span>                                                                       
