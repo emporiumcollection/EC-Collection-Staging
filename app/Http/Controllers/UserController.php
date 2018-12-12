@@ -572,7 +572,7 @@ class UserController extends Controller {
         //get contract during signup
         $contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
         if(count($contracts) > 0){
-            $rules['accept_contract'] = 'required';
+            //$rules['accept_contract'] = 'required';
         }
         //End
 

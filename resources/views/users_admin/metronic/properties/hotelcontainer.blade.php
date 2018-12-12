@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('hotelcontainer')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text breadcrumb-end"> Container </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Digital Media Management &amp; Distribution System </span> 
         </a> 
     </li>    
 @stop
@@ -22,10 +22,10 @@
 @section('content')
 <div class="row">
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-        <h2>Container</h2>
+        <h2>Digital Media Management &amp; Distribution System</h2>
     </div> 
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+        The Digital Media Management & Distribution System is the DeFacto travel industry digital media management, and is the only all-in-one solution that helps hotels with the storage, management and distribution of visual content across all marketing and distribution channels.
     </div>
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />

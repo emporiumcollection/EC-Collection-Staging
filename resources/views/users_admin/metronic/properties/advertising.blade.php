@@ -30,6 +30,9 @@
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
     </div> 
+    <div class="col-md-12 col-xs-12 m--align-right padding-30"> 
+        <a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Advertising-help.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Documentation</a>
+    </div>
     <div class="col-sm-12 col-md-4 col-xl-4">
         <!--begin:: Widgets/Adwords Stats-->
 		<div class="m-portlet m-portlet--full-height m-portlet--skin-light m-portlet--fit bg-gray">

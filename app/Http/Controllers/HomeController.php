@@ -5045,8 +5045,37 @@ class HomeController extends Controller {
              */
 
             $data['property_id'] = $request->input('property');
-            $data['checkin_date'] = date("Y-m-d", strtotime($request->input('booking_arrive')));
-            $data['checkout_date'] = date("Y-m-d", strtotime($request->input('booking_destination')));
+            
+            $arrive_date = '';
+            $book_arrive_date = '';
+            if (!is_null($request->input('booking_arrive')) && $request->input('booking_arrive') != '' && $request->input('booking_arrive') != 'null') {
+                
+                $arrive = trim($request->input('booking_arrive'));
+                    $arrive_array=explode("-",$arrive); 
+                    $t=$arrive_array[0];
+                    $arrive_array[0]=$arrive_array[1];
+                    $arrive_array[1]=$t;
+                    $arrive_date=implode(".",$arrive_array);
+    
+                $book_arrive_date = $arrive_array[2]."-".$arrive_array[1]."-".$arrive_array[0];
+            }
+            
+            $checkout_date = '';
+            $book_checkout_date = '';
+            if (!is_null($request->input('booking_destination')) && $request->input('booking_destination') != '' && $request->input('booking_destination') != 'null') {
+                
+                $checkout_date = trim($request->input('booking_destination'));
+                    $checkout_date_array=explode("-",$checkout_date); 
+                    $t=$checkout_date_array[0];
+                    $checkout_date_array[0]=$checkout_date_array[1];
+                    $checkout_date_array[1]=$t;
+                    $checkout_date_date=implode(".",$checkout_date_array);
+    
+                $book_checkout_date = $checkout_date_array[2]."-".$checkout_date_array[1]."-".$checkout_date_array[0];
+            }
+            
+            $data['checkin_date'] = $book_arrive_date;
+            $data['checkout_date'] = $book_checkout_date;
             $data['type_id'] = $request->input('roomType');
             $data['number_of_nights'] = $request->input('number_of_nights');
             $data['organizing_transfers'] = (!is_null($request->input('organizing_transfers')) && $request->input('organizing_transfers') != '') ? 'Yes' : 'No';
@@ -5068,7 +5097,7 @@ class HomeController extends Controller {
             $data['price_mode'] = 'daily';
             $data['created_by'] = $uid;
             $data['created_date'] = date('Y-m-d h:i:s');
-            
+            //print_r($data); die;
             if($discount_apply!=''){
                 $discount = ($price*10/100);
                 $data['discount'] = $discount;
@@ -5670,7 +5699,7 @@ class HomeController extends Controller {
             
             $bookingEmailTemplate = str_replace('{hotel_terms_n_conditions}', $hotel_term_and_condition, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{property_email}', $property->email, $bookingEmailTemplate);
-            print_r($bookingEmailTemplate); die;
+            //print_r($bookingEmailTemplate); die;
             //$headers = "MIME-Version: 1.0" . "\r\n";
             //$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
             //$headers .= 'From: ' . CNF_APPNAME . '<marketing@emporium-voyage.com>' . "\r\n";

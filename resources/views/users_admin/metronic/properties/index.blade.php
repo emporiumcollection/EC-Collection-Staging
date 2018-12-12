@@ -32,7 +32,7 @@
         <h2>Property Management System</h2>
     </div> 
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+        Emporium Collection exclusively markets a selection of the luxury network's extraordinary Hotels & Luxury Partners, utilising a sophisticated mix of online and offline media to position properties for maximum exposure in an elite market. Members recognised for their agility, expertise and superior competence in both local and global markets.
     </div>
         {{--*/ $is_commission_popup = false; $hotelWiseContracts = array(); /*--}}
         @foreach ($rowData as $row)
@@ -79,7 +79,7 @@
             @endif
             
             <div class="col-md-12 col-xs-12 m--align-right"> 
-                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Setup Documentation</a></div>
+                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Property-Management-System-help.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Setup Documentation</a></div>
             </div>
             
             <div class="col-md-12 col-xs-12">                    

@@ -57,6 +57,7 @@
         </div>
         <div class="col-sm-8 col-md-8 col-lg-8">
             <a href="{{URL::to('properties/update/'.$pid)}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Property Management"><i class="fa fa-edit"></i>&nbsp;Property Management</a>
+            <a href="{{URL::to('flipviewpdf/Emporium-Voyage-Add-Property-Documents-help.pdf')}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Add Property Documents" style="margin-right: 10px;" target="_blank"><i class="fa fa-edit"></i>&nbsp;View Documentation</a>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12">
         <!--begin::Portlet-->

@@ -126,6 +126,7 @@ return array(
  "tab_popup2_menu"			=> "Popup 2 Menu",
  "tab_business_menu"			=> "Business Menu",
  "tab_intranet_menu"			=> "Intranet Menu",
+ "tab_hotel_menu"			=> "Hotel Menu",
  "sb_reorder"			=> "Menüreihenfolge Speichern",  
  "fr_mtitle"			=> "Name / Titel",  
  "fr_mtype"			=> "Menü Art",  

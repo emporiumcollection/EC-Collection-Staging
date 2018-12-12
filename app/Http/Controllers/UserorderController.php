@@ -994,5 +994,33 @@ class UserorderController extends Controller {
                 exit;
             }
         }
+    }
+    
+    public function flipviewpdf(Request $request, $filepath){
+        
+        if($filepath!='')
+		{
+		    $path = url('download/'.$filepath);			
+				$flipimgs = array();
+				$fl=0;
+					
+					$flipimgs[$fl]['imgpath'] = $path;
+					$flipimgs[$fl]['imgname'] = '';
+					$flipimgs[$fl]['file_type'] = 'application/pdf';
+					$flipimgs[$fl]['folder'] = '';
+					
+				$this->data['flips'] = $flipimgs;
+				$this->data['fliptype'] = 'high';
+                
+				return view('users_admin.metronic.properties.flipbook', $this->data);
+			
+		}
+		else
+		{ 
+		    $return = 'properties/?return=' . self::returnUrl();
+			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
+		}
+        
     }   
+       
 }

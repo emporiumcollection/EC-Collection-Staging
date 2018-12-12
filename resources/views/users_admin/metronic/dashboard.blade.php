@@ -177,7 +177,7 @@
                             <a href="{{ URL::to('hotelcontainer')}}">
                     			<i class="grid_icon flaticon-layers"></i>																	
                     			<span class="grid_link-text">
-                    				Container
+                    				Digital Media Management & Distribution System
                     			</span>
                     		</a>
                         </div>

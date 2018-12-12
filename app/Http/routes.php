@@ -397,6 +397,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('flipview/{filename}', 'PropertiesController@flipview');
     
     Route::get('conatinerflip/{filename}', 'PropertiesController@conatinerflip');
+    
+    Route::get('flipviewpdf/{filename}', 'UserorderController@flipviewpdf');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

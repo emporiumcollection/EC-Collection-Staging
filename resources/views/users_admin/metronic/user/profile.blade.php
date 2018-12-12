@@ -221,7 +221,12 @@
         										Avatar
         									</label>
         									<div class="col-sm-12 col-md-7">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <input type="file" name="avatar" class="form-control" />
+                                        		Image Dimension 80 x 80 px <br />
+                                                @if(!empty($info->avatar))
+                                                {!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!}
+                                                @endif
+                                                <?php /* <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <span class="btn btn-primary btn-file">
                                     			  	  <span class="fileinput-new">Upload Avatar Image</span>
                                                       @if(!empty($info->avatar))
@@ -235,7 +240,7 @@
                                                     <br />
                                         			Image Dimension 80 x 80 px <br />
                                         			{!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!}
-                                                </div>
+                                                </div> */ ?>
         									</div>
         								</div>
                                         
