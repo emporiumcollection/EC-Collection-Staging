@@ -746,7 +746,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     }
     /* t-date picker  */
     .search-cal-top .t-dates{
-        background: #f2f2f2;
+        background: #eee7e1;
         color: #898b96;
         padding: 9px 15px;
         height: 39px;
