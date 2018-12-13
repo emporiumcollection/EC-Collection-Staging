@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Property  <small>Reservation & Distribution</small>
+    
 @stop
 
 @section('breadcrumb')
@@ -241,7 +241,7 @@
         <h2>Reservations</h2>
     </div> 
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+        Our reservation system to processes reservations and service requests for our members as each office adheres to the same call criteria so a guest will receive the same level of service excellence.
     </div>
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />

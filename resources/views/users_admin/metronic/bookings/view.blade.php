@@ -1,7 +1,7 @@
 @extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
-    My Reservations
+   
 @stop
 
 @section('breadcrumb')

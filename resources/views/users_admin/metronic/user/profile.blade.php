@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Account  <small>View Detail My Info</small>
+    
 @stop
 
 @section('breadcrumb')

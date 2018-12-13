@@ -63,7 +63,7 @@
 				<div class="m-container m-container--fluid m-container--full-height">
 					<div class="m-stack m-stack--ver m-stack--desktop">
 						<!-- BEGIN: Brand -->
-						<div class="m-stack__item m-brand  m-brand--skin-light ">
+						<div class="m-stack__item m-brand  m-brand--skin-light" style="background: #fff !important;">
 							<div class="m-stack m-stack--ver m-stack--general">
 								<div class="m-stack__item m-stack__item--middle m-brand__logo">
 									<a href="{{ URL::to('dashboard')}}" class="m-brand__logo-wrapper">
@@ -132,7 +132,7 @@
 					<div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
 						<div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
 							<span class="m-footer__copyright">
-								<strong>Copyright</strong> &copy; 2014-{{ date('Y')}} . {{ CNF_COMNAME }}  
+								<strong>Copyright</strong> &copy; 2019 {{ CNF_COMNAME }}  
 							</span>
 						</div>
 						<div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">

@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Billings &amp; Contracts  <small></small>
+    
 @stop
 
 @section('breadcrumb')

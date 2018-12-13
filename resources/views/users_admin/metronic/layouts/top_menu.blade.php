@@ -145,7 +145,7 @@
 																<div class="m-nav-grid m-nav-grid--skin-light">
 																	<div class="m-nav-grid__row">
 																		<a href="{{ URL::to('properties') }}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon fa fa-home fa-2x"></i>
+																			<i class="m-nav-grid__icon flaticon-imac"></i>
 																			<span class="m-nav-grid__text">
 																				Property Management
 																			</span>

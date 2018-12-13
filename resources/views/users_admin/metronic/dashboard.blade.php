@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Dashboard
+    
 @stop
     
 @section('subheader_search')
@@ -9,7 +9,7 @@
         <h2 class="m-subheader-search__title">
     		Recent Bookings
     		<span class="m-subheader-search__desc">
-    			Onling Bookings Management
+    			Quick Reservation Search
     		</span>
     	</h2>
     	<form class="m-form">
@@ -159,7 +159,7 @@
                     <div class="row" style="margin-left: 0px;">
                         <div class="setting-box-advert1">
                             <a href="{{ URL::to('properties') }}">
-                                <i class="grid_icon fa fa-home fa-2x font-34"></i>																	
+                                <i class="grid_icon flaticon-imac"></i>																	
                     			<span class="grid_link-text">
                     				Property Management
                     			</span>
@@ -193,7 +193,7 @@
                         
                         <div class="setting-box-advert5">
                             <a href="{{URL::to('arrivaldeparture')}}">
-                                <i class="grid_icon flaticon-transport"></i>																	
+                                <i class="grid_icon flaticon-clock-2"></i>																	
                     			<span class="grid_link-text">
                     				Arrivals, Departures &amp; Cancelations
                     			</span>
@@ -649,7 +649,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
         margin-bottom: 3em;
     }
     .m-subheader-search{
-        margin-top: 20px;
+        /*margin-top: 20px;*/
     }
     .m-widget7 .m-widget7__user .m-widget7__user-img .m-widget7__img{
         width: 4.9rem;

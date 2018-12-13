@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Account  <small>Enter Your Info</small>
+    
 @stop
 
 @section('content')

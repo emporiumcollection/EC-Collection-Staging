@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Property  <small>View</small>
+    
 @stop
 
 @section('breadcrumb')

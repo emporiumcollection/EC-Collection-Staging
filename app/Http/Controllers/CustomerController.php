@@ -1909,13 +1909,15 @@ $html .= '</div>';
         $firstname = $request->input('onrequest_firstname'); 
         $lastname = $request->input('onrequest_lastname'); 
         $email = $request->input('onrequest_email'); 
-        $phoneumber = $request->input('onrequest_phoneumber');         
+        $phoneumber = $request->input('onrequest_phoneumber'); 
+        $message = $request->input('onrequest_message');           
                             
         $edata = array();        
         $edata['firstname'] = $firstname;
         $edata['lastname'] = $lastname;
         $edata['email'] = $email;
         $edata['phoneumber'] = $phoneumber;
+        $edata['message'] = $message;
         
         $emlData['frmemail'] = 'marketing@emporium-voyage.com';
         $emlData['email'] = CNF_SUPERADMIN_EMAIL;

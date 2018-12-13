@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Packages <small>Modules/Packages</small>
+    
 @stop
 
 @section('breadcrumb')
@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="{{ URL::to('hotelpackages')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Modules/Packages </span> 
+            <span class="m-nav__link-text"> Membership &amp; Support Services </span> 
         </a> 
     </li>
 @stop
@@ -617,6 +617,24 @@ The membership development team develops and implements a strategic, regional-ba
                                         <input type="text" name="onrequest_phoneumber" class="form-control" placeholder="Phone Number" required="required" />
                                     </div> 
                                 </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Message</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <textarea class="form-control" name="onrequest_message" id="onrequest_message" rows="4"></textarea>
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <div class="m-checkbox-inline">
+            								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+            									<input type="checkbox" id="onrequest_agree" name="onrequest_agree" required="required" />      								
+            									I agree that emporium-voyage consultant can connect me directly. 
+                                                <span></span>
+            								</label>
+            							</div>
+                                    </div> 
+                                </div>
                             </div>
                                                  
                         </div>
@@ -624,7 +642,7 @@ The membership development team develops and implements a strategic, regional-ba
     			</div>
     			<div class="modal-footer">
     				<button type="button" class="btn btn-secondary" id="contractclosebtn" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">SEND</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
     			</div>
                 {!! Form::close() !!} 
     		</div>

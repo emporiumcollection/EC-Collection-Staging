@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Property  <small>Arrivals, Departures &amp; Cancelations</small>
+    
 @stop
 
 @section('breadcrumb')
@@ -50,7 +50,7 @@
                         <select class="form-control" name="dd_arrival_departure" id="dd_arrival_departure">
                             <option value="arrival">Arrival</option>
                             <option value="departure">Departure</option>
-                            <option value="departure">Cancelations</option>
+                            <option value="cancel">Cancelations</option>
                         </select>
                     </div>
 					<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm">
@@ -111,103 +111,7 @@
 			</div>
 		</div> 
 		<!--end:: Widgets/Sale Reports-->
-    </div>	
-    <?php /* <div class="col-sm-12 col-md-8 col-xl-8">
-        <div class="m-portlet m-portlet--mobile ">
-			<div class="m-portlet__head">
-				<div class="m-portlet__head-caption">
-					<div class="m-portlet__head-title">
-						<h3 class="m-portlet__head-text">
-							Guest Arrivals | Departures | Cancelations
-						</h3>
-					</div>
-				</div>
-				<div class="m-portlet__head-tools">
-					<ul class="m-portlet__nav">
-						<li class="m-portlet__nav-item">
-							<div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
-								<a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-									<i class="la la-ellipsis-h m--font-brand"></i>
-								</a>
-								<div class="m-dropdown__wrapper">
-									<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-									<div class="m-dropdown__inner">
-										<div class="m-dropdown__body">
-											<div class="m-dropdown__content">
-												<ul class="m-nav">
-													<li class="m-nav__section m-nav__section--first">
-														<span class="m-nav__section-text">
-															Quick Actions
-														</span>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-share"></i>
-															<span class="m-nav__link-text">
-																Create Post
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-chat-1"></i>
-															<span class="m-nav__link-text">
-																Send Messages
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-multimedia-2"></i>
-															<span class="m-nav__link-text">
-																Upload File
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__section">
-														<span class="m-nav__section-text">
-															Useful Links
-														</span>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-info"></i>
-															<span class="m-nav__link-text">
-																FAQ
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-															<span class="m-nav__link-text">
-																Support
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__separator m-nav__separator--fit m--hide"></li>
-													<li class="m-nav__item m--hide">
-														<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-															Submit
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="m-portlet__body">
-				<!--begin: Datatable -->
-				<div class="m_datatable" id="m_datatable_latest_orders"></div>
-				<!--end: Datatable -->
-			</div>
-		</div>
-    </div>	*/ ?>				
+    </div>		
 			
 </div>
 @stop
@@ -223,6 +127,52 @@
 @section('custom_js_script')    
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
 <script>
-    
+    $(document).ready(function(){            
+        arrival_depart();
+        $(".m_tab1_content").click(function(){
+            $(".m_tab1_content").removeClass('active');
+            $(this).addClass('active');
+            arrival_depart();
+        });
+        function arrival_depart(){
+            //$obj = $(".m_tab1_content.active");
+            var reportfor = $(".m_tab1_content.active").attr('data-reportfor');
+            var arrival_departure = $("#dd_arrival_departure").val();
+            //console.log($obj);
+            $.ajax({
+                url:"{{URL::to('user_arrival_departure')}}",
+                type:'POST',
+                dataType:'json',
+                data:{'reportfor':reportfor, 'arrival_departure':arrival_departure}, 
+                beforeSend: function() {
+                  $("#table_data").html('<tr class="m--align-center"><td colspan="5"><div class="m-loader m-loader--brand"></div></td></tr>');
+                },                   
+                success:function(response){
+                    var html = '';
+                    $("#table_data").html('');
+                    if(response.status == 'success'){
+                        
+                        var reservations = response.reservations;
+                        if(reservations.length > 0){
+                            $.each(reservations, function(key, val){
+                                console.log(val);
+                                 
+                                html += '<tr><td>'+val.first_name+' '+val.last_name+'</td><td class="m--align-center">'+val.total_adults+'</td><td class="m--align-center">'+val.total_child+'</td><td class="m--align-right m--font-brand">'+val.checkin_date+'</td><td class="m--align-right m--font-brand">'+val.checkout_date+'</td></tr>';													
+							});	
+                            			
+                        }else{
+                            html += '<tr class="m--align-center"><td colspan="5">Currently no record found</td></tr>';													
+							
+                        }
+                        $("#table_data").html(html);
+                    }
+                    else{
+                        toastr.error(response.message);
+                    }
+                }
+            });
+        }
+    	
+    });
 </script>
 @stop

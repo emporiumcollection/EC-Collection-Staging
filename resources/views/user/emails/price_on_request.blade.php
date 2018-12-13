@@ -270,6 +270,7 @@ p.gray-tx {
                     		<p>
                     			Email : {{ $email }} <br />
                     			Phone Number : {{ $phoneumber }}<br />
+                                Message : {{$message}}<br />
                     		</p>
                     		
                     		<br /><br /><p> Thank You </p><br /><br />
