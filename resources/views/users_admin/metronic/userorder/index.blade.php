@@ -17,55 +17,16 @@
             <span class="m-nav__link-text breadcrumb-end"> Billings &amp; Contracts </span> 
         </a> 
     </li>
-@stop
-
-@section('style')
-    @parent
-<link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
-<style>
-.pagination{
-   display: inline-block;
-}
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-    z-index: 3;
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #337ab7;
-    cursor: default;
-}
-.pagination>li>a:hover{
-   color: #fff;
-    background-color: #337ab7;
-}
-.pagination>li>a, .pagination>li>span {
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    line-height: 1.42857;
-    text-decoration: none;
-    color: #337ab7;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-left: -1px;
-}
-.pagination>li {
-    display: inline;
-}
-.pagination>.disabled {
-    cursor: not-allowed;
-}
-.pagination>.disabled span {
-    background-color: #f1f4f7;
-    color: #b1b7bd;
-    cursor: not-allowed;
-}
-</style>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="javascript:;" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Invoices </span> 
+        </a> 
+    </li>
 @stop
 
 @section('content')
-    {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
-    
-    
+{{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
 <div class="row">
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <h2>Billings &amp; Contracts</h2>
@@ -75,17 +36,11 @@
     </div>
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
-    </div>     
+    </div>
+    
     <div class="col-sm-12 col-md-12 col-xl-12">    
     
         <div class="m-portlet m-portlet--mobile">
-            <div class="m-portlet__head">
-                <div class="m-portlet__head-caption">
-                    <i class="fa fa-celander"></i>
-                </div>
-                <div class="m-portlet__head-tools"><a href="{{URL::to('hotelinvoices')}}" class="btn btn-primary">Invoices</a></div>
-                
-            </div>
             
             <div class="m-portlet__body">
                 <?php /* @if(count($rowData) > 0)
@@ -94,67 +49,62 @@
                 @if(strpos($_SERVER['REQUEST_URI'],'search') !== false) 
                     <a href="{{ url($pageModule) }}" class="btn btn-xs btn-primary tips"  style="margin-bottom: 10px;" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a> 
                 @endif */ ?>
-                <!--begin: Datatable -->
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-checkable" style="width: 99%;">
                         <thead>
-        					<tr>
-        						<th class="number"> No </th>
-                                @foreach ($tableGrid as $t)
+                			<tr>
+                				<th class="number"> No </th>                				
+                				@foreach ($tableGrid as $t)
                 					@if($t['view'] =='1')				
                 						<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
-                						@if(SiteHelpers::filterColumn($limited ))            						
+                						@if(SiteHelpers::filterColumn($limited ))
+                						
                 							<th>{{ $t['label'] }}</th>			
                 						@endif 
                 					@endif
                 				@endforeach
-                				<th>Commission (%)</th>
-                				<th>Status</th>
+                				<th>Invoice No.</th>
                 				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
-        					</tr>
-        				</thead>
-                        <tbody>
-                            @if(count($rowData) > 0)
-                                @foreach ($rowData as $row)
-                                    <tr>
-                                       <td> {{ ++$i }} </td>
-        					           @foreach ($tableGrid as $field)
-                        				 	{{--*/ $tyu= $field['field']  /*--}}
-                        					 @if($field['view'] =='1')
-                                             	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
-                        					 	@if(SiteHelpers::filterColumn($limited ))
-                        						 <td>					 
-                        						 	{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
-                       								{!! SiteHelpers::gridDisplay($row->$tyu,$field['field'],$conn) !!}						 
-                        						 </td>
-                        						@endif	
-                        					 @endif					 
-                        			   @endforeach
-                                       <td>
-                                       		@if(!empty($row->commission_type))
-                                                @if($row->commission_type == 'partial')
-                                                    {{$row->partial_availability_commission}}
-                                                @endif
-                                                @if($row->commission_type == 'full')
-                                                    {{$row->full_availability_commission}}
-                                                @endif
-                                            @endif		 
-                        				</td>
-                                        <td>
-                        				    @if((bool) $row->status) Active @else Inactive @endif			
-                        				</td>
-                                        <td>
-                    						<a href="{{ URL::to('download_contract/'.$row->id)}}" class="tips btn btn-sm btn-primary" title="bestellung"><i class="fa  icon-file-pdf "></i></a>	
-                    				    </td>	
-                                    </tr>
-                                @endforeach
-                            @else
-                               <tr><td colspan="7">No records found</td></tr>
-                            @endif
+                			  </tr>
+                        </thead>
+                
+                        <tbody>        						
+                            @foreach ($rowData as $row)
+                                <tr>
+                					<td width="30"> {{ ++$i }} </td>
+                				 @foreach ($tableGrid as $field)
+                					 @if($field['view'] =='1')
+                					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
+                					 	@if(SiteHelpers::filterColumn($limited ))
+                						 <td>
+                							<?php $fld = $field['field']; ?>
+                						 	@if($field['attribute']['image']['active'] =='1')
+                								{!! SiteHelpers::showUploadedFile($row->$fld,$field['attribute']['image']['path']) !!}
+                							@else	
+                								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
+                								{!! SiteHelpers::gridDisplay($row->$fld,$field['field'],$conn) !!}	
+                							@endif						 
+                						 </td>
+                						@endif	
+                					 @endif					 
+                				 @endforeach
+                				 <td>{{$row->invoice_num}}</td>
+                				 <td width="10%">
+                					 	
+                						<a href="{{ URL::to('ordershow/'.$row->id)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
+                						
+                						<a href="{{ URL::to('userorder_downloadinvoicepdf/'.$row->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa  icon-file-pdf "></i></a>
+                				</td>				 
+                                </tr>
+                				
+                            @endforeach
+                              
                         </tbody>
+                      
                     </table>
+               	<input type="hidden" name="md" value="" />
                 </div>
-                <!--end: Datatable -->
+                
                 @if(count($rowData) > 0)
                     <div class="row">
                         <div class="col-sm-12 col-md-5">
@@ -212,12 +162,12 @@
                             {!! $pagination->appends($pager)->render() !!}
                         </div>
                     </div>
-                @endif                
+                @endif 
+                
             </div>
         </div>
-    </div>
+    </div>     
 </div>
-
 <div class="modal fade" id="sximo-modal" tabindex="-1" role="dialog" aria-hidden="false">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -277,12 +227,5 @@
         </div>
       </div>
    </div>
-</div>
-	
-@stop
-
-@section('custom_js_script')
-<script>
-
-</script>
+</div>		
 @stop

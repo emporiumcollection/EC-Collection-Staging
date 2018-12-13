@@ -1021,6 +1021,155 @@ class UserorderController extends Controller {
 			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
 		}
         
-    }   
-       
+    } 
+    
+    public function hotelinvoices( Request $request )
+	{        
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
+		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+		// End Filter sort and order for query 
+		// Filter Search for query		
+		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+        $uid = \Auth::user()->id;
+
+        $filter .= " AND (user_id = '".$uid."')" ;
+		
+		$page = $request->input('page', 1);
+		$params = array(
+			'page'		=> $page ,
+			'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
+			'sort'		=> $sort ,
+			'order'		=> $order,
+			'params'	=> $filter,
+			
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );		
+		
+		// Build pagination setting
+		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
+		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
+		$pagination->setPath('userorder');
+		
+		$this->data['rowData']		= $results['rows'];
+		// Build Pagination 
+		$this->data['pagination']	= $pagination;
+		// Build pager number and append current param GET
+		$this->data['pager'] 		= $this->injectPaginate();	
+		// Row grid Number 
+		$this->data['i']			= ($page * $params['limit'])- $params['limit']; 
+		// Grid Configuration 
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['tableForm'] 	= $this->info['config']['forms'];
+		$this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);		
+		// Group users permission
+		$this->data['access']		= $this->access;
+        
+		// Detail from master if any
+		
+		// Master detail link if any 
+		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+		// Render into template
+		//return view('userorder.index',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        if(strlen($is_demo6) > 0){
+            $file_name = $is_demo6.'.userorder.index';        
+            return view($file_name, $this->data);
+        }else{            
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');        
+        }
+	}  
+    public function ordershow(Request $request, $id = null){
+        $row = $this->model->getRow($id);
+		if($row)
+		{
+			$this->data['row'] =  $row;
+		} else {
+			$this->data['row'] = $this->model->getColumnTable('tb_orders'); 
+		}
+		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['grid']);
+		
+		$this->data['id'] = $id;
+		$this->data['access']		= $this->access;
+		
+		$orderdetail = $this->data['row'];
+		$order_item_detail = array();
+		$this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+		$order_item = \DB::table('tb_order_items')->where('order_id', $id)->get();
+		if(!empty($order_item))
+		{
+			$o=0;
+			foreach($order_item as $oitem)
+			{
+				$order_item_detail[$o] = $oitem;
+				$order_item_detail[$o]->pckname = 'Advertisement';
+				$order_item_detail[$o]->pckprice = 0;
+				$order_item_detail[$o]->pckcontent = '';
+				$order_item_detail[$o]->package_modules = '';
+				$order_item_detail[$o]->qty = 1;
+				if($oitem->package_type=='hotel')
+				{
+					$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+					if(!empty($pchkdet))
+					{
+						$order_item_detail[$o]->pckname = $pchkdet->package_title;
+						$order_item_detail[$o]->pckprice = $pchkdet->package_price;
+
+						foreach (json_decode($oitem->package_data) as $key => $value) {
+                             
+                                     $order_item_detail[$o]->pckname = $value->package_title;
+                                   	 $order_item_detail[$o]->pckprice = $value->package_price;
+                                     $order_item_detail[$o]->package_modules = $value->package_modules;
+                           }
+					}
+				}
+				elseif($oitem->package_type=='advert')
+				{
+					$pacdata = json_decode($oitem->package_data, true);
+					$getspac = \DB::table('tb_advertisement_space')->where('id', $pacdata['id'])->first();
+					$adsdata = '';
+					$catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
+					if(!empty($catdet))
+					{
+						$adsdata .= 'Category: '.$catdet->category_name.', ';
+					}
+					$adsdata .= 'position: '.$pacdata['ads_position'];
+					$adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
+					$adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+					if($pacdata['ads_pacakge_type']=='cpc')
+					{
+						$order_item_detail[$o]->pckprice = $getspac->space_cpc_price;
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+					}
+					elseif($pacdata['ads_pacakge_type']=='cpm')
+					{
+						$order_item_detail[$o]->pckprice = $getspac->space_cpm_price;
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+					}
+					elseif($pacdata['ads_pacakge_type']=='cpd')
+					{
+						$order_item_detail[$o]->qty = $pacdata['ads_days'];
+						$order_item_detail[$o]->pckprice = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+					}
+					$order_item_detail[$o]->pckcontent = $adsdata;
+				}
+				$o++;
+			}
+		}
+		$this->data['order_item_detail'] = $order_item_detail;
+		
+		$this->data['userDetail'] = \DB::table('tb_user_company_details')->where('user_id', $orderdetail->user_id)->first();
+		
+		//return view('userorder.view',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        if(strlen($is_demo6) > 0){
+            $file_name = $is_demo6.'.userorder.view';        
+            return view($file_name, $this->data);
+        }else{            
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');        
+        }
+    }  
 }

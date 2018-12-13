@@ -1013,6 +1013,7 @@ class HotelMembershipController extends Controller {
     }
     public function packages(Request $request) {
         $group_id = \Session::get('gid');
+        $uid = \Session::get('uid');
         $this->data['packages'] = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();        
         $packages_ids = array();
         foreach($this->data['packages'] as $si_package){
@@ -1034,13 +1035,28 @@ class HotelMembershipController extends Controller {
             $contracts = \CommonHelper::get_default_contracts('packages','default',0,$packages_ids);
             $this->data['common_contracts'] = $contracts['common'];
             $this->data['package_contracts'] = $contracts['packages_wise'];
-        }            
+        } 
+        $ordered_packages = array();
+        $order_items = \DB::table('tb_order_items')->where('user_id', $uid)->groupBy('package_id')->get(); 
+        if(!empty($order_items)){
+            foreach($order_items as $si_order){
+                $ordered_packages[] = $si_order->package_id;
+            }
+        }
+        $this->data['order_items'] = $ordered_packages;      
+        //echo "<pre>";   
+        //print_r($ordered_packages);      
+        //die;           
         //End
         //echo "<pre>"; print_r($this->data['common_contracts']);print_r($this->data['package_contracts']);die;
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.packages':'frontend.hotel_membership.packages';      
-        
-        return view($file_name, $this->data);
+        if(strlen($is_demo6) > 0){
+            $file_name = $is_demo6.'.frontend.hotel_membership.packages';        
+            return view($file_name, $this->data);
+        }else{            
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');        
+        }
         //return view('frontend.hotel_membership.hotel_package', $this->data);
     }
 }

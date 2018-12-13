@@ -399,6 +399,10 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('conatinerflip/{filename}', 'PropertiesController@conatinerflip');
     
     Route::get('flipviewpdf/{filename}', 'UserorderController@flipviewpdf');
+    
+    Route::get('hotelinvoices', 'UserorderController@hotelinvoices');
+    
+    Route::get('ordershow/{id}', 'UserorderController@ordershow');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

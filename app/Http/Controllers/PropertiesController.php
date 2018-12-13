@@ -4598,9 +4598,13 @@ function property_images_wetransfer(Request $request) {
         $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.arrivaldeparture':'properties.arrivaldeparture'; 
-        
-        return view($file_name, $this->data);
+        if(strlen($is_demo6) > 0){
+            $file_name = $is_demo6.'.properties.arrivaldeparture';         
+            return view($file_name, $this->data);
+        }else{            
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');        
+        }
     }
     function advertising(Request $request){
         $u_id = \Session::get('uid');

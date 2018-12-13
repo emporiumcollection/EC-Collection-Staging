@@ -40,10 +40,12 @@
     </div> */ ?>
 	<div class="row">
         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-            <h2>Modules/Packages</h2>
+            <h2>Membership &amp; Support Services</h2>
         </div> 
         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+            This department is responsible for the membership development engagement, quality compliance and the measurement of key performance indicators. This department also supports contract administration & agreement renewal.
+            <br /><br />
+The membership development team develops and implements a strategic, regional-based acquisition plan to secure new member hotels/luxury partners and enhance the overall Emporium brand presence. The group actively solicits leads, collaborates with sales offices to evaluate potential new members, and conduct detailed analysis on each hotel applicant before submitting to the executive committee for approval. The objective is to establish mutually beneficial and long-term partnership with our member hotels.
         </div>
         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
             <hr />
@@ -141,7 +143,11 @@
                                                                                                                                                          
                                                 <div class="col-lg-12 m--align-right">
                                                     <div>
+                                                    <?php if(in_array($package->id, $order_items)){ ?>
+                                                            <a href="{{URL::to('hotelinvoices')}}" class="btn btn-success">View Invoice</a>
+                                                    <?php }else{ ?>
                                                         <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
+                                                    <?php } ?>
                                                     </div>
                                                 </div>
                                                
@@ -150,7 +156,7 @@
             								</div>
             							</div>
             						</div>
-                                        {{--*/ $m++;  /*--}}
+                                    {{--*/ $m++;  /*--}}
                                     @endif
                                     {{--*/ $k++;  /*--}}
                                     @endforeach
@@ -211,7 +217,11 @@
                                                         
                                                         <div class="col-lg-12 m--align-right">
                                                             <div>
+                                                            <?php if(in_array($package->id, $order_items)){ ?>
+                                                                    <a href="{{URL::to('hotelinvoices')}}" class="btn btn-success">View Invoice</a>
+                                                            <?php }else{ ?>
                                                                 <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                            <?php } ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -299,7 +309,11 @@
                                 
                                                         <div class="col-lg-12 m--align-right">
                                                             <div>
+                                                                <?php if(in_array($package->id, $order_items)){ ?>
+                                                                        <a href="{{URL::to('hotelinvoices')}}" class="btn btn-success">View Invoice</a>
+                                                                <?php }else{ ?>
                                                                 <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -370,7 +384,11 @@
                                                         
                                                         <div class="col-lg-12 m--align-right">
                                                             <div>
+                                                            <?php if(in_array($package->id, $order_items)){ ?>
+                                                                    <a href="{{URL::to('hotelinvoices')}}" class="btn btn-success">View Invoice</a>
+                                                            <?php }else{ ?>    
                                                                 <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                            <?php } ?>
                                                             </div>
                                                         </div>
                                                     </div>
