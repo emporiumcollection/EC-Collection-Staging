@@ -436,7 +436,7 @@ h5 {
 
 .h6,
 h6 {
-    font-size: 1rem
+    font-size: 1.25rem
 }
 
 .lead {
@@ -26947,6 +26947,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 
 .m-portlet.m-portlet--bordered-semi .m-portlet__head {
     border: 0
+    background-color: #E3C2BD;
 }
 
 .m-portlet.ui-sortable-helper {
@@ -34717,7 +34718,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .form-control.m-input--solid {
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     border-color: #f4f5f8;
     color: #575962
 }
@@ -34760,7 +34761,7 @@ th>.m-checkbox.m-checkbox--single {
 .input-group .input-group-append>.input-group-text,
 .input-group .input-group-prepend>.input-group-text {
     border-color: #ebedf2;
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     color: #575962
 }
 
@@ -34780,7 +34781,7 @@ th>.m-checkbox.m-checkbox--single {
 
 .input-group.m-input-group--solid .form-control {
     border-color: #ebedf2;
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     color: #575962
 }
 
@@ -34820,7 +34821,7 @@ th>.m-checkbox.m-checkbox--single {
 
 .custom-file .custom-file-label:after {
     cursor: pointer;
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     border-left: 1px solid #ebedf2
 }
 
@@ -39332,7 +39333,7 @@ th>.m-checkbox.m-checkbox--single {
 
 .jstree-default .jstree-hovered {
     border: 0;
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     -webkit-box-shadow: none;
     box-shadow: none
 }
@@ -39346,7 +39347,7 @@ th>.m-checkbox.m-checkbox--single {
 .jstree-default .jstree-wholerow-hovered,
 .jstree-default.jstree-wholerow .jstree-wholerow-hovered {
     border: 0;
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     -webkit-box-shadow: none;
     box-shadow: none
 }
@@ -40845,7 +40846,7 @@ select.m-bootstrap-select {
 }
 
 .m-bootstrap-select.bootstrap-select.m-bootstrap-select--solid>.dropdown-toggle {
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     border-color: #f4f5f8
 }
 
@@ -41177,7 +41178,7 @@ select.m-select2 {
 
 .m-select2.m-select2--solid .select2-container--default .select2-selection--multiple,
 .m-select2.m-select2--solid .select2-container--default .select2-selection--single {
-    background-color: #f4f5f8;
+    background-color: #ede7e1;
     border-color: #f4f5f8
 }
 
@@ -54850,7 +54851,7 @@ i.m-menu__link-icon.fa {
     background: #fafafa;
 }
 .fun-bg-gray{
-    background: #f2f2f2;
+    background: #EDE7E1;
     padding: 10px;
 }
 .gray-seprator{
@@ -54876,10 +54877,10 @@ i.m-menu__link-icon.fa {
     font-size: 12px;
 }
 .alert.m-alert--outline.alert-danger.m-alert--icon-solid .m-alert__icon{
-    background: #efefef;
+    background: #EDE7E1;
 }
 .alert.m-alert--outline.alert-danger.m-alert--icon-solid .m-alert__icon span{
-    border-left-color: #efefef;
+    border-left-color: #EDE7E1;
 }
 .breadcrumb-end{
     text-decoration: underline;
@@ -55886,4 +55887,17 @@ i.m-menu__link-icon.fa {
 }
 .bg_white{
     background: #fff !important;
+}
+
+.hotel_name {
+    position: relative;
+    color: #000;
+    background: #EDE7E1;
+    /* width: 50%; */
+    text-align: center;
+    margin: 0px auto;
+    /* padding-top: 50px; */
+    /* margin-top: 50px; */
+    font-size: 25px;
+    opacity: 0.6;
 }
