@@ -54487,12 +54487,17 @@ body.m-content--skin-light2 {
     background: transparent;
 }
 
+
 @media (max-width:1024px) {
     .m-subheader-search .m-input-icon {
-        width: auto;
+        /* width: auto; */
         margin-bottom: 10px
     }
+    .m-subheader-search .m-subheader-search__title {        
+        margin-bottom: 15px;
+    }    
 }
+
 
 .m-footer {
     padding: 7px 30px;
@@ -55900,4 +55905,33 @@ i.m-menu__link-icon.fa {
     /* margin-top: 50px; */
     font-size: 25px;
     opacity: 0.6;
+}
+@media (max-width:1024px) {    
+    .setting-box-advert1{
+        width: 45%;
+    }
+    .setting-box-advert2{
+        width: 45%;
+    }
+    .setting-box-advert3{
+        width: 45%;
+    }
+    .setting-box-advert4{
+        width: 45%;
+    }
+    .setting-box-advert5{
+        width: 45%;
+    }
+    .setting-box-advert6{
+        width: 45%;
+    }
+    .setting-box-advert7{
+        width: 45%;
+    }
+    .setting-box-advert8{
+        width: 45%;
+    }    
+}
+.arrival_departure{
+    margin-right: 5px;
 }
