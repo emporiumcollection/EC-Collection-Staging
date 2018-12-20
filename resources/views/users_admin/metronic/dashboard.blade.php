@@ -32,7 +32,7 @@
     			<div class="m-grid__item m-grid__item--middle search-btn-top-margin">
     				<div class="m--margin-top-20 m--visible-tablet-and-mobile"></div>
     				<button type="button" class="btn m-btn--pill m-subheader-search__submit-btn">
-    					Search Bookings
+    					Search Bookings rrrrr
     				</button>
     			</div>
     		</div>
@@ -417,13 +417,13 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     .carousel-inner {
       position: relative;
       width: 100%;
-      height:400px;
+      /*height:400px;*/
       overflow: hidden;
     }
     
     .carousel-inner > .item {      
-      position: absolute;
-      height:400px;
+      /*position: absolute;
+      height:400px;*/
       display: none;
       -webkit-transition: 0.6s ease-in-out left;
               transition: 0.6s ease-in-out left;
@@ -768,6 +768,18 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
         padding: 0px;
         max-width: 350px;
     }
+    .t-check-in .t-date-info-title{
+        left: 38px;
+    }
+    .t-check-out .t-date-info-title{
+        left: 38px;
+    }
+    @media (max-width:1024px) {    
+        .rad-carousel{
+            margin-bottom: 30px;
+        }
+    }
+    
 /* End */
     </style>
 @endsection
@@ -887,7 +899,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   var $i = $slider.find($slide + '.active').index();
                                       
                   slides().eq($i).removeClass('active');
-                  slides().eq($i).fadeOut($transition_time);
+                  slides().eq($i).fadeOut(0);
             
                   if (slides().length == $i + 1) $i = -1; // loop to start
             

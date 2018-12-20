@@ -13,7 +13,6 @@
             <span class="m-nav__link-text breadcrumb-end"> Quality Assurance </span> 
         </a> 
     </li>
-    <li class="m-nav__separator"> - </li>
     
 @stop
 
@@ -30,19 +29,14 @@ The program ensures the member Hotels/Luxury Partners continue to uphold the hig
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
     </div>    
-    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-right padding-30">
-        <div class="row">
-            <div class="col-sm-2 col-md-7 col-xl-7 m--align-right"></div>            
-            <div class="col-sm-5 col-md-2 col-xl-2 m--align-right">
-                <select class="form-control" name="dd_report">
-                    <option>Select Report</option>
-                </select>
-            </div>
-            <div class="col-sm-5 col-md-3 col-xl-3 m--align-right">
-                <div class="col-md-12 col-xs-12 m--align-right"> 
-        <a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Quality-Assurance-help.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Documentation</a>
-    </div>
-            </div>
+    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30">        
+        <div style="float: right; margin: 0px 0px 0px 5px;">
+            <a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Quality-Assurance-help.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Documentation</a>
+        </div>
+        <div style="width: 20%; float: right;">        
+            <select class="form-control" name="dd_report">
+                <option>Select Report</option>
+            </select>
         </div>
     </div>            
     <div class="col-sm-12 col-md-4 col-xl-4">

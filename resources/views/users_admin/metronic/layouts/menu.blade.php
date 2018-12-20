@@ -50,7 +50,7 @@
                             
                             
                             <li class="m-menu__item m-menu__item--submenu m-menu__item" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                                    <a href="#" class="m-menu__link  m-menu__toggle ">                                    
+                                    <a href="{{URL::to('salesreport')}}" class="m-menu__link  m-menu__toggle ">                                    
                                         <i class="m-menu__link-icon flaticon-statistics"></i>
                                         <span class="m-menu__link-text">
                         						Sales &amp; Marketing
