@@ -12,11 +12,42 @@
     			Quick Reservation Search
     		</span>
     	</h2>
-    	<form class="m-form">
+    	<form class="m-form booking-form" action="{{URL::to('searchbooking')}}" method="get" id="searchBookingForm" name="searchBookingForm">
     		<div class="m-grid m-grid--ver-desktop m-grid--desktop">
     			<div class="m-grid__item m-grid__item--middle">
     				<div class="m-input-icon m-input-icon--fixed m-input-icon--fixed-large m-input-icon--right">
-    					<input type="text" class="form-control" placeholder="Booking Number">    					
+                        <input type="text" name="s" data-action="auto-suggestion-booking" class="form-control" placeholder="Booking Number">
+    					   					
+    				</div>
+    				<div class="m-input-icon m-input-icon--fixed m-input-icon--fixed-large m-input-icon--right">
+                        <input name="from" type="text" class="form-control datepic" placeholder="From" />
+    				</div>
+                    <div class="m-input-icon m-input-icon--fixed m-input-icon--fixed-large m-input-icon--right">
+                        <input name="to" type="text" class="form-control datepic" placeholder="To" />				
+    				</div>
+    			</div>
+    			<div class="m-grid__item m-grid__item--middle">
+    				<div class="m--margin-top-20 m--visible-tablet-and-mobile"></div>
+    				<button type="submit" class="btn m-btn--pill m-subheader-search__submit-btn">
+    					Search Bookings
+    				</button>
+    			</div>
+    		</div>
+    	</form>
+    </div>
+    <?php /* <div class="m-subheader-search">
+        <h2 class="m-subheader-search__title">
+    		Recent Bookings
+    		<span class="m-subheader-search__desc">
+    			Quick Reservation Search
+    		</span>
+    	</h2>
+    	<form class="m-form booking-form" action="{{URL::to('searchbooking')}}" method="get" id="searchBookingForm" name="searchBookingForm">
+    		<div class="m-grid m-grid--ver-desktop m-grid--desktop">
+    			<div class="m-grid__item m-grid__item--middle">
+    				<div class="m-input-icon m-input-icon--fixed m-input-icon--fixed-large m-input-icon--right">
+                        <input type="text" name="s" data-action="auto-suggestion-booking" class="form-control" placeholder="Booking Number">
+    					   					
     				</div>
     				<div class="m-input-icon m-input-icon--fixed-large m-input-icon--fixed-md m-input-icon--right search-cal-top">
     					<div class="calendarbox">
@@ -31,13 +62,13 @@
     			</div>
     			<div class="m-grid__item m-grid__item--middle search-btn-top-margin">
     				<div class="m--margin-top-20 m--visible-tablet-and-mobile"></div>
-    				<button type="button" class="btn m-btn--pill m-subheader-search__submit-btn">
-    					Search Bookings rrrrr
+    				<button type="submit" class="btn m-btn--pill m-subheader-search__submit-btn">
+    					Search Bookings
     				</button>
     			</div>
     		</div>
     	</form>
-    </div>
+    </div> */?>
 @stop
 
 @section('breadcrumb')
@@ -81,12 +112,12 @@
                         $final_url = '#';
                         $ext_url = trim($blog_row->external_link);
                         if(strlen($ext_url)>0){                        
-                            if(strpos($ext_url, 'http://') !== 0) {
+                            if(strpos($ext_url, 'http://') !== 0 && strpos($ext_url, 'https://') !== 0 ) {
                               $final_url = 'http://' . $ext_url;
                             } else {
                               $final_url = $ext_url;
                             }  
-                        } 
+                        }                       
                     ?>
                     <div class="item {{($key == 0)? 'active' : ''}}">
                     	<div class="row">
@@ -383,9 +414,10 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 @section('style')
     @parent
     <link href="//www.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" /> 
     <link href="{{ asset('themes/emporium/daterangepicker/css/themes/t-datepicker-bluegrey.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   
     <style>
     	.cursor{cursor:col-resize;}
     	.selectedCell{background:pink;}
@@ -787,12 +819,23 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 {{-- For custom style  --}}
 @section('custom_js_script')
     @parent      
+    <script type="text/javascript">var BaseURL = '{{ url() }}'; </script>    
     <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
+    <script src="{{ asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
+    <script src="{{ asset('themes/emporium/js/custom/common.js') }}"></script>
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script src="{{ asset('themes/emporium/daterangepicker/js/t-datepicker.js') }}"></script>
     <script>
         $(document).ready(function(){
+            
+            $('.datepic').datepicker({
+				numberOfMonths: 1,
+				showButtonPanel: true,
+                dateFormat: 'mm-dd-yy'				
+		    });
+            
             <?php if($logged_user->i_agree == 0 || $logged_user->privacy_policy == 0 || $logged_user->cookie_policy == 0){ ?>
                     $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
             <?php }else if($logged_user->new_user == 1){ ?>
