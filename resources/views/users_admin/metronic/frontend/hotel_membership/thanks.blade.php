@@ -73,7 +73,7 @@
                                     <div class="row" style="margin-left: 0px;">
                                         <div class="setting-box-advert1">
                                             <a href="{{ URL::to('properties') }}">
-                                                <i class="grid_icon flaticon-imac"></i>																	
+                                                <i class="grid_icon flaticon-cogwheel-2"></i>																	
                                     			<span class="grid_link-text">
                                     				Property Management
                                     			</span>

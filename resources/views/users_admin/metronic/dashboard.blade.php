@@ -190,7 +190,7 @@
                     <div class="row" style="margin-left: 0px;">
                         <div class="setting-box-advert1">
                             <a href="{{ URL::to('properties') }}">
-                                <i class="grid_icon flaticon-imac"></i>																	
+                                <i class="grid_icon flaticon-cogwheel-2"></i>																	
                     			<span class="grid_link-text">
                     				Property Management
                     			</span>
@@ -942,7 +942,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
               slides().first().fadeIn($transition_time);
             
               // auto scroll 
-              $interval = setInterval( 
+              /*$interval = setInterval( 
                 function(){
                 if(slides().length > 1){
                   var $i = $slider.find($slide + '.active').index();
@@ -957,7 +957,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   }
                 }
                 , $transition_time +  $time_between_slides 
-              );
+              );*/
             
             
             $("#b2cdash_carousel .left").click(function(){
@@ -998,7 +998,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
               slides2().first().fadeIn($transition_time2);
             
               // auto scroll 
-              $interval = setInterval( 
+              /*$interval = setInterval( 
                 function(){
                 if(slides2().length > 1){
                   var $i = $slider2.find($slide2 + '.active').index();
@@ -1013,7 +1013,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   }
                 }
                 , $transition_time2 +  $time_between_slides2
-              );
+              );*/
             
             
             $("#b2cblog_carousel .left").click(function(){
