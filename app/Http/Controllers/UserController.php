@@ -1162,6 +1162,8 @@ class UserController extends Controller {
             'username' => 'required|alpha_num|min:2',
             'contractSignCheck' => 'required',
             'hotelinfo_name' => 'required',
+            'company_name' => 'required',
+            'company_email' => 'required',                      
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -1257,17 +1259,34 @@ class UserController extends Controller {
             }
             
             $hotelinfo_vat_no = trim($request->input('hotelinfo_vat_no'));
-            if(!empty($hotelinfo_vat_no)){
+            
+            $company_name = trim($request->input('company_name'));
+            $company_owner = trim($request->input('company_owner'));
+            $contact_person = trim($request->input('contact_person'));
+            $company_email = trim($request->input('company_email'));
+            $company_address = trim($request->input('company_address'));
+            $company_city = trim($request->input('company_city'));
+            $company_country = trim($request->input('company_country'));
+            
+            
+            //if(!empty($hotelinfo_vat_no)){
                 $obj_comp = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
                 $company_data = array(
-                    'company_tax_number' => $hotelinfo_vat_no
+                    'company_tax_number' => $hotelinfo_vat_no,
+                    'company_name' => $company_name,
+                    'company_owner' => $company_owner,
+                    'contact_person' => $contact_person,
+                    'company_email' => $company_email,
+                    'company_address' => $company_address,
+                    'company_city' => $company_city,
+                    'company_country' => $company_country                    
                 );
                 if(empty($obj_comp)){
                     \DB::table('tb_user_company_details')->insertGetId($company_data);
                 }else{
                     \DB::table('tb_user_company_details')->where('id', $obj_comp->id)->update($company_data);
                 }
-            }
+            //}
             
             
             $return_array['status'] = 'success';
@@ -1276,6 +1295,7 @@ class UserController extends Controller {
         } else {
             
             $return_array['status'] = 'error';
+            $return_array['va'] = $validator->errors();
             $return_array['message'] = 'Profile not saved errors occurred!';
             
         }

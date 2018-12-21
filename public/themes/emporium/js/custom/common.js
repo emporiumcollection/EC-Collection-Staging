@@ -208,7 +208,56 @@ $(document).ready(function () {
             .appendTo( ul );
         };
     }
+    
+    if($('[data-action="auto-suggestion-booking"]').length) {   
+        $('[data-action="auto-suggestion-booking"]').autocomplete({
+            source: function (request, response) {
+                var datObj = {};
+                datObj.keyword = request.term;
+                var params = $.extend({}, doAjax_params_default);
+                params['url'] = BaseURL + '/destination/auto-suggestion-ajax-booking';
+                params['data'] = datObj;
+                params['dataType'] = 'jsonp';
+                params['successCallbackFunction'] = function (data) {
+                    response(data);
+                };
+                doAjax(params);
+            },
+            minLength: 2,
+            select: function (event, ui) {
+                //log("Selected: " + ui.item.label + " aka " + ui.item.id);
 
+                if(ui.item.type == 'category') {
+                    location.href=BaseURL + '/' + ui.item.id;
+                } else if(ui.item.type == 'restro') {
+                    location.href=BaseURL + '/restaurants/' + ui.item.id;
+                } else if(ui.item.type == 'bar') {
+                    location.href=BaseURL + '/bars/' + ui.item.id;
+                } else if(ui.item.type == 'spa') {
+                    location.href=BaseURL + '/spas/' + ui.item.id;
+                } else {}
+            }
+        })
+        .autocomplete( "instance" )._renderItem = function( ul, item ) {
+            var destIcon = '';
+            if(item.type == 'category') {
+                destIcon = '<i class="iconsheet icon-collections"></i>';
+            } else if(item.type == 'destination') {
+                destIcon = '<i class="iconsheet icon-destinations"></i>';
+            } else if(item.type == 'restro') {
+                destIcon = '<i class="iconsheet icon-restaurant"></i>';
+            } else if(item.type == 'bar') {
+                destIcon = '<i class="iconsheet icon-bar"></i>';
+            } else {
+                destIcon = '<i class="iconsheet icon-spa"></i>';
+            }
+
+            return $('<li>')
+            .append( destIcon + item.label )
+            .appendTo( ul );
+        };
+    }
+    
    /*
    * For Global Search
    */

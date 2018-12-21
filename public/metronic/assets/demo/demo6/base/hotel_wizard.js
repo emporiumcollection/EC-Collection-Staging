@@ -93,6 +93,18 @@ var WizardDemo = function () {
                 hotelinfo_name: {
                     required: true,                    
                 }, 
+                company_name:{
+                    required: true,
+                },
+                company_email:{
+                    required: true,
+                },
+                company_city:{
+                    required: true,
+                },
+                company_country:{
+                    required: true,
+                },
                 /*hotelinfo_status: {
                     required: true,                    
                 }, 
@@ -266,6 +278,14 @@ function wizard_step_2(){
     fdata.append("hotelinfo_city",$("input[name=hotelinfo_city]").val());
     fdata.append("hotelinfo_country",$("input[name=hotelinfo_country]").val());
     fdata.append("hotelinfo_website",$("input[name=hotelinfo_website]").val());
+    
+    fdata.append("company_name",$("input[name=company_name]").val());
+    fdata.append("company_owner",$("input[name=company_owner]").val());
+    fdata.append("contact_person",$("input[name=contact_person]").val());
+    fdata.append("company_email",$("input[name=company_email]").val());
+    fdata.append("company_address",$("input[name=company_address]").val());
+    fdata.append("company_city",$("input[name=company_city]").val());
+    fdata.append("company_country",$("input[name=company_country]").val());    
     
     fdata.append("european", $("input[name=european]:checked").val());
     fdata.append("hotelinfo_vat_no", $("input[name=hotelinfo_vat_no]").val());

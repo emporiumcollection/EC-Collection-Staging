@@ -1,4 +1,4 @@
-@extends('users_admin.traveller.layouts.app')
+@extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
    
@@ -20,21 +20,21 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text breadcrumb-end"> DL-<?php echo date('d.m.y', strtotime($row->created_date)); ?>-{{ $row->id }} </span> 
+            <span class="m-nav__link-text breadcrumb-end"> {{$row->booking_number}} </span> 
         </a> 
     </li>
 @stop
 
 @section('content')
 <div class="row"> <?php //echo "<pre />"; print_r($row); ?>
-    <div class="col-sm-12 col-md-12 m--align-right"><a href="{{Url::to('traveller/bookings')}}">Back to Reservation</a></div>
+    <div class="col-sm-12 col-md-12 m--align-right"><a href="#">Back to Reservation</a></div>
     <div class="col-sm-12 col-md-12">
         <div class="m-portlet m-portlet--full-height">
     		
     		<div class="m-portlet__body">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <h4>DL-<?php echo date('d.m.y', strtotime($row->created_date)); ?>-{{ $row->id }}</h4>
+                    <div class="col-sm-12 col-md-12">                        
+                        <h4><?php echo $row->booking_number; ?></h4>
                     </div>
                 </div>
     			<!--begin::Section-->

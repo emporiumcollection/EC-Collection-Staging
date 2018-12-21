@@ -392,4 +392,31 @@ class DestinationController extends Controller {
 		
 		return response()->json($res);
 	}
+    public function getAutoSuggestionAjaxBooking(Request $request) {
+		$uid = \Session::get('uid');
+		$keyword = trim($request->keyword);
+
+		$dataArr = $respns = array(); 
+		$d=0;
+		if($keyword!='')
+		{
+            $fetchdestinations = DB::table('tb_reservations')->select('id', 'booking_number')->where('client_id', $uid)->where('booking_number', 'like', '%'.$keyword.'%')->get();
+
+            if(!empty($fetchdestinations))
+            {
+                foreach($fetchdestinations as $destinations)
+				{
+					$dataArr[$d]['id'] = $destinations->id;
+					$dataArr[$d]['label'] = $destinations->booking_number;
+					$dataArr[$d]['value'] = $destinations->booking_number;					
+					$d++;
+				}
+            }			
+					
+		}
+
+		$ajxData = json_encode($dataArr);
+		echo $request->callback.'('.$ajxData.')';
+    }
+	
 }

@@ -40,69 +40,7 @@
 						</h3>
 					</div>
 				</div>
-				<div class="m-portlet__head-tools">
-					<ul class="m-portlet__nav">
-						<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
-							<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
-								Select Range
-							</a>
-							<div class="m-dropdown__wrapper" style="z-index: 101;">
-								<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 47px;"></span>
-								<div class="m-dropdown__inner">
-									<div class="m-dropdown__body">
-										<div class="m-dropdown__content">
-											<ul class="m-nav">
-												<li class="m-nav__section m-nav__section--first">
-													<span class="m-nav__section-text">
-														Quick Actions
-													</span>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-share"></i>
-														<span class="m-nav__link-text">
-															Activity
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-chat-1"></i>
-														<span class="m-nav__link-text">
-															Messages
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-info"></i>
-														<span class="m-nav__link-text">
-															FAQ
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-														<span class="m-nav__link-text">
-															Support
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__separator m-nav__separator--fit"></li>
-												<li class="m-nav__item">
-													<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-														Cancel
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
+				
 			</div>
 			<div class="m-portlet__body">
 				<div class="m-widget21" style="min-height: 420px">
@@ -118,10 +56,6 @@
 									<span class="m-widget21__title">
 										Sales
 									</span>
-									<br>
-									<span class="m-widget21__sub">
-										IPO, Margins, Transactions
-									</span>
 								</div>
 							</div>
 						</div>
@@ -136,16 +70,22 @@
 									<span class="m-widget21__title">
 										Commission Paid
 									</span>
-									<br>
-									<span class="m-widget21__sub">
-										Expenses, Loses, Profits
-									</span>
+									
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="m-widget21__chart m-portlet-fit--sides" style="height:310px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-						<canvas id="m_chart_adwords_stats3" width="502" height="310" class="chartjs-render-monitor" style="display: block; width: 502px; height: 310px;"></canvas>
+					<div class="m-widget21__chart m-portlet-fit--sides" style="height:310px;">
+                        <div class="col-sm-12" id="no_data" style="display: none;"></div>
+                        <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                            </div>
+                        </div>
+						<canvas id="m_chart_salesreport_stats" width="502" height="310" class="chartjs-render-monitor" style="display: block; width: 502px; height: 310px;"></canvas>
 					</div>
 				</div>
 			</div>
@@ -162,88 +102,58 @@
 						</h3>
 					</div>
 				</div>
-				<?php /*<div class="m-portlet__head-tools">
-					<ul class="m-portlet__nav">
-						<li class="m-portlet__nav-item">
-							<div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
-								<a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-									<i class="la la-ellipsis-h m--font-brand"></i>
-								</a>
-								<div class="m-dropdown__wrapper">
-									<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-									<div class="m-dropdown__inner">
-										<div class="m-dropdown__body">
-											<div class="m-dropdown__content">
-												<ul class="m-nav">
-													<li class="m-nav__section m-nav__section--first">
-														<span class="m-nav__section-text">
-															Quick Actions
-														</span>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-share"></i>
-															<span class="m-nav__link-text">
-																Create Post
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-chat-1"></i>
-															<span class="m-nav__link-text">
-																Send Messages
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-multimedia-2"></i>
-															<span class="m-nav__link-text">
-																Upload File
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__section">
-														<span class="m-nav__section-text">
-															Useful Links
-														</span>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-info"></i>
-															<span class="m-nav__link-text">
-																FAQ
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__item">
-														<a href="" class="m-nav__link">
-															<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-															<span class="m-nav__link-text">
-																Support
-															</span>
-														</a>
-													</li>
-													<li class="m-nav__separator m-nav__separator--fit m--hide"></li>
-													<li class="m-nav__item m--hide">
-														<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-															Submit
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+                <div class="m-portlet__head-tools">
+					<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm">
+                        <li class="nav-item m-tabs__item">
+							<a class="nav-link m-tabs__link active m_tab1_content" data-reportfor='today'>
+								Today
+							</a>
 						</li>
+                        <li class="nav-item m-tabs__item">
+							<a class="nav-link m-tabs__link m_tab1_content" data-reportfor='Week'>
+								Week
+							</a>
+						</li>
+                        <li class="nav-item m-tabs__item">
+							<a class="nav-link m-tabs__link m_tab1_content" data-reportfor='month'>
+								Month
+							</a>
+						</li>
+						<!--<li class="nav-item m-tabs__item">
+							<a class="nav-link m-tabs__link m_tab1_content" data-reportfor='all'>
+								All
+							</a>
+						</li> -->
 					</ul>
-				</div> */ ?>
+				</div>				
 			</div>
 			<div class="m-portlet__body">
 				<!--begin: Datatable -->
-				<div class="m_datatable" id="m_datatable_latest_orders"></div>
+				<!--<div class="m_datatable" id="m_datatable_latest_orders_2"></div>-->
+                <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_2">
+						<thead>
+							<tr>
+								<th>
+									Booking number
+								</th>
+								<th>
+									Bookings
+								</th>
+								<th class="m--align-center">
+									Channel
+								</th>
+								<th>
+									Revenue
+								</th>
+								<th>
+									Commission
+								</th>
+								<th>
+									Market Segment
+								</th>
+							</tr>
+						</thead>
+					</table>
 				<!--end: Datatable -->
 			</div>
 		</div>
@@ -254,7 +164,8 @@
 
 {{-- For custom style  --}}
 @section('style')
-    @parent    
+    @parent 
+    <link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />    
     <style>
     	
     </style>
@@ -262,7 +173,239 @@
 
 @section('custom_js_script')    
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
+<script src="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.js') }}"></script>
 <script>
+    $(document).ready(function(){
+                    
+                 
+                
+            
+    });
+    var DatatablesDataSourceAjaxClient= {
+        init:function(reportfor) { 
+            $("#m_table_2").DataTable( {
+                responsive:!0,
+                destroy:true,
+                ajax: {
+                    url:"{{URL::to('salesoverview')}}", 
+                    type:"POST", 
+                    data: {
+                        reportfor:reportfor,                        
+                        pagination: {
+                            perpage: 1
+                        }
+                    }
+                }
+                , columns:[ {
+                    data: "booking_number"
+                }
+                , {
+                    data: "total_adults"
+                }
+                , {
+                    data: "checkin_date"
+                }
+                , {
+                    data: "total_price"
+                }
+                , {
+                    data: "total_commission"
+                }
+                , {
+                    data: "checkout_date"
+                }                
+                
+                ], columnDefs:[
+                 {  className: 'm--align-center', targets: [0,1,2,3,4,5] },
+                 {  className: 'm--align-right', targets: [] },
+                 
+                 {
+                    targets:2, render:function(a, t, e, n) {                        
+                        return 'Hotels'; 
+                    }
+                 }                ,
+                 
+                 {
+                    targets:5, render:function(a, t, e, n) {                        
+                        return 'OTA'; 
+                    }
+                 }                
+                ]
+            }
+            )
+            /*$("#m_datatable_latest_orders_2").mDatatable( {
+                data: {
+                    type:"remote", 
+                    source: {
+                        read: {
+                            url: "{{URL::to('salesoverview')}}"
+                        }
+                    }
+                    , 
+                    pageSize:1, 
+                    saveState: {
+                        cookie: !1, webstorage: !0
+                    }
+                    , 
+                    serverPaging:!0, 
+                    serverFiltering:!0, 
+                    serverSorting:!0,
+                    reportfor:reportfor
+                }, 
+                layout: {
+                    theme: "default", class: "", scroll: !0, height: 380, footer: !1
+                }, 
+                sortable:!0, 
+                filterable:!1, 
+                pagination:!0, 
+                columns:[                                       
+                    {
+                        field:"booking_number", 
+                        title:"Booking Number", 
+                        width:125, 
+                        responsive: {
+                            visible: "lg"
+                        }
+                    },
+                    {
+                        field:"total_adults", title:"Bookings", sortable:"asc", filterable:!1, width:70
+                    },
+                    {
+                        field:"", title:"Channel", sortable:"asc", filterable:!1, width:60, template:function(e, t, a){
+                            return 'Hotels'; 
+                        }
+                    },
+                     
+                    {
+                        field: "total_price", title: "Revenue", width:70 
+                    }, 
+                    {
+                        field: "total_commission", title: "Commission", width:70 
+                    },                
+                    {
+                        field: "checkout_date", title: "Market Segment", width:70, template:function(e, t, a){
+                            return 'OTA'; 
+                        }
+                    }
+                ]
+            }); */
+        }
+    };
+    
+    $(document).ready(function() {
+        var reportfor = $(".m_tab1_content.active").attr('data-reportfor');                
+        DatatablesDataSourceAjaxClient.init(reportfor);
+        
+        fnsaleschart(reportfor);
+        
+        $(".m_tab1_content").click(function(){
+            $(".m_tab1_content").removeClass('active');
+            $(this).addClass('active');
+            var reportfor = $(".m_tab1_content.active").attr('data-reportfor');                  
+            DatatablesDataSourceAjaxClient.init(reportfor);
+            fnsaleschart(reportfor);
+        });
+        
+    });
+    function fnsaleschart(reportfor){
+        $.ajax({
+            url: "{{ URL::to('salesstats')}}",
+            type:'POST',            
+            data: {reportfor:reportfor},
+            dataType: "json",
+            success: function(data){ 
+                saleschart(data.data['bookings'], data.data['commission'], data.data['sales']);           
+            }
+		});
+    }
+    function saleschart(bookings, commission, sales){
+        if(bookings.length > 0){
+            
+            $("#no_data").css('display', 'none');
+            $("#no_data").html('');
+            
+            var e=document.getElementById("m_chart_salesreport_stats").getContext("2d"),
+            t=e.createLinearGradient(0, 0, 0, 240);
+            t.addColorStop(0, Chart.helpers.color("#ffefce").alpha(1).rgbString()),
+            t.addColorStop(1, Chart.helpers.color("#ffefce").alpha(.3).rgbString());
+            var a= {
+                type:"line",
+                data: {
+                    labels:bookings,
+                    datasets:[ {
+                        label: "Commission", backgroundColor: mApp.getColor("brand"), borderColor: mApp.getColor("brand"), pointBackgroundColor: Chart.helpers.color("#000000").alpha(0).rgbString(), pointBorderColor: Chart.helpers.color("#000000").alpha(0).rgbString(), pointHoverBackgroundColor: mApp.getColor("danger"), pointHoverBorderColor: Chart.helpers.color("#000000").alpha(.1).rgbString(), data: commission
+                    }
+                    ,
+                    {
+                        label: "Sales", backgroundColor: mApp.getColor("accent"), borderColor: mApp.getColor("accent"), pointBackgroundColor: Chart.helpers.color("#000000").alpha(0).rgbString(), pointBorderColor: Chart.helpers.color("#000000").alpha(0).rgbString(), pointHoverBackgroundColor: mApp.getColor("danger"), pointHoverBorderColor: Chart.helpers.color("#000000").alpha(.1).rgbString(), data: sales
+                    }
+                    ]
+                }
+                ,
+                options: {
+                    title: {
+                        display: !1
+                    }
+                    ,
+                    tooltips: {
+                        mode: "nearest", intersect: !1, position: "nearest", xPadding: 10, yPadding: 10, caretPadding: 10
+                    }
+                    ,
+                    legend: {
+                        display: !1
+                    }
+                    ,
+                    responsive:!0,
+                    maintainAspectRatio:!1,
+                    scales: {
+                        xAxes:[ {
+                            display:!1,
+                            gridLines:!1,
+                            scaleLabel: {
+                                display: !0, labelString: "Booking Number"
+                            }
+                        }
+                        ],
+                        yAxes:[ {
+                            stacked:!0,
+                            display:!1,
+                            gridLines:!1,
+                            scaleLabel: {
+                                display: !0, labelString: "Value"
+                            }
+                            ,
+                            ticks: {
+                                beginAtZero: !0
+                            }
+                        }
+                        ]
+                    }
+                    ,
+                    elements: {
+                        line: {
+                            tension: 1e-7
+                        }
+                        ,
+                        point: {
+                            radius: 4, borderWidth: 12
+                        }
+                    }
+                    ,
+                    layout: {
+                        padding: {
+                            left: 0, right: 0, top: 10, bottom: 0
+                        }
+                    }
+                }
+            }
+            ;
+            new Chart(e, a)
+        }else{
+            $("#no_data").css('display', '');
+            $("#no_data").html('No record found');
+        }
+    }
+    
     
 </script>
 @stop

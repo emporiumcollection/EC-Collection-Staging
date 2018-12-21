@@ -384,10 +384,14 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('get_reservation_details', 'PropertiesController@get_reservation_details');
     
     Route::post('user_arrival_departure', 'PropertiesController@user_arrival_departure');
+    Route::post('user_arrival_departure_cancelations', 'PropertiesController@user_arrival_departure_cancelations');
     
     Route::get('reservations', 'PropertiesController@reservations');
     Route::get('hotelpackages', 'Frontend\HotelMembershipController@packages');
     Route::get('qualityassurances', 'PropertiesController@qualityassurances');
+    
+    Route::post('salesoverview', 'PropertiesController@salesoverview');
+    
     Route::get('salesreport', 'PropertiesController@salesreport');
     Route::get('arrivaldeparture', 'PropertiesController@arrivaldeparture');
     Route::get('advertising', 'PropertiesController@advertising');
@@ -403,6 +407,13 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('hotelinvoices', 'UserorderController@hotelinvoices');
     
     Route::get('ordershow/{id}', 'UserorderController@ordershow');
+    
+    Route::get('bookingshow/{id}', 'BookingsController@bookingshow');
+    
+    Route::get('searchbooking', 'BookingsController@searchbooking');
+    Route::post('searchbookingresult', 'BookingsController@searchbookingresult');
+    
+    Route::post('salesstats', 'PropertiesController@salesstats');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

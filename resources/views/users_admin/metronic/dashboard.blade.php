@@ -29,7 +29,7 @@
     			<div class="m-grid__item m-grid__item--middle">
     				<div class="m--margin-top-20 m--visible-tablet-and-mobile"></div>
     				<button type="submit" class="btn m-btn--pill m-subheader-search__submit-btn">
-    					Search Bookings 123
+    					Search Bookings
     				</button>
     			</div>
     		</div>

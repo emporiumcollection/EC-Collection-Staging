@@ -4492,12 +4492,14 @@ function property_images_wetransfer(Request $request) {
                 
                 if($arrival_departure=="arrival"){
                     $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.checkin_date', $current_date)->get();
+                }elseif($arrival_departure=="cancel"){
+                    $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.created_date', $current_date)->where('booking_status', 2)->get();                    
                 }else{
                     $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.checkout_date', $current_date)->get();                    
-                }                
+                }                   
                                 
             }
-        }else{
+        }elseif(trim($reportfor)=='month'){
             
             $from_date = date('Y-m-01');            
             $to_date = date("Y-m-t", strtotime($current_date));
@@ -4505,14 +4507,97 @@ function property_images_wetransfer(Request $request) {
             
                        
             if($arrival_departure=="arrival"){
-                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('checkin_date', $to_from)->get(); 
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.checkin_date', $to_from)->get(); 
+            }elseif($arrival_departure=="cancel"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.created_date', $to_from)->where('booking_status', 2)->get();
             }else{
-                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('checkout_date', $to_from)->get(); 
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.checkout_date', $to_from)->get(); 
+            }            
+            
+        }else{
+            
+            //$from_date = date('Y-m-01');            
+            //$to_date = date("Y-m-t", strtotime($current_date));
+            //$to_from=array($from_date, $to_date);
+            
+                       
+            if($arrival_departure=="arrival"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get(); 
+            }elseif($arrival_departure=="cancel"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('booking_status', 2)->get();
+            }else{
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get(); 
             }            
             
         }
         $res['status'] = 'success';
         $res['reservations'] = $reservations;
+        
+        return json_encode($res);
+    }
+    function user_arrival_departure_cancelations(Request $request){
+        
+        $reportfor = $request->input('reportfor');
+        $arrival_departure =  $request->input('arrival_departure');
+        
+        $uid = \Session::get('uid');
+        $property_ids = array();
+        if($uid > 0){
+            $assigned_property = \DB::table('tb_properties_users')->where('user_id', $uid)->get();
+            if(!empty($assigned_property)){
+                foreach($assigned_property as $prop){
+                    $property_ids[] = $prop->property_id;
+                }
+            }
+        }
+        $current_date = date('Y-m-d');
+        if(trim($reportfor)=='today'){
+            $current_date = date('Y-m-d');
+            //$arrival_dep_arr = \DB::table('')
+            if(!empty($property_ids)){
+                
+                if($arrival_departure=="arrival"){
+                    $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.checkin_date', $current_date)->get();
+                }elseif($arrival_departure=="cancel"){
+                    $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.created_date', $current_date)->where('booking_status', 2)->get();                    
+                }else{
+                    $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.checkout_date', $current_date)->get();                    
+                }                   
+                                
+            }
+        }elseif(trim($reportfor)=='month'){
+            
+            $from_date = date('Y-m-01');            
+            $to_date = date("Y-m-t", strtotime($current_date));
+            $to_from=array($from_date, $to_date);
+            
+                       
+            if($arrival_departure=="arrival"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.checkin_date', $to_from)->get(); 
+            }elseif($arrival_departure=="cancel"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.created_date', $to_from)->where('booking_status', 2)->get();
+            }else{
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.checkout_date', $to_from)->get(); 
+            }            
+            
+        }else{
+            
+            //$from_date = date('Y-m-01');            
+            //$to_date = date("Y-m-t", strtotime($current_date));
+            //$to_from=array($from_date, $to_date);
+            
+                       
+            if($arrival_departure=="arrival"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get(); 
+            }elseif($arrival_departure=="cancel"){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('booking_status', 2)->get();
+            }else{
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get(); 
+            }            
+            
+        }
+        $res['status'] = 'success';
+        $res['data'] = $reservations;
         
         return json_encode($res);
     }
@@ -4577,9 +4662,13 @@ function property_images_wetransfer(Request $request) {
         $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.salesreport':'properties.salesreport'; 
-        
-        return view($file_name, $this->data);
+        if(strlen($is_demo6) > 0){
+            $file_name = $is_demo6.'.properties.salesreport';         
+            return view($file_name, $this->data);
+        }else{            
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');        
+        }        
     }
     function arrivaldeparture(Request $request){
         $u_id = \Session::get('uid');
@@ -4722,4 +4811,157 @@ function property_images_wetransfer(Request $request) {
 			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
 		}
     }
+    function salesoverview(Request $request){
+        /*$pagination = $request->input('pagination');
+        $sort = $request->input('sort');
+        
+        $page = $pagination['page'];
+        $perpage = $pagination['perpage']; 
+        $perpage = $pagination['total']; */
+        $reportfor = $request->input('reportfor');
+        $uid = \Session::get('uid');
+        $property_ids = array();
+        if($uid > 0){
+            $assigned_property = \DB::table('tb_properties_users')->where('user_id', $uid)->get();
+            if(!empty($assigned_property)){
+                foreach($assigned_property as $prop){
+                    $property_ids[] = $prop->property_id;
+                }
+            }
+        }
+        if(!empty($property_ids)){
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get();                
+        }
+        
+        $current_date = date('Y-m-d');
+        if(trim($reportfor)=='today'){
+            $current_date = date('Y-m-d');
+            //$arrival_dep_arr = \DB::table('')
+            if(!empty($property_ids)){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.created_date', $current_date)->get();                 
+            }
+        }elseif(trim($reportfor)=='Week'){
+            
+            $ts = strtotime($current_date);
+            $start = (date('w', $ts) == 0) ? $ts : strtotime('last sunday', $ts);
+            $from_date = date('Y-m-d', $start);
+            $to_date = date('Y-m-d', strtotime('next saturday', $start));
+            
+            //$from_date = date('Y-m-01');            
+            //$to_date = date("Y-m-t", strtotime($current_date));
+            $to_from=array($from_date, $to_date);
+            //print_r($to_from); die;
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.created_date', $to_from)->get(); 
+        }elseif(trim($reportfor)=='month'){
+            
+            $from_date = date('Y-m-01');            
+            $to_date = date("Y-m-t", strtotime($current_date));
+            $to_from=array($from_date, $to_date);
+            
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.created_date', $to_from)->get(); 
+        }else{
+            
+            //$from_date = date('Y-m-01');            
+            //$to_date = date("Y-m-t", strtotime($current_date));
+            //$to_from=array($from_date, $to_date);
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get();         
+            
+        }
+        
+        /*if(!empty($property_ids)){
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select CASE commission_type WHEN 'partial' THEN tb_users_contracts.partial_availability_commission ELSE tb_users_contracts.full_availability_commission END from tb_users_contracts where accepted_by=$uid and contract_type='commission') as comm"), \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get();                
+        }
+        $hotel_com = 0;
+        $commision = \DB::table('tb_users_contracts')->where('accepted_by', $uid)->where('contract_type', 'commission')->first();
+        if(!empty($commision)){
+            if($commision->commission_type=='partial'){
+                $hotel_com = $commision->partial_availability_commission;
+            }else{
+                $hotel_com = $commision->full_availability_commission;
+            }
+        }         
+        $reservations['commission'] = $hotel_com;*/
+        
+        $total = count($reservations);
+        
+        $res['status'] = 'success';
+        $res['data'] = $reservations;
+        
+        return json_encode($res);
+    }
+    
+    function salesstats(Request $request){
+        
+        $reportfor = $request->input('reportfor');
+        $uid = \Session::get('uid');
+        $property_ids = array();
+        if($uid > 0){
+            $assigned_property = \DB::table('tb_properties_users')->where('user_id', $uid)->get();
+            if(!empty($assigned_property)){
+                foreach($assigned_property as $prop){
+                    $property_ids[] = $prop->property_id;
+                }
+            }
+        }
+        $arr_bookings = array();
+        $arr_sales = array();
+        $arr_commission = array();
+        /*if(!empty($property_ids)){
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get();   
+            foreach($reservations as $reserv){
+                $arr_bookings[] = $reserv->booking_number;
+                $arr_sales[] = $reserv->total_price;
+                $arr_commission[] = $reserv->total_commission;
+            }             
+        }*/
+        $current_date = date('Y-m-d');
+        if(trim($reportfor)=='today'){
+            $current_date = date('Y-m-d');
+            //$arrival_dep_arr = \DB::table('')
+            if(!empty($property_ids)){
+                $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->where('tb_reservations.created_date', $current_date)->get();                 
+            }
+        }elseif(trim($reportfor)=='Week'){
+            
+            $ts = strtotime($current_date);
+            $start = (date('w', $ts) == 0) ? $ts : strtotime('last sunday', $ts);
+            $from_date = date('Y-m-d', $start);
+            $to_date = date('Y-m-d', strtotime('next saturday', $start));
+            
+            //$from_date = date('Y-m-01');            
+            //$to_date = date("Y-m-t", strtotime($current_date));
+            $to_from=array($from_date, $to_date);
+            //print_r($to_from); die;
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.created_date', $to_from)->get(); 
+        }elseif(trim($reportfor)=='month'){
+            
+            $from_date = date('Y-m-01');            
+            $to_date = date("Y-m-t", strtotime($current_date));
+            $to_from=array($from_date, $to_date);
+            
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->whereBetween('tb_reservations.created_date', $to_from)->get(); 
+        }else{
+            
+            //$from_date = date('Y-m-01');            
+            //$to_date = date("Y-m-t", strtotime($current_date));
+            //$to_from=array($from_date, $to_date);
+            $reservations = \DB::table('tb_reservations')->select('tb_reservations.*', 'tb_users.first_name', 'tb_users.last_name', \DB::raw("(Select count(td_reserved_rooms.reserved_room_id) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_rooms"), \DB::raw("(Select sum(td_reserved_rooms.booking_adults) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_adults"), \DB::raw("(Select sum(td_reserved_rooms.booking_children) from td_reserved_rooms where td_reserved_rooms.reservation_id=tb_reservations.id) as total_child"))->join('tb_users', 'tb_reservations.client_id', '=', 'tb_users.id')->whereIn('tb_reservations.property_id', $property_ids)->get();         
+            
+        }
+        $arr_bookings = array();
+        $arr_sales = array();
+        $arr_commission = array();
+        foreach($reservations as $reserv){
+            $arr_bookings[] = $reserv->booking_number;
+            $arr_sales[] = $reserv->total_price;
+            $arr_commission[] = $reserv->total_commission;
+        }   
+        $bookings = implode(',', $arr_sales);
+        $res['status'] = $bookings;
+        $res['status'] = 'success';
+        $res['data'] = array('bookings'=>$arr_bookings, 'sales'=>$arr_sales, 'commission'=>$arr_commission);
+        
+        return json_encode($res);
+    }
+    
 }

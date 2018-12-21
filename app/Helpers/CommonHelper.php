@@ -1216,5 +1216,12 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
         //echo $html; die;    
         return $html;
     }
-
+    static function dateformat($date){
+        $final_dt = '';
+        $dtarr = explode('-', $date);
+        if(count($dtarr)>1){
+            $final_dt = $dtarr[2]."-".$dtarr[0]."-".$dtarr[1];
+        }
+        return $final_dt;
+    }
 }

@@ -93,7 +93,7 @@
                 					 	
                 						<a href="{{ URL::to('ordershow/'.$row->id)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
                 						
-                						<a href="{{ URL::to('userorder_downloadinvoicepdf/'.$row->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa  icon-file-pdf "></i></a>
+                						<a href="{{ URL::to('userorderdownloadinvoicepdf/'.$row->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa  icon-file-pdf "></i></a>
                 				</td>				 
                                 </tr>
                 				

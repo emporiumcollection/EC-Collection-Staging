@@ -368,7 +368,66 @@
     													<h3 class="m-form__heading-title">
     														Company Registration for Tax purposes.
     													</h3>
-									               </div>                                                                                                                                                     
+									               </div>                                                                                                                                                            
+                                                   
+                                                   <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Billing Company:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="company_name" type="text" id="company_name" class="form-control m-input m-input--solid" value="{{$company_details->company_name}}" />  
+    													</div>
+    												</div>
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Owner:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="company_owner" type="text" id="company_owner" class="form-control m-input m-input--solid" value="{{$company_details->company_owner}}"/>  
+    													</div>
+    												</div>
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Contact Person:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="contact_person" type="text" id="contact_person" class="form-control m-input m-input--solid" value="{{$company_details->contact_person}}" />  
+    													</div>
+    												</div>
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Contact Email:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="company_email" type="text" id="company_email" class="form-control m-input m-input--solid" value="{{$company_details->company_email}}" />  
+    													</div>
+    												</div>
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Address:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="company_address" type="text" id="company_address" class="form-control m-input m-input--solid" value="{{$company_details->company_address}}" />  
+    													</div>
+    												</div>
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														City:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="company_city" type="text" id="company_city" class="form-control m-input m-input--solid" value="{{$company_details->company_city}}" />  
+    													</div>
+    												</div>
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Country:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="company_country" type="text" id="company_country" class="form-control m-input m-input--solid" value="{{$company_details->company_country}}" />  
+    													</div>
+    												</div>
+                                                   
+                                                   
                                                    <div class="form-group m-form__group row">
     													<label class="col-xl-3 col-lg-3 col-form-label">
     														Registered European Company

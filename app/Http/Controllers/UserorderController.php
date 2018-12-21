@@ -654,6 +654,29 @@ class UserorderController extends Controller {
                 if($companydet->company_postal_code > 0){
                     $company_postal_code = $companydet->company_postal_code;
                 }
+                
+                $company_full_address = '';
+                if(strlen(trim($companydet->company_name))>0){
+                    $company_full_address .= $companydet->company_name;
+                }
+                if(strlen(trim($companydet->company_address))>0){
+                    if(strlen($company_full_address)>0){
+                        $company_full_address .= '<br />'.$companydet->company_address;   
+                    }               
+                }
+                if(strlen(trim($companydet->company_city))>0){
+                    if(strlen($company_full_address)>0){
+                        $company_full_address .= ','. $companydet->company_city;
+                    }else{
+                        $company_full_address .= $companydet->company_city;
+                    }                                      
+                }
+                if(strlen(trim($companydet->company_country))>0){
+                    if(strlen($company_full_address)>0){
+                        $company_full_address .= '<br />'.$companydet->company_country;   
+                    }               
+                }
+                
                 $comp_name = '';
                 $comp_vat_id = '';
                 if($userInfo->european){
@@ -801,7 +824,10 @@ class UserorderController extends Controller {
 							<td width="48%" align="left">
 									
 
-								<table width="100%" >									
+								<table width="100%" >
+                                    <tr>
+                                        <td>'.$company_full_address.'</td>
+                                    </tr>									
                                     <tr>
                                         <td>Vat IDNr. Emporium-Voyage : DE 271302029</td>
                                     </tr>

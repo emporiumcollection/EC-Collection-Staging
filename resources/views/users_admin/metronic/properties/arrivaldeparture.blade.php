@@ -74,40 +74,65 @@
 			</div>
 			<div class="m-portlet__body">
 				<div class="m-widget11">
-							<div class="table-responsive">
-								<!--begin::Table-->
-								<table class="table">
-									<!--begin::Thead-->
-									<thead>
-										<tr>														
-											<td>
-												Guest Name
-											</td>
-											<td>
-												Adult #
-											</td>	
-                                            <td>
-												Child #
-											</td>													
-											<td class="m--align-right">
-												Date of Arrival
-											</td>
-                                            <td class="m--align-right">
-												Date of Departure
-											</td>
-										</tr>
-									</thead>
-									<!--end::Thead-->
-<!--begin::Tbody-->
-									<tbody id="table_data">
-										
-									</tbody>
-									<!--end::Tbody-->
-								</table>
-								<!--end::Table-->
-							</div>
-							
-						</div>
+					<!--<div class="table-responsive">								
+						<table class="table">									
+							<thead>
+								<tr>														
+									<td>
+										Guest Name
+									</td>
+									<td>
+										Adult #
+									</td>	
+                                    <td>
+										Child #
+									</td>													
+									<td>
+										Date of Arrival
+									</td>
+                                    <td>
+										Date of Departure
+									</td>
+								</tr>
+							</thead>									
+							<tbody id="table_data">
+								
+							</tbody>									
+						</table>								
+					</div> -->
+					
+                    <!--begin: Datatable -->
+					<table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_2">
+						<thead>
+							<tr>
+								<th>
+									Booking number
+								</th>
+								<th>
+									Guest Name
+								</th>
+								<th class="m--align-center">
+									Adult #
+								</th>
+								<th>
+									Child #
+								</th>
+                                <th>
+									Reserved On
+								</th>
+								<th>
+									Date of Arrival
+								</th>
+								<th>
+									Date of Departure
+								</th>										
+								<th>
+									Actions
+								</th> 
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</div>
 		</div> 
 		<!--end:: Widgets/Sale Reports-->
@@ -118,7 +143,8 @@
 
 {{-- For custom style  --}}
 @section('style')
-    @parent    
+    @parent   
+    <link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" /> 
     <style>
     	
     </style>
@@ -126,12 +152,17 @@
 
 @section('custom_js_script')    
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
+<script src="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.js') }}"></script>
 <script>
-    $(document).ready(function(){            
+    var base_url = "{{URL::to('/')}}";
+    /*$(document).ready(function(){            
         arrival_depart();
         $(".m_tab1_content").click(function(){
             $(".m_tab1_content").removeClass('active');
             $(this).addClass('active');
+            arrival_depart();
+        });
+        $("#dd_arrival_departure").change(function(){
             arrival_depart();
         });
         function arrival_depart(){
@@ -172,7 +203,91 @@
                 }
             });
         }
+        
+        
+        
     	
+    });*/
+    
+
+    var DatatablesDataSourceAjaxClient= {
+        init:function(reportfor, arrival_departure) { 
+            $("#m_table_2").DataTable( {
+                responsive:!0,
+                destroy:true,
+                ajax: {
+                    url:"{{URL::to('user_arrival_departure_cancelations')}}", 
+                    type:"POST", 
+                    data: {
+                        reportfor:reportfor, 
+                        arrival_departure:arrival_departure,
+                        pagination: {
+                            perpage: 1
+                        }
+                    }
+                }
+                , columns:[ {
+                    data: "booking_number"
+                }
+                , {
+                    data: "first_name"
+                }
+                , {
+                    data: "total_adults"
+                }
+                , {
+                    data: "total_child"
+                }
+                , {
+                    data: "created_date"
+                }
+                , {
+                    data: "checkin_date"
+                }
+                , {
+                    data: "checkout_date"
+                }                
+                , {
+                    data: "Actions"
+                }
+                ], columnDefs:[
+                 {  className: 'm--align-center', targets: [0,2,3,4,5,6] },
+                 {  className: 'm--align-right', targets: [] },
+                 
+                 {
+                    targets:-1, title:"Actions", orderable:!1, render:function(a, t, e, n) { 
+                        return'\n<span class="dropdown">\n<a href="#" class="btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown" aria-expanded="true">\n<i class="la la-ellipsis-h"></i>\n</a>\n<div class="dropdown-menu dropdown-menu-right">\n<a class="dropdown-item" href="'+base_url+'/bookingshow/'+e.id+'"><i class="la la-edit"></i> View</a>\n</div>\n</span>\n<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" title="View">\n<i class="la la-edit"></i>\n</a>'
+                    }
+                }, {
+                    targets:1, render:function(a, t, e, n) {                        
+                        return e.first_name+" "+e.last_name;
+                    }
+                }                
+                ]
+            }
+            )
+        }
+    };
+    
+    $(document).ready(function() {
+        var reportfor = $(".m_tab1_content.active").attr('data-reportfor');
+        var arrival_departure = $("#dd_arrival_departure").val();        
+        DatatablesDataSourceAjaxClient.init(reportfor, arrival_departure)
+        
+        $(".m_tab1_content").click(function(){
+            $(".m_tab1_content").removeClass('active');
+            $(this).addClass('active');
+            var reportfor = $(".m_tab1_content.active").attr('data-reportfor');
+            var arrival_departure = $("#dd_arrival_departure").val();        
+            DatatablesDataSourceAjaxClient.init(reportfor, arrival_departure)
+        });
+        $("#dd_arrival_departure").change(function(){
+            
+            var reportfor = $(".m_tab1_content.active").attr('data-reportfor');
+            var arrival_departure = $("#dd_arrival_departure").val();        
+            DatatablesDataSourceAjaxClient.init(reportfor, arrival_departure)
+        });
     });
+    
 </script>
 @stop
