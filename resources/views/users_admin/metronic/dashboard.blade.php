@@ -414,9 +414,9 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 @section('style')
     @parent
     <link href="//www.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" /> 
+    <!--<link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" /> 
     <link href="{{ asset('themes/emporium/daterangepicker/css/themes/t-datepicker-bluegrey.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
    
     <style>
     	.cursor{cursor:col-resize;}
@@ -821,20 +821,26 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     @parent      
     <script type="text/javascript">var BaseURL = '{{ url() }}'; </script>    
     <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
-    <script src="{{ asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!--<script src="{{ asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
-    <script src="{{ asset('themes/emporium/js/custom/common.js') }}"></script>
+    <script src="{{ asset('themes/emporium/js/custom/common.js') }}"></script> -->
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-    <script src="{{ asset('themes/emporium/daterangepicker/js/t-datepicker.js') }}"></script>
+    <!--<script src="{{ asset('themes/emporium/daterangepicker/js/t-datepicker.js') }}"></script> -->
     <script>
         $(document).ready(function(){
             
-            $('.datepic').datepicker({
+            /*$('.datepic').datepicker({
 				numberOfMonths: 1,
 				showButtonPanel: true,
                 dateFormat: 'mm-dd-yy'				
-		    });
+		    });*/
+            
+            $(".datepic").datepicker( {
+                todayHighlight:!0, orientation:"bottom left", format:"mm-dd-yyyy", templates: {
+                    leftArrow: '<i class="la la-angle-left"></i>', rightArrow: '<i class="la la-angle-right"></i>'
+                }
+            });
             
             <?php if($logged_user->i_agree == 0 || $logged_user->privacy_policy == 0 || $logged_user->cookie_policy == 0){ ?>
                     $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
@@ -1029,7 +1035,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   slides2().eq($i + 1).addClass('active');
                 }
             });
-            arrival_depart();
+            /*arrival_depart();
             $(".m_tab1_content").click(function(){
                 $(".m_tab1_content").removeClass('active');
                 $(this).addClass('active');
@@ -1073,8 +1079,8 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                     }
                 });
             }
-            
-            $('#t-topbar-picker').tDatePicker({
+            */
+            /*$('#t-topbar-picker').tDatePicker({
                 'numCalendar':'2',
                 'autoClose':true,
                 'durationArrowTop':'200',
@@ -1093,7 +1099,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                 if(((typeof $(this).closest('form').find('[name="adult"]').val()) != 'undefined') && ((typeof $(this).closest('form').find('[name="adult"]').val()) != undefined)){
                     $(this).closest('form').find('[name="adult"]').focus();
                 }
-            });
+            });*/
             
         }); 
         

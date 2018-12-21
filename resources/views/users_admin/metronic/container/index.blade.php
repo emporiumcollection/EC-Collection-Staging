@@ -38,6 +38,10 @@
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
     </div>
+    <div class="col-md-12 col-xs-12 m--align-right">
+        <a href="{{URL::to('hotelpackages')}}" class="tips btn btn-xs btn-primary" style="height: auto !important;">Upgrade to pro</a>
+    </div>
+    
     @if($check_images)
 	<div class="col-sm-3">	
 		<div class="row">

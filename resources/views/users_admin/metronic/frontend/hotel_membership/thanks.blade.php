@@ -59,9 +59,9 @@
                                         </div>
                                     </div>
                                     <div class="row padding-30 m--align-center" style="margin-right: 25px;">                                        
-                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('userorderdownloadinvoicepdf/'.$order_id)}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Your Invoice</a></div>
-                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Hotel-Implementation.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Hotel Requirements Sheet</a></div>
-                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Property Information.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Property Requirements Sheet</a></div>
+                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center"><a href="{{ URL::to('userorderdownloadinvoicepdf/'.$order_id)}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Your Invoice</a></div>
+                                        <!--<div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Hotel-Implementation.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Hotel Requirements Sheet</a></div>
+                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Property Information.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Property Requirements Sheet</a></div>-->
                                     </div>
                                 </div>
                             </div>
@@ -70,56 +70,73 @@
                                 <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30 m--align-center"><h2>Dashboard</h2></div> 
                         		<div class="col-sm-12 col-md-12 col-xl-12">
                                     
-                                    <div class="row">
-                                        <div class="setting-box-hotel">
-                                            <a href="{{ URL::to('dashboard') }}">
-                                                <i class="grid_icon fa fa-dashboard"></i>																	
+                                    <div class="row" style="margin-left: 0px;">
+                                        <div class="setting-box-advert1">
+                                            <a href="{{ URL::to('properties') }}">
+                                                <i class="grid_icon flaticon-imac"></i>																	
                                     			<span class="grid_link-text">
-                                    				Dashboard &amp; Profile
+                                    				Property Management
                                     			</span>
                                     		</a>
                                         </div>
-                                        <div class="setting-box-hotel">
-                                            <a href="#">
-                                                <i class="grid_icon fa fa-calendar"></i>																	
+                                        <div class="setting-box-advert2">
+                                            <a href="{{ URL::to('reservations') }}">
+                                                <i class="grid_icon flaticon-graphic-2"></i>																	
                                     			<span class="grid_link-text">
-                                    				Reservation &amp; Distribution
+                                    				Reservation Management
                                     			</span>
                                     		</a>
                                         </div>
-                                        <div class="setting-box-hotel">
-                                            <a href="#">
-                                    			<i class="grid_icon fa fa-flask"></i>																	
+                                        <div class="setting-box-advert3">
+                                            <a href="{{ URL::to('hotelcontainer')}}">
+                                    			<i class="grid_icon flaticon-layers"></i>																	
                                     			<span class="grid_link-text">
-                                    				Sales &amp; Marketing
+                                    				Digital Media Management & Distribution System
                                     			</span>
                                     		</a>
                                         </div>
-                                        <div class="setting-box-hotel">
-                                            <a href="#">
-                                    			<i class="grid_icon fa fa-shopping-bag"></i>																	
+                                        <div class="setting-box-advert4">
+                                            <a href="{{ URL::to('hotelpackages') }}" id="dash_communication">
+                                    			<i class="grid_icon flaticon-share"></i>																	
                                     			<span class="grid_link-text">
                                     				Membership &amp; Support Services
                                     			</span>
                                     		</a>
                                         </div>
-                                        <div class="setting-box-hotel">
-                                            <a href="#">
-                                    			<i class="grid_icon fa fa-thumbs-up"></i>																	
+                                        
+                                        
+                                        <div class="setting-box-advert5">
+                                            <a href="{{URL::to('arrivaldeparture')}}">
+                                                <i class="grid_icon flaticon-clock-2"></i>																	
+                                    			<span class="grid_link-text">
+                                    				Arrivals, Departures &amp; Cancelations
+                                    			</span>
+                                    		</a>
+                                        </div>
+                                        <div class="setting-box-advert6">
+                                            <a href="{{URL::to('advertising')}}">
+                                                <i class="grid_icon flaticon-statistics"></i>																	
+                                    			<span class="grid_link-text">
+                                    				Advertising
+                                    			</span>
+                                    		</a>
+                                        </div>
+                                        <div class="setting-box-advert7">
+                                            <a href="{{URL::to('salesreport')}}">
+                                    			<i class="grid_icon flaticon-graph"></i>																	
+                                    			<span class="grid_link-text">
+                                    				Sales Reports
+                                    			</span>
+                                    		</a>
+                                        </div>
+                                        <div class="setting-box-advert8">
+                                            <a href="{{URL::to('qualityassurances')}}" id="dash_communication">
+                                    			<i class="grid_icon flaticon-pie-chart"></i>																	
                                     			<span class="grid_link-text">
                                     				Quality Assurance
                                     			</span>
                                     		</a>
                                         </div>
-                                        <div class="setting-box-hotel">
-                                            <a href="#">
-                                    			<i class="grid_icon fa fa-handshake"></i>																	
-                                    			<span class="grid_link-text">
-                                    				Billings &amp; Contracts
-                                    			</span>
-                                    		</a>
-                                        </div>
-                                        
                                         
                                     </div>
                                 </div>

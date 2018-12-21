@@ -742,7 +742,7 @@ class UserorderController extends Controller {
 			
 					
 				<div class="main">
-				  <div class="header bg-color">
+				  <div class="header">
 
 					  <table width="100%">
 					 

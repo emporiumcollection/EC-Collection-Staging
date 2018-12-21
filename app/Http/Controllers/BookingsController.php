@@ -1278,7 +1278,23 @@ class BookingsController extends Controller {
 		}
 		$this->data['arrive'] = $arrive;
         $this->data['departure'] = $departure;
-		
+        
+		$uid = \Session::get('uid');
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $uid)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+        
+        $this->data['cat_types'] = (new PropertiesController)->find_categories_room($prop_id);
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
         //return json_encode($res);
 		//return view('frontend.themes.emporium.properties.list', $this->data);
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());  
@@ -1300,6 +1316,22 @@ class BookingsController extends Controller {
             $departure = \CommonHelper::dateformat($request->departure);
 		}
 		$uid = \Session::get('uid');
+        
+        $prop_id = 0;
+        $property_name = '';
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        if(!empty($obj_property)){
+            $prop_id = $obj_property->id;
+            $property_name = $obj_property->property_name;
+        }
+        $this->data['pid'] = $prop_id;
+        
+        $this->data['hotel_name'] = $property_name;
+        
+        $this->data['cat_types'] = $this->find_categories_room($prop_id);
+            
+        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
         $property_ids = array();
         if($uid > 0){
             $assigned_property = \DB::table('tb_properties_users')->where('user_id', $uid)->get();

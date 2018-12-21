@@ -1163,7 +1163,9 @@ class UserController extends Controller {
             'contractSignCheck' => 'required',
             'hotelinfo_name' => 'required',
             'company_name' => 'required',
-            'company_email' => 'required',                      
+            'company_email' => 'required',
+            'company_city' => 'required',
+            'company_country' => 'required',        
         );
 
         $validator = Validator::make($request->all(), $rules);

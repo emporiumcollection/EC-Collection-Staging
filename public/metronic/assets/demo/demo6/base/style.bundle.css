@@ -191,7 +191,7 @@ sup {
 }
 
 a {
-    color: #a99f7d;
+    color: #6f727d;
     text-decoration: none;
     background-color: transparent;
     -webkit-text-decoration-skip: objects
@@ -2693,7 +2693,7 @@ fieldset:disabled a.btn {
 .btn-primary {
     color: #fff;
     background-color: #a99f7d;
-    border-color: #a99f7d
+    border-color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -10225,8 +10225,8 @@ a.text-dark:hover {
 }
 
 .m-widget21 .m-widget21__item .m-widget21__icon>a.btn.btn-brand {
-    background: #00c5dc;
-    border-color: #00c5dc;
+    background: #C0CACD;
+    border-color: #C0CACD;
 }
 .m-widget21 .m-widget21__item .m-widget21__icon>a.btn.btn-accent{
         background-color: #716aca;
@@ -10492,8 +10492,8 @@ a.text-dark:hover {
 .btn-accent.disabled,
 .btn-accent:disabled {
     color: #fff;
-    background-color: #00c5dc;
-    border-color: #00c5dc
+    background-color: #C0CACD;
+    border-color: #C0CACD
 }
 
 .btn-accent:not(:disabled):not(.disabled).active,
@@ -10512,16 +10512,16 @@ a.text-dark:hover {
 }
 
 .btn-outline-accent {
-    color: #00c5dc;
+    color: #C0CACD;
     background-color: transparent;
     background-image: none;
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .btn-outline-accent:hover {
     color: #fff;
-    background-color: #00c5dc;
-    border-color: #00c5dc
+    background-color: #C0CACD;
+    border-color: #C0CACD
 }
 
 .btn-outline-accent.focus,
@@ -10532,7 +10532,7 @@ a.text-dark:hover {
 
 .btn-outline-accent.disabled,
 .btn-outline-accent:disabled {
-    color: #00c5dc;
+    color: #C0CACD;
     background-color: transparent
 }
 
@@ -10540,8 +10540,8 @@ a.text-dark:hover {
 .btn-outline-accent:not(:disabled):not(.disabled):active,
 .show>.btn-outline-accent.dropdown-toggle {
     color: #fff;
-    background-color: #00c5dc;
-    border-color: #00c5dc
+    background-color: #C0CACD;
+    border-color: #C0CACD
 }
 
 .btn-outline-accent:not(:disabled):not(.disabled).active:focus,
@@ -11362,8 +11362,8 @@ a.text-dark:hover {
 .alert.m-alert--outline.alert-accent {
     color: #575962;
     background-color: #fff;
-    border-color: #00c5dc;
-    color: #00c5dc;
+    border-color: #C0CACD;
+    color: #C0CACD;
     font-weight: 400
 }
 
@@ -11376,16 +11376,16 @@ a.text-dark:hover {
 }
 
 .alert.m-alert--outline.alert-accent .close {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .alert.m-alert--outline.alert-accent .m-alert__icon i {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .alert.m-alert--outline.alert-accent.m-alert--icon-solid .m-alert__icon {
     position: relative;
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .alert.m-alert--outline.alert-accent.m-alert--icon-solid .m-alert__icon i {
@@ -11393,7 +11393,7 @@ a.text-dark:hover {
 }
 
 .alert.m-alert--outline.alert-accent.m-alert--icon-solid .m-alert__icon span {
-    border-left-color: #00c5dc
+    border-left-color: #C0CACD
 }
 
 .alert.m-alert--outline.alert-focus {
@@ -11917,7 +11917,7 @@ a.text-dark:hover {
 }
 
 .nav.nav-pills.nav-pills--brand .nav-link.active {
-    background: #A99F7D;
+    background: #E3C2BD;
     color: #fff
 }
 
@@ -11926,7 +11926,7 @@ a.text-dark:hover {
 }
 
 .nav.nav-pills.nav-pills--brand .nav-item.show .nav-link {
-    background: #A99F7D;
+    background: #E3C2BD;
     color: #fff
 }
 
@@ -11971,7 +11971,7 @@ a.text-dark:hover {
 }
 
 .nav.nav-pills.nav-pills--accent .nav-link.active {
-    background: #00c5dc;
+    background: #C0CACD;
     color: #fff
 }
 
@@ -11980,7 +11980,7 @@ a.text-dark:hover {
 }
 
 .nav.nav-pills.nav-pills--accent .nav-item.show .nav-link {
-    background: #00c5dc;
+    background: #C0CACD;
     color: #fff
 }
 
@@ -15689,7 +15689,7 @@ strong {
 }
 
 .m--font-accent {
-    color: #00c5dc!important
+    color: #C0CACD!important
 }
 
 .m--font-inverse-accent {
@@ -15701,7 +15701,7 @@ strong {
 }
 
 .m--bg-fill-accent {
-    background-color: #00c5dc!important;
+    background-color: #C0CACD!important;
     color: #fff!important
 }
 
@@ -20553,15 +20553,15 @@ strong {
 
 .m-tabs-line.m-tabs-line--accent a.m-tabs__link:hover,
 .m-tabs-line.m-tabs-line--accent.nav.nav-tabs .nav-link:hover {
-    border-bottom: 1px solid #00c5dc
+    border-bottom: 1px solid #C0CACD
 }
 
 .m-tabs-line.m-tabs-line--accent a.m-tabs__link.active,
 .m-tabs-line.m-tabs-line--accent a.m-tabs__link:hover,
 .m-tabs-line.m-tabs-line--accent.nav.nav-tabs .nav-link.active,
 .m-tabs-line.m-tabs-line--accent.nav.nav-tabs .nav-link:hover {
-    color: #00c5dc;
-    border-bottom: 1px solid #00c5dc
+    color: #C0CACD;
+    border-bottom: 1px solid #C0CACD
 }
 
 .m-tabs-line.m-tabs-line--accent a.m-tabs__link.active>i,
@@ -20794,15 +20794,15 @@ strong {
 
 .m-tabs-line.m-tabs-line--skin-dark.m-tabs-line--accent a.m-tabs__link:hover,
 .m-tabs-line.m-tabs-line--skin-dark.m-tabs-line--accent.nav.nav-tabs .nav-link:hover {
-    border-bottom: 1px solid #00c5dc
+    border-bottom: 1px solid #C0CACD
 }
 
 .m-tabs-line.m-tabs-line--skin-dark.m-tabs-line--accent a.m-tabs__link.active,
 .m-tabs-line.m-tabs-line--skin-dark.m-tabs-line--accent a.m-tabs__link:hover,
 .m-tabs-line.m-tabs-line--skin-dark.m-tabs-line--accent.nav.nav-tabs .nav-link.active,
 .m-tabs-line.m-tabs-line--skin-dark.m-tabs-line--accent.nav.nav-tabs .nav-link:hover {
-    color: #00c5dc;
-    border-bottom: 1px solid #00c5dc
+    color: #C0CACD;
+    border-bottom: 1px solid #C0CACD
 }
 
 .m-tabs-line.m-tabs-line--skin-dark.m-tabs-line--accent a.m-tabs__link.active>i,
@@ -21016,12 +21016,12 @@ strong {
 }
 
 .m-badge.m-badge--accent {
-    background-color: #00c5dc;
+    background-color: #C0CACD;
     color: #fff
 }
 
 .m-badge.m-badge-bordered--accent {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-badge.m-badge--focus {
@@ -21170,7 +21170,7 @@ strong {
 }
 
 .m-link.m-link--accent {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .m-link.m-link--accent:hover {
@@ -21436,11 +21436,11 @@ strong {
 }
 
 .m-separator.m-separator--accent {
-    border-bottom: 1px solid #00c5dc
+    border-bottom: 1px solid #C0CACD
 }
 
 .m-separator.m-separator--accent.m-separator--dashed {
-    border-bottom: 1px dashed #00c5dc
+    border-bottom: 1px dashed #C0CACD
 }
 
 .m-separator.m-separator--focus {
@@ -21624,7 +21624,7 @@ code {
 }
 
 .btn.m-btn--label-accent {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .btn.m-btn--label-focus {
@@ -22198,8 +22198,8 @@ code {
 .btn-outline-accent.focus,
 .btn-outline-accent:focus,
 .btn-outline-accent:hover {
-    border-color: #00c5dc;
-    background: #00c5dc;
+    border-color: #C0CACD;
+    background: #C0CACD;
     color: #fff
 }
 
@@ -22666,7 +22666,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-brand.m-btn--gradient-to-accent {
     background: #A99F7D;
-    background: linear-gradient(135deg, #A99F7D 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #A99F7D 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-brand.m-btn--gradient-to-accent.active,
@@ -22860,7 +22860,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-metal.m-btn--gradient-to-accent {
     background: #c4c5d6;
-    background: linear-gradient(135deg, #c4c5d6 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #c4c5d6 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-metal.m-btn--gradient-to-accent.active,
@@ -23054,7 +23054,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-light.m-btn--gradient-to-accent {
     background: #fff;
-    background: linear-gradient(135deg, #fff 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #fff 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-light.m-btn--gradient-to-accent.active,
@@ -23186,9 +23186,9 @@ button:focus {
 .btn.m-btn--hover-accent:focus,
 .btn.m-btn--hover-accent:hover,
 .show>.btn.m-btn--hover-accent.dropdown-toggle {
-    border-color: #00c5dc!important;
+    border-color: #C0CACD!important;
     color: #fff!important;
-    background-color: #00c5dc!important
+    background-color: #C0CACD!important
 }
 
 .btn.m-btn--hover-accent.active i,
@@ -23205,8 +23205,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-brand {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #A99F7D 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #A99F7D 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-brand.active,
@@ -23219,8 +23219,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-metal {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #c4c5d6 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #c4c5d6 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-metal.active,
@@ -23233,8 +23233,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-light {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #fff 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #fff 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-light.active,
@@ -23247,8 +23247,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-accent {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #00c5dc 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-accent.active,
@@ -23261,8 +23261,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-focus {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #9816f4 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #9816f4 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-focus.active,
@@ -23275,8 +23275,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-primary {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #a99f7d 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #a99f7d 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-primary.active,
@@ -23289,8 +23289,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-success {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #648da6 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #648da6 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-success.active,
@@ -23303,8 +23303,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-info {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #36a3f7 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #36a3f7 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-info.active,
@@ -23317,8 +23317,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-warning {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #ffb822 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #ffb822 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-warning.active,
@@ -23331,8 +23331,8 @@ button:focus {
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-danger {
-    background: #00c5dc;
-    background: linear-gradient(135deg, #00c5dc 30%, #f4516c 100%)
+    background: #C0CACD;
+    background: linear-gradient(135deg, #C0CACD 30%, #f4516c 100%)
 }
 
 .btn.m-btn--gradient-from-accent.m-btn--gradient-to-danger.active,
@@ -23351,7 +23351,7 @@ button:focus {
 
 
 .btn.btn-outline-accent {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .btn.btn-outline-accent.active,
@@ -23437,7 +23437,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-focus.m-btn--gradient-to-accent {
     background: #9816f4;
-    background: linear-gradient(135deg, #9816f4 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #9816f4 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-focus.m-btn--gradient-to-accent.active,
@@ -23631,7 +23631,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-primary.m-btn--gradient-to-accent {
     background: #a99f7d;
-    background: linear-gradient(135deg, #a99f7d 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #a99f7d 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-primary.m-btn--gradient-to-accent.active,
@@ -23825,7 +23825,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-success.m-btn--gradient-to-accent {
     background: #648da6;
-    background: linear-gradient(135deg, #648da6 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #648da6 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-success.m-btn--gradient-to-accent.active,
@@ -24019,7 +24019,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-info.m-btn--gradient-to-accent {
     background: #36a3f7;
-    background: linear-gradient(135deg, #36a3f7 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #36a3f7 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-info.m-btn--gradient-to-accent.active,
@@ -24213,7 +24213,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-warning.m-btn--gradient-to-accent {
     background: #ffb822;
-    background: linear-gradient(135deg, #ffb822 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #ffb822 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-warning.m-btn--gradient-to-accent.active,
@@ -24407,7 +24407,7 @@ button:focus {
 
 .btn.m-btn--gradient-from-danger.m-btn--gradient-to-accent {
     background: #f4516c;
-    background: linear-gradient(135deg, #f4516c 30%, #00c5dc 100%)
+    background: linear-gradient(135deg, #f4516c 30%, #C0CACD 100%)
 }
 
 .btn.m-btn--gradient-from-danger.m-btn--gradient-to-accent.active,
@@ -24621,7 +24621,7 @@ button:focus {
 }
 
 .m-spinner.m-spinner--accent {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-spinner.m-spinner--focus {
@@ -24785,7 +24785,7 @@ button:focus {
 }
 
 .m-loader.m-loader--accent:before {
-    border-top-color: #00c5dc
+    border-top-color: #C0CACD
 }
 
 .m-loader.m-loader--focus:before {
@@ -25188,7 +25188,7 @@ button:focus {
 }
 
 .m-list-timeline .m-list-timeline__items .m-list-timeline__item .m-list-timeline__badge.m-list-timeline__badge--accent:before {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-list-timeline .m-list-timeline__items .m-list-timeline__item .m-list-timeline__badge.m-list-timeline__badge--focus:before {
@@ -25257,7 +25257,7 @@ button:focus {
 }
 
 .m-list-timeline.m-list-timeline--skin-dark .m-list-timeline__items .m-list-timeline__item .m-list-timeline__badge.m-list-timeline__badge--accent:before {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-list-timeline.m-list-timeline--skin-dark .m-list-timeline__items .m-list-timeline__item .m-list-timeline__badge.m-list-timeline__badge--focus:before {
@@ -25439,7 +25439,7 @@ button:focus {
 
 .m-list-badge .m-list-badge__items .m-list-badge__item.m-list-badge__item--accent {
     color: #fff;
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-list-badge .m-list-badge__items a.m-list-badge__item.m-list-badge__item--accent:hover {
@@ -26339,6 +26339,7 @@ button:focus {
 
 .m-portlet .m-portlet__head .m-portlet__head-tools .m-portlet__nav .m-portlet__nav-item .m-portlet__nav-link.m-portlet__nav-link--icon {
     padding: 0 2px
+    color: d9a0af
 }
 
 .m-portlet .m-portlet__head .m-portlet__head-tools .m-portlet__nav .m-portlet__nav-item .m-portlet__nav-link.m-portlet__nav-link--icon [class*=" la-"],
@@ -26502,7 +26503,7 @@ button:focus {
 
 .m-portlet.m-portlet--widget-fit .m-portlet__head {
     position: relative;
-    background : #E8D6C6;
+    background : #F7F2ED;
     z-index: 1
 }
 
@@ -26902,6 +26903,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 
 .m-portlet .m-portlet__head {
     border-bottom: 1px solid #ebedf2
+    background-color: #f7f2ed
 }
 
 .m-portlet .m-portlet__head .m-portlet__head-icon {
@@ -26927,6 +26929,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 
 .m-portlet .m-portlet__body {
     color: #575962
+    background-color: #f7f2ed
 }
 
 .m-portlet .m-portlet__foot:not(.m-portlet__no-border) {
@@ -26948,7 +26951,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 
 .m-portlet.m-portlet--bordered-semi .m-portlet__head {
     border: 0
-    background-color: #E3C2BD;
+    background-color: #E3C2BD
 }
 
 .m-portlet.ui-sortable-helper {
@@ -26980,7 +26983,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-portlet.m-portlet--creative .m-portlet__head .m-portlet__head-caption .m-portlet__head-label.m-portlet__head-label--accent {
-    background: #00c5dc;
+    background: #C0CACD;
     color: #fff
 }
 
@@ -27103,7 +27106,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-portlet.m-portlet--skin-dark.m-portlet--creative .m-portlet__head .m-portlet__head-caption .m-portlet__head-label.m-portlet__head-label--accent {
-    background: #00c5dc;
+    background: #C0CACD;
     color: #fff
 }
 
@@ -27424,13 +27427,13 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-portlet.m-portlet--accent.m-portlet--head-solid-bg {
-    background: #00c5dc;
-    border-color: #00c5dc
+    background: #C0CACD;
+    border-color: #C0CACD
 }
 
 .m-portlet.m-portlet--accent.m-portlet--head-solid-bg .m-portlet__head {
-    background-color: #00c5dc;
-    border-color: #00c5dc
+    background-color: #C0CACD;
+    border-color: #C0CACD
 }
 
 .m-portlet.m-portlet--accent.m-portlet--head-solid-bg .m-portlet__head .m-portlet__head-icon {
@@ -27514,7 +27517,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-portlet.m-portlet--border-bottom-accent {
-    border-bottom: 3px solid #00c5dc
+    border-bottom: 3px solid #C0CACD
 }
 
 .m-portlet.m-portlet--focus.m-portlet--head-solid-bg {
@@ -28583,7 +28586,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-timeline-3__item.m-timeline-3__item--accent:before {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-timeline-3__item.m-timeline-3__item--focus:before {
@@ -28769,7 +28772,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-widget2__item.m-widget2__item--accent:before {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-widget2__item.m-widget2__item--focus:before {
@@ -31007,7 +31010,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-widget30 .m-widget_body .m-widget_body-owlcarousel-items .m-widget_body-owlcarousel-item .m-widget_body-items .m-widget_body-item .m-widget_body-item-price {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .m-widget30 .m-widget_body .m-widget_body-owlcarousel-items .m-widget_body-owlcarousel-item .m-widget_body-items .m-widget_body-item:last-child {
@@ -31202,6 +31205,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 .m-radio.m-checkbox--solid>span,
 .m-radio.m-radio--solid>span {
     border: 1px solid transparent
+    background-color: #fff;
 }
 
 .m-checkbox.m-checkbox--solid:hover>input:not([disabled])~span,
@@ -31536,19 +31540,19 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--accent>span:after {
-    border: solid #00c5dc
+    border: solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--accent>input:disabled~span:after {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-checkbox.m-checkbox--accent>input:checked~span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--accent.m-checkbox--check-bold>input:checked~span {
-    border: 2px solid #00c5dc
+    border: 2px solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--accent>input:disabled~span {
@@ -31568,7 +31572,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--accent.m-checkbox--solid>input:checked~span {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-checkbox.m-checkbox--focus.m-checkbox--disabled {
@@ -32038,20 +32042,20 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-radio.m-radio--accent>span:after {
-    border: solid #00c5dc;
-    background: #00c5dc
+    border: solid #C0CACD;
+    background: #C0CACD
 }
 
 .m-radio.m-radio--accent>input:disabled~span:after {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-radio.m-radio--accent>input:checked~span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-radio.m-radio--accent.m-radio--check-bold>input:checked~span {
-    border: 2px solid #00c5dc
+    border: 2px solid #C0CACD
 }
 
 .m-radio.m-radio--accent>input:disabled~span {
@@ -32072,7 +32076,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-radio.m-radio--accent.m-radio--solid>input:checked~span {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-radio.m-radio--focus.m-radio--disabled {
@@ -32546,19 +32550,19 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--skin-dark.m-checkbox--accent>span:after {
-    border: solid #00c5dc
+    border: solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--skin-dark.m-checkbox--accent>input:disabled~span:after {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-checkbox.m-checkbox--skin-dark.m-checkbox--accent>input:checked~span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--skin-dark.m-checkbox--accent.m-checkbox--check-bold>input:checked~span {
-    border: 2px solid #00c5dc
+    border: 2px solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--skin-dark.m-checkbox--accent>input:disabled~span {
@@ -32578,7 +32582,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--skin-dark.m-checkbox--accent.m-checkbox--solid>input:checked~span {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-checkbox.m-checkbox--skin-dark.m-checkbox--focus.m-checkbox--disabled {
@@ -33048,20 +33052,20 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-radio.m-radio--skin-dark.m-radio--accent>span:after {
-    border: solid #00c5dc;
-    background: #00c5dc
+    border: solid #C0CACD;
+    background: #C0CACD
 }
 
 .m-radio.m-radio--skin-dark.m-radio--accent>input:disabled~span:after {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-radio.m-radio--skin-dark.m-radio--accent>input:checked~span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-radio.m-radio--skin-dark.m-radio--accent.m-radio--check-bold>input:checked~span {
-    border: 2px solid #00c5dc
+    border: 2px solid #C0CACD
 }
 
 .m-radio.m-radio--skin-dark.m-radio--accent>input:disabled~span {
@@ -33082,7 +33086,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-radio.m-radio--skin-dark.m-radio--accent.m-radio--solid>input:checked~span {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-radio.m-radio--skin-dark.m-radio--focus.m-radio--disabled {
@@ -33647,23 +33651,23 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--state-accent>span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--state-accent>span:after {
-    border: solid #00c5dc
+    border: solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--state-accent>input:disabled~span:after {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-checkbox.m-checkbox--state-accent>input:checked~span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--state-accent.m-checkbox--check-bold>input:checked~span {
-    border: 2px solid #00c5dc
+    border: 2px solid #C0CACD
 }
 
 .m-checkbox.m-checkbox--state-accent>input:disabled~span {
@@ -33671,7 +33675,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--state-accent.m-checkbox--solid>span {
-    background: #00c5dc;
+    background: #C0CACD;
     border: 1px solid transparent!important
 }
 
@@ -33684,7 +33688,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--state-accent.m-checkbox--solid>input:checked~span {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-radio.m-radio--state-accent.m-radio--disabled {
@@ -33692,24 +33696,24 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-radio.m-radio--state-accent>span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-radio.m-radio--state-accent>span:after {
-    border: solid #00c5dc;
-    background: #00c5dc
+    border: solid #C0CACD;
+    background: #C0CACD
 }
 
 .m-radio.m-radio--state-accent>input:disabled~span:after {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-radio.m-radio--state-accent>input:checked~span {
-    border: 1px solid #00c5dc
+    border: 1px solid #C0CACD
 }
 
 .m-radio.m-radio--state-accent.m-radio--check-bold>input:checked~span {
-    border: 2px solid #00c5dc
+    border: 2px solid #C0CACD
 }
 
 .m-radio.m-radio--state-accent>input:disabled~span {
@@ -33717,7 +33721,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-radio.m-radio--state-accent.m-radio--solid>span {
-    background: #00c5dc;
+    background: #C0CACD;
     border: 1px solid transparent!important
 }
 
@@ -33731,7 +33735,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-radio.m-radio--state-accent.m-radio--solid>input:checked~span {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .m-checkbox.m-checkbox--state-focus.m-checkbox--disabled {
@@ -34719,7 +34723,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .form-control.m-input--solid {
-    background-color: #EDE7E1;
+    background-color: #F7F2ED;
     border-color: #EDE7E1;
     color: #575962
 }
@@ -35143,17 +35147,17 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-switch.m-switch--accent:not(.m-switch--outline) input:empty~span:before {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-switch.m-switch--accent:not(.m-switch--outline) input:empty~span:after {
-    color: #00c5dc;
+    color: #C0CACD;
     background-color: #fff;
     opacity: .4
 }
 
 .m-switch.m-switch--accent:not(.m-switch--outline) input:checked~span:before {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-switch.m-switch--accent:not(.m-switch--outline) input:checked~span:after {
@@ -35174,7 +35178,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-switch.m-switch--outline.m-switch--accent input:checked~span:after {
-    background-color: #00c5dc;
+    background-color: #C0CACD;
     opacity: 1
 }
 
@@ -35987,7 +35991,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-table.m-table--head-bg-accent thead th {
-    background: #00c5dc;
+    background: #C0CACD;
     color: #fff;
     border-bottom: 0;
     border-top: 0
@@ -35995,12 +35999,12 @@ th>.m-checkbox.m-checkbox--single {
 
 .m-table.m-table--head-separator-accent thead th {
     border-top: 0;
-    border-bottom: 1px solid #00c5dc
+    border-bottom: 1px solid #C0CACD
 }
 
 .m-table tr.m-table__row--accent td,
 .m-table tr.m-table__row--accent th {
-    background: #00c5dc;
+    background: #C0CACD;
     color: #fff;
     border-bottom: 0;
     border-top: 0
@@ -36009,7 +36013,7 @@ th>.m-checkbox.m-checkbox--single {
 .m-table.m-table--border-accent,
 .m-table.m-table--border-accent td,
 .m-table.m-table--border-accent th {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-table.m-table--head-bg-focus thead th {
@@ -36493,15 +36497,15 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--1.m-wizard--accent .m-wizard__progress .progress .progress-bar {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--1.m-wizard--accent .m-wizard__progress .progress .progress-bar:after {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--1.m-wizard--accent .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-info .m-wizard__step-number>span {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--1.m-wizard--accent .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-info .m-wizard__step-number>span>span {
@@ -37045,11 +37049,11 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--2.m-wizard--accent .m-wizard__head .m-wizard__progress .progress .progress-bar {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--2.m-wizard--accent .m-wizard__head .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-number>span {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--2.m-wizard--accent .m-wizard__head .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-number>span>span {
@@ -37439,7 +37443,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--3 .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step .m-wizard__step-info a.m-wizard__step-number>span {
-    background-color: #e2e5ec
+    background-color: #C8A9A9
 }
 
 .m-wizard.m-wizard--3 .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step .m-wizard__step-info a.m-wizard__step-number>span>span {
@@ -37567,11 +37571,11 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--3.m-wizard--accent .m-wizard__head .m-wizard__progress .progress .progress-bar {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--3.m-wizard--accent .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-info a.m-wizard__step-number>span {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--3.m-wizard--accent .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-info a.m-wizard__step-number>span>span {
@@ -37675,7 +37679,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--3.m-wizard--success .m-wizard__head .m-wizard__progress .progress .progress-bar {
-    background-color: #000
+    background-color: #C8A9A9
 }
 
 .m-wizard.m-wizard--3.m-wizard--success .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-info a.m-wizard__step-number>span {
@@ -37695,7 +37699,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--3.m-wizard--success .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--current .m-wizard__step-info a.m-wizard__step-number>span {
-    background-color: #648da6
+    background-color: #C8A9A9
 }
 
 .m-wizard.m-wizard--3.m-wizard--success .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--current .m-wizard__step-info a.m-wizard__step-number>span>span {
@@ -38075,11 +38079,11 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--4.m-wizard--accent .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-info .m-wizard__step-icon>i {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .m-wizard.m-wizard--4.m-wizard--accent .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--current {
-    background-color: #00c5dc
+    background-color: #C0CACD
 }
 
 .m-wizard.m-wizard--4.m-wizard--accent .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--current .m-wizard__step-info a.m-wizard__step-number>span {
@@ -38103,7 +38107,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--4.m-wizard--accent .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--current .m-wizard__step-info .m-wizard__step-icon>i {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .m-wizard.m-wizard--4.m-wizard--focus .m-wizard__head .m-wizard__nav .m-wizard__steps .m-wizard__step.m-wizard__step--done .m-wizard__step-info .m-wizard__step-icon>i {
@@ -38478,15 +38482,15 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-wizard.m-wizard--5.m-wizard--accent .m-wizard__head .m-wizard__steps .m-wizard__step.m-wizard__step--current {
-    border-bottom: 2px solid #00c5dc
+    border-bottom: 2px solid #C0CACD
 }
 
 .m-wizard.m-wizard--5.m-wizard--accent .m-wizard__head .m-wizard__steps .m-wizard__step.m-wizard__step--current .m-wizard__step-info .m-wizard__step-number .m-wizard__step-seq {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .m-wizard.m-wizard--5.m-wizard--accent .m-wizard__head .m-wizard__steps .m-wizard__step.m-wizard__step--current .m-wizard__step-info .m-wizard__step-number .m-wizard__step-label {
-    color: #00c5dc
+    color: #C0CACD
 }
 
 .m-wizard.m-wizard--5.m-wizard--focus .m-wizard__head .m-wizard__steps .m-wizard__step.m-wizard__step--current {
@@ -38855,7 +38859,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-accordion .m-accordion__item--accent {
-    border: 1px solid #00c5dc!important
+    border: 1px solid #C0CACD!important
 }
 
 .m-accordion .m-accordion__item--accent .m-accordion__item-head,
@@ -38868,7 +38872,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-accordion .m-accordion__item--accent .m-accordion__item-head.collapsed {
-    background-color: #00c5dc!important
+    background-color: #C0CACD!important
 }
 
 .m-accordion .m-accordion__item--accent .m-accordion__item-head.collapsed .m-accordion__item-mode {
@@ -40414,8 +40418,8 @@ html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
 
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-accent,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-accent {
-    background-color: #00c5dc;
-    border-color: #00c5dc;
+    background-color: #C0CACD;
+    border-color: #C0CACD;
     color: #fff
 }
 
@@ -41351,14 +41355,14 @@ select.m-select2 {
 }
 
 .noUi-target.m-nouislider.m-nouislider--connect-accent .noUi-connect {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .noUi-target.m-nouislider.m-nouislider--handle-accent .noUi-handle {
     border: 0;
-    background: #00c5dc;
-    -webkit-box-shadow: 0 3px 6px -3px #00c5dc;
-    box-shadow: 0 3px 6px -3px #00c5dc
+    background: #C0CACD;
+    -webkit-box-shadow: 0 3px 6px -3px #C0CACD;
+    box-shadow: 0 3px 6px -3px #C0CACD
 }
 
 .noUi-target.m-nouislider.m-nouislider--connect-focus .noUi-connect {
@@ -41491,7 +41495,7 @@ select.m-select2 {
 }
 
 .m-dropzone.m-dropzone--accent {
-    border-color: #00c5dc
+    border-color: #C0CACD
 }
 
 .m-dropzone.m-dropzone--focus {
@@ -42462,7 +42466,7 @@ select.m-select2 {
 
 .fc-unthemed .fc-event-dot.fc-start.m-fc-event--accent .fc-content:before,
 .fc-unthemed .fc-event.fc-start.m-fc-event--accent .fc-content:before {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .fc-unthemed .fc-event-dot.fc-not-start.fc-end.m-fc-event--solid-accent,
@@ -42471,7 +42475,7 @@ select.m-select2 {
 .fc-unthemed .fc-event.fc-not-start.fc-end.m-fc-event--solid-accent,
 .fc-unthemed .fc-event.fc-not-start.fc-not-end.m-fc-event--solid-accent,
 .fc-unthemed .fc-event.fc-start.m-fc-event--solid-accent {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .fc-unthemed .fc-event-dot.fc-not-start.fc-end.m-fc-event--solid-accent .fc-title,
@@ -42858,12 +42862,12 @@ select.m-select2 {
 
 .fc-unthemed .fc-popover .fc-body .fc-event-dot.fc-not-start.fc-not-end.m-fc-event--accent .fc-content:before,
 .fc-unthemed .fc-popover .fc-body .fc-event.fc-not-start.fc-not-end.m-fc-event--accent .fc-content:before {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .fc-unthemed .fc-popover .fc-body .fc-event-dot.fc-not-start.fc-not-end.m-fc-event--solid-accent,
 .fc-unthemed .fc-popover .fc-body .fc-event.fc-not-start.fc-not-end.m-fc-event--solid-accent {
-    background: #00c5dc
+    background: #C0CACD
 }
 
 .fc-unthemed .fc-popover .fc-body .fc-event-dot.fc-not-start.fc-not-end.m-fc-event--solid-accent .fc-title,
@@ -43078,8 +43082,8 @@ select.m-select2 {
 
 .fc-unthemed .fc-list-item.m-fc-event--accent .fc-event-dot,
 .fc-unthemed .fc-list-item.m-fc-event--solid-accent .fc-event-dot {
-    background: #00c5dc;
-    border-color: #00c5dc
+    background: #C0CACD;
+    border-color: #C0CACD
 }
 
 .fc-unthemed .fc-list-item.m-fc-event--focus .fc-event-dot,
@@ -54849,7 +54853,7 @@ i.m-menu__link-icon.fa {
     margin: 0 -30px;
 }
 .bg-gray {
-    background: #ddd6d6;
+    background: #F7F2ED;
 }
 .m-form__section.bg-gray {
     padding: 30px 4rem;
@@ -55778,7 +55782,7 @@ i.m-menu__link-icon.fa {
     }
 }    
 .property_block1_bg{
-    background: #7D6A68 !important;
+    background: #d9a0af !important;
 }
 .m-widget17__subtitle a {
     color: #000 !important;
@@ -55904,7 +55908,7 @@ i.m-menu__link-icon.fa {
     margin: 0px auto;
     /* padding-top: 50px; */
     /* margin-top: 50px; */
-    font-size: 25px;
+    font-size: 20px;
     opacity: 0.6;
 }
 @media (max-width:1024px) {    
@@ -55935,4 +55939,13 @@ i.m-menu__link-icon.fa {
 }
 .arrival_departure{
     margin-right: 5px;
+}
+.m-portlet__body{
+background-color: #fff !important;
+}
+.col-lg-2{
+background-color: #EDE7E1 !important;
+}
+.fa fa-globe m--font-light{
+background-color: #C8A9A9 !important;
 }
