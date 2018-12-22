@@ -47,9 +47,9 @@ input.error { border-color:red; }
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding: 5px;
-    background-color: #fafafa;
+    background-color: #F7F2ED;
     min-height: 60px;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid #2A3C3C;
 	box-sizing: border-box !important;
 }
 
@@ -264,7 +264,7 @@ button.b7, .button-b7 {
 }
 
 .v1 .caldate.today, .v1 .column-h.today {
-    color: Red!important;
+    color: #FF5E35 !important;
 }
 
 
@@ -272,8 +272,8 @@ button.b7, .button-b7 {
 /* calendar */
 .clr{clear:both;}
 
-.row.first{    border-top: 1px solid #555;}
-.row.last{    border-bottom: 1px solid #555;}
+.row.first{    border-top: 1px solid #2A3C3C;}
+.row.last{    border-bottom: 1px solid #2A3C3C;}
 
 .cols{
 	width:36px;
@@ -297,7 +297,7 @@ button.b7, .button-b7 {
 .white_border_left{border-left: 1px solid #fff;}
 .weekend_days{background:#f2f2f2;}
 .weekend{background:#C0CACD; color:#fff;font-weight:bold;}
-.empty_row{background:#f2f2f2; height:30px;}
+.empty_row{background:#F7F2ED; height:30px;}
 .separate_row{height:8px;}
 .status_red{float:right;cursor: pointer; border-right: 2px solid transparent; background: #FF0000; padding: 1px 0; margin-left:5px;text-align:right;}
 .status_black{float:right;cursor: pointer; border-right: 2px solid transparent; background: #000000; padding: 1px 0;margin-left:5px;text-align:right;}

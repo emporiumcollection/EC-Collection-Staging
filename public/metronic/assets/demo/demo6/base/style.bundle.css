@@ -88,9 +88,9 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: #2A3C3C;
     text-align: left;
-    background-color: #fff
+    background-color: #F7F2ED
 }
 
 [tabindex="-1"]:focus {
@@ -406,7 +406,7 @@ h6 {
     font-family: Playfair-display;
     font-weight: 500;
     line-height: 1.2;
-    color: inherit
+    color: #2A3C3C;
 }
 
 .h1,
@@ -15672,7 +15672,7 @@ strong {
 }
 
 .m--font-light {
-    color: #fff!important
+    color: #2A3C3C!important
 }
 
 .m--font-inverse-light {
@@ -26186,6 +26186,7 @@ button:focus {
     padding: 0 2.2rem;
     height: 5.1rem;
     position: relative
+    background-color: #F7F2ED;
 }
 
 .m-portlet .m-portlet__head .m-portlet__head-progress {
@@ -26903,7 +26904,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 
 .m-portlet .m-portlet__head {
     border-bottom: 1px solid #ebedf2
-    background-color: #f7f2ed
+    background-color: #F7F2ED;
 }
 
 .m-portlet .m-portlet__head .m-portlet__head-icon {
@@ -26929,7 +26930,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 
 .m-portlet .m-portlet__body {
     color: #575962
-    background-color: #f7f2ed
+    background-color: #F7F2ED
 }
 
 .m-portlet .m-portlet__foot:not(.m-portlet__no-border) {
@@ -34304,6 +34305,7 @@ th>.m-checkbox.m-checkbox--single {
     font-family: sans-serif, Arial;
     border-radius: 0;
     border-radius: .25rem
+    background-color: #F7F2ED;
 }
 
 .form-control.m-input--pill {
@@ -52980,7 +52982,7 @@ body.m-content--skin-light2 {
 
 .m-aside-menu.m-aside-menu--skin-light .m-menu__nav>.m-menu__item>.m-menu__heading .m-menu__link-icon,
 .m-aside-menu.m-aside-menu--skin-light .m-menu__nav>.m-menu__item>.m-menu__link .m-menu__link-icon {
-    color: #2A3C3C;
+    color: #2A3C3C
 }
 
 .m-aside-menu.m-aside-menu--skin-light .m-menu__nav>.m-menu__item>.m-menu__heading .m-menu__link-bullet.m-menu__link-bullet--dot>span,
@@ -54775,7 +54777,7 @@ i.m-menu__link-icon.fa {
 }
 .m-aside-menu.m-aside-menu--skin-light 
 .m-menu__nav>.m-menu__item:not(.m-menu__item--parent):not(.m-menu__item--open):not(.m-menu__item--expanded):not(.m-menu__item--active):hover>.m-menu__heading, .m-aside-menu.m-aside-menu--skin-light .m-menu__nav>.m-menu__item:not(.m-menu__item--parent):not(.m-menu__item--open):not(.m-menu__item--expanded):not(.m-menu__item--active):hover>.m-menu__link {
-     background: #C0DADB;
+     background: #90a2b6;
      color: #252525 !important
 }
 .m-aside-left--minimize .m-aside-menu.m-aside-menu--skin-light 
@@ -55188,7 +55190,7 @@ i.m-menu__link-icon.fa {
 }
 
 .setting-box-advert2{
-    background-color: #f2d5e3;
+    background-color: #D1DBBD;
     text-align: center;
     width: 23%;
     margin: 0px 16px 16px 0px;
@@ -55224,7 +55226,7 @@ i.m-menu__link-icon.fa {
 .setting-box-advert3 .grid_icon{
     text-align: center;
     font-size: 25px;
-    color: #503030;
+    color: #fff;
 }
 .setting-box-advert3 .grid_link-text{
     display: block;
@@ -55233,7 +55235,7 @@ i.m-menu__link-icon.fa {
     margin: 10px 0 0 0;
     font-size: 1rem;
     font-weight: 500;
-    color: #000;
+    color: #fff;
 }
 .setting-box-advert3 a:hover{
     text-decoration: none !important;
@@ -55396,7 +55398,7 @@ i.m-menu__link-icon.fa {
     }
     
     .setting-box-advert2{
-        background-color: #f2d5e3;
+        background-color: #D1DBBD;
         text-align: center;
         width: 23%;
         margin: 0px 21px 21px 0px;
@@ -55516,7 +55518,7 @@ i.m-menu__link-icon.fa {
         margin: 10px 0 0 0;
         font-size: 1rem;
         font-weight: 500;
-        color: #000;
+        color: #fff;
     }
     .setting-box-advert6 a:hover{
         text-decoration: none !important;
@@ -55649,7 +55651,7 @@ i.m-menu__link-icon.fa {
         margin: 10px 0 0 0;
         font-size: 1rem;
         font-weight: 500;
-        color: #000;
+        color: #fff;
     }
     .setting-box-advert3 a:hover{
         text-decoration: none !important;
