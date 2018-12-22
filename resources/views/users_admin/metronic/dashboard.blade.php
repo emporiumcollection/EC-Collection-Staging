@@ -124,6 +124,7 @@
                         <div class="col-md-12">
                             <a href="{{$final_url}}" class="thumbnail" target="_blank">                                
                                 <img src="{{url('/uploads/article_imgs/'.$blog_row->featured_image)}}" alt="{{$blog_row->title_pos_1}}" style="max-width:100%;">
+                                <div class="dash_img_overlay"></div>
                             </a>
                         </div>
                         <div class="col-md-12">
@@ -174,6 +175,7 @@
                                     <a href="{{$slider_row->slider_link}}" class="thumbnail">                            
                                         <div class="b2c-banner-text">{{$slider_row->slider_title}}</div>
                                         <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}" style="max-width:100%;">
+                                        <div class="dash_img_overlay"></div>
                                     </a>
                                   </div>                	  
                             	</div><!--.row-->
@@ -942,7 +944,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
               slides().first().fadeIn($transition_time);
             
               // auto scroll 
-              /*$interval = setInterval( 
+              $interval = setInterval( 
                 function(){
                 if(slides().length > 1){
                   var $i = $slider.find($slide + '.active').index();
@@ -957,7 +959,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   }
                 }
                 , $transition_time +  $time_between_slides 
-              );*/
+              );
             
             
             $("#b2cdash_carousel .left").click(function(){
@@ -998,7 +1000,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
               slides2().first().fadeIn($transition_time2);
             
               // auto scroll 
-              /*$interval = setInterval( 
+              $interval = setInterval( 
                 function(){
                 if(slides2().length > 1){
                   var $i = $slider2.find($slide2 + '.active').index();
@@ -1013,7 +1015,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                   }
                 }
                 , $transition_time2 +  $time_between_slides2
-              );*/
+              );
             
             
             $("#b2cblog_carousel .left").click(function(){
