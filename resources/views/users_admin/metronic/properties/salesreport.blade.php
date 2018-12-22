@@ -167,7 +167,9 @@
     @parent 
     <link href="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />    
     <style>
-    	
+    	.map-top{
+    	   background-color:red;
+    	}
     </style>
 @endsection
 

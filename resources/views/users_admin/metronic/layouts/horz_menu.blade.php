@@ -7,8 +7,10 @@
 	<ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
 		<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  m-menu-submenu-toggle="click" m-menu-link-redirect="1" aria-haspopup="true">
 			<a  href="javascript:;" class="m-menu__link m-menu__toggle">
-				<i class="m-menu__link-icon fa fa-bars m--font-light gray-color"></i>
-				<span class="m-menu__link-text">
+				<span class="desk_bars1"></span>
+                <span class="desk_bars2"></span>
+                <span class="desk_bars3"></span>
+				<span class="m-menu__link-text _top_menu">
 					Menu
 				</span>
 				<i class="m-menu__hor-arrow la la-angle-down"></i>

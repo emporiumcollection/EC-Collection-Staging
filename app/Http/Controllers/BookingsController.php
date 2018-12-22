@@ -1317,20 +1317,7 @@ class BookingsController extends Controller {
 		}
 		$uid = \Session::get('uid');
         
-        $prop_id = 0;
-        $property_name = '';
-        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
-        if(!empty($obj_property)){
-            $prop_id = $obj_property->id;
-            $property_name = $obj_property->property_name;
-        }
-        $this->data['pid'] = $prop_id;
         
-        $this->data['hotel_name'] = $property_name;
-        
-        $this->data['cat_types'] = $this->find_categories_room($prop_id);
-            
-        $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
         
         $property_ids = array();
         if($uid > 0){
