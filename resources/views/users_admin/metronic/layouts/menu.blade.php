@@ -89,7 +89,7 @@
                                 <a href="{{URL::to('qualityassurances')}}" class="m-menu__link"><i class="m-menu__link-icon flaticon-pie-chart"></i> <span class="m-menu__link-text">Quality Assurance</span></a>
                             </li>
                             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
-                                <a href="{{ URL::to('contract/acceptedcontracts')}}" class="m-menu__link"><i class="m-menu__link-icon flaticon-piggy-bank"></i> <span class="m-menu__link-text">Billings &amp; Contracts</span></a>
+                                <a href="{{ URL::to('contract/acceptedcontracts')}}" class="m-menu__link"><i class="m-menu__link-icon flaticon-diagram"></i> <span class="m-menu__link-text">Billings &amp; Contracts</span></a>
                             </li>
                             
                             
