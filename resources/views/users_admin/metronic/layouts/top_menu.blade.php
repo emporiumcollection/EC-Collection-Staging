@@ -173,7 +173,7 @@
 																	</div>
                                                                     <div class="m-nav-grid__row">
 																		<a href="{{URL::to('arrivaldeparture')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-transport"></i>
+																			<i class="m-nav-grid__icon flaticon-clock-2"></i>
 																			<span class="m-nav-grid__text">
 																				Arrivals, Departures &amp; Cancelations
 																			</span>
