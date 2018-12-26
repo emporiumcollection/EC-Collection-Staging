@@ -334,7 +334,7 @@
 												<a href="{{ URL::to('properties_settings/'.$row->id.'/property_images')}}">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
-                                        				Images
+                                        				Property Images
                                         			</span>
                                         		</a>
 											</span>
@@ -364,7 +364,7 @@
 											     <a href="{{ URL::to('properties_settings/'.$row->id.'/gallery_images')}}">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
-                                        				Galleries
+                                        				Property Galleries
                                         			</span>
                                         		</a>	
 											</span>
@@ -446,7 +446,7 @@
         <div class="modal-content" data-id="{{$key}}">
             <div class="modal-header">
                 <h5 class="modal-title" id="contractModalLabel{{$key}}">{{$hotelName}}'s Contracts</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Ã—</span></button>
             </div>
             
             <div class="modal-body">
@@ -481,13 +481,13 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Alert</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">Property Management System Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Ã—</span></button>
             </div>
             
             <div class="modal-body">
                 <div class="m-portlet__body">
-                    <p>Your hotel is being reviewed. A Property consultant will contact you once your hotel has been approved.</p>
+                    <p>Thank you for your hotel submission. Your hotel is being reviewed. A Property consultant will contact you once your hotel has been approved.</p>
                 </div>
             </div>
         </div>
@@ -500,7 +500,7 @@
     @parent
     <style type="text/css">
         .box-property{
-            background-color: #fff; padding: 10px; margin: 10px 20px; text-align: center; font-size: 15px;
+            background-color: #F7F2ED; padding: 10px; margin: 10px 20px; text-align: center; font-size: 15px;
         }
         .m-pertlet_head-switch-btn{
             vertical-align: middle;
