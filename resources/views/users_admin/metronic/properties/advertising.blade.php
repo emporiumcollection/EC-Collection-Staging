@@ -55,30 +55,30 @@ This is a property-specific online banner advertising opportunity that allows yo
 											<ul class="m-nav">
 												<li class="m-nav__section m-nav__section--first">
 													<span class="m-nav__section-text">
-														Featured - Destination
+														Select Advertising Type
 													</span>
 												</li>
 												<li class="m-nav__item">
 													<a href="" class="m-nav__link">
 														<i class="m-nav__link-icon flaticon-graphic"></i>
 														<span class="m-nav__link-text">
+															Featured - Landing Page
+														</span>
+													</a>
+												</li>
+												<li class="m-nav__item">
+													<a href="" class="m-nav__link">
+														<i class="m-nav__link-icon flaticon-graphic"></i>
+														<span class="m-nav__link-text">
+															Featured - Destination
+														</span>
+													</a>
+												</li>
+												<li class="m-nav__item">
+													<a href="" class="m-nav__link">
+														<i class="m-nav__link-icon flaticon-graphic"></i>
+														<span class="m-nav__link-text">
 															Featured - Experience
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-graphic"></i>
-														<span class="m-nav__link-text">
-															Featured - Landing
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-graphic"></i>
-														<span class="m-nav__link-text">
-															Featured - Landing
 														</span>
 													</a>
 												</li>
