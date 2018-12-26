@@ -45,7 +45,7 @@ This is a property-specific online banner advertising opportunity that allows yo
 					<ul class="m-portlet__nav">
 						<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
 							<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
-								Select Statistic
+								Select Advertising Statistic
 							</a>
 							<div class="m-dropdown__wrapper" style="z-index: 101;">
 								<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 47px;"></span>
@@ -140,9 +140,9 @@ This is a property-specific online banner advertising opportunity that allows yo
             <div class="adv-top-dd">
                 <select class="form-control">
                     <option value="">Select Advertising Type</option>
-                    <option value="">Featured for destination</option>
-                    <option value="">Featured for experience</option>
-                    <option value="">Homepage Slider</option>
+                    <option value="">Featured - Landing Page</option>
+                    <option value="">Featured - Destination/option>
+                    <option value="">Featured - Experience</option>
                 </select>
             </div>
         </div>
@@ -252,7 +252,7 @@ This is a property-specific online banner advertising opportunity that allows yo
             <div class="tbl">
                 <div class="tbl-row">
                     <div class="tbl-cell1 adv-bg-green"></div>
-                    <div class="tbl-cell2 adv-apd-left">Advert placed</div>
+                    <div class="tbl-cell2 adv-apd-left">Advertising placed</div>
                 </div>
                 <div class="tbl-row">
                     <div class="tbl-cell1 adv-bg-gray"></div>
