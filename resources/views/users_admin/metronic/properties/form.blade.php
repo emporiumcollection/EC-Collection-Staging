@@ -45,7 +45,7 @@
 					<div class="m-portlet__head-caption">
 						<div class="m-portlet__head-title">
 							<h3 class="m-portlet__head-text">
-								Update Property
+								Property Management System - Setup Wizard
 							</h3>
 						</div>
 					</div>					
@@ -87,7 +87,7 @@
 														<span></span>
 													</div>
 													<div class="m-wizard__step-label">
-														Hotel Info
+														Hotel/Property Info
 													</div>
 												</div>
 											</div>
@@ -148,7 +148,7 @@
     											<div class="m-form__section m-form__section--first">
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
-    														Hotel Info
+    														Hotel/Property Info
     													</h3>
     												</div>   
                                                     <div class="form-group m-form__group row">
@@ -179,7 +179,7 @@
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Property Type <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             <?php $property_type = explode(',', $row['property_type']);
-                                                            $property_type_opt = array('Hotel' => 'Hotel', 'Yachts' => 'Yachts', 'Villas' => 'Villas', 'Spas' => 'Spas', 'Safari Lodges' => 'Safari Lodges');
+                                                            $property_type_opt = array('Hotel' => 'Hotels', 'Yachts' => 'Yachts', 'Villas' => 'Villas', 'Spa' => 'Spas', 'Safari Lodges' => 'Safari Lodges');
                                                             ?>
                                                             <select name='property_type' id='property_type' rows='5' required="required"  class='form-control m-input m-input--solid select2 ' onchange="check_yachts(this.value)";  > 
                                                                 <?php
