@@ -146,16 +146,14 @@
     										<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
                                                 <input name="form_wizard" type="hidden" id="form_wizard" value="1" />  
     											<div class="m-form__section m-form__section--first">
+                                                    <div class="col-xl-9 col-sm-9 col-md-9 col-lg-9"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>View Hotel Setup Documentation</a></div>
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
     														Hotel/Property Info
     													</h3>
     												</div>   
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3"></div>
-                                                            
-                                                        <div class="col-xl-9 col-sm-9 col-md-9 col-lg-9"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>View Hotel Setup Documentation</a></div>
-                                                        
+                                                        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3"></div>                                                        
                                                     </div>
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">{{ Lang::get('hotel.property-name') }} <span class="asterix"> * </span></label>
@@ -179,7 +177,7 @@
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Property Type <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             <?php $property_type = explode(',', $row['property_type']);
-                                                            $property_type_opt = array('Hotel' => 'Hotels', 'Yachts' => 'Yachts', 'Villas' => 'Villas', 'Spa' => 'Spas', 'Safari Lodges' => 'Safari Lodges');
+                                                            $property_type_opt = array('Hotel' => 'Hotel', 'Yacht' => 'Yacht', 'Private Villa' => 'Private Villa', 'Spa & wellness Hotel' => 'Spa & wellness Hotel', 'Safari Lodge' => 'Safari Lodge', 'Private Island' => 'Private Island',, 'Boutique Hotel' => 'Boutique Hotel',);
                                                             ?>
                                                             <select name='property_type' id='property_type' rows='5' required="required"  class='form-control m-input m-input--solid select2 ' onchange="check_yachts(this.value)";  > 
                                                                 <?php
@@ -252,7 +250,7 @@
                                                     </div> 
                     
                                                     <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Assign Amenities </label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Assign Property Amenities </label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             <select name='assigned_amenities[]' rows='5' id='assigned_amenities' class='form-control m-input m-input--solid select2 ' multiple="multiple"  >
                                                                 @if(!empty($amenties))
@@ -384,7 +382,22 @@
     														</span> 
                                                         </div>                                                        
                                                     </div>
-                                                                                 					
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">{{ Lang::get('hotel.primary_airport') }} <span class="asterix"> * </span></label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('primary_airport', $row['primary_airport'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'', 'required'=>'true'  )) !!}
+                                                            <span class="m-form__help">
+    															{{ Lang::get('hotel.property-name-help-text') }}
+    														</span>  
+                                                        </div>
+                                                        <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">{{ Lang::get('hotel.secondary_airport') }} <span class="asterix"> * </span></label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('secondary_airport', $row['secondary_airport'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'', 'required'=>'true'  )) !!}
+                                                            <span class="m-form__help">
+    															{{ Lang::get('hotel.property-name-help-text') }}
+    														</span>  
+                                                        </div>                      					
     											</div>
                                             </div>
                                             <!--begin: Form Wizard Step 1-->
