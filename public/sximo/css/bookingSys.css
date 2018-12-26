@@ -67,7 +67,7 @@ input.error { border-color:red; }
 }
 
 .calendar .controls button:not(.new-reservation), .calendar .controls input:not(.new-reservation), .calendar .controls select:not(.new-reservation) {
-    border: 1px solid #fff;
+    border: 1px solid #F7F2ED;
     background-color: #C0CACD;
 	float:left;
 }
@@ -228,13 +228,13 @@ button.b7, .button-b7 {
 .v1 .column-h {
     line-height: 18px;
     font-size: 12px;
-    border-left: 1px solid #555;
+    border-left: 1px solid #2A3C3C;
     background-color: #fff;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid #2A3C3C;
 }
 
 .v1 .column.wkend {
-    background-color: #F2F2F2;
+    background-color: #F7F2ED;
 }
 
 .v1 .caldate.wkend, .v1 .column-h.wkend {
@@ -252,7 +252,7 @@ button.b7, .button-b7 {
 
 
 .v1 .column-h, .v1 .row.first {
-    border-top: 1px solid #555;
+    border-top: 1px solid #2A3C3C;
 }
 
 .v1 * {
@@ -284,19 +284,19 @@ button.b7, .button-b7 {
 	
 }
 .cols.first{width:150px;height:auto;}
-.top_border_black{ border-top: 1px solid #C0CACD;}
-.left_border_black{border-left: 1px solid #C0CACD;}
-.right_border_black{border-right: 1px solid #C0CACD;}
-.bottom_border_black{border-bottom: 1px solid #C0CACD;}
+.top_border_black{ border-top: 1px solid #2A3C3C;}
+.left_border_black{border-left: 1px solid #2A3C3C;}
+.right_border_black{border-right: 1px solid #2A3C3C;}
+.bottom_border_black{border-bottom: 1px solid #2A3C3C;}
 
 .top_border_gray{ border-top: 1px solid #DDD;}
 .left_border_gray{border-left: 1px solid #DDD;}
 .right_border_gray{border-right: 1px solid #DDD;}
 .bottom_border_gray{border-bottom: 1px solid #DDD;}
 .no_border{border:none;}
-.white_border_left{border-left: 1px solid #fff;}
-.weekend_days{background:#f2f2f2;}
-.weekend{background:#C0CACD; color:#fff;font-weight:bold;}
+.white_border_left{border-left: 1px solid #EDE7E1;}
+.weekend_days{background:#F7F2ED;}
+.weekend{background:#F7F2ED; color:#fff;font-weight:bold;}
 .empty_row{background:#F7F2ED; height:30px;}
 .separate_row{height:8px;}
 .status_red{float:right;cursor: pointer; border-right: 2px solid transparent; background: #FF0000; padding: 1px 0; margin-left:5px;text-align:right;}
@@ -304,6 +304,6 @@ button.b7, .button-b7 {
 .status_green{float:right;cursor: pointer; border-right: 2px solid transparent; background: #36B322; padding: 1px 0;margin-left:5px; text-align:right;}
 .room_number, .room_title{float:left; }
 .room_name{float:right;display:none;}
-.room_number{font-weight:bold;}
+.room_number{font-weight:normal;}
 
 .today{color:red !important;}
