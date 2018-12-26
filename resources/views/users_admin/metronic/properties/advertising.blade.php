@@ -22,7 +22,7 @@
     </div> 
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
 Our main goal is to match your promotion with user intent.Your property will have Preferred Placement in the Emporium-Collection booking engine search for your market.
-Your property will also appear at the top of the search in the respective channel for that particular city. Limited to (4) hotels per destination to maximize results.
+Your property will also appear at the top of the search in the respective channel for that particular city. Limited to (4) hotels per destination/experience to maximize results.
 This is a property-specific online banner advertising opportunity that allows you to target our dedicated, lifestyle and bespoke travelers</div>
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
@@ -37,7 +37,7 @@ This is a property-specific online banner advertising opportunity that allows yo
 				<div class="m-portlet__head-caption">
 					<div class="m-portlet__head-title">
 						<h3 class="m-portlet__head-text">
-							Advertising Stats
+							Advertising Statistics
 						</h3>
 					</div>
 				</div>
@@ -139,7 +139,7 @@ This is a property-specific online banner advertising opportunity that allows yo
         <div class="row" style="margin-left: 0px;">
             <div class="adv-top-dd">
                 <select class="form-control">
-                    <option value="">Select Advertising Type</option>
+                    <option value="">Select Advertising Placement Type</option>
                     <option value="">Featured - Landing Page</option>
                     <option value="">Featured - Destination/option>
                     <option value="">Featured - Experience</option>
@@ -252,11 +252,11 @@ This is a property-specific online banner advertising opportunity that allows yo
             <div class="tbl">
                 <div class="tbl-row">
                     <div class="tbl-cell1 adv-bg-green"></div>
-                    <div class="tbl-cell2 adv-apd-left">Advertising placed</div>
+                    <div class="tbl-cell2 adv-apd-left">Advertising Booked</div>
                 </div>
                 <div class="tbl-row">
                     <div class="tbl-cell1 adv-bg-gray"></div>
-                    <div class="tbl-cell2 adv-apd-left">Reserve this month</div>
+                    <div class="tbl-cell2 adv-apd-left">Advertising slots available</div>
                 </div>
             </div>
         </div>
