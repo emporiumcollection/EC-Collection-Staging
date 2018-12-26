@@ -21,13 +21,14 @@
         <h2>Advertising</h2>
     </div> 
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
-    </div>
+Our main goal is to match your promotion with user intent.Your property will have Preferred Placement in the Emporium-Collection booking engine search for your market.
+Your property will also appear at the top of the search in the respective channel for that particular city. Limited to (4) hotels per destination to maximize results.
+This is a property-specific online banner advertising opportunity that allows you to target our dedicated, lifestyle and bespoke travelers</div>
     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
         <hr />
     </div> 
     <div class="col-md-12 col-xs-12 m--align-right padding-30"> 
-        <a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Advertising-help.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Documentation</a>
+        <a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Advertising-help.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Advertising Documentation</a>
     </div>
     <div class="col-sm-12 col-md-4 col-xl-4">
         <!--begin:: Widgets/Adwords Stats-->
@@ -36,7 +37,7 @@
 				<div class="m-portlet__head-caption">
 					<div class="m-portlet__head-title">
 						<h3 class="m-portlet__head-text">
-							Sales Stats
+							Advertising Stats
 						</h3>
 					</div>
 				</div>
@@ -44,7 +45,7 @@
 					<ul class="m-portlet__nav">
 						<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
 							<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
-								Select Range
+								Select Statistic
 							</a>
 							<div class="m-dropdown__wrapper" style="z-index: 101;">
 								<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 47px;"></span>
@@ -54,46 +55,34 @@
 											<ul class="m-nav">
 												<li class="m-nav__section m-nav__section--first">
 													<span class="m-nav__section-text">
-														Quick Actions
+														Featured - Destination
 													</span>
 												</li>
 												<li class="m-nav__item">
 													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-share"></i>
+														<i class="m-nav__link-icon flaticon-graphic"></i>
 														<span class="m-nav__link-text">
-															Activity
+															Featured - Experience
 														</span>
 													</a>
 												</li>
 												<li class="m-nav__item">
 													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-chat-1"></i>
+														<i class="m-nav__link-icon flaticon-graphic"></i>
 														<span class="m-nav__link-text">
-															Messages
+															Featured - Landing
 														</span>
 													</a>
 												</li>
 												<li class="m-nav__item">
 													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-info"></i>
+														<i class="m-nav__link-icon flaticon-graphic"></i>
 														<span class="m-nav__link-text">
-															FAQ
-														</span>
-													</a>
-												</li>
-												<li class="m-nav__item">
-													<a href="" class="m-nav__link">
-														<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-														<span class="m-nav__link-text">
-															Support
+															Featured - Landing
 														</span>
 													</a>
 												</li>
 												<li class="m-nav__separator m-nav__separator--fit"></li>
-												<li class="m-nav__item">
-													<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-														Cancel
-													</a>
 												</li>
 											</ul>
 										</div>
@@ -116,12 +105,9 @@
 								</span>
 								<div class="m-widget21__info">
 									<span class="m-widget21__title">
-										Sales
+										Traffic Generated
 									</span>
 									<br>
-									<span class="m-widget21__sub">
-										IPO, Margins, Transactions
-									</span>
 								</div>
 							</div>
 						</div>
@@ -134,12 +120,9 @@
 								</span>
 								<div class="m-widget21__info">
 									<span class="m-widget21__title">
-										Commission Paid
+										CTR
 									</span>
 									<br>
-									<span class="m-widget21__sub">
-										Expenses, Loses, Profits
-									</span>
 								</div>
 							</div>
 						</div>
@@ -156,7 +139,7 @@
         <div class="row" style="margin-left: 0px;">
             <div class="adv-top-dd">
                 <select class="form-control">
-                    <option value="">Select</option>
+                    <option value="">Select Advertising Type</option>
                     <option value="">Featured for destination</option>
                     <option value="">Featured for experience</option>
                     <option value="">Homepage Slider</option>
