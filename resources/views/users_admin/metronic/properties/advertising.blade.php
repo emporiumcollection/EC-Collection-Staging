@@ -141,7 +141,7 @@ This is a property-specific online banner advertising opportunity that allows yo
                 <select class="form-control">
                     <option value="">Select Advertising Placement Type</option>
                     <option value="">Featured - Landing Page</option>
-                    <option value="">Featured - Destination/option>
+                    <option value="">Featured - Destination</option>
                     <option value="">Featured - Experience</option>
                 </select>
             </div>
