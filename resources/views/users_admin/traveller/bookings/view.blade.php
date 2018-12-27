@@ -58,7 +58,7 @@
                                         <tr><td>Departure Date:</td><td>{{ $row->checkout_date }}</td></tr>
                                         <tr><td>Number of Nights(s):</td><td>{{ $row->number_of_nights }}</td></tr>
                                         <tr><td colspan="2"><hr /></td></tr>
-                                        <tr><td colspan="2"><h5>ROOMS</h5></td></tr>
+                                        <tr><td colspan="2"><h5>Suites</h5></td></tr>
                                         {{--*/ $total_price = 0; $reservation_price = $row->price;  /*--}}
                                         @foreach($row->reserved_rooms as $rooms)
                                             <tr><td>Number of adults(s):</td><td>{{ $rooms->booking_adults }}</td></tr>
@@ -84,7 +84,7 @@
     							
     						</span>
     						<span class="m-accordion__item-title">
-    							YOUR ROOM
+    							YOUR SUITE
     						</span>
     						<span class="m-accordion__item-mode"></span>
     					</div>
@@ -120,7 +120,7 @@
     							<h5>YOUR WISHES</h5>
                                 <p>Kindly specify any preferences or special requests you may have in order to help us best prepare for your coming stay with us.</p>
                                 <div class="col-sm-12 col-md-12">
-                                    Have you already stayed in one of our rooms/suites? {{ $row->preferences->already_stayed }}
+                                    Have you already stayed in one of our suites? {{ $row->preferences->already_stayed }}
                                     <br />
                                     Family Name: {{ $row->preferences->first_name }} {{ $row->preferences->last_name }}
                                     <br />
@@ -141,7 +141,7 @@
                                     <h5>{{ $row->category->category_name }} preferences</h5>
                                 </div>
                                 <div class="col-sm-12 col-md-12">
-                                    Desired room temperature: {{ $row->preferences->desired_room_temperature }} 
+                                    Desired suite temperature: {{ $row->preferences->desired_room_temperature }} 
                                     <br/> Smoking preference: {{ $row->preferences->smoking_preference }} 
                                     <br/> Rollaway bed: {{ $row->preferences->rollaway_bed }} 
                                     <br/> Crib: {{ $row->preferences->crib }} 
@@ -216,7 +216,7 @@
                                 </div>
                                   
                                 <div class="col-sm-12 col-md-12">
-                                    I would prefer my in-room language settings to be: {{ $row->preferences->prefer_language }}
+                                    I would prefer my in-suite language settings to be: {{ $row->preferences->prefer_language }}
                                     <hr />
                                 </div>
                                 <div class="col-sm-12 col-md-12">
@@ -368,7 +368,7 @@
     						<div class="m-accordion__item-content">
                                 <table class="table">
                                     <tr>
-                                        <th>Room Details</th><th>Price</th><th>Night</th><th class="m--align-right">Total</th>
+                                        <th>Suite Details</th><th>Price</th><th>Night</th><th class="m--align-right">Total</th>
                                     </tr>
                                     <tr>
                                         <td>{{ $row->category->category_name }}</td><td>{{$row->price}}</td><td>{{$row->number_of_nights}}</td><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
@@ -428,7 +428,7 @@
                     <td>{{ $row->arrival_time }} </td>
                 </tr>
                 <tr>
-                    <td width='30%' class='label-view text-right'>Room Id</td>
+                    <td width='30%' class='label-view text-right'>Suite Id</td>
                     <td>{{ $row->room_id }} </td>
                 </tr>
                 <tr>
@@ -616,7 +616,7 @@
                     <td>{{ $row->stay_details }} </td>
                 </tr>
                 <tr>
-                    <td width='30%' class='label-view text-right'>Desired Room Temperature</td>
+                    <td width='30%' class='label-view text-right'>Desired Suite Temperature</td>
                     <td>{{ $row->desired_room_temperature }} </td>
                 </tr>
                 <tr>
