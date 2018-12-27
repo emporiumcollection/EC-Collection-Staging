@@ -224,7 +224,7 @@
     								<div class="col-lg-9">
     									<div class="row">
     										<div class="form-group col-lg-3">
-    											<label for="cat_name">Category Name </label>
+    											<label for="cat_name">Suite Type </label>
     											<input name="cat_name" id="cat_name" type="text" class="form-control input-sm" value="" required="required" /> 
     										</div> 
     										<div class="form-group col-lg-3">
@@ -300,7 +300,7 @@
 									<div class="col-lg-9">
 										<div class="row">
 											<div class="form-group col-lg-3">
-												<label for="cat_name">Category Name </label>
+												<label for="cat_name">Suite Type </label>
 												<input name="cat_name" id="cat_name" type="text" class="form-control input-sm" value="{{$cat->category_name}}" required="required" /> 
 											</div> 
 											<div class="form-group col-lg-3">
@@ -377,7 +377,7 @@
 								<div class="col-lg-9">
 									<div class="row">
 										<div class="form-group col-lg-3">
-											<label for="cat_name">Category Name </label>
+											<label for="cat_name">Suite Type </label>
 											<input name="cat_name" id="cat_name" type="text" class="form-control input-sm" value="" required="required" /> 
 										</div> 
 										<div class="form-group col-lg-3">
@@ -537,7 +537,7 @@ $(document).ready(function () {
 						html +='<div class="col-lg-9">';
 						html +='<div class="row">';
 						html +='<div class="form-group col-lg-3">';
-						html +='<label for="cat_name">Category Name </label>';
+						html +='<label for="cat_name">Suite TYpe </label>';
 						html +='<input name="cat_name" id="cat_name" type="text" class="form-control input-sm" value="" required="required" />'; 
 						html +='</div>'; 
 						html +='<div class="form-group col-lg-3">';
