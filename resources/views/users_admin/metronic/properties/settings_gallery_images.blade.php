@@ -79,7 +79,7 @@
 													</span>
 												</li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties/update/2309?return=" class="m-nav__link">
+                                                    <a href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Hotel/Property
