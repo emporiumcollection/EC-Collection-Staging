@@ -101,7 +101,7 @@
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													a href="{{ URL::to('properties_settings/'.$pid.'/seasons')}}" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/seasons')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Seasons Management
