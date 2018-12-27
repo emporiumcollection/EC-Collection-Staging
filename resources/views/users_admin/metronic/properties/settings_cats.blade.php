@@ -85,7 +85,7 @@
 												</li> 
                                                 <li class="m-nav__item">
 
-                                                    <a href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}" class="m-nav__link">
+                                                    <a href="" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Hotel/Property
