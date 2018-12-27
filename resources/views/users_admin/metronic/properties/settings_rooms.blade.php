@@ -80,7 +80,7 @@
 													</span>
 												</li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties/update/2309?return=" class="m-nav__link">
+													<a href="{{ URL::to('properties/update/'.$pid.'?return='.$return) }}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Hotel/Property
@@ -88,23 +88,23 @@
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/types" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/types')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
-															Room Types
+															Suite Types
 														</span>
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/rooms" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/rooms')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
-															Rooms
+															Suites
 														</span>
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/seasons" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/seasons')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Seasons
@@ -112,7 +112,7 @@
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/calendar" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/calendar')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Reservation Management
@@ -120,15 +120,15 @@
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/price" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/price')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
-															Price
+															Suite Price
 														</span>
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/property_documents" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/property_documents')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Property Documents
@@ -136,23 +136,23 @@
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/property_images" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/property_images')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
-															Images
+															Property Images
 														</span>
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/properties_settings/2309/gallery_images" class="m-nav__link">
+													<a href="{{ URL::to('properties_settings/'.$pid.'/gallery_images')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
-															Galleries
+															Property Galleries
 														</span>
 													</a>
 											    </li> 
                                                 <li class="m-nav__item">
-													<a href="http://localhost:8181/emporium-staging-forge/public/advertising" class="m-nav__link">
+													<a href="{{URL::to('advertising')}}" class="m-nav__link">
 														<i class="m-nav__link-icon"></i>
 														<span class="m-nav__link-text">
 															Become Featured
@@ -1113,5 +1113,4 @@ $(document).ready(function () {
 		}
 	}
 </script>
-
 @stop
