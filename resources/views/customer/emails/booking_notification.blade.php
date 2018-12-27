@@ -487,7 +487,7 @@
                                                                                                         <tr>
                                                                                                             <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                             <!-- DESCRIPTION TEXT -->
-                                                                                                            <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">ROOM BBOKED</td>
+                                                                                                            <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Room Booked</td>
                                                                                                             <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                         </tr>
                                                                                                         <tr>
