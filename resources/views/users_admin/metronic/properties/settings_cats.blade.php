@@ -257,11 +257,11 @@
     											<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
     										</div>
     										<div class="form-group col-lg-2">
-    											<label for="guests_babies">Babies </label>
+    											<label for="guests_babies">Infants </label>
     											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
     										</div>
     										<div class="form-group col-lg-3">
-                                                <label for="babies_count_toward_total">Babies count toward total </label>
+                                                <label for="babies_count_toward_total">Infants count toward total </label>
     											<div class="margin-top-10">
                                                     <div class="m-checkbox-inline">
             											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
@@ -333,11 +333,11 @@
 												<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="{{$cat->guests_juniors}}" data-rule-number="true" required="required" /> 
 											</div>
 											<div class="form-group col-lg-2">
-												<label for="guests_babies">Babies </label>
+												<label for="guests_babies">Infants </label>
 												<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="{{$cat->guests_babies}}" data-rule-number="true" required="required" /> 
 											</div>
 											<div class="form-group col-lg-3">
-                                                <label for="babies_count_toward_total">Babies count toward total </label>
+                                                <label for="babies_count_toward_total">Infants count toward total </label>
 												<div class="margin-top-10">
                                                     <div class="m-checkbox-inline">
             											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
@@ -410,11 +410,11 @@
 											<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-2">
-											<label for="guests_babies">Babies </label>
+											<label for="guests_babies">Infants </label>
 											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-3">
-                                            <label for="babies_count_toward_total">Babies count toward total </label>
+                                            <label for="babies_count_toward_total">Infants count toward total </label>
 											<div class="margin-top-10">												
                                                 <div class="m-checkbox-inline">
         											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
@@ -570,18 +570,18 @@ $(document).ready(function () {
 						html +='<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" />'; 
 						html +='</div>';
 						html +='<div class="form-group col-lg-2">';
-						html +='<label for="guests_babies">Babies </label>';
+						html +='<label for="guests_babies">Infants </label>';
 						html +='<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" />'; 
 						html +='</div>';
 						html +='<div class="form-group col-lg-3">';
 						html +='<div class="margin-top-10">';
 						//html +='<label class="optionbox">';
-						//html +='<input type="checkbox" name="count_baby" value="1"> Babies count toward total';
+						//html +='<input type="checkbox" name="count_baby" value="1"> Infants count toward total';
 						//html +='</label>';
                         
                         html +='<div class="m-checkbox-inline">';
 						html +='<label class="m-checkbox m-checkbox--solid m-checkbox--brand">';
-						html +='<input type="checkbox" name="count_baby" value="1"> Babies count toward total';
+						html +='<input type="checkbox" name="count_baby" value="1"> Infants count toward total';
 						html +='<span></span>';
 						html +='</label>';
 						html +='</div>';
