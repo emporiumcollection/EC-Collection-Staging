@@ -58,7 +58,7 @@
             
             <a href="{{URL::to('properties/update/'.$pid)}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Property Management"><i class="fa fa-edit"></i>&nbsp;Property Management</a>
             
-            <a href="{{URL::to('flipviewpdf/Emporium-Voyage-Add-Category-help.pdf')}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Add Category" style="margin-right: 10px;" target="_blank"><i class="fa fa-edit"></i>&nbsp;View Documentation</a>
+            <a href="{{URL::to('flipviewpdf/Emporium-Voyage-Add-Category-help.pdf')}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Add Suite Category" style="margin-right: 10px;" target="_blank"><i class="fa fa-edit"></i>&nbsp;View Documentation</a>
         </div>
         
         <!--begin::Portlet-->
