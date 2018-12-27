@@ -83,13 +83,13 @@
 												<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="{{$cat->guests_juniors}}" data-rule-number="true" required="required" /> 
 											</div>
 											<div class="form-group col-lg-2">
-												<label for="guests_babies">Babies </label>
+												<label for="guests_babies">Infants </label>
 												<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="{{$cat->guests_babies}}" data-rule-number="true" required="required" /> 
 											</div>
 											<div class="form-group col-lg-3">
 												<div class="margin-top-10">
 													<label class="optionbox">
-														<input type="checkbox" name="count_baby" value="1" {{($cat->baby_count==1) ? 'checked="checked"' : ''}} > Babies count toward total
+														<input type="checkbox" name="count_baby" value="1" {{($cat->baby_count==1) ? 'checked="checked"' : ''}} > Infants count toward total
 													</label>
 												</div>
 											</div>
@@ -150,13 +150,13 @@
 											<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-2">
-											<label for="guests_babies">Babies </label>
+											<label for="guests_babies">Infants </label>
 											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-3">
 											<div class="margin-top-10">
 												<label class="optionbox">
-													<input type="checkbox" name="count_baby" value="1"> Babies count toward total
+													<input type="checkbox" name="count_baby" value="1"> Infants count toward total
 												</label>
 											</div>
 										</div>
@@ -215,13 +215,13 @@
 											<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-2">
-											<label for="guests_babies">Babies </label>
+											<label for="guests_babies">Infants </label>
 											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-3">
 											<div class="margin-top-10">
 												<label class="optionbox">
-													<input type="checkbox" name="count_baby" value="1"> Babies count toward total
+													<input type="checkbox" name="count_baby" value="1"> Infants count toward total
 												</label>
 											</div>
 										</div>
@@ -354,13 +354,13 @@ $(document).ready(function () {
 						html +='<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" />'; 
 						html +='</div>';
 						html +='<div class="form-group col-lg-2">';
-						html +='<label for="guests_babies">Babies </label>';
+						html +='<label for="guests_babies">Infants </label>';
 						html +='<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" />'; 
 						html +='</div>';
 						html +='<div class="form-group col-lg-3">';
 						html +='<div class="margin-top-10">';
 						html +='<label class="optionbox">';
-						html +='<input type="checkbox" name="count_baby" value="1"> Babies count toward total';
+						html +='<input type="checkbox" name="count_baby" value="1"> Infants count toward total';
 						html +='</label>';
 						html +='</div>';
 						html +='</div>';
