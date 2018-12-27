@@ -1,26 +1,25 @@
 <?php 
 return array( 
-    "type-heading"			  => "Add Category",
-    "type-info"			      => "In this section we add all the Property Room Categories. We only sell your High-end Rooms, so ensure to only ad those categories. consult the documentation if you require detailed information.",
+    "type-heading"			  => "Add Suite Category",
+    "type-info"			      => "In this section we add all the Property Suite Categories. We only sell your High-end suites, so ensure to only add those suite categories. consult the documentation if you require detailed information.",
     "room-heading"			  => "Add Suites",
-    "room-info"			      => "Now that we added our property suite categories, we will assign the suites to the respective category. Presedential Suite * 2 ",
-    "room-detail-info"			      => "This section is user to descrie your suite, names & availability.Choose full year to ensure full reservation ability.",
-    "room-image-info"			      => "Upload your suite images. Be sure to include high quality, non pixelated images for the best member experience. Quality is king. Show us your best images for revision.",
-    "room-amenties-info"			      => "Define your suite Amenities. Multi-Select your Suite Amenities and save to update.",
+    "room-info"			      => "Now that we added our property suite categories, we will assign the suites to the respective categorys. Presidential Suite * 2 ",
+    "room-detail-info"			      => "This section is used to descrie your suite, names & availability. Choose full year to ensure  a full years reservation possibility.",
+    "room-image-info"			      => "Upload your suite images. Be sure to include high quality, non pixelated images for the best member experience. Quality sets your Property apart",
+    "room-amenties-info"			      => "Define your suite amenities. Multi-Select your suite amenities and save to update.",
     "season-heading"			  => "Add Seasons",
-    "season-info"			      => "Setup your Suite Seasons. Step1. Create the seasons. Step 2. Set the from and to sales dates.",
-    
+    "season-info"			      => "Step1- Setup your suite seasons.  Step 2- Create the seasons. Step 3 -  Set the from and to sales dates.",
     "add-season-info"			      => "add season info",
     "add-date-info"			      => "add date info",
     
     "price-heading"			  => "Add Suite Price",
-    "price-info"			      => "Add your Suite Price by previously defined season. Select the season for which you wish to add a Price. Make sure to add the rack rate, single price and extra (Adult, Junior or Baby) adjust by adding daily rates where applicable.",
+    "price-info"			      => "Add your suite price by previously defined season. Select the season for which you wish to add a price. Make sure to add the rack rate, single price and extra (Adult, Junior or Baby) adjust by adding daily rates where applicable.",
     
     "image-heading"			  => "Add Property Images",
     "image-info"			      => "Make sure to add apprpriate images that sell your main USP's",
     
     "image-slider-heading"			  => "Add Slider Images",
-    "image-slider-info"			      => "This is your opening slider. Make sure to choose your top selling USP images. Use max 7 images to ensure optimal viewing expereince.",
+    "image-slider-info"			      => "This is your opening slider. Make sure to choose your top selling USP images. Use max 7 images to ensure optimal viewing expereince. Images can be re-ordered by drag & drop from your digital media management & distribution system ",
     
     "hotel-brochure-heading"			  => "Add Property Brochure",
     "hotel-brochure-info"			      => "Include your Hotel brochure to share with members or Property agents to increase sales",
