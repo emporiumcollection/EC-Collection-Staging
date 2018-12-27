@@ -487,7 +487,7 @@
                                                                                                         <tr>
                                                                                                             <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                             <!-- DESCRIPTION TEXT -->
-                                                                                                            <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">ROOM BBOKED</td>
+                                                                                                            <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Suite Booked</td>
                                                                                                             <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                         </tr>
                                                                                                         <tr>
@@ -843,7 +843,7 @@
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
                                                                                     <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">
-                                                                                        Have you already stayed in one of our rooms/suites?: {already_stayed}
+                                                                                        Have you already stayed in one of our suites?: {already_stayed}
                                                                                         <br/> Family Name: {family_name}
                                                                                         <br/>
                                                                                     </td>
@@ -891,7 +891,7 @@
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
                                                                                     <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">
-                                                                                        Desired room temperature: {desired_room_temperature}
+                                                                                        Desired suite temperature: {desired_room_temperature}
                                                                                         <br/> Smoking preference: {smoking_preference}
                                                                                         <br/> Rollaway bed: {rollaway_bed}
                                                                                         <br/> Crib: {crib}
@@ -947,7 +947,7 @@
                                                                                                 <p class="RegularText4TD" style="float: left; width: 100%;">Wellbeing</p>
                                                                                                 {wellbeing_preferences_list}
                                                                                                 <div style="float: left; width: 100%;">
-                                                                                                    I would prefer my in-room language settings to be: {prefer_language}
+                                                                                                    I would prefer my in-suite language settings to be: {prefer_language}
                                                                                                 </div>
                                                                                                 </td>
                                                                                                 <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1037,7 +1037,7 @@
                                                                                                                                                                 <tr>
                                                                                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                                                                                     <!-- DESCRIPTION TEXT -->
-                                                                                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Room Details</td>
+                                                                                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Suite Details</td>
                                                                                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                                                                                 </tr>
                                                                                                                                                                 <tr>
