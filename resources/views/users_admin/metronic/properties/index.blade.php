@@ -181,7 +181,7 @@
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/types')}}" class="m-nav__link">
 																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Room Types
+																		Suite Types
 																	</span>
 																</a>
 														    </li> 
@@ -189,7 +189,7 @@
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/rooms')}}" class="m-nav__link">
 																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Rooms
+																		Suites
 																	</span>
 																</a>
 														    </li> 
@@ -320,7 +320,7 @@
 												<a href="{{ URL::to('properties_settings/'.$row->id.'/types')}}">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
-                                        				Room Types
+                                        				Suite Types
                                         			</span>
                                         		</a>
 											</span>
@@ -350,7 +350,7 @@
 											     <a href="{{ URL::to('properties_settings/'.$row->id.'/rooms')}}">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
-                                        				Rooms
+                                        				Suites
                                         			</span>
                                         		</a>
 											</span>
@@ -409,7 +409,7 @@
 											     <a href="{{ URL::to('properties_settings/'.$row->id.'/price')}}">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
-                                        				Price
+                                        				Rate
                                         			</span>
                                         		</a>
 											</span>											
@@ -422,7 +422,7 @@
 												<a href="https://emporium-collection.com/" class="m-nav__link" target="_blank">
                                         			<i class="m-nav__link-icon"></i>
                                         			<span class="m-nav__link-text">
-                                        				Get Help
+                                        				Support
                                         			</span>
                                         		</a>
 											</span>
