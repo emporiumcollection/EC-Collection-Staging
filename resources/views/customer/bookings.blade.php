@@ -122,7 +122,7 @@
 
                                             <tbody>
                                                 <tr>
-                                                    <td>Room Details</td>
+                                                    <td>Suite Details</td>
                                                     <td><?php echo $row->category->category_name; ?></td>
                                                 </tr>
                                                 <tr>
