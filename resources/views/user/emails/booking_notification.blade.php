@@ -1049,7 +1049,7 @@
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
                                                                                     <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">
-                                                                                        Have you already stayed in one of our rooms/suites?: {already_stayed}
+                                                                                        Have you already stayed in one of our suites?: {already_stayed}
                                                                                         <br/> Family Name: {family_name}
                                                                                         <br/>
                                                                                     </td>
@@ -1097,7 +1097,7 @@
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
                                                                                     <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">
-                                                                                        Desired room temperature: {desired_room_temperature}
+                                                                                        Desired suite temperature: {desired_room_temperature}
                                                                                         <br/> Smoking preference: {smoking_preference}
                                                                                         <br/> Rollaway bed: {rollaway_bed}
                                                                                         <br/> Crib: {crib}
@@ -1153,7 +1153,7 @@
                                                                                         <p class="RegularText4TD" style="float: left; width: 100%;">Wellbeing</p>
                                                                                         {wellbeing_preferences_list}
                                                                                         <div style="float: left; width: 100%;">
-                                                                                            I would prefer my in-room language settings to be: {prefer_language}
+                                                                                            I would prefer my in-suite language settings to be: {prefer_language}
                                                                                         </div>
                                                                                     </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1243,7 +1243,7 @@
                                                                                                 <tr>
                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                     <!-- DESCRIPTION TEXT -->
-                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Room Details</td>
+                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Suite Details</td>
                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1616,7 +1616,7 @@
                     <div class="col-12" style="">
                       <div style="padding: 60px 0; text-align: center; font-family: Geomanist-Light;">
                         <h3 style="font-weight: normal; letter-spacing: 3px; font-size: 25px; color: #000; margin-bottom: 20px;">emporium - voyage</h3>
-                        <p>Ultra luxury rooms from the worlds leading hotels from selected destinations</p>
+                        <p>Ultra luxury suites from the worlds leading hotels from selected destinations worldwide</p>
                       </div>
                     
                       <div class="social-sec">
