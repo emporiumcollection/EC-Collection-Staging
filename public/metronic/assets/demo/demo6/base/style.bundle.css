@@ -5270,7 +5270,7 @@ input[type=submit].btn-block {
     display: inline-block;
     padding: .25em .4em;
     font-size: 75%;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1;
     text-align: center;
     white-space: nowrap;
@@ -5850,7 +5850,7 @@ input[type=submit].btn-block {
 .close {
     float: right;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1;
     color: #2A3C3C;
     text-shadow: 0 1px 0 #fff;
@@ -10472,8 +10472,8 @@ a.text-dark:hover {
 .btn-accent,
 .btn-danger {
     color: #fff !important;
-    background-color: #2A3C3C;
-    border-color: #2A3C3C;
+    background-color: #c06c83;
+    border-color: #c06c83;
 }
 
 .btn-accent:hover,
@@ -10714,14 +10714,14 @@ a.text-dark:hover {
 
 .btn-success {
     color: #fff;
-    background-color: #648da6;
-    border-color: #648da6
+    background-color: #2ca189;
+    border-color: #2ca189;
 }
 
 .btn-success:hover {
     color: #fff;
-    background-color: #2ca189;
-    border-color: #299781
+    background-color: #648da6;
+    border-color: #648da6
 }
 
 .btn-success.focus,
@@ -15634,7 +15634,7 @@ router-outlet {
 
 b,
 strong {
-    font-weight: 700
+    font-weight: 500
 }
 
 .m--font-brand {
@@ -29496,8 +29496,8 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
     padding-right: .5rem;
     padding-top: 22px;
     vertical-align: top;
-    font-size: 1.1rem;
-    font-weight: 500
+    font-size: 1.0rem;
+    font-weight: 400
 }
 
 .m-widget11 .table tbody>tr>td>label {
@@ -31384,7 +31384,7 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-checkbox.m-checkbox--solid>span {
-    background: #e2e5ec;
+    background: #2ca189;
     border: 1px solid transparent!important
 }
 
@@ -55985,4 +55985,27 @@ background-color: #C8A9A9 !important;
     left: 0;
     background: rgba(0,0,0,.3);
 }
-  
+.header {
+    background-color: rgb(255, 255, 255);
+    background-image: url(/images/envelope-border.png);
+    background-size: 40px 2px;
+    zoom: 1;
+    position: relative;
+    width: 100%;
+    z-index: 998;
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    border-bottom: 1px solid #fff;
+}
+.hotel_name {
+    position: relative;
+    color: #2A3C3C;
+    background: #F7F2ED;
+    /* width: 50%; */
+    text-align: center;
+    margin: 0px auto;
+    /* padding-top: 50px; */
+    /* margin-top: 50px; */
+    font-size: 25px;
+    opacity: 0.6;
+}
