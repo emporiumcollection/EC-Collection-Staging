@@ -414,6 +414,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('searchbookingresult', 'BookingsController@searchbookingresult');
     
     Route::post('salesstats', 'PropertiesController@salesstats');
+    Route::post('save_management_personnel', 'UserController@savemanagementpersonnel');
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

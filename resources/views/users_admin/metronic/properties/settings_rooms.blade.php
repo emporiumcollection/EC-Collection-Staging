@@ -209,7 +209,7 @@
                         </div>
 						@if(!empty($cat_types))
 						<div class="box well">
-							<div class="header">
+							<div>
 								<p>Changing the name for existing suites will change it in existing reservation and normally shouldn't be done suite active dates are used to determine when the suite is available for booking, and used to calculate day to day occupancy statistics. Leave end date blank unless you want the suite to expire at some point</p>
 							</div> 
 							<div class="tab-container">

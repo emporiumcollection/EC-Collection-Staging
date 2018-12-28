@@ -3981,8 +3981,45 @@ function property_images_wetransfer(Request $request) {
                 $data['property_category_id'] = implode(',', $request->input('destinations'));
             } else {
                 $data['property_category_id'] = '';
-            }			
-			
+            }
+            			
+			$data['primary_airport'] = $request->input('primary_airport');
+            $data['secondary_airport'] = $request->input('secondary_airport');  
+            
+            $data['hotel_generic_email_address'] = $request->input('hotel_generic_email_address');
+            $data['general_manager_name'] = $request->input('general_manager_name');  
+            $data['hotel_time_zone'] = $request->input('hotel_time_zone');
+            $data['hotel_currency'] = $request->input('hotel_currency');  
+            $data['hotel_telephone_country_code'] = $request->input('hotel_telephone_country_code');
+            $data['hotel_telephone_area_code'] = $request->input('hotel_telephone_area_code');  
+            $data['hotel_telephone_no'] = $request->input('hotel_telephone_no');
+            $data['general_fax_country_code'] = $request->input('general_fax_country_code');  
+            $data['general_fax_area_code'] = $request->input('general_fax_area_code');
+            $data['general_fax_no'] = $request->input('general_fax_no');  
+            $data['reservations_direct_telephone_country_code'] = $request->input('reservations_direct_telephone_country_code');
+            $data['reservations_direct_telephone_area_code'] = $request->input('reservations_direct_telephone_area_code');  
+            $data['reservations_direct_telephone_no'] = $request->input('reservations_direct_telephone_no');
+            $data['reservations_toll_free_country_code'] = $request->input('reservations_toll_free_country_code');  
+            $data['reservations_toll_free_area_code'] = $request->input('reservations_toll_free_area_code');
+            $data['reservations_toll_free_no'] = $request->input('reservations_toll_free_no');  
+            $data['reservations_department_fax_country_code'] = $request->input('reservations_department_fax_country_code');
+            $data['reservations_department_fax_area_code'] = $request->input('reservations_department_fax_area_code');  
+            $data['reservations_department_fax_no'] = $request->input('reservations_department_fax_no');
+            $data['reservations_alternate_fax_country_code'] = $request->input('reservations_alternate_fax_country_code');  
+            $data['reservations_alternate_fax_area_code'] = $request->input('reservations_alternate_fax_area_code');
+            $data['reservations_alternate_fax_no'] = $request->input('reservations_alternate_fax_no');  
+            $data['reservations_general_email_address'] = $request->input('reservations_general_email_address');
+            $data['primary_city'] = $request->input('primary_city');
+            $data['secondary_city'] = $request->input('secondary_city');  
+            $data['amadeus'] = $request->input('amadeus');
+            $data['galileo'] = $request->input('galileo');            
+            $data['sabre'] = $request->input('sabre');  
+            $data['worldspan'] = $request->input('worldspan');
+            $data['vat_tax'] = $request->input('vat_tax');  
+            $data['occupancy_tax'] = $request->input('occupancy_tax');
+            $data['service_charge'] = $request->input('service_charge');  
+            $data['travel_agent_commission'] = $request->input('travel_agent_commission');             
+            
             // Yachts info tab
             if ($request->input('property_type') == 'Yachts') {
                 $yacht_category = $request->input('yacht_category');
@@ -4001,7 +4038,8 @@ function property_images_wetransfer(Request $request) {
                 $data['yacht_for_sale'] = $request->input('yacht_for_sale');
                 $data['yacht_for_charter'] = $request->input('yacht_for_charter');
             }
-
+            
+            
             //print_r($assigned_users); die;
             //$id = $this->model->insertRow($data, $request->input('id'));
             

@@ -229,19 +229,19 @@
 						<section>
 							<div class="control-group tools">
 								<button type="button" onclick="calStartUnavail()" title="New Out of Order">
-									<img src="https://app.base7booking.com/images/icons/construction.png">
+									<img src="{{URL::to('images/construction.png')}}">
 								</button>
 								<button type="button" onclick="calStartPrice()" title="ADR">
-									<img src="https://app.base7booking.com/images/icons/money.png">
+									<img src="{{URL::to('images/money.png')}}">
 								</button>
 								<button type="button" onclick="calSplit()" title="Split">
-									<img style="height: 16px" src="https://app.base7booking.com/images/icons/cut.png">
+									<img style="height: 16px" src="{{URL::to('images/cut.png')}}">
 								</button>
 								<button type="button" onclick="v1.openRestrictions()" title="Restrictions">
-									<img style="height: 16px" src="https://app.base7booking.com/images/restriction.png">
+									<img style="height: 16px" src="{{URL::to('images/restriction.png')}}">
 								</button>
 								<button type="button" onclick="v1.openCustomPrice()" title="Custom Price">
-									<img style="height: 16px" src="https://app.base7booking.com/images/yield.png">
+									<img style="height: 16px" src="{{URL::to('images/yield.png')}}">
 								</button>
 							</div>
 						</section>

@@ -149,7 +149,7 @@
                                                     <div class="col-xl-9 col-sm-9 col-md-9 col-lg-9"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>View Hotel Setup Documentation</a></div>
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
-    														Hotel/Property Info
+    														Hotel info cont.
     													</h3>
     												</div>   
                                                     <div class="form-group m-form__group row">
@@ -177,7 +177,7 @@
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Property Type <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             <?php $property_type = explode(',', $row['property_type']);
-                                                            $property_type_opt = array('Hotel' => 'Hotel', 'Yacht' => 'Yacht', 'Private Villa' => 'Private Villa', 'Spa & wellness Hotel' => 'Spa & wellness Hotel', 'Safari Lodge' => 'Safari Lodge', 'Private Island' => 'Private Island',, 'Boutique Hotel' => 'Boutique Hotel',);
+                                                            $property_type_opt = array('Hotel' => 'Hotel', 'Yacht' => 'Yacht', 'Private Villa' => 'Private Villa', 'Spa & wellness Hotel' => 'Spa & wellness Hotel', 'Safari Lodge' => 'Safari Lodge', 'Private Island' => 'Private Island','Boutique Hotel' => 'Boutique Hotel');
                                                             ?>
                                                             <select name='property_type' id='property_type' rows='5' required="required"  class='form-control m-input m-input--solid select2 ' onchange="check_yachts(this.value)";  > 
                                                                 <?php
@@ -383,22 +383,300 @@
                                                         </div>                                                        
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">{{ Lang::get('hotel.primary_airport') }} <span class="asterix"> * </span></label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Primary airport <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             {!! Form::text('primary_airport', $row['primary_airport'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'', 'required'=>'true'  )) !!}
                                                             <span class="m-form__help">
-    															{{ Lang::get('hotel.property-name-help-text') }}
+    															Please enter primary airport
     														</span>  
                                                         </div>
-                                                        <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">{{ Lang::get('hotel.secondary_airport') }} <span class="asterix"> * </span></label>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Secondary airport <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             {!! Form::text('secondary_airport', $row['secondary_airport'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'', 'required'=>'true'  )) !!}
                                                             <span class="m-form__help">
-    															{{ Lang::get('hotel.property-name-help-text') }}
+    															Please enter secondary airport
     														</span>  
-                                                        </div>                      					
+                                                        </div>
+                                                     </div>                      					
     											</div>
+                                                
+                                                <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                <div class="m-form__section bg-gray">
+    											    <div class="m-form__heading">
+    												    <h3 class="m-form__heading-title">
+    												        Hotel Contact     													   
+    													</h3>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Hotel Generic Email Address </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('hotel_generic_email_address', $row['hotel_generic_email_address'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter hotel generic email address
+    														</span> 
+                                                        </div>
+                                                    </div> 
+            
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> General Manager's Name </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('general_manager_name', $row['general_manager_name'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter general manager name
+    														</span> 
+                                                        </div>
+                                                    </div> 
+            
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Time Zone </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('hotel_time_zone', $row['hotel_time_zone'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter time zone
+    														</span> 
+                                                        </div>
+                                                    </div>
+            
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Currency </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('hotel_currency', $row['hotel_currency'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter currency
+    														</span> 
+                                                        </div>
+                                                    </div>                                                    
+                                                    
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label" for="Video"> Telephone No. </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <div class="row">
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('hotel_telephone_country_code', $row['hotel_telephone_country_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Country Code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('hotel_telephone_area_code', $row['hotel_telephone_area_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Area/City code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                                    {!! Form::text('hotel_telephone_no', $row['hotel_telephone_no'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!}
+                                                                </div> 
+                                                            </div>
+                                                            <span class="m-form__help">
+    															Please enter telephone number with country and area/city code.
+    														</span> 
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> General Fax No. </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <div class="row">
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('general_fax_country_code', $row['general_fax_country_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Country Code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('general_fax_area_code', $row['general_fax_area_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Area/City code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                                    {!! Form::text('general_fax_no', $row['general_fax_no'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                </div>
+                                                            </div>
+                                                            <span class="m-form__help">
+    															Please enter general fax number with country and area/city code.
+    														</span>
+                                                        </div>
+                                                    </div>
+            
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Reservations Direct Telephone No. </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <div class="row">
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_direct_telephone_country_code', $row['reservations_direct_telephone_country_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Country Code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_direct_telephone_area_code', $row['reservations_direct_telephone_area_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Area/City code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                                    {!! Form::text('reservations_direct_telephone_no', $row['reservations_direct_telephone_no'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!}
+                                                                </div>
+                                                            </div>
+                                                            <span class="m-form__help">
+    															Please enter reservations direct telephone number with country and area/city code.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Reservations Toll Free No. </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <div class="row">
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_toll_free_country_code', $row['reservations_toll_free_country_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Country Code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_toll_free_area_code', $row['reservations_toll_free_area_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Area/City code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                                    {!! Form::text('reservations_toll_free_no', $row['reservations_toll_free_no'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!}
+                                                                </div>
+                                                            </div> 
+                                                            <span class="m-form__help">
+    															Please enter reservations toll free number with country and area/city code.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Reservations Department Fax No. </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <div class="row">
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_department_fax_country_code', $row['reservations_department_fax_country_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Country Code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_department_fax_area_code', $row['reservations_department_fax_area_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Area/City code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                                    {!! Form::text('reservations_department_fax_no', $row['reservations_department_fax_no'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!}
+                                                                </div>
+                                                            </div>
+                                                            <span class="m-form__help">
+    															Please enter reservations department fax number with country and area/city code.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Reservations Alternate Fax No. </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <div class="row">
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_alternate_fax_country_code', $row['reservations_alternate_fax_country_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Country Code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                                    {!! Form::text('reservations_alternate_fax_area_code', $row['reservations_alternate_fax_area_code'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'Area/City code'  )) !!}
+                                                                </div>
+                                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                                    {!! Form::text('reservations_alternate_fax_no', $row['reservations_alternate_fax_no'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!}
+                                                                </div>
+                                                            </div>
+                                                            <span class="m-form__help">
+    															Please enter reservations alternate fax number with country and area/city code.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Reservations General Email Address </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('reservations_general_email_address', $row['reservations_general_email_address'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!}
+                                                            <span class="m-form__help">
+    															Please enter reservations general email address.
+    														</span>  
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Primary City </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('primary_city', $row['primary_city'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter primary city.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Secondary City </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('secondary_city', $row['secondary_city'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter secondary city.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Amadeus </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('amadeus', $row['amadeus'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter amadeus.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Galileo </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('galileo', $row['galileo'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter galileo.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Sabre </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('sabre', $row['sabre'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter sabre.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Worldspan
+ </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('worldspan', $row['worldspan'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter worldspan.
+    														</span> 
+                                                        </div>
+                                                    </div> 
+                                                    
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">VAT Tax </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('vat_tax', $row['vat_tax'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter VAT tax.
+    														</span>
+                                                        </div>
+                                                    </div> 
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Occupancy Tax </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('occupancy_tax', $row['occupancy_tax'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter occupancy tax.
+    														</span>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Service Charge </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('service_charge', $row['service_charge'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter service charge.
+    														</span>
+                                                        </div>
+                                                    </div> 
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Travel Agent Commission </label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            {!! Form::text('travel_agent_commission', $row['travel_agent_commission'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                            <span class="m-form__help">
+    															Please enter travel agent commission.
+    														</span>
+                                                        </div>
+                                                    </div> 
+                                                    
+                                                    
+                                                    
+                                                    
+                                                 </div>
+                                                
                                             </div>
                                             <!--begin: Form Wizard Step 1-->
                                             

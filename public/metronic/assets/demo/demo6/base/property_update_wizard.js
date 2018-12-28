@@ -186,6 +186,43 @@ function wizard_step_1(){
     fdata.append("detail_section2_description_box2",$("textarea[name=detail_section2_description_box2]").val());
     fdata.append("assign_detail_city",($("select[name=assign_detail_city]").val()) ? $("select[name=assign_detail_city]").val() : '');
     
+    fdata.append("primary_airport",$("input[name=primary_airport]").val());
+    fdata.append("secondary_airport",$("input[name=secondary_airport]").val());
+    
+    fdata.append("hotel_generic_email_address",$("input[name=hotel_generic_email_address]").val());
+    fdata.append("general_manager_name",$("input[name=general_manager_name]").val());
+    fdata.append("hotel_time_zone",$("input[name=hotel_time_zone]").val());
+    fdata.append("hotel_currency",$("input[name=hotel_currency]").val());
+    fdata.append("hotel_telephone_country_code",$("input[name=hotel_telephone_country_code]").val());
+    fdata.append("hotel_telephone_area_code",$("input[name=hotel_telephone_area_code]").val());
+    fdata.append("hotel_telephone_no",$("input[name=hotel_telephone_no]").val());
+    fdata.append("general_fax_country_code",$("input[name=general_fax_country_code]").val());
+    fdata.append("general_fax_area_code",$("input[name=general_fax_area_code]").val());
+    fdata.append("general_fax_no",$("input[name=general_fax_no]").val());
+    fdata.append("reservations_direct_telephone_country_code",$("input[name=reservations_direct_telephone_country_code]").val());
+    fdata.append("reservations_direct_telephone_area_code",$("input[name=reservations_direct_telephone_area_code]").val());
+    fdata.append("reservations_direct_telephone_no",$("input[name=reservations_direct_telephone_no]").val());
+    fdata.append("reservations_toll_free_country_code",$("input[name=reservations_toll_free_country_code]").val());
+    fdata.append("reservations_toll_free_area_code",$("input[name=reservations_toll_free_area_code]").val());
+    fdata.append("reservations_toll_free_no",$("input[name=reservations_toll_free_no]").val());
+    fdata.append("reservations_department_fax_country_code",$("input[name=reservations_department_fax_country_code]").val());
+    fdata.append("reservations_department_fax_area_code",$("input[name=reservations_department_fax_area_code]").val());
+    fdata.append("reservations_department_fax_no",$("input[name=reservations_department_fax_no]").val());
+    fdata.append("reservations_alternate_fax_country_code",$("input[name=reservations_alternate_fax_country_code]").val());
+    fdata.append("reservations_alternate_fax_area_code",$("input[name=reservations_alternate_fax_area_code]").val());
+    fdata.append("reservations_alternate_fax_no",$("input[name=reservations_alternate_fax_no]").val());
+    fdata.append("reservations_general_email_address",$("input[name=reservations_general_email_address]").val());
+    fdata.append("primary_city",$("input[name=primary_city]").val());
+    fdata.append("secondary_city",$("input[name=secondary_city]").val());
+    fdata.append("amadeus",$("input[name=amadeus]").val());
+    fdata.append("galileo",$("input[name=galileo]").val());
+    fdata.append("sabre",$("input[name=sabre]").val());
+    fdata.append("worldspan",$("input[name=worldspan]").val());
+    fdata.append("vat_tax",$("input[name=vat_tax]").val());
+    fdata.append("occupancy_tax",$("input[name=occupancy_tax]").val());
+    fdata.append("service_charge",$("input[name=service_charge]").val());
+    fdata.append("travel_agent_commission",$("input[name=travel_agent_commission]").val());    
+    
     $.ajax({
         url:base_url+'/save_hotel_info',
         type:'POST',

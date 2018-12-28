@@ -156,7 +156,9 @@
 								<ul class="m-portlet__nav">
 									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover">
 										<a href="#" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl">
-											<i class="fa fa-bars m--font-light"></i>
+											<span class="desk_bars1"></span>
+                                            <span class="desk_bars2"></span>
+                                            <span class="desk_bars3"></span>
 										</a>
 										<div class="m-dropdown__wrapper">
 											<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>

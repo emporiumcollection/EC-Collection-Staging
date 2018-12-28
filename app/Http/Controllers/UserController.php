@@ -2362,4 +2362,178 @@ class UserController extends Controller {
 			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
 		}
     }
+    public function savemanagementpersonnel(Request $request){        
+        $data['managing_proprietor_last_name'] = $request->input('managing_proprietor_last_name');
+        $data['managing_proprietor_first_name'] = $request->input('managing_proprietor_first_name');
+        $data['managing_proprietor_title'] = $request->input('managing_proprietor_title');
+        $data['managing_proprietor_job_title'] = $request->input('managing_proprietor_job_title');
+        $data['managing_proprietor_email_address'] = $request->input('managing_proprietor_email_address');
+        
+        $data['managing_director_last_name'] = $request->input('managing_director_last_name');
+        $data['managing_director_first_name'] = $request->input('managing_director_first_name');
+        $data['managing_director_title'] = $request->input('managing_director_title');
+        $data['managing_director_job_title'] = $request->input('managing_director_job_title');
+        $data['managing_director_email_address'] = $request->input('managing_director_email_address');
+        
+        $data['general_manager_last_name'] = $request->input('general_manager_last_name');
+        $data['general_manager_first_name'] = $request->input('general_manager_first_name');
+        $data['general_manager_title'] = $request->input('general_manager_title');
+        $data['general_manager_job_title'] = $request->input('general_manager_job_title');
+        $data['general_manager_email_address'] = $request->input('general_manager_email_address');
+        
+        $data['director_of_operations_last_name'] = $request->input('director_of_operations_last_name');
+        $data['director_of_operations_first_name'] = $request->input('director_of_operations_first_name');
+        $data['director_of_operations_title'] = $request->input('director_of_operations_title');
+        $data['director_of_operations_job_title'] = $request->input('director_of_operations_job_title');
+        $data['director_of_operations_email_address'] = $request->input('director_of_operations_email_address');
+        
+        $data['executive_assistant_manager_last_name'] = $request->input('executive_assistant_manager_last_name');
+        $data['executive_assistant_manager_first_name'] = $request->input('executive_assistant_manager_first_name');
+        $data['executive_assistant_manager_title'] = $request->input('executive_assistant_manager_title');
+        $data['executive_assistant_manager_job_title'] = $request->input('executive_assistant_manager_job_title');
+        $data['executive_assistant_manager_email_address'] = $request->input('executive_assistant_manager_email_address');
+        
+        $data['director_of_sales_marketing_last_name'] = $request->input('director_of_sales_marketing_last_name');
+        $data['director_of_sales_marketing_first_name'] = $request->input('director_of_sales_marketing_first_name');
+        $data['director_of_sales_marketing_title'] = $request->input('director_of_sales_marketing_title');
+        $data['director_of_sales_marketing_job_title'] = $request->input('director_of_sales_marketing_job_title');
+        $data['director_of_sales_marketing_email_address'] = $request->input('director_of_sales_marketing_email_address');
+        
+        $data['director_of_marketing_last_name'] = $request->input('director_of_marketing_last_name');
+        $data['director_of_marketing_first_name'] = $request->input('director_of_marketing_first_name');
+        $data['director_of_marketing_title'] = $request->input('director_of_marketing_title');
+        $data['director_of_marketing_job_title'] = $request->input('director_of_marketing_job_title');
+        $data['director_of_marketing_email_address'] = $request->input('director_of_marketing_email_address');
+        
+        $data['director_of_sales_last_name'] = $request->input('director_of_sales_last_name');
+        $data['director_of_sales_first_name'] = $request->input('director_of_sales_first_name');
+        $data['director_of_sales_title'] = $request->input('director_of_sales_title');
+        $data['director_of_sales_job_title'] = $request->input('director_of_sales_job_title');
+        $data['director_of_sales_email_address'] = $request->input('director_of_sales_email_address');
+        
+        $data['sales_manager_last_name'] = $request->input('sales_manager_last_name');
+        $data['sales_manager_first_name'] = $request->input('sales_manager_first_name');
+        $data['sales_manager_title'] = $request->input('sales_manager_title');
+        $data['sales_manager_job_title'] = $request->input('sales_manager_job_title');
+        $data['sales_manager_email_address'] = $request->input('sales_manager_email_address');
+        
+        $data['group_sales_contact_last_name'] = $request->input('group_sales_contact_last_name');
+        $data['group_sales_contact_first_name'] = $request->input('group_sales_contact_first_name');
+        $data['group_sales_contact_title'] = $request->input('group_sales_contact_title');
+        $data['group_sales_contact_job_title'] = $request->input('group_sales_contact_job_title');
+        $data['group_sales_contact_email_address'] = $request->input('group_sales_contact_email_address');
+        
+        $data['leaders_club_contact_last_name'] = $request->input('leaders_club_contact_last_name');
+        $data['leaders_club_contact_first_name'] = $request->input('leaders_club_contact_first_name');
+        $data['leaders_club_contact_title'] = $request->input('leaders_club_contact_title');
+        $data['leaders_club_contact_job_title'] = $request->input('leaders_club_contact_job_title');
+        $data['leaders_club_contact_email_address'] = $request->input('leaders_club_contact_email_address');
+        
+        $data['internal_public_relations_manager_last_name'] = $request->input('internal_public_relations_manager_last_name');
+        $data['internal_public_relations_manager_first_name'] = $request->input('internal_public_relations_manager_first_name');
+        $data['internal_public_relations_manager_title'] = $request->input('internal_public_relations_manager_title');
+        $data['internal_public_relations_manager_job_title'] = $request->input('internal_public_relations_manager_job_title');
+        $data['internal_public_relations_manager_email_address'] = $request->input('internal_public_relations_manager_email_address');
+        
+        $data['director_of_rooms_division_last_name'] = $request->input('director_of_rooms_division_last_name');
+        $data['director_of_rooms_division_first_name'] = $request->input('director_of_rooms_division_first_name');
+        $data['director_of_rooms_division_title'] = $request->input('director_of_rooms_division_title');
+        $data['director_of_rooms_division_job_title'] = $request->input('director_of_rooms_division_job_title');
+        $data['director_of_rooms_division_email_address'] = $request->input('director_of_rooms_division_email_address');
+        
+        $data['rooms_division_manager_last_name'] = $request->input('rooms_division_manager_last_name');
+        $data['rooms_division_manager_first_name'] = $request->input('rooms_division_manager_first_name');
+        $data['rooms_division_manager_title'] = $request->input('rooms_division_manager_title');
+        $data['rooms_division_manager_job_title'] = $request->input('rooms_division_manager_job_title');
+        $data['rooms_division_manager_email_address'] = $request->input('rooms_division_manager_email_address');
+        
+        $data['director_yield_last_name'] = $request->input('director_yield_last_name');
+        $data['director_yield_first_name'] = $request->input('director_yield_first_name');
+        $data['director_yield_title'] = $request->input('director_yield_title');
+        $data['director_yield_job_title'] = $request->input('director_yield_job_title');
+        $data['director_yield_email_address'] = $request->input('director_yield_email_address');
+        
+        $data['revenue_manager_last_name'] = $request->input('revenue_manager_last_name');
+        $data['revenue_manager_first_name'] = $request->input('revenue_manager_first_name');
+        $data['revenue_manager_title'] = $request->input('revenue_manager_title');
+        $data['revenue_manager_job_title'] = $request->input('revenue_manager_job_title');
+        $data['revenue_manager_email_address'] = $request->input('revenue_manager_email_address');
+        
+        $data['reservations_manager_last_name'] = $request->input('reservations_manager_last_name');
+        $data['reservations_manager_first_name'] = $request->input('reservations_manager_first_name');
+        $data['reservations_manager_title'] = $request->input('reservations_manager_title');
+        $data['reservations_manager_job_title'] = $request->input('reservations_manager_job_title');
+        $data['reservations_manager_email_address'] = $request->input('reservations_manager_email_address');
+        
+        $data['reception_manager_last_name'] = $request->input('reception_manager_last_name');
+        $data['reception_manager_first_name'] = $request->input('reception_manager_first_name');
+        $data['reception_manager_title'] = $request->input('reception_manager_title');
+        $data['reception_manager_job_title'] = $request->input('reception_manager_job_title');
+        $data['reception_manager_email_address'] = $request->input('reception_manager_email_address');
+        
+        $data['concierge_last_name'] = $request->input('concierge_last_name');
+        $data['concierge_first_name'] = $request->input('concierge_first_name');
+        $data['concierge_title'] = $request->input('concierge_title');
+        $data['concierge_job_title'] = $request->input('concierge_job_title');
+        $data['concierge_email_address'] = $request->input('concierge_email_address');
+        
+        $data['lhw_spa_director_contact_last_name'] = $request->input('lhw_spa_director_contact_last_name');
+        $data['lhw_spa_director_contact_first_name'] = $request->input('lhw_spa_director_contact_first_name');
+        $data['lhw_spa_director_contact_title'] = $request->input('lhw_spa_director_contact_title');
+        $data['lhw_spa_director_contact_job_title'] = $request->input('lhw_spa_director_contact_job_title');
+        $data['lhw_spa_director_contact_email_address'] = $request->input('lhw_spa_director_contact_email_address');
+        
+        $data['spa_manager_last_name'] = $request->input('spa_manager_last_name');
+        $data['spa_manager_first_name'] = $request->input('spa_manager_first_name');
+        $data['spa_manager_title'] = $request->input('spa_manager_title');
+        $data['spa_manager_job_title'] = $request->input('spa_manager_job_title');
+        $data['spa_manager_email_address'] = $request->input('spa_manager_email_address');
+        
+        $data['chef_last_name'] = $request->input('chef_last_name');
+        $data['chef_first_name'] = $request->input('chef_first_name');
+        $data['chef_title'] = $request->input('chef_title');
+        $data['chef_job_title'] = $request->input('chef_job_title');
+        $data['chef_email_address'] = $request->input('chef_email_address');
+        
+        $data['food_beverage_manager_last_name'] = $request->input('food_beverage_manager_last_name');
+        $data['food_beverage_manager_first_name'] = $request->input('food_beverage_manager_first_name');
+        $data['food_beverage_manager_title'] = $request->input('food_beverage_manager_title');
+        $data['food_beverage_manager_job_title'] = $request->input('food_beverage_manager_job_title');
+        $data['food_beverage_manager_email_address'] = $request->input('food_beverage_manager_email_address');
+        
+        $data['purchasing_manager_last_name'] = $request->input('purchasing_manager_last_name');
+        $data['purchasing_manager_first_name'] = $request->input('purchasing_manager_first_name');
+        $data['purchasing_manager_title'] = $request->input('purchasing_manager_title');
+        $data['purchasing_manager_job_title'] = $request->input('purchasing_manager_job_title');
+        $data['purchasing_manager_email_address'] = $request->input('purchasing_manager_email_address');
+        
+        $data['controller_last_name'] = $request->input('controller_last_name');
+        $data['controller_first_name'] = $request->input('controller_first_name');
+        $data['controller_title'] = $request->input('controller_title');
+        $data['controller_job_title'] = $request->input('controller_job_title');
+        $data['controller_email_address'] = $request->input('controller_email_address');
+        
+        $data['credit_manager_last_name'] = $request->input('credit_manager_last_name');
+        $data['credit_manager_first_name'] = $request->input('credit_manager_first_name');
+        $data['credit_manager_title'] = $request->input('credit_manager_title');
+        $data['credit_manager_job_title'] = $request->input('credit_manager_job_title');
+        $data['credit_manager_email_address'] = $request->input('credit_manager_email_address');
+        
+        $data['human_resources_manager_last_name'] = $request->input('human_resources_manager_last_name');
+        $data['human_resources_manager_first_name'] = $request->input('human_resources_manager_first_name');
+        $data['human_resources_manager_title'] = $request->input('human_resources_manager_contact_title');
+        $data['human_resources_manager_job_title'] = $request->input('human_resources_manager_job_title');
+        $data['human_resources_manager_email_address'] = $request->input('human_resources_manager_email_address');
+        
+        if ($request->input('manper_compedit_id') != "" && $request->input('manper_compedit_id') > 0) {
+            $data['updated'] = date('y-m-d h:i:s');
+            \DB::table('tb_user_company_details')->where('id', $request->input('manper_compedit_id'))->update($data);
+            $response = array('status' => 'success', 'message' => 'Management personnel updated successfully');
+        }else{
+            $response = array('status' => 'error', 'message' => 'Error while updating management personnel');        
+            
+        }        
+        echo json_encode($response);
+        exit;
+    }
 }
