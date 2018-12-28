@@ -275,25 +275,25 @@
                                                         <div class="col-lg-6">
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    Firmenname
+                                								    Company Name
                                 								</label>
                                 									<input name="company_name" type="text" id="company_name" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />
                                                             </div>
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    Inhaber
+                                								    Company Owner
                                 								</label>
                                 									<input name="company_owner" type="text" id="company_owner" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>" />
                                                             </div>
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    Ansprechpartner
+                                								    Contact Person
                                 								</label>
                                 									<input name="contact_person" type="text" id="contact_person" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" />
                                                             </div> 
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    E-Mail Adresse
+                                								    Company Email
                                 								</label>
                                 									<input name="company_email" type="text" id="company_email" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" />
                                                             </div>
@@ -319,41 +319,41 @@
                                                         <div class="col-lg-6">
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    Adresse
+                                								    Address
                                 								</label>
                                 									<input name="company_address" type="text" id="company_address" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_address; } ?>" />
                                                             </div>
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    Adresse
+                                								    Address
                                 								</label>
                                 									<input name="company_address2" type="text" id="company_address2" class="form-control m-input"  value="<?php if(!empty($extra)) { echo $extra->company_address2; } ?>" />
                                                             </div>
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    ORT
+                                								    City
                                 								</label>
                                 									<input name="company_city" type="text" id="comapny_city" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_city; } ?>" />
                                                             </div>
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    Pin
+                                								    Postal Code
                                 								</label>
                                 									<input name="company_postal_code" type="text" id="company_postal_code" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_postal_code; } ?>" maxlength="6" />
                                                             </div>
                                                             <div class="form-group m-form__group">
                                                                 <label for="ipt" class="form-control-label">
-                                								    Land
+                                								    Country
                                 								</label>
                                 									<input name="company_country" type="text" id="comapny_country" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_country; } ?>" />
                                                             </div>
                                                             <div class="form-group m-form__group">
                             									<label for="ipt" class="form-control-label">
-                            										Firmenlogo
+                            										Company/Group Logo
                             									</label>
                         										<div class="fileinput fileinput-new" data-provides="fileinput">
                                                 				  <span class="btn btn-primary btn-file">
-                                                					   <span class="fileinput-new">Hochladen</span>
+                                                					   <span class="fileinput-new">Upload-</span>
                                                                        @if(!empty($extra->company_logo))
                                                                         <span class="fileinput-exists">Change</span>
                                                                        @endif 
@@ -377,7 +377,7 @@
                                                         <div class="col-md-6 col-xs-12">
                                                             <div class="form-group m-form__group row">
                             									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Steuernummer
+                            										Tax Number
                             									</label>
                             									<div class="col-7">
                             										<input name="steuernummer" type="text" id="steuernummer" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->steuernummer; } ?>"/>  
@@ -385,7 +385,7 @@
                             								</div>
                                                             <div class="form-group m-form__group row">
                             									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Umsatzsteuer ID
+                            										Tax ID
                             									</label>
                             									<div class="col-7">
                             										<input name="umsatzsteuer_id" type="text" id="umsatzsteuer_id" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->umsatzsteuer_id; } ?>"/>  
@@ -393,18 +393,18 @@
                             								</div>
                                                             <div class="form-group m-form__group row">
                             									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Gesch&auml;ftsf&uuml;hrer
+                            										Executive Director
                             									</label>
                                                                
                             									<div class="col-7">
-                            										<input name="gesch&auml;ftsf&uuml;hrer" type="text" id="gesch&auml;ftsf&uuml;hrer" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->geschäftsführer; } ?>"/>  
+                            										<input name="gesch&auml;ftsf&uuml;hrer" type="text" id="gesch&auml;ftsf&uuml;hrer" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->geschÃ¤ftsfÃ¼hrer; } ?>"/>  
                             									</div>
                             								</div>
                                                         </div>
                                                         <div class="col-md-6 col-xs-12">
                                                             <div class="form-group m-form__group row">
                             									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Handelsregister
+                            										Commercial Register
                             									</label>
                             									<div class="col-7">
                             										<input name="handelsregister" type="text" id="handelsregister" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->handelsregister; } ?>"/>  
@@ -412,7 +412,7 @@
                             								</div>
                                                             <div class="form-group m-form__group row">
                             									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Amtsgericht
+                            										District Court
                             									</label>
                             									<div class="col-7">
                             										<input name="amtsgericht" type="text" id="amtsgericht" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->amtsgericht; } ?>" maxlength="6"/>  
@@ -449,7 +449,7 @@
                             								</label>
                             								<div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <span class="btn btn-primary btn-file">
-                                                			  	  <span class="fileinput-new">Hochladen</span>
+                                                			  	  <span class="fileinput-new">Upload-</span>
                                                                   @if(!empty(@$slider_ads_info->adv_img))
                                                                     <span class="fileinput-exists"> Change</span>
                                                                   @endif
@@ -541,7 +541,7 @@
         													</label>
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <span class="btn btn-primary btn-file">
-                                                			  	  <span class="fileinput-new">Hochladen</span>
+                                                			  	  <span class="fileinput-new">Upload-</span>
                                                                   @if(!empty(@$sidebar_ads_info->adv_img))
                                                                     <span class="fileinput-exists"> Change</span>
                                                                   @endif
@@ -729,7 +729,7 @@
     																</div>
     																<div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Firmenname:
+    																		Company Name:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -739,7 +739,7 @@
     																</div>
     																<div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Inhaber:
+    																		Company Owner / Group:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -749,7 +749,7 @@
     																</div>
     																<div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Ansprechpartner:
+    																		Contact Person:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -759,7 +759,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		E-Mail Adresse:
+    																		Email:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -799,7 +799,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Adresse:
+    																		Address:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -809,7 +809,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Adresse:
+    																		Address:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -819,7 +819,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		ORT:
+    																		City:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -829,7 +829,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Pin:
+    																		Postal code:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -839,7 +839,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Land:
+    																		Country:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -849,7 +849,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Firmenlogo:
+    																		Company Logo:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -861,7 +861,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Steuernummer:
+    																		Tax Number:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -871,7 +871,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Umsatzsteuer ID:
+    																		Tax ID:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -881,17 +881,17 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Gesch&auml;ftsf&uuml;hrer:
+    																		Company Owner:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->geschäftsführer; } ?>
+    																			<?php if(!empty($extra)) { echo $extra->geschÃ¤ftsfÃ¼hrer; } ?>
     																		</span>
     																	</div>
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Handelsregister:
+    																		Commercial Register:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -901,7 +901,7 @@
     																</div>
                                                                     <div class="form-group m-form__group m-form__group--sm row">
     																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Amtsgericht:
+    																		District Court:
     																	</label>
     																	<div class="col-xl-8 col-lg-8">
     																		<span class="m-form__control-static">
@@ -1168,7 +1168,7 @@
     				</h5>
     				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
     					<span aria-hidden="true">
-    						�
+    						×
     					</span>
     				</button>
     			</div>
