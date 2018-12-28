@@ -146,7 +146,7 @@
     										<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
                                                 <input name="form_wizard" type="hidden" id="form_wizard" value="1" />  
     											<div class="m-form__section m-form__section--first">
-                                                    <div class="col-xl-9 col-sm-9 col-md-9 col-lg-9"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>View Hotel Setup Documentation</a></div>
+                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-right"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>View Hotel Setup Documentation</a></div>
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
     														Hotel info cont.
