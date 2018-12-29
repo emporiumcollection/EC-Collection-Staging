@@ -593,89 +593,103 @@
     														</span> 
                                                         </div>
                                                     </div> 
+                                                </div>
                                                     
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Amadeus </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('amadeus', $row['amadeus'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter amadeus.
-    														</span> 
+                                                    <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                    <div class="m-form__section">
+                                                        <div class="m-form__heading">
+        												    <h3 class="m-form__heading-title">
+        												        GDS Existing Codes    													   
+        													</h3>
                                                         </div>
-                                                    </div> 
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Galileo </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('galileo', $row['galileo'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter galileo.
-    														</span> 
-                                                        </div>
-                                                    </div> 
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Sabre </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('sabre', $row['sabre'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter sabre.
-    														</span> 
-                                                        </div>
-                                                    </div> 
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Worldspan
- </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('worldspan', $row['worldspan'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter worldspan.
-    														</span> 
-                                                        </div>
-                                                    </div> 
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Amadeus </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('amadeus', $row['amadeus'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter amadeus.
+        														</span> 
+                                                            </div>
+                                                        </div> 
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Galileo </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('galileo', $row['galileo'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter galileo.
+        														</span> 
+                                                            </div>
+                                                        </div> 
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Sabre </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('sabre', $row['sabre'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter sabre.
+        														</span> 
+                                                            </div>
+                                                        </div> 
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Worldspan
+     </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('worldspan', $row['worldspan'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter worldspan.
+        														</span> 
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                    <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                    <div class="m-form__section  bg-gray">
+                                                        <div class="m-form__heading">
+        												    <h3 class="m-form__heading-title">
+        												        Taxes & Fees (enter amount or percent and select option)    													   
+        													</h3>
+                                                        </div>    
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">VAT Tax </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('vat_tax', $row['vat_tax'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter VAT tax.
+        														</span>
+                                                            </div>
+                                                        </div> 
+                                                        
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Occupancy Tax </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('occupancy_tax', $row['occupancy_tax'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter occupancy tax.
+        														</span>
+                                                            </div>
+                                                        </div> 
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Service Charge </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('service_charge', $row['service_charge'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter service charge.
+        														</span>
+                                                            </div>
+                                                        </div> 
+                                                        
+                                                        <div class="form-group m-form__group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Travel Agent Commission </label>
+                                                            <div class="col-xl-9 col-lg-9">
+                                                                {!! Form::text('travel_agent_commission', $row['travel_agent_commission'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
+                                                                <span class="m-form__help">
+        															Please enter travel agent commission.
+        														</span>
+                                                            </div>
+                                                        </div> 
+                                                    </div>    
                                                     
                                                     
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">VAT Tax </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('vat_tax', $row['vat_tax'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter VAT tax.
-    														</span>
-                                                        </div>
-                                                    </div> 
                                                     
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Occupancy Tax </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('occupancy_tax', $row['occupancy_tax'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter occupancy tax.
-    														</span>
-                                                        </div>
-                                                    </div> 
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Service Charge </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('service_charge', $row['service_charge'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter service charge.
-    														</span>
-                                                        </div>
-                                                    </div> 
-                                                    
-                                                    <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Travel Agent Commission </label>
-                                                        <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('travel_agent_commission', $row['travel_agent_commission'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
-                                                            <span class="m-form__help">
-    															Please enter travel agent commission.
-    														</span>
-                                                        </div>
-                                                    </div> 
-                                                    
-                                                    
-                                                    
-                                                    
-                                                 </div>
+                                                 
                                                 
                                             </div>
                                             <!--begin: Form Wizard Step 1-->

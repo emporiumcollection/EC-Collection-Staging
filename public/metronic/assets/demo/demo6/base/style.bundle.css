@@ -10229,8 +10229,10 @@ a.text-dark:hover {
     border-color: #C0CACD;
 }
 .m-widget21 .m-widget21__item .m-widget21__icon>a.btn.btn-accent{
-        background-color: #716aca;
-        border-color: #716aca;
+        /*background-color: #716aca;
+        border-color: #716aca;*/
+        background-color: #C8A9A9;
+        border-color: #C8A9A9;
     }
 
 .btn-brand:hover ,
@@ -22525,9 +22527,12 @@ button:focus {
 
 .btn.btn-default,
 .btn.btn-secondary {
-    background: #2A3C3C;
-    border-color: #2A3C3C;
+    background: #C8A9A9;
+    border-color: #C8A9A9;
     color: #fff;
+    /*background: #2A3C3C;
+    border-color: #2A3C3C;
+    color: #fff;*/
     /*text-transform: uppercase;*/
 }
 .btn.btn-default i,
@@ -54778,7 +54783,7 @@ i.m-menu__link-icon.fa {
 }
 .m-aside-menu.m-aside-menu--skin-light 
 .m-menu__nav>.m-menu__item:not(.m-menu__item--parent):not(.m-menu__item--open):not(.m-menu__item--expanded):not(.m-menu__item--active):hover>.m-menu__heading, .m-aside-menu.m-aside-menu--skin-light .m-menu__nav>.m-menu__item:not(.m-menu__item--parent):not(.m-menu__item--open):not(.m-menu__item--expanded):not(.m-menu__item--active):hover>.m-menu__link {
-     background: #90a2b6;
+     background: #F7F2ED;
      color: #2A3C3C !important
 }
 .m-aside-left--minimize .m-aside-menu.m-aside-menu--skin-light 
@@ -54794,7 +54799,8 @@ i.m-menu__link-icon.fa {
 }
 .m-menu__subnav li:hover > a{
     color: #2A3C3C !important;
-    background: #f2f2f2 !important;
+    background: #fff !important;
+    /*background: #f2f2f2 !important;*/
 }
 #m_header_menu .m-menu__subnav{    
     border: 1px solid #eaeaea !important;
