@@ -5573,7 +5573,7 @@ input[type=submit].btn-block {
     height: 1rem;
     overflow: hidden;
     font-size: .75rem;
-    background-color: #e9ecef;
+    background-color: #fff;
     border-radius: .25rem
 }
 
@@ -11613,7 +11613,7 @@ a.text-dark:hover {
 }
 
 .alert.m-alert--outline.alert-danger.m-alert--icon-solid .m-alert__icon i {
-    color: #fff
+    color: #4A545F;
 }
 
 .alert.m-alert--outline.alert-danger.m-alert--icon-solid .m-alert__icon span {
@@ -54869,7 +54869,7 @@ i.m-menu__link-icon.fa {
 .m-form__section.bg-gray {
     padding: 30px 4rem;
     margin: 0 -4rem !important;
-    background: #fafafa;
+    background: #FAF2EB;
 }
 .fun-bg-gray{
     background: #F7F2ED;
