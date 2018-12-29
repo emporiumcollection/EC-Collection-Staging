@@ -295,8 +295,8 @@ button.b7, .button-b7 {
 .bottom_border_gray{border-bottom: 1px solid #DDD;}
 .no_border{border:none;}
 .white_border_left{border-left: 1px solid #EDE7E1;}
-.weekend_days{background:#648da6;}
-.weekend{background:#648da6; color:#fff;font-weight:bold;}
+.weekend_days{background:#C8A9A9;}
+.weekend{background:#C8A9A9; color:#fff;font-weight:normal;}
 .empty_row{background:#F7F2ED; height:30px;}
 .separate_row{height:8px;}
 .status_red{float:right;cursor: pointer; border-right: 2px solid transparent; background: #FF0000; padding: 1px 0; margin-left:5px;text-align:right;}
