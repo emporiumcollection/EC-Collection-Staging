@@ -56015,3 +56015,29 @@ background-color: #C8A9A9 !important;
     font-size: 25px;
     opacity: 0.6;
 }
+
+#property_update_form input::-webkit-input-placeholder {
+    color: #999;
+}
+#property_update_form input:-moz-placeholder {
+    /* FF 4-18 */
+    color: #999;
+    opacity: 1;
+}
+#property_update_form input::-moz-placeholder {
+    /* FF 19+ */
+    color: #999;
+    opacity: 1;
+}
+#property_update_form input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #999;
+}
+#property_update_form input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #999;
+}
+#property_update_form input::placeholder {
+    /* modern browser */
+    color: #999;
+}
