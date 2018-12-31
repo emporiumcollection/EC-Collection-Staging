@@ -988,7 +988,7 @@ class UserorderController extends Controller {
                  </tr>   
                  </table>';
                 
-                echo $html; die;
+                //echo $html; die;
 				@$pdf = \App::make('dompdf.wrapper');
 				@$pdf->loadHTML($html);
 				return @$pdf->download($downFileName);
