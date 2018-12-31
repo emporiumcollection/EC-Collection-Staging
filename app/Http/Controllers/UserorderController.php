@@ -790,7 +790,7 @@ class UserorderController extends Controller {
 				}
 				$html .= '</div></td></tr></table></div>';
 				
-				$html .= '
+				/*$html .= '
 				<div>
 				<table width="100%">
 				 <tr>
@@ -807,7 +807,7 @@ class UserorderController extends Controller {
 				$html .= $invoice_address->content;
 				$html .= '</td></tr>
 
-				</table></div>';
+				</table></div>';*/
 				
 				$html .= '';
 				$html .= '
@@ -988,7 +988,7 @@ class UserorderController extends Controller {
                  </tr>   
                  </table>';
                 
-                //echo $html; die;
+                echo $html; die;
 				@$pdf = \App::make('dompdf.wrapper');
 				@$pdf->loadHTML($html);
 				return @$pdf->download($downFileName);
