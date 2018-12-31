@@ -164,17 +164,17 @@
         							<li class="nav-item m-tabs__item">
         								<a class="nav-link m-tabs__link active" data-toggle="tab" href="#info" role="tab">
         									<i class="flaticon-share m--hide"></i>
-        									{{ Lang::get('core.personalinfo') }}
+        									Personal Info {{-- Lang::get('core.personalinfo') --}}
         								</a>
         							</li>
         							<li class="nav-item m-tabs__item">
-        								<a class="nav-link m-tabs__link" data-toggle="tab" href="#pass" role="tab">
-        									{{ Lang::get('core.changepassword') }}
+        								<a class="nav-link m-tabs__link" data-toggle="tab" href="#pass" role="tab">        									
+                                            Change Password {{-- Lang::get('core.changepassword') --}}
         								</a>
         							</li>
         							<li class="nav-item m-tabs__item">
         								<a class="nav-link m-tabs__link" data-toggle="tab" href="#company" role="tab">
-        									{{ Lang::get('core.companydetails') }}
+        									Company Details {{-- Lang::get('core.companydetails') --}}
         								</a>
         							</li>
         						</ul>
@@ -194,7 +194,7 @@
         								</div>
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										{{ Lang::get('core.email') }}
+        										Email {{-- Lang::get('core.email') --}}
         									</label>
         									<div class="col-sm-12 col-md-7">
         										<input name="email" type="text" id="email" class="form-control m-input" required  value="{{ $info->email }}" />  
@@ -202,7 +202,7 @@
         								</div>
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										{{ Lang::get('core.firstname') }}
+        										First name {{-- Lang::get('core.firstname') --}}
         									</label>
         									<div class="col-sm-12 col-md-7">
         										<input name="first_name" type="text" id="first_name" class="form-control m-input" required  value="{{ $info->first_name }}" />  
@@ -210,7 +210,7 @@
         								</div>
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										{{ Lang::get('core.lastname') }}
+        										Last name {{-- Lang::get('core.lastname') --}}
         									</label>
         									<div class="col-sm-12 col-md-7">
         										<input name="last_name" type="text" id="last_name" class="form-control m-input" required  value="{{ $info->last_name }}" />  
@@ -260,7 +260,7 @@
         										<div class="col-sm-12 col-md-2"></div>
         										<div class="col-sm-12 col-md-7">
         											<button type="submit" class="btn btn-success m-btn m-btn--air m-btn--custom">
-        												{{ Lang::get('core.sb_savechanges') }}
+        												Save Changes {{-- Lang::get('core.sb_savechanges') --}}
         											</button>
         										</div>
         									</div>
@@ -274,7 +274,7 @@
                                     <div class="m-portlet__body">
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										{{ Lang::get('core.newpassword') }}
+        										New Password {{-- Lang::get('core.newpassword') --}}
         									</label>
         									<div class="col-sm-12 col-md-7">
         										<input name="password" type="password" id="password" class="form-control m-input" required  value="" />  
@@ -282,7 +282,7 @@
         								</div>
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										{{ Lang::get('core.conewpassword') }}
+        										Confirm Password {{-- Lang::get('core.conewpassword') --}}
         									</label>
         									<div class="col-sm-12 col-md-7">
         										<input name="password_confirmation" type="password" id="password_confirmation" class="form-control m-input" required  value="" />  
@@ -295,7 +295,7 @@
         										<div class="col-sm-12 col-md-2"></div>
         										<div class="col-sm-12 col-md-7">
         											<button type="submit" class="btn btn-danger m-btn m-btn--air m-btn--custom">
-        												{{ Lang::get('core.sb_savechanges') }}
+        												Save Changes {{-- Lang::get('core.sb_savechanges') --}}
         											</button>
         										</div>
         									</div>

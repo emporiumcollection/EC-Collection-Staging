@@ -561,12 +561,12 @@ class UserController extends Controller {
         exit;
     }
     
-    public function postSaveprofile(Request $request) {
+    public function postSaveprofile(Request $request) { 
         if (!\Auth::check())
             return Redirect::to('user/login');
         $rules = array(
-            'first_name' => 'required|alpha_num|min:2',
-            'last_name' => 'required|alpha_num|min:2',
+            'first_name' => 'required',
+            'last_name' => 'required',
         );
         
         //get contract during signup
@@ -604,12 +604,13 @@ class UserController extends Controller {
                 $user->avatar = $newfilename;
             $user->save();
             
+            \Session::put('fid', $request->input('first_name') . ' ' . $request->input('last_name'));
             //insert contracts
             \CommonHelper::submit_contracts($contracts,'sign-up');
             //End
 
             return Redirect::to('user/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');
-        } else {
+        } else {            
             return Redirect::to('user/profile')->with('messagetext', 'The following errors occurred')->with('msgstatus', 'error')
                             ->withErrors($validator)->withInput();
         }
@@ -850,7 +851,7 @@ class UserController extends Controller {
 
 
                 $affectedRows = User::where('email', '=', $user->email)
-                        ->update(array('reminder' => $request->input('_token')));
+                        ->update(array('reminder' => $token));
 
                 return Redirect::to('user/login')->with('message', \SiteHelpers::alert('success', 'Please check your email'));
             } else {

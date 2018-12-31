@@ -62,6 +62,12 @@
                                         <span class="m-menu__arrow"></span>
                                         <ul class="m-menu__subnav">
                                             <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
+                                                <a href="{{URL::to('salesreport')}}" class="m-menu__link">                           
+                                                    <i class="m-menu__link-icon flaticon-squares-4"></i>
+                                                    <span class="m-menu__link-text">Sales &amp; Marketing</span>
+                                                </a>
+                                            </li>
+                                            <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
                                                 <a href="http://www.movokai.com" target="_blank" class="m-menu__link">                           
                                                     <i class="m-menu__link-icon flaticon-squares-4"></i>
                                                     <span class="m-menu__link-text">Social Distribution Module</span>

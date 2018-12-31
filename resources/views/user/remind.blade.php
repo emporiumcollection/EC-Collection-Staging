@@ -9,7 +9,8 @@
 	</div>	
 	<div class="sbox-content">
 	<div class="text-center">
-		<img src="{{ asset('sximo/images/logo-sximo.png')}}" width="90" height="90" />
+		<img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" width="100%" />
+        <!--<img src="{{ asset('sximo/images/logo-sximo.png')}}" width="90" height="90" />-->
 	</div>
 		{!! Form::open(array('url' => 'user/doreset/'.$verCode, 'class'=>'form-vertical')) !!}
 	

@@ -374,14 +374,14 @@
 <script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 
 <script>
-jQuery.noConflict();
+
 $(document).ready(function () {
 	
-	$('.datepic').datepicker({
-			numberOfMonths: 2,
-			showButtonPanel: true,
-			format: 'yyyy-mm-dd'
-	});
+	$(".datepic").datepicker( {
+        todayHighlight:!0, orientation:"bottom left", format:"yyyy-mm-dd", templates: {
+            leftArrow: '<i class="la la-angle-left"></i>', rightArrow: '<i class="la la-angle-right"></i>'
+        }
+    });
 
     $(document).on('click', '.addseason', function (){
 		 var frmid = $(this).parents('form.add_season').attr('id');

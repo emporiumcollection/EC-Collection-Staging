@@ -208,6 +208,7 @@
                             </div>
                         </div>
 						@if(!empty($cat_types))
+                        {{--*/ $i = 1; $j = 1; /*--}}                        
 						<div class="box well">
 							<div>
 								<p>Changing the name for existing suites will change it in existing reservation and normally shouldn't be done suite active dates are used to determine when the suite is available for booking, and used to calculate day to day occupancy statistics. Leave end date blank unless you want the suite to expire at some point</p>
@@ -216,17 +217,22 @@
 								<ul class="nav nav-tabs" role="tablist">
 									@foreach($cat_types as $cat)
 										<li class="nav-item bg-gray">
-                                            <a class="nav-link" href="#" data-target="#tab{{$cat['data']->id}}" data-toggle="tab">{{$cat['data']->category_name}}</a>
+                                            @if($i==1)                                        
+                                                <a class="nav-link active show" href="#" data-target="#tab{{$cat['data']->id}}" data-toggle="tab">{{$cat['data']->category_name}}</a>
+                                            @else
+                                                <a class="nav-link" href="#" data-target="#tab{{$cat['data']->id}}" data-toggle="tab">{{$cat['data']->category_name}}</a>                                                                                        
+                                            @endif                                            
                                         </li>
+                                    {{--*/ $i++ /*--}}                                            
 									@endforeach
 								</ul>
 								<div class="tab-content">
 									@foreach($cat_types as $cat)
-										<div class="tab-pane use-padding" id="tab{{$cat['data']->id}}">
+										<div class="tab-pane <?php echo ($j==1) ? 'active' : '' ?> use-padding" id="tab{{$cat['data']->id}}">
 											<div class="tab-container">
 												<ul class="nav nav-tabs" role="tablist">
 													<li class="nav-item">
-                                                        <a class="nav-link"  href="#" data-target="#rooms_details_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Details</a>
+                                                        <a class="nav-link <?php echo ($j==1) ? 'active' : '' ?>"  href="#" data-target="#rooms_details_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Details</a>
                                                     </li>
 													<li class="nav-item">
                                                         <a class="nav-link" href="#" data-target="#rooms_images_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Images</a>
@@ -237,7 +243,7 @@
 												</ul>
 												
 												<div class="tab-content">
-													<div class="tab-pane use-padding" id="rooms_details_cat{{$cat['data']->id}}">
+													<div class="tab-pane <?php echo ($j==1) ? 'active' : '' ?> use-padding" id="rooms_details_cat{{$cat['data']->id}}">
                                                         <div id="refresh_{{$cat['data']->id}}">
 														@if(array_key_exists('rooms', $cat))
 															{{--*/ $r=1; /*--}}
@@ -587,6 +593,7 @@
 												</div>
 											</div>
 										</div>
+                                        {{--*/ $j++ /*--}} 
 									@endforeach
 								</div>
 							</div>
@@ -646,8 +653,8 @@
     @parent
     <link href="{{ asset('sximo/css/bookingSys.css')}}" rel="stylesheet">
     <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <?php /*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*/ ?>
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload.css')}}">
     <link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui.css')}}">
@@ -685,11 +692,17 @@ $(document).ready(function () {
          }
      });*/
 	 
-		$('.datepic').datepicker({
+		/*$('.datepic').datepicker({
 				numberOfMonths: 2,
 				showButtonPanel: true,
 				format: 'yyyy-mm-dd'
-		});
+		});*/
+        
+    $(".datepic").datepicker( {
+        todayHighlight:!0, orientation:"bottom left", format:"yyyy-mm-dd", templates: {
+            leftArrow: '<i class="la la-angle-left"></i>', rightArrow: '<i class="la la-angle-right"></i>'
+        }
+    });
 		
 	$(document).on('click', '.btn', function (){
 		 var frmid = $(this).parents('form.add_property_room_setup').attr('id');
