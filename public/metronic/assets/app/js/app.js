@@ -6,10 +6,10 @@ var mApp = function() {
 
     /** @type {object} colors State colors **/
     var colors = {
-        brand:      '#56927E',
+        brand:      '#C8A9A9',
         metal:      '#c4c5d6',
         light:      '#ffffff',
-        accent:     '#9CC2AF',
+        accent:     '#C0CACD',
         primary:    '#5867dd',
         success:    '#34bfa3',
         info:       '#36a3f7',

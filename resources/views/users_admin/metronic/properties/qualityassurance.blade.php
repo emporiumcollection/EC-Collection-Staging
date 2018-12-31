@@ -39,7 +39,7 @@ The program ensures the member Hotels/Luxury Partners continue to uphold the hig
             </select>
         </div>
     </div>            
-    <div class="col-sm-12 col-md-4 col-xl-4">
+    <?php /* <div class="col-sm-12 col-md-4 col-xl-4">
 		<!--begin:: Widgets/Activity-->
 		<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
 			<div class="m-portlet__head">
@@ -142,9 +142,9 @@ The program ensures the member Hotels/Luxury Partners continue to uphold the hig
 			</div>
 		</div>
 		<!--end:: Widgets/Activity-->
-	</div>
+	</div> */ ?>
                 
-    <div class="col-sm-12 col-md-8 col-xl-8">
+    <div class="col-sm-12 col-md-12 col-xl-12">
         <div class="m-portlet m-portlet--tab">
 			<div class="m-portlet__head">
 				<div class="m-portlet__head-caption">
