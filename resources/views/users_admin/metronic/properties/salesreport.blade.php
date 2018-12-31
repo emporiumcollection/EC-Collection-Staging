@@ -173,9 +173,11 @@
     </style>
 @endsection
 
-@section('custom_js_script')    
+@section('custom_js_script')  
+ 
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
 <script src="{{ asset('metronic/assets/vendors/custom/datatables/datatables.bundle.js') }}"></script>
+<script src="{{ asset('metronic/assets/app/js/app.js ') }}"></script>
 <script>
     $(document).ready(function(){
                     

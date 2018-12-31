@@ -110,6 +110,7 @@
                         <select class="form-control" name="dd_arrival_departure" id="dd_arrival_departure">
                             <option value="arrival">Arrival</option>
                             <option value="departure">Departure</option>
+                            <option value="cancel">Cancelations</option>
                         </select>
                     </div>
 					<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm">
@@ -343,6 +344,7 @@
 
 @section('custom_js_script')    
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
+<script src="{{ asset('metronic/assets/app/js/app.js ') }}"></script>
 <script>
         $(document).ready(function(){            
             arrival_depart();
