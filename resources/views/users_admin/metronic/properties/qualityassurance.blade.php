@@ -213,5 +213,348 @@ The program ensures the member Hotels/Luxury Partners continue to uphold the hig
 	<script src="//www.amcharts.com/lib/3/plugins/animate/animate.min.js" type="text/javascript"></script>
 	<script src="//www.amcharts.com/lib/3/plugins/export/export.min.js" type="text/javascript"></script>
 	<script src="//www.amcharts.com/lib/3/themes/light.js" type="text/javascript"></script>
-    <script src="{{ asset('metronic/assets/app/js/charts.js') }}"></script>    
+      
+    <script>
+    $(document).ready(function(){
+        
+        var e= {
+            1:[ {
+                sector: "Bedroom", size: 20, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Bathroom", size: 10, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Exterior/Grounds", size: 14, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Lobby", size: 6, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Restaurants/Bars", size: 5, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Guest Room Corridors", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Restrooms", size: 5, "color": "#6c5a7b"
+            }
+            ,
+            {
+                sector: "Elevators", size: 0, "color": "#c06c83"
+            }
+            ,
+            {
+                sector: "HE Employee - Behavioural Standards", size: 5, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Fitness Center", size: 5, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Swimming Pool/Beach", size: 5, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Tennis/Squash Courts", size: 5, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Steam Room/Sauna/Jacuzzi", size: 5, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Changing Rooms", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Other Fields", size: 5, "color": "#6c5a7b"
+            }
+            ],
+            2:[ {
+                sector: "Bedroom", size: 16, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Bathroom", size: 12, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Exterior/Grounds", size: 10, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Lobby", size: 8, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Restaurants/Bars", size: 7, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Guest Room Corridors", size: 6, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Restrooms", size: 5, "color": "#6c5a7b"
+            }
+            ,
+            {
+                sector: "Elevators", size: 1, "color": "#c06c83"
+            }
+            ,
+            {
+                sector: "HE Employee - Behavioural Standards", size: 5, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Fitness Center", size: 5, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Swimming Pool/Beach", size: 5, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Tennis/Squash Courts", size: 5, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Steam Room/Sauna/Jacuzzi", size: 5, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Changing Rooms", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Other Fields", size: 5, "color": "#6c5a7b"
+            }
+            ],
+            3:[ {
+                sector: "Bedroom", size: 25, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Bathroom", size: 8, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Exterior/Grounds", size: 10, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Lobby", size: 6, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Restaurants/Bars", size: 6, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Guest Room Corridors", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Restrooms", size: 5, "color": "#6c5a7b"
+            }
+            ,
+            {
+                sector: "Elevators", size: 2, "color": "#c06c83"
+            }
+            ,
+            {
+                sector: "HE Employee - Behavioural Standards", size: 5, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Fitness Center", size: 5, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Swimming Pool/Beach", size: 5, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Tennis/Squash Courts", size: 5, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Steam Room/Sauna/Jacuzzi", size: 5, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Changing Rooms", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Other Fields", size: 3, "color": "#6c5a7b"
+            }
+            ],
+            4:[ {
+                sector: "Bedroom", size: 15, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Bathroom", size: 8, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Exterior/Grounds", size: 12, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Lobby", size: 8, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Restaurants/Bars", size: 7, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Guest Room Corridors", size: 10, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Restrooms", size: 5, "color": "#6c5a7b"
+            }
+            ,
+            {
+                sector: "Elevators", size: 0, "color": "#c06c83"
+            }
+            ,
+            {
+                sector: "HE Employee - Behavioural Standards", size: 5, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Fitness Center", size: 5, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Swimming Pool/Beach", size: 5, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Tennis/Squash Courts", size: 5, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Steam Room/Sauna/Jacuzzi", size: 5, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Changing Rooms", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Other Fields", size: 5, "color": "#6c5a7b"
+            }
+            ],
+            5:[ {
+                sector: "Bedroom", size: 10, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Bathroom", size: 15, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Exterior/Grounds", size: 14, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Lobby", size: 11, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Restaurants/Bars", size: 5, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Guest Room Corridors", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Restrooms", size: 5, "color": "#6c5a7b"
+            }
+            ,
+            {
+                sector: "Elevators", size: 0, "color": "#c06c83"
+            }
+            ,
+            {
+                sector: "HE Employee - Behavioural Standards", size: 5, "color": "#d9a0af"
+            }
+            ,
+            {
+                sector: "Fitness Center", size: 5, "color": "#D1DBBD"
+            }
+            ,
+            {
+                sector: "Swimming Pool/Beach", size: 5, "color": "#648da6"
+            }
+            ,
+            {
+                sector: "Tennis/Squash Courts", size: 5, "color": "#90a2b6"
+            }
+            ,
+            {
+                sector: "Steam Room/Sauna/Jacuzzi", size: 5, "color": "#f2ccc1"
+            }
+            ,
+            {
+                sector: "Changing Rooms", size: 5, "color": "#2B7379"
+            }
+            ,
+            {
+                sector: "Other Fields", size: 5, "color": "#6c5a7b"
+            }
+            ]
+        };
+        a=1;
+        AmCharts.makeChart("m_amcharts_13", {
+            type:"pie", "hideCredits":true, theme:"light", dataProvider:[], valueField:"size", titleField:"sector", colorField: "color", startDuration:0, innerRadius:80, pullOutRadius:20, marginTop:30, titles:[ {
+                text: "Quality Assurance"
+            }
+            ], allLabels:[ {
+                y: "54%", align: "center", size: 25, bold: !0, text: "1", color: "#555"
+            }
+            , {
+                y: "49%", align: "center", size: 15, text: "Q", color: "#555"
+            }
+            ], listeners:[ {
+                event:"init", method:function(t) {
+                    var i=t.chart;
+                    !function t() {
+                        i.allLabels[0].text=a;
+                        var r=function() {
+                            var t=e[a];
+                            return++a>5&&(a=1), t
+                        }
+                        ();
+                        i.animateData(r, {
+                            duration:1e3, complete:function() {
+                                setTimeout(t, 3e3)
+                            }
+                        }
+                        )
+                    }
+                    ()
+                }
+            }
+            ], export: {
+                enabled: !0
+            }
+        });
+    
+    });
+    </script>
 @stop
