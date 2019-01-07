@@ -827,10 +827,7 @@ class UserorderController extends Controller {
 								<table width="100%" >
                                     <tr>
                                         <td>'.$company_full_address.'</td>
-                                    </tr>									
-                                    <tr>
-                                        <td>Vat IDNr. Emporium-Voyage : DE 271302029</td>
-                                    </tr>
+                                    </tr>                                   
                                     <tr>
                                         <td>'.$comp_vat_id.'</td>
                                     </tr>
@@ -872,6 +869,9 @@ class UserorderController extends Controller {
 											<td  align="right" width="10px">&nbsp;&nbsp;</td>
 											<td  align="right" class="alnRight">'. $client_number.'</td>
 											</tr>
+                                            <tr>
+                                                <td colspan="3" align="right">Vat IDNr. Emporium-Voyage : DE 271302029</td>
+                                            </tr>
 										</table>
 						   			 
 						 			</td>
