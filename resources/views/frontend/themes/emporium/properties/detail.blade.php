@@ -103,7 +103,52 @@
                 </div>
             </div>
         </setion>
-
+        
+        <!-- MEMBERSHIP SECTION -->
+        <setion class="HamYardHotelSection">
+            <div class="HamYardHotelInner HamYardHotelInnerthird">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="leftPaddingSec">
+                                <h2>CONNOISSEUR OF LUXURY</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="leftPaddingSec">
+                                <p>Whatever your heart desires, we make it happen! Our par excellence, tailored concierge services ensure that the vision of all our customers is realized and they enjoy nothing less than the vacation of their dreams.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="rightPaddingSec">
+                                <p>We make immense pride in our dense network of luxury associates who help make our members experiences exceptional whereever of contracts ensures that our members get the very best life has to offer -no matter where they are in the world.</p>  
+                                <div>
+                                    <div class="colMembershipType">                                        
+                                        <div class="dropdown show">
+                                              <a class="btnMembershipType dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Our Memberships
+                                              </a>
+                                            
+                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item" href="#">Lifestyle</a>
+                                                <a class="dropdown-item" href="#">Bespoke</a>
+                                                <a class="dropdown-item" href="#">Dedicated</a>
+                                              </div>
+                                        </div>
+                                    </div>
+                                    <div class="colMembershipType">
+                                        <a class="btnMembershipTypeJoin" href="#roomsSuit">Join The Club</a>
+                                    </div>   
+                                </div>                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </setion>
+        
         @if (array_key_exists('typedata', $propertyDetail))
             <!-- hotel slider 1 -->
             @foreach($propertyDetail['typedata'] as $type)
@@ -337,8 +382,10 @@
                             <div class="col-xs-12">
                                 <div class="hotelPopupHeadings">
                                     <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
-                                    <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its
-                                        cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    <p class="planner-sub-heading">Connoisseurs of Luxury Lifestyle</p>
+                                    <p class="planner-text">Emporium Collection provides a bespoke service that offers an extensive collection of some of the most exquisite and exclusive suites & experiences around the world.</p>
+                                    <!--<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its
+                                        cocoon, Emporium Voyage ensure the ultimate luxury experience</p> -->
                                 </div>
                             </div>
                         </div>
@@ -416,12 +463,16 @@
                                     <li>
                                         <a href="javascript:void(0);">
                                             <span>Join the worlds leading luxury club</span>
+                                        </a>
+                                        <a href="javascript:void(0);" class="enjoy_exclusive_member">
                                             <h6>Enjoy exclusive members only benefits</h6>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="javascript:void(0);">
                                             <span>View or Modify Reserveration</span>
+                                        </a>
+                                        <a href="javascript:void(0);" class="login_hotel_pms">
                                             <h6>Login to Hotel PMS</h6>
                                         </a>
                                     </li>
@@ -602,6 +653,10 @@
     @include('frontend.themes.emporium.layouts.sections.pdp_sidebar')
 @endsection
 
+<div id="somediv" title="this is a dialog" style="display:none;">
+    <iframe id="thedialog" width="650" height="500"></iframe>
+</div>
+
 {{-- For custom style  --}}
 @section('custom_css')
     @parent
@@ -635,6 +690,50 @@
                     margin-top: 16px;
                     margin-bottom: 40px;
                 }
+                .hotelBorderList .t-dates{
+                    background-color: transparent !important;
+                }
+                .hotelBorderList .t-datepicker-day{
+                    color: #000 !important;
+                }
+                .hotelBorderList .t-arrow-top{
+                    top: 65px;
+                }
+                .dropdown-menu{
+                    left: 17px;
+                    top: -27px;
+                    min-width: 143px !important;                    
+                    background-color: #000;
+                    border: 1px solid #fff;   
+                }
+                .dropdown-item {
+                    display: block;
+                    width: 100%;
+                    padding: .25rem 1.5rem;
+                    clear: both;
+                    font-weight: 400;
+                    color: #fff;
+                    text-align: inherit;
+                    white-space: nowrap;
+                    background-color: transparent;
+                    border: 0;
+                }
+                .btnMembershipType::after {
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    margin-left: .255em;
+                    vertical-align: .255em;
+                    content: "";
+                    border-top: 0;
+                    border-right: .3em solid transparent;
+                    border-bottom: .3em solid;
+                    border-left: .3em solid transparent;
+                }
+                .dropdown-item:hover, .dropdown-item:focus{
+                    color: #fff;
+                }
+                
             </style>
         @endif
     @endif
@@ -660,6 +759,17 @@
             }
         ?>
         $(document).ready(function () {
+            
+            $(".login_hotel_pms").click(function(){
+                $(".clicktologin").trigger("click");
+            });
+            $(".enjoy_exclusive_member").click(function(){
+                var left  = ($(window).width()/2)-(500/2);
+                var top   = ($(window).height()/2)-(450/2);
+                newwindow=window.open("https://emporium-lifestyle.com",'name','height=500,width=450,top=100, left='+left+'');
+                if (window.focus) {newwindow.focus()}
+                return false;
+            });
             
             var chk_date = new Date(); 
             

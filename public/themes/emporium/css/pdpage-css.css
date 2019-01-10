@@ -860,6 +860,47 @@ position: absolute;
     margin-bottom: 15px;
   }
 }
+.planner-sub-heading{
+    text-align: left !important;
+}
+.planner-text{
+    text-align: left !important;
+}
+
+.btnMembershipType {
+    border: 1px solid #fff;
+    border-radius: 0px;
+    color: #fff;
+    font-size: 12px;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    float: right;
+    text-decoration: none;
+    margin-top: 65px;
+}
+.btnMembershipType:hover, .btnMembershipType:focus{
+    color: #fff;
+}
+.btnMembershipTypeJoin {
+    border: 1px solid #fff;
+    border-radius: 0px;
+    color: #fff;
+    font-size: 12px;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    float: right;
+    text-decoration: none;
+    margin-top: 65px;
+}
+.btnMembershipTypeJoin:hover, .btnMembershipTypeJoin:focus{
+    color: #fff;
+}
+.colMembershipType{
+    float: left;
+    width: 50%;
+}
 /* 26-04-2018 */
 
 .eapps-instagram-feed-posts-item-image-wrapper:after{content: "";
