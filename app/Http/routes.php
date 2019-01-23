@@ -19,7 +19,8 @@ Route::get('wetransfer', 'PropertiesController@show_wetransfer');
 /*
  * AIC: CRM Layout Module
  */
- 
+Route::get('memberships', 'HomeController@memberships');
+Route::get('membershiptypes', 'HomeController@membershiptypes');
 Route::get('press/{id}', 'ContainerController@media_relations');
 Route::get('press', 'ContainerController@media_relations');
 Route::get('presssearch', 'ContainerController@pressSearchAjax');
@@ -416,6 +417,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('salesstats', 'PropertiesController@salesstats');
     Route::post('save_management_personnel', 'UserController@savemanagementpersonnel');
     
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
@@ -517,6 +519,9 @@ Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('search', 'Frontend\PropertyController@propertySearch');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
 Route::get('book-property/{slug}', 'HomeController@bookProperty');
+
+Route::get('luxurytravel/{slug}/{type}', 'Frontend\PropertyController@getPropertyGridListByCollectionCategory');
+
 Route::get('luxurytravel/{slug}', 'Frontend\PropertyController@getPropertyGridListByCategory');
 Route::get('ourcollections/{id}', 'HomeController@getPropertyByCategoryQuickView');
 //Route::get('search', 'HomeController@SearchLuxuryExperience');
@@ -556,6 +561,7 @@ Route::get('choosepackage/{packageid}', 'StripepaymentController@checkout');
 Route::post('order-post', 'StripepaymentController@checkoutPost');
 Route::post('wizard-order-post', 'StripepaymentController@wizardcheckoutPost');
 Route::post('wizard-subtract-fee', 'StripepaymentController@wizardSubtractFee');
+Route::post('traveller-order-post', 'StripepaymentController@travellercheckoutPost');
 // Add this route for checkout or submit form to pass the item into paypal
 Route::post('payment', array(
 	'as' => 'payment',
@@ -635,3 +641,8 @@ Route::get('hotel/get_checkout', 'Frontend\HotelMembershipController@getwizardCh
 Route::get('hotel/add_package_to_cart_wizard', 'Frontend\HotelMembershipController@addToCartWizardAjax');
 
 Route::get('hotel/thanks/{id}', 'Frontend\HotelMembershipController@hotelThanks');	
+
+Route::get('traveller/add_package_to_cart_wizard', 'Frontend\HotelMembershipController@addToCartTravellerWizardAjax');
+Route::get('traveller/get_cart', 'Frontend\HotelMembershipController@getTravellerWizardCart');
+Route::get('traveller/get_checkout', 'Frontend\HotelMembershipController@getTravellerWizardCheckout');
+Route::post('membershiptype/popup', 'HomeController@membershipPopup');

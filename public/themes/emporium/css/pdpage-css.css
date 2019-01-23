@@ -864,7 +864,7 @@ position: absolute;
     text-align: left !important;
 }
 .planner-text{
-    text-align: left !important;
+    color: #fff !important;
 }
 
 .btnMembershipType {
@@ -900,6 +900,37 @@ position: absolute;
 .colMembershipType{
     float: left;
     width: 50%;
+}
+#mem-accordion .panel-body{
+    /*background: #000 !important;*/
+    border: 0px !important;
+}
+#mem-accordion .panel-body h6{
+    color:#fff !important;
+}
+#mem-accordion .panel{
+    background: transparent;
+    color: #fff;
+    border: 0px !important;
+} 
+#mem-accordion .panel-default>.panel-heading{
+    background: transparent !important;
+    color: #fff;
+}
+#mem-accordion .panel-heading{
+    border-top: 1px solid #414246;
+}
+#mem-accordion .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: 0px !important;
+}
+#mem-accordion .panel-default:last-child{
+    border-bottom: 1px solid #414246 !important;
+}
+#mem-accordion .panel-group .panel+.panel {
+    margin-top: 0px !important;
+}
+#mem-accordion .panel-title{
+    margin-left: 20px;
 }
 /* 26-04-2018 */
 

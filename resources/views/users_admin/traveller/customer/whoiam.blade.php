@@ -104,6 +104,25 @@
 												</div>
 											</div>
 											
+                                            <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4" class="wizard_step_4">
+												<div class="m-wizard__step-info">
+													<a href="#" class="m-wizard__step-number">
+														<span>
+															<span>
+																4
+															</span>
+														</span>
+													</a>
+													<div class="m-wizard__step-line">
+														<span></span>
+													</div>
+													<div class="m-wizard__step-label">
+														Membership
+													</div>
+												</div>
+											</div>
+                                            
+                                            
 										</div>
 									</div>
 									<!--end: Form Wizard Nav -->
@@ -636,9 +655,9 @@
                                                                             <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
                                                                                 <input type="button" name="previous" data-prev-id="details" class="previous btn btn-default" value="Previous" />
                                                                             </div>
-                                                                            <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-right"> 
+                                                                            <?php /* <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-right"> 
                                                                                 <a href="{{Url::to('dashboard')}}" class="btn btn-primary">Go to Dashboard</a> 
-                                                                            </div>
+                                                                            </div> */ ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -649,6 +668,123 @@
                                                  </div>                                                                                                     
                                             </div>
     										<!--end: Form Wizard Step 2-->
+                                            
+                                            <!--begin: Form Wizard Step 6-->
+                                            <div class="m-wizard__form-step" id="m_wizard_form_step_4">
+                                                <input name="form_wizard_4" type="hidden" id="form_wizard_4" value="4" />  
+    											<div class="m-form__section">
+                                                    <div class="row" id="package_row">                                            
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <div class="b2c-banner-text">Our membership Packages</div>
+                                        					<img src="{{URL::to('images/hotel_packages.jpg')}}" style="width: 100%;" />
+                                                        </div> 
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
+                                                            <h2 class="black-heading-big">Our membership Packages</h2>
+                                                        </div> 
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top">
+                                                            The emporium-Voyage packages opens a world of opportunity to further market your Brand. To start your Reservation-Distribition & Marketing journey, please pay and confirm your bi-anually subscription. Your invoice will be visible from your accounts section.
+                                                            We offer an array of packages to further promote and market your hotel to our high-net-worth members network. You can view additional packages at your leisure from the membership section.
+                                                        </div>
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top" id="dv_pkg">
+                                                            
+                                                            <div class="form-group m-form__group row">
+                                                                <div class="m-portlet__body" style="width:100%;">
+                                                    				
+                                                                                <!--begin::Section-->
+                                                            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_membershiptype" role="tablist">
+                                                            						<!--begin::Item-->
+                                                                                    <?php 
+                                                                                        $cart_session_arr = array();
+                                                                                        $cart_session = (\Session::get('hotel_cart'));
+                                                                                        if(!empty($cart_session)){
+                                                                                            $cart_session_arr = $cart_session;
+                                                                                        } 
+                                                                                    ?>
+                                                                                    {{--*/ $k=1; /*--}}
+                                                                                    {{--*/ $m=0; /*--}} 
+                                                                                    @foreach($packages as $key=>$package) 
+                                                            						<div class="m-accordion__item">
+                                                            							<div class="m-accordion__item-head <?php echo ($m==0) ? '' : 'collapsed' ?>"  role="tab" id="m_accordion_item_membershiptype_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_item_membershiptype_{{ $k }}_body" aria-expanded="    false">
+                                                            								<span class="m-accordion__item-icon">
+                                                            									<i class="fa flaticon-user-ok"></i>
+                                                            								</span>
+                                                            								<span class="m-accordion__item-title">
+                                                            									{{$package->package_title}}
+                                                                                                Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}                                                                                                
+                                                            								</span>
+                                                            								<span class="m-accordion__item-mode"></span>
+                                                            							</div>
+                                                            							<div class="m-accordion__item-body <?php echo ($m==0) ? 'show' : 'collapse' ?>" id="m_accordion_item_membershiptype_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_item_membershiptype_{{ $k }}_head" data-parent="#m_accordion_membershiptype">
+                                                            								<div class="m-accordion__item-content">
+                                                                                                <div class="row">
+                                                                									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                    @if($package->package_image!='')
+                                                                                                        <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                    @endif
+                                                                                                    </div>
+                                                                                                    <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                                                                        <div class="row">
+                                                                                                            <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                                                                                <p>{!! nl2br($package->package_description) !!}</p>
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                    @if($package->package_price_type!=1)  
+                                                                                                                        <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                    @else
+                                                                                                                        <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>   
+                                                                                                                    @endif
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>                
+                                                                                                          
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
+                                                                                                <div class="row" style="margin-top: 10px;">
+                                                                                                    
+                                                                                                    <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                        
+                                                                                                    </div>
+                                                                                                    <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
+                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                </div> 
+                                                                                               
+                                                            								</div>
+                                                            							</div>
+                                                            						</div>
+                                                                                    {{--*/ $m++;  /*--}}
+                                                                                    
+                                                                                    {{--*/ $k++;  /*--}}
+                                                                                    @endforeach
+                                                            						<!--end::Item-->
+                                                                                    @if($m==0)
+                                                                                    <div class="col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                                        <p>Currently no packages in this section.</p>
+                                                                                    </div>
+                                                                                    @endif 
+                                                                                </div>
+                                                                            
+                                                				</div>                                						
+                                					       </div>
+                                                           <div class="col-lg-12 m--align-right" id="pgk_continue_btn">                     						
+                                                                <a id="continue_btn" class="btn btn-success pull-right" style="color: #fff;">Continue</a>		
+                                                            </div> 
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+                                                    <div class="row margin-top" id="cart_row">
+                                                        
+                                                    
+                                                    </div>
+                                                    
+                                                    
+    											</div>
+                                            </div>
+                                            
                                         </div>
                                         
                                         <!--begin: Form Actions -->
@@ -786,7 +922,12 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     <link href="{{ asset('themes/emporium/daterangepicker/css/themes/t-datepicker-bluegrey.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('sximo/assets/css/chosen.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+    <!--<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>-->
+    <style>
+    #m_accordion_membershiptype p{
+        font-family: poppins !important;
+    }
+    </style>
 @endsection
 
 {{-- For custom script --}}
@@ -797,12 +938,96 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
         <script src=" {{ asset('sximo/assets/js/init.js') }} " type="text/javascript"></script>
         <script src=" {{ asset('sximo/assets/js/handleCounter.js') }}" type="text/javascript"></script>
         <script>
+            var base_url = '{{ url() }}';
+            function addToCartHotel(PackageID,PackagePrice){               
+                var PackagePrice=PackagePrice;
+                var PackageID=PackageID;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Package added to cart successfully.");
+                    $("#pgk_continue_btn").css('display', '');
+                }
+                };
+                xhttp.open("GET", "{{ URL::to('traveller/add_package_to_cart_wizard')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
+                xhttp.send();
+            
+            } 
+            function removeItemFromCart(PackageID){    
+    
+                //var PackagePrice=PackagePrice;
+                var PackageID=PackageID;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    
+                    $.ajax({
+                        url:base_url+'/traveller/get_cart', 
+                        type:'get',
+                        success:function(response){ 
+                            $("#cart_row").html('');
+                            $("#dv_pkg").css('display', 'none');
+                            $("#cart_row").html(response);   
+                            
+                            
+                        }
+                    }); 
+                }
+                };
+                xhttp.open("GET", "{{ URL::to('removecartitem')}}?cart[package][id]="+PackageID+"&cart[package][qty]=1&cart[package][type]=hotel", true);
+                xhttp.send();
+        
+            }
+
+
             $(document).ready(function () {
                 
             <?php 
                 if($logged_user->i_agree == 0 || $logged_user->privacy_policy == 0 || $logged_user->cookie_policy == 0){ ?>
                     $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
             <?php } ?>
+            
+            $("#continue_btn").click(function(e){
+                e.preventDefault();
+                                              
+                $.ajax({
+                    url:base_url+'/traveller/get_cart', 
+                    type:'get',    
+                   
+                    success:function(response){ 
+                        
+                        $("#cart_row").css('display', '');
+                        $("#cart_row").html('');
+                        $("#dv_pkg").css('display', 'none');
+                        $("#cart_row").html(response);   
+                        
+                        
+                    }
+                });
+            });
+            
+            $(document).on('click','#checkout_btn',function(e){
+                e.preventDefault();
+                $.ajax({
+                    url:base_url+'/traveller/get_checkout', 
+                    type:'get',
+                    success:function(response){ console.log(response);
+                        $("#cart_row").css('display', '');
+                        $("#cart_row").html('');
+                        $("#dv_pkg").css('display', 'none');
+                        $("#cart_row").html(response);   
+                        
+                        
+                    }
+                }); 
+            });
+            
+            $(document).on('click','#choose_pkg_btn',function(e){
+                e.preventDefault();
+                $("#dv_pkg").css('display', '');
+                $("#cart_row").css('display', 'none');
+            });
+
             
             $("#contractacceptbtn").click(function(){ 
                 var error = true;

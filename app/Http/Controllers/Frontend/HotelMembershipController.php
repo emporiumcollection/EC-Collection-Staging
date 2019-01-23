@@ -1059,4 +1059,117 @@ class HotelMembershipController extends Controller {
         }
         //return view('frontend.hotel_membership.hotel_package', $this->data);
     }
+    /*
+     * For Saving Packages Into Cart
+    */
+    public function addToCartTravellerWizardAjax(Request $request){
+
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];  
+        $cart = array();
+        $cartObj = $request->input('cart')['package'];
+        
+        $cartItems = $request->session()->get('traveller_cart');
+        $cart[$cartPkgType]['package']['id'] = $cartObj['id'];
+        $cart[$cartPkgType]['package']['price'] = $cartObj['price'];
+        $cart[$cartPkgType]['package']['qty'] = 1;
+        $cart[$cartPkgType]['package']['type'] = $cartObj['type'];
+        
+        $cart[$cartPkgType]['package']['content'] = (!empty($cartObj['content']))?$cartObj['content']:'';
+        if(!empty($cartItems)){
+            $cartItems = array_merge($cartItems,$cart);
+        }else{
+            $cartItems = $cart;
+        }
+                
+        $request->session()->put('traveller_cart', $cartItems);
+
+        return response()->json(array('status'=>true,'error'=>false));
+
+    }
+    public function getTravellerWizardCart(Request $request) {
+        
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
+        $packages_ids = array();
+        foreach($this->data['packages'] as $si_package){
+            $packages_ids[] = $si_package->id;
+        }  
+        
+        $travellerPkgID = array(0);
+
+       //print_r($request->session()->get('traveller_cart')); die;
+        if(!empty($request->session()->get('traveller_cart'))){
+
+            foreach ($request->session()->get('traveller_cart') as $cartkey => $cartValue) {
+                if($cartValue['package']['type']=='hotel'){
+                    $travellerPkgID[] = $cartValue['package']['id'];
+                }                
+            }
+        }
+        
+        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_for,tb_pkg.package_description, tb_pkg.package_price_type  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$travellerPkgID).")"; 
+        $dataPackage = \DB::select($htoelPkgQry);
+		$this->data['packages'] = $dataPackage;
+		
+        if(count($packages_ids) > 0){
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $resetContracts = array();
+            foreach($usersContracts as $si_contract){
+                $resetContracts[$si_contract->contract_id] = $si_contract;
+            }
+            $this->data['userContracts'] = $resetContracts;
+            $contracts = \CommonHelper::get_default_contracts('packages','default',0,$packages_ids);
+            $this->data['common_contracts'] = $contracts['common'];
+            $this->data['package_contracts'] = $contracts['packages_wise'];
+        }
+                
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.hotel_cart_ajax':'frontend.hotel_membership.hotel_cart';
+        
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_cart', $this->data);
+    }
+    public function getTravellerWizardCheckout(Request $request) {
+        
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
+        $packages_ids = array();
+        foreach($this->data['packages'] as $si_package){
+            $packages_ids[] = $si_package->id;
+        }
+		$hotelPkgID = array(0);		
+
+		//print_r($request->session()->get('hotel_cart')); die;
+		if(!empty($request->session()->get('traveller_cart'))){
+
+			foreach ($request->session()->get('traveller_cart') as $cartkey => $cartValue) {
+				if($cartValue['package']['type']=='hotel'){
+					$hotelPkgID[] = $cartValue['package']['id'];
+				}
+			}
+		}
+
+		
+		$mainPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_description,tb_pkg.package_price_type   from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+		$dataPackage = \DB::select($mainPkgQry);        
+		$this->data['packages'] = $dataPackage;
+        
+        if(count($packages_ids) > 0){
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $resetContracts = array();
+            foreach($usersContracts as $si_contract){
+                $resetContracts[$si_contract->contract_id] = $si_contract;
+            }
+            $this->data['userContracts'] = $resetContracts;
+            $contracts = \CommonHelper::get_default_contracts('packages','default',0,$packages_ids);
+            $this->data['common_contracts'] = $contracts['common'];
+            $this->data['package_contracts'] = $contracts['packages_wise'];
+        }
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.hotel_checkout_ajax':'frontend.hotel_membership.hotel_checkout';
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_checkout', $this->data);
+    }
+
 }

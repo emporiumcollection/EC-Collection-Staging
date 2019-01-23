@@ -147,7 +147,7 @@ class CustomerController extends Controller {
             'ignore_lead_user' => 'Email is already exist',
         );
         
-        if($request->input('user_type') == '3'):
+        if($request->input('user_type') == '3' && $request->input('member_type')=="bespoke-membership"):
             $rules['referral_code'] = 'required'; 
         endif;
         
@@ -164,12 +164,13 @@ class CustomerController extends Controller {
             $user_data['mobile_number'] =trim($request->input('txtmobileNumber'));
             $user_data['mobile_code'] =trim($request->input('txtmobileDialcode'));
             $user_data['password'] = \Hash::make($request->input('password'));
+            $user_data['member_type'] = \Hash::make($request->input('member_type'));
             
             if($request->input('user_type') == '3'):
                 $user_data['new_user'] = '1';
             endif;
             
-            if($request->input('user_type') == '3'){
+            if($request->input('user_type') == '3' &&  $request->input('member_type')=="bespoke-membership"){
                 $referral_code = trim($request->input('referral_code'));
                 $ref_code = true;
                 $inv_id = '';
@@ -241,6 +242,65 @@ class CustomerController extends Controller {
                 }else{
                     $response = array('status' => 'error', 'message' => 'Please connect with your referrer to resend your invitation or write us an email on <a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com', 'gid' => $user_data['group_id'], 'errors'=>true);
                 }
+            }if($request->input('user_type') == '3' &&  $request->input('member_type')!="bespoke-membership"){
+                //$referral_code = trim($request->input('referral_code'));
+                //$ref_code = true;
+                //$inv_id = '';
+                //$today = date('Y-m-d');
+                //$invitee = \DB::table('tb_invitee')->where('email', trim($request->input('email')))->where('status', 0)->where('expired_on', '>', $today)->get();
+                
+                        
+                        
+                        $user_data['active'] = '1';
+                        if(isset($obj_user->id)){
+                             $user_id = \DB::table('tb_users')->where('id', $obj_user->id)->update($user_data); 
+                             $user_id = $obj_user->id;                          
+                        }else{                        
+                            //$authen->save();
+                            $user_id = \DB::table('tb_users')->insertGetId($user_data);
+                        }    
+                        $ucdata['user_id'] = $user_id;
+                        $userId = $user_id;
+                        
+                        $clint_number = date('y')."101".str_pad($userId, 5, 0, STR_PAD_LEFT);
+                        
+                        \Auth::loginUsingId($userId);
+                        \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s"), 'client_number'=>$clint_number));
+                        \Session::put('uid', $userId);
+                        \Session::put('gid', $user_data['group_id']);
+                        \Session::put('eid', $user_data['email']);
+                        \Session::put('ll', date("Y-m-d H:i:s"));
+            
+                        \DB::table('tb_user_company_details')->insert($ucdata);
+                        
+                        //$disdata['user_id']=$inv_uid;
+                        //$disdata['invitee_id']=$inv_id;
+                        //$disdata['availability']= 1;
+                        
+                        //\DB::table('tb_user_invitee_discount')->insert($disdata);
+                        
+                        $edata = array();
+                        $edata['email'] = $request->input('email');
+                        $edata['password'] = $request->input('password');
+                        $edata['firstname'] = '';
+                        $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+                        //$emlData['email'] = 'riaan@number7even.com';
+                        $emlData['email'] = trim($request->input('email'));
+                        $emlData['subject'] = 'Registration';
+                        
+                        $etemp = 'registration';
+                        
+                        \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
+                            $message->from($emlData['frmemail'], CNF_APPNAME);
+            
+                            $message->to($emlData['email']);
+            
+                            $message->subject($emlData['subject']);
+                        });
+                        
+                        $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $user_data['group_id']);
+                        
+                    
             }else{                
                     $user_data['active'] = '1';
                     if(isset($obj_user->id)){
@@ -1135,6 +1195,8 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['destinations'] = $temp;
         $this->data['inspirations'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
         $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+        
+        $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
         
         $extra = \DB::table('tb_properties')->where('user_id', $user->id)->first();
         $this->data['extra'] = $extra;

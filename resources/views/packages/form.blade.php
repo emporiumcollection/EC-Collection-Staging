@@ -51,7 +51,8 @@
                                                 <option value="Sales_Marketing" <?php echo ($row['package_category'] == 'Sales_Marketing' ? " selected='selected' " : '' ); ?>>Sales & Marketing</option>
                                                 <option value="Reservation_Distribution" <?php echo ($row['package_category'] == 'Reservation_Distribution' ? " selected='selected' " : '' ); ?>>Reservation & Distribution</option> 
                                                 <option value="Advertising" <?php echo ($row['package_category'] == 'Advertising' ? " selected='selected' " : '' ); ?>>Advertising</option>  
-                                                <option value="Membership" <?php echo ($row['package_category'] == 'Membership' ? " selected='selected' " : '' ); ?>>Membership</option>  
+                                                <option value="Membership" <?php echo ($row['package_category'] == 'Membership' ? " selected='selected' " : '' ); ?>>Membership</option>
+                                                <option value="B2C" <?php echo ($row['package_category'] == 'B2C' ? " selected='selected' " : '' ); ?>>B2C</option> 
                         						<?php /*
                         						foreach($package_category_opt as $key=>$val)
                         						{

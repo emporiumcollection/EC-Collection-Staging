@@ -54,6 +54,7 @@
                      <option value="{!! CommonHelper::getusertype('advertiser-b2b') !!}">Bespoke Advertiser</option>
                   </select>
                   </div>
+                  
                   <div class="user_ref"></div>
                   <div class="form-group mg-top" id="hd-email">
                         <input class="form-control" name="email" type="text" placeholder="Email Address">

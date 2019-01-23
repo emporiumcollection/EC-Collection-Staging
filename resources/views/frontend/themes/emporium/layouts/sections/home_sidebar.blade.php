@@ -38,9 +38,36 @@
                 <li><a class="cursor" data-action="select-destination-youtube">Search Destination Channel</a></li>
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">Company & Info</a></li>
+                <li><a class="cursor" data-action="select-membership" >Membership</a></li>
             </ul>
             <ul class="mobilemenulist hide" data-option="search-our-collection">
-				{{--*/ $colection_menus = SiteHelpers::menus('top') /*--}}
+            <?php 
+                $packages = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
+                if(!empty($packages)){
+                    $str_title = '';
+            ?>
+                @foreach ($packages as $si)
+                    <li>
+						<div class="navheadimage">
+                            <?php 
+                                $str_title = strtolower($si->package_title); 
+                                $str_title = str_replace(' ', '-', $str_title);
+                            ?>
+							<a href="{{URL::to('luxurytravel/Hotel')}}/{{$str_title}}">
+								<img src="{{URL::to('uploads/packages/'.$si->package_image)}}" alt=""/>			
+								<div class="headingoverlay">
+									<span class="destinationTitle">
+										{{$si->package_title}}
+									</span>
+								</div>
+							</a>
+						</div>
+					</li>
+                @endforeach
+            <?php        
+                }
+            ?>
+			<?php /* 	{{--*/ $colection_menus = SiteHelpers::menus('top') /*--}}
 				@if(!empty($colection_menus))
 					@foreach ($colection_menus as $cmenu)
 						<li>
@@ -64,7 +91,7 @@
 							</div>
 						</li>
 					@endforeach
-				@endif
+				@endif  */ ?>
             </ul>
             <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>

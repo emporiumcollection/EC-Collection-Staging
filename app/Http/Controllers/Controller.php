@@ -63,7 +63,49 @@ abstract class Controller extends BaseController {
         
         $this->checkb2buser(); 
 	}
-    
+    function getPackagesIdsAccordingMembershipiiiii(){
+        $pakages_arr = array();
+        $is_all = false;
+        $upackages = array();
+        if(isset(\Auth::user()->group_id)){
+            $gid = (int) \Auth::user()->group_id;
+            $travellerId = \CommonHelper::getusertype("users-b2c");
+            if($gid != $travellerId){
+                $is_all = true;
+            }else
+            {
+                $order_pack_results = \DB::table('tb_orders')->select('tb_packages.id','tb_orders.status')
+                                    ->join('tb_order_items','tb_order_items.order_id','=','tb_orders.id')
+                                    ->join('tb_packages','tb_packages.id','=','tb_order_items.package_id')
+                                    ->join('tb_packages_user_groups','tb_packages.id','=','tb_packages_user_groups.package_id')
+                                    ->where('tb_packages_user_groups.group_id',$travellerId)->where('tb_orders.status','Success')
+                                    ->groupBy('tb_packages.id')->get();
+                if(!empty($order_pack_results)){
+                    foreach($order_pack_results as $sii_package){
+                        if(!in_array($sii_package->id,$pakages_arr)){ $pakages_arr[] = $sii_package->id; }
+                    }
+                }
+            }
+        }
+        
+        //get public packages
+        /*if(count($pakages_arr) <= 0){
+            if($is_all === true){
+                $pakages_results = \DB::table('tb_packages')->select('id')->get();
+            }else
+            {
+                $pakages_results = \DB::table('tb_packages')->select('id')->where('is_public',true)->get();
+            }  
+            if(!empty($pakages_results)){
+                foreach($pakages_results as $si_package){
+                    if(!in_array($si_package->id,$pakages_arr)){ $pakages_arr[] = $si_package->id; }
+                }
+            }
+        }*/
+        //End
+        
+        return $pakages_arr;
+    }
     function getPackagesIdsAccordingMembership(){
         $pakages_arr = array();
         $is_all = false;
@@ -655,6 +697,37 @@ abstract class Controller extends BaseController {
             
         }
     }
-
+    
+    function getPackagesIdByMembership(){
+        $pakages_arr = array();
+        $is_all = false;
+        $upackages = array();
+         
+        if(isset(\Auth::user()->group_id)){
+            $gid = (int) \Auth::user()->group_id;
+            $uid = (int) \Auth::user()->id;
+            $travellerId = \CommonHelper::getusertype("users-b2c");
+            if($gid != $travellerId){
+                $is_all = true;
+            }else
+            {
+                $order_pack_results = \DB::table('tb_orders')->select('tb_packages.id','tb_packages.package_title','tb_orders.status')
+                                    ->join('tb_order_items','tb_order_items.order_id','=','tb_orders.id')
+                                    ->join('tb_packages','tb_packages.id','=','tb_order_items.package_id')
+                                    ->join('tb_packages_user_groups','tb_packages.id','=','tb_packages_user_groups.package_id')
+                                    ->where('tb_packages_user_groups.group_id',$travellerId)->where('tb_orders.status','Success')
+                                    ->where('tb_orders.user_id',$uid)
+                                    ->groupBy('tb_packages.id')->get();
+                if(!empty($order_pack_results)){
+                    foreach($order_pack_results as $sii_package){
+                        $ttl = str_replace(' ', '-', strtolower($sii_package->package_title));
+                        if(!in_array($ttl,$pakages_arr)){ $pakages_arr[] = $ttl; }
+                    }
+                }
+            }
+        }
+        return $pakages_arr;
+    }
+    
 }
 

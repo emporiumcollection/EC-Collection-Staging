@@ -418,5 +418,23 @@ class DestinationController extends Controller {
 		$ajxData = json_encode($dataArr);
 		echo $request->callback.'('.$ajxData.')';
     }
-	
+    
+	public function getMembership(Request $request) {
+	   
+		$res = array(); 
+		$fetchmembership = DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
+		if(!empty($fetchmembership))
+		{
+			$res['status'] = 'success';
+			$res['membershiptypes'] = $fetchmembership;
+			
+		}
+		else
+		{
+			$res['status'] = 'error';
+			$res['errors'] = 'No membership type found!';
+		}
+        
+        return response()->json($res);
+    }
 }

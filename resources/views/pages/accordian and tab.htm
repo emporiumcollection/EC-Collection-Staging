@@ -1,0 +1,87 @@
+<setion class="HamYardHotelSection">
+            <div class="HamYardHotelInner HamYardHotelInnersecond">
+                <div class="container">
+                    <div class="row">
+                    @if(!empty($packages))
+                        
+                        <!--<div class="block-content">
+                            <ul class="nav nav-tabs" role="tablist">
+            					<li class="active"> 
+                                    <a href="#sales_marketing" data-toggle="tab"> 
+                                        Lifestyle 
+                                    </a>
+                                </li>
+                                <li> 
+                                    <a href="#reservation_distribution" data-toggle="tab"> 
+                                        Bespoke
+                                    </a>
+                                </li>
+                                <li> 
+                                    <a href="#advertising" data-toggle="tab"> 
+                                        Dedicated
+                                    </a>
+                                </li>			
+            				</ul>
+            				<div class="tab-content">
+            					
+                                    <div class="tab-pane active" id="sales_marketing"> -->
+                                        <!--begin::Section-->
+                                        {{--*/ $k=1; /*--}} 
+                    					<div id="mem-accordion" class="panel-group">
+                                            @foreach($packages as $key=>$package)
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a class="click0" data-toggle="collapse" data-parent="#mem-accordion" href="#collapse_{{$k}}">{{$package->package_title}}</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse_{{$k}}" class="panel-collapse collapse <?php echo ($k==1) ? 'in' : '' ?>">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                        									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                            @if($package->package_image!='')
+                                                                <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                            @endif
+                                                            </div>
+                                                            <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                                <div class="row">
+                                                                    <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                                        <p>{!! nl2br($package->package_description) !!}</p>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                            @if($package->package_price_type!=1)  
+                                                                                <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                            @else
+                                                                                <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>   
+                                                                            @endif
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>                
+                                                                <div class="row" style="margin-top: 10px;">
+                                                                                                                                                         
+                                                                    <div class="col-lg-12 m--align-right">
+                                                                        <div>                                                                        
+                                                                            <a class="btnMembershipTypeJoin" href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" id="add_to_{{$package->id}}">Join The Club</a>
+                                                                        </div>
+                                                                    </div>
+                                                                   
+                                                                </div>   
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{--*/ $k++;  /*--}}
+                                            @endforeach
+                    						
+                                        </div><!--
+                                    </div>
+        					</div>                    
+        				</div>-->
+                        
+                    @endif
+                    </div>
+                </div>
+            </div>
+        </setion>

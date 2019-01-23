@@ -24,7 +24,9 @@ var WizardDemo = function () {
                 if(_wizard_step == '2'){
                        wizard_step_2();
                 }
-                
+                if(_wizard_step == '3'){
+                       
+                }
             }
         });
 
@@ -32,10 +34,10 @@ var WizardDemo = function () {
         wizard.on('change', function(wizard) {
             mUtil.scrollTop();
             if(wizard.isLastStep()){
-                    $("#wizard_submit_btn").css('display', 'none'); 
-                }else{
-                    $("#wizard_submit_btn").css('display', ''); 
-                }
+                $("#wizard_submit_btn").css('display', 'none'); 
+            }else{
+                $("#wizard_submit_btn").css('display', ''); 
+            }
         });
     }
 

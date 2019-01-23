@@ -105,7 +105,7 @@
         </setion>
         
         <!-- MEMBERSHIP SECTION -->
-        <setion class="HamYardHotelSection">
+        <setion class="HamYardHotelSection" id="cont_connoiss">
             <div class="HamYardHotelInner HamYardHotelInnerthird">
                 <div class="container">
                     <div class="row">
@@ -138,16 +138,69 @@
                                               </div>
                                         </div>
                                     </div>
-                                    <div class="colMembershipType">
+                                    <!--<div class="colMembershipType">
                                         <a class="btnMembershipTypeJoin" href="#roomsSuit">Join The Club</a>
-                                    </div>   
+                                    </div> -->   
                                 </div>                         
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </setion>
+        
+        
+        <div class="row member-type-pad" id="cont_packages" style="display: none;">
+            @if(!empty($packages))                        
+            {{--*/ $k=1; /*--}} 
+			<div id="mem-accordion" class="panel-group">
+                @foreach($packages as $key=>$package)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="click0" data-toggle="collapse" data-parent="#mem-accordion" href="#collapse_{{$k}}">{{$package->package_title}}</a>
+                        </h4>
+                    </div>
+                    <div id="collapse_{{$k}}" class="panel-collapse collapse <?php echo ($k==1) ? 'in' : '' ?>">
+                        <div class="panel-body magin-top-30">
+                            <div class="row">
+								<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                @if($package->package_image!='')
+                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                @endif
+                                </div>
+                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                    <div class="row">
+                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                            <p>{!! nl2br($package->package_description) !!}</p>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                  
+                                                    <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                
+                                    <div class="row" style="margin-top: 10px;">
+                                                                                                                             
+                                        <div class="col-lg-12 m--align-right">
+                                            <div>                                                                        
+                                                <a class="btnMembershipTypeJoin" href="javascript:void(0);">Join The Club</a>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{--*/ $k++;  /*--}}
+                @endforeach				
+            </div>
+            @endif
+        </div>
+               
         
         @if (array_key_exists('typedata', $propertyDetail))
             <!-- hotel slider 1 -->
@@ -381,8 +434,8 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="hotelPopupHeadings">
-                                    <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
-                                    <p class="planner-sub-heading">Connoisseurs of Luxury Lifestyle</p>
+                                    <!--<h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>-->
+                                    <h2>Connoisseurs of Luxury Lifestyle</h2>
                                     <p class="planner-text">Emporium Collection provides a bespoke service that offers an extensive collection of some of the most exquisite and exclusive suites & experiences around the world.</p>
                                     <!--<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its
                                         cocoon, Emporium Voyage ensure the ultimate luxury experience</p> -->
@@ -653,10 +706,6 @@
     @include('frontend.themes.emporium.layouts.sections.pdp_sidebar')
 @endsection
 
-<div id="somediv" title="this is a dialog" style="display:none;">
-    <iframe id="thedialog" width="650" height="500"></iframe>
-</div>
-
 {{-- For custom style  --}}
 @section('custom_css')
     @parent
@@ -664,6 +713,9 @@
     @if(!empty($propertyDetail))
         @if( array_key_exists('propimage', $propertyDetail))
             <style>
+                .magin-top-30{
+                    margin-top: 30px;
+                }
                 .HamYardHotelInnerfirst {
                     background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][1]->file_name}}');
                 }
@@ -671,7 +723,12 @@
 				.HamYardHotelInnersecond {
                     background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][2]->file_name}}');
                 }
-				
+                
+				.HamYardHotelInnerthird {
+                    background-image: url('{{URL::to("images/connoiser-bg.jpg")}}');
+                    padding-top: 100px !important;
+                }
+                
 				.HamYardHotelInnerfooter {
                     background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][3]->file_name}}') !important;
                 }
@@ -759,6 +816,18 @@
             }
         ?>
         $(document).ready(function () {
+            
+            $(".btnMembershipType").click(function(e){
+                e.preventDefault();
+                $("#cont_connoiss").css('display', 'none')
+                $("#cont_packages").css('display', '');        
+            });
+            
+            $(".btnMembershipTypeJoin").click(function(e){
+                e.preventDefault();
+                $(".clicktologin").trigger("click");
+                $(".signInPopupButton").trigger('click');
+            });
             
             $(".login_hotel_pms").click(function(){
                 $(".clicktologin").trigger("click");
@@ -880,7 +949,7 @@
     			}
             }
 		}
-
+        
 	</script>
 @endsection
 

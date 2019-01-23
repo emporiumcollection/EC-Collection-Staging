@@ -23,8 +23,8 @@
                  <div class="carousel-inner wrapper">
                     @foreach($slider as $key => $slider_row)
                       <div class="card item {{($key == 0)? 'active' : ''}}" data-tilt>
-          <div class="image-overaly-bg"></div>
-          <div class="image-overaly-bg bg-dark"></div>
+          <a href="{{$slider_row->slider_link}}"><div class="image-overaly-bg"></div></a>
+          <a href="{{$slider_row->slider_link}}"><div class="image-overaly-bg bg-dark"></div></a>
                          <a href="{{$slider_row->slider_link}}">
                            <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}"> alt=""/>
                          </a>
