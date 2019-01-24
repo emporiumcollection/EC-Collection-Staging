@@ -790,7 +790,70 @@
                 .dropdown-item:hover, .dropdown-item:focus{
                     color: #fff;
                 }
+                <!-- Start Modal popup -->
+                #showMemberLoginPopup .modal-dialog{
+                    width: 700px !important;
+                }
+                #showMemberLoginPopup .modal-header{
+                    border: 0px;        
+                    padding:0px !important;
+                }
+                #showMemberLoginPopup .modal-content{
+                    background: #252525 !important;        
+                    min-height: 515px;
+                }
+                #showMemberLoginPopup .modal-content .popup-title{
+                    color: #fff !important;
+                    padding: 0px;
+                    margin-top: 0px;
+                    font-family: DomaineDisplay;
+                }
+                #showMemberLoginPopup .modal-content p{
+                    color: #fff !important;        
+                }
+                #showMemberLoginPopup .modal-content h6{
+                    color: #fff !important;        
+                }
+                #showMemberLoginPopup .btnMembershipTypeJoin{
+                    margin-top: 25px;
+                    float: none;
+                    width: 100%;
+                    /*margin: 0px auto;*/
+                    text-align: center;
+                    display: block;
+                    cursor: pointer;
+                }
+                .btnMembershipTypeBack {
+                    border: 1px solid #fff;
+                    border-radius: 0px;
+                    color: #fff;
+                    font-size: 12px;
+                    padding: 12px 20px;
+                    text-transform: uppercase;
+                    margin-left: 10px;
+                    float: left;
+                    text-decoration: none;
+                    /*margin-top: 25px;*/
+                    margin-top: 93px;
+                    cursor: pointer;
+                }
+                .btnMembershipTypeBack:hover, .btnMembershipTypeBack:focus {
+                    color:#fff;
+                }
+                .modal-backdrop{background-color:#252525 !important}
+                .modal-backdrop.fade{filter:alpha(opacity=0);opacity:0}
+                .modal-backdrop.in{filter:alpha(opacity=95);opacity:.95}
                 
+                @media (max-width:1199px){
+                    #showMemberLoginPopup .modal-dialog{
+                        width:auto !important;
+                    }
+                    .btnMembershipTypeBack{
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+                <!-- End Modal popup -->
             </style>
         @endif
     @endif
@@ -939,7 +1002,9 @@
 		function choose_room_type(type)
 		{
             if(logined){
-                $("#showLoginPopup").modal();
+                show_modal_content('lifestyle-membership');
+                $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');
+                //$("#showLoginPopup").modal();
             }else{
     			$('#roomType').val('');
     			if (type != '' && type > 0)
@@ -950,6 +1015,48 @@
             }
 		}
         
+        function show_modal_content(memtype){
+            $.ajax({
+                url:'{{URL::to("membershiptype/popup")}}',
+                type: "POST",
+                data: {memtype:memtype},
+                dataType: "json",
+                success: function (data, textStatus, jqXHR) {
+                    var popupHtml = '';
+                    if (data.status == 'success') {
+                        var obj = data.mem_package;
+                        popupHtml += '<div class="row">';
+                        
+                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6">';
+                                popupHtml += '<img class="img-responsive object-fit-size" src="{{URL::to("uploads/packages")}}/'+obj.package_image+'" style="width: 100%;">';
+                            popupHtml += '</div>';
+                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6">';
+                                popupHtml += '<h2 class="popup-title">'+obj.package_title+'</h2>';
+                                popupHtml += '<p>'+(obj.package_description).replace(/\n/g,"<br>")+'</p>';
+                                popupHtml += '<h6>{!! isset($currency->content)?$currency->content:"&euro;" !!}'+obj.package_price+'</h6>';
+                                
+                            popupHtml += '</div>';
+                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">';
+                                popupHtml += '<a class="btnMembershipTypeBack" onclick="window.history.back();">Back</a>';
+                            popupHtml += '</div>';
+                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6  col-xs-12">';
+                                str_mem = '';
+                                if(memtype=="dedicated-membership"){
+                                    str_mem = 'Dedicated';
+                                }else if(memtype=="bespoke-membership"){
+                                    str_mem = 'Bespoke';
+                                }else if(memtype=="lifestyle-membership"){
+                                    str_mem = 'Lifestyle';
+                                }
+                                popupHtml += '<a class="btnMembershipTypeJoin" href="{{URL::to("memberships")}}">View Membership Benefits</a>';
+                                popupHtml += '<a class="btnMembershipTypeJoin" id="loginasa">Login as a '+str_mem+' Member</a>';
+                            popupHtml += '</div>';
+                        popupHtml += '</div>';
+                    }
+                    $(".mem-modal-popup").html(popupHtml);
+                }
+            });
+        }
 	</script>
 @endsection
 

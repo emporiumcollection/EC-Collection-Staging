@@ -440,6 +440,7 @@
         text-decoration: none;
         /*margin-top: 25px;*/
         margin-top: 93px;
+        cursor: pointer;
     }
     .btnMembershipTypeBack:hover, .btnMembershipTypeBack:focus {
         color:#fff;
