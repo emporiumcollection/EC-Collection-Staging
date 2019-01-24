@@ -6496,6 +6496,7 @@ class HomeController extends Controller {
         $this->data['pageMetadesc'] = CNF_METADESC;
         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', 'Our membership')->where('slider_status',1)->orderBy('sort_num','asc')->get();
         //print_r($this->data['slider']); die;
+        $this->data['destination_category'] =0;
         $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
         return view('frontend.themes.emporium.pages.memberships', $this->data);
     }

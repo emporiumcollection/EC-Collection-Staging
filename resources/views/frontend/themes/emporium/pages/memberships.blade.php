@@ -107,8 +107,6 @@
     @endif
 </section>
 
-@include('frontend.themes.emporium.layouts.sections.contactus_popup')
-
 @endsection
 
 {{--For Right Side Icons --}}
@@ -124,7 +122,7 @@
 
 {{-- For Include Side Bar --}}
 @section('sidebar')
-    @include('frontend.themes.emporium.layouts.sections.common_sidebar')
+    @include('frontend.themes.emporium.layouts.sections.grid_sidebar')
 @endsection
 
 {{-- For Include style files --}}

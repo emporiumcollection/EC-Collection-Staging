@@ -80,7 +80,7 @@
 @if(count($editorPropertiesArr)>0)
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="row">
-    		<h4 class="gridheading">{{ count($editorPropertiesArr) }} <span class="newfont"> Editor's choice</span> Hotels Found for {{ $slug }}  {{$dateslug}}</h4>
+    		<h4 class="gridheading">{{ count($editorPropertiesArr) }} <span class="newfont"> Editor's choice</span> Hotels Found for {{ $slug_type }}  {{$dateslug}}</h4>
     <div class="slider multiple-items">
 
 
@@ -128,7 +128,7 @@
 
 
 @if(!empty($featurePropertiesArr))
-		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Featured </span> Hotels Found for {{ $slug }}  {{$dateslug}}</h4>
+		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Featured </span> Hotels Found for {{ $slug_type }}  {{$dateslug}}</h4>
 			<div class="grid">
 
         {{ $frw = 1 }}
@@ -204,7 +204,7 @@
 
       <div class="clearfix"></div>
       	@if($propertiesArr)
-  	<h4 class="gridheading">{{$total_record}} 	<span class="newfont"> Luxury Hotel(s)</span> Found for {{$slug}} {{$dateslug}}</h4>
+  	<h4 class="gridheading">{{$total_record}} 	<span class="newfont"> Luxury Hotel(s)</span> Found for {{$slug_type}} {{$dateslug}}</h4>
 	@endif
     <div class="grid">
     
@@ -405,7 +405,7 @@
     }
     #showMemberLoginPopup .modal-content{
         background: #252525 !important;        
-        min-width: 515px;
+        min-height: 515px;
     }
     #showMemberLoginPopup .modal-content .popup-title{
         color: #fff !important;
@@ -421,6 +421,12 @@
     }
     #showMemberLoginPopup .btnMembershipTypeJoin{
         margin-top: 25px;
+        float: none;
+        width: 100%;
+        /*margin: 0px auto;*/
+        text-align: center;
+        display: block;
+        cursor: pointer;
     }
     .btnMembershipTypeBack {
         border: 1px solid #fff;
@@ -432,7 +438,8 @@
         margin-left: 10px;
         float: left;
         text-decoration: none;
-        margin-top: 25px;
+        /*margin-top: 25px;*/
+        margin-top: 93px;
     }
     .btnMembershipTypeBack:hover, .btnMembershipTypeBack:focus {
         color:#fff;
@@ -440,6 +447,16 @@
     .modal-backdrop{background-color:#252525 !important}
     .modal-backdrop.fade{filter:alpha(opacity=0);opacity:0}
     .modal-backdrop.in{filter:alpha(opacity=95);opacity:.95}
+    
+    @media (max-width:1199px){
+        #showMemberLoginPopup .modal-dialog{
+            width:auto !important;
+        }
+        .btnMembershipTypeBack{
+            width: 100%;
+            text-align: center;
+        }
+    }
     
     </style>
 @endsection
@@ -517,13 +534,18 @@ $grid.imagesLoaded().progress( function() {
             
             
             
-            @if(($ptype=="dedicated-membership") or ($ptype=="bespoke-membership")) 
+            @if(($mtype=="dedicated-membership") or ($mtype=="bespoke-membership")) 
                 <?php if(in_array($ptype, $mpackage)){ ?>
                 <?php }else{ ?>
-                        show_modal_content('{{$ptype}}');
+                        show_modal_content('{{$mtype}}');
                         $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');
                 <?php } ?>
             @endif
+            
+            $(document).on('click', '#loginasa', function(e){
+                $(".clicktologin").trigger('click');
+            });
+            
 		});
 		
 		var pageCounter = 2;
@@ -696,17 +718,18 @@ $grid.imagesLoaded().progress( function() {
                                 popupHtml += '<h6>{!! isset($currency->content)?$currency->content:"&euro;" !!}'+obj.package_price+'</h6>';
                                 
                             popupHtml += '</div>';
-                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6">';
-                                popupHtml += '<a class="btnMembershipTypeBack" href="{{URL::to("luxurytravel/Hotel/lifestyle-membership")}}">Back</a>';
+                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">';
+                                popupHtml += '<a class="btnMembershipTypeBack" href="{{URL::to("luxurytravel/Hotel/lifestyle-collection")}}">Back</a>';
                             popupHtml += '</div>';
-                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6">';
+                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6  col-xs-12">';
                                 str_mem = '';
                                 if(memtype=="dedicated-membership"){
                                     str_mem = 'Dedicated';
                                 }else if(memtype=="bespoke-membership"){
                                     str_mem = 'Bespoke';
                                 }
-                                popupHtml += '<a class="btnMembershipTypeJoin" href="{{URL::to("memberships")}}">Become a '+str_mem+' Member</a>';
+                                popupHtml += '<a class="btnMembershipTypeJoin" href="{{URL::to("memberships")}}">View Membership Benefits</a>';
+                                popupHtml += '<a class="btnMembershipTypeJoin" id="loginasa">Login as a '+str_mem+' Member</a>';
                             popupHtml += '</div>';
                         popupHtml += '</div>';
                     }

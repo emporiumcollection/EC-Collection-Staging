@@ -38,33 +38,38 @@
                 <li><a class="cursor" data-action="select-destination-youtube">Search Destination Channel</a></li>
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">Company & Info</a></li>
-                <li><a class="cursor" data-action="select-membership" >Membership</a></li>
+                <!--<li><a class="cursor" data-action="select-membership" >Membership</a></li>-->
+                <li><a class="cursor" href="{{URL::to('memberships')}}">Membership</a></li>
             </ul>
             <ul class="mobilemenulist hide" data-option="search-our-collection">
             <?php 
-                $packages = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
-                if(!empty($packages)){
-                    $str_title = '';
+                $m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->where('category_approved', 1)->where('category_published', 1)->first();                
+                if(!empty($m_collection)){
+                $cat_collection = \DB::table('tb_categories')->where('parent_category_id', $m_collection->id)->where('category_approved', 1)->where('category_published', 1)->get();                
+                    if(count($cat_collection)>0){
+                        $str_title = '';
             ?>
-                @foreach ($packages as $si)
-                    <li>
-						<div class="navheadimage">
-                            <?php 
-                                $str_title = strtolower($si->package_title); 
-                                $str_title = str_replace(' ', '-', $str_title);
-                            ?>
-							<a href="{{URL::to('luxurytravel/Hotel')}}/{{$str_title}}">
-								<img src="{{URL::to('uploads/packages/'.$si->package_image)}}" alt=""/>			
-								<div class="headingoverlay">
-									<span class="destinationTitle">
-										{{$si->package_title}}
-									</span>
-								</div>
-							</a>
-						</div>
-					</li>
-                @endforeach
-            <?php        
+                        @foreach ($cat_collection as $si)
+                            <li>
+        						<div class="navheadimage">
+                                    <?php 
+                                        //$str_title = strtolower($si->package_title); 
+                                        //$str_title = str_replace(' ', '-', $str_title);
+                                        $str_title = $si->category_alias;
+                                    ?>
+        							<a href="{{URL::to('luxurytravel/Hotel')}}/{{$str_title}}">
+        								<img src="{{URL::to('uploads/category_imgs/'.$si->category_image)}}" alt=""/>			
+        								<div class="headingoverlay">
+        									<span class="destinationTitle">
+        										{{$si->category_name}}
+        									</span>
+        								</div>
+        							</a>
+        						</div>
+        					</li>
+                        @endforeach
+            <?php
+                    }        
                 }
             ?>
 			<?php /* 	{{--*/ $colection_menus = SiteHelpers::menus('top') /*--}}

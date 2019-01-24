@@ -732,14 +732,44 @@ class PropertyController extends Controller {
 		$this->data['slug'] = $request->slug;
         $this->data['type'] = $request->type;
         $type = $request->type;
-        $f_type = str_replace('-', ' ', $type);
-        $property_package = \DB::table('tb_packages')->select('id')->where('package_title', $f_type)->first();
+        $f_type = "";
+        $slug_type = "";
+        $mtype = "";
+        $s_type = "";
+        //$f_type = str_replace('-', ' ', $type);
+        $s_type = str_replace('-', ' ', $type);
+        if($type=="lifestyle-collection"){
+            
+        }
+        switch($type){
+            case "lifestyle-collection":
+                $f_type = "Lifestyle Membership";
+                $mtype = 'lifestyle-membership';
+                $slug_type = ucfirst(str_replace('-', ' ', $type));
+                break;
+            case "dedicated-collection":
+                $f_type = "Dedicated Membership";
+                $mtype = 'dedicated-membership';
+                $slug_type = ucfirst(str_replace('-', ' ', $type));
+                break;
+            case "bespoke-collection":
+                $f_type = "Bespoke Membership";
+                $mtype = 'bespoke-membership';
+                $slug_type = ucfirst(str_replace('-', ' ', $type));
+                break;                
+        }
         
-        $this->pckages_id = $property_package->id;
+        
+        $property_package = \DB::table('tb_packages')->select('id')->where('package_title', $f_type)->first();
+        if(!empty($property_package)){
+            $this->pckages_id = $property_package->id;
+        }else{
+            $this->pckages_id = 0;
+        }
         
 		$this->data['dateslug'] = '';
 
-        $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $f_type)->where('slider_status',1)->orderBy('sort_num','asc')->get();
+        $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $s_type)->where('slider_status',1)->orderBy('sort_num','asc')->get();
 
         $this->data['destination_category'] =0;
         $perPage = 42;
@@ -792,6 +822,8 @@ class PropertyController extends Controller {
         $this->data['mpackage'] = $pckages;
         $this->data['pckages_ids'] = $this->pckages_ids;
         $this->data['ptype'] = $type;
+        $this->data['slug_type'] = $slug_type;
+        $this->data['mtype'] = $mtype;
         
 		$this->data['featurePropertiesArr']=$featureData;
         $this->data['propertiesArr'] = $propertiesArr;
