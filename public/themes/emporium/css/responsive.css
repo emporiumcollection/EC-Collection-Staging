@@ -19,7 +19,7 @@
 	/* Restaurant Carousel CSS end */
 }
 @media (max-width:1024px){
-.logo-wrapper{ padding: 15px 15px 0; max-width:250px; display:block; float:none; margin:0 auto;}
+.logo-wrapper{ padding: 30px 15px 0; max-width:250px; display:block; float:none; margin:0 auto;}
 .page-container{padding:74px 0 0 0;}
 .left-sidebar{left:-100%;}
 body.open{overflow:hidden;}

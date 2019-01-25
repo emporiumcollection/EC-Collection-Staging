@@ -719,12 +719,15 @@ $grid.imagesLoaded().progress( function() {
                                 //popupHtml += '<h6>{!! isset($currency->content)?$currency->content:"&euro;" !!}'+obj.package_price+'</h6>';
                                 
                                 str_mem = '';
+                                str_mem2 = '';
                                 if(memtype=="dedicated-collection"){
                                     str_mem = 'Dedicated';
+                                    str_mem2 = 'dedicated';
                                 }else if(memtype=="bespoke-collection"){
                                     str_mem = 'Bespoke';
+                                    str_mem2 = 'bespoke';
                                 }
-                                popupHtml += '<a class="btnMembershipTypeJoin" href="{{URL::to("memberships")}}">View Membership Benefits</a>';
+                                popupHtml += '<a class="btnMembershipTypeJoin" href="{{URL::to("memberships")}}?type='+str_mem2+'">View Membership Benefits</a>';
                                 popupHtml += '<a class="btnMembershipTypeJoin" id="loginasa">Login as a '+str_mem+' Member</a>';
                                 
                             popupHtml += '</div>';

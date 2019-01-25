@@ -6490,13 +6490,29 @@ class HomeController extends Controller {
         }
         echo json_encode($res);
     }
-    public function memberships(){
+    public function memberships(Request $request){
         $this->data['pageTitle'] = 'Membership';
         $this->data['pageMetakey'] = CNF_METAKEY;
         $this->data['pageMetadesc'] = CNF_METADESC;
         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', 'Our membership')->where('slider_status',1)->orderBy('sort_num','asc')->get();
         //print_r($this->data['slider']); die;
         $this->data['destination_category'] =0;
+        $query = $request->query();
+        $str_query = '';
+        $f_str_query = 'Lifestyle Membership';
+        if(!empty($query)){
+            $str_query = isset($query['type'])? $query['type'] : '';
+            if($str_query!=''){
+                if($str_query=='dedicated'){
+                    $f_str_query = "Dedicated Membership";
+                }elseif($str_query=='bespoke'){
+                    $f_str_query = "Bespoke Membership";
+                }elseif($str_query=='lifestyle'){
+                    $f_str_query = "Lifestyle Membership";
+                }
+            }
+        }        
+        $this->data['mem_type'] = $f_str_query;
         $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
         return view('frontend.themes.emporium.pages.memberships', $this->data);
     }

@@ -64,7 +64,7 @@
                         <a class="click0" data-toggle="collapse" data-parent="#mem-accordion" href="#collapse_{{$k}}">{{$package->package_title}}</a>
                     </h4>
                 </div>
-                <div id="collapse_{{$k}}" class="panel-collapse collapse <?php echo ($k==1) ? 'in' : '' ?>">
+                <div id="collapse_{{$k}}" class="panel-collapse collapse <?php echo isset($mem_type) ? ($mem_type==$package->package_title ? 'in' : '') :($k==1) ? 'in' : '' ?>">
                     <div class="panel-body magin-top-30">
                         <div class="row">
 							<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
@@ -200,11 +200,7 @@
 	<script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
 	<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
 	<script src="{{ asset('themes/emporium/js/scroll.js') }}"></script>
-	<script type="text/javascript">
-	VanillaTilt.init(document.querySelector(".your-element"), {
-		max: 25,
-		speed: 400
-	});
+	
 </script>
 
 @endsection
@@ -213,60 +209,13 @@
 @section('custom_js')
     @parent
 	<script>
-		 window.ParsleyConfig = {
-			errorsWrapper: '<div></div>',
-			errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
-			errorClass: 'has-error',
-			successClass: 'has-success'
-		};
-
-		$(function () {
-			$('#conatctform').parsley().on('field:validated', function() {
-			var ok = $('.parsley-error').length === 0;
-			$('.bs-callout-info').toggleClass('hidden', !ok);
-			$('.bs-callout-warning').toggleClass('hidden', ok);
-			})
-			.on('form:submit', function() {
-			submit_contact_request();
-			return false; // Don't submit form for this demo
-			});
-		});
-
-		function submit_contact_request()
-		{
-			$.ajax({
-				  url: "{{ URL::to('save_query')}}",
-				  type: "post",
-				  data: $('#conatctform').serialize(),
-				  dataType: "json",
-				  success: function(data){
-					var html = '';
-					if(data.status=='error')
-					{
-						html +='<ul class="parsley-error-list">';
-						$.each(data.errors, function(idx, obj) {
-							html +='<li>'+obj+'</li>';
-						});
-						html +='</ul>';
-						$('#formerrors').html(html);
-					}
-					else{
-						var htmli = '';
-						htmli +='<div class="alert alert-success fade in block-inner">';
-						htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
-						htmli +='<i class="icon-checkmark-circle"></i> Contact Form Submitted Successfully </div>';
-						$('#formerrors').html(htmli);
-						$('#conatctform')[0].reset();
-					}
-				  }
-			});
-		}
+		 
         $(document).ready(function(){
-           $(".btnMembershipTypeJoin").click(function(e){
+            $(".btnMembershipTypeJoin").click(function(e){
                 e.preventDefault();
                 $(".clicktologin").trigger("click");
                 $(".signInPopupButton").trigger('click');
-            }); 
+            });             
         });
 	</script>
 @endsection
