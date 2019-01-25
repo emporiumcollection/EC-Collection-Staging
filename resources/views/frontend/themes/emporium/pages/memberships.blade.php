@@ -170,6 +170,7 @@
             background: transparent;
             color: #fff;
             border: 0px !important;
+            width: 93%;
         } 
         #mem-accordion .panel-default>.panel-heading{
             background: transparent !important;

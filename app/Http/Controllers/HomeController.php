@@ -6504,13 +6504,20 @@ class HomeController extends Controller {
         $mem_type = $request->input('memtype');
         $res = array();
         $f_mem_type = str_replace('-', ' ', $mem_type);
-        $packages = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->where('package_title', $f_mem_type)->first();
+        $packages = \DB::table('tb_categories')->where('category_alias', $mem_type)->first();
         if(count($packages)>0){
             $res['status'] = 'success';
             $res['mem_package'] = $packages;
         }else{
             $res['status'] = 'error';            
         }
+        /*$packages = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->where('package_title', $f_mem_type)->first();
+        if(count($packages)>0){
+            $res['status'] = 'success';
+            $res['mem_package'] = $packages;
+        }else{
+            $res['status'] = 'error';            
+        }*/
         echo json_encode($res);
         //print_r($packages); die;
     }

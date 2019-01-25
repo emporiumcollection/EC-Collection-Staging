@@ -800,7 +800,7 @@
                 }
                 #showMemberLoginPopup .modal-content{
                     background: #252525 !important;        
-                    min-height: 515px;
+                    min-height: 300px;
                 }
                 #showMemberLoginPopup .modal-content .popup-title{
                     color: #fff !important;
@@ -817,7 +817,7 @@
                 #showMemberLoginPopup .btnMembershipTypeJoin{
                     margin-top: 25px;
                     float: none;
-                    width: 100%;
+                    width: 90%;
                     /*margin: 0px auto;*/
                     text-align: center;
                     display: block;
@@ -830,11 +830,11 @@
                     font-size: 12px;
                     padding: 12px 20px;
                     text-transform: uppercase;
-                    margin-left: 10px;
+                    /*margin-left: 10px;*/
                     float: left;
                     text-decoration: none;
-                    /*margin-top: 25px;*/
-                    margin-top: 93px;
+                    /*margin-top: 93px;*/
+                    margin-top: 25px;
                     cursor: pointer;
                 }
                 .btnMembershipTypeBack:hover, .btnMembershipTypeBack:focus {
@@ -1002,7 +1002,7 @@
 		function choose_room_type(type)
 		{
             if(logined){
-                show_modal_content('lifestyle-membership');
+                show_modal_content('lifestyle-collection');
                 $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');
                 //$("#showLoginPopup").modal();
             }else{
@@ -1028,29 +1028,31 @@
                         popupHtml += '<div class="row">';
                         
                             popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6">';
-                                popupHtml += '<img class="img-responsive object-fit-size" src="{{URL::to("uploads/packages")}}/'+obj.package_image+'" style="width: 100%;">';
+                                popupHtml += '<img class="img-responsive object-fit-size" src="{{URL::to("uploads/category_imgs")}}/'+obj.category_image+'" style="width: 100%;">';
                             popupHtml += '</div>';
                             popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6">';
-                                popupHtml += '<h2 class="popup-title">'+obj.package_title+'</h2>';
-                                popupHtml += '<p>'+(obj.package_description).replace(/\n/g,"<br>")+'</p>';
-                                popupHtml += '<h6>{!! isset($currency->content)?$currency->content:"&euro;" !!}'+obj.package_price+'</h6>';
+                                popupHtml += '<h2 class="popup-title">'+obj.category_name+'</h2>';
+                                popupHtml += '<p>'+(obj.category_description).replace(/\n/g,"<br>")+'</p>';
+                                //popupHtml += '<h6>{!! isset($currency->content)?$currency->content:"&euro;" !!}'+obj.package_price+'</h6>';
                                 
-                            popupHtml += '</div>';
-                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">';
-                                popupHtml += '<a class="btnMembershipTypeBack" onclick="window.history.back();">Back</a>';
-                            popupHtml += '</div>';
-                            popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6  col-xs-12">';
                                 str_mem = '';
-                                if(memtype=="dedicated-membership"){
+                                if(memtype=="dedicated-collection"){
                                     str_mem = 'Dedicated';
-                                }else if(memtype=="bespoke-membership"){
+                                }else if(memtype=="bespoke-collection"){
                                     str_mem = 'Bespoke';
-                                }else if(memtype=="lifestyle-membership"){
+                                }else if(memtype=="lifestyle-collection"){
                                     str_mem = 'Lifestyle';
                                 }
                                 popupHtml += '<a class="btnMembershipTypeJoin" href="{{URL::to("memberships")}}">View Membership Benefits</a>';
                                 popupHtml += '<a class="btnMembershipTypeJoin" id="loginasa">Login as a '+str_mem+' Member</a>';
+                                
                             popupHtml += '</div>';
+                            popupHtml += '<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">';
+                                popupHtml += '<a class="btnMembershipTypeBack" onclick="window.history.back();">Back</a>';
+                            popupHtml += '</div>';
+                            //popupHtml += '<div class="col-sm-6 col-md-6 col-lg-6  col-xs-12">';
+                                
+                            //popupHtml += '</div>';
                         popupHtml += '</div>';
                     }
                     $(".mem-modal-popup").html(popupHtml);
