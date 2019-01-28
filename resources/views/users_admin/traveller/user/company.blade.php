@@ -27,7 +27,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xl-3 col-lg-4">            
+        <div class="col-xl-3 col-lg-4 bg-gray">            
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -64,7 +64,7 @@
                 
 									
                                         {!! Form::open(array('url'=>'user/savecompamy/', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'property_update_form' ,'files' => true)) !!}
-                                        <div class="m-portlet__body m-portlet__body--no-padding">
+                                        <div class="m-portlet__body m--padding-20">
                                             
                                             
     											<div class="m-form__section m-form__section--first">
@@ -143,7 +143,8 @@
     															</label>
     														</div>                                                            
                                                         </div>
-                                                    </div>                                                   
+                                                    </div>      
+                                                 </div>                                             
                                                     <div class="m-separator m-separator--dashed m-separator--lg"></div>
                                                     <div class="m-form__section bg-gray">
                                                         <div class="m-form__heading">
@@ -240,7 +241,7 @@
                                                             <button class="btn btn-success b-btn" id="deactivate_account"><i class="fa fa-save"></i> Deactivate My Account</button>
                                                         </div>	
                                                     </div>                        					
-    											</div>
+    											
                                                                                                                                                
                                             </div>
     										

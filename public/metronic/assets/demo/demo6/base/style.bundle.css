@@ -54867,8 +54867,10 @@ i.m-menu__link-icon.fa {
     background: #F7F2ED;
 }
 .m-form__section.bg-gray {
-    padding: 30px 4rem;
-    margin: 0 -4rem !important;
+    /*padding: 30px 4rem;
+    margin: 0 -4rem !important;*/
+    padding: 30px 20px;
+    margin: 0 -21px !important;
     background: #FAF2EB;
 }
 .fun-bg-gray{
