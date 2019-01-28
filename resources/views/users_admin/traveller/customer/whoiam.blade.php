@@ -741,7 +741,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 
-                                                                                                <div class="row" style="margin-top: 10px;">
+                                                                                                <?php /* <div class="row" style="margin-top: 10px;">
                                                                                                     
                                                                                                     <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
                                                                                                         
@@ -750,7 +750,7 @@
                                                                                                         <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price_type==1 ? -1 : $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
                                                                                                     </div>
                                                                                                     
-                                                                                                </div> 
+                                                                                                </div> */ ?>
                                                                                                
                                                             								</div>
                                                             							</div>
@@ -912,7 +912,84 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     	</div>
     </div>    
  <!--end: modal pop up-->
-    
+<!--Start: First Time on Dashboard modal pop up-->
+    <div class="modal fade" id="request_type_model" tabindex="-1" role="dialog" aria-labelledby="requesttypeModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="contractModalLabel">
+    					Request Type
+    				</h5>    				
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">
+                        
+                        <form class="m-form">
+                        <div class="m-portlet__body">
+                            <div class="m-form__section m-form__section--first">
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Company Name</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_companyname" class="form-control" placeholder="Company name" required="required" />
+                                    </div> 
+                                </div>
+                                
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Email</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_email" class="form-control" placeholder="Email" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Address</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_address" class="form-control" placeholder="Address" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">City</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_city" class="form-control" placeholder="City" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">State</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_state" class="form-control" placeholder="State" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Country</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_country" class="form-control" placeholder="Country" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Zip Code</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_zipcode" class="form-control" placeholder="Zip Code" required="required" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">VAT number</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_vatnumber" class="form-control" placeholder="VAT Number" required="required" />
+                                    </div> 
+                                </div>
+                                
+                            </div>
+                        </div>
+                        </form>
+                        
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">    				
+                    <button type="button" class="btn btn-primary" id="btnsubmit">Submit</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>    
+ <!--end: modal pop up-->    
 @stop
 
 {{-- For custom style  --}}
@@ -1006,20 +1083,30 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                 });
             });
             
+            $(document).on('click', '.rdocheckouttype', function(e){                
+                var typeVal = $(this).val();
+                //$("#request_type_model").modal('show');
+            });
+            
             $(document).on('click','#checkout_btn',function(e){
                 e.preventDefault();
-                $.ajax({
-                    url:base_url+'/traveller/get_checkout', 
-                    type:'get',
-                    success:function(response){ console.log(response);
-                        $("#cart_row").css('display', '');
-                        $("#cart_row").html('');
-                        $("#dv_pkg").css('display', 'none');
-                        $("#cart_row").html(response);   
-                        
-                        
-                    }
-                }); 
+                var chktype = $('input:radio[name="checkouttype"]:checked').length;
+                if(chktype > 0){
+                    $.ajax({
+                        url:base_url+'/traveller/get_checkout', 
+                        type:'get',
+                        success:function(response){ console.log(response);
+                            $("#cart_row").css('display', '');
+                            $("#cart_row").html('');
+                            $("#dv_pkg").css('display', 'none');
+                            $("#cart_row").html(response);   
+                            
+                            
+                        }
+                    });
+                }else{
+                    toastr.error("Please select atleast one type");
+                } 
             });
             
             $(document).on('click','#choose_pkg_btn',function(e){

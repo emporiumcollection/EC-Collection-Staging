@@ -164,7 +164,7 @@ class CustomerController extends Controller {
             $user_data['mobile_number'] =trim($request->input('txtmobileNumber'));
             $user_data['mobile_code'] =trim($request->input('txtmobileDialcode'));
             $user_data['password'] = \Hash::make($request->input('password'));
-            $user_data['member_type'] = \Hash::make($request->input('member_type'));
+            $user_data['member_type'] = $request->input('member_type');
             
             if($request->input('user_type') == '3'):
                 $user_data['new_user'] = '1';
@@ -1195,8 +1195,19 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['destinations'] = $temp;
         $this->data['inspirations'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
         $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
-        
-        $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
+        $mem_type = '';
+        $f_mem_type = '';
+        if(!empty($this->data['logged_user'])){
+            $mem_type = $this->data['logged_user']->member_type;
+        }
+        if(!empty($mem_type)){
+            $f_mem_type = str_replace('-',' ',trim($mem_type));
+            $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->where('package_title', $f_mem_type)->get();
+        }else{
+            $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
+        } 
+        //print_r($this->data['packages']);       
+        //die;
         
         $extra = \DB::table('tb_properties')->where('user_id', $user->id)->first();
         $this->data['extra'] = $extra;

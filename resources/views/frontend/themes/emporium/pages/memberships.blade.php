@@ -90,8 +90,12 @@
                                 <div class="row" style="margin-top: 10px;">
                                                                                                                          
                                     <div class="col-lg-12 m--align-right">
-                                        <div>                                                                        
-                                            <a class="btnMembershipTypeJoin" href="javascript:void(0);">Join The Club</a>
+                                        <div>                                
+                                            <?php 
+                                                $ttl = $package->package_title;
+                                                $ttl = (str_replace(' ', '-', strtolower($ttl)));
+                                            ?>                                        
+                                            <a class="btnMembershipTypeJoin" href="javascript:void(0);" data-mtype="{{$ttl}}">Join The Club</a>
                                         </div>
                                     </div>
                                    
@@ -215,6 +219,121 @@
                 e.preventDefault();
                 $(".clicktologin").trigger("click");
                 $(".signInPopupButton").trigger('click');
+                var mtype = $(this).attr('data-mtype');
+                $(".styledSelect").text('Luxury Traveler');
+                $(".user-type").val(3);
+                $.ajax({
+                        url: "{{URL::to('membershiptypes')}}",
+                        type: "GET",
+                        dataType: "json",                        
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.status == 'success') {
+                                user_ref = '<div class="reltv" id="dv-member-type"><select name="member_type" class="member-type mg-top" id="sel-member-type" style="margin-top:20px;">';
+                                var obj = data.objmember;
+                                $("#sel-member-type").empty();                                
+                                $.each(obj, function(key, value){
+                                    //console.log('key:'+key+':value:'+value.id); 
+                                    var ttl = (value.package_title).trim();
+                                    ttl = ttl.replace(' ', '-');
+                                    ttl = ttl.toLowerCase();
+                                    user_ref += "<option value='"+ttl+"'>"+value.package_title+"</option>";
+                                });
+                                user_ref += '</select></div>'; //console.log(user_ref);
+                                $('.user_ref').css('margin-top', '20px');
+                                $('.user_ref').html(user_ref);
+                                
+                                $('.member-type').each(function () {
+
+                                    // Cache the number of options
+                                    var $this = $(this),
+                                        numberOfOptions = $(this).children('option').length;
+                                
+                                    // Hides the select element
+                                    $this.addClass('s-hidden');
+                                
+                                    // Wrap the select element in a div
+                                    $this.wrap('<div class="newselect"></div>');
+                                
+                                    // Insert a styled div to sit over the top of the hidden select element
+                                    $this.after('<div class="styledSelect"></div>');
+                                
+                                    // Cache the styled div
+                                    var $styledSelect = $this.next('div.styledSelect');
+                                
+                                    if(mtype!=''){
+                                        var f_mtype = (mtype).trim();
+                                        f_mtype = mtype.replace('-', ' ');
+                                        $styledSelect.text(f_mtype);
+                                        $(".member-type").val(mtype);
+                                        if(mtype=='bespoke-membership'){
+                                            
+                                            var _nxt = $(".user_ref").next('#dv_referral');
+                                            if(_nxt.length <= 0)
+                                            {
+                                                $("input[name='email']").parent('.form-group').removeClass('mg-top');
+                                                user_referral = '<div class="form-group mg-top" id="dv_referral"> <input class="form-control" name="referral_code" type="text" placeholder="Enter Referral Code"> </div>';
+                                                $(user_referral).insertAfter(".user_ref"); 
+                                            } 
+                                        }else{
+                                            
+                                        }
+                                    }else{
+                                        // Show the first select option in the styled div
+                                        $styledSelect.text($this.children('option').eq(0).text());
+                                    }
+                                    
+                                    // Insert an unordered list after the styled div and also cache the list
+                                    var $list = $('<ul />', {
+                                        'class': 'options newoptions'
+                                    }).insertAfter($styledSelect);
+                                
+                                    // Insert a list item into the unordered list for each select option
+                                    for (var i = 0; i < numberOfOptions; i++) {
+                                        $('<li />', {
+                                            text: $this.children('option').eq(i).text(),
+                                            rel: $this.children('option').eq(i).val()
+                                        }).appendTo($list);
+                                    }
+                                
+                                    // Cache the list items
+                                    var $listItems = $list.children('li');
+                                
+                                    // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+                                    $styledSelect.click(function (e) {
+                                        e.stopPropagation();
+                                        $('div.styledSelect.active').each(function () {
+                                            $(this).removeClass('active').next('ul.options').hide();
+                                        });
+                                        $(this).toggleClass('active').next('ul.options').toggle();
+                                    });
+                                    
+                                    // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
+                                    // Updates the select element to have the value of the equivalent option
+                                    $listItems.click(function (e) {
+                                        e.stopPropagation();
+                                        $styledSelect.text($(this).text()).removeClass('active');
+                                        $this.val($(this).attr('rel'));
+                                        //$list.hide();
+                                        
+                                        checkMembership($this.val());
+                                        $list.hide();
+                                        console.log("hh");
+                                        / alert($this.val()); Uncomment this for demonstration! /
+                                    });
+                                
+                                    // Hides the unordered list when clicking outside of it
+                                    $(document).click(function () {
+                                        $styledSelect.removeClass('active');
+                                        $list.hide();
+                                    });
+                                    $list.hide();
+                                });
+                            }
+                            else {
+                                
+                            }
+                        }
+                    });                    
             });             
         });
 	</script>

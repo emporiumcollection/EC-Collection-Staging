@@ -85,6 +85,24 @@
     </div>
 </div>
 </div> 
+<div class="m-section" style="width: 100%;">
+    <div class="m-section__content">
+        <div class="col-md-12 col-sm-12">
+            <div class="m-radio-list">
+				<label class="m-radio">
+				     <input type="radio" name="checkouttype" value="business" class="rdocheckouttype" />
+                        Business
+                     <span></span>
+				</label>
+                <label class="m-radio">
+				     <input type="radio" name="checkouttype" value="private" class="rdocheckouttype" />
+                        Private Person
+                     <span></span>
+				</label>
+			</div>
+        </div>
+    </div>
+</div>
 @else
 <div class="m-section" style="width: 100%;">
     <div class="m-section__content">

@@ -1105,6 +1105,41 @@ class HotelMembershipController extends Controller {
                     $travellerPkgID[] = $cartValue['package']['id'];
                 }                
             }
+        }else{
+            $uid = \Session::get('uid');
+            $objuser = \DB::table('tb_users')->where('id', $uid)->first();
+            
+            $mem_type = '';
+            $f_mem_type = '';
+            if(!empty($objuser)){
+                $mem_type = $objuser->member_type;
+            }
+            
+            if(!empty($mem_type)){
+                $f_mem_type = str_replace('-',' ',trim($mem_type));
+                $default_package = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->where('package_title', $f_mem_type)->first();
+            }
+                        
+            //$default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
+            $cartPkgType = $default_package->id.'_hotel';  
+            $cart = array();
+            //$cartObj = $request->input('cart')['package'];
+            
+            $cartItems = $request->session()->get('traveller_cart');
+            $cart[$cartPkgType]['package']['id'] = $default_package->id;
+            $cart[$cartPkgType]['package']['price'] = $default_package->package_price;
+            $cart[$cartPkgType]['package']['qty'] = 1;
+            $cart[$cartPkgType]['package']['type'] = 'hotel';
+            $cart[$cartPkgType]['package']['content'] = '';
+            
+            if(!empty($cartItems)){
+                $cartItems = array_merge($cartItems,$cart);
+            }else{
+                $cartItems = $cart;
+            }
+    
+            $request->session()->put('traveller_cart', $cartItems);
+            $travellerPkgID[] = $default_package->id;
         }
         
         $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_for,tb_pkg.package_description, tb_pkg.package_price_type  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$travellerPkgID).")"; 
