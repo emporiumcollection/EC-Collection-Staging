@@ -687,8 +687,8 @@ class UserorderController extends Controller {
                     $client_number = 'EV:'.$userInfo->client_number;
                 }
                 
-                $orders = \DB::table('tb_orders')->where('id', $ordid)->first();
-                $invoice_no = $orders->invoice_num;
+                $objorders = \DB::table('tb_orders')->where('id', $ordid)->first();
+                $invoice_no = $objorders->invoice_num;
                 $invoice_numbr = '';
                 $inv_date = date('d.m.Y', strtotime($order_item[0]->created));
                 
@@ -963,7 +963,27 @@ class UserorderController extends Controller {
 						}
 						
 						$html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
-					}
+					}elseif($oitem->package_type=='traveller')
+                    {
+                        $title = '';
+                        $pacpric = 0;
+                        $pacprice_show = '';
+                        
+                        $pchkdet = \DB::table('tb_packages')->select('package_title','package_price', 'package_price_type')->where('id', $oitem->package_id)->first();
+                        if(!empty($pchkdet))
+                        {
+                            $title = $pchkdet->package_title;
+                            if($pchkdet->package_price_type!=1){
+							 $pacpric = $pchkdet->package_price;
+                             $pacprice_show = $currency->content.$pchkdet->package_price;
+                            }else{
+                              $pacpric =0;  
+                              $pacprice_show = "Price on Request";
+                            }
+                        }
+                        $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$pacprice_show.'</td></tr>';
+                    }
+                    
 					$nos++;
 					$qtyPr = $pacpric * $qty;
 					$Totprice = $Totprice + $qtyPr;
