@@ -2537,4 +2537,47 @@ class UserController extends Controller {
         echo json_encode($response);
         exit;
     }
+    public function getPreferences(){
+        if (!\Auth::check())
+            return redirect('user/login');
+
+
+        
+        $def_currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $temp = $this->get_destinations_new();
+        //print_r($temp); die;
+        $destinations = $temp;
+        $inspirations = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
+        $experiences = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+        
+        $preferences = \DB::table('tb_personalized_services')->where('customer_id', \Auth::user()->id)->first();
+        
+        $maindest = (new CategoriesController)->fetchCategoryTree();
+
+        $this->data = array(
+            'pageTitle' => 'My Profile',
+            'pageNote' => 'View Detail My Info',
+            
+            'def_currency' => $def_currency,
+            
+            'maindest' => $maindest,
+            'destinations' => $destinations,
+            'inspirations' => $inspirations,
+            'experiences' => $experiences,
+            'preferences' => $preferences
+        );
+        
+        
+        
+        $group_id = \Auth::user()->group_id;
+        $file_name = 'user.preferences';
+        $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();
+        if($is_demo6 === true){
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = $is_demo6.'.user.preferences';           
+        }
+        
+        return view($file_name, $this->data);
+    }
 }

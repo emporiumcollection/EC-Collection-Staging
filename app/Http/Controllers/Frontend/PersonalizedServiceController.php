@@ -198,7 +198,10 @@ class PersonalizedServiceController extends Controller {
                         'reservation_agent' => '0',
                         'status' => 'Pending',
                         'created' => date("Y-m-d H:i:s"),
-                        'updated' => date("Y-m-d H:i:s")
+                        'updated' => date("Y-m-d H:i:s"),
+                        'data_policy'=>$request->input('data_policy'),
+                        'privacy_policy'=>$request->input('privacy_policy'),
+                        'cookies_policy'=>$request->input('cookies_policy'),
                     );
         //print_r($params); die;
         if(!empty($ps_id)){

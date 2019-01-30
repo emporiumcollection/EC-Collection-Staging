@@ -11,7 +11,12 @@
             @if(Session::get('uid')>0)
                 <a href="javascript:void(0)" class="login-user" style="display:block;"><i class="fa fa-user"></i></a>
                 <ul class="user-setting">
-                    <li><a href="{{ URL::to('customer/profile')}}">Profile</a></li>
+                    {{--*/ $is_demo6 = trim(\CommonHelper::isHotelDashBoard()); /*--}}
+                    @if(strlen($is_demo6) > 0)
+                        <li><a href="{{ URL::to('dashboard')}}">Dashboard</a></li>
+                    @else
+                        <li><a href="{{ URL::to('customer/profile')}}">Profile</a></li>
+                    @endif
                     <li><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Possword</a></li>
                     <li><a href="{{ URL::to('customer/logout')}}">Logout</a></li>
                 </ul>

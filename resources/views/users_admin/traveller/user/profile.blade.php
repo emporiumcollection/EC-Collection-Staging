@@ -1,7 +1,7 @@
 @extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
-    Account  <small> My Profile | Preferences </small>
+    Account  <small> My Profile </small>
 @stop
 
 @section('breadcrumb')
@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> My Profile | Preferences </span> 
+            <span class="m-nav__link-text"> My Profile </span> 
         </a> 
     </li>
 @stop
@@ -72,7 +72,7 @@
 								</span>
 							</a>
 						</li>
-                        <li class="m-nav__item nav-item m-tabs__item">
+                        <?php /* <li class="m-nav__item nav-item m-tabs__item">
                             <a href="#preferences" id="left-personal-preferences" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
 								<i class="m-nav__link-icon flaticon-browser"></i>
 								<span class="m-nav__link-title">
@@ -83,7 +83,7 @@
 									</span>
 								</span>
 							</a>
-						</li>		
+						</li> */ ?>		
                         <li class="m-nav__item nav-item m-tabs__item">
                             <a href="#" class="m-nav__link nav-link m-tabs__link active" id="remove_account">
 								<i class="m-nav__link-icon flaticon-delete-2"></i>
@@ -111,17 +111,17 @@
                     <div class="b2c-banner-text">Personal Information</div>
                     <img src="{{URL::to('images/personal_information.jpg')}}" style="width: 100%;" />
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_personal_preferences">
+                <?php /*<div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_personal_preferences">
                     <div class="b2c-banner-text">Personal Preferences</div>
                     <img src="{{URL::to('images/personal_preferences.jpg')}}" style="width: 100%;" />
-                </div>
+                </div> */ ?>
                 <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_change_password">
                     <div class="b2c-banner-text">Change Password</div>
                     <img src="{{URL::to('images/changepassword.jpg')}}" style="width: 100%;" />
                 </div>
                 
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h2> My Profile | Preferences </h2>
+                    <h2> My Profile </h2>
                     In this section you manage all aspects of your profile which include, personal information, personal preferences and account settings.
                 </div>
             </div>
@@ -144,11 +144,11 @@
         									Change Password
         								</a>
         							</li>
-        							<li class="nav-item m-tabs__item">
+        							<?php /* <li class="nav-item m-tabs__item">
         								<a class="nav-link m-tabs__link" data-toggle="tab" href="#preferences" role="tab" id="tab_preferences">
         									Personalized Preferences
         								</a>
-        							</li>
+        							</li> */ ?>
         						</ul>
         					</div>
         				</div>
@@ -332,7 +332,7 @@
                             		
                         		{!! Form::close() !!}
                             </div>
-        					<div class="tab-pane " id="preferences">
+        					<?php /* <div class="tab-pane " id="preferences">
                                 
                                 <form action="{{URL::to('personalized-service/save')}}" method="POST">
                                         <input type="hidden" name="ps_id" value="{{@isset($preferences->ps_id) ? $preferences->ps_id : ''}}" />                    
@@ -682,7 +682,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                                     </div> 
                                                                                                 
                                 </form> 
-                            </div>
+                            </div> */ ?>
         				</div>
                     </div><!-- // myprofile -->
             

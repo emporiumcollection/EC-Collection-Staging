@@ -231,11 +231,23 @@
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
-																				My Profile / Preferences
+																				My Profile
 																			</span>
 																		</span>
 																	</a>
-																</li>																
+																</li>
+                                                                
+                                                                <li class="m-nav__item">
+																	<a href="{{ URL::to('user/preferences')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon flaticon-profile-1"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				My Preferences
+																			</span>
+																		</span>
+																	</a>
+																</li>	                                                                
+                                                                																
                                                                 <li class="m-nav__item">
 																	<a href="{{ URL::to('traveller/bookings')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-book"></i>

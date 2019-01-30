@@ -86,7 +86,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3" class="wizard_step_3">
+											<?php /*<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3" class="wizard_step_3">
 												<div class="m-wizard__step-info">
 													<a href="#" class="m-wizard__step-number">
 														<span>
@@ -103,13 +103,13 @@
 													</div>
 												</div>
 											</div>
-											
-                                            <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4" class="wizard_step_4">
+											*/ ?>
+                                            <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3" class="wizard_step_3">
 												<div class="m-wizard__step-info">
 													<a href="#" class="m-wizard__step-number">
 														<span>
 															<span>
-																4
+																3
 															</span>
 														</span>
 													</a>
@@ -315,7 +315,7 @@
                                             <!--begin: Form Wizard Step 1-->
                                             
                                             <!--begin: Form Wizard Step 2-->
-    										<div class="m-wizard__form-step" id="m_wizard_form_step_3">
+    										<?php /* <div class="m-wizard__form-step" id="m_wizard_form_step_3">
     											<div class="m-form__section m-form__section--first">
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
@@ -350,16 +350,7 @@
                                                                                 if(!empty($destinations)) {
                                                                                     foreach ($destinations as $destination) {
                                                                                         echo '<option value="'.$destination["id"].'">'.$destination["name"].'</option>'.PHP_EOL;
-                                                                                        /*if(!empty($destination->sub_destinations)) {
-                                                                                            foreach ($destination->sub_destinations as $sub_destination) {
-                                                                                                echo '<option value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
-                                                                                                if(!empty($sub_destination->sub_destinations)) {
-                                                                                                    foreach ($sub_destination->sub_destinations as $sub_dest) {
-                                                                                                        echo '<option value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
-                                                                                                    }
-                                                                                                }
-                                                                                            }
-                                                                                        }*/
+                                                                                        
                                                                                     }
                                                                                 }
                                                                                 ?>
@@ -655,9 +646,7 @@
                                                                             <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
                                                                                 <input type="button" name="previous" data-prev-id="details" class="previous btn btn-default" value="Previous" />
                                                                             </div>
-                                                                            <?php /* <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-right"> 
-                                                                                <a href="{{Url::to('dashboard')}}" class="btn btn-primary">Go to Dashboard</a> 
-                                                                            </div> */ ?>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -666,12 +655,12 @@
                                                                                                                        
                                                         </form>                                                                                    
                                                  </div>                                                                                                     
-                                            </div>
+                                            </div> */ ?>
     										<!--end: Form Wizard Step 2-->
                                             
                                             <!--begin: Form Wizard Step 6-->
-                                            <div class="m-wizard__form-step" id="m_wizard_form_step_4">
-                                                <input name="form_wizard_4" type="hidden" id="form_wizard_4" value="4" />  
+                                            <div class="m-wizard__form-step" id="m_wizard_form_step_3">
+                                                <input name="form_wizard_3" type="hidden" id="form_wizard_3" value="3" />  
     											<div class="m-form__section">
                                                     <div class="row" id="package_row">                                            
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
