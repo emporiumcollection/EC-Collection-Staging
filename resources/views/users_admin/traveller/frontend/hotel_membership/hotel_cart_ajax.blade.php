@@ -90,13 +90,13 @@
         <div class="col-md-12 col-sm-12">
             <div class="m-radio-list">
 				<label class="m-radio">
-				     <input type="radio" name="checkouttype" value="business" class="rdocheckouttype" />
-                        Business
+				     <input type="radio" name="checkouttype" value="business" class="rdocheckouttype" <?php echo $user->checkout_type=="business" ? 'checked="checked"' : ''; ?> />
+                        Checkout as a Company
                      <span></span>
 				</label>
                 <label class="m-radio">
-				     <input type="radio" name="checkouttype" value="private" class="rdocheckouttype" />
-                        Private Person
+				     <input type="radio" name="checkouttype" value="private" class="rdocheckouttype" <?php echo $user->checkout_type=="private" ? 'checked="checked"' : ''; ?> />
+                        Checkout as a Private Person
                      <span></span>
 				</label>
 			</div>

@@ -916,80 +916,221 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     <div class="modal fade" id="request_type_model" tabindex="-1" role="dialog" aria-labelledby="requesttypeModalLabel" aria-hidden="true" style="display: none;">
     	<div class="modal-dialog modal-lg" role="document">
     		<div class="modal-content">
+                {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'request_type_form' ,'files' => true)) !!}
     			<div class="modal-header">
     				<h5 class="modal-title" id="contractModalLabel">
     					Request Type
-    				</h5>    				
+    				</h5> 
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">
+    						×
+    					</span>
+    				</button>   				
     			</div>
     			<div class="modal-body">
                     <div class="m-portlet m-portlet--full-height">
                         
-                        <form class="m-form">
                         <div class="m-portlet__body">
                             <div class="m-form__section m-form__section--first">
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Company Name</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_companyname" class="form-control" placeholder="Company name" required="required" />
+                                        <input type="text" name="onrequest_companyname" class="form-control" placeholder="Company name" required="required" value="{{ $company->company_name }}" />
                                     </div> 
                                 </div>
                                 
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Email</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_email" class="form-control" placeholder="Email" required="required" />
+                                        <input type="text" name="onrequest_email" class="form-control" placeholder="Email" required="required" value="{{ $company->company_email }}" />
                                     </div> 
                                 </div>
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Address</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_address" class="form-control" placeholder="Address" required="required" />
+                                        <input type="text" name="onrequest_address" class="form-control" placeholder="Address" required="required" value="{{ $company->company_address }}" />
                                     </div> 
                                 </div>
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">City</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_city" class="form-control" placeholder="City" required="required" />
+                                        <input type="text" name="onrequest_city" class="form-control" placeholder="City" required="required" value="{{ $company->company_city }}" />
                                     </div> 
                                 </div>
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">State</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_state" class="form-control" placeholder="State" required="required" />
+                                        <input type="text" name="onrequest_state" class="form-control" placeholder="State" required="required" value="{{ $company->company_state }}" />
                                     </div> 
                                 </div>
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Country</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_country" class="form-control" placeholder="Country" required="required" />
+                                        <input type="text" name="onrequest_country" class="form-control" placeholder="Country" required="required" value="{{ $company->company_country }}" />
                                     </div> 
                                 </div>
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Zip Code</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_zipcode" class="form-control" placeholder="Zip Code" required="required" />
+                                        <input type="text" name="onrequest_zipcode" class="form-control" placeholder="Zip Code" required="required" value="{{ $company->company_postal_code }}" />
                                     </div> 
                                 </div>
+                                                                
                                 <div class="form-group m-form__group row">
-                                    <label class="col-xl-3 col-lg-3 col-form-label">VAT number</label>
-                                    <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="onrequest_vatnumber" class="form-control" placeholder="VAT Number" required="required" />
-                                    </div> 
+									<label class="col-xl-3 col-lg-3 col-form-label">
+										Registered European Company
+									</label>
+									<div class="col-xl-9 col-lg-9">
+                                        <div class="m-radio-inline">
+                							<label class="m-radio">
+                							     <input type="radio" name="european" value="1" <?php echo $user->european==1 ? 'checked="checked"' : ''; ?> />
+                                                    Yes
+                                                 <span></span>
+                							</label>
+                                            <label class="m-radio">
+                							     <input type="radio" name="european" value="0" <?php echo $user->european==0 ? 'checked="checked"' : ''; ?> />
+                                                    No
+                                                 <span></span>
+                							</label>
+                						</div>
+                                    </div>
                                 </div>
-                                
+                                <div id="dv_vat_no">
+                                    <div class="form-group m-form__group row" >
+                                        <label class="col-xl-3 col-lg-3 col-form-label">
+											
+										</label>
+										<div class="col-xl-9 col-lg-9">
+											Under article 44 EU VAT Directive 2006/112/EC that deals with the place of supply of services, electronic services are deemed to be taxable where the Business customer belongs. Under article 196 EU VAT Directive, the VAT will be levied from the customer, based on the reverse charge mechanism. Emporium-Voyage will request a valid VAT number in one of the EU member states in order not to invoice the VAT to the Business customer. If such VAT number is not provided or is invalid, Emporium-Voyage will invoice the VAT of the country where the Business customer belongs.  
+										</div>
+									</div>
+                                    <div class="form-group m-form__group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">
+											Vat Number
+										</label>
+										<div class="col-xl-9 col-lg-9">
+											<input type="text" name="onrequest_vatnumber" class="form-control" id="onrequest_vatnumber" required="required" value="{{ $company->company_tax_number }}" />  
+										</div>
+									</div>
+                                </div>
+                                                    
                             </div>
                         </div>
-                        </form>
+                        
                         
                     </div>                				
     			</div>
     			<div class="modal-footer">    				
-                    <button type="button" class="btn btn-primary" id="btnsubmit">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
     			</div>
+                {!! Form::close() !!}
     		</div>
     	</div>
     </div>    
- <!--end: modal pop up-->    
+ <!--end: modal pop up--> 
+ <!--Start: First Time on Dashboard modal pop up-->
+    <div class="modal fade" id="request_type_person_model" tabindex="-1" role="dialog" aria-labelledby="requestTypePersonModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+                {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'request_type_person_form' ,'files' => true)) !!}
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="contractModalLabel">
+    					Request Type
+    				</h5> 
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">
+    						×
+    					</span>
+    				</button>   				
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">
+                        
+                        <div class="m-portlet__body">
+                            <div class="m-form__section m-form__section--first">
+                                
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Address</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_person_address" class="form-control" placeholder="Address" required="required" value="{{ $user->address }}" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">City</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_person_city" class="form-control" placeholder="City" required="required" value="{{ $user->city }}" />
+                                    </div> 
+                                </div>
+                                
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Country</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_person_country" class="form-control" placeholder="Country" required="required" value="{{ $user->country }}" />
+                                    </div> 
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Zip Code</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="onrequest_person_zipcode" class="form-control" placeholder="Zip Code" required="required" value="{{ $user->zip_code }}" />
+                                    </div> 
+                                </div>
+                                
+                                
+                                <div class="form-group m-form__group row">
+									<label class="col-xl-3 col-lg-3 col-form-label">
+										European
+									</label>
+									<div class="col-xl-9 col-lg-9">
+                                        <div class="m-radio-inline">
+                							<label class="m-radio">
+                							     <input type="radio" name="onrequest_person_european" value="1" <?php echo $user->european==1 ? 'checked="checked"' : ''; ?> />
+                                                    Yes
+                                                 <span></span>
+                							</label>
+                                            <label class="m-radio">
+                							     <input type="radio" name="onrequest_person_european" value="0" <?php echo $user->european==0 ? 'checked="checked"' : ''; ?> />
+                                                    No
+                                                 <span></span>
+                							</label>
+                						</div>
+                                    </div>
+                                </div>                                
+                                <div id="dv_person_vat_no">
+                                    <div class="form-group m-form__group row" >
+                                        <label class="col-xl-3 col-lg-3 col-form-label">
+											
+										</label>
+										<div class="col-xl-9 col-lg-9">
+											Under article 44 EU VAT Directive 2006/112/EC that deals with the place of supply of services, electronic services are deemed to be taxable where the Business customer belongs. Under article 196 EU VAT Directive, the VAT will be levied from the customer, based on the reverse charge mechanism. Emporium-Voyage will request a valid VAT number in one of the EU member states in order not to invoice the VAT to the Business customer. If such VAT number is not provided or is invalid, Emporium-Voyage will invoice the VAT of the country where the Business customer belongs.  
+										</div>
+									</div>
+                                    <div class="form-group m-form__group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">
+											Vat Number
+										</label>
+										<div class="col-xl-9 col-lg-9">
+											<input type="text" name="onrequest_person_vatnumber" class="form-control" id="onrequest_person_vatnumber" required="required" value="{{ $user->vat_number }}" />  
+										</div>
+									</div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">    				
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+    			</div>
+                {!! Form::close() !!}
+    		</div>
+    	</div>
+    </div>    
+ <!--end: modal pop up-->   
 @stop
 
 {{-- For custom style  --}}
@@ -1004,6 +1145,11 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     #m_accordion_membershiptype p{
         font-family: poppins !important;
     }
+    .m-content>div:nth-child(even) .row{
+        background: none; 
+        padding: 0px 0px 30px;
+        margin: 0px;
+    }
     </style>
 @endsection
 
@@ -1014,6 +1160,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
         <script src=" {{ asset('sximo/assets/js/chosen.jquery.js') }} " type="text/javascript"></script>
         <script src=" {{ asset('sximo/assets/js/init.js') }} " type="text/javascript"></script>
         <script src=" {{ asset('sximo/assets/js/handleCounter.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
         <script>
             var base_url = '{{ url() }}';
             function addToCartHotel(PackageID,PackagePrice){               
@@ -1058,7 +1205,82 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 
 
             $(document).ready(function () {
-                
+               var _euro = $("input[name=european]:checked").val();
+               
+               if(_euro!=0){
+                    $("#dv_vat_no").css('display', ''); 
+               }else{ 
+                    $("#dv_vat_no").css('display', 'none');
+               }
+               $("input[name=european]").click(function(){
+                    var europo_val = $("input[name=european]:checked").val();
+                    
+                    if(europo_val==0){
+                        $("#dv_vat_no").css('display', 'none');
+                        $("#onrequest_vatnumber").removeAttr('required');
+                    }else{
+                        $("#dv_vat_no").css('display', '');
+                        $("#onrequest_vatnumber").attr('required', 'required');
+                    }
+               });
+               
+               var _euro2 = $("input[name=onrequest_person_european]:checked").val();
+               
+               if(_euro2!=0){ 
+                    $("#dv_person_vat_no").css('display', ''); 
+               }else{ 
+                    $("#dv_person_vat_no").css('display', 'none');
+               }
+               $("input[name=onrequest_person_european]").click(function(){
+                    var europo_val = $("input[name=onrequest_person_european]:checked").val();                    
+                    if(europo_val==0){
+                        $("#dv_person_vat_no").css('display', 'none');
+                        $("#onrequest_person_vatnumber").removeAttr('required');
+                    }else{
+                        $("#dv_person_vat_no").css('display', '');
+                        $("#onrequest_person_vatnumber").attr('required', 'required');
+                    }
+               });
+                $('#request_type_form').validate({
+        			submitHandler: function (form) {
+        				 $.ajax({
+                            url:"{{URL::to('traveller/businessdetails')}}",
+                            type:'POST',
+                            dataType:'json',
+                            data:$(form).serializeArray(),                   
+                            success:function(response){
+                                if(response.status == 'success'){
+                                    toastr.success(response.message);
+                                    $("#request_type_model").modal('hide'); 
+                                }
+                                else{
+                                    toastr.error(response.message);
+                                }
+                            }
+                        });
+        				return false;
+        			}            		
+                });
+                $('#request_type_person_form').validate({
+        			submitHandler: function (form) {
+        				 $.ajax({
+                            url:"{{URL::to('traveller/persondetails')}}",
+                            type:'POST',
+                            dataType:'json',
+                            data:$(form).serializeArray(),                   
+                            success:function(response){
+                                if(response.status == 'success'){
+                                    toastr.success(response.message);
+                                    $("#request_type_person_model").modal('hide'); 
+                                }
+                                else{
+                                    toastr.error(response.message);
+                                }
+                            }
+                        });
+        				return false;
+        			}            		
+                });
             <?php 
                 if($logged_user->i_agree == 0 || $logged_user->privacy_policy == 0 || $logged_user->cookie_policy == 0){ ?>
                     $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
@@ -1085,10 +1307,40 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
             
             $(document).on('click', '.rdocheckouttype', function(e){                
                 var typeVal = $(this).val();
-                //$("#request_type_model").modal('show');
+                if(typeVal=="business"){
+                    $("#request_type_model").modal('show');
+                }else{
+                    $("#request_type_person_model").modal('show');
+                }
             });
             
             $(document).on('click','#checkout_btn',function(e){
+                e.preventDefault();
+                var chktype = $('input:radio[name="checkouttype"]:checked').length;
+                if(chktype > 0){
+                    var chkval = $('input:radio[name="checkouttype"]:checked').val();
+                    
+                    $.ajax({
+                        url:base_url+'/traveller/get_checkout', 
+                        type:'post',
+                        data:{chkval:chkval},
+                        dataType:'json',
+                        success:function(response){ console.log(response);
+                            if(response.status=="success"){
+                                $("#cart_row").css('display', '');
+                                $("#cart_row").html('');
+                                $("#dv_pkg").css('display', 'none');
+                                $("#cart_row").html(response.response_data);   
+                            }else{
+                                toastr.error(response.message);
+                            }
+                        }
+                    });
+                }else{
+                    toastr.error("Please select atleast one type");
+                } 
+            });
+            /*$(document).on('click','#checkout_btn',function(e){
                 e.preventDefault();
                 var chktype = $('input:radio[name="checkouttype"]:checked').length;
                 if(chktype > 0){
@@ -1107,7 +1359,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                 }else{
                     toastr.error("Please select atleast one type");
                 } 
-            });
+            });*/
             
             $(document).on('click','#choose_pkg_btn',function(e){
                 e.preventDefault();

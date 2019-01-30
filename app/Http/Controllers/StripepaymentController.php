@@ -511,6 +511,18 @@ public function generateInvoice($ordid)
                 if($userInfo->european){
                     $comp_vat_id = 'Vat IDNr. : '.$companydet->company_tax_number;
                 }
+                $orders = \DB::table('tb_orders')->where('id', $ordid)->first();
+                $invoice_no = $orders->invoice_num;
+                $invoice_numbr = '';
+                $inv_date = date('d.m.Y', strtotime($order_item[0]->created));
+                
+                if($order_item[0]->package_type=='hotel'){                    
+                    $invoice_numbr = 'B-'.$inv_date."-".$invoice_no;        
+                }elseif($order_item[0]->package_type=='advert'){
+                    $invoice_numbr = 'A-'.$inv_date."-".$invoice_no;  
+                }elseif($order_item[0]->package_type=='traveller'){
+                    $invoice_numbr = 'C-'.$inv_date."-".$invoice_no;
+                }
                 
 				$html = '<style> 
                         .main { margin:2px; width:100%; font-family: arial, sans-serif; } 
@@ -674,7 +686,7 @@ public function generateInvoice($ordid)
                                                 
                                                 <td  align="right">Invoice Number:</td>
                                                 <td  align="right" width="10px">&nbsp;&nbsp;</td>
-                                                <td  align="right" class="alnRight" >'. $invoice_num->content .'</td>
+                                                <td  align="right" class="alnRight" >'. $invoice_numbr .'</td>
                                             </tr>
                                             <tr>
 											
@@ -774,6 +786,25 @@ public function generateInvoice($ordid)
                         }
                         
                         $html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
+                    }elseif($oitem->package_type=='traveller')
+                    {
+                        $title = '';
+                        $pacpric = 0;
+                        $pacprice_show = '';
+                        
+                        $pchkdet = \DB::table('tb_packages')->select('package_title','package_price', 'package_price_type')->where('id', $oitem->package_id)->first();
+                        if(!empty($pchkdet))
+                        {
+                            $title = $pchkdet->package_title;
+                            if($pchkdet->package_price_type!=1){
+							 $pacpric = $pchkdet->package_price;
+                             $pacprice_show = $currency->content.$pchkdet->package_price;
+                            }else{
+                              $pacpric =0;  
+                              $pacprice_show = "Price on Request";
+                            }
+                        }
+                        $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$pacprice_show.'</td></tr>';
                     }
                     $nos++;
                     $qtyPr = $pacpric * $qty;
@@ -1294,7 +1325,7 @@ public function generateInvoice($ordid)
 
                             $orditemdta['order_id'] = $ord_id; 
                            
-                            if($cartValue['package']['type']=='hotel'){
+                            if($cartValue['package']['type']=='traveller'){
                                  $orditemdta['package_type'] = $cartValue['package']['type']; 
                                  $orditemdta['package_id'] = $cartValue['package']['id'];
                                  $package_idsarr[] = $orditemdta['package_id'];

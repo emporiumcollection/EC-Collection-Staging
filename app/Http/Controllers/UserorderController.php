@@ -687,6 +687,19 @@ class UserorderController extends Controller {
                     $client_number = 'EV:'.$userInfo->client_number;
                 }
                 
+                $orders = \DB::table('tb_orders')->where('id', $ordid)->first();
+                $invoice_no = $orders->invoice_num;
+                $invoice_numbr = '';
+                $inv_date = date('d.m.Y', strtotime($order_item[0]->created));
+                
+                if($order_item[0]->package_type=='hotel'){                    
+                    $invoice_numbr = 'B-'.$inv_date."-".$invoice_no;        
+                }elseif($order_item[0]->package_type=='advert'){
+                    $invoice_numbr = 'A-'.$inv_date."-".$invoice_no;  
+                }elseif($order_item[0]->package_type=='traveller'){
+                    $invoice_numbr = 'C-'.$inv_date."-".$invoice_no;
+                }
+                
 				$html = '<style> 
 						.main { margin:2px; width:100%; font-family: arial, sans-serif; color: #252525; } 
 						.page-break { page-break-after: always; } 
@@ -849,7 +862,7 @@ class UserorderController extends Controller {
 												
 												<td  align="right">Invoice Number:</td>
 												<td  align="right" width="10px">&nbsp;&nbsp;</td>
-												<td  align="right" class="alnRight" >'. $invoice_num->content .'</td>
+												<td  align="right" class="alnRight" >'. $invoice_numbr .'</td>
 											</tr>
 											<tr>
 											

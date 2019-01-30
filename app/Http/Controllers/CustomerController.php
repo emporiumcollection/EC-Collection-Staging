@@ -1213,6 +1213,8 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['extra'] = $extra;
         //print_r($extra); die;
         $this->data['user'] = $user;
+        $this->data['company'] = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
+        
         //$this->data['contractdata']=$resultContract["rows"];
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
         
@@ -2012,5 +2014,80 @@ $html .= '</div>';
         echo json_encode($response);
         
         exit;
+    }
+    public function businessdetails(Request $request){
+       
+        $rules = array(
+            'onrequest_companyname' => 'required',
+            'onrequest_email' => 'required',
+            'onrequest_address' => 'required',
+            'onrequest_city' => 'required',
+            'onrequest_state' => 'required',
+            'onrequest_country' => 'required',
+            'onrequest_zipcode' => 'required',
+        );        
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+            
+            $data['user_id'] = \Auth::user()->id;
+            $data['company_name'] = Input::get('onrequest_companyname');            
+            $data['company_email'] = Input::get('onrequest_email');
+            $data['company_address'] = Input::get('onrequest_address');
+            $data['company_city'] = Input::get('onrequest_city');
+            $data['company_state'] = Input::get('onrequest_state');
+            $data['company_country'] = Input::get('onrequest_country');
+            $data['company_postal_code'] = Input::get('onrequest_zipcode');
+            $data['company_tax_number'] = Input::get('onrequest_vatnumber');            
+            
+            $user = User::find(\Session::get('uid'));  
+            $user->checkout_type = "business";          
+            $user->european = $request->input('european');
+            $user->save();
+           
+           \DB::table('tb_user_company_details')->where('user_id', \Auth::user()->id)->update($data);
+            
+            $response = array('status' => 'success', 'message' => 'Company added successfully');
+        } else {
+            $response = array('status' => 'error', 'message' => 'Error while adding company');
+        }   
+        
+        
+        echo json_encode($response);
+        
+        exit;     
+    }
+    public function persondetails(Request $request){
+       
+        $rules = array(
+            'onrequest_person_address' => 'required',
+            'onrequest_person_city' => 'required',            
+            'onrequest_person_country' => 'required',
+            'onrequest_person_zipcode' => 'required',            
+        );        
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+                      
+            $data['address'] = Input::get('onrequest_person_address');
+            $data['city'] = Input::get('onrequest_person_city');
+            $data['country'] = Input::get('onrequest_person_country');
+            $data['zip_code'] = Input::get('onrequest_person_zipcode');            
+            $data['checkout_type'] = "private";
+            $data['european'] = Input::get('onrequest_person_european');
+            $data['vat_number'] = Input::get('onrequest_person_vatnumber');
+            
+           \DB::table('tb_users')->where('id', \Auth::user()->id)->update($data);
+            
+            $response = array('status' => 'success', 'message' => 'Personal information added successfully');
+        } else {
+            $response = array('status' => 'error', 'message' => 'Error while adding personal information');
+        } 
+        
+        echo json_encode($response);
+        
+        exit;     
     }
 }

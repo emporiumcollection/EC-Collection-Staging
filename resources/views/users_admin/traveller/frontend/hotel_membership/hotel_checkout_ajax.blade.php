@@ -54,7 +54,7 @@
                                        
                 <tr>
                     <td>
-                        Vat {{(\Auth::user()->european) ? 'Inclusive' : 'Exclusive'}} {{ $data["vatsettings"]->content}}% 
+                        Vat {{($european) ? 'Inclusive' : 'Exclusive'}} {{ $data["vatsettings"]->content}}% 
                     </td>
                     <td>
                         <label class="m--pull-right">
@@ -63,7 +63,11 @@
                         </label>                              
                     </td> 
                 </tr>
-                
+                <?php 
+                    if(!($european)){    
+                        $orderTotal = $orderTotal - (($orderTotal*$data["vatsettings"]->content)/100); 
+                    } 
+                ?> 
                 <tr>
                     <td>
                         <label>Order Total</label> 

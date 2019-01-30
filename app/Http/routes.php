@@ -644,5 +644,8 @@ Route::get('hotel/thanks/{id}', 'Frontend\HotelMembershipController@hotelThanks'
 
 Route::get('traveller/add_package_to_cart_wizard', 'Frontend\HotelMembershipController@addToCartTravellerWizardAjax');
 Route::get('traveller/get_cart', 'Frontend\HotelMembershipController@getTravellerWizardCart');
-Route::get('traveller/get_checkout', 'Frontend\HotelMembershipController@getTravellerWizardCheckout');
+//Route::get('traveller/get_checkout', 'Frontend\HotelMembershipController@getTravellerWizardCheckout');
+Route::post('traveller/get_checkout', 'Frontend\HotelMembershipController@getTravellerWizardCheckout');
 Route::post('membershiptype/popup', 'HomeController@membershipPopup');
+Route::post('traveller/businessdetails', 'CustomerController@businessdetails');
+Route::post('traveller/persondetails', 'CustomerController@persondetails');

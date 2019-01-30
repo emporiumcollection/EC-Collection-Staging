@@ -275,7 +275,12 @@
                                                 $(user_referral).insertAfter(".user_ref"); 
                                             } 
                                         }else{
-                                            
+                                            var _nxt = $(".user_ref").next('#dv_referral');
+                                            $("input[name='email']").parent('.form-group').addClass('mg-top');
+                                            if(_nxt.length >= 0)
+                                            {
+                                                $('#dv_referral').remove();
+                                            }
                                         }
                                     }else{
                                         // Show the first select option in the styled div
