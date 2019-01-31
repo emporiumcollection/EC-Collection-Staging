@@ -890,7 +890,10 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         .font-white{
             color: #ffffff !important;
         }
-    
+        .pad-margin-left{
+            padding: 0px;
+            margin-left: 15px;
+        }
     .carousel {
   position: relative;
 }
@@ -1070,6 +1073,41 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 .carousel-caption .btn {
   text-shadow: none;
 }
+
+.rad-carousel{
+        position: relative;
+    }
+    .rad-carousel-inner {      
+      position: relative;
+      /*height:680px;*/
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .rad-carousel-inner > .item {
+      /*position: absolute;
+      height:400px;*/
+      display: none;
+      
+    }
+    
+    .rad-carousel-inner > .item > img,
+    .rad-carousel-inner > .item > a > img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      line-height: 1;
+    }
+    
+    .m-content>div:nth-child(even) .row{
+        padding: 0px 0px !important;
+    }
+    .m-content>div:nth-child(even) .row {
+        margin: 0px;
+    }
+    .rad-carousel .carousel-control{
+        top: 25% !important;
+    }
 
 @media screen and (min-width: 768px) {
   .carousel-control .icon-prev,
