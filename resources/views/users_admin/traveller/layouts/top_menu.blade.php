@@ -150,29 +150,37 @@
 																				My Profile
 																			</span>
 																		</a>
+                                                                        <a href="{{ URL::to('user/preferences')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-interface-6"></i>
+																			<span class="m-nav-grid__text">
+																				My Preferences
+																			</span>
+																		</a>
+																		
+																	</div>
+																	<div class="m-nav-grid__row">
 																		<a href="{{ URL::to('user/settings')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-settings-1"></i>
 																			<span class="m-nav-grid__text">
 																				Account Settings
 																			</span>
 																		</a>
-																	</div>
-																	<div class="m-nav-grid__row">
-																		<a href="{{ URL::to('user/invite')}}" class="m-nav-grid__item">
+                                                                        <a href="{{ URL::to('user/invite')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-mail-1"></i>
 																			<span class="m-nav-grid__text">
 																				Guest Invitations
 																			</span>
 																		</a>
+																		
+																	</div>
+                                                                    <div class="m-nav-grid__row">
 																		<a href="#" class="m-nav-grid__item" id="top_menu_communication">
 																			<i class="m-nav-grid__icon flaticon-computer"></i>
 																			<span class="m-nav-grid__text">
 																				Communication
 																			</span>
 																		</a>
-																	</div>
-                                                                    <div class="m-nav-grid__row">
-																		<a href="{{ URL::to('user/companion')}}" class="m-nav-grid__item">
+                                                                        <a href="{{ URL::to('user/companion')}}" class="m-nav-grid__item">
 																			<i class="m-nav-grid__icon flaticon-users"></i>
 																			<span class="m-nav-grid__text">
 																				Companions

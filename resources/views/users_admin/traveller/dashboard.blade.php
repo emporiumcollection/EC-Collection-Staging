@@ -79,9 +79,63 @@
 	<div class="row">
 		<div class="col-sm-12 col-md-4 col-xl-4">
 			
+            @if(!empty($blogs))
+                <div id="b2cblog_carousel" class="rad-carousel">
+                     
+                    <ol class="carousel-indicators">
+                        @foreach($blogs as $key => $blog_row)
+                        <li data-target="#Carousel" data-slide-to="{{$key}}" class="{{($key == 0)? 'active' : ''}}"></li>
+                        @endforeach
+                    </ol>
+                     
+                    <!-- Carousel items -->
+                    <div class="rad-carousel-inner">
+                    @foreach($blogs as $key => $blog_row)    
+                    <?php 
+                        $final_url = '#';
+                        $ext_url = trim($blog_row->external_link);
+                        if(strlen($ext_url)>0){                        
+                            if(strpos($ext_url, 'http://') !== 0 && strpos($ext_url, 'https://') !== 0 ) {
+                              $final_url = 'http://' . $ext_url;
+                            } else {
+                              $final_url = $ext_url;
+                            }  
+                        }                       
+                    ?>
+                    <div class="item {{($key == 0)? 'active' : ''}}">
+                    	<div class="row">
+                        <div class="col-md-12">
+                            <a href="{{$final_url}}" class="thumbnail" target="_blank">                                
+                                <img src="{{url('/uploads/article_imgs/'.$blog_row->featured_image)}}" alt="{{$blog_row->title_pos_1}}" style="max-width:100%;">
+                                <div class="dash_img_overlay"></div>
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <a href="#">{{$blog_row->title_pos_1}}</a>
+                            </div>
+                        </div>   
+                                    	  
+                        <div class="col-md-12">
+                            <div class="blog-desc">
+                                <p>{{str_limit(strip_tags($blog_row->description_pos_1), 255)}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="{{$final_url}}" class="blog-readmore">Continue Reading</a>
+                        </div>                              
+                    	</div><!--.row-->
+                    </div><!--.item-->
+                    @endforeach 
+                     
+                    </div><!--.carousel-inner-->
+                      <!--<a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
+                      <a data-slide="next" href="#Carousel" class="right carousel-control">></a> -->
+                </div><!--.Carousel-->
+            @endif
             
             <!--begin:: Widgets/Announcements 2-->
-			<div class="m-portlet m--bg-danger m-portlet--bordered-semi m-portlet--skin-dark m-portlet--full-height ">
+			<?php /* <div class="m-portlet m--bg-danger m-portlet--bordered-semi m-portlet--skin-dark m-portlet--full-height ">
 				<div class="m-portlet__head">
 					<div class="m-portlet__head-caption">
 						<div class="m-portlet__head-title">
@@ -117,7 +171,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 				</div>
 			</div>
 			<!--end:: Widgets/Announcements 2-->
-		
+		    */ ?>  
             
             
 		</div>
@@ -201,10 +255,10 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 		
         <div class="col-sm-12 col-md-4 col-xl-4">
             <div class="m-portlet m-portlet--head-overlay m-portlet--full-height   m-portlet--rounded-force">
-        		<div class="m-portlet__head m-portlet__head--fit">
+        		<div class="m-portlet__head m-portlet__head--fit bg-color">
         			<div class="m-portlet__head-caption">
         				<div class="m-portlet__head-title">
-        					<h3 class="m-portlet__head-text m--font-light">
+        					<h3 class="m-portlet__head-text m--font-light font-white">
         						My Reservations
         					</h3>
         				</div>
@@ -448,10 +502,10 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         </div>
         <div class="col-sm-12 col-md-4 col-xl-4">
             <div class="m-portlet m-portlet--head-overlay m-portlet--full-height   m-portlet--rounded-force">
-        		<div class="m-portlet__head m-portlet__head--fit">
+        		<div class="m-portlet__head m-portlet__head--fit bg-color">
         			<div class="m-portlet__head-caption">
         				<div class="m-portlet__head-title">
-        					<h3 class="m-portlet__head-text m--font-light">
+        					<h3 class="m-portlet__head-text m--font-light font-white">
         						Event Reservations
         					</h3>
         				</div>
@@ -724,8 +778,8 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 	<div class="row">
 		<div class="col-sm-12 col-md-12 col-xl-12">
             
-            <div class="row">
-                <div class="setting-box">
+            <div class="row" style="margin: 0px;">
+                <div class="trav-dash-setting-box1">
                     <a href="{{ URL::to('user/profile') }}">
                         <i class="grid_icon flaticon-profile-1"></i>																	
             			<span class="grid_link-text">
@@ -733,7 +787,15 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             			</span>
             		</a>
                 </div>
-                <div class="setting-box">
+                <div class="trav-dash-setting-box2">
+                    <a href="{{ URL::to('user/preferences')}}">
+            			<i class="grid_icon flaticon-interface-6"></i>																	
+            			<span class="grid_link-text">
+            				My Preferences
+            			</span>
+            		</a>
+                </div>
+                <div class="trav-dash-setting-box3">
                     <a href="{{ URL::to('user/settings') }}">
                         <i class="grid_icon flaticon-settings-1"></i>																	
             			<span class="grid_link-text">
@@ -741,7 +803,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             			</span>
             		</a>
                 </div>
-                <div class="setting-box">
+                <div class="trav-dash-setting-box4">
                     <a href="{{ URL::to('user/invite')}}">
             			<i class="grid_icon flaticon-mail-1"></i>																	
             			<span class="grid_link-text">
@@ -749,7 +811,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             			</span>
             		</a>
                 </div>
-                <div class="setting-box">
+                <div class="trav-dash-setting-box5">
                     <a href="#" id="dash_communication">
             			<i class="grid_icon flaticon-computer"></i>																	
             			<span class="grid_link-text">
@@ -757,15 +819,14 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             			</span>
             		</a>
                 </div>
-                <div class="setting-box">
+                <div class="trav-dash-setting-box6">
                     <a href="{{ URL::to('user/companion')}}">
             			<i class="grid_icon flaticon-users"></i>																	
             			<span class="grid_link-text">
             				Companions
             			</span>
             		</a>
-                </div>
-                
+                </div>                
                 
             </div>
         </div>
@@ -823,6 +884,13 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
     <link href="{{ asset('themes/emporium/daterangepicker/css/themes/t-datepicker-bluegrey.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
     <style>
+        .bg-color{
+            background: rgba(0,0,0,.3);  
+        }
+        .font-white{
+            color: #ffffff !important;
+        }
+    
     .carousel {
   position: relative;
 }
@@ -1142,15 +1210,70 @@ background: #428bca;
     <script src="{{ asset('themes/emporium/daterangepicker/js/t-datepicker.js') }}"></script>   
     <script>
         $(document).ready(function(){
-           $("#dash_communication").click(function(){
+            // settings
+            var $slider2 = $('#b2cblog_carousel .rad-carousel-inner'); // class or id of carousel slider
+            var $slide2 = '.item'; // could also use 'img' if you're not using a ul
+            var $transition_time2 = 1000; // 1 second
+            var $time_between_slides2 = 4000; // 4 seconds
+            
+            function slides2(){
+            return $slider2.find($slide2);
+            }
+            
+            slides2().fadeOut();
+            
+            // set active classes
+            slides2().first().addClass('active');
+            slides2().first().fadeIn($transition_time2);
+            
+            // auto scroll 
+            $interval = setInterval( 
+                function(){
+                    if(slides2().length > 1){
+                      var $i = $slider2.find($slide2 + '.active').index();
+                                          
+                      slides2().eq($i).removeClass('active');
+                      slides2().eq($i).fadeOut(0);
+                    
+                      if (slides2().length == $i + 1) $i = -1; // loop to start
+                    
+                      slides2().eq($i + 1).fadeIn($transition_time2);
+                      slides2().eq($i + 1).addClass('active');
+                      }
+                }
+                , $transition_time2 +  $time_between_slides2
+            );
+            
+            
+            $("#b2cblog_carousel .left").click(function(){
+                var $i = $slider2.find($slide2 + '.active').index();
+                if($i - 1 >= 0){ 
+                  slides2().eq($i).removeClass('active');
+                  slides2().eq($i).fadeOut($transition_time2);                  
+                  slides2().eq($i - 1).fadeIn($transition_time2);
+                  slides2().eq($i - 1).addClass('active');
+                }
+            });
+            
+            $("#b2cblog_carousel .right").click(function(){
+                var $i = $slider2.find($slide2 + '.active').index();
+                if($i + 1 < slides2().length){ 
+                  slides2().eq($i).removeClass('active');
+                  slides2().eq($i).fadeOut($transition_time2);
+                  slides2().eq($i + 1).fadeIn($transition_time2);
+                  slides2().eq($i + 1).addClass('active');
+                }
+            }); 
+            
+            $("#dash_communication").click(function(){
                 $(".m-topbar__nav #m_quick_sidebar_toggle").trigger('click');
                 $('#m_quick_sidebar_tabs [href="#m_quick_sidebar_tabs_messenger"]').trigger('click');
-           });
-           $('#Carousel').carousel({
+            });
+            $('#Carousel').carousel({
                 interval: 5000
-           })
-           
-           $('#t-topbar-picker').tDatePicker({
+            })
+            
+            $('#t-topbar-picker').tDatePicker({
                 'numCalendar':'2',
                 'autoClose':true,
                 'durationArrowTop':'200',
@@ -1170,7 +1293,7 @@ background: #428bca;
                     $(this).closest('form').find('[name="adult"]').focus();
                 }
             });
-            
+
             /*$(".cls_preferences_1").click(function(e){
                 e.preventDefault();                
                 window.location.href = "{{Url::to('user/profile')}}";
