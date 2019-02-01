@@ -827,6 +827,22 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             			</span>
             		</a>
                 </div>                
+                <div class="trav-dash-setting-box7">
+                    <a href="{{URL::to('user/security')}}" id="dash_communication">
+            			<i class="grid_icon flaticon-lock-1"></i>																	
+            			<span class="grid_link-text">
+            				Security &amp; Privacy
+            			</span>
+            		</a>
+                </div>
+                <div class="trav-dash-setting-box8">
+                    <a href="{{ URL::to('traveller/invoices')}}">
+            			<i class="grid_icon flaticon-diagram"></i>																	
+            			<span class="grid_link-text">
+            				Billings &amp; Contracts
+            			</span>
+            		</a>
+                </div>     
                 
             </div>
         </div>

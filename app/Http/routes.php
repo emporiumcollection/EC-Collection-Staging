@@ -649,3 +649,5 @@ Route::post('traveller/get_checkout', 'Frontend\HotelMembershipController@getTra
 Route::post('membershiptype/popup', 'HomeController@membershipPopup');
 Route::post('traveller/businessdetails', 'CustomerController@businessdetails');
 Route::post('traveller/persondetails', 'CustomerController@persondetails');
+Route::get('traveller/invoices', 'UserorderController@travellerinvoices');
+Route::get('traveller/invoice/{id}', 'UserorderController@ordershow');

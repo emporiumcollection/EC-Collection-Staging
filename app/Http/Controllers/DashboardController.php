@@ -19,6 +19,10 @@ class DashboardController extends Controller {
             return Redirect::to($url);
         }*/
         
+        if(\CommonHelper::checkDeactivatedUser()){
+            return Redirect::to('traveller/invoices');   
+        }
+        
         $this->data['container'] = new ContainerController();
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());

@@ -606,7 +606,7 @@ class CommonHelper
     //is user metronic dashboard
     static function isHotelDashBoard($g_id=0){
         $g_id = (int) $g_id;
-        $group_id = (int) (($g_id > 0)?$g_id:\Auth::user()->group_id);
+        $group_id = (int) (($g_id > 0)? $g_id : (\Auth::check()) ? \Auth::user()->group_id : 0);
         $user = self::getusertype($group_id);
         $return = "";
         if($user=="hotel-b2b"){
@@ -1224,4 +1224,17 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
         }
         return $final_dt;
     }
+    static function checkDeactivatedUser(){
+        $grp_id = (int) \Session::get('gid');
+        $grp_id = (int) (($grp_id > 0)? $grp_id: (\Auth::check()) ? \Auth::user()->group_id : 0); 
+        $objuser = self::getusertype($grp_id);
+        $return = ""; 
+        if($objuser=="users-b2c"){
+            if(\Auth::check()){
+                $return = \Auth::user()->deactivation;
+            }                
+        }
+        return $return;                
+            
+    }    
 }

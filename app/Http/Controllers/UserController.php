@@ -1961,7 +1961,7 @@ class UserController extends Controller {
     }
     public function postDeactivateaccount(){
         $user = User::find(\Session::get('uid')); 
-        $success = \DB::table('tb_users')->where('id', $user->id)->update(['deactivation'=>1]);
+        $success = \DB::table('tb_users')->where('id', $user->id)->update(array('deactivation'=>1, 'deactivation_date'=>date('Y-m-d H:i:s')));
             
         $edata = array();
         $emlData['frmemail'] = 'marketing@emporium-voyage.com';
@@ -1985,7 +1985,8 @@ class UserController extends Controller {
         
         $return_array['status'] = 'success';
         $return_array['message'] = 'Your account deactivation request send to administrator';
-        
+        \Auth::logout();
+        \Session::flush();
         echo json_encode($return_array);
     } 
     public function ajaxSavepassword(Request $request) {
@@ -2579,5 +2580,23 @@ class UserController extends Controller {
         }
         
         return view($file_name, $this->data);
+    }
+    public function getSecurity(Request $request){
+        
+        $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();
+        if($is_demo6 === true){
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = $is_demo6.'.user.security';           
+        }
+        return view($file_name);
+    }
+    public function getInvoices(Request $request){
+        
+        $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();
+        if($is_demo6 === true){
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = $is_demo6.'.user.invoices';           
+        }
+        return view($file_name);
     }
 }
