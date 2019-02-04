@@ -122,7 +122,7 @@
                 
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2> My Profile </h2>
-                    In this section you manage all aspects of your profile which include, personal information, personal preferences and account settings.
+                    <p>In this section you manage all aspects of your profile which include, personal information, personal preferences and account settings.</p>
                 </div>
             </div>
             <div class="row">
@@ -269,7 +269,7 @@
         										<div class="col-sm-12 col-md-2"></div>
         										<div class="col-sm-12 col-md-7">
         											<button type="submit" class="btn btn-success m-btn m-btn--air m-btn--custom">
-        												{{ Lang::get('core.sb_savechanges') }}
+        												Save Changes
         											</button>
         										</div>
         									</div>
@@ -299,7 +299,7 @@
                                     <div class="m-portlet__body">
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										{{ Lang::get('core.newpassword') }}
+        										New Password
         									</label>
         									<div class="col-sm-12 col-md-7">
 										Password must be 8 character. <br /> 
@@ -310,7 +310,7 @@
         								</div>
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										{{ Lang::get('core.conewpassword') }}
+        										Confirm Password
         									</label>
         									<div class="col-sm-12 col-md-7">
         										<input name="password_confirmation" type="password" id="password_confirmation" class="form-control m-input" value="" />  
@@ -323,7 +323,7 @@
         										<div class="col-sm-12 col-md-2"></div>
         										<div class="col-sm-12 col-md-7">
         											<button type="submit" class="btn btn-danger m-btn m-btn--air m-btn--custom">
-        												{{ Lang::get('core.sb_savechanges') }}
+        												Save Changes
         											</button>
         										</div>
         									</div>
@@ -746,19 +746,19 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 {{-- For custom style  --}}
 @section('style')
     @parent
-    <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
+    <?php /* <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('themes/emporium/daterangepicker/css/themes/t-datepicker-bluegrey.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('sximo/assets/css/chosen.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/> */ ?>
 @endsection
 
 @section('custom_js_script')
-<script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
+<?php /* <script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 <script src="{{ asset('themes/emporium/daterangepicker/js/t-datepicker.js') }}"></script>
 <script src=" {{ asset('sximo/assets/js/chosen.jquery.js') }} " type="text/javascript"></script>
 <script src=" {{ asset('sximo/assets/js/init.js') }} " type="text/javascript"></script>
-<script src=" {{ asset('sximo/assets/js/handleCounter.js') }}" type="text/javascript"></script>
+<script src=" {{ asset('sximo/assets/js/handleCounter.js') }}" type="text/javascript"></script> */ ?>
 <script>
     $(document).ready(function () {
         
@@ -816,7 +816,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
             return false;
         });
         
-        var t_chk_v = $("#hid_preferences_arrive").val();
+        /*var t_chk_v = $("#hid_preferences_arrive").val();
         var t_chk_out_v = $("#hid_preferences_late_check_out").val();
         var chk_date = ''; 
         if(t_chk_v != '' && t_chk_v != '1970-01-01'){
@@ -876,7 +876,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
         $('.ps-adults-handle-counter').handleCounter({minimum:1, maximize: 100});
         $('.ps-youth-handle-counter').handleCounter({minimum:0, maximize: 100});
         $('.ps-children-handle-counter').handleCounter({minimum:0, maximize: 100});
-        $('.ps-toddlers-handle-counter').handleCounter({minimum:0, maximize: 100});
+        $('.ps-toddlers-handle-counter').handleCounter({minimum:0, maximize: 100});*/ 
         
         
     });

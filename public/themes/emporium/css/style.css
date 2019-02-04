@@ -1078,7 +1078,13 @@ border-radius:0;
 .loginFormDiv a + input {
   max-width: calc(100% - 100px);
 }    
-
+.login-agree-text{
+    color: #fff;
+    padding-bottom: 10px;   
+}
+.sign-top-margin{
+    margin-top: -50px;
+}
 /* Search our collection popup css */
 .fullWidthPopup {position: fixed;top: 0;left: -100%;width: 100%;height: 100vh;z-index: 999999;transition: all 1.2s ease 0s;-webkit-transition: all 1.2s ease 0s;-moz-transition: all 1.2s ease 0s;-ms-transition: all 1.2s ease 0s;overflow-x: hidden;}
 .fullWidthPopup .container {max-width: 1000px;}

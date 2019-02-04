@@ -788,7 +788,7 @@ $('.member-type').each(function () {
 
     // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
     // Updates the select element to have the value of the equivalent option
-    $listItems.click(function (e) {
+    $listItems.click(function (e) { console.log("ttr");
         e.stopPropagation();
         $styledSelect.text($(this).text()).removeClass('active');
         $this.val($(this).attr('rel'));

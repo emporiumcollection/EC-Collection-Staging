@@ -213,7 +213,18 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
     <script type="text/javascript">
         function checkMembership(param){
             var memtype = param;
-            user_referral = '';
+            
+            var login_type = '';
+            if(memtype=="lifestyle-membership"){
+                login_type = "Lifestyle";        
+            }else if(memtype=="dedicated-membership"){
+                login_type = "Dedicated"; 
+            }else if(memtype=="bespoke-membership"){
+                login_type = "Bespoke"; 
+            }
+            $("#sp-mem-type").html(login_type);
+            
+            user_referral = ''; 
             if(memtype=="bespoke-membership"){
                 $("input[name='email']").parent('.form-group').removeClass('mg-top');
                 user_referral = '<div class="form-group mg-top" id="dv_referral"> <input class="form-control" name="referral_code" type="text" placeholder="Enter Referral Code"> </div>';

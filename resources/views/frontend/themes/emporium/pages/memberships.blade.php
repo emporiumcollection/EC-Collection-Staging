@@ -222,6 +222,15 @@
                 var mtype = $(this).attr('data-mtype');
                 $(".styledSelect").text('Luxury Traveler');
                 $(".user-type").val(3);
+                var login_type = '';
+                if(mtype=="lifestyle-membership"){
+                    login_type = "Lifestyle";        
+                }else if(mtype=="dedicated-membership"){
+                    login_type = "Dedicated"; 
+                }else if(mtype=="bespoke-membership"){
+                    login_type = "Bespoke"; 
+                }
+                $("#sp-mem-type").html(login_type);
                 $.ajax({
                         url: "{{URL::to('membershiptypes')}}",
                         type: "GET",

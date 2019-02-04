@@ -195,7 +195,7 @@
             						<div class="col-sm-12 col-md-2"></div>
             						<div class="col-sm-12 col-md-7">
             							<button class="btn btn-success m-btn m-btn--air m-btn--custom" id="btn_add">
-            								{{ Lang::get('core.sb_save') }}
+            								Save Changes
             							</button>
             						</div>
             					</div>

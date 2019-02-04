@@ -1297,7 +1297,7 @@ public function generateInvoice($ordid)
             
         $userID=\Session::get('uid'); 
         $user = User::find($userID);
-           
+        $pkg_desc = '';   
         $input = $request->all();
     
         self::authorizeFromEnv();
@@ -1338,7 +1338,7 @@ public function generateInvoice($ordid)
                                 $orditemdta['deduct_first_booking'] = $deduct_first_booking;*/
                                 $packgeDataDetalis = DB::table('tb_packages')->where('id',$cartValue['package']['id'])->get();
                                 $orditemdta['package_data'] = json_encode($packgeDataDetalis);
-                                
+                                $pkg_desc = $packgeDataDetalis[0]->package_description;
                                 /*if(!empty($default_package)){
                                     $pkg_id = $default_package->id;
                                     $pkg_duration_type = '';
@@ -1473,7 +1473,8 @@ public function generateInvoice($ordid)
                                     
                                 });
                             }
-
+                            $this->data['pkg_desc'] = $pkg_desc;
+                            
                             $this->data['user'] = $user;
                             $this->data['order_id'] = $ord_id;
                             $this->data['pageTitle'] = 'Thank you Page';
