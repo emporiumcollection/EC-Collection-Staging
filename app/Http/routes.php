@@ -651,3 +651,4 @@ Route::post('traveller/businessdetails', 'CustomerController@businessdetails');
 Route::post('traveller/persondetails', 'CustomerController@persondetails');
 Route::get('traveller/invoices', 'UserorderController@travellerinvoices');
 Route::get('traveller/invoice/{id}', 'UserorderController@ordershow');
+Route::get('traveller/getMapReservation', 'BookingsController@getMapReservation');

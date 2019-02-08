@@ -182,7 +182,7 @@
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
     														Personal Information
-    													</h3>
+    													</h3> 
     												</div>
                                                     
                                                     

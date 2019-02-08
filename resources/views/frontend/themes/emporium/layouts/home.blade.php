@@ -61,6 +61,16 @@
     {{--For Custom Styles --}}
     @section('custom_css')
         @parent
+        <style>
+            .iub-no-markup{
+                color: #fff;
+                text-decoration: underline;
+            }
+            .iub-no-markup:hover{
+                color: #fff;
+                text-decoration: underline;
+            }
+        </style>
         <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
         <link href="{{ asset('sximo/assets/css/intlTelInput.css') }}" rel="stylesheet">
         <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
@@ -75,6 +85,7 @@
 
   gtag('config', 'UA-110391807-1');
 </script>
+
 
 {{--*/
 $isfLoginned = (bool) \auth()->check();
@@ -236,6 +247,26 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             
         }
         $(document).ready(function () {
+            
+            $(document).on('click', ".iubenda-white2", function(e){
+                e.preventDefault();
+                var w=600;
+                var h=450;
+                var left = (screen.width/2)-(w/2);
+                var top = (screen.height/2)-(h/2);
+                window.open("https://www.iubenda.com/privacy-policy/70156957", "Emporium Voyage Privacy Policy", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+               console.log("hee"); 
+            });
+            $(document).on('click', ".iubenda-white", function(e){
+                e.preventDefault();
+                var w=600;
+                var h=450;
+                var left = (screen.width/2)-(w/2);
+                var top = (screen.height/2)-(h/2);
+                window.open("https://www.iubenda.com/privacy-policy/70156957/cookie-policy", "Emporium Voyage Terms and Condition", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+               console.log("hee"); 
+            });
+            
             
             var list = $('ul.options li');
             $(list).click(function(){

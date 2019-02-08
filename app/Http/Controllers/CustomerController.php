@@ -1183,10 +1183,22 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $u_id = \Session::get('uid');  
         $this->data['logged_user'] = \DB::table('tb_users')->where('id', $u_id)->first();
         
-        $params = array(
+        /*$params = array(
             
         );
         $resultContract= $contractObject->getRows($params); 
+        */
+        
+        /** sign up contracts start **/
+        /*//get contract during signup
+        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description','tb_users_contracts.is_required','tb_users_contracts.is_agree','tb_users_contracts.sort_num')->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
+        $resetContracts = array();
+        foreach($usersContracts as $si_contract){
+            $resetContracts[$si_contract->contract_id] = $si_contract;
+        }
+        $this->data['userContracts'] = $resetContracts;        
+        $this->data['contractdata'] = \CommonHelper::get_default_contracts('sign-up', 'default', 3); */       
+        /** sign up contracts end **/
         
         $temp = $this->get_destinations_new();
         

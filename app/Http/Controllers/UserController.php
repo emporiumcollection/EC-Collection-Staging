@@ -621,17 +621,17 @@ class UserController extends Controller {
             return Redirect::to('user/login');
             
         $rules = array(
-            'first_name' => 'required|alpha_num|min:2',
-            'last_name' => 'required|alpha_num|min:2',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'txtmobilecode' => 'required',
             'txtmobileNumber' => 'required',
         );
         
         //get contract during signup
-        $contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
-        if(count($contracts) > 0){
-            $rules['accept_contract'] = 'required';
-        }
+        //$contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
+        //if(count($contracts) > 0){
+        //    $rules['accept_contract'] = 'required';
+        //}
         //End
 
         if ($request->input('email') != \Session::get('eid')) {
@@ -640,7 +640,7 @@ class UserController extends Controller {
 
         $validator = Validator::make($request->all(), $rules);
 
-        if ($validator->passes()) {
+        if ($validator->passes()) { 
             
             if (!is_null(Input::file('avatar'))) {
                 $file = $request->file('avatar');
@@ -670,7 +670,7 @@ class UserController extends Controller {
             $user->save();
             
             //insert contracts
-            \CommonHelper::submit_contracts($contracts,'sign-up');
+            //\CommonHelper::submit_contracts($contracts,'sign-up');
             //End
 
             return Redirect::to('user/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');

@@ -276,7 +276,7 @@
         								</div>
         							</div>
                                         
-                                    @if(count($contracts) > 0)
+                                    <?php /* @if(count($contracts) > 0)
                                     <div class="form-group m-form__group row">
     									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">Contracts</label>
     									<div class="col-sm-12 col-md-7">
@@ -290,7 +290,7 @@
                                             </div>
     									</div>
     								</div>
-                                    @endif  
+                                    @endif  */ ?>
                         		 </div> 
                         		{!! Form::close() !!}
         					</div>
