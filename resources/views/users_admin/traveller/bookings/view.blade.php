@@ -3,9 +3,12 @@
         <div class="m-portlet m-portlet--full-height">
     		
     		<div class="m-portlet__body">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
+                <div class="row m--margin-bottom-10">
+                    <div class="col-sm-8 col-md-8">
                         <h4>DL-<?php echo date('d.m.y', strtotime($row->created_date)); ?>-{{ $row->id }}</h4>
+                    </div>
+                    <div class="col-sm-4 col-md-4 m--align-right">
+                        <a href="#" data-id="{{ $row->id }}" class="btn btn-primary" id="dt-back">Back</a>
                     </div>
                 </div>
     			<!--begin::Section-->

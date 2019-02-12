@@ -1725,6 +1725,10 @@ All prices displayed on the Design-Locations websites are current, day prices, s
 
                 $(".step-2").click(function (event) {
                     event.preventDefault();
+                    
+                    var booking_arrive = $('input[name="booking_arrive"]').val();
+                    console.log(booking_arrive);
+                    
                     $(".click2").data("prevent-click", "0");
                     $(".click2").trigger("click");
                 });
