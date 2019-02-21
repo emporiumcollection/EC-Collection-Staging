@@ -76,27 +76,27 @@
 		</script>
     </head>
     <body>
-        
+              
         <script>
-$(function () {
-    $(".draggable").draggable({
-        disabled: true,
-        revert: false,
-        helper: "clone"
-    });
-    $(".droppable").droppable({
-        drop: function (event, ui) {
-            $(this).html('<span onclick="$(this).parent().empty();">&times;</span>');
-            $(this).append($(ui.draggable).clone());
-        }
-    });
-    $('#ai-custom-villa-booking-Carousel').on('slide.bs.carousel', function () {
-        $(this).find('.carousel-inner').addClass("overflow-hidden");
-    });
-    $('#ai-custom-villa-booking-Carousel').on('slid.bs.carousel', function () {
-        $(this).find('.carousel-inner').removeClass("overflow-hidden");
-    });
-});
+            $(function () {
+                $(".draggable").draggable({
+                    disabled: true,
+                    revert: false,
+                    helper: "clone"
+                });
+                $(".droppable").droppable({
+                    drop: function (event, ui) {
+                        $(this).html('<span onclick="$(this).parent().empty();">&times;</span>');
+                        $(this).append($(ui.draggable).clone());
+                    }
+                });
+                $('#ai-custom-villa-booking-Carousel').on('slide.bs.carousel', function () {
+                    $(this).find('.carousel-inner').addClass("overflow-hidden");
+                });
+                $('#ai-custom-villa-booking-Carousel').on('slid.bs.carousel', function () {
+                    $(this).find('.carousel-inner').removeClass("overflow-hidden");
+                });
+            });
         </script>
         <?php 
         $bg_img = '';
@@ -162,7 +162,7 @@ $(function () {
                                                     $number_of_nights++;
                                                 }
                                                 ?>
-                                                <div class="booking-form-heading">Number of Nights(s)</div>
+                                                <div class="booking-form-heading">#Nights(s)</div>
                                                 <input id="number_of_nights" min="0" name="number_of_nights" type="number" value="{{$number_of_nights}}">
                                             </div>
                                         </div>
@@ -208,7 +208,7 @@ $(function () {
                                     <div class="panel-body">
 
                                         <div id="ai-custom-villa-booking-Carousel" class="carousel slide ai-custom-crousal-alignment">
-                                            <div class="carousel-inner">
+                                            <div class="carousel-inner" id="res_cat_rooms">
                                                 @if(!empty($propertyDetail['typedata']))
                                                 {{--*/ $first_index = true; /*--}}
                                                 {{--*/ $row_index = 0; /*--}}
@@ -294,6 +294,7 @@ $(function () {
                                                 <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
                                             </div>
                                             <div data-u="slides" class="custom-thum-style" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:300px;overflow:hidden;">
+                                                @if(!empty($propertyDetail['propimage']))
                                                 @foreach($propertyDetail['propimage'] as $propimage):
                                                 @
                                                 <div>
@@ -307,6 +308,7 @@ $(function () {
                                                     </div>
                                                 </div>
                                                 @endforeach;
+                                                @endif
                                             </div>
                                             <!-- Thumbnail Navigator -->
                                             <div data-u="thumbnavigator" class="jssort16" style="position:absolute;left:0px;bottom:0px;width:600px;height:100px;" data-autocenter="1">
@@ -377,19 +379,19 @@ $(function () {
                                                                                         </div>
                                                                                     </div>-->
                                         </div>
-                                        <div class="booking-form-all-fields-row-2">
+                                        <div class="booking-form-all-fields-row-2" id="add_suites">
                                             <div class="input-field1">
                                                 SUITES
                                             </div>
                                             <div class="input-field2" style="display: none;">
                                                 <div class="booking-form-heading">Type</div>
-                                                <select name="booking_Room_type[]" class="booking-form-select-inputs-style">
+                                                <select name="booking_Room_type[]" class="booking-form-select-inputs-style booking_Room_type">
                                                     <option value="0">Select</option>
                                                 </select>
                                             </div>
                                             <div class="input-field2">
-                                                <div class="booking-form-heading">Number of adults(s)</div>
-                                                <select name="booking_adults[]" class="booking-form-select-inputs-style">
+                                                <div class="booking-form-heading">#Adults(s)</div>
+                                                <select name="booking_adults[]" class="booking-form-select-inputs-style booking_adults">
                                                     <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
                                                     <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
                                                     <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
@@ -400,8 +402,8 @@ $(function () {
                                                 </select>
                                             </div>
                                             <div class="right-input-align2">
-                                                <div class="booking-form-heading">Number of Children</div>
-                                                <select name="booking_children[]" class="number_of_children booking-form-select-inputs-style">
+                                                <div class="booking-form-heading">#Children</div>
+                                                <select name="booking_children[]" class="number_of_children booking-form-select-inputs-style booking_children">
                                                     <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
                                                     <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
                                                     <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
@@ -536,7 +538,7 @@ $(function () {
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading">
                                                                 <h4 class="panel-title">
-                                                                    <a class="collapsed preferences-panel-btn-2"  data-toggle="collapse" data-parent="#accordion-preferences-of-inner" href="#collapse-preferences-of-inne2"><span class="roomTypeName">{{$propertyDetail['typedata'][0]->category_name}}</span> preferences</a>
+                                                                    <a class="collapsed preferences-panel-btn-2"  data-toggle="collapse" data-parent="#accordion-preferences-of-inner" href="#collapse-preferences-of-inne2"><span class="roomTypeName"> @if(!empty($propertyDetail['typedata'])) {{$propertyDetail['typedata'][0]->category_name}} @endif</span> preferences</a>
                                                                 </h4>
                                                             </div>
                                                             <div id="collapse-preferences-of-inne2" class="panel-collapse collapse">
@@ -1030,18 +1032,18 @@ $(function () {
                                                             <div class="single-label-width">Title *</div>
                                                             <select name="title" class="select-width-88 booking-form-select-inputs-style">
                                                                 <option value="0"></option>
-                                                                <option>Mr.</option>
-                                                                <option>Mrs.</option>
-                                                                <option>Miss</option>
+                                                                <option <?php echo isset($curr_user) ? ($curr_user->title=='Mr' ? 'selected="selected"' : '') : ''; ?> value="Mr">Mr.</option>
+                                                                <option <?php echo isset($curr_user) ? ($curr_user->title=='Mrs' ? 'selected="selected"' : '') : ''; ?> value="Mrs">Mrs.</option>
+                                                                <option <?php echo isset($curr_user) ? ($curr_user->title=='Miss' ? 'selected="selected"' : '') : ''; ?> value="Miss">Miss</option>
                                                             </select>
                                                         </div>
                                                         <div class="display-inline-block">
                                                             <div class="single-label-width">Last name *</div>
-                                                            <input name="last_name" class="default-input-style margin-right-26" type="text">
+                                                            <input name="last_name" value="<?php echo isset($curr_user) ? $curr_user->last_name : ''; ?>" class="default-input-style margin-right-26" type="text">
                                                         </div>
                                                         <div class="display-inline-block">
                                                             <div class="single-label-width">First Name *</div>
-                                                            <input name="first_name" class="default-input-style margin-right-26" type="text">
+                                                            <input name="first_name" value="<?php echo isset($curr_user) ? $curr_user->first_name : ''; ?>" class="default-input-style margin-right-26" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="margin-top-10">
@@ -1118,10 +1120,10 @@ $(function () {
                                                                     <div class="margin-top-10 display-inline-block">
                                                                         <div class="display-inline-block">
                                                                             <div class="">Land Line *</div>
-                                                                            <input name="landline_code" class="default-input-style margin-right-15 width-68" type="text">
+                                                                            <input name="landline_code" value="<?php echo isset($curr_user) ? $curr_user->landline_code : ''; ?>" class="default-input-style margin-right-15 width-68" type="text">
                                                                         </div>
                                                                         <div class="display-inline-block">
-                                                                            <input name="landline_number" class="default-input-style  select-width-200" type="text">
+                                                                            <input name="landline_number" value="<?php echo isset($curr_user) ? $curr_user->landline_number : ''; ?>" class="default-input-style  select-width-200" type="text">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1131,10 +1133,10 @@ $(function () {
                                                                     <div class="margin-top-10 display-inline-block">
                                                                         <div class="display-inline-block">
                                                                             <div class="">Mobile *</div>
-                                                                            <input name="mobile_code" class="default-input-style margin-right-10 width-68" type="text">
+                                                                            <input name="mobile_code" value="<?php echo isset($curr_user) ? $curr_user->mobile_code : ''; ?>" class="default-input-style margin-right-10 width-68" type="text">
                                                                         </div>
                                                                         <div class="display-inline-block">
-                                                                            <input name="mobile_number" class="default-input-style   select-width-200" type="text">
+                                                                            <input name="mobile_number" value="<?php echo isset($curr_user) ? $curr_user->mobile_number : ''; ?>" class="default-input-style   select-width-200" type="text">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1143,7 +1145,7 @@ $(function () {
                                                         <div class="margin-top-10 display-inline-block">
                                                             <div class="display-inline-block">
                                                                 <div class="">Email **</div>
-                                                                <input name="email" class="default-input-style margin-right-10 width-285" type="text">
+                                                                <input name="email" value="<?php echo isset($curr_user) ? $curr_user->email : ''; ?>" class="default-input-style margin-right-10 width-285" type="text">
                                                             </div>
                                                         </div>
                                                         <div class="clearfix"></div>
@@ -1168,7 +1170,7 @@ $(function () {
                                                         </div>
                                                     </div>
                                                     <!--Account Details -->
-                                                    <div class="your-account-sec">
+                                                    <?php /* <div class="your-account-sec">
                                                         <h4 class="account-tittle">Your account</h4>
                                                         <p>To facilitate future bookings, we invite you to create a 
                                                             personal account by entering a password.
@@ -1181,7 +1183,7 @@ $(function () {
                                                             <label class="single-label-width">Confirm the password</label>
                                                             <input class="single-input-style" name="confirm_password" type="password">
                                                         </div>
-                                                    </div>
+                                                    </div> */ ?>
                                                     <div class="partition-border-bottom"></div>
                                                     <!--Account Details -->
                                                     <!-- Guest Contact Details -->
@@ -1334,7 +1336,7 @@ $(function () {
                                                                 <input name="card_number" autocomplete="off" class="input_card_number default-input-style margin-right-10 width-285" type="text">
                                                                 <div class="crd_card_number_alert_msg text-danger"></div>
                                                             </div>
-                                                            <div class="display-inline-block">
+                                                            <?php /* <div class="display-inline-block">
                                                                 <div class="">Expiry date *</div>
                                                                 <select name="expiry_month" class="input_expiry_month select-width-88  margin-right-26 booking-form-select-inputs-style">
                                                                     <option value="0"></option>
@@ -1363,12 +1365,12 @@ $(function () {
                                                                     ?>
                                                                 </select>
                                                                 <div class="crd_expiry_year_alert_msg text-danger"></div>
-                                                            </div>
+                                                            </div> */ ?>
                                                         </div>
-                                                        <p class="margin-top-25">This credit card will be charged applicable deposit fees 
+                                                        <!--<p class="margin-top-25">This credit card will be charged applicable deposit fees 
                                                             as described in Terms & Conditions and may be used in 
                                                             the event of late cancellation or no-show.
-                                                        </p>
+                                                        </p>-->
                                                     </div>
                                                     <!-- Credit card details section-->
                                                 </div>
@@ -1405,86 +1407,86 @@ $(function () {
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="row">
-					<div class="col-md-12">
-						<h1>TERMS AND CONDITIONS</h1>	
-						<p><strong>GENERAL TERMS AND CONDITIONS</strong></p><br>
-						<p><strong>A. SCOPE OF APPLICATION</strong></p>
-						<p>These Terms and Conditions apply to the use of the the Design-Locations website and all bookings of hotels via the reservation system of Design-Locations, Eisolzriederstrasse 12, 80999 München</p>
-						<br>
-						<p><strong>B.GENERAL USE OF THE DESIGN-LOCATIONS WEBSITE</strong></p>
-						<p>On the Design-Locations websites you can search for the availability and rates of hotels and rooms of your choice at dates defined by you for a specific number of travellers. Design-Locations reserves the right to discontinue it's websites at any time.</p><br>
-<br>
-						
-						<p><strong>B.1. HOTEL CONTENT AND CATEGORIES</strong><br></p>All information about a hotel and the descriptions of a hotel are based on the hotel's own assessment. All content about a hotel that is displayed on the Design-Locations websites is provided to Design-Locations by the respective hotel and Design-Locations acts as content provider for the hotel only and is thus not responsible for content, any omissions or typographical errors referring to a hotel. As far as displayed on the Design-Locations websites the internationally used hotel classification into stars offers noncommittal information about the hotel's standard, in consideration of self-assessment by the hotel which was provided by the hotel.<p></p><br>
-<br>
-						
-						<p><strong>B.2. PRICES AND TAXES</strong></p><br>
-All prices displayed on the Design-Locations websites are current, day prices, shown in the name of the individual hotel and are valid for all bookings made via the reservation system of Design-Locations as described below in section C. All prices have been provided by the hotel and Design-Locations acts as content provider for the hotel only and is thus not responsible for any errors of prices referring to a hotel<p></p><br>
-
-<p>For Germany, prices displayed on the Design-Locations websites always include service charges and VAT. For other countries regulations and rules regarding taxes differ. Please note, that a visitor's tax might apply in certain locations. In some countries, a local tax and/or a service charge is levied on the travel price or room rate. The amount of this tax changes all the time and can’t generally be estimated but requires specific information like the exact period of stay, number of people staying etc. to be calculated. Thus any information regarding such taxes is always noncommittal, as long as you do not enter specific travel dates. When you make a booking as per below Section C. the applicable taxes will in any case be displayed.
-</p><br>
-
-<p>Complimentary room upgrades and late check-outs as part of the Design-Locations Community benefits are subject to availability. Hotels reserve the right to discontinue the offer at anytime. </p><br>
-
-<p>Obvious errors and mistakes (including misprints) are not binding.
-</p><br>
-<br>
-						<p><strong>C. REGISTRATION</strong></p>
-						<p>You can register on the Design-Locations website. If you voluntarily provide personal data as part of such registration, it will be used to pre-fill the personal details form upon making a booking, and/or be used to provide you with more refined topics in our communications, should you have opted in to any of our newsletters. You can cancel your registration with Design-Loctions at any time. Please send an according e-mail to legal@design-locations.biz</p>
-						  <br>
-						
-						<p><strong>D.  AUTO LOG IN</strong></p>
-						<p>You may choose to stay logged in on our website. We will then will store your login information in a cookie, i.e. a small text file, on your computer so that you do not have to authenticate upon return to our website but will be automatically logged in ("auto log in"). The cookie and thereby the auto log in expires automatically after 60 days. Further information about other cookies is available in our privacy policy..</p>
-						<br>
-						
-						<p><strong>E.  ACCOMMODATION CONTRACT AND PAYMENT </strong></p>
-						<p>If you make a booking through Design-Locations reservation system the accommodation contract comes into effect between you and the hotel of your choice. You pay the confirmed price directly in the hotel. Any claims and obligations out of the accommodation contract only exist between you and the chosen Hotel. Design-Locations does not enter into the contract with you about the accommodation. Rates available and any booking made via the Design-Locations reservation system can’t be combined with other offers or promotions, Unless specifically offered on our Booking Page, such can include Spa Bookings</p><br>
-						
-						<p>Bookings take place according to the best and currently Design-Locations day price in each case. This price is submitted directly by the hotel for the arrival date chosen, and is shown in the name of the hotel. Available Design-Location's last-minute, seasonal, weekend or special prices will be considered automatically during the booking. Please be advised converted rates using the website currency converter are based on an estimation of that days exchange rate.</p>
-						
-						<p><strong>E.1. MAKING A BOOKING </strong></p>
-						<p>If you want to make a booking after your availability search, you will have to fill in personal details about you and your credit card details. The credit card details are required to guarantee your booking, the charges will be made by the hotel. If you are logged in to your account the personal details will be pre-filled. By clicking the button “CONFIRM REGISTRATION. Charged upon arrival” you make a binding offer to book the selected room. Prior to making the booking, i.e. prior to clicking the button, you can identify any errors in the data you have provided directly on the website and correct them by clicking “edit” next to the hotel and room description.</p><br>
-						
-						<p>Every booking offer you make will be forwarded to the corresponding hotel and any messages from the hotel to you, particularly the confirmation of your booking will be forwarded to you via Design-Locations as carrier of the message. Design-Locations shall have a relationship with you and the hotel only as an independent third party and shall not be a partner, trustee, representative or sub-contractor either for you or the hotel. Also, the hotel shall not be a sub-contractor or vicarious agent of Design-Locations. As soon as you receive the booking confirmation from the hotel via the Design-Locations reservation system, you have entered into a contract with the hotel and the booking is binding. You will receive a customer booking reference number together with the confirmation of your booking. The use of the Design-Locations reservation system is free of charge for you. Bookings are not transferable to any other person and can not be transferred or exchanged for cash or credit.</p>
-						<br>
-						
-						<p><strong>E.2. CANCELATIONS </strong></p>
-						<p>You do not have a statutory right of withdrawal from a booking as per Sec. 312 g para 2 no. 9 of the German Civil Code (BGB).</p><br>
-						<p>However, a hotel may voluntarily offer a right to cancel or change a booking for selected offers in the Design-Locations reservation system. Any such right will be displayed in the order form before you make your order. Where a hotel voluntarily grants such right to cancel or to change a booking in the Design-Locations reservation system, any such changes and cancellations have to be carried out via the Design-Locations online system or via the Design-Locations reservation number (see www.design-locations.com) to be fully effective. In case of a change or cancellation carried out directly at the hotel, Design-Locations cannot provide any information concerning possible discrepancies concerning the date of the cancellation or the fact of cancellation as such</p><br>
-						
-						<p><strong>E.3. STORING AND ACCESSIBILITY OF THE CONTRACT </strong></p>
-						<p>We will store your booking information and the terms and conditions applicable to the booking (collectively referred to as “contract”). The current version of our terms and conditions is available for you at https://www.design-locations.biz/terms. We also store older version of our terms and conditions. You can access your booking information also after the booking via your Design-Locations account.
-						
-						</p><p><strong>F. LIABILITY</strong></p>
-						<p>- In case of intent or gross negligence on part of Design-Locations or by its agents or vicarious agents in performance Design-Locations shall be liable according to the provisions of applicable law. The same applies in case of breach of an essential contractual obligation (an obligation that must be fulfilled to enable the correct execution of the agreement and which the customer may usually trust and may trust that it will be fulfilled); however, to the extent such breach was unintentionally Design-Locations liability shall be limited to typical damages foreseeable under the contract.</p><br>
-						
-						<p>- Design-Locations liability for culpable damage to life, body or health as well as our liability under the Product Liability Act shall remain unaffected.</p>
-						
-						<p>- Any liability not expressly provided for above shall be disclaimed. Particularly Design-Locations disclaims any liability for the reproduction of this website through a third party website or access to this website obtained through a third party website or any user’s home page, which reproduction misstates or omits any of the information or limitations and conditions on the room rates and products offered through this website</p><br>
-						
-						
-						<p><strong>G. INTELLECTUAL PROPERTY</strong></p>
-						<p>All trademarks (including, but not limited to, the Design-Locations trade mark, reproductions of Design-Locations logo), copyright, database rights and other intellectual property rights in the materials on this website (as well as the organisation and layout of this website) together with the underlying software code are owned either directly by Design-Locations or by its licensors. Without Design-Locations’ prior written permission, you may not copy, modify, alter, publish, broadcast, distribute, sell or transfer any material on this website or the underlying software code whether in whole or in part. However, the contents of this website may be downloaded, printed or copied for your personal non-commercial use. The Design-Locations logo is a registered trademark and is the property of Design-Locations and may not be used or reproduced without Design-Locations’ express written permission.</p><br>
-						
-						<p>Data transfer into other data carriers, even part of it, or it's use for a different purpose to the one designated here, is only permitted with the explicit permission of Design-Locations, except where explicitly permitted by applicable law.</p><br>
-						
-						<p><strong>H. GOVERNING LAW AND PLACE OF JURISDICTION</strong></p>
-						<p>All legal relation between you and Design-Locations shall exclusively be governed by the laws of the Federal Republic of Germany. If you act as a consumer and have entered into a contract while residing in another country, the application of mandatory law of such country shall not be affected by the previous sentence</p><br>
-						
-						<p>If you are a trader or an entity of public law, the competent courts in Munich shall have jurisdiction for all disputes. Design-Locations shall, however, also be entitled to sue you at your general venue.</p><br>
-						
-						<p><strong>I. MISCELLANEOUS</strong></p>
-						<p>The invalidity or unenforceability of any of these Terms and Conditions shall not affect, impair or invalidate any of the remaining terms and conditions.</p><br>
-						
-						<p>The website is owned and operated by Design-Locations.The website can be used, registrations and bookings can be made and in the English language. </p><br>
-						
-						<p>Plattform of The European Commission for online dispute resolution: www.ec.europa.eu/consumers/odr</p><br>
-						
-						
-						
-												<p><strong>Last Update: April 2017</strong></p>
-					</div>
-				</div>
+                                                					<div class="col-md-12">
+                                                						<h1>TERMS AND CONDITIONS</h1>	
+                                                						<p><strong>GENERAL TERMS AND CONDITIONS</strong></p><br>
+                                                						<p><strong>A. SCOPE OF APPLICATION</strong></p>
+                                                						<p>These Terms and Conditions apply to the use of the the Emporium-Collection website and all bookings of hotels via the reservation system of Emporium-Collection, Eisolzriederstrasse 12, 80999 München</p>
+                                                						<br>
+                                                						<p><strong>B.GENERAL USE OF THE EMPORIUM_COLLECTION WEBSITE</strong></p>
+                                                						<p>On the Emporium-Collection websites you can search for the availability and rates of hotels and rooms of your choice at dates defined by you for a specific number of travellers. Emporium-Collection reserves the right to discontinue it's websites at any time.</p><br>
+                                                <br>
+                                                						
+                                                						<p><strong>B.1. HOTEL CONTENT AND CATEGORIES</strong><br></p>All information about a hotel and the descriptions of a hotel are based on the hotel's own assessment. All content about a hotel that is displayed on the Emporium-Collection websites is provided to Emporium-Collection by the respective hotel and Emporium-Collection acts as content provider for the hotel only and is thus not responsible for content, any omissions or typographical errors referring to a hotel. As far as displayed on the Emporium-Collection websites the internationally used hotel classification into stars offers noncommittal information about the hotel's standard, in consideration of self-assessment by the hotel which was provided by the hotel.<p></p><br>
+                                                <br>
+                                                						
+                                                						<p><strong>B.2. PRICES AND TAXES</strong></p><br>
+                                                All prices displayed on the Emporium-Collection websites are current, day prices, shown in the name of the individual hotel and are valid for all bookings made via the reservation system of Emporium-Collection as described below in section C. All prices have been provided by the hotel and Emporium-Collection acts as content provider for the hotel only and is thus not responsible for any errors of prices referring to a hotel<p></p><br>
+                                                
+                                                <p>For Germany, prices displayed on the Emporium-Collection websites always include service charges and VAT. For other countries regulations and rules regarding taxes differ. Please note, that a visitor's tax might apply in certain locations. In some countries, a local tax and/or a service charge is levied on the travel price or room rate. The amount of this tax changes all the time and can’t generally be estimated but requires specific information like the exact period of stay, number of people staying etc. to be calculated. Thus any information regarding such taxes is always noncommittal, as long as you do not enter specific travel dates. When you make a booking as per below Section C. the applicable taxes will in any case be displayed.
+                                                </p><br>
+                                                
+                                                <p>Complimentary room upgrades and late check-outs as part of the Emporium-Collection Community benefits are subject to availability. Hotels reserve the right to discontinue the offer at anytime. </p><br>
+                                                
+                                                <p>Obvious errors and mistakes (including misprints) are not binding.
+                                                </p><br>
+                                                <br>
+                                                						<p><strong>C. REGISTRATION</strong></p>
+                                                						<p>You can register on the Emporium-Collection website. If you voluntarily provide personal data as part of such registration, it will be used to pre-fill the personal details form upon making a booking, and/or be used to provide you with more refined topics in our communications, should you have opted in to any of our newsletters. You can cancel your registration with Design-Loctions at any time. Please send an according e-mail to legal@Emporium-Collection.biz</p>
+                                                						  <br>
+                                                						
+                                                						<p><strong>D.  AUTO LOG IN</strong></p>
+                                                						<p>You may choose to stay logged in on our website. We will then will store your login information in a cookie, i.e. a small text file, on your computer so that you do not have to authenticate upon return to our website but will be automatically logged in ("auto log in"). The cookie and thereby the auto log in expires automatically after 60 days. Further information about other cookies is available in our privacy policy..</p>
+                                                						<br>
+                                                						
+                                                						<p><strong>E.  ACCOMMODATION CONTRACT AND PAYMENT </strong></p>
+                                                						<p>If you make a booking through Emporium-Collection reservation system the accommodation contract comes into effect between you and the hotel of your choice. You pay the confirmed price directly in the hotel. Any claims and obligations out of the accommodation contract only exist between you and the chosen Hotel. Emporium-Collection does not enter into the contract with you about the accommodation. Rates available and any booking made via the Emporium-Collection reservation system can’t be combined with other offers or promotions, Unless specifically offered on our Booking Page, such can include Spa Bookings</p><br>
+                                                						
+                                                						<p>Bookings take place according to the best and currently Emporium-Collection day price in each case. This price is submitted directly by the hotel for the arrival date chosen, and is shown in the name of the hotel. Available Design-Location's last-minute, seasonal, weekend or special prices will be considered automatically during the booking. Please be advised converted rates using the website currency converter are based on an estimation of that days exchange rate.</p>
+                                                						
+                                                						<p><strong>E.1. MAKING A BOOKING </strong></p>
+                                                						<p>If you want to make a booking after your availability search, you will have to fill in personal details about you and your credit card details. The credit card details are required to guarantee your booking, the charges will be made by the hotel. If you are logged in to your account the personal details will be pre-filled. By clicking the button “CONFIRM REGISTRATION. Charged upon arrival” you make a binding offer to book the selected room. Prior to making the booking, i.e. prior to clicking the button, you can identify any errors in the data you have provided directly on the website and correct them by clicking “edit” next to the hotel and room description.</p><br>
+                                                						
+                                                						<p>Every booking offer you make will be forwarded to the corresponding hotel and any messages from the hotel to you, particularly the confirmation of your booking will be forwarded to you via Emporium-Collection as carrier of the message. Emporium-Collection shall have a relationship with you and the hotel only as an independent third party and shall not be a partner, trustee, representative or sub-contractor either for you or the hotel. Also, the hotel shall not be a sub-contractor or vicarious agent of Emporium-Collection. As soon as you receive the booking confirmation from the hotel via the Emporium-Collection reservation system, you have entered into a contract with the hotel and the booking is binding. You will receive a customer booking reference number together with the confirmation of your booking. The use of the Emporium-Collection reservation system is free of charge for you. Bookings are not transferable to any other person and can not be transferred or exchanged for cash or credit.</p>
+                                                						<br>
+                                                						
+                                                						<p><strong>E.2. CANCELATIONS </strong></p>
+                                                						<p>You do not have a statutory right of withdrawal from a booking as per Sec. 312 g para 2 no. 9 of the German Civil Code (BGB).</p><br>
+                                                						<p>However, a hotel may voluntarily offer a right to cancel or change a booking for selected offers in the Emporium-Collection reservation system. Any such right will be displayed in the order form before you make your order. Where a hotel voluntarily grants such right to cancel or to change a booking in the Emporium-Collection reservation system, any such changes and cancellations have to be carried out via the Emporium-Collection online system or via the Emporium-Collection reservation number (see www.Emporium-Collection.com) to be fully effective. In case of a change or cancellation carried out directly at the hotel, Emporium-Collection cannot provide any information concerning possible discrepancies concerning the date of the cancellation or the fact of cancellation as such</p><br>
+                                                						
+                                                						<p><strong>E.3. STORING AND ACCESSIBILITY OF THE CONTRACT </strong></p>
+                                                						<p>We will store your booking information and the terms and conditions applicable to the booking (collectively referred to as contract�). The current version of our terms and conditions is available for you at http://emporium-voyage.com/terms-and-conditions We also store older version of our terms and conditions. You can access your booking information also after the booking via your Emporium-Collection account.
+                                                						
+                                                						</p><p><strong>F. LIABILITY</strong></p>
+                                                						<p>- In case of intent or gross negligence on part of Emporium-Collection or by its agents or vicarious agents in performance Emporium-Collection shall be liable according to the provisions of applicable law. The same applies in case of breach of an essential contractual obligation (an obligation that must be fulfilled to enable the correct execution of the agreement and which the customer may usually trust and may trust that it will be fulfilled); however, to the extent such breach was unintentionally Emporium-Collection liability shall be limited to typical damages foreseeable under the contract.</p><br>
+                                                						
+                                                						<p>- Emporium-Collection liability for culpable damage to life, body or health as well as our liability under the Product Liability Act shall remain unaffected.</p>
+                                                						
+                                                						<p>- Any liability not expressly provided for above shall be disclaimed. Particularly Emporium-Collection disclaims any liability for the reproduction of this website through a third party website or access to this website obtained through a third party website or any user's home page, which reproduction misstates or omits any of the information or limitations and conditions on the room rates and products offered through this website</p><br>
+                                                					 
+                                                						
+                                                						<p><strong>G. INTELLECTUAL PROPERTY</strong></p>
+                                                						<p>All trademarks (including, but not limited to, the Emporium-Collection trade mark, reproductions of Emporium-Collection logo), copyright, database rights and other intellectual property rights in the materials on this website (as well as the organisation and layout of this website) together with the underlying software code are owned either directly by Emporium-Collection or by its licensors. Without Emporium-Collection prior written permission, you may not copy, modify, alter, publish, broadcast, distribute, sell or transfer any material on this website or the underlying software code whether in whole or in part. However, the contents of this website may be downloaded, printed or copied for your personal non-commercial use. The Emporium-Collection logo is a registered trademark and is the property of Emporium-Collection and may not be used or reproduced without Emporium-Collection express written permission.</p><br>
+                                                						
+                                                						<p>Data transfer into other data carriers, even part of it, or it's use for a different purpose to the one designated here, is only permitted with the explicit permission of Emporium-Collection, except where explicitly permitted by applicable law.</p><br>
+                                                						
+                                                						<p><strong>H. GOVERNING LAW AND PLACE OF JURISDICTION</strong></p>
+                                                						<p>All legal relation between you and Emporium-Collection shall exclusively be governed by the laws of the Federal Republic of Germany. If you act as a consumer and have entered into a contract while residing in another country, the application of mandatory law of such country shall not be affected by the previous sentence</p><br>
+                                                						
+                                                						<p>If you are a trader or an entity of public law, the competent courts in Munich shall have jurisdiction for all disputes. Emporium-Collection shall, however, also be entitled to sue you at your general venue.</p><br>
+                                                						
+                                                						<p><strong>I. MISCELLANEOUS</strong></p>
+                                                						<p>The invalidity or unenforceability of any of these Terms and Conditions shall not affect, impair or invalidate any of the remaining terms and conditions.</p><br>
+                                                						
+                                                						<p>The website is owned and operated by Emporium-Collection.The website can be used, registrations and bookings can be made and in the English language. </p><br>
+                                                						
+                                                						<p>Plattform of The European Commission for online dispute resolution: www.ec.europa.eu/consumers/odr</p><br>
+                                                						
+                                                						
+                                                						
+                                                												<p><strong>Last Update: April 2017</strong></p>
+                                                					</div>
+                                                				</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1545,8 +1547,8 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                                                 <div id="frontend_booking_confirm_password_errorloc" class="error_strings text-danger"></div>
                                                 <div id="frontend_booking_card_type_errorloc" class="error_strings text-danger"></div>
                                                 <div id="frontend_booking_card_number_errorloc" class="error_strings text-danger"></div>
-                                                <div id="frontend_booking_expiry_month_errorloc" class="error_strings text-danger"></div>
-                                                <div id="frontend_booking_expiry_year_errorloc" class="error_strings text-danger"></div>
+                                                <!--<div id="frontend_booking_expiry_month_errorloc" class="error_strings text-danger"></div>
+                                                <div id="frontend_booking_expiry_year_errorloc" class="error_strings text-danger"></div>-->
                                             </div>
                                             <!--Terms and conditions-->
                                             <input type="submit" class="step-5 margin-top-25 validate-btn" value="SUBMIT CONFIRMATION">
@@ -1559,6 +1561,60 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                 </div>
             </div>
         </div>
+        
+        
+        <!-- Modal Popup Start -->
+        
+        <div class="modal fade" id="alert_model" tabindex="-1" role="dialog" style="display: none;">
+        	<div class="modal-dialog modal-lg" role="document">
+        		<div class="modal-content">
+        			<div class="modal-header">
+        				<h5 class="modal-title" id="contractModalLabel">
+        					Message 
+        				</h5>    				
+        			</div>
+        			<div class="modal-body"> 
+                        <p>
+                            Sorry for inconvenience,
+                            <br />
+                            Currently no rooms available in this hotel for this time period. Please check availability on other dates.
+                            <br />
+                            Thanks
+                        </p>                    				
+        			</div>
+        			<div class="modal-footer">    				
+                        <a href="{{ URL::previous() }}" class="btn btn-primary" id="backbtn">Back</a>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        
+        <!-- Modal Popup End -->
+        <!-- Modal Popup Start -->
+        
+        <div class="modal fade" id="error_model" tabindex="-1" role="dialog" style="display: none;">
+        	<div class="modal-dialog modal-lg" role="document">
+        		<div class="modal-content">
+        			<div class="modal-header">
+        				<h5 class="modal-title" id="contractModalLabel">
+        					Error 
+        				</h5>   
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>			
+        			</div>
+        			<div class="modal-body"> 
+                        <div id="error_modal_html">
+                        
+                        </div>                  				
+        			</div>
+        			<div class="modal-footer">    				
+                        <button class="btn btn-primary" data-dismiss="modal" aria-label="Close">Close</button>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        
+        <!-- Modal Popup End -->
+        
         <style>
             .booking-form-dates .t-check-in,.t-check-out{
                 width: 100% !important;
@@ -1574,6 +1630,12 @@ All prices displayed on the Design-Locations websites are current, day prices, s
         </style>
         <script>
             $(document).ready(function () {
+                
+                @if(empty($propertyDetail['typedata'])){
+                    $("#alert_model").modal({backdrop: 'static', keyboard: false}, 'show');
+                }
+                @endif
+                
                 var arrive_date = '{{$book_arrive_date}}';
                 var departure = '{{$book_departure}}';
                 
@@ -1618,7 +1680,10 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     var end = new Date(moment(s2).format('YYYY-MM-DD'));
                     var diff = new Date(end - start);
                     var days = diff/1000/60/60/24;
-                    $('#number_of_nights').val(days + 1);                    
+                    $('#number_of_nights').val(days + 1);   
+                    
+                    $(".click1").data("prevent-click", "1");
+                                     
                 });
 /*                $('#two-inputs').dateRangePicker({
                     selectForward: (Boolean),
@@ -1649,10 +1714,10 @@ All prices displayed on the Design-Locations websites are current, day prices, s
         </script>
         <script>
             $(document).ready(function () {
-                $("header .menu > a").click(function (event) {
+                $("header .menu > a").click(function (event) { console.log("hh");
                     event.preventDefault();
                     $(this).parent().find("ul").toggle("slow");
-                });
+                });                
                 $(".pre-show-btn").click(function () {
                     $(".preferences-hide-area").stop().toggle(1000);
                 });
@@ -1711,8 +1776,33 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                 });
                 $(".step-first").click(function (event) {
                     event.preventDefault();
-                    $(".click1").data("prevent-click", "0");
-                    $(".click1").trigger("click");
+                    var pid = $("#property").val();
+                    var booking_arrive = $('input[name="booking_arrive"]').val();
+                    var booking_destination = $('input[name="booking_destination"]').val();
+                    var roomType = $('input[name="roomType"]:checked').val();
+//                    console.log(booking_arrive);
+//                    console.log(booking_destination);
+                    $.ajax({
+                        url:"{{ URL::to('traveller/checkroomavailabilitybydates')}}",
+                        dataType:'json',
+                        type:'get',
+                        data:{pid:pid, booking_arrive:booking_arrive, booking_destination:booking_destination, roomType:roomType},
+                        success:function(response){
+//                            console.log(response);
+                            $("#res_cat_rooms").html('');
+                            if(response.status=="success"){
+                                $("#res_cat_rooms").html(response.resdata);   
+                                $("#add_suites").html(response.suitedata);
+                                $(".click1").data("prevent-click", "0");
+                                $(".click1").trigger("click");                                 
+                            }else{
+                                $("#error_modal_html").html(response.message)
+                                $("#error_model").modal("show");
+                            }
+                        }
+                    });
+                    //$(".click1").data("prevent-click", "0");
+                    //$(".click1").trigger("click");
                 });
 
                 $(".click1").click(function (event) {
@@ -1725,12 +1815,44 @@ All prices displayed on the Design-Locations websites are current, day prices, s
 
                 $(".step-2").click(function (event) {
                     event.preventDefault();
-                    
+                    var pid = $("#property").val();
                     var booking_arrive = $('input[name="booking_arrive"]').val();
-                    console.log(booking_arrive);
+                    var booking_destination = $('input[name="booking_destination"]').val();
+                    var roomType = $('input[name="roomType"]:checked').val();
+                    //var booking_adults = $("[name^='booking_adults']");
+                    var arr_adults = [];
+                    var arr_children = [];
+                    var arr_room_type = [];
+                    $('.booking_adults').each(function(){
+                        arr_adults.push($(this).val());
+                    });
+                    $('.booking_children').each(function(){
+                        arr_children.push($(this).val());
+                    });
+                    $('.booking_Room_type').each(function(){
+                        arr_room_type.push($(this).val());
+                    });
+//                    console.log(arr_room_type);
+                    $.ajax({
+                        url:"{{ URL::to('traveller/checkroomavailability')}}",
+                        dataType:'json',
+                        type:'get',
+                        data:{pid:pid, booking_arrive:booking_arrive, booking_destination:booking_destination, roomType:roomType, arr_adult:arr_adults, arr_child:arr_children, arr_room_typ:arr_room_type},
+                        success:function(response){
+                            $("#error_modal_html").html('');
+//                            console.log(response);
+                            if(response.status=="success"){
+                                $(".click2").data("prevent-click", "0");
+                                $(".click2").trigger("click");    
+                            }else{ 
+                                $("#error_modal_html").html(response.message)
+                                $("#error_model").modal("show");
+                            }
+                        }
+                    });
                     
-                    $(".click2").data("prevent-click", "0");
-                    $(".click2").trigger("click");
+                    //$(".click2").data("prevent-click", "0");
+                    //$(".click2").trigger("click");
                 });
 
                 $(".click2").click(function (event) {
@@ -1758,51 +1880,58 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                 $(".step-4").click(function (event) {
                     event.preventDefault();
                     
-                    var errors = false;
-                    
-                    if($(".input_card_type").val() == '0') {
-                        $(".crd_card_type_alert_msg").html("Please select card type");
-                        errors = true;
-                    }
-                    else {
-                        $(".crd_card_type_alert_msg").html("");
-                    }
-                    
-                    if($(".input_card_number").val() == '') {
-                        $(".crd_card_number_alert_msg").html("Please enter card number");
-                        errors = true;
-                    }
-                    else if(isNaN($(".input_card_number").val())) {
-                        $(".crd_card_number_alert_msg").html("Please enter valid card number");
-                        errors = true;
-                    }
-                    else if($(".input_card_number").val().length != 16) {
-                        $(".crd_card_number_alert_msg").html("Please enter valid card number");
-                        errors = true;
-                    }
-                    else {
-                        $(".crd_card_number_alert_msg").html("");
-                    }
-                    
-                    if($(".input_expiry_month").val() == '0') {
-                        $(".crd_expiry_month_alert_msg").html("Please select month");
-                        errors = true;
-                    }
-                    else {
-                        $(".crd_expiry_month_alert_msg").html("");
-                    }
-                    
-                    if($(".input_expiry_year").val() == '0') {
-                        $(".crd_expiry_year_alert_msg").html("Please select year");
-                        errors = true;
-                    }
-                    else {
-                        $(".crd_expiry_year_alert_msg").html("");
-                    }
-                    
-                    if(errors == false) {
-                        $(".click4").data("prevent-click", "0")
-                        $(".click4").trigger("click");
+                    if($('input[name="our-contact-details"]').is(':checked'))
+                    {
+                        
+                        var errors = false;
+                        
+                        if($(".input_card_type").val() == '0') {
+                            $(".crd_card_type_alert_msg").html("Please select card type");
+                            errors = true;
+                        }
+                        else {
+                            $(".crd_card_type_alert_msg").html("");
+                        }
+                        
+                        if($(".input_card_number").val() == '') {
+                            $(".crd_card_number_alert_msg").html("Please enter card number");
+                            errors = true;
+                        }
+                        else if(isNaN($(".input_card_number").val())) {
+                            $(".crd_card_number_alert_msg").html("Please enter valid card number");
+                            errors = true;
+                        }
+                        else if($(".input_card_number").val().length != 16) {
+                            $(".crd_card_number_alert_msg").html("Please enter valid card number");
+                            errors = true;
+                        }
+                        else {
+                            $(".crd_card_number_alert_msg").html("");
+                        }
+                        
+                        if($(".input_expiry_month").val() == '0') {
+                            $(".crd_expiry_month_alert_msg").html("Please select month");
+                            errors = true;
+                        }
+                        else {
+                            $(".crd_expiry_month_alert_msg").html("");
+                        }
+                        
+                        if($(".input_expiry_year").val() == '0') {
+                            $(".crd_expiry_year_alert_msg").html("Please select year");
+                            errors = true;
+                        }
+                        else {
+                            $(".crd_expiry_year_alert_msg").html("");
+                        }
+                        
+                        if(errors == false) {
+                            $(".click4").data("prevent-click", "0")
+                            $(".click4").trigger("click");
+                        }
+//                        console.log("checked");
+                    }else{
+                        alert("Please check at least on option");
                     }
                 });
 
@@ -1844,46 +1973,63 @@ All prices displayed on the Design-Locations websites are current, day prices, s
             }
             
             $(document).ready(function () {
-                $(".add-new-room-btn").click(function (event) {
-                    event.preventDefault();
-
-                    var html = '<div class="parent-rad-div"><div class="input-field1">';
-                    html += 'SUITE  <a href="#" class="rad-booking-trash-icon" onclick="return radRemoveRooms(this);"><i class="fa fa-trash"></i></a>';
-                    html += '</div>';
+                $(document).on('click', ".add-new-room-btn", function (event) {
+                    event.preventDefault();                    
                     
-                    html += '<div class="input-field_more_room2">';
-                    html += '<div class="booking-form-heading">Type</div>';
-                    html += '<select name="booking_Room_type[]" class="booking-form-select-inputs-style">';
-                    html += '<option value="0"></option>';
-                    <?php foreach($propertyDetail['typedata'] as $key => $type){ ?>
-                           html += '<option value="<?php echo $type->id; ?>"><?php echo $type->category_name; ?></option>'; 
-                    <?php } ?>
-                   
-                    html += '</select>';
-                    html += '</div>';
+                    var pid = $("#property").val();
+                    var booking_arrive = $('input[name="booking_arrive"]').val();
+                    var booking_destination = $('input[name="booking_destination"]').val();
+                    var roomType = $('input[name="roomType"]:checked').val();
+                    var cthis = $(this);
+                    $.ajax({
+                        url:"{{ URL::to('traveller/checkcategoryavailability')}}",
+                        dataType:'json',
+                        type:'get',
+                        data:{pid:pid, booking_arrive:booking_arrive, booking_destination:booking_destination, roomType:roomType},
+                        success:function(response){
+                            
+                            var html = '<div class="parent-rad-div"><div class="input-field1">';
+                            html += 'SUITE  <a href="#" class="rad-booking-trash-icon" onclick="return radRemoveRooms(this);"><i class="fa fa-trash"></i></a>';
+                            html += '</div>';
+                            
+                            html += '<div class="input-field_more_room2">';
+                            html += '<div class="booking-form-heading">Type</div>';
+                            html += '<select name="booking_Room_type[]" class="booking-form-select-inputs-style booking_Room_type">';
+                            html += '<option value="0"></option>';
+                            if(response.length > 0){
+                                for(i=0; i<response.length; i++){
+                                    console.log(response[i].id);
+                                    html += '<option value="'+response[i].id+'">'+response[i].category_name+'</option>';                             
+                                }
+                            }                    
+                            html += '</select>';
+                            html += '</div>';
+                            
+                            html += '<div class="input-field_more_room2">';
+                            html += '<div class="booking-form-heading">#Adults(s)</div>';
+                            html += '<select name="booking_adults[]" class="booking-form-select-inputs-style booking_adults">';                    
+                            html += '<option>1</option>';
+                            html += '<option>2</option>';
+                            html += '<option>3</option>';
+                            html += '<option>4</option>';
+                            html += '<option>5</option>';
+                            html += '<option>6</option>';
+                            html += '</select>';
+                            html += '</div>';
+                            
+                            html += '<div class="input-field_more_room2">';
+                            html += '<div class="booking-form-heading">#Children</div>';
+                            html += '<select name="booking_children[]" class="booking-form-select-inputs-style booking_children">';
+                            html += '<option>0</option>';
+                            html += '<option>1</option>';
+                            html += '<option>2</option>';
+                            html += '</select>';
+                            html += '</div>';
+                            html += '<div class="clearfix"></div></div>';
+                            cthis.before(html);
+                        }
+                    });
                     
-                    html += '<div class="input-field_more_room2">';
-                    html += '<div class="booking-form-heading">Number of adults(s)</div>';
-                    html += '<select name="booking_adults[]" class="booking-form-select-inputs-style">';                    
-                    html += '<option>1</option>';
-                    html += '<option>2</option>';
-                    html += '<option>3</option>';
-                    html += '<option>4</option>';
-                    html += '<option>5</option>';
-                    html += '<option>6</option>';
-                    html += '</select>';
-                    html += '</div>';
-                    
-                    html += '<div class="input-field_more_room2">';
-                    html += '<div class="booking-form-heading">Number of Children</div>';
-                    html += '<select name="booking_children[]" class="booking-form-select-inputs-style">';
-                    html += '<option>0</option>';
-                    html += '<option>1</option>';
-                    html += '<option>2</option>';
-                    html += '</select>';
-                    html += '</div>';
-                    html += '<div class="clearfix"></div></div>';
-                    $(this).before(html);
                 });
                 
                 $(".click-preferences-panel-btn-1").change(function() {
@@ -1958,9 +2104,9 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                         });
                     }
                 });
-                $(".number_of_children").change(function (){
+                /*$(".number_of_children").change(function (){
                     $(".step-first").trigger("click");
-                });
+                });*/
             });
 
             function save_reserve_forms_data(formid) {
@@ -2007,11 +2153,11 @@ All prices displayed on the Design-Locations websites are current, day prices, s
             frmvalidator.addValidation("email", "email", "Please enter valid email address.");
             frmvalidator.addValidation("card_number", "req", "Please enter card number.");
             frmvalidator.addValidation("card_type", "dontselect=0", "Please select card type.");
-            frmvalidator.addValidation("expiry_month", "dontselect=0", "Please select expiry month.");
-            frmvalidator.addValidation("expiry_year", "dontselect=0", "Please select expiry year.");
+            //frmvalidator.addValidation("expiry_month", "dontselect=0", "Please select expiry month.");
+            //frmvalidator.addValidation("expiry_year", "dontselect=0", "Please select expiry year.");
             <?php if($is_logged_in == 'false'): ?>
-            frmvalidator.addValidation("password", "req", "Please enter password.");
-            frmvalidator.addValidation("confirm_password", "eqelmnt=password", "Password doesn't matach.");
+            //frmvalidator.addValidation("password", "req", "Please enter password.");
+            //frmvalidator.addValidation("confirm_password", "eqelmnt=password", "Password doesn't matach.");
             <?php endif; ?>
             });
         </script>

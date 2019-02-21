@@ -64,12 +64,12 @@
             position: absolute;
             font-size: 1.4rem;
             cursor: pointer;
-            top: 16px;
+            top: 30px;
             right: 30px;
             color: #cfcedb;
         }
         .maprightside-resv-view{
-            padding-top: 50px;
+            padding-top: 80px;
         }
         #map {
             height: 400px;  /* The height is 400 pixels */
@@ -82,6 +82,12 @@
         @media (max-width:767.98px) {
             .map-rightside{
                 width: 100%;
+            }
+            .maprightside-close{
+                top: 15px;
+            }
+            .maprightside-resv-view{
+                padding-top: 50px;
             }
         }
     </style>
@@ -258,7 +264,7 @@
                                         _html += '</div>';
         							_html += '</div>';
                 */
-                _html += "<div class='col-sm-12 col-md-12'><img src='"+_img+"' style='width:100%; height: 200px;' /></div><div class='col-sm-12 col-md-12 m--margin-top-10'><h6>"+ response.props.property_name+" / "+response.category.category_name +"</h6></div><div class='col-sm-12 col-md-12 m--margin-top-10 m--margin-bottom-10'>Price: <b>"+response.category.price+"</b></div><div class='col-sm-12 col-md-12 m--margin-top-10 m--margin-bottom-10'>Check In: <b>"+response.checkin_date+"</b></div><div class='col-sm-12 col-md-12 m--margin-top-10 m--margin-bottom-10'>Check Out: <b>"+response.checkout_date+"</b></div><div class='col-sm-12 col-md-12'><p>"+response.category.room_desc+"</p></div><div class='col-sm-12 col-md-12 m--align-right'><a class='btn btn-primary' href='"+url+"' id='vw_reservations'>View Reservatiton</a></div>"; 
+                _html += "<div class='col-sm-12 col-md-12'><img src='"+_img+"' style='width:100%; height: 260px;' /></div><div class='col-sm-12 col-md-12 m--margin-top-10'><h6>"+ response.props.property_name+" / "+response.category.category_name +"</h6></div><div class='col-sm-12 col-md-12 m--margin-top-10 m--margin-bottom-10'>Price: <b>"+response.category.price+"</b></div><div class='col-sm-12 col-md-12 m--margin-top-10 m--margin-bottom-10'>Check In: <b>"+response.checkin_date+"</b></div><div class='col-sm-12 col-md-12 m--margin-top-10 m--margin-bottom-10'>Check Out: <b>"+response.checkout_date+"</b></div><div class='col-sm-12 col-md-12'><p>"+response.category.room_desc+"</p></div><div class='col-sm-12 col-md-12 m--align-right'><a class='btn btn-primary' href='"+url+"' id='vw_reservations'>View Reservatiton</a></div>"; 
                 
                 $("#dv_reservation").html('');
                 $("#dv_reservation").html(_html);

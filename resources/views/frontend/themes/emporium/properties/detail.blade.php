@@ -255,8 +255,11 @@
                                         <button class="btn btn-default" type="button" onclick="choose_room_type('{{$type->id}}');">Book Now</button>
                                         
                                         @if($type->price!='')
-                                            <button class="btn btn-default"
-                                                    type="button"> {{($currency->content!='') ? $currency->content : '$'}} {{ isset(\Auth::user()->id) ? $type->price : 'Login to view'}} </button>
+                                            <a class="btn btn-default" title="{{$type->season}}"
+                                                    > {{($currency->content!='') ? $currency->content : '$'}} {{ isset(\Auth::user()->id) ? $type->price : 'Login to view'}} </button>
+                                            @if(isset(\Auth::user()->id))
+                                                <a  href="#" onclick="getseasonrates({{$type->id}});" class="btn btn-default" title="Rates" data-toggle="modal" data-target="#psrModal">Full Rate List</a> 
+                                            @endif                                           
                                         @endif
                                         
                                         <div class="sliderArrow">
@@ -681,6 +684,24 @@
 		  </div>
 		</div>
 	</div>
+    <!-- Property Season Rates Modal -->
+    <div class="modal fade" id="psrModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+    	  <div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    		<h4 class="modal-title" id="myModalLabel">Property Rates</h4>
+    	  </div>
+    	  <div class="modal-body" id="ratecomm">
+    		
+    	  </div>
+    	  <div class="modal-footer">
+    		<button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK</button>
+    	  </div>
+    	  </form>
+    	</div>
+      </div>
+    </div>
 @endsection
 
 
@@ -717,11 +738,11 @@
                     margin-top: 30px;
                 }
                 .HamYardHotelInnerfirst {
-                    background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][1]->file_name}}');
+                    background-image: url('{{ !empty($propertyDetail['propimage_thumbpath'])? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][1]->file_name : ''}}');
                 }
 				
 				.HamYardHotelInnersecond {
-                    background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][2]->file_name}}');
+                    background-image: url('{{ !empty($propertyDetail['propimage_thumbpath']) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][2]->file_name : ''}}');
                 }
                 
 				.HamYardHotelInnerthird {
@@ -730,7 +751,7 @@
                 }
                 
 				.HamYardHotelInnerfooter {
-                    background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][3]->file_name}}') !important;
+                    background-image: url('{{ !empty($propertyDetail['propimage_thumbpath']) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][3]->file_name : ''}}') !important;
                 }
                 .center-calendarbox .fa.fa-calendar{
                     float: left;
@@ -1062,6 +1083,59 @@
                 }
             });
         }
+        
+        function getseasonrates(proid)
+        {
+        	if(proid!='' && proid>0)
+        	{
+        		$.ajax({
+        		  url: "{{ URL::to('getPropertyTypeRates')}}",
+        		  type: "post",
+        		  data: 'propid='+proid,
+        		  dataType: 'json',
+        		  success: function(data){
+        			if(data.status!='error')
+        			{
+        				var prorates = '';
+        				var im=0;
+                        prorates += "<table>";
+                        prorates += "<tbody>";
+                        
+        				$(data.cat_rooms_price.cat_rooms).each(function (i, val) {
+        					prorates += '<tr>';
+        					//prorates += '<td>'+val.category_name+'</td>';
+        					prorates += '<td>';
+        					if(val.season_name==null)
+        					{
+        						prorates += 'Default';
+        					}
+        					else
+        					{
+        						prorates += val.season_name;
+        					}	
+        					prorates += '</td>';
+        					prorates += '<td>'+val.rack_rate+'</td>';
+        					//prorates += '<td>'+data.cat_rooms_price.usercomm.commission+'</td>';
+        					prorates += '<td>';
+        					/*if(data.cat_rooms_price.usercomm.commission!=null)
+        					{
+        						var pert = (val.rack_rate*data.cat_rooms_price.usercomm.commission)/100;
+        						var finalvl = val.rack_rate - pert;
+        						prorates += finalvl;
+        					}*/						
+        					prorates += '</td>';
+        					prorates += '</tr>';
+        				});
+                        prorates += "</tbody>";
+                        prorates += "</table>";
+                        
+        				$('#ratecomm').html(prorates);
+        			}
+        		  }
+        		});
+        	}
+        }
+        
 	</script>
 @endsection
 

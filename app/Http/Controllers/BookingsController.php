@@ -101,7 +101,7 @@ class BookingsController extends Controller {
                 if (!empty($checkseason)) {
                     $foundsean = false;
                     $curnDate = date('Y-m-d');
-                    for ($sc = 0; $foundsean != true; $sc++) {
+                    for ($sc = 0; $sc < count($checkseason) and $foundsean != true; $sc++) {
                         $checkseasonDate = \DB::table('tb_seasons_dates')->where('season_id', $checkseason[$sc]->id)->where('season_from_date', '>=', $curnDate)->where('season_to_date', '<=', $curnDate)->count();
                         if ($checkseasonDate > 0) {
                             $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('season_id', $checkseason[$sc]->id)->where('property_id', $props->id)->where('category_id', $results['rows'][$key]->category->id)->first();
@@ -1546,5 +1546,257 @@ class BookingsController extends Controller {
           $longitude = $geo['results'][0]['geometry']['location']['lng']; // Longitude
         }
         return array('latitude'=>$latitude, 'longitude'=>$longitude);
+    }
+    function checkroomavailability(Request $request){
+        $pid = $request->input('pid');
+        $booking_arrive = $request->input('booking_arrive');
+        $booking_destination = $request->input('booking_destination');
+        //print_r($booking_arrive);
+        //print_r($booking_destination);
+        
+        $arrive_new = $departure_new = '';
+        $arrive_new = \CommonHelper::dateformat(trim($booking_arrive));
+        $departure_new = \CommonHelper::dateformat(trim($booking_destination));
+        
+        $roomType = $request->input('roomType');
+        //echo $request->input('arr_adult');
+        $arr_adult = ($request->input('arr_adult'));
+        $arr_child = ($request->input('arr_child'));
+        $arr_room_typ = ($request->input('arr_room_typ'));
+        $arr_room_typ[0] = $roomType; 
+        //print_r($arr_room_typ);
+        $arr_req_rooms = array_count_values($arr_room_typ);
+        //print_r($arr_req_rooms);
+        
+        
+        $diff = strtotime($departure_new) - strtotime($arrive_new);
+        $staytime = ($diff/86400)+1;
+        
+        $category_total_guest = array();
+        $category_min_stay = array();
+        $return = array();
+        $room_not_booked_cat = array();
+        $flag = true;
+        $return['status'] = "success";
+        $query = "Select count(category_id) as cnt, category_id from tb_properties_category_rooms pcr where pcr.property_id=".$pid." and pcr.room_active_from <='".$arrive_new."' and pcr.room_active_to >='".$departure_new."' and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$arrive_new."' BETWEEN checkin_date and checkout_date or '".$departure_new."' BETWEEN checkin_date and checkout_date) GROUP by pcr.category_id ORDER by pcr.property_id";
+        //print_r($query); die;
+        $active_rooms = \DB::select($query);
+        foreach($active_rooms as $rooms){
+            if(array_key_exists($rooms->category_id, $arr_req_rooms)){
+                $val_count = $arr_req_rooms[$rooms->category_id];
+                $objcat = \DB::table("tb_properties_category_types")->where('id', $rooms->category_id)->first();
+                if($val_count > $rooms->cnt){
+                    //echo $val_count;
+                    //echo "error";
+                    $room_not_booked_cat[] = array("noofroom"=>$rooms->cnt, 'category'=>$objcat->category_name); 
+                    $flag = false;
+                }
+                if($staytime < $objcat->minimum_stay){                        
+                    $flag = false;                    
+                    $category_min_stay[] = array('category'=>$objcat->category_name, 'min_stay'=>$objcat->minimum_stay);                    
+                } 
+                       
+            }
+        }
+        
+        if(!empty($arr_room_typ)){
+            for($i=0; $i<count($arr_room_typ); $i++){
+                $adults = $arr_adult[$i];
+                $childs = $arr_child[$i];
+                $type_id = $arr_room_typ[$i];
+                $total_guest = (int)$adults + (int)$childs;
+                $objcat = \DB::table("tb_properties_category_types")->where('id', $type_id)->first();
+                if($total_guest > $objcat->total_guests){
+                   $flag = false;                    
+                   $category_total_guest[] = array('category'=>$objcat->category_name, 'total_guest'=>$objcat->total_guests);     
+                }
+            }
+        }
+        
+        if(!$flag){
+            $return['status'] = "error"; 
+            $msg = ''; 
+            $msg1 = '';
+            $msg2 = '';
+            $msg3 = '';
+            $msg = '';
+            //$return['message'][] = $msg; 
+            if(!empty($room_not_booked_cat)){
+                foreach($room_not_booked_cat as $cat){
+                    $msg1 .=$cat["noofroom"]. " room available in this ".$cat['category'];
+                }
+                $return['message'][] = "We regret to inform you that we have only ".$msg1.".<br />"; 
+            }
+            if(!empty($category_min_stay)){ 
+                //print_r($category_min_stay);
+                foreach($category_min_stay as $s_type){
+                    $msg2 .= "Please note that ". $s_type['category']." has mininum stay of ".$s_type['min_stay']." days.<br />";
+                }                    
+                $return['message'][] = $msg2;
+            }
+            if(!empty($category_total_guest)){                
+                foreach($category_total_guest as $s_type){
+                    $msg3 .= "Please note that ".$s_type['category']." allowed maximum ".$s_type['total_guest']." guest.<br />";
+                }                    
+                $return['message'][] = $msg3;
+            } 
+        }else{
+            $return['status'] = "success";
+        }
+        echo json_encode($return);
+        //print_r($active_rooms);
+        //$query = "select * from tb_reservations r inner join td_reserved_rooms rr on rr.reservation_id=r.id where r.property_id=".$pid." and rr.type_id=".$roomType." and (checkin_date BETWEEN '".$booking_arrive."' and '".$booking_destination."' or checkout_date BETWEEN '".$booking_arrive."' and '".$booking_destination."')";
+        //$reservations = \DB::table('tb_reservations')->join('td_reserved_rooms', 'td_reserved_rooms.reservation_id', '=', 'tb_reservations.id')->where('property_id', $pid)->where('type_id', $roomType)->where('')->get();
+        //print_r($reservations);
+        
+        die;
+        
+    }
+    
+    function checkroomavailabilitybydates(Request $request){
+        $pid = $request->input('pid');
+        $booking_arrive = $request->input('booking_arrive');
+        $booking_destination = $request->input('booking_destination');
+        $roomType = $request->input('roomType');
+        
+        //$arr_adult = ($request->input('arr_adult'));
+        //$arr_child = ($request->input('arr_child'));
+        //$arr_room_typ = ($request->input('arr_room_typ'));
+        
+        $arrive_new = $departure_new = '';
+        $arrive_new = \CommonHelper::dateformat(trim($booking_arrive));
+        $departure_new = \CommonHelper::dateformat(trim($booking_destination));
+        
+        $query = "Select count(category_id) as cnt, category_id from tb_properties_category_rooms pcr where pcr.property_id=".$pid." and pcr.room_active_from <='".$arrive_new."' and pcr.room_active_to >='".$departure_new."' and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$arrive_new."' BETWEEN checkin_date and checkout_date or '".$departure_new."' BETWEEN checkin_date and checkout_date) GROUP by pcr.category_id ORDER by pcr.property_id";
+        
+        $active_rooms = \DB::select($query);
+        $flag = true;
+        //print_r($active_rooms);
+        $return = array();
+        $arr_active_rooms = array();
+        if(!empty($active_rooms)){
+            $this->data=array();
+            
+            foreach($active_rooms as $si){
+                $arr_active_rooms[] = $si->category_id; 
+            }
+            
+            $propertiesArr = array();
+            $props = \DB::table('tb_properties')->where('id', $pid)->first();       
+            
+            if (!empty($props)) {
+                $propertiesArr['data'] = $props;
+                
+                $cat_types = \DB::table('tb_properties_category_types')->where('property_id', $props->id)->where('status', 0)->where('show_on_booking', 1)->get();
+                if (!empty($cat_types)) {
+                    $c = 0;
+                    foreach ($cat_types as $type) {
+                        $cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $props->id)->where('category_id', $type->id)->get();
+                        if (!empty($cat_rooms)) {
+                            foreach ($cat_rooms as $room) {
+                                $propertiesArr['rooms'][$type->id][] = $room;
+                            }
+                        }
+    
+                        $roomfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.category_id', $type->id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+                                                
+                        $filen = array();
+                        if (!empty($roomfileArr)) { 
+                            if(in_array($type->id, $arr_active_rooms)){
+                                
+                                    $propertiesArr['typedata'][$c] = $type;
+                                    $propertiesArr['typedata'][$c]->price = '';
+                                    $curnDate = date('Y-m-d');
+                                    if ($props->default_seasons != 1) {
+            							$checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $type->id)->where('tb_seasons.property_id', $props->id)->where('tb_seasons_dates.season_from_date', '<=', $arrive_new)->where('tb_seasons_dates.season_to_date', '>=', $departure_new)->orderBy('tb_seasons.season_priority', 'asc')->first();
+            							//print_r($checkseason); die;
+                                    } else {
+                                        $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $type->id)->where('tb_seasons.property_id', 0)->where('tb_seasons_dates.season_from_date', '<=', $arrive_new)->where('tb_seasons_dates.season_to_date', '>=', $departure_new)->first();
+                                    }
+                                    if (!empty($checkseason)) {
+        							 $propertiesArr['typedata'][$c]->price = $checkseason->rack_rate;
+                                    } else {
+                                        $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $type->id)->first();
+                                        if (!empty($checkseasonPrice_ifnotanyseason)) {
+                                            $propertiesArr['typedata'][$c]->price = $checkseasonPrice_ifnotanyseason->rack_rate;
+                                        }
+                                    }
+						
+                            }                    
+    
+                            $f = 0;
+                            foreach ($roomfileArr as $rfile) {
+                                $propertiesArr['roomimgs'][$type->id][$f] = $rfile;
+                                $propertiesArr['roomimgs'][$type->id][$f]->imgsrc = (new ContainerController)->getThumbpath($rfile->folder_id);
+                                $f++;
+                            }
+                            $c++;
+                        }
+                    }
+    
+                    usort($propertiesArr['typedata'], function($a, $b) {
+                        return trim($a->price) < trim($b->price);
+                    });
+                }
+            }
+            $this->data['is_logged_in'] = 'false';
+            $discount_apply = '';
+            if (\Auth::check()) {
+                $this->data['is_logged_in'] = 'true';                
+                $discount_apply = \DB::table('tb_user_invitee_discount')->where('user_id', \Auth::user()->id)->where('availability', 1)->first();                
+            }
+            
+            $this->data['adults'] = '';
+            $this->data['childs'] = '';     
+            
+            $_suites_data = view("pages/booking-suites", $this->data)->render();
+            
+            $this->data['currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+            
+            $this->data['discount_apply']=$discount_apply;
+            $this->data['propertyDetail'] = $propertiesArr;
+            
+            $_data = view("pages/booking-cat", $this->data)->render();
+            
+            $return['status'] = "success";
+            $return['resdata'] = $_data; 
+            $return['suitedata'] = $_suites_data;    
+        }else{
+            $flag = false;
+        }
+        
+        if(!$flag){
+            $return['status'] = "error";
+            $return['message'] = "Sorry, we have no room available between this ".$booking_arrive." and ".$booking_destination.". Please select another dates.";  
+        }
+        //print_r($active_rooms);
+        //print_r($pid);
+        //print_r($booking_arrive);
+        //print_r($booking_destination);
+        //print_r($roomType);
+        //print_r($arrive_new);
+        //print_r($departure_new);
+        echo json_encode($return);
+        
+        die;
+        
+    }
+    function checkcategoryavailability(Request $request){
+        $pid = $request->input('pid');
+        $booking_arrive = $request->input('booking_arrive');
+        $booking_destination = $request->input('booking_destination');
+        $roomType = $request->input('roomType');
+        
+        $arrive_new = $departure_new = '';
+        $arrive_new = \CommonHelper::dateformat(trim($booking_arrive));
+        $departure_new = \CommonHelper::dateformat(trim($booking_destination));
+        
+        $query = "Select pct.id, pct.category_name from tb_properties_category_rooms pcr inner join tb_properties_category_types pct on pct.id=pcr.category_id where pcr.property_id=".$pid." and pcr.room_active_from <='".$arrive_new."' and pcr.room_active_to >='".$departure_new."' and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$arrive_new."' BETWEEN checkin_date and checkout_date or '".$departure_new."' BETWEEN checkin_date and checkout_date) GROUP by pcr.category_id ORDER by pcr.property_id";
+        
+        $active_rooms = \DB::select($query);
+        
+        echo json_encode($active_rooms);
+        
+        die;    
     }
 }

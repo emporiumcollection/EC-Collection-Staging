@@ -3834,7 +3834,7 @@ class HomeController extends Controller {
         return view($page, $this->data);
     }
 
-    public function bookProperty(Request $request) {
+    public function bookProperty(Request $request) { 
         $propertiesArr = array();
 
         /* $hotels = \DB::table('tb_properties')->where('property_type', 'Hotel')->get();
@@ -3845,6 +3845,8 @@ class HomeController extends Controller {
         
         $arrive_date = '';
         $book_arrive_date = '';
+        $dt_check_in = '';
+        $dt_check_out = '';                
         if (!is_null($request->input('arrive')) && $request->input('arrive') != '' && $request->input('arrive') != 'null') {
             \Session::put('arrive_date', $request->input('arrive'));
             $arrive = trim($request->input('arrive'));
@@ -3855,6 +3857,7 @@ class HomeController extends Controller {
                 $arrive_date=implode(".",$arrive_array);
 
             $book_arrive_date = $arrive_array[2]."/".$arrive_array[1]."/".$arrive_array[0];
+            $dt_check_in = $arrive_array[2]."-".$arrive_array[1]."-".$arrive_array[0];            
         }
         $this->data['arrive_date']=$arrive_date;
         $this->data['book_arrive_date']=$book_arrive_date;
@@ -3873,7 +3876,7 @@ class HomeController extends Controller {
                 $departure_date=implode(".",$departure_array);
 
             $book_departure_date = $departure_array[2]."/".$departure_array[1]."/".$departure_array[0];
-            
+            $dt_check_out = $departure_array[2]."-".$departure_array[1]."-".$departure_array[0];
         }
         $this->data['departure'] = $departure_date;
         $this->data['book_departure'] = $book_departure_date;
@@ -3916,54 +3919,67 @@ class HomeController extends Controller {
                     $roomfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.category_id', $type->id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
                     $filen = array();
                     if (!empty($roomfileArr)) {
-                        $propertiesArr['typedata'][$c] = $type;
-                        $propertiesArr['typedata'][$c]->price = '';
-                        $curnDate = date('Y-m-d');
-                        if ($props->default_seasons != 1) {
-                            $checkseason = \DB::table('tb_seasons')->where('property_id', $props->id)->orderBy('season_priority', 'asc')->get();
-                        } else {
-                            $checkseason = \DB::table('tb_seasons')->where('property_id', 0)->orderBy('season_priority', 'asc')->get();
-                        }
-                        if (!empty($checkseason)) {
-                            $foundsean = false;
-                            for ($sc = 0; ($sc < count($checkseason) && $foundsean != true); $sc++) {
-                                $checkseasonDate = \DB::table('tb_seasons_dates')->where('season_id', $checkseason[$sc]->id)->where('season_from_date', '>=', $curnDate)->where('season_to_date', '<=', $curnDate)->count();
-                                if ($checkseasonDate > 0) {
-                                    $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('season_id', $checkseason[$sc]->id)->where('property_id', $props->id)->where('category_id', $type->id)->first();
-                                    if (!empty($checkseasonPrice)) {
-                                        $propertiesArr['typedata'][$c]->price = $checkseasonPrice->rack_rate;
-                                        $foundsean = true;
+                        
+                        $ret_flag = $this->checkNoOfReservationInType($props->id, $dt_check_in, $dt_check_out, $type->id);
+                        if($ret_flag){
+                            $propertiesArr['typedata'][$c] = $type;
+                            $propertiesArr['typedata'][$c]->price = '';
+                            $curnDate = date('Y-m-d');
+                            if ($props->default_seasons != 1) {
+                                $checkseason = \DB::table('tb_seasons')->where('property_id', $props->id)->orderBy('season_priority', 'asc')->get();
+                            } else {
+                                $checkseason = \DB::table('tb_seasons')->where('property_id', 0)->orderBy('season_priority', 'asc')->get();
+                            }
+                            //print_r($checkseason);
+                            if (!empty($checkseason)) { 
+                                $foundsean = false;
+                                for ($sc = 0; ($sc < count($checkseason) && $foundsean != true); $sc++) {
+                                    //echo $checkseason[$sc]->id;
+                                    $checkseasonDate = \DB::table('tb_seasons_dates')->where('season_id', $checkseason[$sc]->id)->where('season_from_date', '<=', $dt_check_in)->where('season_to_date', '>=', $dt_check_out)->count();
+                                    //print_r($checkseasonDate);
+                                    if ($checkseasonDate > 0) {
+                                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('season_id', $checkseason[$sc]->id)->where('property_id', $props->id)->where('category_id', $type->id)->first();
+                                        if (!empty($checkseasonPrice)) {
+                                            $propertiesArr['typedata'][$c]->price = $checkseasonPrice->rack_rate;
+                                            $foundsean = true;
+                                        }
                                     }
                                 }
-                            }
-                            if ($foundsean != true) {
-                                $checkseasonPrice_ifnotforloop = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $type->id)->first();
-                                if (!empty($checkseasonPrice_ifnotforloop)) {
-                                    $propertiesArr['typedata'][$c]->price = $checkseasonPrice_ifnotforloop->rack_rate;
+                                //die;
+                                if ($foundsean != true) {
+                                    $checkseasonPrice_ifnotforloop = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $type->id)->first();
+                                    if (!empty($checkseasonPrice_ifnotforloop)) {
+                                        $propertiesArr['typedata'][$c]->price = $checkseasonPrice_ifnotforloop->rack_rate;
+                                    }
+                                }
+                            } else {
+                                $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $type->id)->first();
+                                if (!empty($checkseasonPrice_ifnotanyseason)) {
+                                    $propertiesArr['typedata'][$c]->price = $checkseasonPrice_ifnotanyseason->rack_rate;
                                 }
                             }
-                        } else {
-                            $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $type->id)->first();
-                            if (!empty($checkseasonPrice_ifnotanyseason)) {
-                                $propertiesArr['typedata'][$c]->price = $checkseasonPrice_ifnotanyseason->rack_rate;
+    
+                            $f = 0;
+                            foreach ($roomfileArr as $rfile) {
+                                $propertiesArr['roomimgs'][$type->id][$f] = $rfile;
+                                $propertiesArr['roomimgs'][$type->id][$f]->imgsrc = (new ContainerController)->getThumbpath($rfile->folder_id);
+                                $f++;
                             }
+                            $c++;
                         }
-
-                        $f = 0;
-                        foreach ($roomfileArr as $rfile) {
-                            $propertiesArr['roomimgs'][$type->id][$f] = $rfile;
-                            $propertiesArr['roomimgs'][$type->id][$f]->imgsrc = (new ContainerController)->getThumbpath($rfile->folder_id);
-                            $f++;
-                        }
-                        $c++;
                     }
                 }
-
-                usort($propertiesArr['typedata'], function($a, $b) {
-                    return trim($a->price) < trim($b->price);
-                });
+                if(!empty($propertiesArr['typedata'])){
+                    usort($propertiesArr['typedata'], function($a, $b) {
+                        return trim($a->price) < trim($b->price);
+                    });
+                }
             }
-
+            
+            
+            
+            //print_r($arr_res_rooms);
+            //die;
             $this->data['resgalleryArr'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Restrurants Gallery Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
 
             $this->data['spagalleryArr'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Spa Gallery Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
@@ -3997,7 +4013,7 @@ class HomeController extends Controller {
         }
 
         if (empty($propertiesArr['typedata'])) {
-            return Redirect::to('')->with('message', \SiteHelpers::alert('error', 'Rooms not found'));
+            //return Redirect::to('')->with('message', \SiteHelpers::alert('error', 'Rooms not found'));
         }
 
         //print "<pre>";
@@ -4015,7 +4031,8 @@ class HomeController extends Controller {
             
         }
         //print_r($discount_apply);
-        
+        $this->data['curr_user'] = \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
+        //print_r($this->data['curr_user']); die;
         $this->data['discount_apply']=$discount_apply;
         $this->data['hotel_terms_n_conditions'] = \DB::table('td_property_terms_n_conditions')->where('property_id', $props->id)->first();
 
@@ -4996,6 +5013,7 @@ class HomeController extends Controller {
         //$reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->join('tb_properties_category_rooms_price', 'tb_properties_category_rooms_price.category_id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', 36)->get();
         //print_r($reserved_rooms); die;
         $uid = 0;
+        $total_amount = 0;
         $rules['roomType'] = 'required';
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
@@ -5010,41 +5028,13 @@ class HomeController extends Controller {
             $props = \DB::table('tb_properties')->where('id', $request->input('property'))->first();
             $curnDate = date('Y-m-d');
             $price = 0;
-            if ($props->default_seasons != 1) {
-                $checkseason = \DB::table('tb_seasons')->where('property_id', $props->id)->orderBy('season_priority', 'asc')->get();
-            } else {
-                $checkseason = \DB::table('tb_seasons')->where('property_id', 0)->orderBy('season_priority', 'asc')->get();
-            }
-            if (!empty($checkseason)) {
-                $foundsean = false;
-                for ($sc = 0; $foundsean != true; $sc++) {
-                    $checkseasonDate = \DB::table('tb_seasons_dates')->where('season_id', $checkseason[$sc]->id)->where('season_from_date', '>=', $curnDate)->where('season_to_date', '<=', $curnDate)->count();
-                    if ($checkseasonDate > 0) {
-                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('season_id', $checkseason[$sc]->id)->where('property_id', $props->id)->where('category_id', $request->input('roomType'))->first();
-                        if (!empty($checkseasonPrice)) {
-                            $price = $checkseasonPrice->rack_rate;
-                            $foundsean = true;
-                        }
-                    }
-                }
-                if ($foundsean != true) {
-                    $checkseasonPrice_ifnotforloop = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $request->input('roomType'))->first();
-                    if (!empty($checkseasonPrice_ifnotforloop)) {
-                        $price = $checkseasonPrice_ifnotforloop->rack_rate;
-                    }
-                }
-            } else {
-                $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $request->input('roomType'))->first();
-                if (!empty($checkseasonPrice_ifnotanyseason)) {
-                    $price = $checkseasonPrice_ifnotanyseason->rack_rate;
-                }
-            }
-
-            /*
-             * Save reservation data
-             */
-
+            
+            $extra_adult = 0;
+            $extra_junior = 0;
+            
             $data['property_id'] = $request->input('property');
+            
+            
             
             $arrive_date = '';
             $book_arrive_date = '';
@@ -5073,6 +5063,40 @@ class HomeController extends Controller {
     
                 $book_checkout_date = $checkout_date_array[2]."-".$checkout_date_array[1]."-".$checkout_date_array[0];
             }
+            
+            
+            
+            
+            
+            
+            if ($props->default_seasons != 1) {
+                $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $request->input('roomType'))->where('tb_seasons.property_id', $props->id)->where('tb_seasons_dates.season_from_date', '<=', $book_arrive_date)->where('tb_seasons_dates.season_to_date', '>=', $book_checkout_date)->orderBy('tb_seasons.season_priority', 'asc')->first();
+            } else {
+                $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $request->input('roomType'))->where('tb_seasons.property_id', 0)->where('tb_seasons_dates.season_from_date', '<=', $book_arrive_date)->where('tb_seasons_dates.season_to_date', '>=', $book_checkout_date)->first();
+            }
+            
+            if (!empty($checkseason)) {
+			     $price = $checkseason->rack_rate;
+                 //$extra_adult = $checkseason->extra_adult;
+                 //$extra_junior = $checkseason->extra_junior;  
+            } else {
+                $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $request->input('roomType'))->first();
+                if (!empty($checkseasonPrice_ifnotanyseason)) {
+                    $price = $checkseasonPrice_ifnotanyseason->rack_rate;
+                    //$extra_adult = $checkseason->extra_adult;
+                    //$extra_junior = $checkseason->extra_junior; 
+                }
+            }
+            
+            
+            
+            
+
+            /*
+             * Save reservation data
+             */
+
+            
             
             $data['checkin_date'] = $book_arrive_date;
             $data['checkout_date'] = $book_checkout_date;
@@ -5113,17 +5137,160 @@ class HomeController extends Controller {
             $booking_adults = $request->input('booking_adults');
             $booking_children = $request->input('booking_children');
             $booking_Room_type = $request->input('booking_Room_type');
-
-            if (!empty($booking_adults)) {
-                foreach ($booking_adults as $key => $booking_adult) {
-                    $rooms_data['reservation_id'] = $resid;
+            
+            $f_reserved_rooms = array();
+            $flag = true;
+            $return = array();
+            $arr_type = array();
+            if (!empty($booking_adults)) { 
+                for($j=0; $j<count($booking_adults); $j++){
+                    $type_id = $booking_Room_type[$j]==0 ? $request->input('roomType') : $booking_Room_type[$j];
+                    $rmid = '';
+                    $query = "select pct.*, pcr.id as roomid  from tb_properties_category_rooms pcr inner join tb_properties_category_types pct on pct.id=pcr.category_id where pcr.room_active_from <= '".$book_arrive_date."' and pcr.room_active_to >='".$book_checkout_date."' and pcr.category_id=".$type_id." and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$book_arrive_date."' BETWEEN checkin_date and checkout_date or '".$book_checkout_date."' BETWEEN checkin_date and checkout_date)";
+                    
+                    $rooms = DB::select($query);
+                    if(count($rooms)>0){                        
+                        $rmid = $rooms[0]->roomid;                    
+                    }
+                    
+                    //print_r($rooms); die;
+                                       
+                    if ($props->default_seasons != 1) {
+                        $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $type_id)->where('tb_seasons.property_id', $props->id)->where('tb_seasons_dates.season_from_date', '<=', $book_arrive_date)->where('tb_seasons_dates.season_to_date', '>=', $book_checkout_date)->orderBy('tb_seasons.season_priority', 'asc')->first();
+                    } else {
+                        $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $type_id)->where('tb_seasons.property_id', 0)->where('tb_seasons_dates.season_from_date', '<=', $book_arrive_date)->where('tb_seasons_dates.season_to_date', '>=', $book_checkout_date)->first();
+                    }
+                    //print_r($checkseason); die;
+                    if (!empty($checkseason)) {
+        			     $price = $checkseason->rack_rate;
+                         $extra_adult = $checkseason->extra_adult;
+                         $extra_junior = $checkseason->extra_junior; 
+                         
+                         $single_price = $checkseason->single_price;
+                         $monday_price = ($checkseason->monday_price > 0) ? $checkseason->monday_price : $price;   
+                         $tuesday_price = ($checkseason->tuesday_price > 0) ? $checkseason->tuesday_price : $price;   
+                         $wednesday_price = ($checkseason->wednesday_price > 0) ? $checkseason->wednesday_price : $price;     
+                         $thursday_price = ($checkseason->thursday_price > 0) ? $checkseason->thursday_price : $price;   
+                         $friday_price = ($checkseason->friday_price > 0) ? $checkseason->friday_price : $price;    
+                         $saturday_price = ($checkseason->saturday_price > 0) ? $checkseason->saturday_price : $price;   
+                         $sunday_price = ($checkseason->sunday_price > 0) ? $checkseason->sunday_price : $price;                       
+                         
+                    } else {
+                        $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->select('tb_properties_category_rooms_price.*')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $type_id)->first();
+                        if (!empty($checkseasonPrice_ifnotanyseason)) { 
+                            $price = $checkseasonPrice_ifnotanyseason->rack_rate;
+                            $extra_adult = $checkseasonPrice_ifnotanyseason->extra_adult;
+                            $extra_junior = $checkseasonPrice_ifnotanyseason->extra_junior;  
+                            
+                            $single_price = $checkseasonPrice_ifnotanyseason->single_price;
+                            $monday_price = ($checkseasonPrice_ifnotanyseason->monday_price > 0) ? $checkseasonPrice_ifnotanyseason->monday_price : $price;   
+                            $tuesday_price = ($checkseasonPrice_ifnotanyseason->tuesday_price > 0) ? $checkseasonPrice_ifnotanyseason->tuesday_price : $price;   
+                            $wednesday_price = ($checkseasonPrice_ifnotanyseason->wednesday_price > 0) ? $checkseasonPrice_ifnotanyseason->wednesday_price : $price;     
+                            $thursday_price = ($checkseasonPrice_ifnotanyseason->thursday_price > 0) ? $checkseasonPrice_ifnotanyseason->thursday_price : $price;   
+                            $friday_price = ($checkseasonPrice_ifnotanyseason->friday_price > 0) ? $checkseasonPrice_ifnotanyseason->friday_price : $price;    
+                            $saturday_price = ($checkseasonPrice_ifnotanyseason->saturday_price > 0) ? $checkseasonPrice_ifnotanyseason->saturday_price : $price;   
+                            $sunday_price = ($checkseasonPrice_ifnotanyseason->sunday_price > 0) ? $checkseasonPrice_ifnotanyseason->sunday_price : $price; 
+                        }
+                    }
+                    
+                    $day_w_price = array($sunday_price, $monday_price, $tuesday_price, $wednesday_price, $thursday_price, $friday_price, $saturday_price);
+                    
+                    $diff = strtotime($book_checkout_date) - strtotime($book_arrive_date);
+                    $staytime = ($diff/86400)+1;
+                    
+                    $amt = $this->get_daywise_price($book_arrive_date, $staytime, $day_w_price);
+                    
+                    $total_amount = $total_amount + $amt; //($staytime*$price);
+                    //echo $total_amount;
+                    /*if($staytime < $rooms[0]->minimum_stay){                        
+                        $flag = false;
+                        $return['status'] = "error";
+                        $return['minimumstay'] = true;
+                        $arr_type[] = array('category'=>$rooms[0]->category_name, 'min_stay'=>$rooms[0]->minimum_stay);
+                        //$return[] =
+                    }else{*/
+                        
+                        $rooms_data['reservation_id'] = $resid;
+                        $rooms_data['type_id'] = $type_id;
+                        $rooms_data['room_id'] = $rmid;
+                        if($booking_adults[$j] > $rooms[0]->guests_adults)
+                        {
+                            $noof_extra_adult = $booking_adults[$j] - $rooms[0]->guests_adults;
+                            $total_amount = $total_amount + ($noof_extra_adult * $extra_adult * $staytime);
+                        }
+                        $rooms_data['booking_adults'] = $booking_adults[$j];
+                        if($booking_children[$j] > $rooms[0]->guests_juniors)
+                        {
+                            $noof_extra_child = $booking_children[$j] - $rooms[0]->guests_juniors;
+                            $total_amount = $total_amount + ($noof_extra_child * $extra_junior * $staytime);
+                        }
+                        $rooms_data['booking_children'] = $booking_children[$j];
+                        $rooms_data['price'] = $price; 
+                        $f_reserved_rooms[] = $rooms_data; 
+                        \DB::table('td_reserved_rooms')->insertGetId($rooms_data);
+                    /*}*/
+                    
+                }
+                //print_r($total_amount);
+                //die;
+               /* foreach ($booking_adults as $key => $booking_adult) {
+                    $type_id = $booking_Room_type[$key]==0 ? $request->input('roomType') : $booking_Room_type[$key];
+                    //$rooms = \DB::table("tb_properties_category_rooms")->where('category_id', $type_id)->where('room_active_from', '<=', $book_arrive_date)->where_not_in(DB::raw())->get();
+                    $rmid = '';
+                    $query = "select * from tb_properties_category_rooms pcr inner join tb_properties_category_types pct on pct.id=pcr.category_id where pcr.room_active_from <= '".$book_arrive_date."' and pcr.room_active_to >='".$book_checkout_date."' and pcr.category_id=".$type_id." and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$book_arrive_date."' BETWEEN checkin_date and checkout_date or '".$book_checkout_date."' BETWEEN checkin_date and checkout_date)";
+                    $rooms = DB::select($query);
+                    if(count($rooms)>0){                        
+                        $rmid = $rooms[0]->id;                    
+                    }
+                    print_r($rooms);
+                    if ($props->default_seasons != 1) {
+                        $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $request->input('roomType'))->where('tb_seasons.property_id', $props->id)->where('tb_seasons_dates.season_from_date', '<=', $book_arrive_date)->where('tb_seasons_dates.season_to_date', '>=', $book_checkout_date)->orderBy('tb_seasons.season_priority', 'asc')->first();
+                    } else {
+                        $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $request->input('roomType'))->where('tb_seasons.property_id', 0)->where('tb_seasons_dates.season_from_date', '<=', $book_arrive_date)->where('tb_seasons_dates.season_to_date', '>=', $book_checkout_date)->first();
+                    }
+                    
+                    if (!empty($checkseason)) {
+        			     $price = $checkseason->rack_rate;
+                    } else {
+                        $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $request->input('roomType'))->first();
+                        if (!empty($checkseasonPrice_ifnotanyseason)) {
+                            $price = $checkseasonPrice_ifnotanyseason->rack_rate;
+                        }
+                    }
+                    
+                    
+                    $diff = strtotime($book_checkout_date) - strtotime($book_arrive_date);
+                    $staytime = ($diff/86400)+1;
+                    
+                    
+                    //$rooms_data['reservation_id'] = $resid;
                     $rooms_data['type_id'] = $booking_Room_type[$key]==0 ? $request->input('roomType') : $booking_Room_type[$key];
+                    $rooms_data['room_id'] = $rmid;
                     $rooms_data['booking_adults'] = $booking_adult;
                     $rooms_data['booking_children'] = $booking_children[$key];
-                    \DB::table('td_reserved_rooms')->insertGetId($rooms_data);
+                    //\DB::table('td_reserved_rooms')->insertGetId($rooms_data);
+                }*/
+            } //die;
+            $_discount = 0;
+            if($discount_apply!=''){
+                $_discount = ($total_amount*10/100);
+                //$data['discount'] = $discount;
+            }
+            $commision_amt = 0;
+            $commision_app_amt = ($total_amount - $_discount);
+            $per_comm = $props->commission;
+            $commision_amt = (int)($commision_app_amt * $per_comm)/100;
+            /*if(!$flag){
+                if(!empty($arr_type)){
+                    $msg = '';
+                    foreach($arr_type as $s_type){
+                        $msg.="This ".$s_type['category']." allowed mininum ".$s_type['min_stay']." days stay <br />";
+                    }                    
+                    $return['message'] = "There are following error <br>";
                 }
             }
-
+            echo json_encode($return);
+die;        */
             /*
              * Save booking preferences
              */
@@ -5235,7 +5402,7 @@ class HomeController extends Controller {
 
             $checkUser = \DB::table('tb_users')->where('email', $request->input('email'))->get();
 
-            if (empty($checkUser)) {
+            /*if (empty($checkUser)) {
 
                 $userData['username'] = $request->input('email');
                 $userData['email'] = $request->input('email');
@@ -5249,10 +5416,10 @@ class HomeController extends Controller {
                 \DB::table('tb_reservations')->where('id', $resid)->update(array('client_id' => $user_id));
             } else {
                 \DB::table('tb_users')->where('id', $uid)->update($userData);
-            }
+            }*/
             
             $booking_number = '101'.str_pad($resid, 5, 0, STR_PAD_LEFT);
-            \DB::table('tb_reservations')->where('id', $resid)->update(array('booking_number' => $booking_number));
+            \DB::table('tb_reservations')->where('id', $resid)->update(array('booking_number' => $booking_number, 'total_price'=>$total_amount, 'discount'=>$_discount, 'total_commission'=>$commision_amt));
             /*
              * Send email notification
              */             
@@ -5266,14 +5433,14 @@ class HomeController extends Controller {
             $type_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $reservation->property_id)->where('tb_properties_images.category_id', $reservation->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
             $type_image->imgsrc = (new ContainerController)->getThumbpath($type_image->folder_id);
             $hotel_terms_n_conditions = \DB::table('td_property_terms_n_conditions')->where('property_id', $reservation->property_id)->first();
-            //$reserved_rooms = \DB::table('td_reserved_rooms')->where('reservation_id', $reservation->id)->get();
-            $reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->join('tb_properties_category_rooms_price', 'tb_properties_category_rooms_price.category_id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', $reservation->id)->get();
+            $reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', $reservation->id)->get();
+            //$reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->join('tb_properties_category_rooms_price', 'tb_properties_category_rooms_price.category_id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', $reservation->id)->get();
 
             $bookingEmail = base_path() . "/resources/views/user/emails/booking_notification.blade.php";
             $bookingEmailTemplate = file_get_contents($bookingEmail);
             
             $reservation_price = $reservation->price;
-             if($discount_apply!=''){
+            if($discount_apply!=''){
                 $discount_price = ($reservation->price*10/100);
                 $org_price = $reservation->price - $discount_price;
                 $reservation_price = $org_price;
@@ -5612,7 +5779,7 @@ class HomeController extends Controller {
             $html = '';
             foreach ($reserved_rooms as $reserved_room) {
                 //$total_price += ($reservation->number_of_nights * $reservation_price);
-                $total_price += ($reservation->number_of_nights * $reserved_room->rack_rate);
+                //$total_price += ($reservation->number_of_nights * $reserved_room->rack_rate);
                 $html .= '<tr>
                             <th width="209" class="stack2" style="margin: 0;padding: 0;border-collapse: collapse;">
                                 <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table60032" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -5639,7 +5806,7 @@ class HomeController extends Controller {
                                     <tr>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                         <!-- PRICE -->
-                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-26">€' . $reserved_room->rack_rate . '</td>
+                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-26">€' . $reserved_room->price . '</td>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                     </tr>
                                     <tr>
@@ -5671,7 +5838,7 @@ class HomeController extends Controller {
                                     <tr>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                         <!-- TOTAL -->
-                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-28">€' . ($reservation->number_of_nights * $reserved_room->rack_rate) . '</td>
+                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-28">€' . ($reservation->number_of_nights * $reserved_room->price) . '</td>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                     </tr>
                                     <tr>
@@ -5682,7 +5849,11 @@ class HomeController extends Controller {
                         </tr>';
             }
 
-            $commission_due = $total_price * ($property->commission / 100);
+            //$commission_due = $total_price * ($property->commission / 100);
+            //$grand_total = $commission_due + $total_price;
+            $total_price = 0;
+            $total_price = $reservation->total_price;
+            $commission_due = $reservation->total_commission;
             $grand_total = $commission_due + $total_price;
 
             $bookingEmailTemplate = str_replace('{reserved_rooms}', $html, $bookingEmailTemplate);
@@ -5699,6 +5870,9 @@ class HomeController extends Controller {
             
             $bookingEmailTemplate = str_replace('{hotel_terms_n_conditions}', $hotel_term_and_condition, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{property_email}', $property->email, $bookingEmailTemplate);
+            
+            
+            //view('user.emails.'.$tempe, $emailArr);
             //print_r($bookingEmailTemplate); die;
             //$headers = "MIME-Version: 1.0" . "\r\n";
             //$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
@@ -5709,6 +5883,9 @@ class HomeController extends Controller {
             //mail('dalip.01rad@gmail.com', "Booking Confirmation", $bookingEmailTemplate, $headers);
             $tempe = 'blank';
             $emailArr['msg'] = $bookingEmailTemplate;
+            
+            //echo view('user.emails.'.$tempe, $emailArr);
+            //die;
             
             $toouser['email'] = $property->email;            
 			//$toouser['subject'] = "Booking Confirmation"; 
@@ -6537,4 +6714,46 @@ class HomeController extends Controller {
         echo json_encode($res);
         //print_r($packages); die;
     }
+    
+    function checkNoOfReservationInType($pid, $dt_check_in, $dt_check_out, $type_id){
+        $noof_reservations = \DB::table('tb_reservations')->join('td_reserved_rooms', 'td_reserved_rooms.reservation_id', '=', 'tb_reservations.id')->where('property_id', $pid)->where('td_reserved_rooms.type_id', $type_id)->where('checkin_date', '<=', $dt_check_in)->where('checkout_date', '>=', $dt_check_out)->count();
+        //return count($reservations);
+        $noof_cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $pid)->where('category_id', $type_id)->count();
+        $flag = 0;
+        if($noof_cat_rooms > $noof_reservations){
+            $flag = 1;    
+        }
+        return $flag;
+        /*$arr_res_rooms = array();
+        if(!empty($reservations)){
+            foreach($reservations as $si_res){
+                $res_cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $props->id)->where('category_id', $si_res->type_id)->get();
+                if (!empty($res_cat_rooms)) {
+                    foreach ($res_cat_rooms as $si_room) {
+                        $arr_res_rooms[] = $si_room;
+                    }
+                }
+            }                
+        }*/
+    }
+    function get_daywise_price($dt, $no0fdays, $arr_price){
+        $total = 0;
+        $no0fdays = $no0fdays;
+        if(!empty($dt)){
+            $weekday = date('w', strtotime($dt));
+            if(!empty($arr_price)){
+                for($i=0; $i<$no0fdays; $i++){
+                   if($weekday <= 6){
+                        $total = $total + $arr_price[$weekday];
+                        if($weekday==6){
+                            $weekday = 0;
+                        } 
+                   } 
+                   $weekday++;    
+                }
+            }
+        }
+        return $total;
+    }
+    
 }

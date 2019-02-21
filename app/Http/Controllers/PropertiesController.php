@@ -328,7 +328,7 @@ class PropertiesController extends Controller {
 		}
         $row_reservations = \DB::select(\DB::raw("SELECT COUNT(*) AS total_reservations FROM tb_reservations WHERE property_id = '$id' "));
         $row_reserved_rooms = \DB::select(\DB::raw("SELECT COUNT(*) AS total_reserved_rooms FROM td_reserved_rooms LEFT JOIN tb_reservations ON tb_reservations.id = td_reserved_rooms.reservation_id WHERE tb_reservations.property_id = '$id' "));
-        $row_turnover = \DB::select(\DB::raw("SELECT SUM(number_of_nights * price) AS total_turnover FROM td_reserved_rooms LEFT JOIN tb_reservations ON tb_reservations.id = td_reserved_rooms.reservation_id WHERE tb_reservations.property_id = '$id' "));
+        $row_turnover = \DB::select(\DB::raw("SELECT SUM(number_of_nights * tb_reservations.price) AS total_turnover FROM td_reserved_rooms LEFT JOIN tb_reservations ON tb_reservations.id = td_reserved_rooms.reservation_id WHERE tb_reservations.property_id = '$id' "));
 		
 		$this->data['total_turnover'] = 0;
 		$this->data['total_reservations'] = 0;
@@ -5000,6 +5000,26 @@ function property_images_wetransfer(Request $request) {
         $res['data'] = array('bookings'=>$arr_bookings, 'sales'=>$arr_sales, 'commission'=>$arr_commission);
         
         return json_encode($res);
+    }
+    
+    function getPropertyTypeRates(Request $request) {
+        $uid = \Auth::user()->id;
+        $propty = $request->input('propid');
+		if($propty!='' && $propty > 0)
+		{
+			$cats = array();
+			//$cats['usercomm'] = \DB::table('tb_users')->select('commission')->where('id', $uid)->first();
+			$cat_rooms_price = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_types','tb_properties_category_types.id','=','tb_properties_category_rooms_price.category_id')->leftJoin('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->select('tb_seasons.season_name','tb_properties_category_rooms_price.rack_rate','tb_properties_category_types.category_name')->where('tb_properties_category_rooms_price.category_id', $propty)->get();
+			if (!empty($cat_rooms_price)) {
+				$cats['cat_rooms'] = $cat_rooms_price;
+			}
+			$res['status'] = 'success';
+			$res['cat_rooms_price'] = $cats;
+		}
+		else {
+			$res['status'] = 'error';
+		}
+		return json_encode($res);
     }
     
 }
