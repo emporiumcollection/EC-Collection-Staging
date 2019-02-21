@@ -5032,6 +5032,16 @@ class HomeController extends Controller {
             $extra_adult = 0;
             $extra_junior = 0;
             
+            $single_price = 0;
+            $monday_price = 0;   
+            $tuesday_price = 0;   
+            $wednesday_price = 0;     
+            $thursday_price = 0;   
+            $friday_price = 0;    
+            $saturday_price = 0;   
+            $sunday_price = 0;
+            
+            
             $data['property_id'] = $request->input('property');
             
             
@@ -5160,8 +5170,8 @@ class HomeController extends Controller {
                     } else {
                         $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $type_id)->where('tb_seasons.property_id', 0)->where('tb_seasons_dates.season_from_date', '<=', $book_arrive_date)->where('tb_seasons_dates.season_to_date', '>=', $book_checkout_date)->first();
                     }
-                    //print_r($checkseason); die;
-                    if (!empty($checkseason)) {
+                    
+                    if (!empty($checkseason)) { print_r($checkseason); die;
         			     $price = $checkseason->rack_rate;
                          $extra_adult = $checkseason->extra_adult;
                          $extra_junior = $checkseason->extra_junior; 
@@ -5209,7 +5219,7 @@ class HomeController extends Controller {
                         $arr_type[] = array('category'=>$rooms[0]->category_name, 'min_stay'=>$rooms[0]->minimum_stay);
                         //$return[] =
                     }else{*/
-                        
+                    if(count($rooms)>0){     
                         $rooms_data['reservation_id'] = $resid;
                         $rooms_data['type_id'] = $type_id;
                         $rooms_data['room_id'] = $rmid;
@@ -5228,6 +5238,7 @@ class HomeController extends Controller {
                         $rooms_data['price'] = $price; 
                         $f_reserved_rooms[] = $rooms_data; 
                         \DB::table('td_reserved_rooms')->insertGetId($rooms_data);
+                    }
                     /*}*/
                     
                 }
@@ -5277,9 +5288,11 @@ class HomeController extends Controller {
                 //$data['discount'] = $discount;
             }
             $commision_amt = 0;
-            $commision_app_amt = ($total_amount - $_discount);
+            $commision_app_amt = (int)($total_amount - $_discount);
             $per_comm = $props->commission;
-            $commision_amt = (int)($commision_app_amt * $per_comm)/100;
+            if($commision_app_amt > 0){
+                $commision_amt = (int)($commision_app_amt * $per_comm)/100;
+            }
             /*if(!$flag){
                 if(!empty($arr_type)){
                     $msg = '';
