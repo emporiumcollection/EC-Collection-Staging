@@ -1500,7 +1500,7 @@ class BookingsController extends Controller {
                 if (!empty($checkseason)) {
                     $foundsean = false;
                     $curnDate = date('Y-m-d');
-                    for ($sc = 0; $foundsean != true; $sc++) {
+                    for ($sc = 0; $sc < count($checkseason) && $foundsean != true; $sc++) {
                         $checkseasonDate = \DB::table('tb_seasons_dates')->where('season_id', $checkseason[$sc]->id)->where('season_from_date', '>=', $curnDate)->where('season_to_date', '<=', $curnDate)->count();
                         if ($checkseasonDate > 0) {
                             $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('season_id', $checkseason[$sc]->id)->where('property_id', $props->id)->where('category_id', $results['rows'][$key]->category->id)->first();
