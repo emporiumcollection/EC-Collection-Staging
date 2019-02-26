@@ -74,11 +74,21 @@
 		  </div> 
           
 		  <div class="form-group">
+		    <label for="ipt" class=" control-label col-md-4">{{ Lang::get('core.fr_google_analytic_key') }} </label>
+			<div class="col-md-8">
+				<input name="cnf_google_analytic_key" type="text" id="cnf_google_analytic_key" class="form-control input-sm" value="{{ CNF_GOOGLE_ANALYTIC_KEY }}" />  
+			</div> 
+		  </div>  
+          
+          
+          <div class="form-group">
 		    <label for="ipt" class=" control-label col-md-4">{{ Lang::get('core.fr_youtube_api_key') }} </label>
 			<div class="col-md-8">
 				<input name="cnf_youtube_api_key" type="text" id="cnf_youtube_api_key" class="form-control input-sm" value="{{ CNF_YOUTUBE_API_KEY }}" />  
 			</div> 
 		  </div>  
+          
+          
 		  <div class="form-group">
 		    <label for="ipt" class=" control-label col-md-4"> Muliti language <br /> <small> Only Layout Interface </small> </label>
 			<div class="col-md-8">

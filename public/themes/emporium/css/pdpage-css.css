@@ -932,6 +932,43 @@ position: absolute;
 #mem-accordion .panel-title{
     margin-left: 20px;
 }
+
+
+.season-accordion .panel-body{
+    /*background: #000 !important;*/
+    border: 0px !important;
+}
+.season-accordion .panel-body h6{
+    color:#fff !important;
+}
+.season-accordion .panel{
+    background: transparent;
+    color: #fff;
+    border: 0px !important;
+} 
+.season-accordion .panel-default>.panel-heading{
+    background: transparent !important;
+    color: #fff;
+}
+.season-accordion .panel-heading{
+    border-top: 1px solid #414246;
+}
+.season-accordion .panel-group{    
+    margin-bottom: 0px !important;
+}
+.season-accordion .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: 0px !important;
+    margin-bottom: 0px !important;
+}
+.season-accordion .panel-default:last-child{
+    border-bottom: 1px solid #414246 !important;
+}
+.season-accordion .panel-group .panel+.panel {
+    margin-top: 0px !important;
+}
+.season-accordion .panel-title{
+    margin-left: 20px;
+}
 /* 26-04-2018 */
 
 .eapps-instagram-feed-posts-item-image-wrapper:after{content: "";
@@ -943,3 +980,103 @@ position: absolute;
     right: 0;
 	z-index:0;
 	background: rgba(37,37,37,0.35);}
+    
+ /* -- Start calendar table css -- */
+ .season-accordion .season-calendar table{
+    background: transparent !important;
+    width: 90% !important;
+ }
+ .season-accordion .season-calendar table tr{
+    background: transparent !important;
+    color: #ABA07C !important;
+ } 
+ .season-accordion .season-calendar table th{
+    text-align: center;
+ } 
+ .season-accordion .season-calendar table td,.season-accordion .season-calendar table th{
+    border: 1px solid #414246 !important;
+ }
+ .season-accordion .season-calendar table tr td{
+    background: transparent !important;
+    text-align: center;
+    color: #000 !important;
+ }
+ .season-accordion .season-calendar table tr td span.available{
+    color:#000;
+    font-size: 11px;
+ }
+ .season-accordion .season-calendar table tr td span.not-available{
+    color:#fff;
+    font-size: 12px;
+ }
+ /* -- End calendar table css -- */
+ 
+ /*----------- Start Seasons Class ----*/
+ .season-accordion .season-calendar table tr td.season-1{
+    background: #d9a0af !important;    
+ }
+ .season-accordion .season-calendar table tr td.season-2{
+    background: #D1DBBD !important;    
+ }
+ .season-accordion .season-calendar table tr td.season-3{
+    background: #648da6 !important;    
+ }
+ .season-accordion .season-calendar table tr td.season-4{
+    background: #90a2b6 !important;    
+ }
+ .season-accordion .season-calendar table tr td.season-5{
+    background: #3fff9f !important;    
+ }
+ .season-accordion .season-calendar .season-footer{
+    width: 100%;
+ }
+ .season-accordion .season-calendar .season-footer .s-footer-item{
+    width: 17%;
+    margin: 2%;
+    float: left;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid #414246 !important;
+    color: #ABA07C !important;
+ }
+ .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-1{
+    width: 80%;  
+    height: 50px;  
+    background: #d9a0af;
+    border: 1px solid #414246 !important;
+    color: #ABA07C !important;
+    margin: 0px auto;
+ }
+ .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-2{
+    width: 80%;  
+    height: 50px;  
+    background: #D1DBBD;
+    border: 1px solid #414246 !important;
+    color: #ABA07C !important;
+    margin: 0px auto;
+ }
+ .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-3{
+    width: 80%;  
+    height: 50px;  
+    background: #648da6;
+    border: 1px solid #414246 !important;
+    color: #ABA07C !important;
+    margin: 0px auto;
+ }
+ .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-4{
+    width: 80%;  
+    height: 50px;  
+    background: #90a2b6;
+    border: 1px solid #414246 !important;
+    color: #ABA07C !important;
+    margin: 0px auto;
+ }
+ .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-5{
+    width: 80%;  
+    height: 50px;  
+    background: #3fff9f;
+    border: 1px solid #414246 !important;
+    color: #ABA07C !important;
+    margin: 0px auto;
+ } 
+ /*----------- End Season Class -------*/

@@ -76,22 +76,25 @@
         <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('themes/emporium/daterangepicker/css/themes/t-datepicker-bluegrey.css') }}" rel="stylesheet" type="text/css" />
     @show
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-110391807-1');
-</script>
-
+@if(defined('CNF_GOOGLE_ANALYTIC_KEY'))
+    @if(CNF_GOOGLE_ANALYTIC_KEY != '')
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ CNF_GOOGLE_ANALYTIC_KEY }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', '{{ CNF_GOOGLE_ANALYTIC_KEY }}');
+    </script>
+    @endif
+@endif
 
 {{--*/
 $isfLoginned = (bool) \auth()->check();
 if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfPublic; }
 /*--}}
-
+</head>
 @if(!empty($pageTitle))
 <body class='{{str_replace(" ","_","$pageTitle")}} @if($isfLoginned) {{'user_logged_in'}} @endif '>
 @else
@@ -848,6 +851,5 @@ $('input[data-toggle="popover"]').popover({
 });
 
 })</script>
-</head>
 </body>
 </html>

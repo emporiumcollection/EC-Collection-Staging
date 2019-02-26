@@ -258,7 +258,8 @@
                                             <a class="btn btn-default" title="{{$type->season}}"
                                                     > {{($currency->content!='') ? $currency->content : '$'}} {{ isset(\Auth::user()->id) ? $type->price : 'Login to view'}} </button>
                                             @if(isset(\Auth::user()->id))
-                                                <a  href="#" onclick="getseasonrates({{$type->id}});" class="btn btn-default" title="Rates" data-toggle="modal" data-target="#psrModal">Full Rate List</a> 
+                                                <?php /* <a  href="#" onclick="getseasonrates({{$type->id}});" class="btn btn-default" title="Rates" data-toggle="modal" data-target="#psrModal">Full Rate List</a> */ ?>
+                                                <a  href="#" data-id="{{$type->id}}" class="btn btn-default full-rate" title="Rates">Full Rate List</a>
                                             @endif                                           
                                         @endif
                                         
@@ -307,6 +308,59 @@
                                         </a>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row season-accordion">
+                                    
+                                    
+                                        
+                                    
+                                    
+                                    @if(!empty($type->seasonwiseprice))                        
+                                    {{--*/ $k=1; /*--}} 
+                        			<div id="mem-accordion-{{$type->id}}" class="panel-group" style="display: none;">
+                                        <div class="col-sm-6 calendar-left-box">
+                                            <div class="col-sm-10 t-datepicker-box">
+                                                <div id="season-dpicker-{{$type->id}}" class="t-datepicker">
+                                                    <div class="t-date-divide">
+                                                        <div class="t-check-in"></div>
+                                                    </div>
+                                                    <div class="t-date-divide">
+                                                        <div class="t-check-out"></div>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button class="btn season-search" data-id='{{$type->id}}'>Submit</button>
+                                            </div>
+                                            <div class="col-sm-12" style="margin-top: 20px;">
+                                                @foreach($type->seasonwiseprice as $si)
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a class="click0" data-toggle="collapse" data-parent="#mem-accordion-{{$type->id}}" href="#collapse_{{$type->id}}_{{$k}}"><?php echo ($si->season_name!='' && $si->season_name!='null') ? $si->season_name : 'Default'; ?></a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse_{{$type->id}}_{{$k}}" class="panel-collapse collapse <?php echo ($k==1) ? 'in' : '' ?>">
+                                                        <div class="panel-body">
+                                                            <div class="row">
+                                                                <div  class="col-sm-12 col-md-12 col-lg-12">
+                                                                    Base rate: {{$si->rack_rate}}                                                               
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{--*/ $k++;  /*--}}                                            
+                                                @endforeach
+                                            </div>
+                                        </div>	
+                                        <div class="col-sm-6 season-calendar" id="calendar-{{$type->id}}">
+                                            <?php echo $type->room_calendar; ?>                                            
+                                        </div>			
+                                    </div>
+                                    @endif
+                                
+                                
                             </div>
                         </div>
                     </section>
@@ -865,6 +919,18 @@
                 .modal-backdrop.fade{filter:alpha(opacity=0);opacity:0}
                 .modal-backdrop.in{filter:alpha(opacity=95);opacity:.95}
                 
+                .calendar-left-box{
+                    margin: 10px 0px;
+                }
+                .calendar-left-box .season-search{
+                    background: #aba00b;
+                    color: #fff;
+                }
+                .t-datepicker-box .t-check-in, .t-datepicker-box .t-check-out {
+                    width: 97% !important;
+                }
+                
+                
                 @media (max-width:1199px){
                     #showMemberLoginPopup .modal-dialog{
                         width:auto !important;
@@ -900,6 +966,71 @@
             }
         ?>
         $(document).ready(function () {
+            
+            
+            
+            @if(array_key_exists('typedata', $propertyDetail))            
+                @foreach($propertyDetail['typedata'] as $type)
+                    @if (array_key_exists($type->id, $propertyDetail['roomimgs']))
+                        $('#season-dpicker-{{$type->id}}').tDatePicker({
+                            'numCalendar':'2',
+                            'autoClose':true,
+                            'durationArrowTop':'200',
+                            'formatDate':'mm-dd-yyyy',
+                            'titleCheckIn':'Arrival',
+                            'titleCheckOut':'Departure',
+                            'inputNameCheckIn':'arrive_{{$type->id}}',
+                            'inputNameCheckOut':'departure_{{$type->id}}',
+                            'titleDateRange':'days',
+                            'titleDateRanges':'days',
+                            'iconDate':'<i class="fa fa-calendar"></i>',
+                            'limitDateRanges':'365',
+                            'dateCheckIn':chk_date,
+                            'dateCheckOut':chk_out_date,
+                            //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
+                            //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+                        });    
+                    @endif
+                @endforeach
+            @endif
+            
+            
+            
+            $('.season-search').click(function(e){
+                e.preventDefault();
+                var c_id = $(this).attr('data-id'); 
+                var s_dt = $('input[name=arrive_'+c_id+']').val();
+                var e_dt = $('input[name=departure_'+c_id+']').val();
+                //console.log(s_dt+'/'+e_dt);
+                $.ajax({
+                    url:'{{URL::to("ajaxcalendar")}}',
+                    dataType:'json',
+                    data: {c_id:c_id, s_dt:s_dt, e_dt:e_dt},
+                    type: 'get',
+                    success: function(response){
+                        //console.log(response);
+                        $('#calendar-'+c_id).html('');
+                        if(response.status=='success'){
+                            $('#calendar-'+c_id).html(response.data);
+                        }
+                    }
+                });
+            });
+            
+            
+            
+            $('.full-rate').click(function(e){
+                e.preventDefault();
+                var id = $(this).attr('data-id');
+                $("#mem-accordion-"+id).toggle();
+                //$("#mem-accordion-"+id).focus();
+                
+                //var selector = document.getElementById("mem-accordion-"+id);
+                //console.log(selector);
+                
+                //if(typeof selector.scrollIntoView !== 'undefined' )
+                //    selector.scrollIntoView();         
+            });
             
             $(".btnMembershipType").click(function(e){
                 e.preventDefault();

@@ -65,15 +65,19 @@
                 font-style: italic;
             }
         </style>
+@if(defined('CNF_GOOGLE_ANALYTIC_KEY'))
+    @if(CNF_GOOGLE_ANALYTIC_KEY != '')
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id={{ CNF_GOOGLE_ANALYTIC_KEY }}"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
 
-		  gtag('config', 'UA-110391807-1');
+		  gtag('config', '{{ CNF_GOOGLE_ANALYTIC_KEY }}');
 		</script>
+    @endif
+@endif
     </head>
     <body>
               

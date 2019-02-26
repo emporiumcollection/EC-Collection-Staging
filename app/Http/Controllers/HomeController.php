@@ -6768,5 +6768,38 @@ die;        */
         }
         return $total;
     }
-    
+    function getCalendar(Request $request){
+        //$current_date =  date('Y-m-d');
+        $current_date =  date('Y-m-d', strtotime('2019-04-01'));
+        $dayNumber = date('w', strtotime($current_date));
+        $year = date('Y', strtotime($current_date));
+        $month = date('m', strtotime($current_date));
+        $numberOfDayInMonth = date('t', strtotime($current_date)); 
+        echo $current_date."-".$dayNumber."-".$year."-".$month."-".$numberOfDayInMonth."<br />";        
+        $flag = 0;
+        $html = "<table>";
+        $html .= "<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thu</td><td>Fri</td><td>Sat</td></tr>";
+        for($i=1; $i<=$numberOfDayInMonth; $i++){
+            $html .= "<tr>";
+            for($j=0; $j<7; $j++){
+                if($j==$dayNumber or $flag==1){
+                    $flag = 1;
+                    if($i <= $numberOfDayInMonth){
+                        $html .= '<td>'.$i.'</td>';
+                    }
+                }else{
+                   $html .= '<td></td>';
+                   $i--;  
+                }
+                if($j==6){
+                    //echo "<br />";
+                    $i--; 
+                }                
+                $i++;               
+            }
+            $html .= "</tr>";
+        }
+        $html .= "</table>";
+        echo $html;
+    }
 }

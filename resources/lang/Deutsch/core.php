@@ -307,6 +307,7 @@ return array(
 "ads_delete_confirm_msg"			=> "Are you sure to delete this?", 
 "fr_youtube_api_key"=>'Youtube API Key',
 "fr_superadmin_emailsys"            => "Super Admin Email",
+"fr_google_analytic_key"=>'Google Analytic Key',
 /*------------ Start ----------- */
 /* Module Heading and Alerts info */
 

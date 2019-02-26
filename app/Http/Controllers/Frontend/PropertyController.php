@@ -532,7 +532,7 @@ class PropertyController extends Controller {
                 $c = 0;
                 foreach ($cat_types as $type) {
                     $roomfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.category_id', $type->id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
-					
+					$type_cale = '';
                     $filen = array();
                     if (!empty($roomfileArr)) {
 						$propertiesArr['roomimgs'][$type->id]['imgs'] = $roomfileArr;
@@ -558,8 +558,24 @@ class PropertyController extends Controller {
                                 $propertiesArr['typedata'][$c]->season = '';
                             }
                         }
+                        
+                        $cat_rooms_price = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_types','tb_properties_category_types.id','=','tb_properties_category_rooms_price.category_id')->leftJoin('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->select('tb_seasons.season_name','tb_properties_category_rooms_price.rack_rate','tb_properties_category_types.category_name')->where('tb_properties_category_rooms_price.category_id', $type->id)->get();                        
+                        
+                        $propertiesArr['typedata'][$c]->seasonwiseprice = $cat_rooms_price;
+                        
+                        //$room_availablity_bytype = \DB::table('tb_properties_category_rooms')->where('tb_properties_category_rooms.category_id', $type->id)->get();                       
+                        //$propertiesArr['typedata'][$c]->room_availablity_bytype = $room_availablity_bytype;   
+                        
+                        $reserved_room_bytype = \DB::table('tb_reservations')->join('td_reserved_rooms','tb_reservations.id','=','td_reserved_rooms.reservation_id')->where('td_reserved_rooms.type_id', $type->id)->get();                                             
+                        
+                        $type_cale = $this->viewcalendar($type->id, $curnDate);
+                        
+                        $propertiesArr['typedata'][$c]->room_calendar = $type_cale;
+                        
 						$c++;
                     }
+                    
+                    
                 }
 
                 usort($propertiesArr['typedata'], function($a, $b) {
@@ -1029,4 +1045,227 @@ class PropertyController extends Controller {
         //print_r($this->data['pckages_ids']); die;
 		return view('frontend.themes.emporium.properties.listbytype', $this->data);
 	}
+    
+    function viewcalendar($type, $currentDt){
+        //$current_date =  date('Y-m-d');
+        //$current_date =  date('Y-m-d', strtotime($currentDt));
+        $year = date('Y', strtotime($currentDt));
+        $month = date('m', strtotime($currentDt));
+        $monthStartDate = $year."-".$month."-01";
+        $dayNumber = date('w', strtotime($monthStartDate));
+        
+        $numberOfDayInMonth = date('t', strtotime($monthStartDate)); 
+        //echo $current_date."-".$dayNumber."-".$year."-".$month."-".$numberOfDayInMonth."<br />";      
+        $monthEndDate = $year."-".$month."-".$numberOfDayInMonth;
+        $start_dt = '';
+        $end_dt = '';
+        
+        //$room_availablity_bytype = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_rooms', 'tb_properties_category_rooms_price.category_id', '=', 'tb_properties_category_rooms.category_id')->leftJoin('tb_seasons', 'tb_properties_category_rooms_price.season_id', '=', 'tb_seasons.id')->leftJoin('tb_seasons_dates', 'tb_seasons.id', '=', 'tb_seasons_dates.season_id')->where('tb_properties_category_rooms_price.category_id', $type)->orderBy('season_priority')->first();
+        
+        
+        //$room_availablity_bytype = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons', 'tb_properties_category_rooms_price.season_id', '=', 'tb_seasons.id')->join('tb_seasons_dates', 'tb_seasons.id', '=', 'tb_seasons_dates.season_id')->where('tb_properties_category_rooms_price.category_id', $type)->orderBy('season_priority')->first();
+        
+        //echo "<pre>";
+        //print_r($room_availablity_bytype); die;
+        $date_wise_arr = array();
+        //$current_date = $year."-".$month."-".$k;
+        //$curr_date = date('Y-m-d', strtotime($c_date));
+        $query = "SELECT * FROM tb_properties_category_rooms_price inner join tb_seasons on tb_seasons.id=tb_properties_category_rooms_price.season_id inner join tb_seasons_dates on tb_seasons.id=tb_seasons_dates.season_id  where ((season_from_date <= '".$monthStartDate."' AND season_to_date >='".$monthEndDate."') OR (season_from_date BETWEEN '".$monthStartDate."' AND '".$monthEndDate."') OR  (season_to_date BETWEEN '".$monthStartDate."' AND '".$monthEndDate."')) and tb_properties_category_rooms_price.category_id=".$type." ORDER by tb_seasons.season_priority";
+        $check_season = \DB::select($query);
+        $arr_start_date = $monthStartDate;
+        if(!empty($check_season)){
+            foreach($check_season as $si_sea){
+                for($m=1; $m<=$numberOfDayInMonth; $m++){
+                    $m = (strlen($m)==1) ? str_pad($m, 2, '0', STR_PAD_LEFT) : $m;                        
+                    $cu_date = $year."-".$month."-".$m;
+                    $curre_date = date('Y-m-d', strtotime($cu_date)); 
+                    if (!array_key_exists($curre_date, $date_wise_arr)){                   
+                        if($si_sea->season_from_date <= $curre_date && $si_sea->season_to_date >= $curre_date){
+                            $date_wise_arr[$curre_date]=$si_sea;
+                        }
+                    }                    
+                }
+                //$arr_start_date = date('Y-m-d', strtotime("+1 day", strtotime($arr_start_date)));             
+            }
+        }else{
+            //$room_availablity_bytype = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_rooms', 'tb_properties_category_rooms_price.category_id', '=', 'tb_properties_category_rooms.category_id')->leftJoin('tb_seasons', 'tb_properties_category_rooms_price.season_id', '=', 'tb_seasons.id')->leftJoin('tb_seasons_dates', 'tb_seasons.id', '=', 'tb_seasons_dates.season_id')->where('tb_properties_category_rooms_price.category_id', $type)->orderBy('season_priority')->first();
+            $query2 = "SELECT *, 'default' as season_name FROM tb_properties_category_rooms_price inner join tb_properties_category_rooms on tb_properties_category_rooms_price.category_id=tb_properties_category_rooms.category_id where ((room_active_from <= '".$monthStartDate."' AND room_active_to >='".$monthEndDate."') OR (room_active_from BETWEEN '".$monthStartDate."' AND '".$monthEndDate."') OR  (room_active_to BETWEEN '".$monthStartDate."' AND '".$monthEndDate."')) and tb_properties_category_rooms_price.category_id=".$type." and tb_properties_category_rooms_price.season_id=0";
+            $check_room = \DB::select($query2);
+            if(!empty($check_room)){
+                foreach($check_room as $si_room){
+                    for($m=1; $m<=$numberOfDayInMonth; $m++){
+                        $m = (strlen($m)==1) ? str_pad($m, 2, '0', STR_PAD_LEFT) : $m;                        
+                        $cu_date = $year."-".$month."-".$m;
+                        $curre_date = date('Y-m-d', strtotime($cu_date)); 
+                        if (!array_key_exists($curre_date, $date_wise_arr)){                   
+                            if($si_room->room_active_from <= $curre_date && $si_room->room_active_to >= $curre_date){
+                                
+                                $date_wise_arr[$curre_date]=$si_room;
+                            }
+                        }                    
+                    }
+                    //$arr_start_date = date('Y-m-d', strtotime("+1 day", strtotime($arr_start_date)));             
+                }
+            }
+        }
+        if(count($date_wise_arr) < $numberOfDayInMonth){
+            $query2 = "SELECT *, 'default' as season_name FROM tb_properties_category_rooms_price inner join tb_properties_category_rooms on tb_properties_category_rooms_price.category_id=tb_properties_category_rooms.category_id where ((room_active_from <= '".$monthStartDate."' AND room_active_to >='".$monthEndDate."') OR (room_active_from BETWEEN '".$monthStartDate."' AND '".$monthEndDate."') OR  (room_active_to BETWEEN '".$monthStartDate."' AND '".$monthEndDate."')) and tb_properties_category_rooms_price.category_id=".$type." and tb_properties_category_rooms_price.season_id=0";
+            $check_room = \DB::select($query2);
+            if(!empty($check_room)){
+                foreach($check_room as $si_room){
+                    for($m=1; $m<=$numberOfDayInMonth; $m++){
+                        $m = (strlen($m)==1) ? str_pad($m, 2, '0', STR_PAD_LEFT) : $m;                        
+                        $cu_date = $year."-".$month."-".$m;
+                        $curre_date = date('Y-m-d', strtotime($cu_date)); 
+                        if (!array_key_exists($curre_date, $date_wise_arr)){                   
+                            if($si_room->room_active_from <= $curre_date && $si_room->room_active_to >= $curre_date){
+                                
+                                $date_wise_arr[$curre_date]=$si_room;
+                            }
+                        }                    
+                    }
+                    //$arr_start_date = date('Y-m-d', strtotime("+1 day", strtotime($arr_start_date)));             
+                }
+            }
+        }
+        //echo "<pre>";
+        //print_r($date_wise_arr); die;
+        //print_r($room_availablity_bytype); die;
+        /*$defalt_season = array();
+        $seasons = array();
+        if(!empty($room_availablity_bytype)){
+            
+            foreach($room_availablity_bytype as $si){
+              if($si->season_id==''){
+                $defalt_season[] = $si;  
+              }else{
+                $seasons[] = $si;
+              }  
+            }
+            if(count($seasons > 0)){
+                
+            }
+            echo "<pre>";
+            print_r($defalt_season);
+            echo "--------------------------------";
+            print_r($seasons);
+            die;
+            if(!empty($seasons)){
+                foreach($seasons as $se){
+                    
+                }
+                $season_start = $seasons->season_from_date;
+                $season_end = $seasons->season_to_date;
+            }else{
+                $start_dt = $room_availablity_bytype->room_active_from;
+                $end_dt = $room_availablity_bytype->room_active_to;
+            }
+        }*/
+        //print_r($room_availablity_bytype); die;
+        //$start_dt = $room_availablity_bytype->room_active_from;
+        //$end_dt = $room_availablity_bytype->room_active_to;  
+        
+        $flag = 0;
+        $cls = '';
+        
+        $arr_season_class = array(); 
+        $sr = 0;
+        
+        $s_price = 0;
+        
+        $html = "<table id='tbl_".$type."' class='table'>";
+        $html .= "<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>";
+        for($i=1; $i<=$numberOfDayInMonth; $i++){
+            $html .= "<tr>";
+            for($j=0; $j<7; $j++){
+                if($j==$dayNumber or $flag==1){                    
+                    $flag = 1;
+                    if($i <= $numberOfDayInMonth){
+                        $k = (strlen($i)==1) ? str_pad($i, 2, '0', STR_PAD_LEFT) : $i;                        
+                        $c_date = $year."-".$month."-".$k;
+                        $curr_date = date('Y-m-d', strtotime($c_date));
+                        //echo $start_dt."/".$c_date."/".$end_dt; die;
+                        /*if($start_dt <= $curr_date && $end_dt >=$curr_date){
+                            $html .= '<td class="'.$c_date.'">'.$i.'<br /><span class="available">Available</span></td>';
+                        }else{
+                            $html .= '<td class="'.$c_date.'">'.$i.'<br /><span class="not-available">Not Available</span></td>';
+                        }*/
+                        
+                        if(array_key_exists($curr_date, $date_wise_arr)){   
+                            $new_cls = $date_wise_arr[$curr_date]->season_name;
+                            
+                            switch ($j){
+                                case 0:
+                                    $s_price = ($date_wise_arr[$curr_date]->sunday_price > 0) ? $date_wise_arr[$curr_date]->sunday_price : $date_wise_arr[$curr_date]->rack_rate;
+                                    break;
+                                case 1:
+                                    $s_price = ($date_wise_arr[$curr_date]->monday_price > 0) ? $date_wise_arr[$curr_date]->monday_price : $date_wise_arr[$curr_date]->rack_rate;
+                                    break;
+                                case 2:
+                                    $s_price = ($date_wise_arr[$curr_date]->tuesday_price > 0) ? $date_wise_arr[$curr_date]->tuesday_price : $date_wise_arr[$curr_date]->rack_rate;
+                                    break;
+                                case 3:
+                                    $s_price = ($date_wise_arr[$curr_date]->wednesday_price > 0) ? $date_wise_arr[$curr_date]->wednesday_price : $date_wise_arr[$curr_date]->rack_rate;
+                                    break;
+                                case 4:
+                                    $s_price = ($date_wise_arr[$curr_date]->thursday_price > 0) ? $date_wise_arr[$curr_date]->thursday_price : $date_wise_arr[$curr_date]->rack_rate;
+                                    break;
+                                case 5:
+                                    $s_price = ($date_wise_arr[$curr_date]->friday_price > 0) ? $date_wise_arr[$curr_date]->friday_price : $date_wise_arr[$curr_date]->rack_rate;
+                                    break;
+                                case 6:
+                                    $s_price = ($date_wise_arr[$curr_date]->saturday_price > 0) ? $date_wise_arr[$curr_date]->saturday_price : $date_wise_arr[$curr_date]->rack_rate;
+                                    break;
+                            }
+                            
+                            if($cls!=$new_cls){
+                                $cls = $new_cls;                                
+                                $sr++;
+                                $arr_season_class[] = array('c_name'=>$sr, 's_name'=>$cls);
+                            }
+                            $html .= '<td class="'.$c_date.' season-'.$sr.'" data-day="'.$j.'">'.$i.'<br /><span class="available">Available</span><br /><span class="price">'.$s_price.'</span></td>';
+                        }else{
+                            $html .= '<td class="'.$c_date.'">'.$i.'<br /><span class="not-available">Not Available</span></td>';
+                        }
+                    }else{
+                        $html .= '<td></td>';
+                    }
+                }else{
+                   $html .= '<td></td>';
+                   $i--;  
+                }
+                if($j==6){
+                    //echo "<br />";
+                    $i--; 
+                }                
+                $i++;               
+            }
+            $html .= "</tr>";
+        }
+        $html .= "</table>";
+        if(!empty($arr_season_class)){
+            $html .= "<div class='season-footer'>";            
+            foreach($arr_season_class as $seas){
+                $html .= "<div class='s-footer-item'>";
+                    $html .= "<div class='s-footer-lable'>".$seas['s_name']."</div>";
+                    $html .= "<div class='s-footer-box-".$seas['c_name']."'></div>";        
+                $html .= "</div>";
+            }            
+            $html .= "</div>";
+        }
+        return $html;
+    }
+    function ajaxcalendar(Request $request){
+        $type_id = $request->input('c_id');
+        $s_date = $request->input('s_dt');
+        $e_date = $request->input('e_dt');
+        $s_date = \CommonHelper::dateformat(trim($s_date));
+        $e_date = \CommonHelper::dateformat(trim($e_date));
+        //echo $type_id."/".$s_date."/".$e_date;
+        $v = $this->viewcalendar($type_id, $s_date);
+        $return['data'] = $v;
+        $return['status'] = "success";
+        echo json_encode($return); 
+        die;
+    }
 }

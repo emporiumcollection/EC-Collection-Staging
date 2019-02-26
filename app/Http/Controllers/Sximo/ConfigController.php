@@ -78,6 +78,7 @@ class ConfigController extends Controller {
 			$val .= 	"define('CNF_RESTRICIP','".CNF_RESTRICIP."');\n";									
 			$val .= 	"define('CNF_YOUTUBE_API_KEY','".$request->input('cnf_youtube_api_key')."');\n";
             $val .= 	"define('CNF_SUPERADMIN_EMAIL','".$request->input('cnf_superadmin_email')."');\n";
+            $val .= 	"define('CNF_GOOGLE_ANALYTIC_KEY','".$request->input('cnf_google_analytic_key')."');\n";
 			$val .= 	"?>";
 	
 			$filename = base_path().'/setting.php';

@@ -418,6 +418,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('save_management_personnel', 'UserController@savemanagementpersonnel');
     
     Route::post('getPropertyTypeRates', 'PropertiesController@getPropertyTypeRates');
+    
+    Route::get('ajaxcalendar', 'Frontend\PropertyController@ajaxcalendar');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
