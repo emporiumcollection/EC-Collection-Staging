@@ -1005,6 +1005,9 @@ position: absolute;
     color:#000;
     font-size: 11px;
  }
+ .season-accordion .season-calendar table tr td.na{
+    color:#fff !important;    
+ }
  .season-accordion .season-calendar table tr td span.not-available{
     color:#fff;
     font-size: 12px;

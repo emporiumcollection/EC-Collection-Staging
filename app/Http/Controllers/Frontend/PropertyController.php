@@ -1225,7 +1225,7 @@ class PropertyController extends Controller {
                             }
                             $html .= '<td class="'.$c_date.' season-'.$sr.'" data-day="'.$j.'">'.$i.'<br /><span class="available">Available</span><br /><span class="price">'.$s_price.'</span></td>';
                         }else{
-                            $html .= '<td class="'.$c_date.'">'.$i.'<br /><span class="not-available">Not Available</span></td>';
+                            $html .= '<td class="na '.$c_date.'">'.$i.'<br /><span class="not-available">Not Available</span></td>';
                         }
                     }else{
                         $html .= '<td></td>';
