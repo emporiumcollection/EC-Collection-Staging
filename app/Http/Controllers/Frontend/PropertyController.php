@@ -1089,8 +1089,10 @@ class PropertyController extends Controller {
             }
         }else{
             //$room_availablity_bytype = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_rooms', 'tb_properties_category_rooms_price.category_id', '=', 'tb_properties_category_rooms.category_id')->leftJoin('tb_seasons', 'tb_properties_category_rooms_price.season_id', '=', 'tb_seasons.id')->leftJoin('tb_seasons_dates', 'tb_seasons.id', '=', 'tb_seasons_dates.season_id')->where('tb_properties_category_rooms_price.category_id', $type)->orderBy('season_priority')->first();
-            $query2 = "SELECT *, 'default' as season_name FROM tb_properties_category_rooms_price inner join tb_properties_category_rooms on tb_properties_category_rooms_price.category_id=tb_properties_category_rooms.category_id where ((room_active_from <= '".$monthStartDate."' AND room_active_to >='".$monthEndDate."') OR (room_active_from BETWEEN '".$monthStartDate."' AND '".$monthEndDate."') OR  (room_active_to BETWEEN '".$monthStartDate."' AND '".$monthEndDate."')) and tb_properties_category_rooms_price.category_id=".$type." and tb_properties_category_rooms_price.season_id=0";
+            //$query2 = "SELECT *, 'default' as season_name FROM tb_properties_category_rooms_price inner join tb_properties_category_rooms on tb_properties_category_rooms_price.category_id=tb_properties_category_rooms.category_id where ((room_active_from <= '".$monthStartDate."' AND room_active_to >='".$monthEndDate."') OR (room_active_from BETWEEN '".$monthStartDate."' AND '".$monthEndDate."') OR  (room_active_to BETWEEN '".$monthStartDate."' AND '".$monthEndDate."')) and tb_properties_category_rooms_price.category_id=".$type." and tb_properties_category_rooms_price.season_id=0";
+            $query2 = "SELECT *, 'default' as season_name FROM tb_properties_category_rooms_price inner join tb_properties_category_rooms on tb_properties_category_rooms_price.category_id=tb_properties_category_rooms.category_id where active_full_year=1 and tb_properties_category_rooms_price.category_id=".$type." and tb_properties_category_rooms_price.season_id=0";
             $check_room = \DB::select($query2);
+            //print_r($check_room); die;
             if(!empty($check_room)){
                 foreach($check_room as $si_room){
                     for($m=1; $m<=$numberOfDayInMonth; $m++){
@@ -1098,10 +1100,10 @@ class PropertyController extends Controller {
                         $cu_date = $year."-".$month."-".$m;
                         $curre_date = date('Y-m-d', strtotime($cu_date)); 
                         if (!array_key_exists($curre_date, $date_wise_arr)){                   
-                            if($si_room->room_active_from <= $curre_date && $si_room->room_active_to >= $curre_date){
+                            //if($si_room->room_active_from <= $curre_date && $si_room->room_active_to >= $curre_date){
                                 
                                 $date_wise_arr[$curre_date]=$si_room;
-                            }
+                            //}
                         }                    
                     }
                     //$arr_start_date = date('Y-m-d', strtotime("+1 day", strtotime($arr_start_date)));             

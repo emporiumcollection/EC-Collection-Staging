@@ -251,9 +251,11 @@
   appearance: none;
 }
 .hotelSearchDateInnerContent ul li select {
-  width: 45px;
-  margin-left: 10px;
+  /*width: 45px;
+  margin-left: 10px;*/
+  margin-left: 80px;
   padding-left: 16px;
+  text-align: center;
 }
 .hotelSearchDateInnerContent ul li select option {
   text-align-last: center;
