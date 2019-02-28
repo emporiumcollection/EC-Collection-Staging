@@ -7,9 +7,24 @@
     <div class="mobilemenu-inner">
     	<div class="mobilemainnav openmobilemenu">
             <div class="mobilenavheader " data-option="home" data-option-type="logo">
-                <a href="{{url('/')}}">
+                {{-- <a href="{{url('/')}}">
                     <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
-                </a>
+                </a> --}}
+                @if(defined('CNF_FRONTEND_LOGO'))
+                    @if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !='')
+                        <a href="{{url('/')}}">
+                            <img src="{{ asset('sximo/images/'.CNF_FRONTEND_LOGO)}}"  alt="{{ CNF_APPNAME }}" class="img-responsive"/>      
+                        </a>
+                    @else
+                        <a href="{{url('/')}}">
+                            <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
+                        </a>
+                    @endif
+                @else
+                    <a href="{{url('/')}}">
+                        <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
+                    </a>
+                @endif
             </div>
             <div class="mobilenavheader hide" data-option="child-global">
                 <h3 data-option-title="global"></h3>

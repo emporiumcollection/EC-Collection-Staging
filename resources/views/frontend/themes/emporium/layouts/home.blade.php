@@ -116,8 +116,24 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
     <header id="header">
         <!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
         <div class="logo-wrapper">
-            <a href="{{url('/')}}"><img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}"
-                                        alt="Emporium Voyage"/></a>
+            {{-- <a href="{{url('/')}}">
+                <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage"/>
+            </a> --}}
+            @if(defined('CNF_FRONTEND_LOGO'))
+                @if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !='')
+                    <a href="{{url('/')}}">
+                        <img src="{{ asset('sximo/images/'.CNF_FRONTEND_LOGO)}}"  alt="{{ CNF_APPNAME }}" class="img-responsive"/>      
+                    </a>
+                @else
+                    <a href="{{url('/')}}">
+                        <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage"/>
+                    </a>
+                @endif
+            @else
+                <a href="{{url('/')}}">
+                    <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage"/>
+                </a>
+            @endif
         </div>
         <div class="header-content">
             <div class="col-lg-12 header-search">

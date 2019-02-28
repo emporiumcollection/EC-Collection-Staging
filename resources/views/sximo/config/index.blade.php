@@ -185,7 +185,23 @@
 					@endif	
 				</div>				
 			 </div> 
+		  </div> 
+          
+           <div class="form-group">
+		    <label  class=" control-label col-md-4">Frontend Logo</label>
+			<div class="col-md-8">
+				<input type="file" name="frontlogo">
+				<p> <i>Please use image dimension 155px * 30px </i> </p>
+				<div style="padding:5px; border:solid 1px #ddd; background:#f5f5f5; width:auto;">
+				 	@if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !='')
+				 	<img src="{{ asset('sximo/images/'.CNF_FRONTEND_LOGO)}}" alt="{{ CNF_APPNAME }}" />
+				 	@else
+					<img src="{{ asset('sximo/images/logo.png')}}" alt="{{ CNF_APPNAME }}" />
+					@endif	
+				</div>				
+			 </div> 
 		  </div>  		  
+ 		  
 
 		</div>
         

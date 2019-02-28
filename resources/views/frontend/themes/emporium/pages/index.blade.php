@@ -8,9 +8,24 @@
 {{-- For Page's Content Part --}}
 @section('content')
 <div class="logo-box">
-    <a href="{{url('/')}}" class="logo-bx">
+    {{-- <a href="{{url('/')}}" class="logo-bx">
           <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
-    </a>
+    </a> --}}
+    @if(defined('CNF_FRONTEND_LOGO'))
+        @if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !='')
+            <a href="{{url('/')}}" class="logo-bx">
+                <img src="{{ asset('sximo/images/'.CNF_FRONTEND_LOGO)}}"  alt="{{ CNF_APPNAME }}" class="img-responsive"/>      
+            </a>
+        @else
+            <a href="{{url('/')}}" class="logo-bx">
+                <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>      
+            </a>
+        @endif
+    @else
+        <a href="{{url('/')}}" class="logo-bx">
+            <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>      
+        </a>
+    @endif
 </div>
 <div class="u-inline-block menu-bx unlog"><button class="c-header__btn-sound t-btn u-inline-block u-valign-middle u-vacuum log_in-btn"><div class="u-inline-block u-valign-middle u-marg-r-sm u-hide@sm" style="display: none;"><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div></div>
 

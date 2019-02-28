@@ -8,7 +8,22 @@
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
             <div class="mobilenavheader">
-				<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
+				{{-- <a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a> --}}
+                @if(defined('CNF_FRONTEND_LOGO'))
+                    @if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !='')
+                        <a href="{{url('/')}}">
+                            <img src="{{ asset('sximo/images/'.CNF_FRONTEND_LOGO)}}"  alt="{{ CNF_APPNAME }}" class="img-responsive"/>      
+                        </a>
+                    @else
+                        <a href="{{URL::to('/')}}">
+                            <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage" class="img-responsive"/>
+                        </a>
+                    @endif
+                @else
+                    <a href="{{URL::to('/')}}">
+                        <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage" class="img-responsive"/>
+                    </a>
+                @endif
                 @if(!empty($resturantArr[0])) <h3>{{$resturantArr[0]->title}}</h3> @endif
                 <a href="{{URL::to('')}}" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> Home</a>
             </div>
