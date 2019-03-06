@@ -193,7 +193,17 @@
             margin-top: 0px !important;
         }
         #mem-accordion .panel-title{
-            margin-left: 20px;
+            /*margin-left: 20px;*/
+            font-family: DomaineDisplay;
+            font-size: 26px;
+            color: #ABA07C;
+            margin: 10px 0 10px;
+            line-height: 30px;
+        }
+        #mem-accordion p{
+            font-size: 16px;
+            line-height: 22px;
+            font-family: GeomanistLight;
         }
     </style>
 @endsection

@@ -89,7 +89,7 @@ class PropertyController extends Controller {
 		return view('frontend.themes.emporium.properties.list', $this->data);
 	}
 	
-    function propertySearch(Request $request) {
+    function propertySearch_new(Request $request) {
 
 		$selCurrency=$request->input("currencyOption");
         \Session::put('currencyOption', $selCurrency);
@@ -278,7 +278,7 @@ class PropertyController extends Controller {
                     
     }
     
-	function propertySearch_old(Request $request) {
+	function propertySearch(Request $request) {
 
 		$selCurrency=$request->input("currencyOption");
         \Session::put('currencyOption', $selCurrency);
@@ -1051,6 +1051,7 @@ class PropertyController extends Controller {
         //$current_date =  date('Y-m-d', strtotime($currentDt));
         $year = date('Y', strtotime($currentDt));
         $month = date('m', strtotime($currentDt));
+        $monthname = date('F', strtotime($currentDt));
         $monthStartDate = $year."-".$month."-01";
         $dayNumber = date('w', strtotime($monthStartDate));
         
@@ -1174,8 +1175,12 @@ class PropertyController extends Controller {
         $sr = 0;
         
         $s_price = 0;
-        
-        $html = "<table id='tbl_".$type."' class='table'>";
+        $html = "<div class='season-header'>";
+            $html .= "<div class='col-sm-4 txt-left'><a href='javascript:void(0);' class='prevMonth' data-month='".$month."' data-year='".$year."' data-type='".$type."'><i class='fa fa-angle-left'></i></a></div>";
+            $html .= "<div class='col-sm-4 month-name'>".$monthname." ".$year."</div>";
+            $html .= "<div class='col-sm-4 txt-right'><a href='javascript:void(0);' class='nextMonth' data-month='".$month."' data-year='".$year."' data-type='".$type."'><i class='fa fa-angle-right'></i></a></div>";
+        $html .= "</div>";
+        $html .= "<table id='tbl_".$type."' class='table'>";
         $html .= "<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>";
         for($i=1; $i<=$numberOfDayInMonth; $i++){
             $html .= "<tr>";
@@ -1225,7 +1230,7 @@ class PropertyController extends Controller {
                                 $sr++;
                                 $arr_season_class[] = array('c_name'=>$sr, 's_name'=>$cls);
                             }
-                            $html .= '<td class="'.$c_date.' season-'.$sr.'" data-day="'.$j.'">'.$i.'<br /><span class="available">Available</span><br /><span class="price">'.$s_price.'</span></td>';
+                            $html .= '<td class="'.$c_date.' season-'.$sr.'" data-day="'.$j.'">'.$i.'<br /><span class="available">Available</span><br /><span class="price">'.intval($s_price).'</span></td>';
                         }else{
                             $html .= '<td class="na '.$c_date.'">'.$i.'<br /><span class="not-available">Not Available</span></td>';
                         }
@@ -1264,6 +1269,18 @@ class PropertyController extends Controller {
         $s_date = \CommonHelper::dateformat(trim($s_date));
         $e_date = \CommonHelper::dateformat(trim($e_date));
         //echo $type_id."/".$s_date."/".$e_date;
+        $v = $this->viewcalendar($type_id, $s_date);
+        $return['data'] = $v;
+        $return['status'] = "success";
+        echo json_encode($return); 
+        die;
+    }
+    function ajaxnextprevmonth(Request $request){
+        $type_id = $request->input('c_id');
+        $month = $request->input('mnth');
+        $year = $request->input('yr');
+        $s_date = $year."-".$month."-01";
+        
         $v = $this->viewcalendar($type_id, $s_date);
         $return['data'] = $v;
         $return['status'] = "success";

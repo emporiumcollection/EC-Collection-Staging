@@ -43,7 +43,7 @@ class PackagesController extends Controller {
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
 
-		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'order_num'); 
 		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
 		// End Filter sort and order for query 
 		// Filter Search for query		
@@ -150,6 +150,16 @@ class PackagesController extends Controller {
 			$data['user_id'] = $uid;
 			$data['package_category'] = $request->input('package_category');
 			$data['package_usp'] = $request->input('package_usp');
+            if($request->input('id') =='')
+			{
+				$check_ordering = \DB::table('tb_packages')->orderBy('order_num', 'desc')->first();
+				if(!empty($check_ordering)){
+					$data['order_num'] = $check_ordering->order_num + 1;
+				}
+				else{
+					$data['order_num'] = 1;
+				}
+			}
             if ($request->input('id') == '') {
                 $data['created_at'] = date('Y-m-d h:i:s');
             } else {
@@ -302,6 +312,55 @@ class PackagesController extends Controller {
         echo json_encode(array('id'=>$setup_package->id));
         exit();
     }
+    function change_ordering(Request $request)
+	{
+		$uid = \Auth::user()->id;
+		$filed_id = Input::get('fieldID');
+		$action = Input::get('order_type');
+		$ret_url = Input::get('curnurl');
+		if($filed_id!='' && $filed_id>0)
+		{
+			$exist = \DB::table('tb_packages')->where('id', $filed_id)->first();
+			if(!empty($exist))
+			{
+				if($action=='up')
+				{
+					$previous = \DB::table('tb_packages')->where('order_num', '<', $exist->order_num)->orderBy('order_num','desc')->first();
+					if(!empty($previous))
+					{
+						$previous_order = $previous->order_num + 1;
+						$update_ordering = \DB::table('tb_packages')->where('id',$previous->id)->update(['order_num'=>$previous_order]);
+					}
+					$new_ord_num = $exist->order_num - 1;
+				}
+				elseif($action=='down')
+				{
+					$next = \DB::table('tb_packages')->where('order_num', '>', $exist->order_num)->orderBy('order_num','asc')->first();
+					if(!empty($next))
+					{
+						$next_order = $next->order_num - 1;
+						$update_ordering = \DB::table('tb_packages')->where('id',$next->id)->update(['order_num'=>$next_order]);
+					}
+					
+					$new_ord_num = $exist->order_num + 1;
+				}
+				
+				$update_ordering = \DB::table('tb_packages')->where('id',$filed_id)->update(['order_num'=>$new_ord_num]);
+				if($update_ordering)
+				{
+					return Redirect::to($ret_url)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+				}
+			}
+			else
+			{
+				return Redirect::to($ret_url)->with('messagetext','No record found')->with('msgstatus','error');
+			}
+		}
+		else
+		{
+			return Redirect::to($ret_url)->with('messagetext','No record found')->with('msgstatus','error');
+		}
+	}
 
 }
 

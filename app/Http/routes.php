@@ -420,6 +420,9 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('getPropertyTypeRates', 'PropertiesController@getPropertyTypeRates');
     
     Route::get('ajaxcalendar', 'Frontend\PropertyController@ajaxcalendar');
+    
+    Route::get('ajaxnextprevmonth', 'Frontend\PropertyController@ajaxnextprevmonth');
+   	Route::post('change_order_num', 'PackagesController@change_ordering');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

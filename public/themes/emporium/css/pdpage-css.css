@@ -1001,36 +1001,61 @@ position: absolute;
  .season-accordion .season-calendar table tr td{
     background: transparent !important;
     text-align: center;
-    color: #000 !important;
+    /*color: #000 !important;*/
  }
  .season-accordion .season-calendar table tr td span.available{
-    color:#000;
+    /*color:#000;*/
     font-size: 11px;
  }
  .season-accordion .season-calendar table tr td.na{
-    color:#fff !important;    
+    /*color:#fff !important;*/    
  }
  .season-accordion .season-calendar table tr td span.not-available{
-    color:#fff;
+    /*color:#fff;*/
     font-size: 12px;
  }
  /* -- End calendar table css -- */
  
  /*----------- Start Seasons Class ----*/
  .season-accordion .season-calendar table tr td.season-1{
-    background: #d9a0af !important;    
+    /*background: #d9a0af !important;*/
+    border: 2px solid #d9a0af !important;    
  }
  .season-accordion .season-calendar table tr td.season-2{
-    background: #D1DBBD !important;    
+    /*background: #D1DBBD !important;*/   
+    border: 2px solid #D1DBBD !important;  
  }
  .season-accordion .season-calendar table tr td.season-3{
-    background: #648da6 !important;    
+    /*background: #648da6 !important;*/ 
+    border: 2px solid #648da6 !important;    
  }
  .season-accordion .season-calendar table tr td.season-4{
-    background: #90a2b6 !important;    
+    /*background: #90a2b6 !important; */
+    border: 2px solid #90a2b6 !important;    
  }
  .season-accordion .season-calendar table tr td.season-5{
-    background: #3fff9f !important;    
+    /*background: #3fff9f !important;*/    
+    border: 2px solid #3fff9f !important; 
+ }
+ .season-accordion .season-calendar .season-header{
+    width: 90%;
+    color: #ABA07C !important;
+    height: 25px;
+ }
+ .season-accordion .season-calendar .season-header a{
+    color: #ABA07C !important;
+ }
+ .season-accordion .season-calendar .season-header a:hover{
+    color: #ABA07C !important;
+ }
+ .season-accordion .season-calendar .season-header .month-name{
+    text-align: center;
+ }
+ .season-accordion .season-calendar .season-header .txt-left{
+    text-align: left;
+ }
+ .season-accordion .season-calendar .season-header .txt-right{
+    text-align: right;
  }
  .season-accordion .season-calendar .season-footer{
     width: 100%;
@@ -1045,42 +1070,42 @@ position: absolute;
     color: #ABA07C !important;
  }
  .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-1{
-    width: 80%;  
-    height: 50px;  
-    background: #d9a0af;
-    border: 1px solid #414246 !important;
+    width: 60%;  
+    height: 25px;  
+    /*background: #d9a0af;*/
+    border: 1px solid #d9a0af !important;
     color: #ABA07C !important;
     margin: 0px auto;
  }
  .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-2{
-    width: 80%;  
-    height: 50px;  
-    background: #D1DBBD;
-    border: 1px solid #414246 !important;
+    width: 60%;  
+    height: 25px;  
+    /*background: #D1DBBD;*/
+    border: 1px solid #D1DBBD !important;
     color: #ABA07C !important;
     margin: 0px auto;
  }
  .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-3{
-    width: 80%;  
-    height: 50px;  
-    background: #648da6;
-    border: 1px solid #414246 !important;
+    width: 60%;  
+    height: 25px;  
+    /*background: #648da6;*/
+    border: 1px solid #648da6 !important;
     color: #ABA07C !important;
     margin: 0px auto;
  }
  .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-4{
-    width: 80%;  
-    height: 50px;  
-    background: #90a2b6;
-    border: 1px solid #414246 !important;
+    width: 60%;  
+    height: 25px;  
+    /*background: #90a2b6;*/
+    border: 1px solid #90a2b6 !important;
     color: #ABA07C !important;
     margin: 0px auto;
  }
  .season-accordion .season-calendar .season-footer .s-footer-item .s-footer-box-5{
-    width: 80%;  
-    height: 50px;  
-    background: #3fff9f;
-    border: 1px solid #414246 !important;
+    width: 60%;  
+    height: 25px;  
+    /*background: #3fff9f;*/
+    border: 1px solid #3fff9f !important;
     color: #ABA07C !important;
     margin: 0px auto;
  } 

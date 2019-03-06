@@ -329,7 +329,7 @@
                                                     </div>
                                                 </div> 
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2 pad-0">
                                                 <button class="btn season-search" data-id='{{$type->id}}'>Submit</button>
                                             </div>
                                             <div class="col-sm-12" style="margin-top: 20px;">
@@ -811,7 +811,7 @@
                     float: left;
                 }
                 .center-calendarbox span{ color: #fff !important; display: inline !important; }
-                .t-day{ color: #000 !important; }
+                /*.t-day{ color: #000 !important; }*/
                 
                 .t-date-divide{
                     float: left;
@@ -925,12 +925,45 @@
                 .calendar-left-box .season-search{
                     background: #aba00b;
                     color: #fff;
+                    border-radius: 0px;
+                    text-transform: uppercase;
+                    margin-top: 2px;
+                    margin-left: -7px;
+                }
+                .calendar-left-box .pad-0{
+                    padding: 0px;
                 }
                 .t-datepicker-box .t-check-in, .t-datepicker-box .t-check-out {
                     width: 97% !important;
                 }
                 
-                
+                .t-datepicker-day{
+                    background: #252525 !important;
+                    color: #ABA07C !important;
+                    border-color: #ABA07C;
+                }
+                .t-day, .t-disabled, .t-end, .t-range, .t-start{
+                    background: #252525 !important;
+                    color: #ABA07C !important;
+                    border-color: #ABA07C;
+                    border-width: 1px;
+                }
+                .t-today, .t-today .t-hover-day-content{
+                    background: #ABA07C;
+                }
+                .t-today:hover, .t-today:hover .t-hover-day-content{
+                    background: #ABA07C;
+                }
+                .t-today:hover::after {
+                    border-top-color: #ABA07C;
+                }
+                .t-hover-day::after {
+                    border-color: #ABA07C transparent transparent;
+                }
+                .t-arrow-top::after {
+                    top: -10px;                    
+                    border-bottom-color: #ABA07C;
+                }
                 @media (max-width:1199px){
                     #showMemberLoginPopup .modal-dialog{
                         width:auto !important;
@@ -1089,6 +1122,57 @@
 
 		});
 		
+        $(document).on('click', '.prevMonth', function(e){
+            e.preventDefault();
+            var mnth = $(this).attr('data-month');
+            var yr = $(this).attr('data-year');
+            if(mnth > 0){
+                mnth--;
+            }else{
+                mnth = 01;
+                yr--;
+            }          
+            var c_id = $(this).attr('data-type');
+            $.ajax({
+                url:'{{URL::to("ajaxnextprevmonth")}}',
+                dataType:'json',
+                data: {c_id:c_id, mnth:mnth, yr:yr},
+                type: 'get',
+                success: function(response){
+                    //console.log(response);
+                    $('#calendar-'+c_id).html('');
+                    if(response.status=='success'){
+                        $('#calendar-'+c_id).html(response.data);
+                    }
+                }
+            });
+        });
+        $(document).on('click', '.nextMonth', function(e){
+            e.preventDefault();
+            var mnth = $(this).attr('data-month'); 
+            var yr = $(this).attr('data-year');
+            if(mnth < 12){
+                mnth++;
+            }else{
+                mnth = 01;
+                yr++;
+            }           
+            
+            var c_id = $(this).attr('data-type');
+            $.ajax({
+                url:'{{URL::to("ajaxnextprevmonth")}}',
+                dataType:'json',
+                data: {c_id:c_id, mnth:mnth, yr:yr},
+                type: 'get',
+                success: function(response){
+                    //console.log(response);
+                    $('#calendar-'+c_id).html('');
+                    if(response.status=='success'){
+                        $('#calendar-'+c_id).html(response.data);
+                    }
+                }
+            });
+        });
 		function renderRoomimages(data) {
 			$('.galleryImgdata').html('');
 			var imagesPro = '';

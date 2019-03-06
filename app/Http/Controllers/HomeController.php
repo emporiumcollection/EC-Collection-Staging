@@ -6703,7 +6703,7 @@ die;        */
             }
         }        
         $this->data['mem_type'] = $f_str_query;
-        $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();
+        $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->orderby('order_num', 'asc')->get();
         return view('frontend.themes.emporium.pages.memberships', $this->data);
     }
     public function membershipPopup(Request $request){
