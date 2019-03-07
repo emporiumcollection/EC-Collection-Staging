@@ -937,33 +937,7 @@
                     width: 97% !important;
                 }
                 
-                .t-datepicker-day{
-                    background: #252525 !important;
-                    color: #ABA07C !important;
-                    border-color: #ABA07C;
-                }
-                .t-day, .t-disabled, .t-end, .t-range, .t-start{
-                    background: #252525 !important;
-                    color: #ABA07C !important;
-                    border-color: #ABA07C;
-                    border-width: 1px;
-                }
-                .t-today, .t-today .t-hover-day-content{
-                    background: #ABA07C;
-                }
-                .t-today:hover, .t-today:hover .t-hover-day-content{
-                    background: #ABA07C;
-                }
-                .t-today:hover::after {
-                    border-top-color: #ABA07C;
-                }
-                .t-hover-day::after {
-                    border-color: #ABA07C transparent transparent;
-                }
-                .t-arrow-top::after {
-                    top: -10px;                    
-                    border-bottom-color: #ABA07C;
-                }
+                
                 @media (max-width:1199px){
                     #showMemberLoginPopup .modal-dialog{
                         width:auto !important;
