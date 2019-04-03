@@ -61,7 +61,16 @@
 				<option value="active" <?php echo ($curstatus == 'active') ? " selected='selected' " : "selected='selected'" ; ?>>Active</option>
 				<option value="inactive" <?php echo ($curstatus == 'inactive') ? " selected='selected' " : '' ; ?>>Inactive</option>
 			</select>
-
+            
+            <select name='property_type' id='property_type' style="height: 28px; margin-left: 5px;" onchange="fetchpropertytype(this.value);" > 
+				<option value="">-Select-</option>
+				@if(!empty($prop_cat))
+					@foreach($prop_cat as $si)
+						<option value="{{$si->id}}">{{$si->package_title}}</option>
+					@endforeach
+				@endif
+			</select>
+            
 			<div id="searchform-navbar" class="searchform-navbar" style="float:right;">
 				<input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Search" type="text">
 			</div>

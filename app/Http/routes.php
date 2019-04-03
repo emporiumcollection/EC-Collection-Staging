@@ -423,6 +423,8 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::get('ajaxnextprevmonth', 'Frontend\PropertyController@ajaxnextprevmonth');
    	Route::post('change_order_num', 'PackagesController@change_ordering');
+    
+    Route::post('pdproomavailability', 'HomeController@ajaxcheckavailability');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
@@ -662,3 +664,5 @@ Route::get('traveller/checkroomavailabilitybydates', 'BookingsController@checkro
 Route::get('traveller/checkcategoryavailability', 'BookingsController@checkcategoryavailability');
 
 Route::get('traveller/get_daywise_price', 'HomeController@get_daywise_price');
+
+Route::get('{slug}/room-availability', 'Frontend\PropertyController@roomavailability');

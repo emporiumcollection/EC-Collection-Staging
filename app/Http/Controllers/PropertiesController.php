@@ -112,6 +112,7 @@ class PropertiesController extends Controller {
         $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
 		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
+        $this->data['prop_cat'] = \DB::table('tb_packages')->where('package_status', 1)->where('package_category', 'B2C')->get();
         
         $hotelIds = array();
         foreach($this->data['rowData'] as $si_hotel){
@@ -1382,13 +1383,52 @@ class PropertiesController extends Controller {
             if (!is_null($request->input('terms_n_conditions'))) {
                 $row = \DB::table('td_property_terms_n_conditions')->where('property_id', $property_id)->first();
                 if (!empty($row)) {
-                    \DB::table('td_property_terms_n_conditions')->where('term_id', $row->term_id)->update(array('terms_n_conditions' => $request->input('terms_n_conditions')));
+                    \DB::table('td_property_terms_n_conditions')->where('term_id', $row->term_id)->update(array('terms_n_conditions' => $request->input('terms_n_conditions'), 'applytoallroomtypes'=>$request->input('termsapplytoallroomtypes')));
                 } else {
-                    \DB::table('td_property_terms_n_conditions')->insertGetId(array('property_id' => $property_id, 'terms_n_conditions' => $request->input('terms_n_conditions')));
+                    \DB::table('td_property_terms_n_conditions')->insertGetId(array('property_id' => $property_id, 'terms_n_conditions' => $request->input('terms_n_conditions'), 'applytoallroomtypes'=>$request->input('termsapplytoallroomtypes')));
                 }
-            }
+            }            
             $this->data['row'] = \DB::table('td_property_terms_n_conditions')->where('property_id', $property_id)->first();
-            return view('properties.settings_terms_and_conditions', $this->data);
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_terms_and_conditions':'properties.settings_terms_and_conditions'; 
+            return view($file_name, $this->data);
+            
+        }elseif ($active == 'custom-price') {            
+            $this->data[] = '';            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            if($is_demo6!=''){
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_customprice':'properties.custom_price';                
+                return view($file_name, $this->data);
+            }
+        }elseif ($active == 'restrictions') {            
+            $this->data[] = '';            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            if($is_demo6!=''){
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_restrictions':'properties.custom_price';                
+                return view($file_name, $this->data);
+            }
+        }elseif ($active == 'options') {            
+            $this->data[] = '';            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            if($is_demo6!=''){
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_options':'properties.custom_price';                
+                return view($file_name, $this->data);
+            }
+        }elseif ($active == 'boards') {            
+            $this->data[] = '';            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            if($is_demo6!=''){
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_boards':'properties.custom_price';                
+                return view($file_name, $this->data);
+            }
+        }elseif ($active == 'meals') {            
+            $this->data[] = '';            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            if($is_demo6!=''){
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_meals':'properties.custom_price';                
+                return view($file_name, $this->data);
+            }
         }
         if ($active == 'seasons') {
             $seasonArr = array();
@@ -1560,6 +1600,8 @@ class PropertiesController extends Controller {
             $data['guests_adults'] = $request->input('guests_adult');
             $data['guests_juniors'] = $request->input('guests_junior');
             $data['guests_babies'] = $request->input('guests_babies');
+            //$data['booking_policy'] =  $request->input('bookingPolicy');
+            
             if (!is_null($request->input('count_baby'))) {
                 $data['baby_count'] = $request->input('count_baby');
             } else {
@@ -1574,10 +1616,14 @@ class PropertiesController extends Controller {
 
             if ($request->input('edit_type_id') == '') {
                 $data['created'] = date('Y-m-d h:i:s');
+                $data['booking_policy'] =  $request->input('bookingPolicy');
+                $data['cat_color'] =  $request->input('cat_color');
                 $instype = 'add';
                 $id = \DB::table('tb_properties_category_types')->insertGetId($data);
             } else {
                 $data['updated'] = date('Y-m-d h:i:s');
+                $data['booking_policy'] =  $request->input('bookingPolicy');   
+                $data['cat_color'] =  $request->input('cat_color');             
                 $instype = 'update';
                 $id = \DB::table('tb_properties_category_types')->where('id', $request->input('edit_type_id'))->update($data);
             }
@@ -1650,8 +1696,10 @@ class PropertiesController extends Controller {
             $data['room_name'] = $request->input('room_name');
             if (!is_null($request->input('room_active_full'))) {
                 $data['active_full_year'] = $request->input('room_active_full');
-                $data['room_active_from'] = date('Y-m-d');
-                $data['room_active_to'] = date('Y') . '-12-31';
+                //$data['room_active_from'] = date('Y-m-d');
+                //$data['room_active_to'] = date('Y') . '-12-31';
+                $data['room_active_from'] = $request->input('room_active_from');
+                $data['room_active_to'] = $request->input('room_active_to');
             } else {
                 $data['active_full_year'] = 0;
                 $data['room_active_from'] = $request->input('room_active_from');
@@ -4644,7 +4692,7 @@ function property_images_wetransfer(Request $request) {
           
         $prop_id = 0;
         $property_name = '';
-        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+        $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->orWhere('assigned_user_id', $u_id)->first();
         if(!empty($obj_property)){
             $prop_id = $obj_property->id;
             $property_name = $obj_property->property_name;

@@ -179,7 +179,8 @@
         $images_arr = array();
         foreach($femotional_gallery as $si_g_image){
             //$images_arr[] = array("src"=>\URL::to('container-image/'.$si_g_image->id));
-            $images_arr[] = array("src"=>\URL::to('uploads/thumbs/format_'.$si_g_image->folder_id.'_'.$si_g_image->file_name));
+            //$images_arr[] = array("src"=>\URL::to('uploads/thumbs/format_'.$si_g_image->folder_id.'_'.$si_g_image->file_name));
+            $images_arr[] = array("src"=>$si_g_image->imgsrc.$si_g_image->file_name);
         }
         $img_str = json_encode($images_arr);
         ?>

@@ -15,13 +15,13 @@ input:focus, .header-content select:focus, textarea:focus{outline:0;box-shadow:n
 .left-sidebar{width:320px; position:fixed; left:0; top:85px; bottom:0; height:100vh; min-height:100%; background:rgba(37, 37, 37, 1); overflow:auto; padding-top:20px;-webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease; z-index:99; display:none;}
-.header-content input[type=text], .header-content input[type=date], .header-content input[type=number], .header-content select{background-color: #89837b;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 35px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'GeomanistLight', sans-serif;}
+.header-content input[type=text], .header-content input[type=date], .header-content input[type=number], .header-content select{background-color: #89837b;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 37px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'GeomanistLight', sans-serif;}
 .header-content select{-webkit-appearance: none; -webkit-border-radius: 0px; background:url(../images/icon-select-arrow.png) 96% 12px no-repeat #89837b !important;}
 .header-content input[type=text]:focus, .header-content input[type=date]:focus, .header-content input[type=number]:focus, .header-content select:focus{outline:none; border:0; box-shadow:none; -webkit-box-shadow:none;}
 .header-search .col-md-4, .header-search .col-md-3, .header-search .col-md-2, .header-search .col-md-1, .header-search .col-sm-2{padding-right:0;}
 .header-search .col-md-4.calendarbox {padding-right:15px;}
 .header-search .calendarbox .col-sm-6{padding-right:0;}
-.header-content .btn{background-color: #aba00b; border: medium none; border-radius: 0; color: #fff; padding: 7px 9px;}
+.header-content .btn{background-color: #aba00b; border: medium none; border-radius: 0; color: #fff; padding: 7px 9px; text-transform: uppercase;}
 .header-content .btn:hover{background:#ABA07C;}
 .header-content .btn:focus{outline:0;}
 .show-login-forms-btn {

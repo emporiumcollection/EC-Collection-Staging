@@ -222,7 +222,7 @@
             padding: 60px 0;
         }
         .txt-box {
-            padding: 100px 0 120px;
+            /*padding: 100px 0 120px;*/
             text-align: center;
         }
         
@@ -276,7 +276,7 @@
             }
             .header2TD,
             .header5TD {
-                color: #333;
+                color: #ABA07C;
                 font-family: ACaslonPro-Regular;
                 font-size: 18px;
                 text-align: center;
@@ -291,7 +291,7 @@
                 line-height: 19px;
             }
             .header5TD {
-                color: #eeeeee;
+                color: #ABA07C;
                 font-size: 15px;
                 font-weight: bold;
                 text-align: center;
@@ -301,12 +301,12 @@
                 font-weight: bold !important;
             }
             .header5TD a {
-                color: #eeeeee !important;
+                color: #ABA07C !important;
             }
             .RegularTextTD,
             .RegularText4TD,
             .RegularText5TD {
-                color: #333;
+                color: #fff;
                 font-family: ACaslonPro-Regular;
                 font-size: 13px;
                 font-weight: lighter;
@@ -314,25 +314,25 @@
                 line-height: 23px;
             }
             .RegularTextTD a {
-                color: #4B4743 !important;
+                color: #fff !important;
                 font-weight: bold !important;
             }
             .RegularText4TD {
-                color: #333;
+                color: #fff;
                 font-size: 14px;
                 font-weight: bold;
                 text-align: left;
             }
             .RegularText4TD a {
-                color: #4B4743 !important;
+                color: #fff !important;
             }
             .RegularText5TD {
-                color: #333;
+                color: #fff;
                 font-size: 14px;
                 text-align: center;
             }
             .RegularText5TD a {
-                color: #333 !important;
+                color: #fff !important;
                 font-weight: bold !important;
             }
             td a img {
@@ -515,15 +515,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                <table width="629" bgcolor="#4B4743" align="left" cellspacing="0" cellpadding="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table width="629" bgcolor="#252525" align="left" cellspacing="0" cellpadding="0" border="0" class="table600" style="border-bottom:1px solid #414246; mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
                                                                             <td align="left" style="border-collapse: collapse;">
                                                                                 <table align="center" cellspacing="0" cellpadding="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                            <th width="400" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                <table width="400" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <th width="313" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                                <table width="313" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tbody>
                                                                                                         <tr>
                                                                                                             <td height="20" colspan="3" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -540,7 +540,26 @@
                                                                                                     </tbody>
                                                                                                 </table>
                                                                                             </th>
-
+                                                                                            
+                                                                                            <th width="313" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                                <table width="313" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td height="20" colspan="3" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                            <!-- DESCRIPTION TEXT -->
+                                                                                                            <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Your Membership Status : Lifestyle</td>
+                                                                                                            <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td height="20" colspan="3" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </th>
+                                                                                            
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -571,10 +590,10 @@
                             <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                        <table width="629" bgcolor="#D8D8D4" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                        <table width="629" bgcolor="#252525" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                             <tr>
                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                         <tr>
                                                             <td align="center" style="border-collapse: collapse;">
                                                                 <table cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -588,7 +607,11 @@
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
                                                                                     <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">Dear {full_user_name},
-                                                                                        <br/>We are delighted that you have chosen "{property_name}" and we are pleased to confirm your reservation as follows:</td>
+                                                                                        <br/>We are delighted that you have chosen "{property_name}" and we are pleased to confirm your reservation as follows: 
+                                                                                        <br />
+                                                                                        Your reservation requires direct payment at the Hotel 
+Please use your Booking reference at the time of payment.
+                                                                                    </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                 </tr>
                                                                                 <tr>
@@ -621,10 +644,10 @@
                             <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                        <table width="629" bgcolor="#D8D8D4" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                        <table width="629" bgcolor="#252525" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                             <tr>
                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                         <tr>
                                                             <td align="center" style="border-collapse: collapse;">
                                                                 <table cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -677,7 +700,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                <table width="629" bgcolor="#4B4743" align="left" cellspacing="0" cellpadding="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table width="629" bgcolor="#252525" align="left" cellspacing="0" cellpadding="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
                                                                             <td align="left" style="border-collapse: collapse;">
@@ -685,7 +708,7 @@
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <th width="400" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                <table width="400" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <table width="400" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tbody>
                                                                                                         <tr>
                                                                                                             <td height="20" colspan="3" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -734,13 +757,13 @@
                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 628px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                             <tr>
                                                 <td class="table600st" style="min-width: 628px;border-collapse: collapse;">
-                                                    <table width="629" bgcolor="#D8D8D4" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <table width="629" bgcolor="#252525" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                         <tr>
                                                             <td style="border-collapse: collapse;">
-                                                                <table align="center" cellpadding="0" cellspacing="0" bgcolor="#D8D8D4" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="center" cellpadding="0" cellspacing="0" bgcolor="#252525" border="0" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tr>
                                                                         <th width="314" class="stack" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                            <table width="314" align="center" cellpadding="0" cellspacing="0" border="0" class="table6003" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                            <table width="314" align="center" cellpadding="0" cellspacing="0" border="0" class="table6003" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <tr>
                                                                                     <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                 </tr>
@@ -781,7 +804,7 @@
                                                                                 </tr>
                                                                             </table>
                                                                         </th>
-                                                                        <th width="314" class="stack" valign="top" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                        <th width="314" class="stack" valign="top" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
                                                                             <table width="314" align="center" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <tr>
                                                                                     <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
@@ -809,9 +832,9 @@
                                                                                                 <!--ADDRESS ETC. SECTION-->
                                                                                                 <td colspan="3" class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-11">City: {property_city}
                                                                                                     <br/>Country: {property_country}
-                                                                                                    <br/>Website: <a href="{property_website}">{property_website}</a>
-                                                                                                    <br/>Phone: <a href="tel:{property_phone}">{property_phone}</a>
-                                                                                                    <br/><a href="mailto:{property_email}">{property_email}</a>
+                                                                                                    
+                                                                                                    <br/>Phone: <a href="tel:+19344511317"> +1 934 451 1317</a>
+                                                                                                    <br/><a href="mailto:reservations@emporium-voyage.com">reservations@emporium-voyage.com</a>
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>
@@ -852,13 +875,13 @@
                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                             <tr>
                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                    <table width="629" bgcolor="#D8D8D4" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <table width="629" bgcolor="#252525" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                         <tr>
                                                             <td align="left" style="border-collapse: collapse;">
-                                                                <table align="center" bgcolor="#D8D8D4" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="center" bgcolor="#252525" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tr>
                                                                         <th width="209" class="stack" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table6003" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table6003" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <tr>
                                                                                     <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                 </tr>
@@ -887,8 +910,8 @@
                                                                                 </tr>
                                                                             </table>
                                                                         </th>
-                                                                        <th width="209" class="stack" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table6003" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                        <th width="209" class="stack" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table6003" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <tr>
                                                                                     <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                 </tr>
@@ -917,8 +940,8 @@
                                                                                 </tr>
                                                                             </table>
                                                                         </th>
-                                                                        <th width="209" class="stack" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                        <th width="209" class="stack" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <tr>
                                                                                     <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                 </tr>
@@ -977,15 +1000,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td style="min-width: 629px;border-collapse: collapse;" class="table600st">
-                                                                <table width="629" bgcolor="#4B4743" align="left" cellspacing="0" cellpadding="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="table600">
+                                                                <table width="629" bgcolor="#252525" align="left" cellspacing="0" cellpadding="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="table600">
                                                                     <tbody>
                                                                         <tr>
                                                                             <td align="left" style="border-collapse: collapse;">
-                                                                                <table align="center" cellspacing="0" cellpadding="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                <table align="center" cellspacing="0" cellpadding="0" border="0" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                            <th width="400" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;" class="stack2">
-                                                                                                <table width="400" align="center" cellspacing="0" cellpadding="0" border="0" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="table60032">
+                                                                                            <th width="629" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;" class="stack2">
+                                                                                                <table width="629" align="center" cellspacing="0" cellpadding="0" border="0" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="table60032">
                                                                                                     <tbody>
                                                                                                         <tr>
                                                                                                             <td height="20" class="va2" style="font-size: 0;line-height:1;border-collapse: collapse;" colspan="3">&nbsp;</td>
@@ -1032,10 +1055,10 @@
                             <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                        <table width="629" bgcolor="#D8D8D4" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                        <table width="629" bgcolor="#252525" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                             <tr>
                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                         <tr>
                                                             <td align="center" style="border-collapse: collapse;">
                                                                 <table cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -1059,7 +1082,7 @@
                                                                                 <tr>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
-                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
+                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid #414246; float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
                                                                                         <span class="roomTypeName">Relationship: {relationship}</span>
                                                                                     </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1068,7 +1091,7 @@
                                                                                 <tr>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
-                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
+                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid #414246; float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
                                                                                         <span class="roomTypeName">Purpose of stay</span>
                                                                                     </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1087,7 +1110,7 @@
                                                                                 <tr>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
-                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
+                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid #414246; float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
                                                                                         <span class="roomTypeName">{category_name} preferences</span>
                                                                                     </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1111,7 +1134,7 @@
                                                                                 <tr>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
-                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
+                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid #414246; float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
                                                                                         <span class="roomTypeName">Bedding preferences</span>
                                                                                     </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1133,7 +1156,7 @@
                                                                                 <tr>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
-                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
+                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid #414246; float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
                                                                                         <span class="roomTypeName">Lifestyle preferences</span>
                                                                                     </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1162,7 +1185,7 @@
                                                                                 <tr>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                     <!--TEXT SECTION-->
-                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
+                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid #414246; float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
                                                                                         <span class="roomTypeName">Eating & Drinking preferences</span>
                                                                                     </td>
                                                                                     <td width="30" class="wz" style="border-collapse: collapse;"></td>
@@ -1230,13 +1253,13 @@
                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#4B4743" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#252525" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                         <tr>
                                                                             <td align="left" style="border-collapse: collapse;">
-                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                     <tr>
                                                                                         <th width="209" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table60032" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                 </tr>
@@ -1251,8 +1274,8 @@
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </th>
-                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                 </tr>
@@ -1267,7 +1290,7 @@
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </th>
-                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1283,7 +1306,7 @@
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </th>
-                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1331,10 +1354,10 @@
                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#D8D8D4" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#252525" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                         <tr>
                                                                             <td align="left" style="border-collapse: collapse;">
-                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                     {reserved_rooms}
                                                                                 </table>
                                                                             </td>
@@ -1363,12 +1386,12 @@
                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#D8D8D4" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#252525" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                         <tr>
                                                                             <td align="left" style="border-collapse: collapse;">
                                                                                 <table align="center" cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                     <tr>
-                                                                                        <th width="349" height="100" rowspan="4" class="stack4" bgcolor="#D8D8D4" style="margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                        <th width="349" height="100" rowspan="4" class="stack4" bgcolor="#252525" style="margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #414246;border-collapse: collapse;">
                                                                                             <table width="349" align="center" cellpadding="0" cellspacing="0" border="0" class="table60034" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1385,7 +1408,7 @@
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </th>
-                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#252525" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #414246;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1401,7 +1424,7 @@
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </th>
-                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#252525" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #414246;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1419,7 +1442,7 @@
                                                                                         </th>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#252525" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #414246;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1435,7 +1458,7 @@
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </th>
-                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#252525" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #414246;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1453,7 +1476,7 @@
                                                                                         </th>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th width="139" class="stack3" bgcolor="#4B4743" valign="top" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" bgcolor="#252525" valign="top" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #414246;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1461,7 +1484,7 @@
                                                                                                 <tr>
                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                     <!-- TOTAL -->
-                                                                                                    <td bgcolor="#4B4743" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-49">Total</td>
+                                                                                                    <td bgcolor="#252525" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-49">Total</td>
                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1469,7 +1492,7 @@
                                                                                                 </tr>
                                                                                             </table>
                                                                                         </th>
-                                                                                        <th width="139" class="stack3" bgcolor="#4B4743" valign="top" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                        <th width="139" class="stack3" bgcolor="#252525" valign="top" style="border-left: 1px solid #414246;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #414246;border-collapse: collapse;">
                                                                                             <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -1477,7 +1500,7 @@
                                                                                                 <tr>
                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                     <!-- INVOICE TOTAL -->
-                                                                                                    <td bgcolor="#4B4743" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-50">{grand_total}</td>
+                                                                                                    <td bgcolor="#252525" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-50">{grand_total}</td>
                                                                                                     <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                 </tr>
                                                                                                 <tr>
@@ -1515,7 +1538,7 @@
                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                    <table width="629" bgcolor="#D8D8D4" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-radius: 0 0 6px 6px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                    <table width="629" bgcolor="#252525" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-radius: 0 0 6px 6px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                         <tr>
                                                                             <td style="border-collapse: collapse;">
                                                                                 <table width="627" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">

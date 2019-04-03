@@ -17,8 +17,271 @@ $(document).ready(function () {
     $(document).on('click', '.close-btn-align', function () {
         $(".cookie-bar-page").fadeOut();
     });
-
-
+    
+    $(document).on('click', function(e){
+        $(".chooseadultroom").css('display', 'none');
+    });
+    
+    $(document).on('click', '#down-arrow', function (e) {
+        $(".chooseadultroom").toggle();
+        e.stopPropagation();
+    });
+    
+    /*$(document).on('click', '#pdp_check_availibility', function(e){
+        e.preventDefault();
+        $('.header-content').addClass('showsearch');
+        var property = $("select[name='property']").val();
+        var arrive = $("input[name='arrive']").val();
+        var departure = $("input[name='departure']").val();
+        var booking_rooms = $("input[name='booking_rooms']").val();
+        var booking_adults = $("input[name='booking_adults']").val();
+        var booking_children = $("input[name='booking_children']").val();
+        var roomType = $("select[name='roomType']").val();
+        
+        $.ajax({
+           url: BaseURL +'/pdproomavailability',
+           type:'post',
+           dataType:'json',
+           data:{property:property, arrive:arrive, departure:departure, booking_rooms:booking_rooms, booking_adults:booking_adults, booking_children:booking_children, roomType:roomType},
+           success: function(response){
+                console.log(response);
+                $("#raModal").modal('show'); 
+           } 
+        });     
+    });
+    
+    $(document).on('hide.bs.modal','#raModal', function () {
+        $('.header-content').addClass('showsearch');      
+    });*/
+    
+    $(document).on('click', '.minus-room', function (e) {        
+        $(".traveller-type").each(function(index, element){ 
+            if($(this).hasClass('active')){ 
+                var room = $(this).attr('data-room');
+                var adult = $(this).attr('data-adult');
+                var t_type = $(this).attr('data-id'); 
+                if(room.length > 0){            
+                    room = parseInt(room); 
+                    if(room > 1){
+                        room = room - 1;
+                        $(this).attr('data-room', room);
+                        check_room_adult_bytype(t_type);
+                    }
+                }
+                
+            }
+        }); 
+        e.stopPropagation();        
+    });
+    $(document).on('click', '.plus-room', function (e) { 
+        $(".traveller-type").each(function(index, element){ 
+            //var type_id = $(this).attr('data-id');
+            if($(this).hasClass('active')){ 
+                var room = $(this).attr('data-room');
+                var adult = $(this).attr('data-adult');
+                var t_type = $(this).attr('data-id'); 
+                
+                var room1 = $("#tr_"+t_type+"_rooms").val();
+                var adult1 = $("#tr_"+t_type+"_adults").val();
+                var child1 = $("#tr_"+t_type+"_child").val();
+                
+                if(room.length > 0){            
+                    room = parseInt(room); 
+                    if(room > 0){ 
+                        room = room + 1;  
+                        if(adult < room){
+                            adult = parseInt(adult) + 1;
+                            $(this).attr('data-adult', adult);
+                        }                      
+                        $(this).attr('data-room', room);
+                        check_room_adult_bytype(t_type);
+                    }
+                }
+                
+            }
+        });
+        e.stopPropagation();
+    });
+    $(document).on('click', '.minus-adult', function (e) { 
+        $(".traveller-type").each(function(index, element){ 
+            if($(this).hasClass('active')){
+                var room = $(this).attr('data-room');
+                var adult = $(this).attr('data-adult');
+                var t_type = $(this).attr('data-id'); 
+                if(adult.length > 0){            
+                    adult = parseInt(adult);
+                    if(adult > 1 && adult > room){ 
+                        adult = adult - 1;                        
+                        $(this).attr('data-adult', adult);
+                        check_room_adult_bytype(t_type);
+                    }
+                }
+                
+            }
+        });
+        e.stopPropagation();  
+    });
+    $(document).on('click', '.plus-adult', function (e) { 
+        $(".traveller-type").each(function(index, element){ 
+            if($(this).hasClass('active')){ 
+                var room = $(this).attr('data-room');
+                var adult = $(this).attr('data-adult');
+                var t_type = $(this).attr('data-id'); 
+                if(adult.length > 0){            
+                    adult = parseInt(adult); 
+                    if(adult > 0){ 
+                        adult = adult + 1;
+                        $(this).attr('data-adult', adult);
+                        check_room_adult_bytype(t_type);
+                    }
+                }
+                
+            }
+        }); 
+        e.stopPropagation(); 
+    });
+    
+    $(document).on('click', '.minus-child', function (e) { 
+        $(".traveller-type").each(function(index, element){ 
+            if($(this).hasClass('active')){
+                var room = $(this).attr('data-room');
+                var adult = $(this).attr('data-adult');
+                var t_type = $(this).attr('data-id'); 
+                var child = $(this).attr('data-child');
+                if(child.length > 0){            
+                    child = parseInt(child);
+                    if(child > 0){ 
+                        child = child - 1;
+                        $(this).attr('data-child', child);
+                        check_room_adult_bytype(t_type);
+                    }
+                }
+                if(t_type==2){
+                    remove_child(2);    
+                }                
+                if(t_type==3){
+                    remove_child(3);
+                }
+            }
+        }); 
+        e.stopPropagation(); 
+    });
+    $(document).on('click', '.plus-child', function (e) { 
+        $(".traveller-type").each(function(index, element){ 
+            if($(this).hasClass('active')){ 
+                var room = $(this).attr('data-room');
+                var adult = $(this).attr('data-adult');
+                var t_type = $(this).attr('data-id');
+                var child = $(this).attr('data-child'); 
+                if(child.length > 0){            
+                    child = parseInt(child); 
+                    if(child >= 0){ 
+                        child = child + 1;
+                        $(this).attr('data-child', child);
+                        check_room_adult_bytype(t_type);
+                    }
+                }
+                if(t_type==2){
+                    add_child(2, child);
+                }
+                if(t_type==3){
+                    add_child(3, child);
+                }
+            }
+        });
+        e.stopPropagation();  
+    });
+    
+    $(document).on('click', '.traveller-type', function(e){
+       var t_type = $(this).attr('data-id'); 
+       var rooms = $(this).attr('data-room'); 
+       var adults = $(this).attr('data-adult');
+       $(".traveller-type").each(function(index, element){ 
+            $('.traveller-type').removeClass('active');
+       });
+       $(this).addClass('active');
+       
+       $("input[name='travellerType']").val(t_type);
+       if(t_type==0){
+             $("input[name='booking_rooms']").val(1);
+             $("input[name='booking_adults']").val(1); 
+             $("input[name='booking_children']").attr('disabled', 'disabled'); 
+             $(".child-minus-plus").css('display', 'none');
+             $(".ttra-2").css('display', 'none');
+             $(".tta-2").css('display', '');
+             $(".ttra-3").css('display', 'none');
+             $(".tta-3").css('display', '');
+             $(".ttra-4").css('display', 'none');
+             $(".tta-4").css('display', '');      
+             
+             $(".traveller-type-2-child-age").css('display', 'none'); 
+             $(".traveller-type-3-child-age").css('display', 'none');     
+             //$(".number-of-adult").val();
+       }else if(t_type==1){
+             $("input[name='booking_rooms']").val(1);
+             $("input[name='booking_adults']").val(2);
+             $("input[name='booking_children']").attr('disabled', 'disabled');
+             $(".child-minus-plus").css('display', 'none');
+             $(".ttra-2").css('display', 'none');
+             $(".tta-2").css('display', '');
+             $(".ttra-3").css('display', 'none');
+             $(".tta-3").css('display', '');
+             $(".ttra-4").css('display', 'none');
+             $(".tta-4").css('display', '');
+             
+             $(".traveller-type-2-child-age").css('display', 'none'); 
+             $(".traveller-type-3-child-age").css('display', 'none');
+       }else if(t_type==2){
+             $("input[name='booking_rooms']").val(rooms);
+             $("input[name='booking_adults']").val(adults);
+             $("input[name='booking_children']").val(0);
+             $("input[name='booking_children']").removeAttr('disabled');
+             $(".child-minus-plus").css('display', ''); 
+             $(".ttra-2").css('display', '');
+             $(".tta-2").css('display', 'none');
+             $(".ttra-3").css('display', 'none');
+             $(".tta-3").css('display', '');
+             $(".ttra-4").css('display', 'none');
+             $(".tta-4").css('display', '');
+             
+             $(".traveller-type-2-child-age").css('display', ''); 
+             $(".traveller-type-3-child-age").css('display', 'none');
+       }else if(t_type==3){
+             $("input[name='booking_rooms']").val(rooms);
+             $("input[name='booking_adults']").val(adults);
+             $("input[name='booking_children']").val(0);
+             $("input[name='booking_children']").removeAttr('disabled');
+             $(".child-minus-plus").css('display', ''); 
+             $(".ttra-3").css('display', '');
+             $(".tta-3").css('display', 'none');
+             
+             $(".ttra-2").css('display', 'none');
+             $(".tta-2").css('display', '');
+             $(".ttra-4").css('display', 'none');
+             $(".tta-4").css('display', '');
+             
+             $(".traveller-type-2-child-age").css('display', 'none'); 
+             $(".traveller-type-3-child-age").css('display', '');
+       }else if(t_type==4){
+             $("input[name='booking_rooms']").val(rooms);
+             $("input[name='booking_adults']").val(adults);
+             $("input[name='booking_children']").css('display', 'none');
+             $("input[name='booking_children']").attr('disabled', 'disabled');
+             $(".child-minus-plus").css('display', 'none');
+             $(".ttra-4").css('display', '');
+             $(".tta-4").css('display', 'none');
+             
+             $(".ttra-2").css('display', 'none');
+             $(".tta-2").css('display', '');
+             $(".ttra-3").css('display', 'none');
+             $(".tta-3").css('display', '');
+             
+             $(".traveller-type-2-child-age").css('display', 'none'); 
+             $(".traveller-type-3-child-age").css('display', 'none');
+       }
+       check_room_adult_bytype(t_type);
+       e.stopPropagation();
+    });
     /*
      * For Select Collection of Left Sidebar
      */
@@ -517,6 +780,183 @@ function renderResturantSpaBarSearch(dataObj) {
 
 }
 
+function add_child(type, child_no){
+    var _html = '';
+    //_html += '<div class="rw ">';
+        _html += '<div class="col-30">';
+            _html += '<div class="lable">child '+child_no+'</div>';
+                _html += '<select name="tr_'+type+'_ca_'+child_no+'" class="child-age">';
+                for(i=0; i<=14; i++){
+                     _html += '<option value='+i+'>'+i+'</option>';        
+                }
+                _html += '</select>';
+            _html += '</div>';
+        _html += '</div>';
+    //_html += '</div>';
+    
+    $('.traveller-type-'+type+'-child-age').append(_html);
+}
+function remove_child(type){    
+    $('.traveller-type-'+type+'-child-age .col-30:last').remove();
+}
+
+function check_room_adult_bytype(type){ 
+    var room_adult = '';
+    var room_val = '';
+    var adult_val = '';
+    var child_val = '';
+    var rooms = ''; 
+    var adults = '';
+    var chld = '';
+    $(".number-of-adult").html('');
+    if(type==0){  
+        $(".chooseadultroom .column-1").addClass('width-100');
+        $(".chooseadultroom .column-1").removeClass('border-1');
+        $(".chooseadultroom .column-2").css('display', 'none');
+        
+        room_adult = '1 adult <br>1 room';
+        $(".number-of-adult").html(room_adult);    
+        
+        $("input[name='booking_rooms']").val(1);
+        $("input[name='booking_adults']").val(1); 
+                    
+        
+    }else if(type==1){
+        $(".chooseadultroom .column-1").addClass('width-100');
+        $(".chooseadultroom .column-1").removeClass('border-1');
+        $(".chooseadultroom .column-2").css('display', 'none');
+        room_adult = '2 adult <br>1 room'; 
+        $(".number-of-adult").html(room_adult); 
+        
+        $("input[name='booking_rooms']").val(1);
+        $("input[name='booking_adults']").val(2);
+             
+    }else{
+        $(".chooseadultroom .column-1").removeClass('width-100');
+        $(".chooseadultroom .column-1").addClass('border-1');
+        $(".chooseadultroom .column-2").css('display', '');
+        var room = $("#traveller-type-"+type).attr('data-room');
+        var adult = $("#traveller-type-"+type).attr('data-adult');   
+        var child = $("#traveller-type-"+type).attr('data-child');
+        
+        var room1 = $("#tr_"+type+"_rooms").val();
+        var adult1 = $("#tr_"+type+"_adults").val();
+        var child1 = $("#tr_"+type+"_child").val(); 
+        
+        $(".minus-plus-room").html('');
+        $(".minus-plus-adult").html('');
+        $(".minus-plus-child").html('');
+             
+        if(room!='' && room!=undefined){
+            if(room > 1){
+                room_val = room+" rooms";
+                rooms = room+" rooms";
+            }else{
+                room_val = room+" room";
+                rooms = room+" room";
+            }
+        }
+        if(adult!='' && adult!=undefined){
+            if(adult > 1){
+                adult_val = adult+" adults";
+                adults = adult+" adults";
+            }else{
+                adult_val = adult+" adult";
+                adults = adult+" adult";
+            }
+        }
+        if(child!='' && child!=undefined){
+            if(child > 1){
+                adult_val+= ", "+child+" children";
+                chld = child+" children";
+            }else{
+                adult_val+= ", "+child+" child";
+                chld = child+" child";
+            }
+        }
+        room_adult = adult_val+"<br>"+room_val;
+        $(".number-of-adult").html(room_adult);
+        
+        ttra_val = room_val+", "+adult_val;
+        $(".ttra-"+type).html(ttra_val);
+        
+        $(".minus-plus-room").html(rooms);
+        $(".minus-plus-adult").html(adults);
+        $(".minus-plus-child").html(chld);
+        
+        $("input[name='booking_rooms']").val(room);
+        $("input[name='booking_adults']").val(adult);
+        $("input[name='booking_children']").val(child);
+        
+        $("#tr_"+type+"_rooms").val(room);
+        $("#tr_"+type+"_adults").val(adult);
+        $("#tr_"+type+"_child").val(child); 
+        
+        
+    }
+}
+function check_room_adult(){
+    var room_adult = '';
+    var room_val = '';
+    var adult_val = '';
+    
+    $(".traveller-type").each(function(index, element){ 
+        if($('.traveller-type').hasClass('active'))
+        {
+            var room = $(this).attr('data-room');
+            var adult = $(this).attr('data-adult');
+            if(room.length > 0){
+                if(room > 1){
+                    room_val = room+" rooms";
+                }else{
+                    room_val = room+" room";
+                }
+            }
+            if(adult.length > 0){
+                if(adult > 1){
+                    adult_val = adult+" adults";
+                }else{
+                    adult_val = adult+" adult";
+                }
+            }
+        } 
+    });
+    room_adult = room_val+", "+adult_val;
+    $(".number-of-adult").html(room_adult);    
+}
+function check_room_adult_old(){
+    var room_adult = '';
+    var room_val = '';
+    var adult_val = '';
+    $('.txt-small').html('');
+    var room = $("#hid_room").val();
+    var adult = $("#hid_adult").val();
+    if(room.length > 0){
+        if(room > 1){
+            room_val = room+" rooms";
+        }else{
+            room_val = room+" room";
+        }
+    }
+    if(adult.length > 0){
+        if(adult > 1){
+            adult_val = adult+" adults";
+        }else{
+            adult_val = adult+" adult";
+        }
+    }
+    room_adult = room_val+", "+adult_val;
+    
+    $(".traveller-type").each(function(index, element){ 
+        if($('.traveller-type').hasClass('active'))
+        {
+            var t_type = ($('.traveller-type').attr('data-id'));
+                        
+        } 
+    });
+    
+    return room_adult;
+}
 /*
  * For Hide All Option on Left Side Bar
  */
@@ -774,3 +1214,6 @@ function renderMembership(dataObj) {
     $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
 }
+$(document).on('click', '.child-age', function(e){
+   e.stopPropagation(); 
+});

@@ -218,7 +218,7 @@
                             <a href="{{ URL::to('hotelpackages') }}" id="dash_communication">
                     			<i class="grid_icon flaticon-share"></i>																	
                     			<span class="grid_link-text">
-                    				Membership &amp; Support Services
+                    				Modules/Packages
                     			</span>
                     		</a>
                         </div>
@@ -284,11 +284,11 @@
                                 <div class="b2c-banner-text">Welcome</div>
                					<img src="{{URL::to('images/hotel_pop_up_terms.jpg')}}" style="width: 100%;" />
                             </div>
-                            <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
-                                <h2 class="black-heading-big">Welcome to emporium-voyage</h2>
+                            <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center" style="margin-top: 10px;">
+                                <h2 class="black-heading-big">Welcome to Emporium Collection</h2>
                             </div> 
                             <div class="col-sm-12 col-md-12">                                
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.</p>
+                                <p>Connoisseur of luxury lifestyle, Emporium Collection provides a bespoke service that offers an extensive collection of some of the most exquisite and exclusive suites & experiences around the world. Our inventory of posh properties has been curated to cater to our 21st-century haut monde travellers that are only interested in the finer things in life.</p>
                             </div>
                             <div>
                                 <hr />
@@ -302,7 +302,7 @@
 									</label>
 								</div>
                                 <div class="error" id="error" style="display: none;">
-                                    Please agree to the Privacy & Data Protection Policy.
+                                    Please agree to the Privacy & Data Protection Policy to continue
                                 </div>
                                 <span class="m-form__help">
 									 I agree that my personal data will be collected and stored and used electronically to help the reservation agents with specialized offers pertaining to my travel preferences. 
@@ -318,7 +318,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 									</label>
                                 </div>
                                 <div class="error" id="privacy_policy_error" style="display: none;">
-                                    Please check privacy policy checkbox.
+                                    Please agree to the Emporium-Collection Privacy Policy to continue
                                 </div>
                                 <span class="m-form__help">
 									I have read and agree to the Emporium-Voyage Privacy Policy.
@@ -333,7 +333,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 									</label>
                                 </div>
                                 <div class="error" id="cookie_policy_error" style="display: none;">
-                                    Please check cookie policy checkbox.
+                                    Please agree to the Emporium-Collection Cookie Policy to continue
                                 </div>
                                 <span class="m-form__help">
 									I have read and agree to the Emporium-Voyage Cookie Policy
@@ -345,7 +345,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                     </div>                				
     			</div>
     			<div class="modal-footer">    				
-                    <button type="button" class="btn btn-primary" id="contractacceptbtn">Accept</button>
+                    <button type="button" class="btn btn-primary" id="contractacceptbtn">Accept &amp; Continue</button>
     			</div>
     		</div>
     	</div>

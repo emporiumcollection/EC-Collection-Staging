@@ -221,7 +221,7 @@ class UsersController extends Controller {
 					unset($data['password']);
 				}
 			}
-					
+			$data['new_user'] = 0;		
 			
 			$id = $this->model->insertRow($data , $request->input('id'));
 

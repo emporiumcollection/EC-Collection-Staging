@@ -127,19 +127,23 @@
                                 </div>
                                 <div id="collapse1" class="panel-collapse collapse in">
                                     <div class="panel-body">
-                                        <h2 class="form-field-tittle">Your Stay</h2>
+                                        <h2 class="form-field-tittle">Your {{$member_type}} stay summary</h2>
                                         <div class="booking-form-all-fields">
                                             <div>
                                                 <ul class="booking-form-dates" id="two-inputs">
-                                                    <div id="t-middel-picker" class="t-datepicker">
-                                                    
                                                         <li>
                                                             <div class="booking-form-heading">Arrival Date</div>
-                                                            <div class="t-check-in"></div>
+                                                            <div>
+                                                                {{date('d M Y', strtotime($book_arrive_date))}}
+                                                                <input type="hidden" id="date-range-arrive" size="20" name="booking_arrive" value="{{ ($book_arrive_date!='') ? $book_arrive_date : date('d.m.Y') }}">
+                                                            </div>
                                                         </li>
                                                         <li>
                                                             <div class="booking-form-heading">Departure Date</div>
-                                                            <div class="t-check-out"></div>
+                                                            <div>
+                                                                {{date('d M Y', strtotime($book_departure))}}
+                                                                <input type="hidden" id="date-range-destination" size="20" name="booking_destination" value="{{ ($book_departure!='') ? $book_departure : '' }}">
+                                                            </div>
                                                         </li>
                                                     
                                                         <?php /* <ul class="booking-form-dates" id="two-inputs">
@@ -152,26 +156,87 @@
                                                                 <input  id="date-range-destination" size="20" name="booking_destination" value="{{ ($departure!='') ? $departure : '' }}">
                                                             </li>
                                                         </ul>  */ ?>
-                                                    </div>
+                                                        
+                                                        <li>
+                                                            <?php
+                                                            $number_of_nights = '';
+                                                            if($arrive_date != '' && $departure != '') {
+                                                                $date1 = date_create(date('Y-m-d H:i:s', strtotime($departure)));
+                                                                $date2 = date_create(date('Y-m-d H:i:s', strtotime($arrive_date)));
+                                                                $diff = date_diff($date1, $date2);
+                                                                $number_of_nights = $diff->format("%a");
+                                                                //$number_of_nights;
+                                                            }
+                                                            ?>
+                                                            <div class="booking-form-heading">#Nights(s)</div>
+                                                            {{$number_of_nights}}
+                                                            <input type="hidden" id="number_of_nights" min="0" name="number_of_nights"  value="{{$number_of_nights}}">
+                                                        </li>
+                                                        
+                                                    
                                                 </ul>
                                             </div>
-                                            <div class="right-input-align">
-                                                <?php
-                                                $number_of_nights = '';
-                                                if($arrive_date != '' && $departure != '') {
-                                                    $date1 = date_create(date('Y-m-d H:i:s', strtotime($departure)));
-                                                    $date2 = date_create(date('Y-m-d H:i:s', strtotime($arrive_date)));
-                                                    $diff = date_diff($date1, $date2);
-                                                    $number_of_nights = $diff->format("%a");
-                                                    $number_of_nights++;
-                                                }
-                                                ?>
-                                                <div class="booking-form-heading">#Nights(s)</div>
-                                                <input id="number_of_nights" min="0" name="number_of_nights" type="number" value="{{$number_of_nights}}">
-                                            </div>
+                                            
                                         </div>
                                         
                                         <div class="clearfix"></div>
+                                        <div class="booking-form-all-fields-row-2" id="add_suites">
+                                        {{--*/ $total_amt = 0 /*--}}
+                                        @if(!empty($obj_item))
+                                            <table class="table">
+                                            @foreach($obj_item as $si) 
+                                                {{--*/ $total_amt = $total_amt + ($number_of_nights * $si['price']); /*--}}                                               
+                                                <tr>
+                                                    <td width="40%"><img src="{{$si['img_url']}}" class="img-responsive"  /></td>
+                                                    <td>
+                                                        {{$si['cat_id']->category_name}}
+                                                        <input type="hidden" name="booking_Room_type[]" value="{{$si['cat_id']->id}}" />
+                                                        <br />
+                                                        #Room(s): {{$si['avail_room']}}
+                                                        <input type="hidden" name="booking_Rooms[]" value="{{$si['avail_room']}}" />
+                                                        <br />
+                                                        Price: {{$si['price']}} per night
+                                                        <input type="hidden" name="booking_Room_price[]" value="{{$si['price']}}" />
+                                                        <br />
+                                                        Guests: {{ $si['avail_adult'] > 1 ? $si['avail_adult']." adults" : $si['avail_adult']." adults"}} 
+                                                                <input type="hidden" name="booking_adults[]" value="{{$si['avail_adult']}}" />
+                                                                {{ $si['avail_child'] == 1 ? $si['avail_child']." child" : $si['avail_child']." children" }}
+                                                                <input type="hidden" name="booking_children[]" value="{{$si['avail_child']}}" />
+                                                                <br />
+                                                                @if(!empty($si['avail_ages']))
+                                                                    {{--*/ $sr = 1; /*--}}
+                                                                    @foreach($si['avail_ages'] as $si_age)
+                                                                        child{{$sr}} age: {{$si_age}} 
+                                                                        <input type="hidden" name="child_{{$si['cat_id']->id}}[]" id="child_{{$si['cat_id']->id}}_{{$sr}}" value="{{$si_age}}" />
+                                                                        <br />
+                                                                    {{--*/ $sr++; /*--}}        
+                                                                    @endforeach    
+                                                                @endif
+                                                    </td>
+                                                                                                          
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        Booking Policy<br />
+                                                        @if($si['cat_id']->booking_policy!='')
+                                                            {{$si['cat_id']->booking_policy}}
+                                                        @else
+                                                            {{$si['property_terms_cond']}}
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                                <tr>
+                                                    <td>
+                                                        Total amount
+                                                    </td>
+                                                    <td style="text-align: right;">
+                                                        {!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($total_amt, 2)}}    
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endif    
+                                        </div>
                                         <!--                                        <div id="accordion-speical-code">
                                                                                     <div class="panel panel-default">
                                                                                         <div class="panel-heading">
@@ -210,86 +275,7 @@
                                 </div>
                                 <div id="collapse2" class="panel-collapse collapse">
                                     <div class="panel-body">
-
-                                        <div id="ai-custom-villa-booking-Carousel" class="carousel slide ai-custom-crousal-alignment">
-                                            <div class="carousel-inner" id="res_cat_rooms">
-                                                @if(!empty($propertyDetail['typedata']))
-                                                {{--*/ $first_index = true; /*--}}
-                                                {{--*/ $row_index = 0; /*--}}
-                                                <div class="item active">
-                                                    <ul class="thumbnails ai-custom-corusal-style">
-                                                        @foreach($propertyDetail['typedata'] as $key => $type)
-                                                        @if (isset($propertyDetail['roomimgs'][$type->id][0]))
-                                                        {{--*/ $row_index = $row_index + 1; /*--}}
-                                                        <li class="span3">
-                                                            <label class="draggable-room-node draggable" for="roomType{{$type->id}}">
-                                                                <div class="thumbnail">
-                                                                    <img class="img-responsive" src="{{$propertyDetail['roomimgs'][$type->id][0]->imgsrc.$propertyDetail['roomimgs'][$type->id][0]->file_name}}" alt=""/>
-                                                                </div>
-                                                                <div class="caption">
-                                                                    <h4>{{$type->category_name}}</h4>
-                                                                    @if($type->price!='')
-                                                                    <div class="hotel-slider-price">
-                                                                        @if($discount_apply!='')
-                                                                            {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}}
-                                                                            <br />Discount 10% {{($currency->content!='') ? $currency->content : '$'}} {{ ($type->price) * 10 / 100 }}
-                                                                            <br /> {{($currency->content!='') ? $currency->content : '$'}} {{ $type->price - (($type->price) * 10 / 100) }}
-                                                                        @else
-                                                                            {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}}         
-                                                                        @endif
-                                                                    </div>
-                                                                    @endif
-                                                                    <div class="description">{{$type->room_desc}}</div>
-                                                                </div>
-                                                            </label>
-                                                            <input id="roomType{{$type->id}}" onclick="$('.roomTypeName').html('{{$type->category_name}}');" type="radio" {{(($_REQUEST['roomType'] == $type->id) || $first_index === true)? 'checked' : ''}} name="roomType" value="{{$type->id}}" />
-                                                                   {{--*/ $first_index = false; /*--}}
-                                                        </li>
-                                                        @if(($key % 3) == 0 && $key != 0 && count($propertyDetail['typedata']) > $row_index)
-                                                    </ul>
-                                                </div>
-                                                <div class="item">
-                                                    <ul class="thumbnails ai-custom-corusal-style">
-                                                        @endif
-                                                        @endif
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                @endif
-                                            </div>
-
-                                            <div class="control-box">                            
-                                                <a data-slide="prev" href="#ai-custom-villa-booking-Carousel" class="carousel-control left villa-tab-inner-crousal-nxt-pre-btn"><img src="{{asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""></a>
-                                                <a data-slide="next" href="#ai-custom-villa-booking-Carousel" class="carousel-control right villa-tab-inner-crousal-nxt-pre-btn"><img src="{{asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""></a>
-                                            </div>  
-
-                                        </div>
-
-                                        <a class="hidden booking-add-room margin-bottom-45 compare-villa-show-btn" href="javascript:void(0);">COMPARE HOTELS</a>
-                                        <!-- Compare Villa -->
-                                        <div class="clearfix"></div>
-                                        <div class="compare-villa-show-hide">
-                                            <div class="compare-villa-close-btn">
-                                                Please drag and drop the villas that you wish to compare below
-                                            </div>
-                                            <div>
-                                                <div class="col-md-3 col-sm-3 compare-villa-box">
-                                                    <div class="row">
-                                                        <div class="compare-villa-box-inner-text droppable">Drop the Villa of your choice in this space</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-3 compare-villa-box">
-                                                    <div class="row">
-                                                        <div class="compare-villa-box-inner-text droppable">Drop the Villa of your choice in this space</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-3 compare-villa-box">
-                                                    <div class="row">
-                                                        <div class="compare-villa-box-inner-text droppable">Drop the Villa of your choice in this space</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <!-- Compare Villa -->
                                         <div id="jssor_1"  style="position:relative;margin:0 auto;top:0px;left:0px;width:600px;height:400px;overflow:hidden;visibility:hidden;">
                                             <!-- Loading Screen -->
@@ -383,44 +369,7 @@
                                                                                         </div>
                                                                                     </div>-->
                                         </div>
-                                        <div class="booking-form-all-fields-row-2" id="add_suites">
-                                            <div class="input-field1">
-                                                SUITES
-                                            </div>
-                                            <div class="input-field2" style="display: none;">
-                                                <div class="booking-form-heading">Type</div>
-                                                <select name="booking_Room_type[]" class="booking-form-select-inputs-style booking_Room_type">
-                                                    <option value="0">Select</option>
-                                                </select>
-                                            </div>
-                                            <div class="input-field2">
-                                                <div class="booking-form-heading">#Adults(s)</div>
-                                                <select name="booking_adults[]" class="booking-form-select-inputs-style booking_adults">
-                                                    <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
-                                                    <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
-                                                    <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
-
-                                                    <option {{ ($adults!='' && $adults==4) ? 'selected' : '' }}>4</option>
-                                                    <option {{ ($adults!='' && $adults==5) ? 'selected' : '' }}>5</option>
-                                                     <option {{ ($adults!='' && $adults==6) ? 'selected' : '' }}>6</option>
-                                                </select>
-                                            </div>
-                                            <div class="right-input-align2">
-                                                <div class="booking-form-heading">#Children</div>
-                                                <select name="booking_children[]" class="number_of_children booking-form-select-inputs-style booking_children">
-                                                    <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
-                                                    <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
-                                                    <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
-                                                    <option {{ ($childs!='' && $childs==3) ? 'selected' : '' }}>3</option>
-                                                    
-                                                    <option {{ ($childs!='' && $childs==4) ? 'selected' : '' }}>4</option>
-                                                    <option {{ ($childs!='' && $childs==5) ? 'selected' : '' }}>5</option>
-                                                    <option {{ ($childs!='' && $childs==6) ? 'selected' : '' }}>6</option>
-                                                </select>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="add-new-room-btn booking-add-room">ADD SUITE</a>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <input type="button" class="step-2 margin-top-25 validate-btn" value="SUBMIT YOUR ROOM">
                                         </div>
@@ -1779,7 +1728,7 @@
                     $(".below-slider-text").show(1000);
                 });
                 $(".step-first").click(function (event) {
-                    event.preventDefault();
+                    /*event.preventDefault();
                     var pid = $("#property").val();
                     var booking_arrive = $('input[name="booking_arrive"]').val();
                     var booking_destination = $('input[name="booking_destination"]').val();
@@ -1804,9 +1753,9 @@
                                 $("#error_model").modal("show");
                             }
                         }
-                    });
-                    //$(".click1").data("prevent-click", "0");
-                    //$(".click1").trigger("click");
+                    });*/
+                    $(".click1").data("prevent-click", "0");
+                    $(".click1").trigger("click");
                 });
 
                 $(".click1").click(function (event) {
@@ -1818,7 +1767,7 @@
                 });
 
                 $(".step-2").click(function (event) {
-                    event.preventDefault();
+                    /*event.preventDefault();
                     var pid = $("#property").val();
                     var booking_arrive = $('input[name="booking_arrive"]').val();
                     var booking_destination = $('input[name="booking_destination"]').val();
@@ -1853,10 +1802,10 @@
                                 $("#error_model").modal("show");
                             }
                         }
-                    });
+                    });*/
                     
-                    //$(".click2").data("prevent-click", "0");
-                    //$(".click2").trigger("click");
+                    $(".click2").data("prevent-click", "0");
+                    $(".click2").trigger("click");
                 });
 
                 $(".click2").click(function (event) {

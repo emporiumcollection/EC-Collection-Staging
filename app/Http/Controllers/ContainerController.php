@@ -568,7 +568,15 @@ class ContainerController extends Controller {
 		{
 			$showType = "thumb";
 		}
+        
+        $pid = '';
+        if(isset($_REQUEST['pid']) && trim($_REQUEST['pid'])!="")
+		{
+			$pid = trim($_REQUEST['pid']);
+		}
 		
+        $this->data['pid'] = $pid;
+        
 		$this->data['showType'] = $showType;
 		$this->data['permissions'] = $permiss;
 		//$this->data['tree'] = $this->fetchFolderTreeList('','',$wnd, $showType);
@@ -7242,7 +7250,7 @@ class ContainerController extends Controller {
         
         $prop_id = 0;
         $property_name = '';
-        $obj_property = \DB::table('tb_properties')->where('user_id', $uid)->first();
+        $obj_property = \DB::table('tb_properties')->where('user_id', $uid)->orWhere('assigned_user_id', $uid)->first();
         if(!empty($obj_property)){
             $prop_id = $obj_property->id;
             $property_name = $obj_property->property_name;
@@ -7284,7 +7292,7 @@ class ContainerController extends Controller {
     	
     		$ct=0; 
     		$this->data['rowData'] = array();
-    		
+    		if(!empty($results['rows'])){
     		foreach($results['rows'] as $folderObj ){
     			if($wnd=='iframe')
     			{
@@ -7404,6 +7412,7 @@ class ContainerController extends Controller {
     			}
     			
     		}
+            }
     		if(!empty($filess))
     		{
     			$imgsrc = $this->getThumbpath($filess[0]->folder_id);

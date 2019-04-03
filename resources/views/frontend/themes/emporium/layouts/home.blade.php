@@ -266,7 +266,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             
         }
         $(document).ready(function () {
-            
+            console.log(window.location.href);
             $(document).on('click', ".iubenda-white2", function(e){
                 e.preventDefault();
                 var w=600;
@@ -402,6 +402,41 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 
                 
             });
+            
+            var chk_date = '';
+            var dt = new Date();
+            var t_chk_v_year = dt.getFullYear(); 
+            var t_chk_v_month = dt.getMonth(); 
+            var t_chk_v_day = dt.getDate(); 
+            chk_date = new Date(t_chk_v_year,t_chk_v_month,t_chk_v_day)
+            
+            var dt_out = new Date(dt);
+            dt_out.setDate(dt.getDate()+1);
+            //dt_out.toLocaleDateString();
+            
+            //var chk_out_date = '';            
+            //var dt_out = new Date(dt_out);
+            var t_chk_v_out_year = dt_out.getFullYear(); 
+            var t_chk_v_out_month = dt_out.getMonth(); 
+            var t_chk_v_out_day = dt_out.getDate(); 
+            chk_out_date = new Date(t_chk_v_out_year,t_chk_v_out_month,t_chk_v_out_day);
+            
+            
+            //console.log(chk_date+"-"+chk_out_date);            
+            
+            @if(!empty(Session::get("arrive")))
+                chk_date = '{{Session::get("arrive")}}';
+            @else 
+                chk_date = chk_date;            
+            @endif
+            
+            @if(!empty(Session::get("departure")))
+                chk_out_date = '{{Session::get("departure")}}'; 
+            @else  
+                chk_out_date = chk_out_date;
+            @endif
+            
+            //console.log(chk_date+"-"+chk_out_date);              
                                     
             $('#t-topbar-picker').tDatePicker({
                 'numCalendar':'2',
@@ -416,8 +451,10 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 'titleDateRanges':'days',
                 'iconDate':'<i class="fa fa-calendar"></i>',
                 'limitDateRanges':'365',
-                'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
-                'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+                'dateCheckIn':chk_date,
+                'dateCheckOut':chk_out_date               
+                //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
+                //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
             }).on('afterCheckOut',function(e, dateCO) {
                 if(((typeof $(this).closest('form').find('[name="adult"]').val()) != 'undefined') && ((typeof $(this).closest('form').find('[name="adult"]').val()) != undefined)){
                     $(this).closest('form').find('[name="adult"]').focus();
@@ -491,7 +528,8 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
 
                 $(".ai-sign-up-form-error-msg").html('');
                 $(".ai-login-form-success-msg").html('');
-
+                var ref_url = $("input[name=ref_page]").val(); 
+                
                 var formData = $(this).serialize();
 
                 $.ajax({
@@ -502,14 +540,22 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                     success: function (data, textStatus, jqXHR) {
                         if (data.status == 'success') {
                             if(data.gid==3){
-                                console.log(data.new_user);
-                                if(data.new_user=='1'){
-                                    window.location.href = "{{URL::to('traveller')}}";
+                                if(ref_url!='undefined' && ref_url!=''){
+                                    window.location.href = ref_url;    
+                                }else{
+                                //console.log(data.new_user);
+                                    if(data.new_user=='1'){
+                                        window.location.href = "{{URL::to('traveller')}}";
+                                    }else{
+                                        window.location.href = "{{URL::to('dashboard')}}";
+                                    }
+                                }
+                            }else{
+                                if(ref_url!='undefined' && ref_url!=''){
+                                    window.location.href = ref_url;    
                                 }else{
                                     window.location.href = "{{URL::to('dashboard')}}";
                                 }
-                            }else{
-                                window.location.href = "{{URL::to('dashboard')}}";
                             }
                         }
                         else {

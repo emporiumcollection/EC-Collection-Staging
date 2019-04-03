@@ -375,7 +375,7 @@
     														Billing Company:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="company_name" type="text" id="company_name" class="form-control m-input m-input--solid" value="{{$company_details->company_name}}" />  
+    														<input name="company_name" type="text" id="company_name" class="form-control m-input m-input--solid" value="{{isset($company_details->company_name) ? $company_details->company_name : ''}}" />  
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -383,7 +383,7 @@
     														Owner:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="company_owner" type="text" id="company_owner" class="form-control m-input m-input--solid" value="{{$company_details->company_owner}}"/>  
+    														<input name="company_owner" type="text" id="company_owner" class="form-control m-input m-input--solid" value="{{isset($company_details->company_owner) ? $company_details->company_owner : '' }}"/>  
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -391,7 +391,7 @@
     														Contact Person:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="contact_person" type="text" id="contact_person" class="form-control m-input m-input--solid" value="{{$company_details->contact_person}}" />  
+    														<input name="contact_person" type="text" id="contact_person" class="form-control m-input m-input--solid" value="{{isset($company_details->contact_person) ? $company_details->contact_person : ''}}" />  
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -399,7 +399,7 @@
     														Contact Email:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="company_email" type="text" id="company_email" class="form-control m-input m-input--solid" value="{{$company_details->company_email}}" />  
+    														<input name="company_email" type="text" id="company_email" class="form-control m-input m-input--solid" value="{{isset($company_details->company_email) ? $company_details->company_email : '' }}" />  
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -407,7 +407,7 @@
     														Address:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="company_address" type="text" id="company_address" class="form-control m-input m-input--solid" value="{{$company_details->company_address}}" />  
+    														<input name="company_address" type="text" id="company_address" class="form-control m-input m-input--solid" value="{{isset($company_details->company_address) ? $company_details->company_address : ''}}" />  
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -415,7 +415,7 @@
     														City:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="company_city" type="text" id="company_city" class="form-control m-input m-input--solid" value="{{$company_details->company_city}}" />  
+    														<input name="company_city" type="text" id="company_city" class="form-control m-input m-input--solid" value="{{isset($company_details->company_city) ? $company_details->company_address : ''}}" />  
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -423,7 +423,7 @@
     														Country:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="company_country" type="text" id="company_country" class="form-control m-input m-input--solid" value="{{$company_details->company_country}}" />  
+    														<input name="company_country" type="text" id="company_country" class="form-control m-input m-input--solid" value="{{isset($company_details->company_country) ? $company_details->company_country : ''}}" />  
     													</div>
     												</div>
                                                    
@@ -461,7 +461,7 @@
         														Vat Number
         													</label>
         													<div class="col-xl-9 col-lg-9">
-        														<input name="hotelinfo_vat_no" required="required" type="text" id="hotelinfo_vat_no" class="form-control m-input m-input--solid" value="{{$company_details->company_tax_number}}" />  
+        														<input name="hotelinfo_vat_no" required="required" type="text" id="hotelinfo_vat_no" class="form-control m-input m-input--solid" value="{{isset($company_details->company_tax_number) ? $company_details->company_tax_number : ''}}" />  
         													</div>
         												</div>
                                                     </div>

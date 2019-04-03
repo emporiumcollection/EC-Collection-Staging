@@ -10663,8 +10663,8 @@ a.text-dark:hover {
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #2e40d4;
-    border-color: #293ccc
+    background-color: #E3C2BD;
+    border-color: #E3C2BD;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -56280,4 +56280,7 @@ background-color: #C8A9A9 !important;
 #property_update_form input::placeholder {
     /* modern browser */
     color: #999;
+}
+.add_property_type_setup .col-lg-2{
+    background-color: transparent !important;
 }

@@ -252,22 +252,19 @@
                                         <h3>{{$type->category_name}}</h3>
                                         <p>{{(strlen($type->room_desc) > 100) ? substr($type->room_desc,0,100).'...':$type->room_desc}}</p>
                                         <button class="btn btn-default moreButtonPopup" type="button" rel="{{$type->id}}">More</button>
-                                        <button class="btn btn-default" type="button" onclick="choose_room_type('{{$type->id}}');">Book Now</button>
+                                        <button class="btn btn-default bg-color" type="button" onclick="choose_room_type('{{$type->id}}');">Reservation</button>
                                         
                                         @if($type->price!='')
-                                            <a class="btn btn-default" title="{{$type->season}}"
-                                                    > {{($currency->content!='') ? $currency->content : '$'}} {{ isset(\Auth::user()->id) ? $type->price : 'Login to view'}} </button>
+                                            <a class="btn btn-default" title="{{$type->season}}" id="loginToView"> {{($currency->content!='') ? $currency->content : '$'}} {{ isset(\Auth::user()->id) ? $type->price : 'Login to view'}} </a>
                                             @if(isset(\Auth::user()->id))
                                                 <?php /* <a  href="#" onclick="getseasonrates({{$type->id}});" class="btn btn-default" title="Rates" data-toggle="modal" data-target="#psrModal">Full Rate List</a> */ ?>
-                                                <a  href="#" data-id="{{$type->id}}" class="btn btn-default full-rate" title="Rates">Full Rate List</a>
+                                                <a  href="#" data-id="{{$type->id}}" class="btn btn-default full-rate" title="Rates">{{($currency->content!='') ? $currency->content : '$'}}/Availability</a>
                                             @endif                                           
                                         @endif
                                         
                                         <div class="sliderArrow">
-                                            <a href="javascript:void(0);" class="prevClick"><i
-                                                        class="fa fa-angle-left"></i></a>
-                                            <a href="javascript:void(0);" class="nextClick"><i
-                                                        class="fa fa-angle-right"></i></a>
+                                            <a href="javascript:void(0);" class="prevClick"><i class="fa fa-angle-left"></i></a>
+                                            <a href="javascript:void(0);" class="nextClick"><i class="fa fa-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -344,7 +341,7 @@
                                                         <div class="panel-body">
                                                             <div class="row">
                                                                 <div  class="col-sm-12 col-md-12 col-lg-12">
-                                                                    Base rate: {{$si->rack_rate}}                                                               
+                                                                    Base rate: {{($currency->content!='') ? $currency->content : '$'}}{{$si->rack_rate}}                                                               
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -756,6 +753,24 @@
     	</div>
       </div>
     </div>
+    <?php /*<!-- Rooms Availability Modal -->
+    <div class="modal fade" id="raModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+    	  <div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    		<h4 class="modal-title" id="myModalLabel"></h4>
+    	  </div>
+    	  <div class="modal-body" id="ratecomm">
+    		
+    	  </div>
+    	  <div class="modal-footer">
+    		<button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK</button>
+    	  </div>
+    	  </form>
+    	</div>
+      </div>
+    </div> */ ?>
 @endsection
 
 
@@ -826,7 +841,7 @@
                     background-color: transparent !important;
                 }
                 .hotelBorderList .t-datepicker-day{
-                    color: #000 !important;
+                    /*color: #000 !important;*/
                 }
                 .hotelBorderList .t-arrow-top{
                     top: 65px;
@@ -974,8 +989,6 @@
         ?>
         $(document).ready(function () {
             
-            
-            
             @if(array_key_exists('typedata', $propertyDetail))            
                 @foreach($propertyDetail['typedata'] as $type)
                     @if (array_key_exists($type->id, $propertyDetail['roomimgs']))
@@ -1045,10 +1058,10 @@
                 $("#cont_packages").css('display', '');        
             });
             
-            $(".btnMembershipTypeJoin").click(function(e){
+            $(document).on("click", ".btnMembershipTypeJoin", function(e){
                 e.preventDefault();
                 $(".clicktologin").trigger("click");
-                $(".signInPopupButton").trigger('click');
+                //$(".signInPopupButton").trigger('click');
             });
             
             $(".login_hotel_pms").click(function(){
@@ -1088,6 +1101,13 @@
             });
         });
         
+        $(document).on('click', '#loginToView', function(e){
+            //$(".clicktologin").trigger('click');
+            $(".popupMainDiv").addClass('openPopup');
+            var curr_link = window.location.href;
+            $("input[name=ref_page]").val(curr_link);
+        });
+            
         $(document).on('click', '.galleryImgBtn', function () {
 			var params = $.extend({}, doAjax_params_default);
 			params['url'] = BaseURL + '/getpropertyroomimages/' + $(this).attr('rel');

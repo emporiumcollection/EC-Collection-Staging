@@ -82,6 +82,15 @@
                                                     </span>
                                                 </a>
                                             </li>
+                                            <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
+                                                <a href="https://sekago.com/" target="_blank" class="m-menu__link">
+                                                    
+                                                    <i class="m-menu__link-icon flaticon-email"></i>
+                                                    <span class="m-menu__link-text">
+                                                        Team Collaboration Module
+                                                    </span>
+                                                </a>
+                                            </li>
                                         </ul>                                            
                                     </div>
                                                                     

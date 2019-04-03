@@ -233,6 +233,19 @@
 																		Section
 																	</span>
 																</li>
+                                                                <?php echo \Session::get('prop_slug'); ?>
+                                                                @if(\Session::get('prop_slug'))
+                                                                <li class="m-nav__item">
+																	<a href="{{Url::to('/')}}/{{\Session::get('prop_slug')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon flaticon-symbol"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				My Hotel
+																			</span>
+																		</span>
+																	</a>
+																</li>
+                                                                @endif
 																<li class="m-nav__item">
 																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>

@@ -39,7 +39,10 @@
         <hr />
     </div>
     <div class="col-md-12 col-xs-12 m--align-right">
-        <a href="{{URL::to('hotelpackages')}}" class="tips btn btn-xs btn-primary" style="height: auto !important;">Upgrade to pro</a>
+        @if($pid!='')
+            <a href="{{URL::to('properties_settings/'.$pid.'/rooms')}}" class="tips btn btn-xs btn-primary" style="height: auto !important;">Back to Suite Management</a>
+        @endif
+        <a href="{{URL::to('hotelpackages')}}" class="tips btn btn-xs btn-primary" style="height: auto !important;">Upgrade to pro</a>        
     </div>
     
     @if($check_images)

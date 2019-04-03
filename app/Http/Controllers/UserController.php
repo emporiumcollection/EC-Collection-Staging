@@ -1275,6 +1275,7 @@ class UserController extends Controller {
             //if(!empty($hotelinfo_vat_no)){
                 $obj_comp = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
                 $company_data = array(
+                    'user_id'=>$user->id,
                     'company_tax_number' => $hotelinfo_vat_no,
                     'company_name' => $company_name,
                     'company_owner' => $company_owner,

@@ -4409,3 +4409,187 @@ svg:not(:root) {
 .mobile-leftsearch .form-control::-ms-input-placeholder { /* Microsoft Edge */
    color: #ABA07C;
 }
+
+/* --- Top search adult room -- */
+
+.tbl{    
+    display: table;
+    width: 100%;
+}
+.tbl .rw{
+    width: 100%;
+    display: table-row;
+}
+.tbl .rw .col-55{
+    width: 55%;
+    display: table-cell;    
+}
+.tbl .rw .col-45{
+    width: 45%;
+    display: table-cell;
+}
+.tbl .rw .minus-room-available, .tbl .rw .plus-room-available{
+    cursor: pointer;
+}
+.tbl .rw .minus-adult-available, .tbl .rw .plus-adult-available{
+    cursor: pointer;
+}
+.tbl .rw .minus-child-available, .tbl .rw .plus-child-available{
+    cursor: pointer;
+}
+.tbl .rw .txt-small{
+    font-size: 11px;
+}
+.tbl .rw .traveller-type-room-adult{
+    font-size: 11px;
+}
+.tbl .rw .col-20{
+    width: 20%;
+    display: table-cell; 
+    text-align: center;   
+}
+.tbl .rw .col-60{
+    width: 60%;
+    display: table-cell;
+    text-align: center;
+}
+.tbl-width-200{
+    width: 200px;
+    background: #252525;
+}
+
+
+.adult-room{    
+    width: 100%;
+    background: #89837b;
+    color: #fff;
+    font-family: 'GeomanistLight', sans-serif;
+    font-size: 12px;
+    display: table;
+    height: 37px;
+}
+.adult-room .number-of-adult{
+    display: block;
+    margin-left: 10px;
+}
+.adult-room i{
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.adult-room i.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.adult-room .left{
+    float: left;
+    width: 80%;    
+}
+
+.adult-room .right{
+    float: left;
+    width: 20%;   
+    text-align: center; 
+}
+.chooseadultroom{    
+    position: absolute;
+    background: #252525;
+    width: 430px;
+    z-index: 100;
+    color: #fff;
+    border: 1px solid #ABA07C;
+    padding: 5px;
+    font-size: 12px;
+    display: table;
+}
+.chooseadultroom .column-1{
+    width: 70%;
+    display: table-cell;
+}
+.chooseadultroom .column-1.border-1{
+    border-right: 1px solid #ABA07C;
+}
+.chooseadultroom .column-1 i{
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-top: 10px;
+}
+.chooseadultroom .column-1 i.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.chooseadultroom .column-1.width-100{
+    width: 100% !important;
+    float: left;
+}
+.chooseadultroom .column-2{
+    width: 30%;
+    display: table-cell;
+}
+.chooseadultroom .tbl{    
+    display: table;
+    width: 100%;
+}
+.chooseadultroom .tbl .rw{
+    width: 100%;
+    display: table-row;
+}
+.chooseadultroom .tbl .rw .traveller-type{
+    color: #fff;
+    text-decoration: none;
+}
+.chooseadultroom .tbl .rw .traveller-type.active{
+    color: #ABA07C;
+    text-decoration: none;
+}
+.chooseadultroom .tbl .rw .col-55{
+    width: 55%;
+    display: table-cell;
+    padding: 10px;
+}
+.chooseadultroom .tbl .rw .col-45{
+    width: 45%;
+    display: table-cell;
+}
+.chooseadultroom .tbl .rw .minus-room, .chooseadultroom .tbl .rw .plus-room{
+    cursor: pointer;
+}
+.chooseadultroom .tbl .rw .minus-adult, .chooseadultroom .tbl .rw .plus-adult{
+    cursor: pointer;
+}
+.chooseadultroom .tbl .rw .minus-child, .chooseadultroom .tbl .rw .plus-child{
+    cursor: pointer;
+}
+.chooseadultroom .tbl .rw .txt-small{
+    font-size: 11px;
+}
+.chooseadultroom .tbl .rw .traveller-type-room-adult{
+    font-size: 11px;
+}
+.chooseadultroom .tbl .rw .col-20{
+    width: 20%;
+    display: table-cell;
+    padding: 10px;
+}
+.chooseadultroom .tbl .rw .col-60{
+    width: 60%;
+    display: table-cell;
+    padding: 10px;
+}
+.chooseadultroom .tbl .rw .col-30{
+    width: 30%;
+    display: table-cell;  
+    padding: 5px; 
+}
+.chooseadultroom .col-30{
+    width: 33%;
+    float:left;
+    padding: 2px; 
+}
+/* -- End --*/

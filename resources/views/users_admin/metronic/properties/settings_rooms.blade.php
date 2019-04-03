@@ -232,7 +232,7 @@
 											<div class="tab-container">
 												<ul class="nav nav-tabs" role="tablist">
 													<li class="nav-item">
-                                                        <a class="nav-link <?php echo ($j==1) ? 'active' : '' ?>"  href="#" data-target="#rooms_details_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Details</a>
+                                                        <a class="nav-link active"  href="#" data-target="#rooms_details_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Details</a>
                                                     </li>
 													<li class="nav-item">
                                                         <a class="nav-link" href="#" data-target="#rooms_images_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Images</a>
@@ -243,7 +243,7 @@
 												</ul>
 												
 												<div class="tab-content">
-													<div class="tab-pane <?php echo ($j==1) ? 'active' : '' ?> use-padding" id="rooms_details_cat{{$cat['data']->id}}">
+													<div class="tab-pane active use-padding" id="rooms_details_cat{{$cat['data']->id}}">
                                                         <div id="refresh_{{$cat['data']->id}}">
 														@if(array_key_exists('rooms', $cat))
 															{{--*/ $r=1; /*--}}
@@ -278,7 +278,7 @@
     																				 
                                                                                     <div class="m-checkbox-inline m--align-center">
                                             											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                            												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control" value="1">
+                                            												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control roomActiveFull" value="1" data-id="{{$r}}" data-catid="{{$cat['data']->id}}" >
                                             												<span></span>
                                             											</label>
                                             										</div>
@@ -324,7 +324,7 @@
                                                                                     
                                                                                     <div class="m-checkbox-inline m--align-center">
                                             											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                            												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm " value="1" {{($room->active_full_year==1) ? 'checked="checked"' : ''}}>
+                                            												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm roomActiveFull" value="1" {{($room->active_full_year==1) ? 'checked="checked"' : ''}}  data-id="{{$r}}" data-catid="{{$cat['data']->id}}" >
                                             												<span></span>
                                             											</label>
                                             										</div>
@@ -353,7 +353,7 @@
 																
 															@endforeach
 															</div>
-														@else
+														@else 
                                                             <div class="row">
                                                                 <div class="col-md-12 col-xs-12">
                                                                     <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible" role="alert">
@@ -385,7 +385,7 @@
     																				
                                                                                     <div class="m-checkbox-inline m--align-center">
                                             											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                            												<input name="room_active_full" id="room_active_full" type="checkbox" value="1">
+                                            												<input name="room_active_full" id="room_active_full" type="checkbox" value="1" data-id="1" data-catid="{{$cat['data']->id}}" class="roomActiveFull" >
                                             												<span></span>
                                             											</label>
                                             										</div>
@@ -451,7 +451,7 @@
 																		<i class="glyphicon glyphicon-ban-circle"></i>
 																		<span>Cancel upload</span>
 																	</button>
-																	<a class="btn btn-success" title="Re-oder your images from the container after room setup has been completed" @if(array_key_exists('imgs', $cat)) href="{{URL::to('folders/'.$cat['imgs'][0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+																	<a class="btn btn-success" title="Re-oder your images from the container after room setup has been completed" @if(array_key_exists('imgs', $cat)) href="{{URL::to('folders/'.$cat['imgs'][0]->folder_id.'?show=thumb&pid='.$pid)}}" @else href="#" @endif>
 																		<span>Re-Order</span>
 																	</a>
 																	<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('ff{{$cat['data']->id}}');" >
@@ -680,6 +680,29 @@
 <script>
 
 $(document).ready(function () {
+    
+    $(document).on('click', '.roomActiveFull', function(){
+        var catid = $(this).attr('data-catid');
+        var no = $(this).attr('data-id');
+        var room_active_from = '';
+        var room_active_to = '';
+        var dt = new Date();
+        var _year = dt.getFullYear(); 
+        var _month = dt.getMonth(); 
+        var _day = dt.getDate(); 
+       // chk_date = new Date(t_chk_v_year,t_chk_v_month,t_chk_v_day)
+        room_active_from = _year+"-01-01";
+        room_active_to = _year+"-12-31";
+        //console.log(catid+'/'+no);
+        if($(this).is(':checked')){
+            $("#room_active_from"+catid+"-"+no).val(room_active_from);
+            $("#room_active_to"+catid+"-"+no).val(room_active_to);
+        }else{
+            $("#room_active_from"+catid+"-"+no).val('');
+            $("#room_active_to"+catid+"-"+no).val('');
+        }
+    }); 
+    
     $(".select2").select2();
      /*$(".add_property_type_setup").validate({
 		 errorPlacement: function(error, element) {

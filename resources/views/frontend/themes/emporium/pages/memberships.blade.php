@@ -81,7 +81,7 @@
                                             @if($package->package_price_type!=1)  
                                                 <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
                                             @else
-                                                <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>   
+                                                <h6><a href="#" class="btn priceonrequest">Request Consultation</a></h6>   
                                             @endif
                                             </div>
                                         </div>
@@ -204,6 +204,26 @@
             font-size: 16px;
             line-height: 22px;
             font-family: GeomanistLight;
+        }
+        .priceonrequest{
+            background-color: #aba00b;
+            border: medium none;
+            border-radius: 0;
+            color: #fff;
+            padding: 7px 9px;
+            text-transform: uppercase;
+        }        
+        .priceonrequest:hover{
+            background-color: #ABA07C;
+            color: #fff;
+        }
+        .priceonrequest::visited{
+            background-color: #aba00b; 
+            color: #fff;           
+        }
+        .priceonrequest:active{
+            background-color: #aba00b; 
+            color: #fff;           
         }
     </style>
 @endsection

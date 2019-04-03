@@ -16,10 +16,12 @@
                 {{--*/ $is_demo6 = trim(\CommonHelper::isHotelDashBoard()); /*--}}
                 @if(strlen($is_demo6) > 0)
                     <li><a href="{{ URL::to('dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{ URL::to('user/profile')}}">Change Password</a></li>
                 @else
                     <li><a href="{{ URL::to('customer/profile')}}">Profile</a></li>
+                    <li><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Password</a></li>
                 @endif
-                <li><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Possword</a></li>
+                <?php /* <li><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Password</a></li> */ ?>
                 <li><a href="{{ URL::to('customer/logout')}}">Logout</a></li>
             </ul>
             @else

@@ -101,7 +101,8 @@
 		       
 		    </div>
 		    <div>
-		        <strong>Copyright</strong> &copy; 2014-{{ date('Y')}} . {{ CNF_COMNAME }}  
+		        <?php /* <strong>Copyright</strong> &copy; 2014-{{ date('Y')}} . {{ CNF_COMNAME }}  */ ?>
+                <strong>Copyright</strong> &copy; {{ date('Y')}} . {{ CNF_COMNAME }}
 		    </div>
 		</div>		
 

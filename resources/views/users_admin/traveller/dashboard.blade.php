@@ -264,8 +264,8 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         				</div>
         			</div>
                     <?php 
-                        
-                        $latest_reservation = \DB::table('tb_reservations')->where('client_id', $logged_user->id)->orderBy('id', 'DESC')->first();
+                        $latest_reservation = array();
+                        /*$latest_reservation = \DB::table('tb_reservations')->where('client_id', $logged_user->id)->orderBy('id', 'DESC')->first();
                         $arrival_day = '';
                         $arrival_month = '';
                         $arrival_year = '';
@@ -287,13 +287,13 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                             $reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $latest_reservation->id)->get(); 
                             //print_r($reserved_rooms);
                             $total_price = 0;
-                            $reservation_price = $latest_reservation->price;                            
+                            $reservation_price = $latest_reservation->price;*/                            
                             /*if(!empty($reserved_rooms)){
                                 foreach($reserved_rooms as $room){
                                     $total_price += ($latest_reservation->number_of_nights * $reservation_price);
                                 }
                             }*/
-                            $total_price = $latest_reservation->total_price;
+                            /*$total_price = $latest_reservation->total_price;
                             //$commission_due = $total_price * ($obj_properties->commission / 100);
                             $commission_due = $latest_reservation->total_commission;
                             $grand_total = $commission_due + $total_price;
@@ -315,7 +315,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                             if($room_type_id!=''){
                                 $book_again = 'book-property/'.$obj_properties->property_slug.'?property='.$obj_properties->id.'&roomType='.$room_type_id.'&arrive=&departure=&booking_adults=1&booking_children=0';
                             }
-                        }
+                        }*/
                         
                     ?>
         			<div class="m-portlet__head-tools">
@@ -470,31 +470,10 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             					<div class="m-widget28__tab tab-content">
             						<div id="menu11" class="m-widget28__tab-container tab-pane active">
             							<div class="m-widget28__tab-items">                                        
-            								<div class="m-widget28__tab-item">
-            									<span>
-            										
-            									</span>
-            									<span>
-            										
-            									</span>
+            								<div class="m-widget28__tab-item m--align-center">
+            									Currently, there are no reservation.<br /><br />
+                                                <a href="{{Url::to('/')}}">Make a new reservation</a>
             								</div>
-            								<div class="m-widget28__tab-item">
-            									<span>
-            										
-            									</span>
-            									<span>
-            										
-            									</span>
-            								</div>
-            								<div class="m-widget28__tab-item">
-            									<span>
-            										
-            									</span>
-            									<span>
-            										
-            									</span>
-            								</div>
-            								
             							</div>
             						</div>
             					</div>
@@ -738,7 +717,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 										
 									</span>
 									<span class="m-widget17__subtitle">
-										<a href="#" class="cls_preferences_1" >Preferences 1</a>
+										<a href="{{ URL::to('user/preferences')}}" class="cls_preferences_1" >Preferences 1</a>
 									</span>
 									<span class="m-widget17__desc">
 										

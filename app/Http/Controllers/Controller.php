@@ -43,6 +43,12 @@ abstract class Controller extends BaseController {
 				\Session::put('fid', \Auth::user()->first_name.' '. \Auth::user()->last_name);  
 				\Session::put('themes', 'sximo-light-blue');     		
         	}
+            if(\Session::get('gid')==5){
+                $obj_prop = \DB::table('tb_properties')->where('user_id', \Auth::user()->id)->orWhere('assigned_user_id', \Auth::user()->id)->first();
+                if(!empty($obj_prop)){                    
+                    \Session::put('prop_slug', $obj_prop->property_slug);
+                }
+            }             
         } 
 
         if(!\Session::get('themes'))

@@ -22,6 +22,7 @@
                  <div class="ai-login-form-success-msg"></div>
                  <div class="ai-login-form-error-msg"></div>
                  <form  action="{{URL::to('customer/signin')}}" id="loginFormAction" method="POST">
+                     <input type="hidden" name="ref_page" />
                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                      <div class="form-group">
                         <input class="form-control" name="email" type="text" placeholder="Email Address" required="email" />

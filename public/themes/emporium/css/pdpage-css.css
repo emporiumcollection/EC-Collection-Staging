@@ -472,7 +472,8 @@ position: absolute;
   border: 1px solid #ABA07C;
   color: #fff;
   border-radius: 0px;
-  margin: 0 2px;
+  margin: 2px 2px;
+  width: 48%;
   transition: all 0.5s ease 0s;
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
@@ -482,6 +483,13 @@ position: absolute;
   background: transparent;
   border: 1px solid #ABA07C;
   color: #ABA07C;
+}
+.sliderContent .btn.bg-color{
+    background-color: #aba00b;
+}
+.sliderContent .btn.bg-color:hover{
+    background-color: #ABA07C;
+    color:#fff;
 }
 .sliderArrow {
   display: block;
@@ -701,8 +709,8 @@ position: absolute;
 }
 .sliderContent .btn {
     font-size: 12px;
-    padding: 4px 10px;
-    margin: 2px;
+    padding: 4px 0px;
+    margin: 2px 1px;
   }
   .carousalCaption {
     padding: 50px 6% 0;
@@ -935,7 +943,9 @@ position: absolute;
     margin-left: 20px;
 }
 
-
+.season-accordion{
+    margin-top: 20px;
+}
 .season-accordion .panel-body{
     /*background: #000 !important;*/
     border: 0px !important;
@@ -1110,3 +1120,141 @@ position: absolute;
     margin: 0px auto;
  } 
  /*----------- End Season Class -------*/
+ 
+ /*------------ Hotel Search Result Start ------------------*/
+ .hotelSearchResultSection {
+    width: 100%;  
+    margin-top: 80px;
+    color: #fff;
+    font-family: 'GeomanistLight', sans-serif;
+    padding: 0px 10px; 
+    
+}
+.hotelSearchResultSection .hotelSearchResultInner{
+    background-image: url('../images/connoiser-bg.jpg');
+    background-blend-mode: multiply;
+    filter: brightness(.9);
+    background-color: #252525;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 0px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .heading{
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    display: block;
+}
+.hotelSearchResultSection .hotelSearchResultInner .sub-heading{
+    font-size: 12px;
+    color: #fff;
+    text-transform: none;
+}
+
+.search-result-error{
+    font-size: 16px;    
+    text-align: center;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box{
+    display: table;
+    width: 100%;
+    border-spacing: 10px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box img{
+    padding: 0px 8px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .rw{
+    display: table-row;
+    width: 100%;
+    padding: 0px 0px 20px 0px;  
+    background: #252525;  
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .rw .col-1{
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .rw .col-3{
+    display: table-cell;
+    width: 33%;
+    vertical-align: middle;
+}
+.yellowbtn{
+    background-color: #aba00b;
+    border: medium none;
+    border-radius: 0;
+    color: #fff;
+    padding: 7px 9px;
+    text-transform: uppercase;
+}
+.yellowbtn:hover{
+    background-color: #ABA07C;
+    color:#fff;   
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .inner-box{
+    background: #252525;
+    padding: 10px;
+    width: 250px;
+    text-align: center;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .line{
+    width: 40%;
+    margin: 0px auto;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .room-available{    
+    display: inline-block;
+    margin-top: 15px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .available{
+    float: left;
+    width:50px;
+    color: #000;
+    /*padding: 3px;
+    background: #fff;  */   
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .add-room{
+    float: left;
+   /* background: #fff;
+    color: #000;*/
+    padding: 0px 5px;
+    margin-left: 5px;
+    border:1px solid #fff;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .add-room .checkbox{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .add-room .checkbox input[type=checkbox]{
+    margin-left: -29px;
+    height: 21px;
+    width: 30px;
+    margin-top: 0px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .box .add-room .checkbox label{
+    padding-left: 26px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .footer{
+    text-align: right;
+    margin-right: 116px;
+    display: block;
+}
+.hotelSearchResultSection .hotelSearchResultInner .your-stay-box{
+    background: #252525;
+    display: inline-block;
+    width: 86%;
+    padding: 0px 0px 12px 0px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .padding-margin{
+    padding-left: 0px;
+    margin-top: 12px;
+}
+.hotelSearchResultSection .hotelSearchResultInner .btn-pad-20{
+    padding: 20px 0px 5px 0px;    
+}
+.hotelSearchResultSection .hotelSearchResultInner .col-30{
+    float: left;
+    width: 33%;
+    padding: 1%;
+}
+ /*------------Hotel Search Result End ---------------*/
