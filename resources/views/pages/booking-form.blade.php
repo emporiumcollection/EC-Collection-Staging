@@ -182,7 +182,7 @@
                                         
                                         <div class="clearfix"></div>
                                         <div class="booking-form-all-fields-row-2" id="add_suites">
-                                        {{--*/ $total_amt = 0 /*--}}
+                                        {{--*/ $total_amt = 0; print_r($obj_item); die; /*--}}
                                         @if(!empty($obj_item))
                                             <table class="table">
                                             @foreach($obj_item as $si) 
@@ -237,7 +237,7 @@
                                                 </tr>
                                             </table>
                                         @endif    
-                                        </div> <?php die; ?>
+                                        </div> 
                                         <!--                                        <div id="accordion-speical-code">
                                                                                     <div class="panel panel-default">
                                                                                         <div class="panel-heading">
