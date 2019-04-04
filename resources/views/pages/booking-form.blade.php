@@ -182,7 +182,7 @@
                                         
                                         <div class="clearfix"></div>
                                         <div class="booking-form-all-fields-row-2" id="add_suites">
-                                        {{--*/ $total_amt = 0; print_r($obj_item); die; /*--}}
+                                        {{--*/ $total_amt = 0; /*--}}
                                         @if(!empty($obj_item))
                                             <table class="table">
                                             @foreach($obj_item as $si) 
@@ -222,7 +222,7 @@
                                                         @if($si['cat_id']->booking_policy!='')
                                                             {{$si['cat_id']->booking_policy}}
                                                         @else
-                                                            {{$si['property_terms_cond']}}
+                                                            {{$si['property_terms_cond']->terms_n_conditions}}
                                                         @endif
                                                     </td>
                                                 </tr>
