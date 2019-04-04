@@ -107,7 +107,6 @@
         if(!empty($propertyDetail['propimage'][0]->file_name)){
             $bg_img = $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][0]->file_name;
         } 
-        
         ?>
         <div class="" style="background-attachment: fixed; background-image: url('<?php echo $bg_img; ?>'); background-repeat: no-repeat; background-size: cover; min-height: 100vh;">
             <div class="container">
@@ -182,7 +181,7 @@
                                         
                                         <div class="clearfix"></div>
                                         <div class="booking-form-all-fields-row-2" id="add_suites">
-                                        {{--*/ $total_amt = 0; /*--}}
+                                        {{--*/ $total_amt = 0 /*--}}
                                         @if(!empty($obj_item))
                                             <table class="table">
                                             @foreach($obj_item as $si) 
