@@ -173,7 +173,7 @@
                                                             {{$number_of_nights}}
                                                             <input type="hidden" id="number_of_nights" min="0" name="number_of_nights"  value="{{$number_of_nights}}">
                                                         </li>
-                                                        <?php die; ?>
+                                                        
                                                     
                                                 </ul>
                                             </div>
@@ -237,7 +237,7 @@
                                                 </tr>
                                             </table>
                                         @endif    
-                                        </div> 
+                                        </div> <?php die; ?>
                                         <!--                                        <div id="accordion-speical-code">
                                                                                     <div class="panel panel-default">
                                                                                         <div class="panel-heading">
