@@ -107,7 +107,7 @@
         if(!empty($propertyDetail['propimage'][0]->file_name)){
             $bg_img = $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][0]->file_name;
         } 
-        die;
+        
         ?>
         <div class="" style="background-attachment: fixed; background-image: url('<?php echo $bg_img; ?>'); background-repeat: no-repeat; background-size: cover; min-height: 100vh;">
             <div class="container">
@@ -173,7 +173,7 @@
                                                             {{$number_of_nights}}
                                                             <input type="hidden" id="number_of_nights" min="0" name="number_of_nights"  value="{{$number_of_nights}}">
                                                         </li>
-                                                        
+                                                        <?php die; ?>
                                                     
                                                 </ul>
                                             </div>
