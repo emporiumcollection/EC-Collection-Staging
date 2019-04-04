@@ -236,7 +236,7 @@
                                                 </tr>
                                             </table>
                                         @endif    
-                                        </div>
+                                        </div> <?php die; ?>
                                         <!--                                        <div id="accordion-speical-code">
                                                                                     <div class="panel panel-default">
                                                                                         <div class="panel-heading">
