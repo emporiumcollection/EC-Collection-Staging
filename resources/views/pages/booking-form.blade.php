@@ -221,7 +221,9 @@
                                                         @if($si['cat_id']->booking_policy!='')
                                                             {{$si['cat_id']->booking_policy}}
                                                         @else
-                                                            {{$si['property_terms_cond']->terms_n_conditions}}
+                                                            @if(!empty($si['property_terms_cond']))
+                                                                {{$si['property_terms_cond']->terms_n_conditions}}
+                                                            @endif
                                                         @endif
                                                     </td>
                                                 </tr>
