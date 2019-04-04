@@ -5430,8 +5430,8 @@ class HomeController extends Controller {
             $flag = true;
             $return = array();
             $arr_type = array();
-            if (!empty($booking_adults)) { 
-                for($j=0; $j<count($booking_adults); $j++){
+            if (!empty($booking_Room_type)) { 
+                for($j=0; $j<count($booking_Room_type); $j++){
                     //$type_id = $booking_Room_type[$j]==0 ? $request->input('roomType') : $booking_Room_type[$j];
                     $type_id = $booking_Room_type[$j];
                     $rmid = '';
@@ -5485,7 +5485,7 @@ class HomeController extends Controller {
                     $day_w_price = array($sunday_price, $monday_price, $tuesday_price, $wednesday_price, $thursday_price, $friday_price, $saturday_price);
                     
                     $diff = strtotime($book_checkout_date) - strtotime($book_arrive_date);
-                    $staytime = ($diff/86400)+1;
+                    $staytime = ($diff/86400);
                     
                     $amt = $this->get_daywise_price($book_arrive_date, $staytime, $day_w_price);
                     
@@ -5723,6 +5723,10 @@ die;        */
             
             $booking_number = '101'.str_pad($resid, 5, 0, STR_PAD_LEFT);
             \DB::table('tb_reservations')->where('id', $resid)->update(array('booking_number' => $booking_number, 'total_price'=>$total_amount, 'discount'=>$_discount, 'total_commission'=>$commision_amt));
+            
+            
+            
+            
             /*
              * Send email notification
              */             
@@ -5743,6 +5747,7 @@ die;        */
             $bookingEmailTemplate = file_get_contents($bookingEmail);
             
             $reservation_price = $reservation->price;
+            //print_r($reservation_price); die;
             if($discount_apply!=''){
                 $discount_price = ($reservation->price*10/100);
                 $org_price = $reservation->price - $discount_price;
@@ -6080,6 +6085,7 @@ die;        */
 
             $total_price = 0;
             $html = '';
+            //print_r($reserved_rooms); die;
             foreach ($reserved_rooms as $reserved_room) {
                 //$total_price += ($reservation->number_of_nights * $reservation_price);
                 //$total_price += ($reservation->number_of_nights * $reserved_room->rack_rate);
@@ -6176,7 +6182,7 @@ die;        */
             
             
             //view('user.emails.'.$tempe, $emailArr);
-            print_r($bookingEmailTemplate); die;
+            //print_r($bookingEmailTemplate); die;
             //$headers = "MIME-Version: 1.0" . "\r\n";
             //$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
             //$headers .= 'From: ' . CNF_APPNAME . '<marketing@emporium-voyage.com>' . "\r\n";

@@ -522,8 +522,8 @@
                                                                                 <table align="center" cellspacing="0" cellpadding="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                            <th width="313" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                <table width="313" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <th width="300" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                                <table width="300" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tbody>
                                                                                                         <tr>
                                                                                                             <td height="20" colspan="3" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
@@ -541,14 +541,14 @@
                                                                                                 </table>
                                                                                             </th>
                                                                                             
-                                                                                            <th width="313" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                <table width="313" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <th width="326" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                                <table width="326" align="center" cellspacing="0" cellpadding="0" border="0" class="table60032" style="border-bottom-color: #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tbody>
                                                                                                         <tr>
                                                                                                             <td height="20" colspan="3" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                            <td width="0" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                             <!-- DESCRIPTION TEXT -->
                                                                                                             <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Your Membership Status : Lifestyle</td>
                                                                                                             <td width="30" class="wz2" style="border-collapse: collapse;"></td>
@@ -636,57 +636,7 @@ Please use your Booking reference at the time of payment.
                 <!--END OF THE MODULE-->
             </div>
 
-            <div mc:repeatable>
-                <!-- 1 COLUMN MODULE === YOUR PAYMENT IS PROCESSING TEXT -->
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                    <tr>
-                        <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                <tr>
-                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                        <table width="629" bgcolor="#252525" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                            <tr>
-                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-bottom: 1px solid #414246;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                        <tr>
-                                                            <td align="center" style="border-collapse: collapse;">
-                                                                <table cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                    <tr>
-                                                                        <td align="center" style="border-collapse: collapse;">
-                                                                            <table width="629" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                <tr>
-                                                                                    <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;" class="vrtclAlgn2">&nbsp;</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
-                                                                                    <!--TEXT SECTION-->
-                                                                                    <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">
-                                                                                        <p style="float: left; background: rgb(77, 74, 69) none repeat scroll 0% 0%; color: rgb(255, 255, 255); padding: 10px; width: 97%; text-align: center; text-transform: uppercase;" class="RegularText4TD">{category_name}</p>
-                                                                                        <img src="{category_image}" style="width: 600px;" />
-                                                                                    </td>
-                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;" class="vrtclAlgn">&nbsp;</td>
-                                                                                </tr>
-                                                                            </table>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-                <!--END OF THE MODULE-->
-            </div>
+            
             <div mc:repeatable>
                 <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tbody>
