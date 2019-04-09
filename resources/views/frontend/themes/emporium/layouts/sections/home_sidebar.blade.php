@@ -127,7 +127,7 @@
                 </div>
             @endif
             <div class="hide" data-option="search-by-date">
-                <form action="{{url('search')}}" method="get">
+                <form action="{{url('searchavailability')}}" method="get">
                     {{--*/
                             $setDateArvStr = date('j-n-Y');
                             $setDateDepStr = date('j-n-Y',strtotime('+1 day'));

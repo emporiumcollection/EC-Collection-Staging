@@ -264,8 +264,9 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         				</div>
         			</div>
                     <?php 
-                        $latest_reservation = array();
-                        /*$latest_reservation = \DB::table('tb_reservations')->where('client_id', $logged_user->id)->orderBy('id', 'DESC')->first();
+                        //$latest_reservation = array();
+                        $img = "";
+                        $latest_reservation = \DB::table('tb_reservations')->where('client_id', $logged_user->id)->orderBy('id', 'DESC')->first();
                         $arrival_day = '';
                         $arrival_month = '';
                         $arrival_year = '';
@@ -287,13 +288,13 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                             $reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $latest_reservation->id)->get(); 
                             //print_r($reserved_rooms);
                             $total_price = 0;
-                            $reservation_price = $latest_reservation->price;*/                            
+                            $reservation_price = $latest_reservation->price;                            
                             /*if(!empty($reserved_rooms)){
                                 foreach($reserved_rooms as $room){
                                     $total_price += ($latest_reservation->number_of_nights * $reservation_price);
                                 }
                             }*/
-                            /*$total_price = $latest_reservation->total_price;
+                            $total_price = $latest_reservation->total_price;
                             //$commission_due = $total_price * ($obj_properties->commission / 100);
                             $commission_due = $latest_reservation->total_commission;
                             $grand_total = $commission_due + $total_price;
@@ -304,18 +305,18 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                                 
                                 $room_type_id= $reserved_rooms[0]->type_id;
                             }
-                            $category = \DB::table('tb_properties_category_types')->where('id', $latest_reservation->type_id)->where('status', 0)->where('show_on_booking', 1)->first();
+                            //$category = \DB::table('tb_properties_category_types')->where('id', $latest_reservation->type_id)->where('status', 0)->where('show_on_booking', 1)->first();
                             
-                            $category_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $category->property_id)->where('tb_properties_images.category_id', $latest_reservation->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                            //$category_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $category->property_id)->where('tb_properties_images.category_id', $latest_reservation->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
                             
-                            $imgsrc = $container->getThumbpath($category_image->folder_id);
+                            //$imgsrc = $container->getThumbpath($category_image->folder_id);
                             
-                            $img = $imgsrc.'/'.$category_image->file_name;
+                            //$img = $imgsrc.'/'.$category_image->file_name;
                             $book_again = '';
                             if($room_type_id!=''){
                                 $book_again = 'book-property/'.$obj_properties->property_slug.'?property='.$obj_properties->id.'&roomType='.$room_type_id.'&arrive=&departure=&booking_adults=1&booking_children=0';
                             }
-                        }*/
+                        }
                         
                     ?>
         			<div class="m-portlet__head-tools">

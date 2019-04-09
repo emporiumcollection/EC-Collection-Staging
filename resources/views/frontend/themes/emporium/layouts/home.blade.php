@@ -461,6 +461,18 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 }
             });
             
+            @if(!empty(Session::get("arrive")))
+                chk_date2 = '{{Session::get("arrive")}}';
+            @else 
+                chk_date2 = chk_date;            
+            @endif
+            
+            @if(!empty(Session::get("departure")))
+                chk_out_date2 = '{{Session::get("departure")}}'; 
+            @else  
+                chk_out_date2 = chk_out_date;
+            @endif
+            
             $('#t-sidebar-picker').tDatePicker({
                 'numCalendar':'1',
                 'autoClose':true,
@@ -474,8 +486,11 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 'titleDateRanges':'days',
                 'iconDate':'<i class="fa fa-calendar"></i>',
                 'limitDateRanges':'365',
-                'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
-                'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+                'dateCheckIn':chk_date2,
+                'dateCheckOut':chk_out_date2
+                
+                //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
+                //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
             });
             
             // Open Left Navigation For Search By Date on Page Load

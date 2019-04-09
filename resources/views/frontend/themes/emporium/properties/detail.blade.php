@@ -536,27 +536,56 @@
                                             <div class="t-check-out"></div>
                                         </div>
                                     </li> -->
+                                    @if(!empty(Session::get('booking_adults'))) 
+                                        {{--*/ $adult = Session::get('booking_adults') /*--}} 
+                                    @else
+                                        {{--*/ $adult = 1 /*--}} 
+                                    @endif
+                                    
                                     <li>
                                         <h3>Adults</h3>
                                         <select name="booking_adults">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
+                                            <option {{$adult==1 ? "selected='selected'" : "" }}>1</option>
+                                            <option {{$adult==2 ? "selected='selected'" : "" }}>2</option>
+                                            <option {{$adult==3 ? "selected='selected'" : "" }}>3</option>
+                                            <option {{$adult==4 ? "selected='selected'" : "" }}>4</option>
+                                            <option {{$adult==5 ? "selected='selected'" : "" }}>5</option>
+                                            <option {{$adult==6 ? "selected='selected'" : "" }}>6</option>
+                                            <option {{$adult==7 ? "selected='selected'" : "" }}>7</option>
+                                            <option {{$adult==8 ? "selected='selected'" : "" }}>8</option>
+                                            <option {{$adult==9 ? "selected='selected'" : "" }}>9</option>
+                                            <option {{$adult==10 ? "selected='selected'" : "" }}>10</option>
+                                            <option {{$adult==11 ? "selected='selected'" : "" }}>11</option>
+                                            <option {{$adult==12 ? "selected='selected'" : "" }}>12</option>
+                                            <option {{$adult==13 ? "selected='selected'" : "" }}>13</option>
+                                            <option {{$adult==14 ? "selected='selected'" : "" }}>14</option>
+                                            <option {{$adult==15 ? "selected='selected'" : "" }}>15</option>                                            
                                         </select>
                                     </li>
+                                    @if(!empty(Session::get('booking_children'))) 
+                                        {{--*/ $child = Session::get('booking_children') /*--}} 
+                                    @else
+                                        {{--*/ $child = 0 /*--}} 
+                                    @endif
                                     <li>
                                         <h3>Children</h3>
                                         <select name="booking_children">
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
+                                            <option {{$child==0 ? "selected='selected'" : "" }}>0</option>
+                                            <option {{$child==1 ? "selected='selected'" : "" }}>1</option>
+                                            <option {{$child==2 ? "selected='selected'" : "" }}>2</option>
+                                            <option {{$child==3 ? "selected='selected'" : "" }}>3</option>
+                                            <option {{$child==4 ? "selected='selected'" : "" }}>4</option>
+                                            <option {{$child==5 ? "selected='selected'" : "" }}>5</option>
+                                            <option {{$child==6 ? "selected='selected'" : "" }}>6</option>                                            
+                                            <option {{$child==7 ? "selected='selected'" : "" }}>7</option>
+                                            <option {{$child==8 ? "selected='selected'" : "" }}>8</option>
+                                            <option {{$child==9 ? "selected='selected'" : "" }}>9</option>
+                                            <option {{$child==10 ? "selected='selected'" : "" }}>10</option>
+                                            <option {{$child==11 ? "selected='selected'" : "" }}>11</option>
+                                            <option {{$child==12 ? "selected='selected'" : "" }}>12</option>
+                                            <option {{$child==13 ? "selected='selected'" : "" }}>13</option>
+                                            <option {{$child==14 ? "selected='selected'" : "" }}>14</option>
+                                            <option {{$child==15 ? "selected='selected'" : "" }}>15</option>
                                         </select>
                                     </li>
                                 </ul>
@@ -1079,6 +1108,17 @@
             
             var chk_out_date = new Date();
             
+            @if(!empty(Session::get("arrive")))
+                chk_date = '{{Session::get("arrive")}}';
+            @else 
+                chk_date = chk_date;            
+            @endif
+            
+            @if(!empty(Session::get("departure")))
+                chk_out_date = '{{Session::get("departure")}}'; 
+            @else  
+                chk_out_date = chk_out_date;
+            @endif
             
             
             $('#t-middel-picker').tDatePicker({

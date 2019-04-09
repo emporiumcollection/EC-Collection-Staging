@@ -192,7 +192,7 @@ $(document).ready(function () {
         e.stopPropagation();  
     });
     
-    $(document).on('click', '.traveller-type', function(e){
+    $(document).on('click', '.traveller-type', function(e){ console.log("ghy");
        var t_type = $(this).attr('data-id'); 
        var rooms = $(this).attr('data-room'); 
        var adults = $(this).attr('data-adult');

@@ -4494,6 +4494,8 @@ svg:not(:root) {
     float: left;
     width: 20%;   
     text-align: center; 
+    height: 38px;
+    cursor: pointer;
 }
 .chooseadultroom{    
     position: absolute;
@@ -4505,6 +4507,7 @@ svg:not(:root) {
     padding: 5px;
     font-size: 12px;
     display: table;
+    left: -70px;
 }
 .chooseadultroom .column-1{
     width: 70%;
@@ -4519,6 +4522,7 @@ svg:not(:root) {
   display: inline-block;
   padding: 3px;
   margin-top: 10px;
+  cursor: pointer;
 }
 .chooseadultroom .column-1 i.right {
   transform: rotate(-45deg);
@@ -4544,9 +4548,20 @@ svg:not(:root) {
     color: #fff;
     text-decoration: none;
 }
+.chooseadultroom .tbl .rw .traveller-type span.span-left{
+    float: left; width: 90%;
+}
+.chooseadultroom .tbl .rw .traveller-type span.span-right{
+    float: right; width: 10%; text-align: right;
+}
 .chooseadultroom .tbl .rw .traveller-type.active{
     color: #ABA07C;
     text-decoration: none;
+    font-size: 13px;
+    border-bottom: 1px solid;
+}
+.chooseadultroom .tbl .rw .traveller-type.active span span{    
+    border-bottom: 1px solid;
 }
 .chooseadultroom .tbl .rw .col-55{
     width: 55%;
