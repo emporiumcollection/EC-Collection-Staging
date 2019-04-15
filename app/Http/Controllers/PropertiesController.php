@@ -1503,7 +1503,7 @@ class PropertiesController extends Controller {
             $c = 0;
             foreach ($cat_types as $type) {
                 $cats[$c]['data'] = $type;
-                $cat_rooms = \DB::table('tb_properties_category_rooms')->where('category_id', $property_id)->where('category_id', $type->id)->get();
+                $cat_rooms = \DB::table('tb_properties_category_rooms')->where('category_id', $property_id)->where('category_id', $type->id)->orderBy('id', 'asc')->get();
                 if (!empty($cat_rooms)) {
                     foreach ($cat_rooms as $room) {
                         $cats[$c]['rooms'][] = $room;
@@ -1524,7 +1524,7 @@ class PropertiesController extends Controller {
             $c = 0;
             foreach ($cat_types as $type) {
                 $cats[$c]['data'] = $type;
-                $cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $property_id)->where('category_id', $type->id)->get();
+                $cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $property_id)->where('category_id', $type->id)->orderBy('id', 'asc')->get();
                 if (!empty($cat_rooms)) {
                     foreach ($cat_rooms as $room) {
                         $cats[$c]['rooms'][] = $room;
@@ -5070,4 +5070,26 @@ function property_images_wetransfer(Request $request) {
 		return json_encode($res);
     }
     
+    function changeRoomStatus(Request $request) {
+        $uid = \Auth::user()->id;
+        $roomId = $request->input('room_id');
+        //print_r($roomId); die;
+        $sts = $request->input('status');
+        //$catid = $request->input('catid');
+        //$pid = $request->input('pid');
+        $checkRoom = \DB::table('tb_properties_category_rooms')->where('id', $roomId)->count();
+        //print_r($checkRoom); die;
+        if ($checkRoom > 0) {
+            //$ups = \DB::table('tb_properties_category_rooms')->uop->where('id', $roomId);
+            $ups = \DB::table('tb_properties_category_rooms')->where('id', $roomId)->update(array('status' => $sts));
+            $res['status'] = 'success';
+            //$res['pid'] = $pid;
+            //$res['catid'] = $catid;
+            return json_encode($res);
+        } else {
+            $res['status'] = 'error';
+            return json_encode($res);
+        }
+    }
+
 }

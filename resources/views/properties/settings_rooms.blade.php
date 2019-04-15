@@ -88,7 +88,7 @@
 																				</div> 
 																				<div class="form-group col-lg-2">
 																					<label for="room_active_full">Active Full Year </label>
-																					<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1" {{($room->active_full_year==1) ? 'checked="checked"' : ''}} /> 
+																					<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm roomActiveFull" value="1" data-id="{{$r}}" data-catid="{{$cat['data']->id}}" {{($room->active_full_year==1) ? 'checked="checked"' : ''}} /> 
 																				</div>
 																				<div class="form-group col-lg-3">
 																					<label for="room_active_from{{$cat['data']->id}}-{{$r}}">Active from </label>
@@ -102,7 +102,13 @@
 																		</div>
 																		<div class="col-lg-4 align-right">
 																			<div class="butt margin-top-10">
-																				<button type="button" class="btn btn-primary b-btn" onclick="copy_rooms_data({{$room->id}});" data-toggle="modal" data-target="#copyroom"><i class="fa fa-trash-0"></i> Copy</button>
+                                                                                
+                                                                                <div class="form-group col-lg-2">
+																					<label for="room_active_full">Activate </label>
+																					<input name="room_activate" id="room_activate" type="checkbox" class="form-control input-sm room-activate" value="{{$room->id}}" {{($room->status==1) ? 'checked="checked"' : ''}} /> 
+																				</div>
+                                                                                
+																				<button type="button" class="btn btn-primary b-btn" onclick="return copy_rooms_data({{$room->id}});"><i class="fa fa-trash-0"></i> Copy</button>
 																				<button type="button" class="btn btn-danger b-btn" onclick="delete_rooms_tabdata({{$room->id}},{{$r}},{{$cat['data']->id}});"><i class="fa fa-trash-0"></i> Delete</button>
 																				<button type="submit" class="btn btn-success b-btn"><i class="fa fa-save"></i> Save</button>
 																			</div>
@@ -124,7 +130,7 @@
 																			</div>
 																			<div class="form-group col-lg-2">
 																				<label for="room_active_full">Active Full Year </label>
-																				<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1"  /> 
+																				<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm roomActiveFull" value="1" data-id="{{$r}}" data-catid="{{$cat['data']->id}}" /> 
 																			</div>
 																			<div class="form-group col-lg-3">
 																				<label for="room_active_from{{$cat['data']->id}}-{{$r}}">Active from </label>
@@ -157,7 +163,7 @@
 																			</div> 
 																			<div class="form-group col-lg-2">
 																				<label for="room_active_full">Active Full Year </label>
-																				<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1"  /> 
+																				<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm roomActiveFull" value="1"  /> 
 																			</div>
 																			<div class="form-group col-lg-3">
 																				<label for="room_active_from{{$cat['data']->id}}-1">Active from </label>
@@ -383,7 +389,50 @@
 <script>
 
 $(document).ready(function () {
-
+    
+    $(document).on('ifChecked', '.roomActiveFull', function(){ 
+        var catid = $(this).attr('data-catid');
+        var no = $(this).attr('data-id');
+        var room_active_from = '';
+        var room_active_to = '';
+        var dt = new Date();
+        var _year = dt.getFullYear(); 
+        var _month = dt.getMonth(); 
+        var _day = dt.getDate(); 
+       // chk_date = new Date(t_chk_v_year,t_chk_v_month,t_chk_v_day)
+        room_active_from = _year+"-01-01";
+        room_active_to = _year+"-12-31";
+        //console.log(catid+'/'+no);
+        if($(this).is(':checked')){
+            $("#room_active_from"+catid+"-"+no).val(room_active_from);
+            $("#room_active_to"+catid+"-"+no).val(room_active_to);
+        }else{
+            $("#room_active_from"+catid+"-"+no).val('');
+            $("#room_active_to"+catid+"-"+no).val('');
+        }
+    }); 
+    $(document).on('ifUnchecked', '.roomActiveFull', function(){ 
+        var catid = $(this).attr('data-catid');
+        var no = $(this).attr('data-id');
+        var room_active_from = '';
+        var room_active_to = '';
+        var dt = new Date();
+        var _year = dt.getFullYear(); 
+        var _month = dt.getMonth(); 
+        var _day = dt.getDate(); 
+       // chk_date = new Date(t_chk_v_year,t_chk_v_month,t_chk_v_day)
+        room_active_from = _year+"-01-01";
+        room_active_to = _year+"-12-31";
+        //console.log(catid+'/'+no);
+        if($(this).is(':checked')){
+            $("#room_active_from"+catid+"-"+no).val(room_active_from);
+            $("#room_active_to"+catid+"-"+no).val(room_active_to);
+        }else{
+            $("#room_active_from"+catid+"-"+no).val('');
+            $("#room_active_to"+catid+"-"+no).val('');
+        }
+    }); 
+    
      /*$(".add_property_type_setup").validate({
 		 errorPlacement: function(error, element) {
 			// Append error within linked label
@@ -410,6 +459,81 @@ $(document).ready(function () {
 			 }
 		 });
 	 });
+     
+     $(document).on('ifChecked', '.room-activate', function(){
+        var roomId = $(this).val();
+        var status = 1;
+        //console.log(roomId);
+        if(roomId!='' && roomId>0)
+		{
+			//var conf = confirm("Are you sure? you want to delete this record!");
+			//if(conf==true)
+			//{
+				$.ajax({
+				  url: "{{ URL::to('changeRoomStatus')}}",
+				  type: "post",
+				  data: {room_id:roomId, status:status},
+				  dataType: "json",
+				  success: function(data){
+					  var html ='';
+					  if(data.status=='error')
+					  {
+							html +='<div class="alert alert-danger fade in block-inner">';
+							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
+							$('.page-content-wrapper #formerrors').html(html);
+							window.scrollTo(0, 0);
+					  }
+					  else{
+							//$('#add_property_room_setup'+catid+'-'+formid).remove();
+							html +='<div class="alert alert-success fade in block-inner">';
+							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<i class="icon-checkmark-circle"></i> Record Activated Successfully </div>';
+							$('.page-content-wrapper #formerrors').html(html);
+							window.scrollTo(0, 0);
+					  }
+				  }
+				});
+			//}
+		}        
+     });
+     $(document).on('ifUnchecked', '.room-activate', function(){
+        var roomId = $(this).val();
+        var status = 0;
+        //console.log(roomId);
+        if(roomId!='' && roomId>0)
+		{
+			//var conf = confirm("Are you sure? you want to delete this record!");
+			//if(conf==true)
+			//{
+				$.ajax({
+				  url: "{{ URL::to('changeRoomStatus')}}",
+				  type: "post",
+				  data: {room_id:roomId, status:status},
+				  dataType: "json",
+				  success: function(data){
+					  var html ='';
+					  if(data.status=='error')
+					  {
+							html +='<div class="alert alert-danger fade in block-inner">';
+							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
+							$('.page-content-wrapper #formerrors').html(html);
+							window.scrollTo(0, 0);
+					  }
+					  else{
+							//$('#add_property_room_setup'+catid+'-'+formid).remove();
+							html +='<div class="alert alert-success fade in block-inner">';
+							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<i class="icon-checkmark-circle"></i> Record Deactivated Successfully </div>';
+							$('.page-content-wrapper #formerrors').html(html);
+							window.scrollTo(0, 0);
+					  }
+				  }
+				});
+			//}
+		}
+     });
 });
 
 	function save_rooms_tabdata(formid)
@@ -449,7 +573,7 @@ $(document).ready(function () {
 						newid = parseInt(splt[1]) + 1;
 						
 						$('#'+formid+' .butt button').remove();
-						var remBut = '<button type="button" class="btn btn-primary b-btn" onclick="copy_rooms_data('+data.room.id+','+splt[1]+','+data.room.category_id+');"><i class="fa fa-trash-0"></i> Copy</button> <button type="button" class="btn btn-danger b-btn" onclick="delete_rooms_tabdata('+data.room.id+','+splt[1]+','+data.room.category_id+');"><i class="fa fa-trash-0"></i> Delete</button> <button type="submit" class="btn btn-success b-btn"><i class="fa fa-save"></i> Save</button>';
+						var remBut = '<button type="button" class="btn btn-primary b-btn" onclick="return copy_rooms_data('+data.room.id+','+splt[1]+','+data.room.category_id+');"><i class="fa fa-trash-0"></i> Copy</button> <button type="button" class="btn btn-danger b-btn" onclick="delete_rooms_tabdata('+data.room.id+','+splt[1]+','+data.room.category_id+');"><i class="fa fa-trash-0"></i> Delete</button> <button type="submit" class="btn btn-success b-btn"><i class="fa fa-save"></i> Save</button>';
 						$('#'+formid+' .butt').html(remBut);
 						
 						$('#'+formid+' input[name="edit_room_id"]').val(data.room.id);
@@ -579,7 +703,10 @@ $(document).ready(function () {
 		if(roomID!='' && roomID>0)
 		{
 			$('#roomID').val(roomID);
+            $('#copyroom').modal('show');
 		}
+        
+        return false;
 	}
 </script>
 
