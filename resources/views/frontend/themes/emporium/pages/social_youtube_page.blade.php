@@ -8,7 +8,7 @@
 {{-- For Page's Content Part --}}
 @section('content')
 
-	<div class="row">
+	<div class="row margin-top-90">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			@if($channel_url!='')
 				<div data-yt data-yt-channel="{{ $channel_url }}" data-yt-content-columns="4"  data-yt-content-rows="3"></div>

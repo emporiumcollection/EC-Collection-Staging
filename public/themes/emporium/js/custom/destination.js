@@ -155,7 +155,7 @@ function renderDestinationSocialYoutube(dataObj) {
         //return false;
     }
     var data = {};
-    data.main_title = 'Search By Destination';
+    data.main_title = 'Search Destination Channel';
     data.sub_title = 'Home';
     data.id = 0;
     data.type = 'home';
@@ -164,10 +164,10 @@ function renderDestinationSocialYoutube(dataObj) {
         data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
 
         if (dataObj.currentParentCate != undefined) {
-            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
+            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name+' Channel';
             data.id = dataObj.currentParentCate.id;
         }else{
-            data.sub_title = 'Back To Destination';
+            data.sub_title = 'Back To Destination Channel';
             data.id = dataObj.current_category.parent_category_id;
         }
         data.type = 'socialdestination';

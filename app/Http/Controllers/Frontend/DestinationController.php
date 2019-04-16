@@ -26,7 +26,7 @@ class DestinationController extends Controller {
 		if($category_id!='')
 		{
 			//$fetchchildsQuery = \DB::select("select tb_categories.id, tb_categories.parent_category_id, tb_categories.category_name, tb_categories.category_image, tb_categories.category_alias from  tb_categories, tb_properties where tb_categories.category_published = '1' and tb_categories.parent_category_id = '".$category_id."' and tb_categories.id != '8' and FIND_IN_SET(tb_categories.id,tb_properties.property_category_id) group by tb_categories.id");
-            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias', 'category_youtube_channel_url')->where('category_published', 1)->where('parent_category_id', $category_id)->where('id', '!=', 8)->get();
+            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias', 'category_youtube_channel_url')->where('category_published', 1)->where('parent_category_id', $category_id)->where('id', '!=', 8)->orderby('category_order_num', 'asc')->get();
 
             if(!empty($fetchchilds))
             {
@@ -59,9 +59,9 @@ class DestinationController extends Controller {
 					}
 				}
 				
-				usort($destarr, function($a, $b) {
-					return trim($a->category_name) > trim($b->category_name);
-				});
+				//usort($destarr, function($a, $b) {
+				//	return trim($a->category_name) > trim($b->category_name);
+				//});
 				
                 $res['status'] = 'success';
                 $res['dests'] = $destarr;

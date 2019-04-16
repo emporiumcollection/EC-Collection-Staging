@@ -4608,3 +4608,32 @@ svg:not(:root) {
     padding: 2px; 
 }
 /* -- End --*/
+
+/* Emotional gallery Loader */
+.emotional-gellery-loader{
+    
+}
+.emotional-gellery-loader .main-img{
+    height: 100vh;
+    object-fit: cover;
+    object-position: center 0px;
+    width: 100%;
+    background-color: #252525;
+}
+.emotional-gellery-loader .loader-logo{
+    position: absolute;
+    width: 320px;
+    top: 5%;
+    left: 5%;
+}
+.emotional-gellery-loader .loader-logo-title{
+    position: absolute;
+    width: 420px;
+    right: 9%;
+    top: 38%;
+    color: #fff;
+}
+/* End emotional gallery loader */
+.margin-top-90{
+    margin-top: 90px;
+}
