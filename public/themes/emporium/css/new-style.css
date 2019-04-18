@@ -4629,8 +4629,8 @@ svg:not(:root) {
 .emotional-gellery-loader .loader-text{
     position: absolute;
     width: 200px;
-    top: 30%;
-    left: 35%;  
+    top: 25%;
+    left: 45%;  
     color: #fff;     
     font-size: 18px;    
 }
@@ -4641,7 +4641,7 @@ svg:not(:root) {
     position: absolute;
     width: 420px;
     right: 9%;
-    top: 38%;
+    top: 42%;
     color: #fff;
 }
 .emotional-gellery-loader .image-overaly-bg {
