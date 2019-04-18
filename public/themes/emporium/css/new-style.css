@@ -4626,6 +4626,14 @@ svg:not(:root) {
     top: 5%;
     left: 5%;
 }
+.emotional-gellery-loader .loader-text{
+    position: absolute;
+    width: 200px;
+    top: 30%;
+    left: 35%;  
+    color: #fff;     
+    font-size: 18px;    
+}
 .emotional-gellery-loader .loader-logo-title{
     position: absolute;
     width: 420px;

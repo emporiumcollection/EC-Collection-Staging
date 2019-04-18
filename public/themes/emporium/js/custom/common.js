@@ -1249,6 +1249,11 @@ function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);
                 _html +='<img src="'+BaseURL+'/'+obj[0].logourl+'" class="img-responsive"/>';     
             _html +='</a>';            
         _html +='</div>';
+        
+        _html +='<div class="loader-text">';
+            _html +='<span>Loading collection </span><img src="'+BaseURL+'/images/loader.gif" />';
+        _html +='</div>';
+        
         _html +='<div class="loader-logo-title">';
             _html +='<h3>'+obj[0].title+'</h3>';
             _html +='<p>'+obj[0].description+'.</p>';
@@ -1257,7 +1262,7 @@ function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);
         $(".emotional-gellery-loader").html(_html);
         $(".cnt").css('display', 'none');
         setTimeout(function(){        
-            window.location.href=obj[0].url;
+            //window.location.href=obj[0].url;
         },1500); 
     }else{
         var url = $("#menu_url").val()
