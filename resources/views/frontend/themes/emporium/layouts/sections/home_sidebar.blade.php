@@ -145,7 +145,7 @@
                                 <div class="t-check-in"></div>
                                 <div class="t-check-out"></div>
                             </div> 
-                            <button class="searchButton btn" type="submit">Search</button>
+                            <button class="searchButton btn" type="submit" id="btn_search_submit">Search</button>
                             <div class="clearfix"></div>
                         </li>
                     </ul>

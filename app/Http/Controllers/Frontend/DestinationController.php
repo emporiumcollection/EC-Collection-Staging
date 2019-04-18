@@ -2,6 +2,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\ContainerController;
+use App\Models\Container;
 use App\Http\Controllers\Controller;
 use DB,Validator, Input, Redirect;
 
@@ -437,4 +439,92 @@ class DestinationController extends Controller {
         
         return response()->json($res);
     }
+    
+    public function getEmotionalGalleryLoader(Request $request){
+        $res = array();
+		$keyword = $request->destination;
+        $url = $request->url;
+		
+        //get emotional gallery loader
+        $emotional_gallery_array = array();
+        $emtional_parentFolder = \DB::table('tb_container')->select('id')->where('name','emotional-gallery-loader')->first();
+        if(isset($emtional_parentFolder->id)){
+            $peid = (int) $emtional_parentFolder->id;
+            $emtional_containerfiles = \DB::table('tb_container')->select('tb_container_files.id','tb_container_files.file_name','tb_container_files.folder_id','tb_container.name', 'tb_container.title', 'tb_container.description')->join('tb_container_files','tb_container_files.folder_id','=','tb_container.id')->where('parent_id',$peid)->where('name',$keyword)->orderby('tb_container_files.file_sort_num','asc')->get();
+            if((!empty($emtional_containerfiles)) && (is_array($emtional_containerfiles))){$emotional_gallery_array = $emtional_containerfiles;}
+        }
+        $this->data['emotional_gallery'] = $emotional_gallery_array;
+        //End 
+        //set folder path
+        $efolderArr = array();
+        $finalEm = array();
+        $logourl = 'themes/emporium/images/emporium-voyage-logo.png'; 
+        if(defined('CNF_FRONTEND_LOGO')){
+            if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !=''){                
+                    $logourl = 'sximo/images/'.CNF_FRONTEND_LOGO;      
+            }        
+        }
+                
+        foreach($emotional_gallery_array as $erow){
+            $efid = $erow->folder_id;
+            $folderpath = '';
+            if(isset($finalEm['f-'.$efid])){ $folderpath = $finalEm['f-'.$efid];}
+            else{
+                
+                $folderpath = trim($this->getThumbpath($efid));
+                $finalEm['f-'.$efid] = $folderpath;
+            }
+            $erow->imgsrc = $folderpath;
+            $erow->url = $url;
+            $erow->logourl = $logourl;
+            $finalEm[] = $erow;
+        }
+        //echo "<pre>"; print_r($finalEm); die;
+        //End
+		$res['status'] = 'success';
+        
+		$res['emotionalloader'] = $emotional_gallery_array;
+		
+		return response()->json($res);  
+	}
+    
+    private function getThumbpath($id)
+	{
+		$fpath = \URL::to('uploads/container_user_files').'/';
+		//echo $fpath; die; 
+        
+		$folds = array_reverse($this->fetchFolderParentList($id));
+		if(!empty($folds))
+		{
+			foreach($folds as $fold)
+			{
+				$fpath .= $fold.'/';
+			}
+		}
+		return $fpath;
+	}
+    
+    private function fetchFolderParentList($id = 0, $parent_folders_array = '') {
+ 
+		if (!is_array($parent_folders_array))
+		$parent_folders_array = array();
+	
+		$filter = " AND id='".$id."'";
+		
+		$params = array(
+			'params'	=> $filter,
+			'order'		=> 'asc'
+		);
+		// Get Query 
+        $ttmodel = new Container();
+		$results = $ttmodel->getRows( $params );
+	  if ($results) {
+		foreach($results['rows'] as $row) {
+			$parent_folders_array[] = $row->name;
+			$parent_folders_array = $this->fetchFolderParentList($row->parent_id, $parent_folders_array);
+		}
+	  }
+      
+	  return $parent_folders_array;
+	}	
 }

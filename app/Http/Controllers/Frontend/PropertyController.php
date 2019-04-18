@@ -1864,7 +1864,13 @@ class PropertyController extends Controller {
             }     
             //echo $booking_children; die;   
             //echo json_encode($retun_array);
-            
+            //echo "<pre>";
+            //print_r($available_rooms);
+            usort($available_rooms, function($a, $b) {
+               //echo($a['price']); echo($b['price']); die;
+			   return (float)$a['price'] < (float)$b['price'];
+		    });
+            //print_r($available_rooms); die;
             $this->data['pid'] = $pid;
             $this->data['arrive'] = $arrive;
             $this->data['arrive_new'] = \CommonHelper::dateformat(trim($arrive));

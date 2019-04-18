@@ -100,7 +100,13 @@ function renderDestination(dataObj) {
     if (dataObj.current_category != undefined) {
         data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
         if (dataObj.currentParentCate != undefined) {
-            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
+            var  linku = BaseURL+'/luxury_destinations/'+dataObj.currentParentCate.category_name;
+            if(dataObj.path!=undefined){
+                  var _path = dataObj.path;                  
+                  var _path1 = _path.slice(0, _path.lastIndexOf("/"));                  
+                  linku = BaseURL+'/luxury_destinations/'+_path1;
+            }
+            data.sub_title = '<a class="EGloader" style="color:#fff;" href="'+linku+'">Back To '+dataObj.currentParentCate.category_name+'</a>';
             data.id = dataObj.currentParentCate.id;
         }else{
             data.sub_title = 'Back To Destination';
@@ -129,7 +135,7 @@ function renderDestination(dataObj) {
             if(dataObj.path!=undefined){
                   linkMenu = BaseURL+'/luxury_destinations/'+dataObj.path+'/'+val.category_alias;
             }
-        destinationHtml += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+        destinationHtml += '<li><a class="cursor menu_item EGloader" href="'+linkMenu+'">' + val.category_name + '</a></li>';
              //destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
        // destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
          
@@ -235,7 +241,7 @@ function renderExperience(dataObj) {
             imagePath = BaseURL+'/themes/emporium/images/mountain-image.jpg';
         }
         experienceHtml += '<li><div class="navheadimage">';
-        experienceHtml += '<a href="'+BaseURL+'/luxury_experience/'+val.category_alias+'">';
+        experienceHtml += '<a class="EGloader" href="'+BaseURL+'/luxury_experience/'+val.category_alias+'">';
         experienceHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded desaturate">';
         experienceHtml += '<div class="headingoverlay"><span class="destinationTitle">' + val.category_name + '</span></div>';
         experienceHtml += '</a></div></li>';

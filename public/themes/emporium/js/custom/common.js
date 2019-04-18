@@ -1217,3 +1217,50 @@ function renderMembership(dataObj) {
 $(document).on('click', '.child-age', function(e){
    e.stopPropagation(); 
 });
+
+$(document).on('click', '.EGloader', function(e){
+    e.preventDefault();
+    
+    var url = $(this).attr('href');
+    $("#menu_url").val(url);
+    var items = url.split('/');
+    var destination = items[items.length-1]; 
+    
+    var datObj = {};
+    datObj.url = url;
+	datObj.destination = destination;
+    
+	var params = $.extend({}, doAjax_params_default);
+	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
+	params['data'] = datObj;
+	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
+	doAjax(params);    
+      
+});
+
+function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);    
+    var obj = dataObj.emotionalloader;
+    var _html = '';
+    if(obj.length > 0){
+        _html +='<img src="'+obj[0].imgsrc+'/'+obj[0].file_name+'" class="main-img" />';
+        _html +='<div class="image-overaly-bg"></div>';   
+        _html +='<div class="loader-logo">';        
+            _html +='<a href="'+BaseURL+'">';
+                _html +='<img src="'+BaseURL+'/'+obj[0].logourl+'" class="img-responsive"/>';     
+            _html +='</a>';            
+        _html +='</div>';
+        _html +='<div class="loader-logo-title">';
+            _html +='<h3>'+obj[0].title+'</h3>';
+            _html +='<p>'+obj[0].description+'.</p>';
+        _html +='</div>';    
+        $(".emotional-gellery-loader").css('display', '');
+        $(".emotional-gellery-loader").html(_html);
+        $(".cnt").css('display', 'none');
+        setTimeout(function(){        
+            window.location.href=obj[0].url;
+        },3000); 
+    }else{
+        var url = $("#menu_url").val()
+        window.location.href = url;
+    }
+}

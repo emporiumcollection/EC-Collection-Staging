@@ -100,6 +100,13 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
 @else
 <body>
  @endif
+<!-- Show Loader --> 
+<input type="hidden" name="menu_url" id="menu_url" />
+<div class="emotional-gellery-loader" style="display: none;">
+     
+</div>
+<div class="cnt">
+<!-- End Show Loader -->
 {{--For Right Side Icons --}}
 @section('right_side_iconbar')
     @parent
@@ -162,7 +169,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
 @if(!auth()->check())
     @include('frontend.themes.emporium.layouts.sections.login')
 @endif
-
+</div>
 <!-- Modal -->
 <div id="showLoginPopup" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -491,7 +498,10 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 
                 //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
                 //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
-            });
+            }).on('afterCheckOut',function(e, dateCO) {
+                console.log("hello");
+                $('#btn_search_submit').trigger('click');
+            });;
             
             // Open Left Navigation For Search By Date on Page Load
             @if(isset($_GET['action']) && $_GET['action']=='bydate' )

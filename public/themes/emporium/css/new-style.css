@@ -4633,7 +4633,20 @@ svg:not(:root) {
     top: 38%;
     color: #fff;
 }
+.emotional-gellery-loader .image-overaly-bg {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37,37,37,0.25);
+}
 /* End emotional gallery loader */
 .margin-top-90{
     margin-top: 90px;
+}
+.mobilenavheader {
+    padding: 15px 50px !important;
 }
