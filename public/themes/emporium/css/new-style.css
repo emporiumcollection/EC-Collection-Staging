@@ -4634,6 +4634,9 @@ svg:not(:root) {
     color: #fff;     
     font-size: 18px;    
 }
+.emotional-gellery-loader .loader-text img{
+   width: 63%;   
+}
 .emotional-gellery-loader .loader-logo-title{
     position: absolute;
     width: 420px;
