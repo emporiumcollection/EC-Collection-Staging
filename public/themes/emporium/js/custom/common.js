@@ -1262,7 +1262,7 @@ function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);
         $(".emotional-gellery-loader").html(_html);
         $(".cnt").css('display', 'none');
         setTimeout(function(){        
-            //window.location.href=obj[0].url;
+            window.location.href=obj[0].url;
         },1500); 
     }else{
         var url = $("#menu_url").val()
