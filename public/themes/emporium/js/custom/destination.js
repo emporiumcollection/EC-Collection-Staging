@@ -170,6 +170,13 @@ function renderDestinationSocialYoutube(dataObj) {
         data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
 
         if (dataObj.currentParentCate != undefined) {
+            /*var  linku = BaseURL+'/luxury_destinations/'+dataObj.currentParentCate.category_name;
+            if(dataObj.path!=undefined){
+                  var _path = dataObj.path;                  
+                  var _path1 = _path.slice(0, _path.lastIndexOf("/"));                  
+                  linku = BaseURL+'/luxury_destinations/'+_path1;
+            }
+            data.sub_title = '<a class="EGloader" style="color:#fff;" href="'+linku+'">Back To '+dataObj.currentParentCate.category_name+' Channel</a>';*/
             data.sub_title = 'Back To '+dataObj.currentParentCate.category_name+' Channel';
             data.id = dataObj.currentParentCate.id;
         }else{
@@ -200,7 +207,7 @@ function renderDestinationSocialYoutube(dataObj) {
 			if(dataObj.path!=undefined){
 				linkMenu = BaseURL+'/social-youtube/'+dataObj.path+'/'+val.category_alias;
 			}
-			destinationHtml += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+			destinationHtml += '<li><a class="cursor menu_item " href="'+linkMenu+'">' + val.category_name + '</a></li>';
 		  //  destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination-youtube" data-id="' + val.id + '">' + val.category_name + '</a>';
 		  //  destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
 		}

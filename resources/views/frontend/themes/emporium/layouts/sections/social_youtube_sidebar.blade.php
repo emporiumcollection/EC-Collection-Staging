@@ -56,7 +56,7 @@
                 <!--<li><a class="cursor" data-action="company">COMPANY</a></li>-->
                 <li><a class="cursor" data-action="select-destination-youtube">Search Destination Channel</a></li>
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">Company & Info</a></li>
-                <li><a class="cursor" href="{{URL::to('memberships')}}" >Membership</a></li>
+                <li><a class="cursor EGloader" href="{{URL::to('memberships')}}" >Membership</a></li>
             </ul>
             <ul class="mobilemenulist hide socialyoutubemenu" data-option="selected-option-list">
             </ul>

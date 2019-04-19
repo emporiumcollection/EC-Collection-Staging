@@ -55,7 +55,7 @@
                 <!--<li><a class="cursor" data-action="company">COMPANY</a></li>-->
                 <li><a class="cursor" data-action="select-destination-youtube">Search Destination Channel</a></li>
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">Company & Info</a></li>
-                <li><a class="cursor" href="{{URL::to('memberships')}}" >Membership</a></li>
+                <li><a class="cursor EGloader" href="{{URL::to('memberships')}}" >Membership</a></li>
             </ul>
             <ul class="mobilemenulist hide" data-option="search-our-collection">
                 <?php 
@@ -73,7 +73,7 @@
                                             //$str_title = str_replace(' ', '-', $str_title);
                                             $str_title = $si->category_alias;
                                         ?>
-            							<a href="{{URL::to('luxurytravel/Hotel')}}/{{$str_title}}">
+            							<a class="EGloader" href="{{URL::to('luxurytravel/Hotel')}}/{{$str_title}}">
             								<img src="{{URL::to('uploads/category_imgs/'.$si->category_image)}}" alt=""/>			
             								<div class="headingoverlay">
             									<span class="destinationTitle">
