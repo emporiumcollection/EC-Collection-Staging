@@ -393,7 +393,7 @@
         var t_type = id; 
         var type_val = '';
         var type_text = '';
-        console.log(id+', '+type+', '+plusMinus);
+        //console.log(id+', '+type+', '+plusMinus);
         //var room = $(".minus-plus-room-"+t_type).attr('data-room');
         //var adult = $(".minus-plus-room-"+t_type).attr('data-adult');
         //var child = $(".minus-plus-room-"+t_type).attr('data-child');
@@ -488,7 +488,7 @@
         var _html = '';
         $total_price = 0;
         $("input[type=checkbox]").each(function(){
-           if($(this).is(':checked')){
+           if($(this).is(':checked')){ console.log("hh");
                 var cat_id = $(this).val();
                 var room = $("#hid-minus-plus-room-"+cat_id).val();
                 var adult = $("#hid-minus-plus-adult-"+cat_id).val();
@@ -498,7 +498,7 @@
                 var noOfNight = $("#numberofnight").val();
                 //console.log(room+"/"+adult+"/"+child);                
                 
-                $total_price = $total_price + (noOfNight*price);
+                $total_price = $total_price + (noOfNight*price*room);
                 
                 _html += '<div class="col-xs-12"><hr /></div>';
                 _html += '<div class="row">';

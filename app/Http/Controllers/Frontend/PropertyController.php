@@ -1802,7 +1802,7 @@ class PropertyController extends Controller {
                 //$query .=" where 1=1 and (CASE WHEN tb_properties_category_rooms.active_full_year = 0 THEN ";
                 //$query .="( tb_properties_category_rooms.room_active_from <= '".$arrive_date."' AND tb_properties_category_rooms.room_active_to >= '".$departure_date."')";
                 //$query .=" ELSE tb_properties_category_rooms.active_full_year = 1 END) and tb_properties_category_rooms.property_id=".$pid." and tb_properties_category_rooms.category_id=".$roomType." GROUP BY category_id";
-                $query = "SELECT COUNT(tb_properties_category_rooms.id) as noOfRooms, tb_properties_category_rooms.category_id, tb_properties_category_types.total_guests, tb_properties_category_types.minimum_stay, tb_properties_category_types.category_name, tb_properties_category_rooms.property_id, tb_properties_category_rooms.category_id FROM tb_properties_category_rooms";
+                $query = "SELECT COUNT(tb_properties_category_rooms.id) as noOfRooms, tb_properties_category_rooms.category_id, tb_properties_category_types.total_guests, tb_properties_category_types.minimum_stay, tb_properties_category_types.guests_juniors, tb_properties_category_types.category_name, tb_properties_category_rooms.property_id, tb_properties_category_rooms.category_id FROM tb_properties_category_rooms";
                 $query .= " inner join tb_properties_category_types on tb_properties_category_types.id=tb_properties_category_rooms.category_id";
                 $query .=" where 1=1 and ";
                 $query .="( tb_properties_category_rooms.room_active_from <= '".$arrive_date."' AND tb_properties_category_rooms.room_active_to >= '".$departure_date."')";
@@ -1813,7 +1813,7 @@ class PropertyController extends Controller {
                 if(!empty($result)){                   
                     $total_available_room = (int) $total_available_room + (int) $result->noOfRooms;
                     if( $total_available_room >= $rooms){
-                        if($number_of_nights >= $si->minimum_stay){
+                        if($number_of_nights >= $result->minimum_stay){
                             $maximum_guest = $rooms * $result->total_guests;
                             $total_guest = (int)$adults + (int)(($child=='') ? 0 : $child);
                             if($maximum_guest >= $total_guest){
@@ -1821,7 +1821,7 @@ class PropertyController extends Controller {
                                 $available["cat_id"] = $result->category_id;                        
                                 $available["cat_name"] = $result->category_name;
                                 $available["max_guest"] = $result->total_guests;
-                                $available["guests_child"] = $si->guests_juniors;
+                                $available["guests_child"] = $result->guests_juniors;
                                 
                                 $roomfileArr3 = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.category_id', $roomType)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
                                         
