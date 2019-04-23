@@ -5424,6 +5424,7 @@ class HomeController extends Controller {
             $booking_adults = $request->input('booking_adults');
             $booking_children = $request->input('booking_children');
             $booking_Room_type = $request->input('booking_Room_type');
+            $booking_Rooms = $request->input('booking_Rooms');
             
             //print_r($booking_adults); die;
             $f_reserved_rooms = array();
@@ -5434,13 +5435,14 @@ class HomeController extends Controller {
                 for($j=0; $j<count($booking_Room_type); $j++){
                     //$type_id = $booking_Room_type[$j]==0 ? $request->input('roomType') : $booking_Room_type[$j];
                     $type_id = $booking_Room_type[$j];
+                    $total_booking_room = $booking_Rooms[$j];
                     $rmid = '';
-                    $query = "select pct.*, pcr.id as roomid  from tb_properties_category_rooms pcr inner join tb_properties_category_types pct on pct.id=pcr.category_id where pcr.room_active_from <= '".$book_arrive_date."' and pcr.room_active_to >='".$book_checkout_date."' and pcr.category_id=".$type_id." and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$book_arrive_date."' BETWEEN checkin_date and checkout_date or '".$book_checkout_date."' BETWEEN checkin_date and checkout_date)";
+                    //$query = "select pct.*, pcr.id as roomid  from tb_properties_category_rooms pcr inner join tb_properties_category_types pct on pct.id=pcr.category_id where pcr.room_active_from <= '".$book_arrive_date."' and pcr.room_active_to >='".$book_checkout_date."' and pcr.category_id=".$type_id." and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$book_arrive_date."' BETWEEN checkin_date and checkout_date or '".$book_checkout_date."' BETWEEN checkin_date and checkout_date)";
                     
-                    $rooms = DB::select($query);
-                    if(count($rooms)>0){                        
-                        $rmid = $rooms[0]->roomid;                    
-                    }
+                    //$rooms = DB::select($query);
+                    //if(count($rooms)>0){                        
+                    //    $rmid = $rooms[0]->roomid;                    
+                    //}
                     
                     //print_r($rooms); die;
                                        
@@ -5498,8 +5500,58 @@ class HomeController extends Controller {
                         $arr_type[] = array('category'=>$rooms[0]->category_name, 'min_stay'=>$rooms[0]->minimum_stay);
                         //$return[] =
                     }else{*/
-                    if(count($rooms)>0){     
-                        $rooms_data['reservation_id'] = $resid;
+                    //if(count($rooms)>0){  
+                        if($total_booking_room >= 1){
+                            
+                            $total_amount = $total_amount * $total_booking_room;
+                            
+                            for($l=1; $l<=$total_booking_room; $l++){
+                                
+                                $query = "select pct.*, pcr.id as roomid  from tb_properties_category_rooms pcr inner join tb_properties_category_types pct on pct.id=pcr.category_id where pcr.room_active_from <= '".$book_arrive_date."' and pcr.room_active_to >='".$book_checkout_date."' and pcr.category_id=".$type_id." and pcr.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$book_arrive_date."' BETWEEN checkin_date and checkout_date or '".$book_checkout_date."' BETWEEN checkin_date and checkout_date)";
+                    
+                                $rooms = DB::select($query);
+                                if(count($rooms)>0){                        
+                                    $rmid = $rooms[0]->roomid;                    
+                                }
+                                
+                                $rooms_data['reservation_id'] = $resid;
+                                $rooms_data['type_id'] = $type_id;
+                                $rooms_data['room_id'] = $rmid;
+                                if($l==1){
+                                    /*if($booking_adults[$j] > $rooms[0]->guests_adults)
+                                    {
+                                        $noof_extra_adult = $booking_adults[$j] - $rooms[0]->guests_adults;
+                                        $total_amount = $total_amount + ($noof_extra_adult * $extra_adult * $staytime);
+                                    }*/
+                                    $rooms_data['booking_adults'] = $booking_adults[$j];
+                                    /*if($booking_children[$j] > $rooms[0]->guests_juniors)
+                                    {
+                                        $noof_extra_child = $booking_children[$j] - $rooms[0]->guests_juniors;
+                                        $total_amount = $total_amount + ($noof_extra_child * $extra_junior * $staytime);
+                                    }*/
+                                    $rooms_data['booking_children'] = $booking_children[$j];
+                                    $c_ages = '';
+                                    if($booking_children[$j] > 0){
+                                        for($k=0; $k <$booking_children[$j]; $k++){
+                                            $nm = "child_".$type_id;
+                                            $c_age = $request->input($nm);
+                                            if(!empty($c_age)){
+                                                $c_ages = implode(',', $c_age);
+                                            }
+                                        }
+                                    }
+                                    $rooms_data['ages'] = $c_ages;
+                                }else{
+                                    $rooms_data['booking_adults'] = '';
+                                    $rooms_data['booking_children'] = '';
+                                    $rooms_data['ages'] = '';
+                                }
+                                $rooms_data['price'] = $price; 
+                                $f_reserved_rooms[] = $rooms_data; 
+                                \DB::table('td_reserved_rooms')->insertGetId($rooms_data);
+                            }
+                        }
+                        /*$rooms_data['reservation_id'] = $resid;
                         $rooms_data['type_id'] = $type_id;
                         $rooms_data['room_id'] = $rmid;
                         if($booking_adults[$j] > $rooms[0]->guests_adults)
@@ -5527,8 +5579,8 @@ class HomeController extends Controller {
                         $rooms_data['ages'] = $c_ages;
                         $rooms_data['price'] = $price; 
                         $f_reserved_rooms[] = $rooms_data; 
-                        \DB::table('td_reserved_rooms')->insertGetId($rooms_data);
-                    }
+                        \DB::table('td_reserved_rooms')->insertGetId($rooms_data);*/
+                    //}
                     /*}*/
                     
                 }
@@ -5740,7 +5792,7 @@ die;        */
             //$type_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $reservation->property_id)->where('tb_properties_images.category_id', $reservation->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
             //$type_image->imgsrc = (new ContainerController)->getThumbpath($type_image->folder_id);
             $hotel_terms_n_conditions = \DB::table('td_property_terms_n_conditions')->where('property_id', $reservation->property_id)->first();
-            $reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', $reservation->id)->get();
+            //$reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', $reservation->id)->get();
             //$reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->join('tb_properties_category_rooms_price', 'tb_properties_category_rooms_price.category_id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', $reservation->id)->get();
 
             $bookingEmail = base_path() . "/resources/views/user/emails/booking_notification.blade.php";
@@ -6085,6 +6137,7 @@ die;        */
 
             $total_price = 0;
             $html = '';
+            $reserved_rooms = \DB::table('td_reserved_rooms')->select('td_reserved_rooms.*', \DB::raw('count(*) as total'), 'tb_properties_category_types.category_name')->join('tb_properties_category_types', 'tb_properties_category_types.id', '=', 'td_reserved_rooms.type_id')->where('reservation_id', $reservation->id)->groupBy('td_reserved_rooms.type_id')->get();
             //print_r($reserved_rooms); die;
             foreach ($reserved_rooms as $reserved_room) {
                 //$total_price += ($reservation->number_of_nights * $reservation_price);
@@ -6147,7 +6200,7 @@ die;        */
                                     <tr>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                         <!-- TOTAL -->
-                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-28">€' . ($reservation->number_of_nights * $reserved_room->price) . '</td>
+                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-28">€' . ($reservation->number_of_nights * $reserved_room->price*$reserved_room->total) . '</td>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                     </tr>
                                     <tr>

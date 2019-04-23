@@ -1663,6 +1663,9 @@ class PropertyController extends Controller {
                 
                 $query = "SELECT COUNT(id) as noOfRooms, property_id, category_id FROM tb_properties_category_rooms where 1=1 and";
                 $query .="( room_active_from <= '".$arrive_date."' AND room_active_to >= '".$departure_date."')";
+                
+                $query .=" and tb_properties_category_rooms.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$arrive_date."' BETWEEN checkin_date and checkout_date or '".$departure_date."' BETWEEN checkin_date and checkout_date)";
+                
                 $query .=" and property_id=".$pid." GROUP BY category_id";
                 
                 $result = DB::SELECT($query);
@@ -1806,6 +1809,9 @@ class PropertyController extends Controller {
                 $query .= " inner join tb_properties_category_types on tb_properties_category_types.id=tb_properties_category_rooms.category_id";
                 $query .=" where 1=1 and ";
                 $query .="( tb_properties_category_rooms.room_active_from <= '".$arrive_date."' AND tb_properties_category_rooms.room_active_to >= '".$departure_date."')";
+                
+                $query .=" and tb_properties_category_rooms.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$arrive_date."' BETWEEN checkin_date and checkout_date or '".$departure_date."' BETWEEN checkin_date and checkout_date)";
+                
                 $query .=" and tb_properties_category_rooms.property_id=".$pid." and tb_properties_category_rooms.category_id=".$roomType." GROUP BY category_id";
                 //echo $query; die;
                 $result = DB::SELECT($query)[0];

@@ -185,7 +185,7 @@
                                         @if(!empty($obj_item))
                                             <table class="table">
                                             @foreach($obj_item as $si) 
-                                                {{--*/ $total_amt = $total_amt + ($number_of_nights * $si['price']); /*--}}                                               
+                                                {{--*/ $total_amt = $total_amt + ($number_of_nights * $si['price']*$si['avail_room']); /*--}}                                               
                                                 <tr>
                                                     <td width="40%"><img src="{{$si['img_url']}}" class="img-responsive"  /></td>
                                                     <td>

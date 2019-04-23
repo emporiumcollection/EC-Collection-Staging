@@ -1251,7 +1251,8 @@ function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);
         _html +='</div>';
         
         _html +='<div class="loader-text">';
-            _html +='<span>Loading collection </span><img src="'+BaseURL+'/images/loader.gif" />';
+            //_html +='<span>Loading collection </span><img src="'+BaseURL+'/images/loader.gif" />';
+            _html +='<span>Loading collection </span>';
         _html +='</div>';
         
         _html +='<div class="loader-logo-title">';

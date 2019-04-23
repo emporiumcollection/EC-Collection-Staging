@@ -35,9 +35,9 @@
                                         <tr><td colspan="2"><h5>Suites</h5></td></tr>
                                         {{--*/ $total_price = 0; $reservation_price = $row->price;  /*--}}
                                         @foreach($row->reserved_rooms as $rooms)
-                                            <tr><td>Number of adults(s):</td><td>{{ $rooms->booking_adults }}</td></tr>
-                                            <tr><td>Number of Children:</td><td>{{ $rooms->booking_children }}</td></tr>
-                                            {{--*/ $total_price += ($row->number_of_nights * $reservation_price);  /*--}}
+                                            <tr><td>Number of adults(s):</td><td>{{ $rooms['reserved_room']->booking_adults }}</td></tr>
+                                            <tr><td>Number of Children:</td><td>{{ $rooms['reserved_room']->booking_children }}</td></tr>
+                                            {{--*/ $total_price += ($row->number_of_nights * $rooms['reserved_room']->price * $rooms['reserved_room']->total);  /*--}}
                                         @endforeach
                                         {{--*/ 
                                             $room_type_id= $row->type_id;
@@ -62,20 +62,7 @@
     						</span>
     						<span class="m-accordion__item-mode"></span>
     					</div>
-    					<div class="m-accordion__item-body collapse" id="m_accordion_1_item_2_body" role="tabpanel" aria-labelledby="m_accordion_1_item_2_head" data-parent="#m_accordion_1">
-    						<div class="m-accordion__item-content">
-    							<div class="col-sm-12 col-md-12">
-                                    {{--*/ $img = $row->category_image->imgsrc."/".$row->category_image->file_name;  /*--}}
-                                       <img src="{{$img}}" style="height: 200px;" />
-                                       <br />
-                                       Room Type: {{ $row->category->category_name }}
-                                       <br />
-                                       Price:  {{ $row->category->price }}
-                                       <br />
-                                       {{ $row->category->room_desc }}
-                                </div>
-    						</div>
-    					</div>
+    					
     				</div>
     				<!--end::Item--> 
     <!--begin::Item-->
@@ -112,7 +99,7 @@
                                     <hr /> 
                                 </div>
                                 <div class="col-sm-12 col-md-12">
-                                    <h5>{{ $row->category->category_name }} preferences</h5>
+                                    <h5>preferences</h5>
                                 </div>
                                 <div class="col-sm-12 col-md-12">
                                     Desired suite temperature: {{ $row->preferences->desired_room_temperature }} 
@@ -340,15 +327,18 @@
     					</div>
     					<div class="m-accordion__item-body collapse" id="m_accordion_1_item_5_body" role="tabpanel" aria-labelledby="m_accordion_1_item_5_head" data-parent="#m_accordion_1">
     						<div class="m-accordion__item-content">
+                            
                                 <table class="table table-responsive">
                                     <tr>
-                                        <th>Suite Details</th><th>Price</th><th>Night</th><th class="m--align-right">Total</th>
+                                        <th>Suite Details</th><th>Price</th><th>#Rooms</th><th>#Night</th><th class="m--align-right">Total</th>
                                     </tr>
+                                @foreach($row->reserved_rooms as $rooms)
                                     <tr>
-                                        <td>{{ $row->category->category_name }}</td><td>{{$row->price}}</td><td>{{$row->number_of_nights}}</td><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
-                                    </tr>
+                                        <td>{{ $rooms['category']->category_name }}</td><td>{{$rooms['reserved_room']->price}}</td><td>{{$rooms['reserved_room']->total}}</td><td>{{$row->number_of_nights}}</td><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
+                                    </tr>                                    
+                                @endforeach
                                     <tr>
-                                        <td colspan="2" rowspan="3" width="60%"><img src="{{$img}}" style="height: 200px;" /></td><th>Sub total</th><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
+                                        <td colspan="3" rowspan="3" width="60%"><img src="" style="height: 200px;" /></td><th>Sub total</th><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
                                     </tr>
                                     <tr>
                                         <th>Commission due</th><td class="m--align-right">{{ number_format($commission_due, 2) }}</td>

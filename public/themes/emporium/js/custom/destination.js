@@ -106,7 +106,7 @@ function renderDestination(dataObj) {
                   var _path1 = _path.slice(0, _path.lastIndexOf("/"));                  
                   linku = BaseURL+'/luxury_destinations/'+_path1;
             }
-            data.sub_title = '<a class="EGloader" style="color:#fff;" href="'+linku+'">Back To '+dataObj.currentParentCate.category_name+'</a>';
+            data.sub_title = '<a style="color:#fff;" href="'+linku+'">Back To '+dataObj.currentParentCate.category_name+'</a>';
             data.id = dataObj.currentParentCate.id;
         }else{
             data.sub_title = 'Back To Destination';

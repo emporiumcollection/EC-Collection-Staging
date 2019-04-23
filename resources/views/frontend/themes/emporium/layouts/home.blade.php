@@ -273,7 +273,15 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             
         }
         $(document).ready(function () {
-            console.log(window.location.href);
+            //console.log(window.location.href);
+            console.log("hjy");
+            <?php if(!((bool) \auth()->check())){ ?>
+                $("#btn-check-availibility").attr('disabled', true);
+                $("#btn-check-availibility").text("availability/login");
+                $("#btn-check-availibility").css('opacity', 1);
+            <?php }else{ ?>
+                $("#btn-check-availibility").attr('disabled', false);
+            <?php } ?>
             $(document).on('click', ".iubenda-white2", function(e){
                 e.preventDefault();
                 var w=600;

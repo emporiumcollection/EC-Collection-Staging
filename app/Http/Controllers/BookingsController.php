@@ -1055,20 +1055,32 @@ class BookingsController extends Controller {
         $row = $this->model->getRow($id);
         if ($row) {
             
-            
-                $row->category = \DB::table('tb_properties_category_types')->where('id', $row->type_id)->where('status', 0)->where('show_on_booking', 1)->first();
-                $row->category_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $row->category->property_id)->where('tb_properties_images.category_id', $row->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-                $row->category_image->imgsrc = (new ContainerController)->getThumbpath($row->category_image->folder_id);
+            $props = \DB::table('tb_properties')->where('id', $row->property_id)->first();
+            $row->props = $props;
+            //print_r($row); die;
+            $reserved_rooms = \DB::table('td_reserved_rooms')->select('td_reserved_rooms.*', \DB::raw('count(*) as total'))->where('reservation_id', $row->id)->groupBy('type_id')->get();
+            //$row->reserved_rooms = $reserved_rooms;
+            //print_r($row); die;
+            $reserved_room_arr = array();
+                if(!empty($reserved_rooms)){
+                    foreach($reserved_rooms as $rm){                    
+                        //print_r($row); die;
+                        $rw['category'] = \DB::table('tb_properties_category_types')->where('id', $rm->type_id)->where('status', 0)->where('show_on_booking', 1)->first();
+                        $category_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $row->property_id)->where('tb_properties_images.category_id', $rm->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                        $rw['imgsrc'] = (new ContainerController)->getThumbpath($category_image->folder_id);
+                        $rw['reserved_room'] = $rm;
+                        $reserved_room_arr[]=$rw;
+                    }
+                }
 
-                $props = \DB::table('tb_properties')->where('id', $row->category->property_id)->first();
-                $row->props = $props;
-                
+                $row->reserved_rooms = $reserved_room_arr;
+                //print_r($row); die;
                 if ($props->default_seasons != 1) {
                     $checkseason = \DB::table('tb_seasons')->where('property_id', $props->id)->orderBy('season_priority', 'asc')->get();
                 } else {
                     $checkseason = \DB::table('tb_seasons')->where('property_id', 0)->orderBy('season_priority', 'asc')->get();
                 }
-                if (!empty($checkseason)) {
+                /*if (!empty($checkseason)) {
                     $foundsean = false;
                     $curnDate = date('Y-m-d');
                     for ($sc = 0; $foundsean != true; $sc++) {
@@ -1092,15 +1104,15 @@ class BookingsController extends Controller {
                     if (!empty($checkseasonPrice_ifnotanyseason)) {
                         $row->category->price = $checkseasonPrice_ifnotanyseason->rack_rate;
                     }
-                }
-                $row->category->currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+                }*/
+                $row->currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
                 $row->user_info = \DB::table('tb_users')->where('id', $row->client_id)->first();
                 
-                $row->reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $row->id)->get();
+                //$row->reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $row->id)->get();
                 $row->preferences = \DB::table('td_booking_preferences')->where('reservation_id', $row->id)->first();
                 
                 $this->data['row'] = $row;
-            
+                //print_r($this->data['row']); die;
         } else {
             $this->data['row'] = $this->model->getColumnTable('tb_reservations');
         }
@@ -1483,13 +1495,20 @@ class BookingsController extends Controller {
 
         $row = $this->model->getRow($id);
         if ($row) {
-            
-            
-                $row->category = \DB::table('tb_properties_category_types')->where('id', $row->type_id)->where('status', 0)->where('show_on_booking', 1)->first();
-                $row->category_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $row->category->property_id)->where('tb_properties_images.category_id', $row->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-                $row->category_image->imgsrc = (new ContainerController)->getThumbpath($row->category_image->folder_id);
+                
+                $reserved_rooms = \DB::table('td_reserved_rooms')->where('reservation_id', $row->id)->get();
+                
+                if(!empty($reserved_rooms)){
+                    //foreach($reserved_rooms as $rm){
+                
+                        $row->category = \DB::table('tb_properties_category_types')->where('id', $reserved_rooms[0]->type_id)->where('status', 0)->where('show_on_booking', 1)->first();
+                        $row->category_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $row->category->property_id)->where('tb_properties_images.category_id', $reserved_rooms[0]->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                        $row->category_image->imgsrc = (new ContainerController)->getThumbpath($row->category_image->folder_id);
 
-                $props = \DB::table('tb_properties')->where('id', $row->category->property_id)->first();
+                    //}    
+                } 
+
+                $props = \DB::table('tb_properties')->where('id', $row->property_id)->first();
                 $row->props = $props;
                 
                 if ($props->default_seasons != 1) {
@@ -1517,16 +1536,16 @@ class BookingsController extends Controller {
                         }
                     }
                 } else {
-                    $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $row->category->id)->first();
+                    $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', 518)->first();
                     if (!empty($checkseasonPrice_ifnotanyseason)) {
                         $row->category->price = $checkseasonPrice_ifnotanyseason->rack_rate;
                     }
                 }
                 $row->category->currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
-                $row->user_info = \DB::table('tb_users')->where('id', $row->client_id)->first();
+                //$row->user_info = \DB::table('tb_users')->where('id', $row->client_id)->first();
                 
-                $row->reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $row->id)->get();
-                $row->preferences = \DB::table('td_booking_preferences')->where('reservation_id', $row->id)->first();
+                //$row->reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $row->id)->get();
+                //$row->preferences = \DB::table('td_booking_preferences')->where('reservation_id', $row->id)->first();
                 
                 $this->data['row'] = $row;
             

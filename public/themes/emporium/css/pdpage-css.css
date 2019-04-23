@@ -647,7 +647,7 @@ position: absolute;
 
 .header-search label{color:#fff;font-family: 'GeomanistLight', sans-serif;}
 #reservationForm.pdpreservation-form .input-group-icon{top:25px; height:auto !important;}
-#reservationForm.pdpreservation-form .btn{margin-top:25px; padding:7px 9px 8px;}
+#reservationForm.pdpreservation-form .btn{margin-top:25px; padding:10px 9px 8px; font-size: 13px;}
 .contactfixed{top:309px;}
 .backcontrol{top:386px;}
 .header-content{padding:10px 0 0 10px;}

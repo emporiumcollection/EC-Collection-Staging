@@ -291,7 +291,7 @@
 						</div>
 					</div>
                     
-                    <div class="col-sm-3 col-md-2"><button class="btn yellowbtn">Check Availability</button></div>
+                    <div class="col-sm-3 col-md-2"><button class="btn yellowbtn" id="btn-check-availibility">Check Availability</button></div>
                     <?php /* <div class="col-sm-3 col-md-2"><button class="btn yellowbtn" id="pdp_check_availibility">Check Availability</button></div>
 					<div class="col-sm-3 col-md-2"><button class="btn yellowbtn">MAKE RESERVATION</button></div> */ ?>
 				</div>
