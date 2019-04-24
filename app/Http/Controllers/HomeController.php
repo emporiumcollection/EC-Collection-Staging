@@ -8236,5 +8236,9 @@ die;        */
         echo json_encode($retun_array);
         
     }
-    
+    function getTest(Request $request){
+        $prop = \DB::connection('mysql4')->table('tb_properties')->take(5)->get();
+        echo "<pre>";
+        print_r($prop);
+    }
 }
