@@ -1017,7 +1017,10 @@
             }
         ?>
         $(document).ready(function () {
-            
+            @if(!$propertyPackage)
+                show_modal_content('{{$ptype}}');                
+                $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');    
+            @endif
             @if(array_key_exists('typedata', $propertyDetail))            
                 @foreach($propertyDetail['typedata'] as $type)
                     @if (array_key_exists($type->id, $propertyDetail['roomimgs']))
@@ -1087,11 +1090,11 @@
                 $("#cont_packages").css('display', '');        
             });
             
-            $(document).on("click", ".btnMembershipTypeJoin", function(e){
+            /*$(document).on("click", ".btnMembershipTypeJoin", function(e){
                 e.preventDefault();
                 $(".clicktologin").trigger("click");
                 //$(".signInPopupButton").trigger('click');
-            });
+            });*/
             
             $(".login_hotel_pms").click(function(){
                 $(".clicktologin").trigger("click");
@@ -1138,6 +1141,9 @@
                 'dateCheckOut':chk_out_date,
                 //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
                 //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+            });
+            $(document).on('click', '#loginasa', function(e){
+                $(".clicktologin").trigger('click');
             });
         });
         

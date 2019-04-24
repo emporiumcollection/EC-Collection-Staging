@@ -661,8 +661,7 @@ class PropertyController extends Controller {
         return $child_category_array;
     }
 	
-	public function getPropertyDetail(Request $request) {
-
+	public function getPropertyDetail(Request $request) {        
         $propertiesArr = array();
 		$crpropertiesArr = array();
 		$relatedgridpropertiesArr = array();
@@ -781,6 +780,47 @@ class PropertyController extends Controller {
             }
             //echo "<pre>";
             //print_r($propertiesArr);die;
+            $prop_package = \DB::table('tb_properties_category_package')->join("tb_packages", "tb_packages.id", "=", "tb_properties_category_package.package_id")->where('property_id', $props->id)->first();
+            $package_type = trim($prop_package->package_title);             
+            $package_type = strtolower(str_replace(' ', '-', trim($package_type)));
+            switch($package_type){
+                case "lifestyle-membership":
+                    $type = "lifestyle-collection";                            
+                    break;
+                case "dedicated-membership":
+                    $type = "dedicated-collection";                            
+                    break;
+                case "bespoke-membership":
+                    $type = "bespoke-collection";                            
+                    break;                
+            }
+            /*if (\Auth::check()){
+                $obj_user1 =  \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
+                
+                if(!empty($obj_user1)){
+                    if($obj_user1->member_type!=''){
+                        $member_type1 = trim($obj_user->member_type);
+                    }else{
+                        $member_type1 = 'lifestyle-membership';
+                    }
+                    switch($member_type1){
+                        case "lifestyle-membership":
+                            $type = "lifestyle-collection";                            
+                            break;
+                        case "dedicated-membership":
+                            $type = "dedicated-collection";                            
+                            break;
+                        case "bespoke-membership":
+                            $type = "bespoke-collection";                            
+                            break;                
+                    }
+                }
+            }*/
+            $this->data['ptype'] = $type;            
+            
+            $isPackage = $this->checkPropertyPackage($props->id);                        
+            $this->data['propertyPackage'] = $isPackage;            
+            
             $this->data['propertyDetail'] = $propertiesArr;
             $this->data['relatedproperties'] = $crpropertiesArr;
     		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
@@ -2054,6 +2094,36 @@ class PropertyController extends Controller {
 
 		return view('frontend.themes.emporium.properties.list', $this->data);
                     
+    }
+    
+    function checkPropertyPackage($propid){
+        //$propid=46;
+        $flag = true;
+        $prop_package = array();
+        if($propid > 0){
+            $prop_package = \DB::table('tb_properties_category_package')->join("tb_packages", "tb_packages.id", "=", "tb_properties_category_package.package_id")->where('property_id', $propid)->first();
+            $package_type = trim($prop_package->package_title);             
+            $package_type = strtolower(str_replace(' ', '-', trim($package_type)));
+            //print_r($package_type); die;
+            if (\Auth::check()){
+                $obj_user =  \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
+                
+                if(!empty($obj_user)){
+                    if($obj_user->member_type!=''){
+                        $member_type = trim($obj_user->member_type);
+                    }else{
+                        $member_type = 'lifestyle-membership';
+                    }
+                //print_r($package_type);
+                //print_r($member_type); die;
+                    if($package_type!=$member_type){
+                        $flag = false;
+                    }
+                }
+            }
+        }
+        return $flag;
+        //print_r($prop_package);
     }
     
 }
