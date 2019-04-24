@@ -2105,19 +2105,21 @@ class PropertyController extends Controller {
             $package_type = trim($prop_package->package_title);             
             $package_type = strtolower(str_replace(' ', '-', trim($package_type)));
             //print_r($package_type); die;
-            if (\Auth::check()){
-                $obj_user =  \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
-                
-                if(!empty($obj_user)){
-                    if($obj_user->member_type!=''){
-                        $member_type = trim($obj_user->member_type);
-                    }else{
-                        $member_type = 'lifestyle-membership';
-                    }
-                //print_r($package_type);
-                //print_r($member_type); die;
-                    if($package_type!=$member_type){
-                        $flag = false;
+            if($package_type!='lifestyle-membership'){
+                if (\Auth::check()){
+                    $obj_user =  \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
+                    
+                    if(!empty($obj_user)){
+                        if($obj_user->member_type!=''){
+                            $member_type = trim($obj_user->member_type);
+                        }else{
+                            $member_type = 'lifestyle-membership';
+                        }
+                    //print_r($package_type);
+                    //print_r($member_type); die;
+                        if($package_type!=$member_type){
+                            $flag = false;
+                        }
                     }
                 }
             }
