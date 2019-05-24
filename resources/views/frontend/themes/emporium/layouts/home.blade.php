@@ -211,6 +211,506 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
   </div>
 </div>
 <!-- End Modal -->
+
+<!-- Modal FOR COLLECTION-->
+<div class="modal animated zoomIn" id="CollectModal" role="dialog">
+   <div class="modal-dialog bg-color-full-main-id150">
+      <!-- Modal content-->
+      <div class="modal-content">
+         
+         <div class="modal-header">
+		 <div class="container">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <!-- <h4 class="modal-title">Modal Header</h4> -->
+         </div>
+         </div>
+         <div class="modal-body forms-box-tct">
+            <div class="container">
+                <div class="contact-area">              
+                    <div class="multiStepForm">
+                        <div class="mstepBtmSection">
+                            <form role="form" class="step-form" action="javascript:void(0);">
+                			<!--------START SECTION 01.------------------>
+                                <fieldset style="display: block;">
+                                    <div class="contant-header-center text-center">
+                                        <div class="herologo"><img src="images/step-image/hero-logo.png"></div>
+                
+                                        <h1>Lorem Ipsum is simply dummy text of the <br> printing and typesetting industry.</h1>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                
+                                        <div class="btn-section hover-btn-view01">
+                                            <a href="javascript:void(0);" class="btn btn-2 btn-next"> Start Again</a>
+                                            <a href="javascript:void(0);" class="btn btn-2 btn-next">  Proceed &nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 01.------------------>
+                				<!--------START SECTION 02.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner!</h4>
+                						<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div><!---------ROW END--------->
+                
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Home</a>
+                                                <!-- <a href="javascript:void(0);" class="btn btn-2 btn-next"> Next</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 02.------------------>
+                				<!--------START SECTION 03.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner! </h4>
+                						<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                						
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div><!---------ROW END--------->
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Previous Question</a>                                           
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 03.------------------>
+                				<!--------START SECTION 04.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner! </h4>
+                						<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                					
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div><!---------ROW END--------->
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Previous Question</a>                                           
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 04.------------------>
+                				
+                				<!--------START SECTION 05.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner!</h4>
+                						<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                				
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                    </div><!---------ROW END--------->
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Previous Question</a>                                           
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 05.------------------>
+                				
+                				<!--------START SECTION 06.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner!</h4>
+                						<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>						
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                    </div><!---------ROW END--------->
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Previous Question</a>                                           
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 06.------------------>
+                				
+                				
+                				<!--------START SECTION 07.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner!</h4>
+                						<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>						
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                						
+                						 <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                    </div><!---------ROW END--------->
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Previous Question</a>                                           
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 07.------------------>
+                				
+                				<!--------START SECTION 08.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner!</h4>
+                						<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>								
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                						
+                						 <div class="col-md-3">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                    </div><!---------ROW END--------->
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Previous Question</a>                                           
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 08.------------------>
+                				
+                				<!--------START SECTION 09.------------------>
+                                <fieldset>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner!</h4>
+                						<p class="point-bw"><img src="images/step-image/blup.svg"> Lorem Ipsum is simply dummy text of the printing and Lorem Ipsum is simply dummy text of the printing and </p>
+                                    </div>
+                                    <div class="row"><!---------ROW Start--------->
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>								
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-4">
+                                            <div class="sm-style-box box-01">
+                                                <a href="javascript:void(0);" class="btn btn-2 btn-next">
+                                                    <img src="images/step-image/hero-logo.png">
+                                                    <h6>Lorem Ipsum is simply dummy text of the printing and </h6>
+                                                </a>
+                                            </div>
+                                        </div>																		
+                                    </div><!---------ROW END--------->
+                                    <div class="form-bottom">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="javascript:void(0);" class="btn btn-1 btn-back"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Previous Question</a>                                           
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 09.------------------>
+                
+                				<!--------START SECTION 10.------------------>
+                                <fieldset>
+                				 <div class="herologo text-center"><span class="rotate-loader"><img src="images/step-image/hero-logo.png"></span></div>
+                                    <div class="sm-design-titletop text-center">
+                                        <h4>Emporium Jet is your ideal, vogue vacation planner!</h4>
+                <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>									
+                                    </div>								
+                						<section class="text-center">										
+                							<img class="top" src="images/step-image/hero-logo.png">
+                						</section>
+                					
+                                    <div class="form-bottom">
+                                        <div class="row m-0">
+                                            <div class="col text-center data-transform-view">
+                                                <a href="index.html" class="btn btn-1"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp; Home</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                				<!--------END SECTION 10.------------------>
+                            </form>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+         </div>
+         <!--div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div-->
+      </div>
+   </div>
+</div>
+<!-- End Collect Menu -->
+
+<!-- Modal FOR MENU -->
+<div class="modal left fade" id="MenuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Left Sidebar</h4>
+         </div>
+         <div class="modal-body">
+            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </p>
+         </div>
+      </div>
+      <!-- modal-content -->
+   </div>
+   <!-- modal-dialog -->
+</div>
+<!-- End Modal FOR MENU -->
+<!-- search form-->
+    <div class="cstm_search animated zoomIn" style="display: none;">
+        <div id="includedsearch">
+            @include('frontend.themes.emporium.layouts.sections.global-search-page')
+        </div>
+    </div>
+<!-- end search form-->    
 <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
 {{-- Site Base URL --}}
 <script type="text/javascript">var BaseURL = '{{ url() }}'; </script>
@@ -273,8 +773,10 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             
         }
         $(document).ready(function () {
-            //console.log(window.location.href);
-            console.log("hjy");
+            $("a.srch_btn").click(function(){
+              $(".cstm_search").toggle();
+            });
+            //console.log(window.location.href);            
             <?php if(!((bool) \auth()->check())){ ?>
                 $("#btn-check-availibility").attr('disabled', true);
                 $("#btn-check-availibility").text("availability/login");
