@@ -1270,3 +1270,122 @@ function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);
         window.location.href = url;
     }
 }
+
+$(document).on('keyup', '[data-action="global-search"]', function () {
+    $('[data-action="gobal-search-error"]').html('');
+    if ($(this).val() == '') {
+        $('[data-action="clear-search"]').hide();
+        $('[data-option="gobal-search"]').slideUp(300);
+    } else {
+        $('[data-action="clear-search"]').show();
+		var fvalue = $(this).val();		
+		if(fvalue.length > 2)
+		{
+			globalSearchForAll($(this).val()); 
+		}
+    }
+});
+/*
+* For Global Search function
+*/
+function globalSearchForAll(searcValue) {
+   $('[data-action="gobal-destinations"]').parent().hide();
+   $('[data-action="gobal-collections"]').parent().hide();
+   $('[data-action="gobal-restaurant"]').parent().hide();
+   $('[data-action="gobal-bar"]').parent().hide();
+   $('[data-action="gobal-spa"]').parent().hide();
+
+    var datObj = {};
+    datObj.keyword = searcValue;
+    var params = $.extend({}, doAjax_params_default);
+    params['url'] = BaseURL + '/destination/global-search';
+    params['data'] = datObj;
+    params['successCallbackFunction'] = function (data) {
+        $('[data-option="dest-option-list"]').html('');
+        $('[data-option="collection-option-list"]').html('');
+        $('[data-option="resto-option-list"]').html('');
+        $('[data-option="spa-option-list"]').html('');
+        $('[data-option="bar-option-list"]').html('');
+
+        if(data.data.collection != undefined && data.data.collection.length > 0) {
+            $('#globalfiltersearchpopup ul li:nth-child(1) ul.mobilemenulist').css("display", "block");
+        } else if(data.data.dest != undefined && data.data.dest.length > 0) {
+            $('#globalfiltersearchpopup ul li:nth-child(2) ul.mobilemenulist').css("display", "block");
+        } else if(data.data.restro != undefined && data.data.restro.length > 0) {
+            $('#globalfiltersearchpopup ul li:nth-child(3) ul.mobilemenulist').css("display", "block");
+        } else if(data.data.spa != undefined && data.data.spa.length > 0) {
+            $('#globalfiltersearchpopup ul li:nth-child(4) ul.mobilemenulist').css("display", "block");
+        } else if(data.data.bar != undefined && data.data.bar.length > 0) {
+            $('#globalfiltersearchpopup ul li:nth-child(5) ul.mobilemenulist').css("display", "block");
+        }
+
+        if (data.data.dest == undefined) {
+            $('[data-action="gobal-destinations"] span').html('Destination (0)');
+        }else {
+            var html ='';
+            var destString = (data.data.dest.length > 1) ? "Destinations" : "Destination";
+            $('[data-action="gobal-destinations"] span').html(destString + ' ('+data.data.dest.length+')');
+            $(data.data.dest).each(function (i, val) {
+                var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
+                html += '<li><a class="cursor search_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+            });
+            $('[data-option="dest-option-list"]').html(html);
+            $('[data-action="gobal-destinations"]').parent().show();
+        }
+        if (data.data.collection == undefined) {
+            $('[data-action="gobal-collections"] span').html('Collection (0)');
+        }else{
+            var html ='';
+            var collString = (data.data.collection.length > 1) ? "Collections" : "Collection";
+            $('[data-action="gobal-collections"] span').html(collString + ' ('+data.data.collection.length+')');
+            $(data.data.collection).each(function (i, val) {
+                var  linkMenu = BaseURL+'/'+val.property_slug;
+                html += '<li><a class="cursor search_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
+            });
+            $('[data-option="collection-option-list"]').html(html);
+            $('[data-action="gobal-collections"]').parent().show();
+        }
+        if (data.data.restro == undefined) {
+            $('[data-action="gobal-restaurant"] span').html('Restaurant (0)');
+        } else {
+            var html ='';
+            var restroString = (data.data.restro.length > 1) ? "Restaurants" : "Restaurant";
+            $('[data-action="gobal-restaurant"] span').html(restroString + ' ('+data.data.restro.length+')');
+            $(data.data.restro).each(function (i, val) {
+                var  linkMenu = BaseURL+'/restaurants/'+val.alias;
+                html += '<li><a class="cursor search_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+            });
+            $('[data-option="resto-option-list"]').html(html);
+            $('[data-action="gobal-restaurant"]').parent().show();
+        }
+        if (data.data.bar == undefined) {
+            $('[data-action="gobal-bar"] span').html('Bar (0)');
+        } else {
+            var html ='';
+            var barString = (data.data.bar.length > 1) ? "Bars" : "Bar";
+            $('[data-action="gobal-bar"] span').html(barString + ' ('+data.data.bar.length+')');
+            $(data.data.bar).each(function (i, val) {
+                var  linkMenu = BaseURL+'/bars/'+val.alias;
+                html += '<li><a class="cursor search_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+            });
+            $('[data-option="bar-option-list"]').html(html);
+            $('[data-action="gobal-bar"]').parent().show();
+        }
+        if (data.data.spa == undefined) {
+            $('[data-action="gobal-spa"] span').html('Spa (0)');
+        } else {
+            var html ='';
+            var spaString = (data.data.spa.length > 1) ? "Spas" : "Spa";
+            $('[data-action="gobal-spa"] span').html(spaString + ' ('+data.data.spa.length+')');
+            $(data.data.spa).each(function (i, val) {
+                var  linkMenu = BaseURL+'/spas/'+val.alias;
+                html += '<li><a class="cursor search_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+            });
+            $('[data-option="spa-option-list"]').html(html);
+            $('[data-action="gobal-spa"]').parent().show();
+        }
+    };
+    doAjax(params);
+    $('[data-option="gobal-search"]').slideDown(300);
+}
+

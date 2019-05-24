@@ -27,9 +27,53 @@
         </a>
     @endif
 </div>
-<div class="u-inline-block menu-bx unlog"><button class="c-header__btn-sound t-btn u-inline-block u-valign-middle u-vacuum log_in-btn"><div class="u-inline-block u-valign-middle u-marg-r-sm u-hide@sm" style="display: none;"><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div></div>
 
-  <span class="t-text--xs t-text--ls-xxs t-text--black u-inline-block u-uppercase u-valign-middle log-hover"><span class="log-hide">Login</span> <span class="hover-dsp">Join</span></span></button><button class="c-header__btn-menu t-btn u-relative u-inline-block u-valign-middle u-vacuum"><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div> <div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div><div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div> <div class="c-header__btn-menu__circle u-absolute u-shape-circle"></div> <div class="c-header__btn-menu__content u-absolute u-pos-tl u-backface-hidden u-hide@sm"><p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline"><span class="c-header__btn-menu__content__label__word u-inline-block">Open</span> <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span></p> <p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline"><span class="c-header__btn-menu__content__label__word u-inline-block">Close</span> <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span></p></div></button></div>
+
+<div class="custom-menu">
+    <ul class="cstm_menu">
+       <li><a href="#" data-toggle="modal" data-target="#MenuModal">Menu</a></li>
+       <li><a href="#" data-toggle="modal" data-target="#CollectModal">Collection</a></li>
+       <li><a href="#" class="srch_btn"><i class="fa fa-search"></i></a></li>
+       <!-- Modal FOR SEARCH ICON-->
+       
+    </ul>
+</div>
+
+
+<div class="u-inline-block menu-bx unlog">
+    <button class="c-header__btn-sound t-btn u-inline-block u-valign-middle u-vacuum log_in-btn">
+        <div class="u-inline-block u-valign-middle u-marg-r-sm u-hide@sm" style="display: none;">
+            <div class="c-header__btn-sound__bar u-relative u-inline-block"></div>
+            <div class="c-header__btn-sound__bar u-relative u-inline-block"></div>
+            <div class="c-header__btn-sound__bar u-relative u-inline-block"></div>
+            <div class="c-header__btn-sound__bar u-relative u-inline-block"></div>
+            <div class="c-header__btn-sound__bar u-relative u-inline-block"></div>
+        </div>
+
+        <span class="t-text--xs t-text--ls-xxs t-text--black u-inline-block u-uppercase u-valign-middle log-hover">
+            <span class="log-hide">Login</span> 
+            <span class="hover-dsp">Join</span>
+        </span>
+    </button>
+    <button class="c-header__btn-menu t-btn u-relative u-inline-block u-valign-middle u-vacuum">
+        <div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div>
+        <div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div>
+        <div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div> 
+        <div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div>
+        <div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div> 
+        <div class="c-header__btn-menu__circle u-absolute u-shape-circle"></div> 
+        <div class="c-header__btn-menu__content u-absolute u-pos-tl u-backface-hidden u-hide@sm">
+            <p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline">
+                <span class="c-header__btn-menu__content__label__word u-inline-block">Open</span> 
+                <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span>
+            </p> 
+            <p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline">
+                <span class="c-header__btn-menu__content__label__word u-inline-block">Close</span> 
+                <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span>
+            </p>
+        </div>
+    </button>
+</div>
     <!-- slider starts here -->
          <section class="sliderSection" id="home_sld">
             @if(!empty($slider))
@@ -141,6 +185,9 @@
          </div>
 
     @include('frontend.themes.emporium.layouts.sections.contactus_popup')
+    
+    
+    
 @endsection
 
 {{--For Right Side Icons --}}
@@ -153,6 +200,8 @@
 @section('head')
     @parent
   <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
+  <link href="{{ asset('themes/emporium/css/step-form.css') }}" rel="stylesheet">
+  <link href="{{ asset('themes/emporium/css/aeroplane_form.css') }}" rel="stylesheet" />
 @endsection
 
 {{-- For custom style  --}}
@@ -187,6 +236,9 @@
       submit_contact_request();
       return false; // Don't submit form for this demo
       });
+      $(".close_btn").click(function(){
+        $(".cstm_search").hide();
+      });
     });
 
     function submit_contact_request()
@@ -218,6 +270,176 @@
           }
       });
     }
+    
+    $(document).ready(function(){
+        var chk_date = new Date(); 
+            
+        var chk_out_date = new Date();
+        
+        @if(!empty(Session::get("arrive")))
+            chk_date = '{{Session::get("arrive")}}';
+        @else 
+            chk_date = chk_date;            
+        @endif
+        
+        @if(!empty(Session::get("departure")))
+            chk_out_date = '{{Session::get("departure")}}'; 
+        @else  
+            chk_out_date = chk_out_date;
+        @endif
+        
+        $('#t-global-picker').tDatePicker({
+            'numCalendar':'2',
+            'autoClose':true,
+            'durationArrowTop':'200',
+            'formatDate':'mm-dd-yyyy',
+            'titleCheckIn':'Arrival',
+            'titleCheckOut':'Departure',
+            'inputNameCheckIn':'arrive',
+            'inputNameCheckOut':'departure',
+            'titleDateRange':'days',
+            'titleDateRanges':'days',
+            'iconDate':'<i class="fa fa-calendar"></i>',
+            'limitDateRanges':'365',
+            'dateCheckIn':chk_date,
+            'dateCheckOut':chk_out_date,
+            //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
+            //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+        });
+    });    
+    
+    $("#pills-home-tab").click(function(){
+        $("#sitename").val('voyage');        
+    });
+    $("#pills-profile-tab").click(function(){
+        $("#sitename").val('safari');        
+    });
+    $("#pills-contact-tab").click(function(){
+        $("#sitename").val('spa');        
+    });
+    $("#pills-expereince-tab").click(function(){
+        $("#sitename").val('islands');        
+    });
+    
+    $(document).on('keyup', '[data-action="global-search"]', function () { 
+        var sitename = $("#sitename").val();
+        $('[data-action="global-search-error"]').html('');
+        if ($(this).val() == '') {
+            $('[data-action="global-clear-search"]').hide();
+            $('[data-option="global-search"]').slideUp(300);
+        } else {
+            $('[data-action="global-clear-search"]').show();
+    		var fvalue = $(this).val();
+    		
+    		if(fvalue.length > 2)
+    		{
+    			globalSearchForAll($(this).val(), sitename);
+    		}
+        }
+    });
+    
+    /*
+* For Global Search function
+*/
+function globalSearchForAll(searcValue, sitename) {
+
+    var datObj = {};
+    datObj.keyword = searcValue;
+    datObj.sitename = sitename;
+    var params = $.extend({}, doAjax_params_default);
+    params['url'] = BaseURL + '/destination/global-search';
+    params['data'] = datObj;
+    params['successCallbackFunction'] = function (data) {
+        
+        if(data.data.sitename!=undefined){
+            var sitenm = data.data.sitename;
+            if(sitenm=='voyage'){
+                BaseURL1 = 'https://emporium-voyage.com';
+            }else if(sitenm=='safari'){
+                BaseURL1 = 'https://emporium-safari.com';
+            }else if(sitenm=='spa'){
+                BaseURL1 = 'https://emporium-spa.com';
+            }else if(sitenm=='islands'){
+                BaseURL1 = 'https://emporium-islands.com';
+            }
+        }
+        
+        $('[data-option="global-search-our-collection-option-list"]').html('');
+        $('[data-option="global-search-collection-option-list"]').html('');
+        $('[data-option="global-search-dest-option-list"]').html('');
+        $('[data-option="global-search-experience-option-list"]').html('');
+        $('[data-option="global-search-dest-channel-option-list"]').html('');       
+        
+        if (data.data.our_collection == undefined) {
+            $('[data-action="global-search-our-collections"] span').html('Our Collection (0)');
+        }else{
+            var html ='';
+            var collString = (data.data.our_collection.length > 1) ? "Our Collections" : "Our Collection";
+            $('[data-action="global-search-our-collections"] span').html(collString + ' ('+data.data.our_collection.length+')');
+            $(data.data.our_collection).each(function (i, val) {
+                var  linkMenu = BaseURL1+'/'+val.property_slug;
+                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
+            });
+            $('[data-option="global-search-our-collection-option-list"]').html(html);
+            //$('[data-action="global-search-our-collections"]').parent().show();
+        }
+        if (data.data.collection == undefined) {
+            $('[data-action="global-search-collections"] span').html('Collection (0)');
+        }else{
+            var html ='';
+            var collString = (data.data.collection.length > 1) ? "Collections" : "Collection";
+            $('[data-action="global-search-collections"] span').html(collString + ' ('+data.data.collection.length+')');
+            $(data.data.collection).each(function (i, val) {
+                var  linkMenu = BaseURL1+'/'+val.property_slug;
+                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
+            });
+            $('[data-option="global-search-collection-option-list"]').html(html);
+            //$('[data-action="global-collections"]').parent().show();
+        }
+        if (data.data.dest == undefined) {
+            $('[data-action="global-search-destinations"] span').html('Destination (0)');
+        }else {
+            var html ='';
+            var destString = (data.data.dest.length > 1) ? "Destinations" : "Destination";
+            $('[data-action="global-search-destinations"] span').html(destString + ' ('+data.data.dest.length+')');
+            $(data.data.dest).each(function (i, val) {
+                var  linkMenu = BaseURL1+'/luxury_destinations/'+val.category_alias;
+                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+            });
+            $('[data-option="global-search-dest-option-list"]').html(html);
+            //$('[data-action="global-destinations"]').parent().show();
+        }
+        
+        if (data.data.experiences == undefined) {
+            $('[data-action="global-search-experiences"] span').html('Experience (0)');
+        } else {
+            var html ='';
+            var restroString = (data.data.experiences.length > 1) ? "Experiences" : "Experience";
+            $('[data-action="global-search-experiences"] span').html(restroString + ' ('+data.data.restro.length+')');
+            $(data.data.restro).each(function (i, val) {
+                var  linkMenu = BaseURL1+'/luxury_experience/'+val.alias;
+                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+            });
+            $('[data-option="global-search-experience-option-list"]').html(html);
+            //$('[data-action="global-restaurant"]').parent().show();
+        }
+        if (data.data.dest == undefined) {
+            $('[data-action="global-search-destination-channels"] span').html('Channel (0)');
+        } else {
+            var html ='';
+            var barString = (data.data.dest.length > 1) ? "Channels" : "Channel";
+            $('[data-action="global-search-destination-channels"] span').html(barString + ' ('+data.data.dest.length+')');
+            $(data.data.dest).each(function (i, val) {
+                var  linkMenu = BaseURL1+'/social-youtube/'+val.category_alias;
+                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+            });
+            $('[data-option="global-search-dest-channel-option-list"]').html(html);
+            //$('[data-action="global-bar"]').parent().show();
+        }
+    };
+    doAjax(params);
+    $('[data-option="global-search"]').slideDown(300);
+}
   </script>
 @endsection
 

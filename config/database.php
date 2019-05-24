@@ -64,7 +64,31 @@ return [
             'strict'    => false,
             'options'   => [ PDO::ATTR_EMULATE_PREPARES => true ],
         ],
-        'mysql2' => [
+        'voyageconn' => [
+            'driver'    => 'mysql',
+            'host'      => 'livetest.crlnfg2upqbc.eu-west-1.rds.amazonaws.com',
+            'database'  => 'livetest',
+            'username'  => 'livetest',
+            'password'  => 'livetest',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+            'options'   => [ PDO::ATTR_EMULATE_PREPARES => true ],
+        ],
+        'islandconn' => [
+            'driver'    => 'mysql',
+            'host'      => 'emporiumislands.ci3okg85xopv.eu-west-2.rds.amazonaws.com',
+            'database'  => 'emporium_islands',
+            'username'  => 'root',
+            'password'  => '$CH+5rqLRezf',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+            'options'   => [ PDO::ATTR_EMULATE_PREPARES => true ],
+        ],
+        'stagingconn' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
             'database'  => 'ev_staging',
@@ -76,7 +100,7 @@ return [
             'strict'    => false,
             'options'   => [ PDO::ATTR_EMULATE_PREPARES => true ],
         ],
-        'mysql3' => [
+        'spaconn' => [
             'driver'    => 'mysql',
             'host'      => 'livenew.crlnfg2upqbc.eu-west-1.rds.amazonaws.com',
             'database'  => 'emporium-voyage',
@@ -88,7 +112,7 @@ return [
             'strict'    => false,
             'options'   => [ PDO::ATTR_EMULATE_PREPARES => true ],
         ],
-        'mysql4' => [
+        'safariconn' => [
             'driver'    => 'mysql',
             'host'      => 'emporium-safari.crlnfg2upqbc.eu-west-1.rds.amazonaws.com',
             'database'  => 'emporium_safari',

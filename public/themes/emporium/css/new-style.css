@@ -4663,3 +4663,708 @@ svg:not(:root) {
 .mobilenavheader {
     padding: 15px 50px !important;
 }
+
+.custom-menu{
+    position: absolute;
+    z-index: 2;
+    right: 25%;
+    top: 9.333vh;
+}
+.custom-menu ul{
+    list-style-type: none;
+}
+.custom-menu ul li{
+    list-style: none;
+    display: inline;
+    margin-left: 20px;
+}
+.custom-menu ul li a{
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+.cstm_search {
+    display: none;
+    position: fixed;
+    background: #fff;
+    float: left;
+    width: 100%;
+    padding: 0px;
+    right: 0px;
+    top: 0px;
+    z-index: 9999;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+    a.close_btn {
+      position: absolute;
+      right: 18px;
+      font-weight: bold;
+      top: 10px;
+      font-size: 40px;
+      line-height: normal;
+      color: #aba07c;
+      margin: 0px;
+      padding: 0px;
+    }
+    .cstm_banner>.container{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      left: 0px;
+    }
+
+    /*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+  .modal.left .modal-dialog,
+  .modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+         -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+  }
+
+  .modal.left .modal-content,
+  .modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .modal.left .modal-body,
+  .modal.right .modal-body {
+    padding: 15px 15px 80px;
+  }
+
+/*Left*/
+  .modal.left.fade .modal-dialog{
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+  }
+  
+  .modal.left.fade.in .modal-dialog{
+    left: 0;
+  }
+  .cstm_sctn {
+    float: left;
+    width: 100%;
+    background: #2a2a2a;
+    color: #fff;
+    padding: 50px 0px;
+}
+.cstm_sctn .lft_sctn h1 {
+    text-align: center;
+    display: table;
+    margin: 0px auto;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 20px 0px;
+    font-size: 40px;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_sctn .lft_sctn h3 {
+    text-align: center;
+    border-bottom: 1px solid #ab9f7b;
+    display: table;
+    margin: 0px auto;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    color: #ab9f7b;
+    font-family: 'Playfair Display', serif;
+}
+  .rght_sctn{
+      background: url('/emporium/images/form-bg.png');
+      height: 600px;
+  }  
+  .lft_sctn ol.carousel-indicators {
+      position: static;
+      margin: 0px auto;
+      padding-top: 30px;
+  }   
+  .cstm_div {
+    padding-top: 50px;
+}
+.cstm_btm_div {
+    padding: 90px 0px;
+}
+.cst_btm_sctn img {
+    padding-top: 10px;
+}
+.cst_btm_sctn {
+    background: #000;
+    padding: 30px;
+}
+.cst_btm_sctn h3 {
+    margin: 0px;
+    padding-top: 20px;
+}
+.cstm_txt_div p {
+    font-size: 18px;
+    word-spacing: 8px;
+}
+.cstm_txt_div h3 {
+    font-weight: 900;
+}
+.cstm_txt_div {
+    margin-top: 120px;
+}
+.cstm_cnt {
+    background: #fff;
+    color: #000;
+    padding: 50px;
+    margin: 0px auto;
+    width: 80%;
+    position: relative;
+    bottom: 50px;
+}
+
+
+.cstm_banner #myCarousel a.right.carousel-control {
+    background-image: unset;
+    bottom: 20px;
+    top: auto;
+    background-color: rgba(0,0,0,0.9);
+    padding: 0px !important;
+    height: 50px;
+    width: 50px;
+    right: 20px;
+    float: left;
+}
+.cstm_banner #myCarousel a.right.carousel-control[data-slide='prev'] {
+    margin-right: 60px;
+}
+
+.scrollNextDivHotel {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+    z-index: 1;
+
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translate(-50%, 0) rotate(-90deg);}
+  50% {-webkit-transform: translate(-50%, -20px) rotate(-90deg);}
+  70% {-webkit-transform: translate(-50%, -10px) rotate(-90deg);}
+  90% {-webkit-transform: translate(-50%, -5px) rotate(-90deg);}
+} 
+
+@keyframes bounce { 
+  0%, 20%, 40%, 60%, 80%, 100% {transform: translate(-50%, 0) rotate(-90deg);}
+  50% {transform: translate(-50%, -20px) rotate(-90deg);}
+  70% {transform: translate(-50%, -10px) rotate(-90deg);}
+  90% {transform: translate(-50%, -5px) rotate(-90deg);}
+} 
+a.scrol_btn:hover, a.scrol_btn:focus {
+    color: #fff;
+}
+.cstm_banner #myCarousel a.right.carousel-control i {
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+}
+.cstm_cnt h3 {
+    margin: 0px;
+    color: #ab9f7b;
+    font-size: 26px;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_cnt h4 {
+    font-size: 26px;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_cnt p {
+    font-size: 17px;
+}
+.cstm_cnt a {
+    text-transform: uppercase;
+    color: #262626;
+    font-size: 18px;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_qt {
+    background: #fff;
+    color: #000;
+    background-image: url('/emporium/images/quote_bg.png');
+    background-repeat: no-repeat;
+    padding: 80px 0px;
+    background-position: center;
+    height: 600px;
+    background-size: contain;
+
+}
+.cstm_sctn_img {
+    color: #000;
+    background-image: url('/emporium/images/girl-img.png');
+    background-repeat: no-repeat;
+    padding: 80px 0px;
+    background-position: center;
+    height: 900px;
+    background-size: cover;
+}
+.cstm_qt img {
+    margin: 0px auto;
+    text-align: center;
+    float: none;
+    display: table;
+}
+.qt_div {
+    margin: 0px auto;
+    float: none;
+}
+ .cstm_sctn_cnt{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+
+.cstm_qt p {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 70px;
+    padding: 0px 70px;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_qt i {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 30px;
+    padding: 0px 70px;
+    width: 100%;
+    float: left;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_sctn_cnt h4 {
+    text-align: center;
+    color: #fff;
+    font-size: 38px;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_sctn_cnt h1 {
+    text-align: center;
+    float: none;
+    margin: 0px auto;
+    border-top: 2px solid #fff;
+    width: auto;
+    display: table;
+    border-bottom: 2px solid #fff;
+    padding: 10px 0px;
+    font-size: 80px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_sctn_cnt i {
+    text-align: center;
+    font-size: 46px;
+    color: #fff;
+    font-style: normal;
+    display: block;
+    font-family: 'Kaushan Script', cursive;
+
+}
+.cstm_vid_div h1 {
+    font-size: 90px;
+    font-style: italic;
+    color: #ABA07C;
+    font-family: 'Playfair Display', serif;
+
+}
+.cstm_qt_div {
+    padding-top: 90px;
+}
+
+
+.cstm_sctn_new {
+    float: left;
+    width: 100%;
+    background: #000;
+    padding-bottom: 30px;
+}
+.rgt_cnt h2 {
+    font-size: 55px;
+    margin: 0px;
+    padding: 30px 0px;
+}
+.rgt_cnt p {
+    font-size: 18px;
+}
+.rgt_cnt {
+    border-right: 40px solid #f6842d;
+}
+.cstm_sctn_new h1 {
+    font-size: 135px;
+    margin: 0px;
+    padding-left: 12px;
+    padding-top: 90px;
+    padding-bottom: 50px;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+
+}
+.rgt_cnt img{
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+.sldr_img p {
+    margin: 0px;
+    padding: 10px 0px;
+}
+
+.cstm_ftr_lnk h4 {
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #ABA07C;
+    font-weight: 700;
+    margin: 0px;
+    padding-bottom: 25px;
+    font-family: 'Playfair Display', serif;
+}
+.cstm_ftr_lnk ul {
+    padding: 0px;
+}
+
+
+.cstm_ftr_lnk ul li {
+    list-style: none;
+    display: block;
+    margin-bottom: 9px; 
+    font-size: 19px;
+}
+.cstm_ftr {
+    float: left;
+    width: 100%;
+    padding: 60px 0px;
+}
+.cstm_btm_ftr {
+    padding-top: 30px;
+    float: left;
+    width: 100%;
+}
+h2.cstm_hdng {
+    font-family: 'Playfair Display', serif;
+    margin: 0px;
+    padding: 20px 0px 70px 0px;
+        font-size: 35px;
+}
+
+/*===========================================
+			ADD CSS 05/04/2019
+=====================================================*/
+section.membership-section-full {
+    float: left;
+    width: 100%;
+    padding: 40px 0 30px;
+}
+.Lifestyle-title h1 {
+    color: #ABA07C;
+    font-size: 24px;
+    font-weight: 600;
+    padding-top: 226px;
+	font-family:'Playfair Display', serif;
+}
+.Lifestyle-title.arrow-icon h1 {
+    background-image: url(/emporium/images/arrow.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    padding: 0;
+	margin-top: 226px;
+}
+.np-r-padding{padding-right:0;}
+.description-area-bd1 {
+    padding-top: 61px;
+}
+.tabs-custom-id-145 .nav-tabs {
+    border-bottom: none;
+    border: none;
+}
+.tabs-custom-id-145 ul li a {
+    background-color: transparent;
+    font-size: 16px;
+    padding: 10px 45px; 
+    font-weight: bold;
+    border-radius: 0;
+}
+.tabs-custom-id-145 {
+    max-width: 1116px;
+    width: 100%;
+    margin: auto;
+	padding-top: 30px;
+}
+.tabs-custom-id-145 a:hover {
+    color: #fff;
+    background-color: #ABA07C!important;
+}
+.tabs-custom-id-145 .nav-item.nav-link.active {
+    background-color: #ABA07C;
+    color: #ABA07C;
+}
+ul.item-list-bar li {
+    list-style: none;
+    display: inline-block;
+    width: 20%;
+    padding: 5px;
+    float: left;
+}
+
+ul.item-list-bar li a {
+    padding: 0;
+	background-color: transparent;
+}
+ul.item-list-bar {
+    padding: 0;
+    padding: 10px;
+    width: 100%;
+    float: left;
+	border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.tabs-custom-id-145 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #ABA07C;
+    font-weight: bold;
+}
+.cstm_search.animated.zoomIn .forms-box-tct {
+    min-height: 100vh;
+    height: 100%;
+}
+
+.hotelPopupHeadings-header-title {
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+.hotelPopupHeadings-form .t-date-divide {
+    float: left;
+    width: 50%;
+}
+.products-item-list.hotelPopupHeadings-form ul li {
+    list-style: none;
+}
+.text-center.hotelBookNowButton {
+    padding-top: 40px;
+}
+.tabs-custom-id-145 .text-center.hotelBookNowButton .btn {
+    background-color: transparent!important;
+    font-weight: bold;
+    margin-bottom: 21px;
+    font-size: 16px;
+	color:#fff;
+	outline: none;
+}
+.tabs-custom-id-145 .hotelCancelBooking a {
+    text-decoration: underline;
+    font-weight: bold;
+    background-color: transparent!important;
+}
+
+
+.hotelPopupHeadings-form select {
+    background-color: #000;
+    border: 0;
+    -webkit-appearance: none;
+    outline: none;
+    text-align: center;
+    padding-left: 34px;
+    width: 30%;
+}
+.hotelPopupHeadings-form .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding:0;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+	box-shadow: none;
+	padding-left: 26px;
+	font-weight:bold;
+}
+
+.t-date-divide i {
+    position: absolute;
+    bottom: 0;
+    top: 67px;
+}
+.t-date-divide {
+    position: relative;
+}
+.border-01 {
+    border: 1px solid #545454;
+    float: left;
+    width: 100%;
+}
+.col-md-3.border-l-r {
+    border-left: 1px solid #545454;
+    border-right: 1px solid #545454;
+    text-align: center;
+    padding: 40px 0 49px;
+}
+.Children-section {
+    padding: 40px 0 49px;
+    text-align: center;
+}
+.date-picker-use-inner-div {
+    padding: 25px 0 49px;
+}
+.hotelCancelBooking.text-center {
+    border-top: 1px solid #545454;
+    padding-top: 40px;
+    margin-top: 16px;
+	padding-bottom: 70px;
+}
+.border-style-02 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+
+
+
+/*===========================================
+	START-->  ADD CSS @  Mobile View
+=====================================================*/
+/*---------1200---------------*/
+@media (max-width:1200px){
+.Lifestyle-title.arrow-icon h1 {
+	padding: 0;
+	margin-top: 100px;
+}	
+.Lifestyle-title h1 {
+    padding-top: 100px;
+
+
+
+	
+	
+}
+
+
+}
+
+
+/*---------991---------------*/
+@media (max-width:991px){
+.Lifestyle-title.arrow-icon h1 {
+    padding: 0;
+    margin-top: 0;
+}	
+.Lifestyle-title h1 {
+    font-size: 19px;
+    margin: 0;
+	padding-top:0;
+}
+	
+	
+	
+}
+
+/*-----------------767-----------------*/
+@media (max-width:767px){
+.Lifestyle-title.arrow-icon h1 {
+    margin-top: 40px;
+}
+.Lifestyle-title h1 {
+    padding-top: 15px;
+}
+.description-area-bd1 {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+.tabs-custom-id-145 ul li a {
+    padding: 10px 10px;
+}
+
+
+
+
+
+
+
+	
+	
+}
+
+/*-----------------479-----------------*/
+@media (max-width:479px){
+    .tabs-custom-id-145 ul li a {
+        padding: 15px 5px;
+    	font-size:12px;
+    }
+}
+.global-search .t-date-divide{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.global-search .t-check-in, .global-search .t-check-out{
+    width: 98% !important;
+    font-size: 18px;
+    word-spacing: 3px;
+}
+.global-search .t-dates{
+    background-color: transparent !important;
+}
+#globalfiltersearchpopup ul{
+    list-style-type: none;
+    vertical-align: top;
+}
+#globalfiltersearchpopup ul li{
+    list-style-type: none;
+    display: inline-block;
+    width: 19%;
+    vertical-align: top;
+    padding: 5px;
+}
+#globalfiltersearchpopup ul li a{
+    margin: 0px;
+    padding: 0px;
+}
+#globalfiltersearchpopup ul li a:hover{
+    background-color: transparent !important;
+}
+#globalfiltersearchpopup ul ul li{    
+    width: 100%;
+}
+#globalfiltersearchpopup .searchmenulist li a{    
+    display:block; 
+    color:#fff; 
+    font-size:13px; 
+    transition: all .3s ease 0s;
+    -webkit-transition: all .3s ease 0s;
+}

@@ -1,0 +1,397 @@
+
+@font-face {
+  font-family: 'GeomanistLight';
+  src:url('/emporium/fonts/GeomanistLight.ttf');
+}
+@font-face {
+  font-family: 'silversouthscript-webfont';
+  src:url('/emporium/fonts/silversouthscript-webfont.ttf') format('truetype');
+}
+
+body{
+    font-family: 'GeomanistLight', sans-serif;
+    background: #252525;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #fff
+}
+
+a , label{
+    color: #fff;
+    font-weight: normal;
+}
+a:hover{
+    color: #aba07c;
+    text-decoration: none;
+
+}
+
+div#aero-book label {    
+    margin-bottom: 5px;   
+    color: #aba07c !important;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.no-pad {
+    padding: 0;
+}
+div#aero-book{
+    margin-top: 30px;
+}
+div#aero-book .form-control , 
+div#aero-book .dropdown button.dropdown-toggle{
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 5px;
+    color: #fff;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+}
+div#aero-book .nav-tabs {
+    border-bottom: 1px solid #888787;
+}
+
+div#aero-book .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 45px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    border-radius: 0;
+    background-color: rgba(0,0,0,0.5);
+    margin-bottom: 1px;
+    color: #fff !important;
+}
+div#aero-book .nav-tabs > li.active > a,
+div#aero-book .nav-tabs > li > a:hover,
+div#aero-book .nav-tabs > li.active > a:focus {
+    color: #fff !important;
+    cursor: default;
+    background-color: #ABA07C;
+    border: 1px solid #888787;
+    border-bottom-color: transparent;
+    cursor: pointer;
+}
+
+div#aero-book  .tab-content {
+    margin-top: 30px;
+}
+
+div#aero-book input.form-control-submit {
+    background-color: #ABA07C;
+    border: medium none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-top: 20px;
+    transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 0;
+}
+
+div#aero-book input.form-control-submit:hover,
+.value-button:hover{
+    background: #aba00b;
+}
+
+/*numbers button*/
+.pass-nmbers{
+    position: relative;
+}
+.pass-nmbers input {
+    border: 0;
+    width: 80px;
+    background: transparent;
+    display: block;
+    text-align: left;
+    float: none;
+}
+.value-button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    text-align: center;
+    border: 1px solid #aba07c;
+    line-height: 20px;
+    background: rgb(171, 160, 124);
+    margin: auto;
+    right: 30px;
+}
+
+.value-button.pos-right{
+    left: auto;
+    right: 0;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+form #decrease {
+  margin-right: -4px;
+  border-radius: 8px 0 0 8px;
+}
+
+form #increase {
+  margin-left: -4px;
+  border-radius: 0 8px 8px 0;
+}
+
+form #input-wrap {
+  margin: 0px;
+  padding: 0px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/*end of numbers input button*/
+
+/*calander design*/
+.datepicker-dropdown {
+    color: #000;
+}
+
+
+.datepicker table tr td.active, .datepicker table tr td.active:hover,
+.datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover , 
+.datepicker table tr td span.active:active, .datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active.disabled:active, .datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.active, .datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.disabled.active, .datepicker table tr td span.active.disabled:hover.active{
+    background: #aba07c !important;
+}
+
+
+.ui-timepicker-wrapper {
+    max-height: 200px !important;    
+    min-width: 130px;
+}
+
+/*end of calender design*/
+
+/*bg-sec*/
+.forms-box-tct {
+    padding: 20px;
+    background: url('../images/bg-yard.jpg') no-repeat center center;
+    background-size:cover;    
+    min-height: 500px;
+    position: relative; 
+}
+.forms-box-tct:before{
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: rgba(0,0,0,0.83);
+}
+/*end of bg sec*/
+
+/*start hotel , yacht , jet sec*/
+
+.bg-overlay-book {
+    background: #000;
+    padding: 10px 0;
+}
+.bg-overlay-book .nav-tabs{
+    border: 0;
+}
+.bg-overlay-book .nav-tabs li {
+    width: 33.33%;
+    text-align: center;
+}
+.bg-overlay-book .nav-tabs > li > a{
+    background: transparent;
+    color: #fff !important;
+    font-size: 25px;
+    border-radius: 0;
+    padding:10px 15px; 
+     border: 0;
+}
+.bg-overlay-book .nav-tabs > li.active > a, .bg-overlay-book .nav-tabs > li.active > a:hover,
+.bg-overlay-book .nav-tabs > li.active > a:focus , .bg-overlay-book .nav-tabs > li > a:hover{
+    background:transparent;
+    color: #aba00b !important;
+    border: 0;
+}
+
+div#select-yacht > .row {
+    margin-bottom: 20px;
+}
+
+.form-group.search-nm input {
+    border: 1px solid #aba07c !important;
+    padding: 5px 15px !important;
+    background: rgba(0,0,0,0.5) !important;
+    height: 60px;
+    font-size: 20px;
+}
+
+.form-group.search-nm {
+    margin-bottom: 30px;
+}
+.form-group .caret {
+    float: right;
+    margin-top: 9px;
+}
+
+.form-group .dropdown-menu {
+    font-size: 15px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 0;
+    padding: 15px 0;
+    z-index: 55;
+    border: 1px solid #aba07c;
+    min-width: 250px;
+    width: 100%;
+}
+
+.form-group .dropdown-menu li a{
+   color: #fff;
+    border-bottom: 1px solid #aba07c;
+    padding: 10px 15px 10px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+.form-group .dropdown-menu li:hover a{
+    background: #000;   
+}
+.form-group .dropdown-menu li:last-child a{
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.hotelPopupHeadings > p {
+    color: #ABA07C;
+    margin-top: 16px;
+}
+
+.lnk-txt{
+    margin: 15px 0;
+}
+.lnk-txt p {
+    font-size: 18px;
+    color: #ABA07C;
+}
+.lnk-txt a{
+    text-transform: uppercase;
+}
+.lnk-txt a:hover{
+    text-decoration: none;
+    color: #aba00b
+}
+
+#aero-book ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff;
+}
+#aero-book::-moz-placeholder { /* Firefox 19+ */
+  color: #fff;
+}
+#aero-book :-ms-input-placeholder { /* IE 10+ */
+  color: #fff;
+}
+#aero-book:-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+/*end of hotel , yacht , jet sec*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 767px){
+    div#aero-book .nav > li > a {   
+        padding: 10px 20px;
+        font-size: 12px;  
+        margin-bottom: 1px;
+    /* float: left; */
+    }
+    div#aero-book input.form-control-submit.btn.btn-large {
+        max-width: 400px;
+        display: block;
+        margin: 10px auto 0;
+    }
+}
+@media (max-width: 580px){
+    div#aero-book .nav > li{
+        width: 100%;
+        margin-bottom: 1px;
+    }
+    div#aero-book .nav > li > a {   
+        padding: 10px 20px;
+        font-size: 12px;  
+        margin-bottom: 1px;
+        display: block;
+    /* float: left; */
+    }
+
+    div#aero-book .form-control{
+        margin-top: 0;
+    }
+    .form-group {
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 480px){
+    .bg-overlay-book .nav-tabs > li > a {
+        font-size: 18px;      
+        padding: 10px 5px;       
+    }
+    .form-group .dropdown-menu{
+        min-width: 200px;
+    }
+}
+
