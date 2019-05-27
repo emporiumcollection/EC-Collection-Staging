@@ -382,8 +382,8 @@ function globalSearchForAll(searcValue, sitename) {
             var collString = (data.data.our_collection.length > 1) ? "Our Collections" : "Our Collection";
             $('[data-action="global-search-our-collections"] span').html(collString + ' ('+data.data.our_collection.length+')');
             $(data.data.our_collection).each(function (i, val) {
-                var  linkMenu = BaseURL1+'/'+val.property_slug;
-                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
+                var  linkMenu = BaseURL1+'/'+val.category_alias;
+                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
             });
             $('[data-option="global-search-our-collection-option-list"]').html(html);
             //$('[data-action="global-search-our-collections"]').parent().show();
