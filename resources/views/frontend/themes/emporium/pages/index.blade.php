@@ -363,6 +363,11 @@ function globalSearchForAll(searcValue, sitename) {
                 BaseURL1 = 'https://emporium-islands.com';
             }
         }
+        $('[data-action="global-search-our-collections"] span').html('Our Collection (0)');
+        $('[data-action="global-search-collections"] span').html('Our Hotel (0)');
+        $('[data-action="global-search-destinations"] span').html('Our Destination (0)');
+        $('[data-action="global-search-experiences"] span').html('Our Experience (0)');
+        $('[data-action="global-search-destination-channels"] span').html('Our Channel (0)');
         
         $('[data-option="global-search-our-collection-option-list"]').html('');
         $('[data-option="global-search-collection-option-list"]').html('');
@@ -384,10 +389,10 @@ function globalSearchForAll(searcValue, sitename) {
             //$('[data-action="global-search-our-collections"]').parent().show();
         }
         if (data.data.collection == undefined) {
-            $('[data-action="global-search-collections"] span').html('Collection (0)');
+            $('[data-action="global-search-collections"] span').html('Our Hotel (0)');
         }else{
             var html ='';
-            var collString = (data.data.collection.length > 1) ? "Collections" : "Collection";
+            var collString = (data.data.collection.length > 1) ? "Our Hotels" : "Our Hotel";
             $('[data-action="global-search-collections"] span').html(collString + ' ('+data.data.collection.length+')');
             $(data.data.collection).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/'+val.property_slug;
@@ -397,10 +402,10 @@ function globalSearchForAll(searcValue, sitename) {
             //$('[data-action="global-collections"]').parent().show();
         }
         if (data.data.dest == undefined) {
-            $('[data-action="global-search-destinations"] span').html('Destination (0)');
+            $('[data-action="global-search-destinations"] span').html('Our Destination (0)');
         }else {
             var html ='';
-            var destString = (data.data.dest.length > 1) ? "Destinations" : "Destination";
+            var destString = (data.data.dest.length > 1) ? "Our Destinations" : "Our Destination";
             $('[data-action="global-search-destinations"] span').html(destString + ' ('+data.data.dest.length+')');
             $(data.data.dest).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/luxury_destinations/'+val.category_alias;
@@ -410,24 +415,24 @@ function globalSearchForAll(searcValue, sitename) {
             //$('[data-action="global-destinations"]').parent().show();
         }
         
-        if (data.data.experiences == undefined) {
-            $('[data-action="global-search-experiences"] span').html('Experience (0)');
-        } else {
+        if (data.data.experiences == undefined) { 
+            $('[data-action="global-search-experiences"] span').html('Our Experience (0)');
+        } else { 
             var html ='';
-            var restroString = (data.data.experiences.length > 1) ? "Experiences" : "Experience";
-            $('[data-action="global-search-experiences"] span').html(restroString + ' ('+data.data.restro.length+')');
-            $(data.data.restro).each(function (i, val) {
-                var  linkMenu = BaseURL1+'/luxury_experience/'+val.alias;
-                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+            var restroString = (data.data.experiences.length > 1) ? "Our Experiences" : "Our Experience";
+            $('[data-action="global-search-experiences"] span').html(restroString + ' ('+data.data.experiences.length+')');
+            $(data.data.experiences).each(function (i, val) {
+                var  linkMenu = BaseURL1+'/luxury_experience/'+val.category_alias;
+                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
             });
             $('[data-option="global-search-experience-option-list"]').html(html);
             //$('[data-action="global-restaurant"]').parent().show();
         }
         if (data.data.dest == undefined) {
-            $('[data-action="global-search-destination-channels"] span').html('Channel (0)');
+            $('[data-action="global-search-destination-channels"] span').html('Our Channel (0)');
         } else {
             var html ='';
-            var barString = (data.data.dest.length > 1) ? "Channels" : "Channel";
+            var barString = (data.data.dest.length > 1) ? "Our Channels" : "Our Channel";
             $('[data-action="global-search-destination-channels"] span').html(barString + ' ('+data.data.dest.length+')');
             $(data.data.dest).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/social-youtube/'+val.category_alias;

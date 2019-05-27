@@ -214,7 +214,7 @@
 									
 							<div class="col-md-12 border-style-02">
 								<div class="text-center hotelBookNowButton">
-                                    <button type="submit" class="btn">BOOK NOW</button>
+                                    <button type="submit" class="btn">Check Availability</button>
 									<div class="hotelCancelBooking text-center">
                                         <a href="javascript:void(0);">View, Modify or Cancel your Booking</a>
                                     </div>    									
@@ -873,41 +873,41 @@
 			  <!-- end of col -->
 
 
-	<div class="col-md-5 no-pad">
-	    				<div class="col-sm-6 no-pad">
-			    		<div class="form-group">
-						    <div class="col-xs-12 departr"><label for="from-place"> Departure date and time</label></div>
-						    <div class="col-xs-7">
-						    	<div class="form-group">
-						    		<input type='text' class="form-control" id='datetimepicker5' placeholder="DD/MM/YY" />
-						    	</div>
-							</div>
-							<div class="col-xs-5">
-						    	<div class="form-group">					                	
-					                    <input type='text' class="form-control" id='datetimepicker6' placeholder="12:00AM" />	                   
-				                </div>
-							</div>
-							<div class="clearfix"></div>
-					  	</div>
-					  </div>
-					  <!-- end of from -->
-					  <div class="col-sm-6 no-pad">
-			    		<div class="form-group">
-						    <div class="col-xs-12"><label for="from-place">Return date and time</label></div>
-						    <div class="col-xs-7">
-						    	<div class="form-group">
-						    		<input type='text' class="form-control" id='datetimepicker7' placeholder="DD/MM/YY" />
-						    	</div>
-							</div>
-							<div class="col-xs-5">
-						    	<div class="form-group">					                	
-					                    <input type='text' class="form-control" id='datetimepicker8' placeholder="12:00AM" />	                   
-				                </div>
-							</div>
-							<div class="clearfix"></div>
-					  	</div>
-					  	</div>
-					  </div>
+            <div class="col-md-5 no-pad">
+            <div class="col-sm-6 no-pad">
+                <div class="form-group">
+                    <div class="col-xs-12 departr"><label for="from-place"> Departure date and time</label></div>
+                    <div class="col-xs-7">
+                    	<div class="form-group">
+                    		<input type='text' class="form-control" id='datetimepicker5' placeholder="DD/MM/YY" />
+                    	</div>
+                	</div>
+                	<div class="col-xs-5">
+                    	<div class="form-group">					                	
+                                <input type='text' class="form-control" id='datetimepicker6' placeholder="12:00AM" />	                   
+                        </div>
+                	</div>
+                	<div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- end of from -->
+            <div class="col-sm-6 no-pad">
+                <div class="form-group">
+                    <div class="col-xs-12"><label for="from-place">Return date and time</label></div>
+                    <div class="col-xs-7">
+                    	<div class="form-group">
+                    		<input type='text' class="form-control" id='datetimepicker7' placeholder="DD/MM/YY" />
+                    	</div>
+                    </div>
+                    <div class="col-xs-5">
+                    	<div class="form-group">					                	
+                                <input type='text' class="form-control" id='datetimepicker8' placeholder="12:00AM" />	                   
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            </div>
 					  <!-- end of from -->
 
 					  <div class="col-md-2">
