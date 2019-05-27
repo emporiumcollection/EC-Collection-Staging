@@ -429,6 +429,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('searchavailability', 'Frontend\PropertyController@propertySearchAvailability');
     
     Route::post('changeRoomStatus', 'PropertiesController@changeRoomStatus');
+    
+    Route::get('globalavailability', 'Frontend\PropertyController@propertyglobalavailability');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

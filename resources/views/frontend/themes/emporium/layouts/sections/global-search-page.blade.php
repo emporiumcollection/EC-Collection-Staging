@@ -161,65 +161,67 @@
                                     </ul>
                                 </div>
 							</div>            								
-									
-							<div class="border-01 hotelPopupHeadings-form">
-                                <div class="col-md-6 global-search">
-							       <div class="date-picker-use-inner-div">
-    									<ul>
-        									<li>
-                                                <div id="t-global-picker" class="t-datepicker">
-                                                    <div class="t-date-divide">
-                                                        <h3>Arrival</h3>
-                                                        <div class="t-check-in"></div>
+							
+                            <form class="global-search-form" method="get">		
+    							<div class="border-01 hotelPopupHeadings-form">
+                                    <div class="col-md-6 global-search">
+    							       <div class="date-picker-use-inner-div">
+        									<ul>
+            									<li>
+                                                    <div id="t-global-picker" class="t-datepicker">
+                                                        <div class="t-date-divide">
+                                                            <h3>Arrival</h3>
+                                                            <div class="t-check-in"></div>
+                                                        </div>
+                                                        <div class="t-date-divide">
+                                                            <h3>Departure</h3>
+                                                            <div class="t-check-out"></div>
+                                                        </div>
                                                     </div>
-                                                    <div class="t-date-divide">
-                                                        <h3>Departure</h3>
-                                                        <div class="t-check-out"></div>
-                                                    </div>
-                                                </div>
-                                             </li>									
-    									</ul>
-							       </div>
-                                </div>
-									
-								<div class="col-md-3 border-l-r">
-									<div class="Adults-section">									
-                                        <h3>Adults</h3>
-                                        <select name="booking_adults">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                        </select>								
-									</div>
-								</div>
-									
-								<div class="col-md-3">
-									<div class="Children-section">
-                                        <h3>Children</h3>
-                                        <select name="booking_children">
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                        </select>
+                                                 </li>									
+        									</ul>
+    							       </div>
                                     </div>
-								</div>
-							</div>
-									
-							<div class="col-md-12 border-style-02">
-								<div class="text-center hotelBookNowButton">
-                                    <button type="submit" class="btn">Check Availability</button>
-									<div class="hotelCancelBooking text-center">
-                                        <a href="javascript:void(0);">View, Modify or Cancel your Booking</a>
-                                    </div>    									
-                                </div>
-							</div>
+    									
+    								<div class="col-md-3 border-l-r">
+    									<div class="Adults-section">									
+                                            <h3>Adults</h3>
+                                            <select name="booking_adults">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>								
+    									</div>
+    								</div>
+    									
+    								<div class="col-md-3">
+    									<div class="Children-section">
+                                            <h3>Children</h3>
+                                            <select name="booking_children">
+                                                <option>0</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+    								</div>
+    							</div>
+    									
+    							<div class="col-md-12 border-style-02">
+    								<div class="text-center hotelBookNowButton">
+                                        <button type="submit" class="btn">Check Availability</button>
+    									<div class="hotelCancelBooking text-center">
+                                            <a href="javascript:void(0);">View, Modify or Cancel your Booking</a>
+                                        </div>    									
+                                    </div>
+    							</div>
+                            </form>
 						</div>
 					</div>
                 </div>							

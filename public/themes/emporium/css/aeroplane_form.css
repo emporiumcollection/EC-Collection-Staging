@@ -257,6 +257,7 @@ div#select-yacht > .row {
     background: rgba(0,0,0,0.5) !important;
     height: 60px;
     font-size: 20px;
+    color: #ffffff;
 }
 
 .form-group.search-nm {

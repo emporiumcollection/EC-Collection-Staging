@@ -295,8 +295,8 @@
             'formatDate':'mm-dd-yyyy',
             'titleCheckIn':'Arrival',
             'titleCheckOut':'Departure',
-            'inputNameCheckIn':'arrive',
-            'inputNameCheckOut':'departure',
+            'inputNameCheckIn':'globalarrival',
+            'inputNameCheckOut':'globaldeparture',
             'titleDateRange':'days',
             'titleDateRanges':'days',
             'iconDate':'<i class="fa fa-calendar"></i>',
@@ -306,19 +306,52 @@
             //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
             //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
         });
+        
+        /*$(".global-search-form").submit(function(e){
+            e.preventDefault();
+            var g_arrival = $('input[name="globalarrival"]').val();
+            var g_departure = $('input[name="globaldeparture"]').val();
+            var adult = $('select[name="booking_adults"]').val();
+            var child = $('select[name="booking_children"]').val();
+            var searchfor = $('input[name="sitename"]').val();
+            $.ajax({
+              url: "{{ URL::to('globalavailability')}}"+"?arrival="+g_arrival+"&departure="+g_departure+"&adult="+adult+"&child="+child+"&sname="+searchfor,
+              type: "get",              
+              dataType: "json",
+              success: function(data){
+              var html = '';
+              if(data.status=='error')
+              {
+                
+              }
+              else{
+                
+              }
+              }
+          });
+        });*/
+        
     });    
     
     $("#pills-home-tab").click(function(){
-        $("#sitename").val('voyage');        
+        $("#sitename").val('voyage');
+        $("#globalfiltersearchpopup").css('display', 'none'); 
+        $('[data-action="global-search"]').val('');     
     });
     $("#pills-profile-tab").click(function(){
-        $("#sitename").val('safari');        
+        $("#sitename").val('safari');   
+        $("#globalfiltersearchpopup").css('display', 'none');
+        $('[data-action="global-search"]').val('');     
     });
     $("#pills-contact-tab").click(function(){
-        $("#sitename").val('spa');        
+        $("#sitename").val('spa');
+        $("#globalfiltersearchpopup").css('display', 'none'); 
+        $('[data-action="global-search"]').val('');        
     });
     $("#pills-expereince-tab").click(function(){
-        $("#sitename").val('islands');        
+        $("#sitename").val('islands');
+        $("#globalfiltersearchpopup").css('display', 'none');
+        $('[data-action="global-search"]').val('');          
     });
     
     $(document).on('keyup', '[data-action="global-search"]', function () { 

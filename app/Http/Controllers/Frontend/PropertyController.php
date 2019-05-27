@@ -2128,4 +2128,27 @@ class PropertyController extends Controller {
         //print_r($prop_package);
     }
     
+    function propertyglobalavailability(Request $request) { 
+        $arrive = $request->input("arrival");
+        $departure = $request->input("departure");
+        $adult = $request->input("adult");
+        $child = $request->input("child");
+        $sname = $request->input("sname"); 
+        
+        $arrive_date = '';        
+        if (!is_null($arrive) && $arrive != '' && $arrive != 'null') {            
+            $arrive_date = \CommonHelper::dateformat(trim($arrive));
+        }
+        $this->data['arrive_date']=$arrive_date;
+        
+        $departure_date ='';
+        if (!is_null($departure) && $departure != '' && $departure != 'null') {            
+            $departure_date = \CommonHelper::dateformat(trim($departure));
+        }
+        $this->data['departure'] = $departure_date;
+        
+        
+           
+    }
+
 }
