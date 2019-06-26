@@ -2035,7 +2035,12 @@ img.desaturate {
 
 }
 
-
+.tab-show{
+    display: block;
+}
+.tab-hide{
+    display: none;
+}
 
 
 

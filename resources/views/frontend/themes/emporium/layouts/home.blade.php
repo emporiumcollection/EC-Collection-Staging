@@ -40,6 +40,10 @@
     <link rel="stylesheet" href="{{ asset('themes/emporium/css/jquery.mCustomScrollbar.css') }}">
     {{--<link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">--}}
     <link href="{{ asset('lib/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('themes/emporium/css/step-form.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/aeroplane_form.css') }}" rel="stylesheet" />
+    
     <!-- tilt css include -->
     <!-- end of tilt css include -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -147,7 +151,30 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 {{--For Top Bar --}}
                 @section('top_search_bar')
                     @parent
-                    @include('frontend.themes.emporium.layouts.sections.top_search_bar')
+                    <?php /* @include('frontend.themes.emporium.layouts.sections.top_search_bar') */ ?>
+                    <a class="search-icon srch_btn"><i class="fa fa-search fa-2x"></i></a>
+                    
+                    <div class="questions">
+                        
+                        <div class="col-md-12"><a href="" class="text-warning whengo">When do you want to go?</a></div>
+                        <div class="col-md-12 global-search t-date-box" style="display: none;">
+                                                                 	
+                            <div id="t-top-search-datepicker" class="t-datepicker">
+                                <div class="t-date-divide">                                                                                
+                                    <div class="t-check-in"></div>
+                                </div>
+                                <div class="t-date-divide">                                                                             
+                                    <div class="t-check-out"></div>
+                                </div>
+                            </div>                                             
+                                
+                        </div>
+                        
+                        <div class="col-sm-12 ">Who will be travelling?</div>
+                        <div class="col-sm-12">Choose your Hotel/Experience</div>
+                        <div class="col-sm-12">Make a Reservation</div>
+                        <div class="col-sm-12">Contact your agent</div>
+                    </div>
                 @show
             </div>
         </div>
@@ -774,8 +801,58 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
         }
         $(document).ready(function () {
             $("a.srch_btn").click(function(){
-              $(".cstm_search").toggle();
+                $(".cstm_search").toggle();
             });
+            
+            $('#t-top-search-datepicker').tDatePicker({
+                'numCalendar':'2',
+                'autoClose':true,
+                'durationArrowTop':'200',
+                'formatDate':'mm-dd-yyyy',
+                'titleCheckIn':'Arrival',
+                'titleCheckOut':'Departure',
+                'inputNameCheckIn':'top_search_arrive',
+                'inputNameCheckOut':'top_search_departure',
+                'titleDateRange':'days',
+                'titleDateRanges':'days',
+                'iconDate':'<i class="fa fa-calendar"></i>',
+                'limitDateRanges':'365'
+            }).on('afterCheckOut',function(e, dateCO) {
+                var check_in = new Date(dateCO[0]); // check-in
+                var check_out = new Date(dateCO[1]) // check-out
+                
+                var check_in_year = check_in.getFullYear(); 
+                var check_in_month = check_in.getMonth()+1; 
+                var check_in_day = check_in.getDate();
+                check_in_date = check_in_year+"-"+check_in_month+"-"+check_in_day;
+                
+                var check_out_year = check_out.getFullYear(); 
+                var check_out_month = check_out.getMonth()+1; 
+                var check_out_day = check_out.getDate();
+                check_out_date = check_out_year+"-"+check_out_month+"-"+check_out_day;
+                
+                var req_page = $("#req_for").val();
+                var mem_type = $("#mem_type").val();
+                var cat = $("#sel_exp").val();
+                
+                $.ajax({
+                    url: "{{URL::to('topSearch')}}",
+                    type: "POST",
+                    dataType: "html",
+                    data: {req_page:req_page, mem_type:mem_type, cat:cat, check_in:check_in_date, check_out:check_out_date},
+                    success: function (data){
+                        $("#load_ajax").html('');
+                        $("#load_ajax").html(data);
+                        var noImg = "{{ URL::to('sximo/images/noimg.jpg') }}";
+                        $('img.rad-img').photoLoadAfterPageLoad(noImg);
+                        var $tgrid = $('.grid').masonry({
+                          // options...
+                        });                        
+                    }
+                });
+                                
+            });
+            
             //console.log(window.location.href);            
             <?php if(!((bool) \auth()->check())){ ?>
                 $("#btn-check-availibility").attr('disabled', true);
@@ -1011,7 +1088,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             }).on('afterCheckOut',function(e, dateCO) {
                 console.log("hello");
                 $('#btn_search_submit').trigger('click');
-            });;
+            });
             
             // Open Left Navigation For Search By Date on Page Load
             @if(isset($_GET['action']) && $_GET['action']=='bydate' )

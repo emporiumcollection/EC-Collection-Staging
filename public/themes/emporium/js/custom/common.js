@@ -192,7 +192,7 @@ $(document).ready(function () {
         e.stopPropagation();  
     });
     
-    $(document).on('click', '.traveller-type', function(e){ console.log("ghy");
+    $(document).on('click', '.traveller-type', function(e){ 
        var t_type = $(this).attr('data-id'); 
        var rooms = $(this).attr('data-room'); 
        var adults = $(this).attr('data-adult');
@@ -1389,3 +1389,14 @@ function globalSearchForAll(searcValue) {
     $('[data-option="gobal-search"]').slideDown(300);
 }
 
+
+/****** Global search all function *******/
+$(document).on('click', '.close_btn', function () {
+    $(".cstm_search").hide();
+});
+$(document).on('click', '.whengo', function(e){  
+    e.preventDefault();
+    $(".questions .global-search").toggle();
+    
+});
+/****** End global search all function *******/

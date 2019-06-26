@@ -430,8 +430,17 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::post('changeRoomStatus', 'PropertiesController@changeRoomStatus');
     
-    Route::get('globalavailability', 'Frontend\PropertyController@propertyglobalavailability');
+    Route::post('globalavailability', 'Frontend\PropertyController@propertyglobalavailability');
+    
+    Route::post('globalsearchavailability', 'Frontend\PropertyController@globalsearchavailability');
+    
+    
 });
+
+Route::post('propcollection', 'Frontend\PropertyController@propcollection');
+Route::post('searchpropcollection', 'Frontend\PropertyController@searchpropcollection');
+Route::post('propertybycollection', 'Frontend\PropertyController@propertybycollection');
+Route::post('searchpropertybycollection', 'Frontend\PropertyController@searchpropertybycollection');
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
 
@@ -540,10 +549,15 @@ Route::get('luxurytravel/{slug}', 'Frontend\PropertyController@getPropertyGridLi
 Route::get('ourcollections/{id}', 'HomeController@getPropertyByCategoryQuickView');
 //Route::get('search', 'HomeController@SearchLuxuryExperience');
 Route::get('luxury_experience/{cat}', 'Frontend\PropertyController@propertySearch');
+//Route::get('luxury_experience/{cat}/{membershiptype}', 'Frontend\PropertyController@propertySearch');
 Route::get('luxury_destinations/{cat}', 'Frontend\PropertyController@propertySearch');
+//Route::get('luxury_destinations/{cat}/{membershiptype}', 'Frontend\PropertyController@propertySearch');
 Route::get('luxury_destinations/{continent}/{cat}', 'Frontend\PropertyController@propertySearch');
+//Route::get('luxury_destinations/{continent}/{cat}/{membershiptype}', 'Frontend\PropertyController@propertySearch');
 Route::get('luxury_destinations/{continent}/{region}/{cat}', 'Frontend\PropertyController@propertySearch');
+//Route::get('luxury_destinations/{continent}/{region}/{cat}/{membershiptype}', 'Frontend\PropertyController@propertySearch');
 Route::get('luxury_destinations/{continent}/{region}/{country}/{cat}', 'Frontend\PropertyController@propertySearch');
+//Route::get('luxury_destinations/{continent}/{region}/{country}/{cat}/{membershiptype}', 'Frontend\PropertyController@propertySearch');
 
 Route::get('luxury_hotels/{cat}', 'Frontend\PropertyController@propertySearch');
 Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQuickView');
@@ -673,3 +687,5 @@ Route::get('traveller/checkcategoryavailability', 'BookingsController@checkcateg
 Route::get('traveller/get_daywise_price', 'HomeController@get_daywise_price');
 
 Route::get('{slug}/room-availability', 'Frontend\PropertyController@roomavailability');
+
+Route::post('topSearch', 'Frontend\PropertyController@topSearch');

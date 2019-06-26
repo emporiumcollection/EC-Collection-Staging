@@ -8236,6 +8236,44 @@ die;        */
         echo json_encode($retun_array);
         
     }
+    function propcollection(Request $request){
+        $data_name = $request->input('d_name');
+        $exper = $request->input('exper');
+        //echo $data_name."/".$exper;
+        
+        $coll_name = '';
+        $arr_mem_tab = explode('-', $data_name);     
+        if(!empty($arr_mem_tab)){
+            $coll_name = $arr_mem_tab[0];
+        }
+        //print_r($coll_name);
+        $res = array();
+        $mem_types = array();
+        if (\Auth::check() == true) {
+            $uid = \Auth::user()->id;
+            $mem_type = \Auth::user()->member_type;
+            
+            if($mem_type=="lifestyle-membership"){
+                $mem_types[] = '1';    
+            }elseif($mem_type=="dedicated-membership"){
+                $mem_types[] = '1';  
+                $mem_types[] = '2';
+            }elseif($mem_type=="bespoke-membership"){
+                $mem_types[] = '1';  
+                $mem_types[] = '2';
+                $mem_types[] = '3';
+            }
+        }else{
+            if($coll_name!='lifestyle'){
+                $mem_types[] = 1;
+            }
+        }
+        //$res['status']= 'error';  
+        $res['type']= $data_name;   
+        $res['mem_types']= $mem_types;       
+        echo json_encode($res);
+        die;
+    }
     function getTest(Request $request){
         $prop = \DB::connection('mysql4')->table('tb_properties')->take(5)->get();
         echo "<pre>";

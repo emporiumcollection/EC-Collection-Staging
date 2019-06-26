@@ -534,15 +534,15 @@ $grid.imagesLoaded().progress( function() {
 			@endif
             
             
-            
-            @if(($mtype=="dedicated-membership") or ($mtype=="bespoke-membership")) 
-                <?php if(in_array($ptype, $mpackage)){ ?>
-                <?php }else{ ?>
-                        show_modal_content('{{$ptype}}');
-                        $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');
-                <?php } ?>
+            @if(!$is_access)
+                @if(($mtype=="dedicated-membership") or ($mtype=="bespoke-membership")) 
+                    <?php if(in_array($mtype, $mpackage)){ ?>
+                    <?php }else{ ?>
+                            show_modal_content('{{$ptype}}');
+                            $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');
+                    <?php } ?>
+                @endif
             @endif
-            
             $(document).on('click', '#loginasa', function(e){
                 $(".clicktologin").trigger('click');
             });

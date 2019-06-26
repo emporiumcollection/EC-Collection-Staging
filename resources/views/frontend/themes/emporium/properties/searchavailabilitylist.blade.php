@@ -73,154 +73,9 @@
 				@endif
 			</div>
 		@endif
-    </section>
+    </section>    
     
-    <?php if(!empty($search_for)){ ?>
-    <section class="search-tab {{ $search_for=='experience' ? 'tab-show' : 'tab-hide' }}">
-        <?php 
-            $sel_collection = '';
-            $sel_experience = '';
-            if($req_for=="luxury_experience"){
-               $sel_experience = 'active';     
-            }else{
-               $sel_collection = 'active'; 
-            } 
-        ?>
-        <ul class="nav nav-tabs">
-            <?php /* <li class="{{$sel_collection}}"><a href="#ourCollection" data-toggle="tab">Our Collections</a></li> */ ?>
-            <li class="{{$sel_experience}}"><a href="#experiences" data-toggle="tab">Experiences</a></li>            
-        </ul>
-        <div class="tab-content">
-            <?php /* <div id="ourCollection" class="tab-pane {{$sel_collection}}">
-            @if(!empty($collections))
-                {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
-                <ul class="nav nav-tabs">
-                    @foreach($collections as $coll)
-                        <?php
-                            $lnth = 0;
-                            $coll_ttl = $coll->category_name;
-                            $exp_ttl = explode(' ', $coll_ttl); 
-                            if(!empty($exp_ttl)){
-                                $arr_key = $exp_ttl[0];       
-                            }
-                            if(!empty($prop_packages)){ //print_r($prop_packages);
-                                //foreach($prop_packages as $pkg){ print_r($pkg);
-                                    if(array_key_exists($arr_key, $prop_packages)){
-                                        $lnth = count($prop_packages[$arr_key]);        
-                                    }    
-                                //}
-                            }
-                               
-                        ?>
-                        <li class="<?php echo ($k==1) ? 'active' : '' ?> collection" data-name="{{$coll->category_alias}}"><a href="#{{$coll->category_alias}}" data-toggle="tab">{{$coll->category_name}} ({{$lnth}})</a></li>
-                        {{--*/ $k++;  /*--}}    
-                    @endforeach                            
-                </ul>                  
-            @endif
-            </div> */ ?>
-            
-            <div id="experiences" class="tab-pane {{$sel_experience}} experinces">
-                <select name="experience" id="experience">  
-                    @if(!empty($experiences))                  
-                        @foreach($experiences as $exp)
-                            <option value="{{$exp->category_alias}}" <?php echo ($sel_exp==$exp->category_alias) ? 'selected="selected"' : '' ?>>{{$exp->category_name}}</option>   
-                            {{--*/ $i++;  /*--}}
-                        @endforeach 
-                    @endif
-                </select>
-                <?php /* <ul class="nav nav-tabs">
-                    @foreach($experiences as $exp)
-                        <li class="<?php echo ($sel_exp==$exp->category_alias) ? 'active' : '' ?>"><a href="{{URL::to('luxury_experience')}}/{{$exp->category_alias}}">{{$exp->category_name}}</a></li>    
-                        {{--*/ $i++;  /*--}}
-                    @endforeach                           
-                </ul> */ ?>   
-                
-                @if(!empty($collections))
-                {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
-                <ul class="nav nav-tabs">
-                    @foreach($collections as $coll)
-                        <?php
-                            $lnth = 0;
-                            $coll_ttl = $coll->category_name;
-                            $exp_ttl = explode(' ', $coll_ttl); 
-                            if(!empty($exp_ttl)){
-                                $arr_key = $exp_ttl[0];       
-                            }
-                            if(!empty($prop_packages)){ //print_r($prop_packages);
-                                //foreach($prop_packages as $pkg){ print_r($pkg);
-                                    if(array_key_exists($arr_key, $prop_packages)){
-                                        $lnth = count($prop_packages[$arr_key]);        
-                                    }    
-                                //}
-                            }
-                               
-                        ?>
-                        <?php /*<li class="<?php echo ($k==1) ? 'active' : '' ?> collection" data-name="{{$coll->category_alias}}"><a href="#{{$coll->category_alias}}" data-toggle="tab">{{$coll->category_name}} ({{$lnth}})</a></li> */ ?>
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('luxury_experience')}}/{{$sel_exp}}/{{$coll->category_alias}}" >{{$coll->category_name}} <span class="span-{{$coll->category_alias}}">(0)</span></a></li>
-                        {{--*/ $k++;  /*--}}    
-                    @endforeach                            
-                </ul>                  
-                @endif
-                           
-            </div>
-            
-            
-            <input type="hidden" name="m_type" id="m_type" value="{{@!empty($m_type) ? $m_type : ''}}" />
-        </div>
-    </section>
-    
-    <section class="search-tab {{ $search_for=='destinations' ? 'tab-show' : 'tab-hide' }}">        
-        <ul class="nav nav-tabs">           
-            <li class="active"><a href="#tab-destination" data-toggle="tab">Destination</a></li>            
-        </ul>
-        <div class="tab-content">
-            
-            {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}                
-            
-            <div id="tab-destination" class="tab-pane active destinatin">
-                <select name="dd-destination" id="dd-destination">                    
-                    @foreach($destinations as $dest)
-                        <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
-                        {{--*/ $i++;  /*--}}
-                    @endforeach 
-                </select>
-                              
-                @if(!empty($collections))
-                {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
-                <ul class="nav nav-tabs">
-                    @foreach($collections as $coll)
-                        <?php
-                            $lnth = 0;
-                            $coll_ttl = $coll->category_name;
-                            $exp_ttl = explode(' ', $coll_ttl); 
-                            if(!empty($exp_ttl)){
-                                $arr_key = $exp_ttl[0];       
-                            }
-                            if(!empty($prop_packages)){ //print_r($prop_packages);
-                                //foreach($prop_packages as $pkg){ print_r($pkg);
-                                    if(array_key_exists($arr_key, $prop_packages)){
-                                        $lnth = count($prop_packages[$arr_key]);        
-                                    }    
-                                //}
-                            }
-                               
-                        ?>                        
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$coll->category_name}} <span class="span-{{$coll->category_alias}}">(0)</span></a></li>
-                        {{--*/ $k++;  /*--}}    
-                    @endforeach                            
-                </ul>                  
-                @endif
-                           
-            </div>
-            <input type="hidden" name="" id="" value="" />
-            
-            <input type="hidden" name="dest_cat" id="dest_cat" value="{{@!empty($dest_cat)? $dest_cat : ''}}" />
-            <input type="hidden" name="dest_url" id="dest_url" value="{{@!empty($dest_url)? $dest_url : ''}}" />
-        </div>
-    </section>
-            
-<?php }else{ ?>
-        <section class="search-tab">        
+    <section class="search-tab" style="margin-top: 180px;">        
         <ul class="nav nav-tabs">           
             <li class="active"><a href="#tab-search" data-toggle="tab">Search</a></li>            
         </ul>
@@ -228,7 +83,7 @@
             
             {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}                
             
-            <div id="tab-search" class="tab-pane active">
+            <div id="tab-search" class="tab-pane active searchavailability">
                     
                 @if(!empty($collections))
                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
@@ -241,16 +96,14 @@
                 @endif
                            
             </div>
-            <input type="hidden" name="" id="" value="" />
             
-            <input type="hidden" name="dest_cat" id="dest_cat" value="{{@!empty($dest_cat)? $dest_cat : ''}}" />
-            <input type="hidden" name="dest_url" id="dest_url" value="{{@!empty($dest_url)? $dest_url : ''}}" />
         </div>
-    </section>    
-<?php } ?> 
-<input type="hidden" name="sel_exp" id="sel_exp" value="{{!empty($sel_exp) ? $sel_exp : ''}}" />   
-<input type="hidden" name="dest_collection" id="dest_collection" value="{{!empty($m_type) ? $m_type : ''}}" /> 
-<input type="hidden" name="req_for" id="req_for" value="{{@!empty($req_for)? $req_for : ''}}" />
+    </section>
+    
+    <input type="hidden" name="dest_collection" id="dest_collection" value="{{!empty($m_type) ? $m_type : ''}}" />
+    <input type="hidden" name="arrive" id="arrive" value="{{!empty($arrive_date) ? $arrive_date : ''}}" />
+    <input type="hidden" name="departure" id="departure" value="{{!empty($departure_date) ? $departure_date : ''}}" />
+
 <div id="load_ajax">
 
 </div>
@@ -493,16 +346,17 @@ $grid.imagesLoaded().progress( function() {
                 e.preventDefault();
                 //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 var d_name = $(this).attr('data-name');
-                var cat =  $("#sel_exp").val(); console.log(cat);               
+                var arrive = $("#arrive").val();
+                var departure = $("#departure").val();               
                 var coll_type = 'destinations';
                 var req_for = $("#req_for").val();
                 var cobj = $(this);
                 //var token = $("input[name='_token']").val();
                 //console.log(data_name);
                 $.ajax({
-                    url:'{{URL::to("propcollection/")}}',
+                    url:'{{URL::to("searchpropcollection/")}}',
                     dataType:'json',
-                    data: {d_name:d_name, coll_type:coll_type, cat:cat},
+                    data: {d_name:d_name, coll_type:coll_type},
                     type: 'post',
                     success: function(response){
                         //console.log(response.type);
@@ -511,7 +365,7 @@ $grid.imagesLoaded().progress( function() {
                             if(mem_types.indexOf("2")>0){
                                 //window.location.href = '{{URL::to('luxury_destinations')}}/'+cat+'/dedicated-collection';
                                 //cat = $("#dd-destination").val();
-                                getPropertyByCollection('dedicated-collection', cat, 1, req_for);
+                                getPropertyByCollection('dedicated-collection', arrive, departure, 1);
                                 $(".dest-collection").removeClass('active');
                                 cobj.addClass('active');
                                 $("#dest_collection").val('dedicated-collection');
@@ -524,7 +378,7 @@ $grid.imagesLoaded().progress( function() {
                             if(mem_types.indexOf("3")>0){
                                 //window.location.href = '{{URL::to('luxury_experience')}}/'+cat+'/bespoke-collection';
                                 //cat = $("#dd-destination").val();
-                                getPropertyByCollection('bespoke-collection', cat, 1, req_for);
+                                getPropertyByCollection('bespoke-collection', arrive, departure, 1);
                                 $(".dest-collection").removeClass('active');
                                 cobj.addClass('active');
                                 $("#dest_collection").val('bespoke-collection');
@@ -534,7 +388,7 @@ $grid.imagesLoaded().progress( function() {
                             }
                         }else{
                             //cat = $("#dd-destination").val();
-                            getPropertyByCollection('lifestyle-collection', cat, 1, req_for);
+                            getPropertyByCollection('lifestyle-collection', arrive, departure, 1);
                             $(".dest-collection").removeClass('active');
                             cobj.addClass('active');
                             $("#dest_collection").val('lifestyle-collection'); 
@@ -545,14 +399,11 @@ $grid.imagesLoaded().progress( function() {
             });
             
             var mtype = $("#dest_collection").val();
+            var arrive = $("#arrive").val();
+            var departure = $("#departure").val();
             var req_for = $("#req_for").val();
-            var _cat = '';
-            if(req_for=="luxury_experience"){
-                _cat =  $("#sel_exp").val();    
-            }else if(req_for=="luxury_destinations"){
-                _cat = $("#dd-destination").val();
-            }           
-            getPropertyByCollection(mtype, _cat, 1, req_for);
+            
+            getPropertyByCollection(mtype, arrive, departure, 1);
 		});
 		
 		var pageCounter = 2;
@@ -575,12 +426,12 @@ $grid.imagesLoaded().progress( function() {
         
         
         
-        function getPropertyByCollection(coll_type, cat, page, req_for){ console.log("hello");
+        function getPropertyByCollection(coll_type, arrive, departure, page){ console.log("hello");
             $.ajax({
-                url:'{{URL::to("propertybycollection/")}}',
+                url:'{{URL::to("searchpropertybycollection/")}}',
                 //dataType:'html',
                 dataType:'json',
-                data: {coll_type:coll_type, cat:cat, page:page, req_for:req_for},
+                data: {coll_type:coll_type, arrive:arrive, departure:departure, page:page},
                 type: 'post',
                 beforeSend: function(){
                     $("#load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
@@ -620,7 +471,7 @@ $grid.imagesLoaded().progress( function() {
                 if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){
                      _html += '<div class="col-md-12 col-sm-12 col-xs-12">';
                         _html += '<div class="row">'
-                            _html += '<h4 class="gridheading">'+ editorPropertiesArr.length +' <span class="newfont"> Editor\'s choice</span> Hotels Found for '+jsonobj.slug+' '+ jsonobj.dateslug +'</h4>';
+                            _html += '<h4 class="gridheading">'+ editorPropertiesArr.length +' <span class="newfont"> Editor\'s choice</span> Hotels Found for '+ jsonobj.dateslug +'</h4>';
                             _html += '<div class="slider multiple-items">'; 
                             $.each(editorPropertiesArr, function(key, value){
                                 var property_slug = value['property_slug'];
@@ -661,7 +512,7 @@ $grid.imagesLoaded().progress( function() {
                         var featurePropertiesArr = jsonobj.featurePropertiesArr;
                         var i=1; 
                         if(typeof featurePropertiesArr !== undefined && featurePropertiesArr.length > 0){                            
-                            _html += '<h4 class="gridheading"> '+ featurePropertiesArr.length +' <span class="newfont"> Featured </span> Hotels Found for '+ jsonobj.slug +' '+ jsonobj.dateslug +'</h4>';
+                            _html += '<h4 class="gridheading"> '+ featurePropertiesArr.length +' <span class="newfont"> Featured </span> Hotels Found for '+  jsonobj.dateslug +'</h4>';
                             _html += '<div class="grid">';
                                 $.each(featurePropertiesArr, function(key, value){ 
                                     var property_slug = value['property_slug'];                                    
@@ -737,7 +588,7 @@ $grid.imagesLoaded().progress( function() {
                         _html += '<div class="clearfix"></div>';
                         propertiesArr = jsonobj.propertiesArr;
                         if(typeof propertiesArr!==undefined && propertiesArr.length > 0 ){
-                            _html += '<h4 class="gridheading">'+ jsonobj.total_record +'<span class="newfont"> Luxury Hotel(s)</span> Found for '+jsonobj.slug+' '+jsonobj.dateslug +'</h4>';
+                            _html += '<h4 class="gridheading">'+ propertiesArr.length +'<span class="newfont"> Luxury Hotel(s)</span> Found for '+jsonobj.dateslug +'</h4>';
                         }
             
                         _html += '<div class="grid">';  

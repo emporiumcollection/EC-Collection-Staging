@@ -196,8 +196,9 @@ class DestinationController extends Controller {
                 $res['dest'] = $fetchdestinations;
             }
 			
-			$fetchcollection = DB::table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->join('tb_properties_category_package','tb_properties_category_package.property_id','=','tb_properties.id')->whereIn('tb_properties_category_package.package_id', explode(',',$this->pckages_ids))->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
-
+			//$fetchcollection = DB::table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->join('tb_properties_category_package','tb_properties_category_package.property_id','=','tb_properties.id')->whereIn('tb_properties_category_package.package_id', explode(',',$this->pckages_ids))->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
+            $fetchcollection = DB::table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->join('tb_properties_category_package','tb_properties_category_package.property_id','=','tb_properties.id')->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
+            
             if(!empty($fetchcollection))
             {
                 $res['collection'] = $fetchcollection;
@@ -553,38 +554,40 @@ class DestinationController extends Controller {
             if(!empty($our_collection)){
                 $our_coll_id = $our_collection->id;
             };
-            $m_collection = array();
+            /*$m_collection = array();
             if($our_coll_id!=''){
                 $m_collection = \DB::connection($conn)->table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('parent_category_id', $our_coll_id)->where('category_name', 'like', '%'.$keyword.'%')->where('category_published', 1)->get(); 
             }
             if(!empty($m_collection)){
                 $res['our_collection'] = $m_collection;
             }
-            
+            */
             //$exp_ids = $this->fetchCategoryTree($sitename, 8);
             //print_r($exp_ids); die;
             
             //$fetchcollection = \DB::connection($conn)->table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->join('tb_properties_category_package','tb_properties_category_package.property_id','=','tb_properties.id')->whereIn('tb_properties_category_package.package_id', explode(',',$this->pckages_ids))->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
             $fetchcollection = \DB::connection($conn)->table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
+            
+            //$fetchcollection = \DB::connection($conn)->table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->where('tb_properties.property_status', 1)->where('tb_properties.city', 'like', '%'.$keyword.'%')->orWhere('tb_properties.country', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchcollection))
             {
                 $res['collection'] = $fetchcollection;
             }
             
-            $fetchdestinations = \DB::connection($conn)->table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', '%'.$keyword.'%')->where('id', '!=', 8)->where('parent_category_id', '!=', 8)->where('id', '!=', $our_coll_id)->where('parent_category_id', '!=', $our_coll_id)->get();
+            $fetchdestinations = \DB::connection($conn)->table('tb_categories')->select('tb_categories.id', 'tb_categories.parent_category_id', 'tb_categories.category_name', 'tb_categories.category_image', 'tb_categories.category_alias', 'ptc.category_name as p_name')->leftjoin('tb_categories as ptc', 'ptc.id', '=', 'tb_categories.parent_category_id')->where('tb_categories.category_published', 1)->where('tb_categories.category_name', 'like', '%'.$keyword.'%')->where('tb_categories.id', '!=', 8)->where('tb_categories.parent_category_id', '!=', 8)->where('tb_categories.id', '!=', $our_coll_id)->where('tb_categories.parent_category_id', '!=', $our_coll_id)->get();
 
             if(!empty($fetchdestinations))
             {
                 $res['dest'] = $fetchdestinations;
             }
 			
-            $fetchexperience = \DB::connection($conn)->table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->where('category_name', 'like', '%'.$keyword.'%')->get();
+           /* $fetchexperience = \DB::connection($conn)->table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->where('category_name', 'like', '%'.$keyword.'%')->get();
             if(!empty($fetchexperience)){
                 $res['experiences'] = $fetchexperience;
             }            
             			
-			/*$fetchrestro = DB::table('tb_restaurants')->select('id', 'title', 'alias')->where('title', 'like', '%'.$keyword.'%')->get();
+			$fetchrestro = DB::table('tb_restaurants')->select('id', 'title', 'alias')->where('title', 'like', '%'.$keyword.'%')->get();
             if(!empty($fetchrestro))
             {
                 $res['restro'] = $fetchrestro;

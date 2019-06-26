@@ -200,8 +200,7 @@
 @section('head')
     @parent
   <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
-  <link href="{{ asset('themes/emporium/css/step-form.css') }}" rel="stylesheet">
-  <link href="{{ asset('themes/emporium/css/aeroplane_form.css') }}" rel="stylesheet" />
+  
 @endsection
 
 {{-- For custom style  --}}
@@ -295,8 +294,8 @@
             'formatDate':'mm-dd-yyyy',
             'titleCheckIn':'Arrival',
             'titleCheckOut':'Departure',
-            'inputNameCheckIn':'globalarrival',
-            'inputNameCheckOut':'globaldeparture',
+            'inputNameCheckIn':'arrive',
+            'inputNameCheckOut':'departure',
             'titleDateRange':'days',
             'titleDateRanges':'days',
             'iconDate':'<i class="fa fa-calendar"></i>',
@@ -371,6 +370,63 @@
         }
     });
     
+    $(document).on('click', '.our-collections', function(){         
+         if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $(this).find('input[type="radio"]').attr('checked', false);
+         }else{
+            $(this).addClass('active');
+            $(this).find('input[type="radio"]').attr('checked', true);
+         }
+    });
+    
+    $(document).on('click', '.our-hotels', function(){ 
+         console.log($(this).closest('.dv').find('input[type="radio"]').attr('checked',true));
+         if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $(this).find('input[type="checkbox"]').attr('checked', false);
+         }else{            
+            $(this).addClass('active');
+            $(this).find('input[type="checkbox"]').attr('checked', true);
+         }
+    });
+    
+    $(document).on('click', '.our-destinations', function(){         
+         if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $(this).find('input[type="checkbox"]').attr('checked', false);
+         }else{
+            $(this).addClass('active');
+            $(this).find('input[type="checkbox"]').attr('checked', true);
+         }
+    });
+    
+    $(document).on('click', '.our-experiences', function(){         
+         if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $(this).find('input[type="radio"]').attr('checked', false);
+         }else{
+            $(this).addClass('active');
+            $(this).find('input[type="radio"]').attr('checked', true);
+         }
+    });
+    
+    $(document).on('click', '.our-channels', function(){         
+         if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $(this).find('input[type="radio"]').attr('checked', false);
+         }else{
+            $(this).addClass('active');
+            $(this).find('input[type="radio"]').attr('checked', true);
+         }
+    });
+    
+    
+    function fun_add_remove_hotel_arr(){
+        
+    }
+    
+    
     /*
 * For Global Search function
 */
@@ -416,7 +472,8 @@ function globalSearchForAll(searcValue, sitename) {
             $('[data-action="global-search-our-collections"] span').html(collString + ' ('+data.data.our_collection.length+')');
             $(data.data.our_collection).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/'+val.category_alias;
-                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                html += '<li class="our-collections" data-name="'+ val.category_name +'">' + val.category_name + '<input type="radio" name="ourCollections[]" value="'+ val.category_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-our-collection-option-list"]').html(html);
             //$('[data-action="global-search-our-collections"]').parent().show();
@@ -429,7 +486,8 @@ function globalSearchForAll(searcValue, sitename) {
             $('[data-action="global-search-collections"] span').html(collString + ' ('+data.data.collection.length+')');
             $(data.data.collection).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/'+val.property_slug;
-                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
+                //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
+                html += '<li class="our-hotels" data-name="'+ val.property_name +'">' + val.property_name + '<input type="checkbox" name="ourHotels[]" value="'+ val.property_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-collection-option-list"]').html(html);
             //$('[data-action="global-collections"]').parent().show();
@@ -442,7 +500,8 @@ function globalSearchForAll(searcValue, sitename) {
             $('[data-action="global-search-destinations"] span').html(destString + ' ('+data.data.dest.length+')');
             $(data.data.dest).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/luxury_destinations/'+val.category_alias;
-                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                html += '<li class="our-destinations" data-name="'+ val.category_name +'">' + val.category_name + ' (' + val.p_name + ')<input type="checkbox" name="ourDestinations[]" value="'+ val.category_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-dest-option-list"]').html(html);
             //$('[data-action="global-destinations"]').parent().show();
@@ -456,7 +515,8 @@ function globalSearchForAll(searcValue, sitename) {
             $('[data-action="global-search-experiences"] span').html(restroString + ' ('+data.data.experiences.length+')');
             $(data.data.experiences).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/luxury_experience/'+val.category_alias;
-                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                html += '<li class="our-experiences" data-name="'+ val.category_name +'">' + val.category_name + '<input type="radio" name="ourExperiences[]" value="'+ val.category_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-experience-option-list"]').html(html);
             //$('[data-action="global-restaurant"]').parent().show();
@@ -469,7 +529,8 @@ function globalSearchForAll(searcValue, sitename) {
             $('[data-action="global-search-destination-channels"] span').html(barString + ' ('+data.data.dest.length+')');
             $(data.data.dest).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/social-youtube/'+val.category_alias;
-                html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                html += '<li class="our-channels" data-name="'+ val.category_name +'">' + val.category_name + '<input type="radio" name="ourChannels[]" value="'+ val.category_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-dest-channel-option-list"]').html(html);
             //$('[data-action="global-bar"]').parent().show();
