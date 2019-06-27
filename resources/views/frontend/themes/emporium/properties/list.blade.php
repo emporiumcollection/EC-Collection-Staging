@@ -119,6 +119,13 @@
             @endif
             </div> */ ?>
             
+            <div class="search-breadcrum">
+                <ul class="s-breadcrumb">
+                    <li><a href="{{URL::to('/')}}">{{CNF_APPNAME}}</a></li>
+                    <li>{{!empty($sel_exp) ? $sel_exp : ''}}</li>
+                </ul>
+            </div>
+            
             <div id="experiences" class="tab-pane {{$sel_experience}} experinces">
                 <select name="experience" id="experience">  
                     @if(!empty($experiences))                  
@@ -156,7 +163,7 @@
                                
                         ?>
                         <?php /*<li class="<?php echo ($k==1) ? 'active' : '' ?> collection" data-name="{{$coll->category_alias}}"><a href="#{{$coll->category_alias}}" data-toggle="tab">{{$coll->category_name}} ({{$lnth}})</a></li> */ ?>
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('luxury_experience')}}/{{$sel_exp}}/{{$coll->category_alias}}" >{{$coll->category_name}} <span class="span-{{$coll->category_alias}}">(0)</span></a></li>
+                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('luxury_experience')}}/{{$sel_exp}}/{{$coll->category_alias}}" >{{$coll->category_name}} </a></li>
                         {{--*/ $k++;  /*--}}    
                     @endforeach                            
                 </ul>                  
@@ -174,6 +181,20 @@
             <li class="active"><a href="#tab-destination" data-toggle="tab">Destination</a></li>            
         </ul>
         <div class="tab-content">
+            
+            <div class="search-breadcrum">
+                <ul class="s-breadcrumb">
+                    @if(!empty($bc_dest))
+                        <li><a href="{{URL::to('/')}}">{{CNF_APPNAME}}</a></li>
+                        <?php $path = 'luxury_destinations'; ?>
+                        @foreach($bc_dest as $sin_bc)
+                            <?php $path = $path.'/'.$sin_bc->category_alias; ?>
+                            <li><a class="EGloader" href="{{URL::to($path)}}">{{$sin_bc->category_name}}</a></li>
+                        @endforeach
+                        <li><a href="#">{{$selected_category}}</a></li>
+                    @endif
+                </ul>
+            </div>
             
             {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}                
             
@@ -205,7 +226,8 @@
                             }
                                
                         ?>                        
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$coll->category_name}} <span class="span-{{$coll->category_alias}}">(0)</span></a></li>
+                        <!--<li class="dest-collection" data-name="{{$coll->category_alias}}"><a href="" ><span class="span-coll-category_alias">(0)</span></a></li>-->
+                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$coll->category_name}}</a></li>
                         {{--*/ $k++;  /*--}}    
                     @endforeach                            
                 </ul>                  
@@ -251,6 +273,7 @@
 <input type="hidden" name="sel_exp" id="sel_exp" value="{{!empty($sel_exp) ? $sel_exp : ''}}" />   
 <input type="hidden" name="dest_collection" id="dest_collection" value="{{!empty($m_type) ? $m_type : ''}}" /> 
 <input type="hidden" name="req_for" id="req_for" value="{{@!empty($req_for)? $req_for : ''}}" />
+
 <div id="load_ajax">
 
 </div>
@@ -610,13 +633,13 @@ $grid.imagesLoaded().progress( function() {
                 
             }else{ 
                 var editorPropertiesArr = jsonobj.editorPropertiesArr;
-                var prop_packages = jsonobj.prop_packages;
+                /*var prop_packages = jsonobj.prop_packages;
                 if(typeof prop_packages !== undefined ){ console.log(prop_packages);
                     $.each(prop_packages, function(key, value){
                         console.log("#span-"+key+"-collection");
                         $(".span-"+key+"-collection").html("("+value.length+")");        
                     });    
-                }                                
+                }*/                                
                 if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){
                      _html += '<div class="col-md-12 col-sm-12 col-xs-12">';
                         _html += '<div class="row">'
@@ -1086,13 +1109,45 @@ $grid.imagesLoaded().progress( function() {
         }
         
         $(document).on('change', '#experience', function () {  
-            var expr = $(this).val();
-            window.location.href = '{{URL::to("luxury_experience")}}/'+expr;
+            /*var expr = $(this).val();
+            window.location.href = '{{URL::to("luxury_experience")}}/'+expr;*/
+            var expr = $(this).val();            
+            var url = '{{URL::to("luxury_experience")}}/'+expr;
+            $("#menu_url").val(url);
+            
+            var destination = expr; 
+            
+            var datObj = {};
+            datObj.url = url;
+        	datObj.destination = destination;
+            
+        	var params = $.extend({}, doAjax_params_default);
+        	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
+        	params['data'] = datObj;
+        	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
+        	doAjax(params);
         });
         $(document).on('change', '#dd-destination', function () {  
+            /*var dest = $(this).val();
+            var dest_url = $("#dest_url").val();
+            window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
             var dest = $(this).val();
             var dest_url = $("#dest_url").val();
-            window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
+            var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
+            $("#menu_url").val(url);
+            
+            var destination = dest; 
+            
+            var datObj = {};
+            datObj.url = url;
+        	datObj.destination = destination;
+            
+        	var params = $.extend({}, doAjax_params_default);
+        	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
+        	params['data'] = datObj;
+        	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
+        	doAjax(params); 
+            
         });
         
         

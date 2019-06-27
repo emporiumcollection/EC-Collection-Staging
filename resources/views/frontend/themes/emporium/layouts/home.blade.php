@@ -151,8 +151,8 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 {{--For Top Bar --}}
                 @section('top_search_bar')
                     @parent
-                    <?php /* @include('frontend.themes.emporium.layouts.sections.top_search_bar') */ ?>
-                    <a class="search-icon srch_btn"><i class="fa fa-search fa-2x"></i></a>
+                     @include('frontend.themes.emporium.layouts.sections.top_search_bar')
+                    <?php /*<a class="search-icon srch_btn"><i class="fa fa-search fa-2x"></i></a>
                     
                     <div class="questions">
                         
@@ -174,7 +174,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                         <div class="col-sm-12">Choose your Hotel/Experience</div>
                         <div class="col-sm-12">Make a Reservation</div>
                         <div class="col-sm-12">Contact your agent</div>
-                    </div>
+                    </div> */ ?>
                 @show
             </div>
         </div>

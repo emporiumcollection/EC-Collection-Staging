@@ -89,7 +89,7 @@
                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
                 <ul class="nav nav-tabs">
                     @foreach($collections as $coll)                                             
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$coll->category_name}} <span class="span-{{$coll->category_alias}}">(0)</span></a></li>
+                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$coll->category_name}}</a></li>
                         {{--*/ $k++;  /*--}}    
                     @endforeach                            
                 </ul>                  
@@ -461,13 +461,13 @@ $grid.imagesLoaded().progress( function() {
                 
             }else{ 
                 var editorPropertiesArr = jsonobj.editorPropertiesArr;
-                var prop_packages = jsonobj.prop_packages;
+                /*var prop_packages = jsonobj.prop_packages;
                 if(typeof prop_packages !== undefined ){ console.log(prop_packages);
                     $.each(prop_packages, function(key, value){
                         console.log("#span-"+key+"-collection");
                         $(".span-"+key+"-collection").html("("+value.length+")");        
                     });    
-                }                                
+                }*/                                
                 if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){
                      _html += '<div class="col-md-12 col-sm-12 col-xs-12">';
                         _html += '<div class="row">'

@@ -1238,7 +1238,7 @@ $(document).on('click', '.EGloader', function(e){
       
 });
 
-function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);    
+function renderEmotionalGalleryLoader(dataObj){  console.log(dataObj);   
     var obj = dataObj.emotionalloader;
     var _html = '';
     if(obj.length > 0){
@@ -1252,7 +1252,7 @@ function renderEmotionalGalleryLoader(dataObj){ console.log(dataObj);
         
         _html +='<div class="loader-text">';
             //_html +='<span>Loading collection </span><img src="'+BaseURL+'/images/loader.gif" />';
-            _html +='<span>Loading collection </span>';
+            _html +='<span>Loading '+obj[0].display_name+' </span>';
         _html +='</div>';
         
         _html +='<div class="loader-logo-title">';

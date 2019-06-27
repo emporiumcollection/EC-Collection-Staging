@@ -325,6 +325,8 @@ class PropertyController extends Controller {
             $pckages_ids = $public_package->id;            
         } 
         
+        $selected_category = '';
+        
         if($membershiptype!=''){
             if($membershiptype!='lifestyle-collection'){
                 $exp_membership = explode('-', $membershiptype);
@@ -524,6 +526,8 @@ class PropertyController extends Controller {
 			}
 		}*/
 		
+        
+        
 		$this->data['slug'] = $keyword;
 
 		$this->data['action']=request()->segments(1);
@@ -553,7 +557,7 @@ class PropertyController extends Controller {
             //}
             //$this->data['collections'] = $cat_collection;
             
-            
+            $dest_url = array();
             if(request()->segment(1)=='luxury_destinations'){
                 $search_for="destinations"; 
                                
@@ -562,6 +566,7 @@ class PropertyController extends Controller {
                     
                     $dest_has_prop = array();
                     if(!empty($destinations)){
+                        $selected_category = $destinations[0]->category_name;
                         foreach($destinations as $dest){
                             $subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('parent_category_id', $dest->id)->get();
         					$getcats = '';
@@ -606,7 +611,36 @@ class PropertyController extends Controller {
                 $search_for="experience";
                 $this->data['experiences'] = \DB::table('tb_categories')->where('parent_category_id', 8)->where('category_approved', 1)->where('category_published', 1)->get();
             }
+            
+            
+            
+            
+            
+            
+                        
+            
+            $cObj = \DB::table('tb_categories')->where('category_alias', $request->cat)->where('category_published', 1)->first(); 
+            //print_r($cObj);                   
+            if (!empty($cObj)) {
+                if($cObj->id>0){                        
+    				$dest_url = array_reverse($this->fetchcategorybc($cObj->id));
+                    //$bc_dest[]= $dest_url; 
+                }                    
+            }        
+           
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         }
+        $this->data['selected_category'] = $selected_category;
+        $this->data['bc_dest'] = $dest_url; //print_r($this->data['bc_dest']); die;
         $this->data['destinations'] = $destarr;
         $this->data['search_for'] = $search_for;
         
@@ -4548,5 +4582,18 @@ class PropertyController extends Controller {
 		return view('frontend.themes.emporium.properties.ajax_list', $this->data);
                 
     }
-    
+    public function fetchcategorybc($id = 0, $child_category_array = '') {
+
+        if (!is_array($child_category_array))
+            $child_category_array = array();
+		
+        $results = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name','category_alias')->where('id', $id)->get();
+        if ($results) {
+            foreach ($results as $row) {
+                $child_category_array[] = $row;
+                $child_category_array = $this->fetchcategorybc($row->parent_category_id, $child_category_array);
+            }
+        }
+        return $child_category_array;
+    }
 }

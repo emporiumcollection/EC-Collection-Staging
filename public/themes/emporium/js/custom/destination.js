@@ -123,11 +123,24 @@ function renderDestination(dataObj) {
         destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded desaturate">';
         destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '<br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></span></div></div>';
         destinationHtml += '</li>';
+        
+        
+        destinationHtml += '<div class="mobilenavheader" data-option="child-global">';
+        destinationHtml += '<h3 data-option-title="global">'+data.main_title+'</h3>';
+        destinationHtml += '<a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="'+data.type+'" data-id="'+data.id+'"><i class="fa fa-angle-left"></i> <span>'+data.sub_title+'</span></a>';
+        destinationHtml += '</div>';
+        
+        
         destinationHtml += '<li><ul class="mobilesublinks">';
+    }else{
+        destinationHtml += '<div class="mobilenavheader" data-option="child-global">';
+        destinationHtml += '<h3 data-option-title="global"></h3>';
+        destinationHtml += '<a class="homelinknav backtohomelink cursor" data-option-action="back" data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>';
+        destinationHtml += '</div>';
     }
 
      hideAllOption();
-    putDataOnLeft(data);
+    //putDataOnLeft(data);
     
     
     $(dataObj.dests).each(function (i, val) {
@@ -135,6 +148,8 @@ function renderDestination(dataObj) {
             if(dataObj.path!=undefined){
                   linkMenu = BaseURL+'/luxury_destinations/'+dataObj.path+'/'+val.category_alias;
             }
+        
+        
         destinationHtml += '<li><a class="cursor menu_item EGloader" href="'+linkMenu+'">' + val.category_name + '</a></li>';
              //destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
        // destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
@@ -147,7 +162,7 @@ function renderDestination(dataObj) {
 
     $('[data-option="selected-option-list"]').html(destinationHtml);
     $('[data-option="global"]').removeClass('hide');
-    $('[data-option="child-global"]').removeClass('hide');
+    //$('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
 
 }
@@ -240,8 +255,13 @@ function renderExperience(dataObj) {
     }
 
     
-    putDataOnLeft(data);
+    //putDataOnLeft(data);
     var experienceHtml = '';
+    experienceHtml += '<div class="mobilenavheader" data-option="child-global">';
+    experienceHtml += '<h3 data-option-title="global"></h3>';
+    experienceHtml += '<a class="homelinknav backtohomelink cursor" data-option-action="back" data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>';
+    experienceHtml += '</div>';
+    
     $(dataObj.dests).each(function (i, val) {
         var imagePath = BaseURL+'/uploads/category_imgs/'+val.category_image;
         if(val.category_image==''){
