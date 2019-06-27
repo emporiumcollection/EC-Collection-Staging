@@ -4641,7 +4641,8 @@ svg:not(:root) {
     position: absolute;
     width: 420px;
     right: 9%;
-    top: 42%;
+    /*top: 42%;*/
+    top: 25%;
     color: #fff;
 }
 .emotional-gellery-loader .image-overaly-bg {
@@ -5568,3 +5569,26 @@ ul.item-list-bar {
     left: 43px;
 }
 /*-------------- End ---------------------*/
+
+/*---- Search page breadcrumb ---*/
+.search-breadcrum .s-breadcrumb{
+    list-style: none;
+    padding: 10px;
+}
+.search-breadcrum .s-breadcrumb > li {
+    display: inline-block;
+}
+.search-breadcrum .s-breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "|";
+}
+/*---- End search ----*/
+.homelinknav{
+    background-color: #aba00b;
+    border: medium none;
+    border-radius: 0;
+    color: #fff;
+    padding: 7px 9px !important;
+    width: 100%;
+}
