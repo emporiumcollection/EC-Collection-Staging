@@ -141,7 +141,7 @@
                     /*--}}
                     <?php /* <input name="arrive" type="hidden" value="{{date('d-m-Y')}}">
                     <input name="departure" type="hidden" value="{{date('d-m-Y', strtotime('+1 day'))}}"> */ ?>
-                    <div class="mobilenavheader hide" data-option="child-global">
+                    <div class="sidebartopheader hide" data-option="child-global">
                         <h3 data-option-title="global"></h3>
                         <a class="homelinknav backtohomelink cursor" data-option-action="back"
                            data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>

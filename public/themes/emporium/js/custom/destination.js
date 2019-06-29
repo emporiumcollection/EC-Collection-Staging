@@ -256,7 +256,7 @@ function renderExperience(dataObj) {
     
     //putDataOnLeft(data);
     var experienceHtml = '';
-    experienceHtml += '<div class="sidebartopheader" data-option="child-global">';
+    experienceHtml += '<div class="sidebartopheaderexp" data-option="child-global">';
     experienceHtml += '<h3 data-option-title="global"></h3>';
     experienceHtml += '<a class="homelinknav backtohomelink cursor" data-option-action="back" data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>';
     experienceHtml += '</div>';

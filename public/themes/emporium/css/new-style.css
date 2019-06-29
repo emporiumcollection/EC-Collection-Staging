@@ -4672,6 +4672,14 @@ svg:not(:root) {
     color: #fff;
     margin: 0;
 }
+.sidebartopheaderexp{
+    padding: 15px 25px 15px 0px;
+}
+.sidebartopheaderexp h3 {
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+}
 .custom-menu{
     position: absolute;
     z-index: 2;
