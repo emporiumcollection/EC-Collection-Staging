@@ -1083,7 +1083,13 @@ function renderMenu(dataObj) {
     }
     var menuHtml = '';
     hideAllOption();
-    putDataOnLeft(data);
+    //putDataOnLeft(data);
+    
+    menuHtml += '<div class="sidebartopheader" data-option="child-global">';
+    menuHtml += '<h3 data-option-title="global">'+data.main_title+'</h3>';
+    menuHtml += '<a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="'+data.type+'" data-id="'+data.id+'"><i class="fa fa-angle-left"></i> <span>'+data.sub_title+'</span></a>';
+    menuHtml += '</div>';
+        
     $(dataObj.menus).each(function (i, val) {
         if(val.menu_type == "external") {
             if(val.url == "#" || val.url == "") {

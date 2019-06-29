@@ -199,11 +199,14 @@
             {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}                
             
             <div id="tab-destination" class="tab-pane active destinatin">
-                <select name="dd-destination" id="dd-destination">                    
+                <select name="dd-destination" id="dd-destination">
+                    <option>{{$catname}}</option>     
+                @if(!empty($destinations))               
                     @foreach($destinations as $dest)
                         <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
                         {{--*/ $i++;  /*--}}
-                    @endforeach 
+                    @endforeach
+                @endif 
                 </select>
                               
                 @if(!empty($collections))
@@ -573,7 +576,8 @@ $grid.imagesLoaded().progress( function() {
             if(req_for=="luxury_experience"){
                 _cat =  $("#sel_exp").val();    
             }else if(req_for=="luxury_destinations"){
-                _cat = $("#dd-destination").val();
+                //_cat = $("#dd-destination").val();
+                _cat =  $("#sel_exp").val();
             }           
             getPropertyByCollection(mtype, _cat, 1, req_for);
 		});

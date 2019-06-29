@@ -58,6 +58,11 @@
                 <li><a class="cursor EGloader" href="{{URL::to('memberships')}}">Membership</a></li>
             </ul>
             <ul class="mobilemenulist hide" data-option="search-our-collection">
+                <div class="sidebartopheader hide" data-option="child-global">
+                    <h3 data-option-title="global"></h3>
+                    <a class="homelinknav backtohomelink cursor" data-option-action="back"
+                       data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
+                </div>    
             <?php 
                 $m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->where('category_approved', 1)->where('category_published', 1)->first();                
                 if(!empty($m_collection)){
@@ -136,6 +141,11 @@
                     /*--}}
                     <?php /* <input name="arrive" type="hidden" value="{{date('d-m-Y')}}">
                     <input name="departure" type="hidden" value="{{date('d-m-Y', strtotime('+1 day'))}}"> */ ?>
+                    <div class="mobilenavheader hide" data-option="child-global">
+                        <h3 data-option-title="global"></h3>
+                        <a class="homelinknav backtohomelink cursor" data-option-action="back"
+                           data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
+                    </div>
                     <ul class="mobilemenulist">
                         <li>
                             <p>Emporium Voyage is your deal, vogue vacation planner!</p>

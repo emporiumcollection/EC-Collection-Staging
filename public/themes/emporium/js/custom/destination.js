@@ -106,7 +106,8 @@ function renderDestination(dataObj) {
                   var _path1 = _path.slice(0, _path.lastIndexOf("/"));                  
                   linku = BaseURL+'/luxury_destinations/'+_path1;
             }
-            data.sub_title = '<a style="color:#fff;" href="'+linku+'">Back To '+dataObj.currentParentCate.category_name+'</a>';
+            //data.sub_title = '<a style="color:#fff;" href="'+linku+'">Back To '+dataObj.currentParentCate.category_name+'</a>';
+            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
             data.id = dataObj.currentParentCate.id;
         }else{
             data.sub_title = 'Back To Destination';
@@ -125,23 +126,18 @@ function renderDestination(dataObj) {
         destinationHtml += '</li>';
         
         
-        destinationHtml += '<div class="mobilenavheader" data-option="child-global">';
-        destinationHtml += '<h3 data-option-title="global">'+data.main_title+'</h3>';
-        destinationHtml += '<a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="'+data.type+'" data-id="'+data.id+'"><i class="fa fa-angle-left"></i> <span>'+data.sub_title+'</span></a>';
-        destinationHtml += '</div>';
-        
-        
-        destinationHtml += '<li><ul class="mobilesublinks">';
-    }else{
-        destinationHtml += '<div class="mobilenavheader" data-option="child-global">';
-        destinationHtml += '<h3 data-option-title="global"></h3>';
-        destinationHtml += '<a class="homelinknav backtohomelink cursor" data-option-action="back" data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>';
-        destinationHtml += '</div>';
     }
 
-     hideAllOption();
+    hideAllOption();
     //putDataOnLeft(data);
+    destinationHtml += '<div class="sidebartopheader" data-option="child-global">';
+    destinationHtml += '<h3 data-option-title="global">'+data.main_title+'</h3>';
+    destinationHtml += '<a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="'+data.type+'" data-id="'+data.id+'"><i class="fa fa-angle-left"></i> <span>'+data.sub_title+'</span></a>';
+    destinationHtml += '</div>';
     
+    if (dataObj.current_category != undefined) {
+        destinationHtml += '<li><ul class="mobilesublinks">';    
+    }
     
     $(dataObj.dests).each(function (i, val) {
             var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
@@ -162,7 +158,7 @@ function renderDestination(dataObj) {
 
     $('[data-option="selected-option-list"]').html(destinationHtml);
     $('[data-option="global"]').removeClass('hide');
-    //$('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
 
 }
@@ -211,9 +207,12 @@ function renderDestinationSocialYoutube(dataObj) {
         destinationHtml += '<li><ul class="mobilesublinks">';
     }
 
-     hideAllOption();
-    putDataOnLeft(data);
-    
+    hideAllOption();
+    //putDataOnLeft(data);
+    destinationHtml += '<div class="sidebartopheader" data-option="child-global">';
+    destinationHtml += '<h3 data-option-title="global">'+data.main_title+'</h3>';
+    destinationHtml += '<a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="'+data.type+'" data-id="'+data.id+'"><i class="fa fa-angle-left"></i> <span>'+data.sub_title+'</span></a>';
+    destinationHtml += '</div>';
     
     $(dataObj.dests).each(function (i, val) {
 		if(val.category_youtube_channel_url!='')
@@ -257,7 +256,7 @@ function renderExperience(dataObj) {
     
     //putDataOnLeft(data);
     var experienceHtml = '';
-    experienceHtml += '<div class="mobilenavheader" data-option="child-global">';
+    experienceHtml += '<div class="sidebartopheader" data-option="child-global">';
     experienceHtml += '<h3 data-option-title="global"></h3>';
     experienceHtml += '<a class="homelinknav backtohomelink cursor" data-option-action="back" data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>';
     experienceHtml += '</div>';

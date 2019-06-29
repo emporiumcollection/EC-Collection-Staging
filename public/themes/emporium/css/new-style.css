@@ -4664,7 +4664,14 @@ svg:not(:root) {
 .mobilenavheader {
     padding: 15px 50px !important;
 }
-
+.sidebartopheader{
+    padding: 15px 25px;
+}
+.sidebartopheader h3 {
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+}
 .custom-menu{
     position: absolute;
     z-index: 2;
@@ -5591,4 +5598,5 @@ ul.item-list-bar {
     color: #fff;
     padding: 7px 9px !important;
     width: 100%;
+    margin-left: 20px;
 }
