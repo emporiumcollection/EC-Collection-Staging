@@ -734,7 +734,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
 <!-- search form-->
     <div class="cstm_search animated zoomIn" style="display: none;">
         <div id="includedsearch">
-            @include('frontend.themes.emporium.layouts.sections.global-search-page')
+            @include('frontend.themes.emporium.layouts.sections.global_search_page')
         </div>
     </div>
 <!-- end search form-->    

@@ -26,11 +26,11 @@
                     </a>
                 @endif
             </div>
-            <div class="mobilenavheader hide" data-option="child-global">
+            <!--<div class="mobilenavheader hide" data-option="child-global">
                 <h3 data-option-title="global"></h3>
                 <a  class="homelinknav backtohomelink cursor" data-option-action="back"
                    data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
-            </div>
+            </div>-->
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
                 {{-- Global Search Bar --}}
                 @include('frontend.themes.emporium.layouts.sections.global-search-bar')

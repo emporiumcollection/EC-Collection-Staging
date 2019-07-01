@@ -5528,6 +5528,21 @@ ul.item-list-bar {
     color:#fff !important;
     border-color: #89837b;
 }
+.search-tab .nav .open>a, .search-tab .nav .open>a:focus, .search-tab .nav .open>a:hover{
+    background-color: #89837b;
+    border-color: #89837b;
+}
+.search-tab .dropdown-menu{
+    background-color: #89837b;
+    color: #fff;   
+}
+.search-tab .dropdown-menu>li>a{
+    color: #fff; 
+}
+.search-tab .dropdown-menu>li>a:focus, .search-tab .dropdown-menu>li>a:hover{
+    background-color: #89837b;
+    color: #fff; 
+}
 .search-tab .tab-content{
     color: #fff;    
 } 

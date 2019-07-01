@@ -88,7 +88,29 @@
         ?>
         <ul class="nav nav-tabs">
             <?php /* <li class="{{$sel_collection}}"><a href="#ourCollection" data-toggle="tab">Our Collections</a></li> */ ?>
-            <li class="{{$sel_experience}}"><a href="#experiences" data-toggle="tab">Experiences</a></li>            
+            <li class=""><a href="#tab-Home" data-toggle="tab">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Destination <span class="caret"></span></a>                                
+                <ul class="dropdown-menu">                  
+                  @if(!empty($dd_destinations))                  
+                    @foreach($dd_destinations as $dd_des)
+                        <li><a href="{{URL::to('luxury_destinations')}}/{{$dd_des->category_alias}}">{{$dd_des->category_name}}</a></li>
+                    @endforeach 
+                  @endif
+                </ul>
+            </li> 
+            <li class="{{$sel_experience}}"><a href="#experiences" data-toggle="tab">Experiences</a></li>   
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Channel <span class="caret"></span></a>
+                <ul class="dropdown-menu">                  
+                  @if(!empty($dd_channels))                  
+                    @foreach($dd_channels as $dd_chnl)
+                        <li><a href="{{URL::to('social-youtube')}}/{{$dd_chnl->category_alias}}">{{$dd_chnl->category_name}}</a></li>
+                    @endforeach 
+                  @endif
+                </ul>
+            </li> 
+            <li class=""><a href="#tab-Social" data-toggle="tab">Social</a></li>                      
         </ul>
         <div class="tab-content">
             <?php /* <div id="ourCollection" class="tab-pane {{$sel_collection}}">
@@ -177,8 +199,30 @@
     </section>
     
     <section class="search-tab {{ $search_for=='destinations' ? 'tab-show' : 'tab-hide' }}">        
-        <ul class="nav nav-tabs">           
-            <li class="active"><a href="#tab-destination" data-toggle="tab">Destination</a></li>            
+        <ul class="nav nav-tabs">    
+            <li class=""><a href="#tab-Home" data-toggle="tab">Home</a></li>        
+            <li class="active"><a href="#tab-destination" data-toggle="tab">Destination</a></li> 
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Experience <span class="caret"></span></a>                
+                <ul class="dropdown-menu">                  
+                  @if(!empty($experiences))                  
+                    @foreach($experiences as $exp)
+                        <li><a href="{{URL::to('luxury_experience')}}/{{$exp->category_alias}}">{{$exp->category_name}}</a></li>
+                    @endforeach 
+                  @endif
+                </ul>
+            </li> 
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Channel <span class="caret"></span></a>
+                <ul class="dropdown-menu">                  
+                  @if(!empty($dd_channels))                  
+                    @foreach($dd_channels as $dd_chnl)
+                        <li><a href="{{URL::to('social-youtube')}}/{{$dd_chnl->category_alias}}">{{$dd_chnl->category_name}}</a></li>
+                    @endforeach 
+                  @endif
+                </ul>
+            </li>
+            <li class=""><a href="#tab-Social" data-toggle="tab">Social</a></li>            
         </ul>
         <div class="tab-content">
             
@@ -190,8 +234,7 @@
                         @foreach($bc_dest as $sin_bc)
                             <?php $path = $path.'/'.$sin_bc->category_alias; ?>
                             <li><a class="EGloader" href="{{URL::to($path)}}">{{$sin_bc->category_name}}</a></li>
-                        @endforeach
-                        <li><a href="#">{{$selected_category}}</a></li>
+                        @endforeach                        
                     @endif
                 </ul>
             </div>
@@ -206,6 +249,12 @@
                         <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
                         {{--*/ $i++;  /*--}}
                     @endforeach
+                    @if(!empty($parent_cat)) 
+                        <option value="-1">Back to {{$parent_cat->category_name}}</option>
+                    @else
+                        <option value="0">Back to Destination</option>
+                    @endif
+                    
                 @endif 
                 </select>
                               
@@ -1137,11 +1186,34 @@ $grid.imagesLoaded().progress( function() {
             window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
             var dest = $(this).val();
             var dest_url = $("#dest_url").val();
-            var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
-            $("#menu_url").val(url);
-            
-            var destination = dest; 
-            
+            console.log(dest_url);
+            if(dest!= -1){
+                
+                var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
+                $("#menu_url").val(url);
+                
+                var destination = dest; 
+                
+                 
+            }else{
+                var arr_durl = dest_url.split('/');
+                
+                var back_url = '';
+                if(arr_durl.length > 0){                    
+                    arr_durl.pop();
+                    dest = arr_durl[arr_durl.length - 1];                     
+                }
+                 
+                $.each(arr_durl, function(key, value){
+                     back_url = back_url+'/'+value;   
+                });
+                                
+                var url = "{{URL::to('luxury_destinations')}}"+back_url;
+                $("#menu_url").val(url);
+                
+                var destination = dest;   
+            }
+           
             var datObj = {};
             datObj.url = url;
         	datObj.destination = destination;
@@ -1151,7 +1223,6 @@ $grid.imagesLoaded().progress( function() {
         	params['data'] = datObj;
         	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
         	doAjax(params); 
-            
         });
         
         

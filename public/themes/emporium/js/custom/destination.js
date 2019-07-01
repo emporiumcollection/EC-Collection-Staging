@@ -204,7 +204,7 @@ function renderDestinationSocialYoutube(dataObj) {
         destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded desaturate">';
         destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '<br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></span></div></div>';
         destinationHtml += '</li>';
-        destinationHtml += '<li><ul class="mobilesublinks">';
+        
     }
 
     hideAllOption();
@@ -213,6 +213,10 @@ function renderDestinationSocialYoutube(dataObj) {
     destinationHtml += '<h3 data-option-title="global">'+data.main_title+'</h3>';
     destinationHtml += '<a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="'+data.type+'" data-id="'+data.id+'"><i class="fa fa-angle-left"></i> <span>'+data.sub_title+'</span></a>';
     destinationHtml += '</div>';
+    
+    if (dataObj.current_category != undefined) {
+        destinationHtml += '<li><ul class="mobilesublinks">';
+    }
     
     $(dataObj.dests).each(function (i, val) {
 		if(val.category_youtube_channel_url!='')
