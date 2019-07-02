@@ -110,7 +110,16 @@
                   @endif
                 </ul>
             </li> 
-            <li class=""><a href="#tab-Social" data-toggle="tab">Social</a></li>                      
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Social <span class="caret"></span></a>
+                <ul class="dropdown-menu">                  
+                  @if(!empty($dd_social))                  
+                    @foreach($dd_social as $dd_soc)
+                        <li><a href="{{URL::to('social-instagram')}}/{{$dd_soc->category_alias}}">{{$dd_soc->category_name}}</a></li>
+                    @endforeach 
+                  @endif
+                </ul>
+            </li>                       
         </ul>
         <div class="tab-content">
             <?php /* <div id="ourCollection" class="tab-pane {{$sel_collection}}">
@@ -201,7 +210,17 @@
     <section class="search-tab {{ $search_for=='destinations' ? 'tab-show' : 'tab-hide' }}">        
         <ul class="nav nav-tabs">    
             <li class=""><a href="#tab-Home" data-toggle="tab">Home</a></li>        
-            <li class="active"><a href="#tab-destination" data-toggle="tab">Destination</a></li> 
+            <li class="active" id="tb_destination"><a href="#tab-destination" data-toggle="tab">Destination</a></li>
+            <li class="dropdown active" style="display: none;" id="tbd_destination">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Destination <span class="caret"></span></a>                                
+                <ul class="dropdown-menu">                  
+                  @if(!empty($dd_destinations))                  
+                    @foreach($dd_destinations as $dd_des)
+                        <li><a href="{{URL::to('luxury_destinations')}}/{{$dd_des->category_alias}}">{{$dd_des->category_name}}</a></li>
+                    @endforeach 
+                  @endif
+                </ul>
+            </li>  
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Experience <span class="caret"></span></a>                
                 <ul class="dropdown-menu">                  
@@ -222,7 +241,17 @@
                   @endif
                 </ul>
             </li>
-            <li class=""><a href="#tab-Social" data-toggle="tab">Social</a></li>            
+            <!--<li class=""><a href="#tab-Social" data-toggle="tab">Social</a></li>-->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Social <span class="caret"></span></a>
+                <ul class="dropdown-menu">                  
+                  @if(!empty($dd_social))                  
+                    @foreach($dd_social as $dd_soc)
+                        <li><a href="{{URL::to('social-instagram')}}/{{$dd_soc->category_alias}}">{{$dd_soc->category_name}}</a></li>
+                    @endforeach 
+                  @endif
+                </ul>
+            </li>            
         </ul>
         <div class="tab-content">
             
@@ -249,13 +278,12 @@
                         <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
                         {{--*/ $i++;  /*--}}
                     @endforeach
-                    @if(!empty($parent_cat)) 
-                        <option value="-1">Back to {{$parent_cat->category_name}}</option>
-                    @else
-                        <option value="0">Back to Destination</option>
-                    @endif
-                    
                 @endif 
+                @if(!empty($parent_cat)) 
+                    <option value="-1">Back to {{$parent_cat->category_name}}</option>
+                @else
+                    <option value="0">Back to Destination</option>
+                @endif
                 </select>
                               
                 @if(!empty($collections))
@@ -1180,30 +1208,21 @@ $grid.imagesLoaded().progress( function() {
         	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
         	doAjax(params);
         });
-        $(document).on('change', '#dd-destination', function () {  
+        $(document).on('change', '#dd-destination', function (e) {  
             /*var dest = $(this).val();
             var dest_url = $("#dest_url").val();
             window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
             var dest = $(this).val();
             var dest_url = $("#dest_url").val();
             console.log(dest_url);
-            if(dest!= -1){
+            if(dest == -1){
                 
-                var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
-                $("#menu_url").val(url);
-                
-                var destination = dest; 
-                
-                 
-            }else{
-                var arr_durl = dest_url.split('/');
-                
+                var arr_durl = dest_url.split('/');                
                 var back_url = '';
                 if(arr_durl.length > 0){                    
                     arr_durl.pop();
                     dest = arr_durl[arr_durl.length - 1];                     
-                }
-                 
+                }                 
                 $.each(arr_durl, function(key, value){
                      back_url = back_url+'/'+value;   
                 });
@@ -1211,18 +1230,39 @@ $grid.imagesLoaded().progress( function() {
                 var url = "{{URL::to('luxury_destinations')}}"+back_url;
                 $("#menu_url").val(url);
                 
-                var destination = dest;   
+                var destination = dest;
+                var datObj = {};
+                datObj.url = url;
+            	datObj.destination = destination;
+                
+            	var params = $.extend({}, doAjax_params_default);
+            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
+            	params['data'] = datObj;
+            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
+            	doAjax(params); 
+                
+            }else if(dest == 0){
+                e.preventDefault();
+                console.log(dest);
+                $("#tb_destination").css('display', 'none');    
+                $("#tbd_destination").css('display', '');
+            }else{
+                var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
+                $("#menu_url").val(url);
+                
+                var destination = dest; 
+                var datObj = {};
+                datObj.url = url;
+            	datObj.destination = destination;
+                
+            	var params = $.extend({}, doAjax_params_default);
+            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
+            	params['data'] = datObj;
+            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
+            	doAjax(params); 
             }
            
-            var datObj = {};
-            datObj.url = url;
-        	datObj.destination = destination;
-            
-        	var params = $.extend({}, doAjax_params_default);
-        	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-        	params['data'] = datObj;
-        	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-        	doAjax(params); 
+           
         });
         
         

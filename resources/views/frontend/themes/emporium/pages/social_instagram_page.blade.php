@@ -1,6 +1,6 @@
 @extends('frontend.themes.emporium.layouts.home')
 {{--  For Title --}}
-@section('title', 'Youtube Channel')
+@section('title', 'Instagram')
 {{-- For Meta Keywords --}}
 @section('meta_keywords', '')
 {{-- For Meta Description --}}
@@ -13,9 +13,13 @@
             
         </div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			@if($channel_url!='')
-				<div data-yt data-yt-channel="{{ $channel_url }}" data-yt-content-columns="4"  data-yt-content-rows="3"></div>
-			@endif
+			<section id="instagran" class="sections-instagram">
+                <div class="full-width">
+                    <div data-is data-is-api="{{ url('runInsta')}}"
+                         data-is-source="{{!empty($instagram_channel) ? $instagram_channel : '@firmdale_hotels' }}"
+                         data-is-rows="2" data-is-limit="0" data-is-columns="5"></div>
+                </div>
+            </section>
 		</div>
 	</div>
 
@@ -34,7 +38,7 @@
 
 {{-- For Include Side Bar --}}
 @section('sidebar')
-    @include('frontend.themes.emporium.layouts.sections.social_youtube_sidebar')
+    @include('frontend.themes.emporium.layouts.sections.social_instagram_sidebar')
 @endsection
 
 {{-- For Include style files --}}
@@ -50,7 +54,7 @@
 {{-- For Include javascript files --}}
 @section('javascript')
     @parent
-	<script src="{{ asset('lib/yottie/jquery.yottie.bundled.js')}}"></script>
+	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
 @endsection
 
 {{-- For custom script --}}
@@ -59,7 +63,7 @@
 	<script>
 		$(document).ready(function () {
 			// Open Left Navigation For Destinations on Page Load
-			@if(Request::segment(1)=='social-youtube')
+			@if(Request::segment(1)=='social-instagram')
 				var datObj = {};
 				datObj.catID = '{{$catid}}';
 				var params = $.extend({}, doAjax_params_default);

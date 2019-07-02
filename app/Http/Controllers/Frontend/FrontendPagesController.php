@@ -90,7 +90,28 @@ class FrontendPagesController extends Controller {
 		$this->data['catid'] = $catid;
 		return view('frontend.themes.emporium.pages.social_youtube_page', $this->data);
 	}
-
+    
+    public function socialInstagram(Request $request)
+	{
+		$channel_url = '';
+		$catid = '';
+		if (trim($request->cat)!='' && !is_null($request->cat)) {
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_instagram_channel')->where('category_alias', trim($request->cat))->where('category_published', 1)->first();
+		}
+		else
+		{
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_instagram_channel')->where('parent_category_id', 0)->where('category_published', 1)->where('id', '!=', 8)->orderBy('category_order_num','asc')->first();
+		}
+		
+		if (!empty($cateObjsc)) {
+			$channel_url = $cateObjsc->category_instagram_channel;
+			$catid = $cateObjsc->id;
+		}
+		$this->data['instagram_channel'] = $channel_url;
+		$this->data['catid'] = $catid;
+		return view('frontend.themes.emporium.pages.social_instagram_page', $this->data);
+	}
+    
 	public function socialStreamWall(Request $request)
 	{
 		$socialpropertiesArr = array();

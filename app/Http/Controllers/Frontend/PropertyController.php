@@ -473,7 +473,7 @@ class PropertyController extends Controller {
         if(!empty($dd_destinations)){
             
             foreach($dd_destinations as $dd_dest){
-                $dd_subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('parent_category_id', $dd_dest->id)->get();
+                $dd_subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url', 'category_instagram_channel')->where('parent_category_id', $dd_dest->id)->get();
 				$dd_getcats = '';
 				$dd_chldIds = array();
 				if (!empty($dd_subdest)) {
@@ -501,6 +501,16 @@ class PropertyController extends Controller {
                 }        
             }    
         }
+        
+        $dd_social = array();
+        if(!empty($dd_destarr)){
+            foreach($dd_destarr as $d_social){
+                if($d_social->category_instagram_channel!=''){
+                    $dd_social[] = $d_social;    
+                }        
+            }    
+        }
+        $this->data['dd_social'] = $dd_social;
         //print_r($dd_channels); die;
         
         $this->data['parent_cat'] = $parent_cat;

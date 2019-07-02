@@ -154,6 +154,13 @@ Route::get('social-youtube/{cat}', 'Frontend\FrontendPagesController@socialYoutu
 Route::get('social-youtube/{continent}/{cat}', 'Frontend\FrontendPagesController@socialYoutube');
 Route::get('social-youtube/{continent}/{region}/{cat}', 'Frontend\FrontendPagesController@socialYoutube');
 Route::get('social-youtube/{continent}/{region}/{country}/{cat}', 'Frontend\FrontendPagesController@socialYoutube');
+
+Route::get('social-instagram', 'Frontend\FrontendPagesController@socialInstagram');
+Route::get('social-instagram/{cat}', 'Frontend\FrontendPagesController@socialInstagram');
+Route::get('social-instagram/{continent}/{cat}', 'Frontend\FrontendPagesController@socialInstagram');
+Route::get('social-instagram/{continent}/{region}/{cat}', 'Frontend\FrontendPagesController@socialInstagram');
+Route::get('social-instagram/{continent}/{region}/{country}/{cat}', 'Frontend\FrontendPagesController@socialInstagram');
+
 Route::get('social-stream', 'Frontend\FrontendPagesController@socialStreamWall');
 
 Route::resource('sximoapi', 'SximoapiController'); 

@@ -603,7 +603,7 @@ function serve_not_found() {
 function query_client_request($page_data, $variables, $query_hash) {
     $client = index('client');
     $gis = md5(join(':', array(
-        $page_data['rhx_gis'],
+        //$page_data['rhx_gis'],
         $page_data['config']['csrf_token'],
         $client['headers']['User-Agent'],
         json_encode($variables)
