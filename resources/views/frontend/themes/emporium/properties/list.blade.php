@@ -282,7 +282,7 @@
                 @if(!empty($parent_cat)) 
                     <option value="-1">Back to {{$parent_cat->category_name}}</option>
                 @else
-                    <option value="0">Back to Destination</option>
+                    <option value="0">Back to Destination1</option>
                 @endif
                 </select>
                               
