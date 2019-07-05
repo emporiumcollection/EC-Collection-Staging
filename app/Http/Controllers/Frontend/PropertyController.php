@@ -383,9 +383,15 @@ class PropertyController extends Controller {
         $this->data['collections'] = $cat_collection;
         
         $parent_cat = array();
+        $channel_url = '';
+        $instagram_url = '';
 		if(request()->segment(1)=='luxury_destinations' || request()->segment(1)=='luxury_experience'){
+            $channel_url = $cateObj->category_youtube_channel_url;
+            
             $this->data['destination_category']=$cateObj->id;
-			$this->data['destination_category_instagram']=$cateObj->category_instagram_channel;
+            $instagram_url=$cateObj->category_instagram_channel;
+			
+            
             
             
             //$m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->where('category_approved', 1)->where('category_published', 1)->first();   
@@ -467,6 +473,8 @@ class PropertyController extends Controller {
             }
             
         }
+        $this->data['channel_url'] = $channel_url;
+        $this->data['destination_category_instagram'] = $instagram_url;
         
         $dd_destinations = \DB::table('tb_categories')->where('id', '!=', 8)->where('parent_category_id', 0)->where('category_approved', 1)->where('category_published', 1)->get();
         
@@ -516,6 +524,26 @@ class PropertyController extends Controller {
         $this->data['parent_cat'] = $parent_cat;
         
         $this->data['dd_channels'] = $dd_channels;
+        
+        $youtube_channels = array();
+        if(!empty($destarr)){
+            foreach($destarr as $sin_des){
+                if($sin_des->category_youtube_channel_url!=''){
+                    $youtube_channels[] = $sin_des;        
+                }
+            }
+        }
+        $this->data['youtube_channels'] = $youtube_channels;
+        
+        $instagram_channels = array();
+        if(!empty($destarr)){
+            foreach($destarr as $sin_des){
+                if($sin_des->category_instagram_channel!=''){
+                    $instagram_channels[] = $sin_des;        
+                }
+            }
+        }
+        $this->data['instagram_channels'] = $instagram_channels;
         
         $this->data['experiences'] = \DB::table('tb_categories')->where('parent_category_id', 8)->where('category_approved', 1)->where('category_published', 1)->get();
         
@@ -4479,5 +4507,76 @@ class PropertyController extends Controller {
             }
         }
         return $child_category_array;
+    }
+    public function getDropdownBreadcrumb(Request $request){
+        $res = array();
+        $destarr = array();
+        $dest_url = '';
+        $catname = '';
+        $keyword = $request->input('cat');        
+        $cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
+        $parent_cat = '';
+        if(!empty($cateObj)){
+            $destinations = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_approved', 1)->where('category_published', 1)->get();
+                    
+            $dest_has_prop = array();
+            if(!empty($destinations)){
+                $selected_category = $destinations[0]->category_name;
+                foreach($destinations as $dest){
+                    $subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('parent_category_id', $dest->id)->get();
+					$getcats = '';
+					$chldIds = array();
+					if (!empty($subdest)) {
+						$chldIds = $this->fetchcategoryChildListIds($dest->id);
+						array_unshift($chldIds, $dest->id);
+					} else {
+						$chldIds[] = $dest->id;
+					}
+                    
+                    $getcats = "";
+                    if (count($chldIds) > 0) { $getcats = " AND (category_id IN(".implode(",",$chldIds)."))"; }
+                    $preprops = DB::select(DB::raw("SELECT COUNT(id) AS total_rows FROM property_categories_split_in_rows WHERE property_status = '1' ".$getcats));
+
+					if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+						$destarr[] = $dest;
+					}
+            
+                }
+            }
+            if (!empty($cateObj)) {
+                if($cateObj->id>0){    
+                    $dest_url = array_reverse($this->fetchcategorybc($cateObj->id));
+    				//$dest_url = implode('/',array_reverse($this->fetchcategoryaliaspath($cateObj->id)));
+                }
+                $catname = $cateObj->category_name;                                    
+            }
+            $parent_cat = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('id', $cateObj->parent_category_id)->first();          
+        }        
+        $res['destinations'] = $destarr;
+        $res['dest_url'] = $dest_url;
+        $res['parent_cat'] = $parent_cat;        
+        
+        $youtube_channels = array();
+        if(!empty($destarr)){
+            foreach($destarr as $sin_des){
+                if($sin_des->category_youtube_channel_url!=''){
+                    $youtube_channels[] = $sin_des;        
+                }
+            }
+        }
+        $res['youtube_channels'] = $youtube_channels;
+        
+        $instagram_channels = array();
+        if(!empty($destarr)){
+            foreach($destarr as $sin_des){
+                if($sin_des->category_instagram_channel!=''){
+                    $instagram_channels[] = $sin_des;        
+                }
+            }
+        }
+        $res['instagram_channels'] = $instagram_channels;
+        $res['catname'] = $catname;
+        
+        echo json_encode($res);    
     }
 }

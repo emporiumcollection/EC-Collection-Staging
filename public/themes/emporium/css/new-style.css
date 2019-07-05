@@ -5589,6 +5589,15 @@ ul.item-list-bar {
 .tab-hide{
     display: none;
 }
+.search-tab .dv-youtube-channel{
+    margin-top: 30px; 
+    height: auto; 
+    min-height: 400px;  
+}
+.search-tab .dv-instagram-channel{
+    margin-top: 30px; 
+    margin-bottom: 30px;     
+}
 /*---------------------- End ---------------------------*/
 
 /*-------------- Header Search -----------*/

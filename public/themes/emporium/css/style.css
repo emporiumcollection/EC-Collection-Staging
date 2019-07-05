@@ -1972,6 +1972,24 @@ button.searchButton.btn:hover {
 
 .yottie-widget-feed-section-pagination .swiper-pagination-bullet-active, .yottie-widget-feed-section-pagination .swiper-pagination-bullet-active:hover{background:#ABA07C !important;color:#fff !important}
 #yottie_1 .yottie-widget-video-info-passed-time{color:#ccc !important}
+
+.yt-rvideos .yottie-widget-header, .yt-rvideos .yottie-widget-feed, .yt-rvideos .yottie-widget-nav {background:#252525 !important;}
+.yt-rvideos .yottie-widget-header-channel-title, .yt-rvideos .yottie-widget-header-channel-title a, .yt-rvideos .yottie-widget-header-properties-item, .yt-rvideos .yottie-widget-video-info-title, .yt-rvideos .yottie-widget-video-info-properties-item {
+    color: #ABA07C !important;
+}
+.yt-rvideos .yottie-widget-header-channel-caption, .yt-rvideos .yottie-widget-nav-list-item.yottie-active a, .yt-rvideos .yottie-widget-nav-list-item.yottie-active:hover a, .yt-rvideos .yottie-widget-video-info-caption {
+    color: #fff !important;
+	font-family: 'geomanistlightwebfont' !important;
+}
+.yt-rvideos .yottie-widget-video{background:none !important; }
+.yt-rvideos .yottie-widget-video-info-title{font-family: 'geomanist_regularregular', serif !important;}
+.yt-rvideos .yottie-widget-video-info-passed-time{font-family: 'geomanistlightwebfont' !important;}
+.yt-rvideos .yottie-widget-video-info-passed-time{color:#ccc !important}
+
+.yt-rvideos .yottie-widget-header-subscribe-button {display: none !important;}
+.yottie-popup-video-channel{display: none !important;}
+
+
 .yottie-widget-video-preview-thumbnail img{filter: brightness(0.5); -webit-filter: brightness(0.6);}
 .yottie-widget-video-preview-thumbnail img:after{content:""; position:absolute;left:0; top:0;height:100%;width:100%;}
 .stream li.dcsns-twitter .twitter-user a strong{color: #ABA07C !important; font-family: 'geomanist_regularregular', serif !important;}

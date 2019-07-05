@@ -130,5 +130,47 @@ class FrontendPagesController extends Controller {
 		
 		return view('frontend.themes.emporium.pages.social_stream_page', $this->data);
 	}
-
+    public function getyoutubechannel(Request $request)
+	{		
+        $channel_url = '';
+		$catid = '';
+		if (trim($request->input('cat'))!='' && !is_null($request->input('cat'))) {
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_youtube_channel_url')->where('category_alias', trim($request->input('cat')))->where('category_published', 1)->first();
+		}
+		else
+		{
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_youtube_channel_url')->where('parent_category_id', 0)->where('category_published', 1)->where('id', '!=', 8)->orderBy('category_order_num','asc')->first();
+		}
+		
+		if (!empty($cateObjsc)) {
+			$channel_url = $cateObjsc->category_youtube_channel_url;
+			$catid = $cateObjsc->id;
+		}
+		$res['channel_url'] = $channel_url;
+		$res['catid'] = $catid;
+        echo json_encode($res);
+		//return view('frontend.themes.emporium.pages.social_youtube_page', $this->data);
+	}
+    
+    public function getinstagramchannel(Request $request)
+	{		
+        $channel_url = '';
+		$catid = '';
+		if (trim($request->input('cat'))!='' && !is_null($request->input('cat'))) {
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_instagram_channel')->where('category_alias', trim($request->input('cat')))->where('category_published', 1)->first();
+		}
+		else
+		{
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_instagram_channel')->where('parent_category_id', 0)->where('category_published', 1)->where('id', '!=', 8)->orderBy('category_order_num','asc')->first();
+		}
+		
+		if (!empty($cateObjsc)) {
+			$channel_url = $cateObjsc->category_instagram_channel;
+			$catid = $cateObjsc->id;
+		}
+		$res['channel_url'] = $channel_url;
+		$res['catid'] = $catid;
+        echo json_encode($res);
+		//return view('frontend.themes.emporium.pages.social_youtube_page', $this->data);
+	}
 }
