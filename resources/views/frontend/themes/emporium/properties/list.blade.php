@@ -247,7 +247,7 @@
                     </ul>
                 </div>
                 <select name="dd-destination" id="dd-destination">
-                    <option value="{{$catalias}}>{{$catname}}</option>     
+                    <option value="{{$catalias}}">{{$catname}}</option>     
                     @if(!empty($destinations))               
                         @foreach($destinations as $dest)
                             <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
