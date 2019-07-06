@@ -247,7 +247,7 @@
                     </ul>
                 </div>
                 <select name="dd-destination" id="dd-destination">
-                    <option>{{$catname}}</option>     
+                    <option value="{{$catalias}}>{{$catname}}</option>     
                     @if(!empty($destinations))               
                         @foreach($destinations as $dest)
                             <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
@@ -290,7 +290,7 @@
                     </ul>
                 </div>
                 <select name="youtube_channel" id="youtube_channel">
-                    <option>{{$catname}}</option>     
+                    <option value="{{$catalias}}">{{$catname}}</option>     
                     @if(!empty($youtube_channels))               
                         @foreach($youtube_channels as $dest)
                             <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
@@ -323,7 +323,7 @@
                     </ul>
                 </div>
                 <select name="instagram_channel" id="instagram_channel">
-                    <option>{{$catname}}</option>     
+                    <option value="{{$catalias}}">{{$catname}}</option>     
                     @if(!empty($instagram_channels))               
                         @foreach($instagram_channels as $dest)
                             <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
@@ -1609,7 +1609,7 @@ $grid.imagesLoaded().progress( function() {
                 //dataType:'html',
                 dataType:'json',
                 data: {cat:catt},
-                type: 'get',
+                type: 'post',
                 beforeSend: function(){
                     
                 },
@@ -1634,7 +1634,7 @@ $grid.imagesLoaded().progress( function() {
                 //dataType:'html',
                 dataType:'json',
                 data: {cat:catt},
-                type: 'get',
+                type: 'post',
                 beforeSend: function(){
                     
                 },

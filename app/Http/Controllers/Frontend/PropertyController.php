@@ -316,6 +316,7 @@ class PropertyController extends Controller {
 
 		$catprops = '';   
         $catname = '';
+        $catalias = '';
 		/* Default package */
         $pckages_ids = '';
         $default_package = '';
@@ -446,7 +447,8 @@ class PropertyController extends Controller {
                     if($cateObj->id>0){                        
         				$dest_url = implode('/',array_reverse($this->fetchcategoryaliaspath($cateObj->id)));
                     }
-                    $catname = $cateObj->category_name;                    
+                    $catname = $cateObj->category_name; 
+                    $catalias = $cateObj->category_alias;                   
                 }
                 
                 $this->data['dest_url'] = $dest_url;
@@ -558,6 +560,7 @@ class PropertyController extends Controller {
         $this->data['req_for'] = request()->segment(1);
         $this->data['sel_exp'] = trim($request->cat);
         $this->data['catname'] = $catname;
+        $this->data['catalias'] = $catalias;
         $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
         
 		return view('frontend.themes.emporium.properties.list', $this->data);
