@@ -345,7 +345,7 @@ class PropertyController extends Controller {
             }
         }else{
             if (\Auth::check() == true) {
-                if(\Auth::user()->member_type!=1){
+                if(\Auth::user()->group_id!=1){
                     $uid = \Auth::user()->id;
                     $memtype = str_replace('-', ' ', \Auth::user()->member_type); 
                     $arr_membershiptype = explode('-', \Auth::user()->member_type); 
@@ -2495,7 +2495,7 @@ class PropertyController extends Controller {
             }
         }else{
             if (\Auth::check() == true) {
-                if(\Auth::user()->member_type!=1){
+                if(\Auth::user()->group_id!=1){
                     $uid = \Auth::user()->id;
                     $memtype = str_replace('-', ' ', \Auth::user()->member_type); 
                     $arr_membershiptype = explode('-', \Auth::user()->member_type); 
@@ -3407,7 +3407,7 @@ class PropertyController extends Controller {
         $res = array();
         $mem_types = array();
         if (\Auth::check() == true) {
-            if(\Auth::user()->member_type!=1){
+            if(\Auth::user()->group_id!=1){
                 $uid = \Auth::user()->id;
                 $mem_type = \Auth::user()->member_type;
                 
@@ -3464,7 +3464,7 @@ class PropertyController extends Controller {
         $res = array();
         $mem_types = array();
         if (\Auth::check() == true) {
-            if(\Auth::user()->member_type!=1){
+            if(\Auth::user()->group_id!=1){
                 $uid = \Auth::user()->id;
                 $mem_type = \Auth::user()->member_type;
                 
@@ -4051,7 +4051,7 @@ class PropertyController extends Controller {
             }
         }else{
             if (\Auth::check() == true) {
-                if(\Auth::user()->member_type!=1){
+                if(\Auth::user()->group_id!=1){
                     $uid = \Auth::user()->id;
                     $memtype = str_replace('-', ' ', \Auth::user()->member_type); 
                     $arr_membershiptype = explode('-', \Auth::user()->member_type); 

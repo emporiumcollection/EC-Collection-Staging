@@ -75,8 +75,9 @@
 		@endif
     </section>
     
+    
     <?php if(!empty($search_for)){ ?>
-    <section class="search-tab {{ $search_for=='experience' ? 'tab-show' : 'tab-hide' }}">
+    <section class="search-tab {{ $search_for=='experience' ? 'tab-show' : 'tab-hide' }} {{empty($slider) ? 'margin-top-100' : ''  }}">
         <?php 
             $sel_collection = '';
             $sel_experience = '';
@@ -159,7 +160,7 @@
         </div>
     </section>
     
-    <section class="search-tab {{ $search_for=='destinations' ? 'tab-show' : 'tab-hide' }}">        
+    <section class="search-tab {{ $search_for=='destinations' ? 'tab-show' : 'tab-hide' }}  {{empty($slider) ? 'margin-top-100' : ''  }}">        
         <ul class="nav nav-tabs" id="main_tab">    
             <li class=""><a href="#tab-Home" data-toggle="tab">Home</a></li>   
             <li class="dropdown">
