@@ -112,7 +112,7 @@
 .HamYardHotelInner {
     background-blend-mode: multiply;
     filter: brightness(.9);
-    background-color: #252525;
+    background-color: #19191B;
     background-image: url(../images/ham-yard-hotel-london-united-kingdom-15.jpg); 
     background-position: center center;
     background-repeat: no-repeat;
@@ -121,7 +121,7 @@
     padding-top: 290px;
     border-top: 4px solid #545454;
 }
-.HamYardHotelSection{background:#252525;}
+.HamYardHotelSection{background:#19191B;}
 .HamYardHotelSection .container {
     max-width: 1049px;
 }
@@ -350,7 +350,7 @@
 #luxury-hotel-selection.search-result .col-sm-6 {
     padding: 0 45px;
 }
-#luxury-hotel-selection{background:#252525; padding:20px 30px 40px;max-width:1510px; margin:0 auto;}
+#luxury-hotel-selection{background:#19191B; padding:20px 30px 40px;max-width:1510px; margin:0 auto;}
 #luxury-hotel-selection .heading{letter-spacing:5px; font-size:13px; color:#ABA07C; text-transform:uppercase; text-align:center;font-family: 'geomanistlightwebfont'; margin:0 0 40px;}
 #luxury-hotel-selection .hotel-card .quicklinks li a i, #luxury-hotel-selection  .hotel-card .cartlink{color:#ABA07C;}
 #luxury-hotel-selection .hotel-card .title h3 a { color: #ABA07C; font-size: 16px !important;}
@@ -377,7 +377,7 @@ z-index:999;
   width: 100%;
   overflow: hidden;
   padding:10px 0;
-  background: #252525; 
+  background: #19191B; 
 }
 .roomSuitSlider .noPadding {
   padding: 0px;
@@ -452,7 +452,7 @@ position: absolute;
 .sliderContent {
   /*height: 360px;*/
   padding: 40px 30px 0;
-  background: #252525;
+  background: #19191B;
 }
 .sliderContent h3 {
   font-size: 16px;
@@ -552,7 +552,7 @@ position: absolute;
 
 /***********/
 .galleryImgPopup {
-  background: #252525;
+  background: #19191B;
 }
 .galleryImgPopup .searchDateInnerContent {
   width:100%;
@@ -661,7 +661,7 @@ position: absolute;
 .roomSuitSlider .noPadding .sliderContent {
     /* height: 360px; */
     padding: 0px 30px 0;
-    background: #252525;
+    background: #19191B;
     top: 50%;
     position: relative;
     transform: translateY(-50%);
@@ -1134,7 +1134,7 @@ position: absolute;
     background-image: url('../images/connoiser-bg.jpg');
     background-blend-mode: multiply;
     filter: brightness(.9);
-    background-color: #252525;
+    background-color: #19191B;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1168,7 +1168,7 @@ position: absolute;
     display: table-row;
     width: 100%;
     padding: 0px 0px 20px 0px;  
-    background: #252525;  
+    background: #19191B;  
 }
 .hotelSearchResultSection .hotelSearchResultInner .box .rw .col-1{
     display: table-cell;
@@ -1193,7 +1193,7 @@ position: absolute;
     color:#fff;   
 }
 .hotelSearchResultSection .hotelSearchResultInner .box .inner-box{
-    background: #252525;
+    background: #19191B;
     padding: 10px;
     width: 250px;
     text-align: center;
@@ -1240,7 +1240,7 @@ position: absolute;
     display: block;
 }
 .hotelSearchResultSection .hotelSearchResultInner .your-stay-box{
-    background: #252525;
+    background: #19191B;
     display: inline-block;
     width: 86%;
     padding: 0px 0px 12px 0px;

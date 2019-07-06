@@ -123,7 +123,7 @@ section,
 .hotelSliderSection {
 	width: 100%;
 	position:relative;
-	background:#252525;
+	background:#19191B;
 }
 .hotelSliderSection .hotelSliderwrapper, .hotelSliderSection .hotelSlider2, .hotelSliderSection .hotelSlider3 {
 	margin: 0 auto;
@@ -389,12 +389,12 @@ margin-top: 25px;
 	border:none;
 }
 .custom_modal .modal-dialog{
-width:94%;  border: 1px solid #252525; padding: 6px;
+width:94%;  border: 1px solid #19191B; padding: 6px;
 }
 
 .custom_modal .modal-content{
 	border-radius: 0;padding:20px 76px;
-	background:#252525;
+	background:#19191B;
 }
 
 .custom_modal .modal-content select, .custom_modal .modal-content input, .custom_modal .modal-content textarea{background:#89837b; border:0; color:#fff;}
@@ -506,7 +506,7 @@ padding-right:15px;
 	display: inline-block;
 	width: 100%;
 	text-align: center;
-	background: #252525;
+	background: #19191B;
 	padding: 5% 9%; 
 }
 .thankYouContent h2 {

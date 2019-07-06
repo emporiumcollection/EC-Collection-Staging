@@ -113,7 +113,7 @@ input.error {
 
 body .ui-widget.ui-widget-content {
     border: 0px solid #c5c5c5;
-    background-color: #252525;
+    background-color: #19191B;
     z-index: 999;
 }
 body .ui-widget.ui-widget-content li {
@@ -164,7 +164,7 @@ body .ui-widget.ui-widget-content li i.iconsheet {
 }
 
 #filtersearchpopup ul ul.mobilemenulist {
-    background: #252525;
+    background: #19191B;
 }
 #filtersearchpopup ul ul.mobilemenulist li {
     border-bottom: 1px solid #414246;
@@ -180,7 +180,7 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     margin-left: 30px;
 }
 #filtersearchpopup ul ul.mobilemenulist li a:hover {
-    background-color: #252525;
+    background-color: #19191B;
     border-left: 4px solid #ABA07C;
     color: #fff;
     outline: 0;

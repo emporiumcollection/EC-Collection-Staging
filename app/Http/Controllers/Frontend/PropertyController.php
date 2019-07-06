@@ -386,6 +386,7 @@ class PropertyController extends Controller {
         $parent_cat = array();
         $channel_url = '';
         $instagram_url = '';
+        $dest_url = array();
 		if(request()->segment(1)=='luxury_destinations' || request()->segment(1)=='luxury_experience'){
             $channel_url = $cateObj->category_youtube_channel_url;
             
@@ -403,7 +404,7 @@ class PropertyController extends Controller {
             //}
             //$this->data['collections'] = $cat_collection;
             
-            $dest_url = array();
+            
             if(request()->segment(1)=='luxury_destinations'){
                 $search_for="destinations"; 
                                
@@ -882,7 +883,7 @@ class PropertyController extends Controller {
         $this->data['sel_exp'] = trim($request->cat);
         $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
         
-		return view('frontend.themes.emporium.properties.list', $this->data);
+		return view('frontend.themes.emporium.properties.list_latest', $this->data);
                     
     }
     

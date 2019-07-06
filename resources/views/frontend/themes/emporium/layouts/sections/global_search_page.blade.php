@@ -89,8 +89,10 @@
 							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 								<div class="products-item-list hotelPopupHeadings-form">
     								<div class="hotelPopupHeadings-header-title">
-    									<h2>Connoisseurs of Luxury Lifestyle</h2>
-    									<p class="planner-text">Emporium Collection provides a bespoke service that offers an extensive collection of some of the most exquisite and exclusive suites &amp; experiences around the world.</p>
+                                        <div class="hotelPopupHeadings text-center">
+        									<h2>Connoisseurs of Luxury Lifestyle</h2>
+        									<p>From plush accommodations that redefine camping and tents to private game drives and exclusive experiences, Emporium Safari will tailor a memorable trip for you as per your demands.</p>
+                                        </div>
 									</div>									
 								</div>
 							</div>
@@ -98,8 +100,10 @@
 							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 								<div class="products-item-list hotelPopupHeadings-form">
     								<div class="hotelPopupHeadings-header-title">
-    									<h2>Connoisseurs of Luxury Lifestyle</h2>
-    									<p class="planner-text">Emporium Collection provides a bespoke service that offers an extensive collection of some of the most exquisite and exclusive suites &amp; experiences around the world.</p>
+                                        <div class="hotelPopupHeadings text-center">
+        									<h2>Connoisseurs of Luxury Lifestyle</h2>
+        									<p>Indulgent to the core, Emporium Spa & Wellness has a curated list of the most acclaimed spas and wellness centers around the world that will unveil a world of luxury unconceivable before.</p>
+                                        </div>
 									</div>
 								</div>
 							</div>
@@ -107,8 +111,10 @@
 							<div class="tab-pane fade" id="pills-expereince" role="tabpanel" aria-labelledby="pills-expereince-tab">
 								<div class="products-item-list hotelPopupHeadings-form">
     								<div class="hotelPopupHeadings-header-title">
-    									<h2>Connoisseurs of Luxury Lifestyle</h2>
-    									<p class="planner-text">Emporium Collection provides a bespoke service that offers an extensive collection of some of the most exquisite and exclusive suites &amp; experiences around the world.</p>
+                                        <div class="hotelPopupHeadings text-center">
+        									<h2>Connoisseurs of Luxury Lifestyle</h2>
+        									<p>From the Caribbean to the South Pacific, Emporium Islands is a customized, one-of-a-kind extravagance that gives you a wholesome experience; soaking in the sun beside palm trees perched on the golden sands or out on a unique adventure beside the azure blue waters, everything is possible.</p>
+                                        </div>
 									</div>
 								</div>
 							</div>

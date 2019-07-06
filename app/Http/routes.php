@@ -433,7 +433,7 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::post('pdproomavailability', 'HomeController@ajaxcheckavailability');
     
-    Route::get('searchavailability', 'Frontend\PropertyController@propertySearchAvailability');
+
     
     Route::post('changeRoomStatus', 'PropertiesController@changeRoomStatus');
     
@@ -443,6 +443,8 @@ Route::group(['middleware' => 'auth'], function()
     
 });
 
+Route::get('searchavailability', 'Frontend\PropertyController@propertySearchAvailability');
+    
 Route::post('getyoutubechannel', 'Frontend\FrontendPagesController@getyoutubechannel');
 Route::post('getinstagramchannel', 'Frontend\FrontendPagesController@getinstagramchannel');    
 Route::post('getDropdownBreadcrumb', 'Frontend\PropertyController@getDropdownBreadcrumb');
@@ -548,7 +550,7 @@ Route::get('reserve_resto_table_request', 'Frontend\RestaurantFrontController@re
 Route::post('resturantspabar_by_typecity_ajax', 'Frontend\RestaurantFrontController@resturantSpaBarByTypeCityAjax');
 Route::post('resturantspabarSearch_ajax', 'Frontend\RestaurantFrontController@resturantSpaBarSearchAjax');
 Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
-Route::get('search', 'Frontend\PropertyController@propertySearch');
+Route::get('search', 'Frontend\PropertyController@propertySearch_latest');
 
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
 Route::get('book-property/{slug}', 'HomeController@bookProperty');

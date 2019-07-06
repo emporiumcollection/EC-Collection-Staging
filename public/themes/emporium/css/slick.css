@@ -356,7 +356,7 @@ th.next.available i
 }
 .multiple-items
 {
-  background: #252525;
+  background: #19191B;
   height:600px;
   padding:50px 80px 50px 0px;
 }
@@ -372,7 +372,7 @@ th.next.available i
 
 .page-container
 {
-   background: #252525; 
+   background: #19191B; 
 }
 .pagination
 {
@@ -403,7 +403,9 @@ th.next.available i
   overflow: hidden;
   position:relative;
 }
-
+.gridinner .gridtext{
+    margin-top: 6px;
+}
 .gridinner .image a img
 {
   transition: all 0.3s ease 0s;
@@ -472,6 +474,7 @@ opacity:1;
   width:100%;
   padding:20px 0px;
   font-size:25px;
+  font-family: GeomanistLight !important;
 }
 .gridheading .newfont
 {

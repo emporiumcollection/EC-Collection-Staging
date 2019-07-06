@@ -88,47 +88,36 @@
         ?>
         <ul class="nav nav-tabs">
             <?php /* <li class="{{$sel_collection}}"><a href="#ourCollection" data-toggle="tab">Our Collections</a></li> */ ?>
-            <li class=""><a href="#tab-Home" data-toggle="tab">Home</a></li>
-            <li class="{{$sel_experience}}"><a href="#experiences" data-toggle="tab">Experiences</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Destination <span class="caret"></span></a>                                
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_destinations))                  
-                    @foreach($dd_destinations as $dd_des)
-                        <li><a href="{{URL::to('luxury_destinations')}}/{{$dd_des->category_alias}}">{{$dd_des->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>               
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Channel <span class="caret"></span></a>
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_channels))                  
-                    @foreach($dd_channels as $dd_chnl)
-                        <li><a href="{{URL::to('social-youtube')}}/{{$dd_chnl->category_alias}}">{{$dd_chnl->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li> 
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Social <span class="caret"></span></a>
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_social))                  
-                    @foreach($dd_social as $dd_soc)
-                        <li><a href="{{URL::to('social-instagram')}}/{{$dd_soc->category_alias}}">{{$dd_soc->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>                       
+            <li class="{{$sel_experience}}"><a href="#experiences" data-toggle="tab">Experiences</a></li>            
         </ul>
         <div class="tab-content">
-            {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
-            <div class="search-breadcrum">
-                <ul class="s-breadcrumb">
-                    <li><a href="{{URL::to('/')}}">{{CNF_APPNAME}}</a></li>
-                    <li>{{!empty($sel_exp) ? $sel_exp : ''}}</li>
-                </ul>
-            </div>
+            <?php /* <div id="ourCollection" class="tab-pane {{$sel_collection}}">
+            @if(!empty($collections))
+                {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
+                <ul class="nav nav-tabs">
+                    @foreach($collections as $coll)
+                        <?php
+                            $lnth = 0;
+                            $coll_ttl = $coll->category_name;
+                            $exp_ttl = explode(' ', $coll_ttl); 
+                            if(!empty($exp_ttl)){
+                                $arr_key = $exp_ttl[0];       
+                            }
+                            if(!empty($prop_packages)){ //print_r($prop_packages);
+                                //foreach($prop_packages as $pkg){ print_r($pkg);
+                                    if(array_key_exists($arr_key, $prop_packages)){
+                                        $lnth = count($prop_packages[$arr_key]);        
+                                    }    
+                                //}
+                            }
+                               
+                        ?>
+                        <li class="<?php echo ($k==1) ? 'active' : '' ?> collection" data-name="{{$coll->category_alias}}"><a href="#{{$coll->category_alias}}" data-toggle="tab">{{$coll->category_name}} ({{$lnth}})</a></li>
+                        {{--*/ $k++;  /*--}}    
+                    @endforeach                            
+                </ul>                  
+            @endif
+            </div> */ ?>
             
             <div id="experiences" class="tab-pane {{$sel_experience}} experinces">
                 <select name="experience" id="experience">  
@@ -139,227 +128,386 @@
                         @endforeach 
                     @endif
                 </select>
-                                
+                <?php /* <ul class="nav nav-tabs">
+                    @foreach($experiences as $exp)
+                        <li class="<?php echo ($sel_exp==$exp->category_alias) ? 'active' : '' ?>"><a href="{{URL::to('luxury_experience')}}/{{$exp->category_alias}}">{{$exp->category_name}}</a></li>    
+                        {{--*/ $i++;  /*--}}
+                    @endforeach                           
+                </ul> */ ?>   
+                
                 @if(!empty($collections))
                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
                 <ul class="nav nav-tabs">
                     @foreach($collections as $coll)
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('luxury_experience')}}/{{$sel_exp}}/{{$coll->category_alias}}" >{{$coll->category_name}} </a></li>
+                        <?php
+                            $lnth = 0;
+                            $coll_ttl = $coll->category_name;
+                            $exp_ttl = explode(' ', $coll_ttl); 
+                            if(!empty($exp_ttl)){
+                                $arr_key = $exp_ttl[0];       
+                            }
+                            if(!empty($prop_packages)){ //print_r($prop_packages);
+                                //foreach($prop_packages as $pkg){ print_r($pkg);
+                                    if(array_key_exists($arr_key, $prop_packages)){
+                                        $lnth = count($prop_packages[$arr_key]);        
+                                    }    
+                                //}
+                            }
+                               
+                        ?>
+                        <?php /*<li class="<?php echo ($k==1) ? 'active' : '' ?> collection" data-name="{{$coll->category_alias}}"><a href="#{{$coll->category_alias}}" data-toggle="tab">{{$coll->category_name}} ({{$lnth}})</a></li> */ ?>
+                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('luxury_experience')}}/{{$sel_exp}}/{{$coll->category_alias}}" >{{$coll->category_name}} ({{$lnth}})</a></li>
                         {{--*/ $k++;  /*--}}    
                     @endforeach                            
                 </ul>                  
                 @endif
-                <div class="load_ajax">
-
-                </div>           
+                           
             </div>
-            
-            
+            <input type="hidden" name="req_for" id="req_for" value="{{@!empty($req_for)? $req_for : ''}}" />
+            <input type="hidden" name="sel_exp" id="sel_exp" value="{{@!empty($sel_exp) ? $sel_exp : ''}}" />
             <input type="hidden" name="m_type" id="m_type" value="{{@!empty($m_type) ? $m_type : ''}}" />
         </div>
     </section>
     
     <section class="search-tab {{ $search_for=='destinations' ? 'tab-show' : 'tab-hide' }}">        
-        <ul class="nav nav-tabs" id="main_tab">    
-            <li class=""><a href="#tab-Home" data-toggle="tab">Home</a></li>   
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Experience <span class="caret"></span></a>                
-                <ul class="dropdown-menu">                  
-                  @if(!empty($experiences))                  
-                    @foreach($experiences as $exp)
-                        <li><a href="{{URL::to('luxury_experience')}}/{{$exp->category_alias}}">{{$exp->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>      
-            <li class="active" id="tb_destination"><a href="#tab-destination" data-toggle="tab">Destination</a></li>
-            <li class="dropdown active" style="display: none;" id="tbd_destination">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Destination <span class="caret"></span></a>                                
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_destinations))                  
-                    @foreach($dd_destinations as $dd_des)
-                        <li><a href="{{URL::to('luxury_destinations')}}/{{$dd_des->category_alias}}">{{$dd_des->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>            
-            <li class="tb_channel"><a href="#tab-channel" data-toggle="tab">Channel</a></li>
-            <li class="dropdown active tbd_Channel" style="display: none;">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Channel <span class="caret"></span></a>                                
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_channels))                  
-                    @foreach($dd_channels as $dd_chnl)
-                        <li><a href="{{URL::to('social-youtube')}}/{{$dd_chnl->category_alias}}">{{$dd_chnl->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>              
-            <li class="tb_Social"><a href="#tab-social" data-toggle="tab">Social</a></li>
-            <li class="dropdown active tbd_Social" style="display: none;">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Social <span class="caret"></span></a>                                
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_social))                  
-                    @foreach($dd_social as $dd_soc)
-                        <li><a href="{{URL::to('social-instagram')}}/{{$dd_soc->category_alias}}">{{$dd_soc->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>  
-            <!--<li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Channel <span class="caret"></span></a>
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_channels))                  
-                    @foreach($dd_channels as $dd_chnl)
-                        <li><a href="{{URL::to('social-youtube')}}/{{$dd_chnl->category_alias}}">{{$dd_chnl->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>
-            
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Social <span class="caret"></span></a>
-                <ul class="dropdown-menu">                  
-                  @if(!empty($dd_social))                  
-                    @foreach($dd_social as $dd_soc)
-                        <li><a href="{{URL::to('social-instagram')}}/{{$dd_soc->category_alias}}">{{$dd_soc->category_name}}</a></li>
-                    @endforeach 
-                  @endif
-                </ul>
-            </li>-->            
+        <ul class="nav nav-tabs">           
+            <li class="active"><a href="#tab-destination" data-toggle="tab">Destination</a></li>            
         </ul>
         <div class="tab-content">
-            
-            
             
             {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}                
             
             <div id="tab-destination" class="tab-pane active destinatin">
-                <div class="search-breadcrum">
-                    <ul class="s-breadcrumb destination-breadcrumb">
-                        @if(!empty($bc_dest))
-                            <li><a href="{{URL::to('/')}}">{{CNF_APPNAME}}</a></li>
-                            <?php $path = 'luxury_destinations'; ?>
-                            @foreach($bc_dest as $sin_bc)
-                                <?php $path = $path.'/'.$sin_bc->category_alias; ?>
-                                <li><a class="EGloader" href="{{URL::to($path)}}">{{$sin_bc->category_name}}</a></li>
-                            @endforeach                        
-                        @endif
-                    </ul>
-                </div>
-                <select name="dd-destination" id="dd-destination">
-                    <option value="{{$catalias}}">{{$catname}}</option>     
-                    @if(!empty($destinations))               
-                        @foreach($destinations as $dest)
-                            <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
-                            {{--*/ $i++;  /*--}}
-                        @endforeach
-                    @endif 
-                    @if(!empty($parent_cat)) 
-                        <option value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
-                    @else
-                        <option value="0">&lt; Back to Destination</option>
-                    @endif
+                <select name="dd-destination" id="dd-destination">                    
+                    @foreach($destinations as $dest)
+                        <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
+                        {{--*/ $i++;  /*--}}
+                    @endforeach 
                 </select>
                               
                 @if(!empty($collections))
                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
                 <ul class="nav nav-tabs">
-                    @foreach($collections as $coll)                        
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$coll->category_name}}</a></li>
+                    @foreach($collections as $coll)
+                        <?php
+                            $lnth = 0;
+                            $coll_ttl = $coll->category_name;
+                            $exp_ttl = explode(' ', $coll_ttl); 
+                            if(!empty($exp_ttl)){
+                                $arr_key = $exp_ttl[0];       
+                            }
+                            if(!empty($prop_packages)){ //print_r($prop_packages);
+                                //foreach($prop_packages as $pkg){ print_r($pkg);
+                                    if(array_key_exists($arr_key, $prop_packages)){
+                                        $lnth = count($prop_packages[$arr_key]);        
+                                    }    
+                                //}
+                            }
+                               
+                        ?>                        
+                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$coll->category_name}} ({{$lnth}})</a></li>
                         {{--*/ $k++;  /*--}}    
                     @endforeach                            
                 </ul>                  
                 @endif
-                
-                <div class="load_ajax">
-
-                </div>
                            
             </div>
-            <div id="tab-channel" class="tab-pane">
-                <div class="search-breadcrum">
-                    <ul class="s-breadcrumb youtube-breadcrumb">
-                        @if(!empty($bc_dest))
-                            <li><a href="{{URL::to('/')}}">{{CNF_APPNAME}}</a></li>
-                            <?php $path = 'social-youtube'; ?>
-                            @foreach($bc_dest as $sin_bc)
-                                <?php $path = $path.'/'.$sin_bc->category_alias; ?>
-                                <li><a class="yt-bread" data-alias="{{$sin_bc->category_alias}}">{{$sin_bc->category_name}}</a></li>
-                            @endforeach                        
-                        @endif
-                    </ul>
-                </div>
-                <select name="youtube_channel" id="youtube_channel">
-                    <option value="{{$catalias}}">{{$catname}}</option>     
-                    @if(!empty($youtube_channels))               
-                        @foreach($youtube_channels as $dest)
-                            <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
-                            {{--*/ $i++;  /*--}}
-                        @endforeach
-                    @endif 
-                    @if(!empty($parent_cat)) 
-                        <option value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
-                    @else
-                        <option value="0">&lt; Back to Channel</option>
-                    @endif
-                </select>
-                              
-                <div class="dv-youtube-channel">
-        			
-        		</div>
-                           
-            </div>
-            <div id="tab-social" class="tab-pane">
-                <div class="search-breadcrum">
-                    <ul class="s-breadcrumb social-breadcrumb">
-                        @if(!empty($bc_dest))
-                            <li class="instagram"><a href="{{URL::to('/')}}">{{CNF_APPNAME}}</a></li>
-                            <?php $path = 'social-instagram'; ?>
-                            @foreach($bc_dest as $sin_bc)
-                                <?php $path = $path.'/'.$sin_bc->category_alias; ?>
-                                <li><a class="insta-bread" data-alias="{{$sin_bc->category_alias}}">{{$sin_bc->category_name}}</a></li>
-                            @endforeach                        
-                        @endif
-                    </ul>
-                </div>
-                <select name="instagram_channel" id="instagram_channel">
-                    <option value="{{$catalias}}">{{$catname}}</option>     
-                    @if(!empty($instagram_channels))               
-                        @foreach($instagram_channels as $dest)
-                            <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
-                            {{--*/ $i++;  /*--}}
-                        @endforeach
-                    @endif 
-                    @if(!empty($parent_cat)) 
-                        <option value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
-                    @else
-                        <option value="0"> &gt; Back to Social</option>
-                    @endif
-                </select>    
-                <div>
-                    
-        			<section id="instagran" class="sections-instagram">
-                        <div class="full-width">
-                            <div  class="dv-instagram-channel"></div>
-                        </div>
-                    </section>
-                    
-        		</div>
-                           
-            </div>
-            
             <input type="hidden" name="" id="" value="" />
             
             <input type="hidden" name="dest_cat" id="dest_cat" value="{{@!empty($dest_cat)? $dest_cat : ''}}" />
             <input type="hidden" name="dest_url" id="dest_url" value="{{@!empty($dest_url)? $dest_url : ''}}" />
         </div>
     </section>
-<?php } ?> 
-<input type="hidden" name="sel_exp" id="sel_exp" value="{{!empty($sel_exp) ? $sel_exp : ''}}" />   
+            <input type="hidden" name="sel_exp" id="sel_exp" value="{{!empty($sel_exp) ? $sel_exp : ''}}" />
+<?php } ?>    
 <input type="hidden" name="dest_collection" id="dest_collection" value="{{!empty($m_type) ? $m_type : ''}}" /> 
-<input type="hidden" name="req_for" id="req_for" value="{{@!empty($req_for)? $req_for : ''}}" />
+<div id="load_ajax">
+@if(count($editorPropertiesArr)>0)
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+    		<h4 class="gridheading">{{ count($editorPropertiesArr) }} <span class="newfont"> Editor's choice</span> Hotels Found for {{ $slug }}  {{$dateslug}}</h4>
+    <div class="slider multiple-items">
 
 
+@foreach($editorPropertiesArr as  $props)
+<?php
+				$url=URL::to(rtrim($props->property_slug,'-'));
+				if(Request::has("departure") || Request::has("arrive"))
+				{
+					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
+				}
+			?> 
+
+      <div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+         <a  href="{{ $url }}" >
+		          <img src="{{ URL::to('sximo/images/transparent.png') }}" data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}" data-ajax-link="{{ URL::to('ajax-rproperty-images/'.$props->id.'/3') }}" />
+    		  </a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 slidertext">
+          <h6 class="cat-links">
+                      
+                    </h6>
+                    <h5 class="entry-title">
+                    <a href="{{ $url }}" rel="bookmark" tabindex="0" style="outline: none;"> {{ $props->property_name}}</a>
+                </h5>
+             <p> <a  href="{{ $url }}" >    {{ $props->property_usp}}  </a></p>
+             <a class="remoreslider" href="{{ $url }}"><span class="newfont"> Discover</span></a>
+        </div>
+      </div>
+
+@endforeach   
+
+
+     </div>
+    </div>
+  </div>
+@endif
+
+  <div class="col-md-12 col-sm-12 col-xs-12 misonrysection">
+  
+    <div class="row">
+
+ 
+
+
+
+@if(!empty($featurePropertiesArr))
+		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Featured </span> Hotels Found for {{ $slug }}  {{$dateslug}}</h4>
+			<div class="grid">
+
+        <?php $frw = 1 ?>
+		@foreach($featurePropertiesArr as $props)
+			
+			<?php
+				$url=URL::to(rtrim($props->property_slug,'-'));
+				if(Request::has("departure") || Request::has("arrive"))
+				{
+					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
+				}
+                $femotional_gallery = array();
+                if(isset($emotional_gallery)){                
+                    if(($frw == 1) && (count($emotional_gallery) > 0)){
+                        for($i = 0; $i<9; $i++){
+                            if(count($emotional_gallery) > 0){ $femotional_gallery[] = array_shift($emotional_gallery); }
+                        }
+                    }
+                }                
+                $frw++;
+			?> 
+
+
+    <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
+        <div class="row">
+          <div class="gridinner">
+            <a href="{{ $url }}" title="{{ $props->property_name}}">
+          		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}" />
+                  
+                  {{-- <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="http://staging.emporium-voyage.com/propertysliderimagebyid/61" class="img-responsive rad-img" alt="The Soho Hotel " title="The Soho Hotel"
+                  data-imagessrc='[{"src":"http://staging.emporium-voyage.com/propertysliderimagebyid/61"},{"src":"http://staging.emporium-voyage.com/propertysliderimagebyid/69"},{"src":"http://staging.emporium-voyage.com/propertyimagebyid/213"}]' />  --}}
+               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+           	</a>
+            <div class="gridtext">
+              <h5 class="entry-title">
+                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}} -- Featured  </a>
+                   <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
+              </h5>
+               <p>  {{ $props->property_usp}}</p>
+                  <a class="read-more-link" href="{{ $url }}"  title="Discover" ><span class="newfont"> Discover</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      @if(count($femotional_gallery) > 0)
+      <?php
+        $images_arr = array();
+        foreach($femotional_gallery as $si_g_image){
+            //$images_arr[] = array("src"=>\URL::to('container-image/'.$si_g_image->id));
+            //$images_arr[] = array("src"=>\URL::to('uploads/thumbs/format_'.$si_g_image->folder_id.'_'.$si_g_image->file_name));
+            $images_arr[] = array("src"=>$si_g_image->imgsrc.$si_g_image->file_name);
+        }
+        $img_str = json_encode($images_arr);
+        ?>
+      <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
+        <div class="row">
+          <div class="gridinner">
+            <a href="javascript:false;">
+          		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{$images_arr[0]['src']}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true" data-rad-effect-type="fade"  />
+           	</a>
+            <div class="gridtext">
+              <h5 class="entry-title"></h5>
+               <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endif
+      
+	@endforeach
+</div>
+@endif
+
+      <div class="clearfix"></div>
+      	@if($propertiesArr)
+  	<h4 class="gridheading">{{$total_record}} 	<span class="newfont"> Luxury Hotel(s)</span> Found for {{$slug}} {{$dateslug}}</h4>
+	@endif
+    <div class="grid">
+    
+
+
+@if($propertiesArr)
+{{--*/ $rw = 1 /*--}}
+		@foreach($propertiesArr as $props)
+			<?php
+				$url=URL::to(rtrim($props->property_slug,'-'));
+				if(Request::has("departure") || Request::has("arrive"))
+				{
+					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
+				}
+                $temotional_gallery = array();
+                /*if(((($rw % 19) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
+                    for($i = 0; $i<9; $i++){
+                        if(count($emotional_gallery) > 0){ $temotional_gallery[] = array_shift($emotional_gallery); }
+                    }
+                }*/
+			?> 
+			@if($rw%19==0)
+							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
+                            
+							@if(!empty($resultads['resultads']))
+								 <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
+							        <div class="row">
+							           <div class="gridinner">
+							            <a href="#" >
+							          		  <img src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" class="img-responsive" >
+							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+							           	</a>
+							            <div class="gridtext">
+							              <h5 class="entry-title">
+							                  <a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}" rel="bookmark" style="">{{ $resultads['resultads']->adv_title}}   </a>
+							                  <a href="#">Advertisement</a>
+							              </h5>
+							               
+							                  <a class="read-more-link" href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}">{{ $resultads['resultads']->adv_title}}</a>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+							@endif
+							@else
+							      <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
+							        <div class="row">
+							           <div class="gridinner">
+							           	<div class="image">
+							           		    {{-- <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a> --}}
+							            <a href="{{ $url }}" title="{{ $props->property_name}}">
+							          		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}"  />
+							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+							           	</a>
+
+							           </div>
+							            <div class="gridtext">
+							              <h5 class="entry-title">
+							                  <a href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+							                  <a href="{{$url}}"><i class="fa fa-shopping-cart"></i></a>
+							              </h5>
+							               <p>  {{ $props->property_usp}}</p>
+							                  <a class="read-more-link" href="{{$url}}" title="discover"><span class="newfontsimple">Discover</span></a>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+							 @endif
+                             
+                             @if(count($temotional_gallery) > 0)
+                                <?php
+                                $images_arr = array();
+                                foreach($temotional_gallery as $si_g_image){
+                                    //$images_arr[] = array("src"=>\URL::to('container-image/'.$si_g_image->id));
+                                    $images_arr[] = array("src"=>\URL::to('uploads/thumbs/format_'.$si_g_image->folder_id.'_'.$si_g_image->file_name));
+                                }
+                                $img_str = json_encode($images_arr);
+                                ?>
+                                <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
+							        <div class="row">
+							           <div class="gridinner">
+							           	<div class="image">
+							           		    {{-- <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a> --}}
+							            <a href="javascript:false;">
+							          		 <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{$images_arr[0]['src']}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true" data-rad-effect-type="fade"  />
+							           	</a>
+
+							           </div>
+							            <div class="gridtext">
+							              <h5 class="entry-title"></h5>
+							               <p></p>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+                            @endif
+
+      		{{--*/ $rw++ /*--}}
+      @endforeach 
+@endif
+
+     
+  </div>
+  </div>
+</div>
+
+  <div class="col-md-12 col-xs-12 col-xs-12 text-center">
+  	<div class="row">
+  @if($total_pages>1)
+				<ul class="pagination">
+	 				@for($i=1;$i<=$total_pages;$i++)
+	 					<?php
+							$url=Request::url().'?';
+							$queryStrings=Request::query();
+							if(isset($queryStrings['page']))
+							{
+								unset($queryStrings['page']);
+							}
+							foreach($queryStrings as $keyQuery=>$querystring):
+								$url.=$keyQuery.'='.$querystring.'&';
+							endforeach;
+						?>
+	 					 <li class="@if($i==$active_page) active @endif"><a href="{{ $url.'page='.$i }}">{{ $i }}</a></li>
+	 				@endfor
+	 
+				</ul>
+				@endif
+	</div>
+</div>
+  
+
+
+
+
+
+
+
+
+
+	<!-- Instagram Gallery Section -->
+	@if($destination_category > 0)
+		@if($destination_category_instagram != '')
+			<section id="instagram-section">
+				<div class="col-sm-12 text-center">
+					<h2 class="heading">{{$slug}}</h2>
+				</div>
+				<section id="instagran" class="sections-instagram">
+					<div class="full-width">
+						<div data-is data-is-api="{{ url('runInsta')}}"
+							 data-is-source="{{ $destination_category_instagram }}"
+							 data-is-rows="2" data-is-limit="0" data-is-columns="5" ></div>
+					</div>
+				</section>
+			</section>
+		@endif
+	@endif
+</div>
 @endsection
 
 {{--For Right Side Icons --}}
@@ -398,7 +546,7 @@
 @section('javascript')
     @parent
 	<!-- instagram -->
-	<script src="{{ asset('lib/yottie/jquery.yottie.bundled.js')}}"></script>
+	
 	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
 	  <?php /*<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>*/ ?>
       <script src="{{ asset('themes/emporium/js/masonry.pkgd.min.js')}}"></script>
@@ -532,31 +680,10 @@ $grid.imagesLoaded().progress( function() {
                 $('img.rad-img').photoLoadAfterPageLoad(noImg);
             //End
     	});
-        /*window.onYottieReady = function() {
-            @if($channel_url!='')
-                $('.dv-youtube-channel').html('');
-                $('.dv-youtube-channel').yottie({                                
-                    channel: '{{$channel_url}}',
-                    width: 'auto',
-                    lang: 'en',
-                    header: {
-                        layout: 'accent'
-                    },
-                    content: {
-                        columns: 4,
-                        rows: 2
-                    },
-                    video: {
-                        layout: 'cinema'
-                    }
-                });
-            @endif
-        };*/
 		$(document).ready(function () {
 		  //load images after load full page
           //$('img.rad-img').photoLoadAfterPageLoad(noImg);
           //End
-          
           
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
@@ -620,9 +747,8 @@ $grid.imagesLoaded().progress( function() {
                 e.preventDefault();
                 //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 var d_name = $(this).attr('data-name');
-                var cat =  $("#sel_exp").val(); console.log(cat);               
+                var cat =  $("#sel_exp").val();                
                 var coll_type = 'destinations';
-                var req_for = $("#req_for").val();
                 var cobj = $(this);
                 //var token = $("input[name='_token']").val();
                 //console.log(data_name);
@@ -637,8 +763,7 @@ $grid.imagesLoaded().progress( function() {
                             var mem_types = response.mem_types;                            
                             if(mem_types.indexOf("2")>0){
                                 //window.location.href = '{{URL::to('luxury_destinations')}}/'+cat+'/dedicated-collection';
-                                //cat = $("#dd-destination").val();
-                                getPropertyByCollection('dedicated-collection', cat, 1, req_for);
+                                getPropertyByCollection('dedicated-collection', cat, 1);
                                 $(".dest-collection").removeClass('active');
                                 cobj.addClass('active');
                                 $("#dest_collection").val('dedicated-collection');
@@ -650,8 +775,7 @@ $grid.imagesLoaded().progress( function() {
                             var mem_types = response.mem_types;                            
                             if(mem_types.indexOf("3")>0){
                                 //window.location.href = '{{URL::to('luxury_experience')}}/'+cat+'/bespoke-collection';
-                                //cat = $("#dd-destination").val();
-                                getPropertyByCollection('bespoke-collection', cat, 1, req_for);
+                                getPropertyByCollection('bespoke-collection', cat, 1);
                                 $(".dest-collection").removeClass('active');
                                 cobj.addClass('active');
                                 $("#dest_collection").val('bespoke-collection');
@@ -660,8 +784,7 @@ $grid.imagesLoaded().progress( function() {
                                 $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');                               
                             }
                         }else{
-                            //cat = $("#dd-destination").val();
-                            getPropertyByCollection('lifestyle-collection', cat, 1, req_for);
+                            getPropertyByCollection('lifestyle-collection', cat, 1);
                             $(".dest-collection").removeClass('active');
                             cobj.addClass('active');
                             $("#dest_collection").val('lifestyle-collection'); 
@@ -672,35 +795,14 @@ $grid.imagesLoaded().progress( function() {
             });
             
             var mtype = $("#dest_collection").val();
-            var req_for = $("#req_for").val();
-            var _cat = '';
-            if(req_for=="luxury_experience"){
-                _cat =  $("#sel_exp").val();    
-            }else if(req_for=="luxury_destinations"){
-                //_cat = $("#dd-destination").val();
-                _cat =  $("#sel_exp").val();
-            }           
-            getPropertyByCollection(mtype, _cat, 1, req_for);
-            
-            //$('#main_tab').tabs("option", "active", 3);
-              
-            //var current_index = $("#main_tab").tabs("option","active");
-            //$("#tab-channel").tabs('load',current_index);
-            /*$tabs = $("#main_tab").tabs({
-                select: function(event, ui) {
-                    $('a', ui.tab).click(function() {
-                        $(ui.panel).load(this.href);
-                        return true;
-                    });
-                }
-            });*/
-            
+            var _cat =  $("#sel_exp").val();
+            getPropertyByCollection(mtype, _cat, 1);
 		});
 		
 		var pageCounter = 2;
 		var pagehgt = 1200;
 		var it_scroll = false;
-		var totalPage = '';
+		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
             if ($(window).scrollTop() < pagehgt) { return false; }
 
@@ -717,16 +819,13 @@ $grid.imagesLoaded().progress( function() {
         
         
         
-        function getPropertyByCollection(coll_type, cat, page, req_for){ console.log("hello");
+        function getPropertyByCollection(coll_type, cat, page){ console.log("hello");
             $.ajax({
                 url:'{{URL::to("propertybycollection/")}}',
                 //dataType:'html',
                 dataType:'json',
-                data: {coll_type:coll_type, cat:cat, page:page, req_for:req_for},
+                data: {coll_type:coll_type, cat:cat, page:page},
                 type: 'post',
-                beforeSend: function(){
-                    $(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
-                },
                 success: function(data){ 
                     
                     listpagestructure(data);
@@ -751,14 +850,7 @@ $grid.imagesLoaded().progress( function() {
             if($.isEmptyObject(jsonobj)){
                 
             }else{ 
-                var editorPropertiesArr = jsonobj.editorPropertiesArr;
-                /*var prop_packages = jsonobj.prop_packages;
-                if(typeof prop_packages !== undefined ){ console.log(prop_packages);
-                    $.each(prop_packages, function(key, value){
-                        console.log("#span-"+key+"-collection");
-                        $(".span-"+key+"-collection").html("("+value.length+")");        
-                    });    
-                }*/                                
+                var editorPropertiesArr = jsonobj.editorPropertiesArr;                
                 if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){
                      _html += '<div class="col-md-12 col-sm-12 col-xs-12">';
                         _html += '<div class="row">'
@@ -898,8 +990,6 @@ $grid.imagesLoaded().progress( function() {
                  				}
                     			?>
                                 if(rw%19==0){
-                                    var mresultads = jsonobj.resultads;
-                                    if(typeof mresultads !== undefined){
                                     var resultads = jsonobj.resultads.resultads;
                                     
                                     if(typeof resultads !== undefined && resultads != null){
@@ -926,7 +1016,6 @@ $grid.imagesLoaded().progress( function() {
                                                 _html += '</div>';
                                             _html += '</div>';
                                         _html += '</div>';
-                                    }
                                     }
                                 }else{
                                 
@@ -999,7 +1088,7 @@ $grid.imagesLoaded().progress( function() {
                 	_html += '</div>';
                 _html += '</div>';
                 
-                /*_html += '<!-- Instagram Gallery Section -->';
+                _html += '<!-- Instagram Gallery Section -->';
                 var destination_category = jsonobj.destination_category;
             	if(typeof destination_category !== undefined && destination_category > 0){
                     var destination_category_instagram = jsonobj.destination_category_instagram;
@@ -1015,10 +1104,10 @@ $grid.imagesLoaded().progress( function() {
             				_html += '</section>';
             			_html += '</section>';
             		}
-            	}*/
+            	}
             }
-            $(".load_ajax").html('');
-            $(".load_ajax").html(_html);
+            $("#load_ajax").html('');
+            $("#load_ajax").html(_html);
             $grid = $('.grid').masonry({
               // options...
             }); 
@@ -1035,8 +1124,7 @@ $grid.imagesLoaded().progress( function() {
            var cat = $("#sel_exp").val();                
            var coll_type = $("#dest_collection").val();
            var page = $(this).attr('data-page');
-           var req_for = $("#req_for").val();
-           getPropertyByCollection(coll_type, cat, page, req_for); 
+           getPropertyByCollection(coll_type, cat, page); 
         });
         
 		function scrollDataAjax(it_scroll, pageCounter){
@@ -1228,431 +1316,15 @@ $grid.imagesLoaded().progress( function() {
         }
         
         $(document).on('change', '#experience', function () {  
-            /*var expr = $(this).val();
-            window.location.href = '{{URL::to("luxury_experience")}}/'+expr;*/
-            var expr = $(this).val();            
-            var url = '{{URL::to("luxury_experience")}}/'+expr;
-            $("#menu_url").val(url);
-            
-            var destination = expr; 
-            
-            var datObj = {};
-            datObj.url = url;
-        	datObj.destination = destination;
-            
-        	var params = $.extend({}, doAjax_params_default);
-        	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-        	params['data'] = datObj;
-        	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-        	doAjax(params);
+            var expr = $(this).val();
+            window.location.href = '{{URL::to("luxury_experience")}}/'+expr;
         });
-        $(document).on('change', '#dd-destination', function (e) {  
-            /*var dest = $(this).val();
-            var dest_url = $("#dest_url").val();
-            window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
+        $(document).on('change', '#dd-destination', function () {  
             var dest = $(this).val();
             var dest_url = $("#dest_url").val();
-            console.log(dest_url);
-            if(dest == -1){
-                
-                var arr_durl = dest_url.split('/');                
-                var back_url = '';
-                if(arr_durl.length > 0){                    
-                    arr_durl.pop();
-                    dest = arr_durl[arr_durl.length - 1];                     
-                }                 
-                $.each(arr_durl, function(key, value){
-                     back_url = back_url+'/'+value;   
-                });
-                                
-                var url = "{{URL::to('luxury_destinations')}}"+back_url;
-                $("#menu_url").val(url);
-                
-                var destination = dest;
-                var datObj = {};
-                datObj.url = url;
-            	datObj.destination = destination;
-                
-            	var params = $.extend({}, doAjax_params_default);
-            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-            	params['data'] = datObj;
-            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-            	doAjax(params); 
-                
-            }else if(dest == 0){
-                e.preventDefault();
-                console.log(dest);
-                $("#tb_destination").css('display', 'none');    
-                $("#tbd_destination").css('display', '');
-            }else{
-                var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
-                $("#menu_url").val(url);
-                
-                var destination = dest; 
-                var datObj = {};
-                datObj.url = url;
-            	datObj.destination = destination;
-                
-            	var params = $.extend({}, doAjax_params_default);
-            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-            	params['data'] = datObj;
-            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-            	doAjax(params);
-                 
-            }
-           
-           
-        });
-
-        function changeBreadcrumbDropdown(catt){
-            $.ajax({
-                url:'{{URL::to("getDropdownBreadcrumb/")}}',
-                //dataType:'html',
-                dataType:'json',
-                data: {cat:catt},
-                type: 'post',
-                beforeSend: function(){
-                    
-                },
-                success: function(data){ 
-                    console.log(data);
-                    //console.log(data.youtube_channels);  
-                    var objytchannels = data.youtube_channels; 
-                    $("#youtube_channel").empty();
-                    $("#youtube_channel").append('<option>'+data.catname+'</option>');
-                    $.each(objytchannels, function(key, vlaue){
-                        $("#youtube_channel").append(
-                            $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
-                        );
-                    });
-                    var objParentCat = data.parent_cat;
-                    if(typeof objParentCat != undefined && objParentCat!=null){
-                        $("#youtube_channel").append('<option value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
-                    }else{
-                        $("#youtube_channel").append('<option value="-1">&lt; Back to Channel</option>');    
-                    } 
-                    
-                    var objinstachannels = data.instagram_channels; 
-                    $("#instagram_channel").empty();
-                    $("#instagram_channel").append('<option>'+data.catname+'</option>');
-                    $.each(objinstachannels, function(key, vlaue){
-                        $("#instagram_channel").append(
-                            $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
-                        );
-                    });  
-                    var objParentCat = data.parent_cat;
-                    if(typeof objParentCat != undefined && objParentCat!=null){
-                        $("#instagram_channel").append('<option value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
-                    }else{
-                        $("#instagram_channel").append('<option value="-1">&lt; Back to Social</option>');    
-                    } 
-                    
-                    var objdestinations = data.destinations; 
-                    $("#dd-destination").empty();
-                    $("#dd-destination").append('<option>'+data.catname+'</option>');
-                    $.each(objdestinations, function(key, vlaue){
-                        $("#dd-destination").append(
-                            $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
-                        );
-                    });
-                    var objParentCat = data.parent_cat;
-                    if(typeof objParentCat != undefined && objParentCat!=null){
-                        $("#dd-destination").append('<option value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
-                    }else{
-                        $("#dd-destination").append('<option value="-1">&lt; Back to Destination</option>');    
-                    }  
-                    
-                    var breadcrumb = data.dest_url;
-                    console.log(breadcrumb);
-                    $(".destination-breadcrumb").empty();
-                    $(".destination-breadcrumb").append('<li><a href="'+BaseURL+'">{{CNF_APPNAME}}</a></li>');
-                    var destpath = 'luxury_destinations';
-                    $.each(breadcrumb, function(key, vlaue){
-                        destpath = destpath+"/"+vlaue['category_alias'];
-                        $(".destination-breadcrumb").append('<li><a href="'+BaseURL+'/'+destpath+'">'+vlaue['category_name']+'</a></li>');
-                    });
-                    
-                    
-                    $(".youtube-breadcrumb").empty();
-                    $(".youtube-breadcrumb").append('<li><a href="'+BaseURL+'">{{CNF_APPNAME}}</a></li>');
-                    var ytpath = 'social-youtube';
-                    $.each(breadcrumb, function(key, vlaue){
-                        ytpath = ytpath+"/"+vlaue['category_alias'];
-                        $(".youtube-breadcrumb").append('<li><a class="yt-bread" data-alias="'+vlaue['category_alias']+'" href="#">'+vlaue['category_name']+'</a></li>');
-                    }); 
-                       
-                    $(".social-breadcrumb").empty();
-                    $(".social-breadcrumb").append('<li><a href="'+BaseURL+'">{{CNF_APPNAME}}</a></li>');
-                    var instpath = 'social-instagram';
-                    $.each(breadcrumb, function(key, vlaue){
-                        instpath = instpath+"/"+vlaue['category_alias'];
-                        $(".social-breadcrumb").append('<li><a class="insta-bread" data-alias="'+vlaue['category_alias']+'" href="#">'+vlaue['category_name']+'</a></li>');
-                    }); 
-                                  
-                }
-            });            
-        }
-        
-        $(document).on('click', '.yt-bread', function(e){
-            e.preventDefault();
-            var dest = $(this).attr('data-alias');
-            getDefaultChannel(dest)
-            changeBreadcrumbDropdown(dest);         
-        });
-        $(document).on('click', '.insta-bread', function(e){
-            e.preventDefault();
-            var dest = $(this).attr('data-alias');
-            getDefaultInstagram(dest);
-            changeBreadcrumbDropdown(dest);      
+            window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
         });
         
-        $(document).on('change', '#youtube_channel', function (e) { 
-            var dest = $(this).val();
-            var dest_url = $("#dest_url").val();
-            console.log(dest, dest_url);
-            if(dest == -1){
-                
-                var arr_durl = dest_url.split('/');                
-                var back_url = '';
-                if(arr_durl.length > 0){                    
-                    arr_durl.pop();
-                    dest = arr_durl[arr_durl.length - 1];                     
-                }                 
-                $.each(arr_durl, function(key, value){
-                     back_url = back_url+'/'+value;   
-                });
-                getDefaultChannel(dest)
-                changeBreadcrumbDropdown(dest);                
-                /*var url = "{{URL::to('social-youtube')}}"+back_url;
-                $("#menu_url").val(url);
-                
-                var destination = dest;
-                var datObj = {};
-                datObj.url = url;
-            	datObj.destination = destination;
-                
-            	var params = $.extend({}, doAjax_params_default);
-            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-            	params['data'] = datObj;
-            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-            	doAjax(params);*/ 
-                
-            }else if(dest == 0){
-                e.preventDefault();                
-                $(".tb_channel").css('display', 'none');    
-                $(".tbd_Channel").css('display', '');
-                $(".tbd_Channel").addClass('active');
-                $("#tb_destination").css('display', 'none');    
-                $("#tbd_destination").css('display', '');
-                $("#tbd_destination").removeClass('active');
-                $(".tb_Social").css('display', 'none');    
-                $(".tbd_Social").css('display', '');
-                $(".tbd_Social").removeClass('active');
-            }else{
-                getDefaultChannel(dest)
-                changeBreadcrumbDropdown(dest);
-            }
-            
-            /*var dest = $(this).val();
-            var dest_url = $("#dest_url").val();
-            window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
-            /*var dest = $(this).val();
-            var dest_url = $("#dest_url").val();
-            console.log(dest_url);
-            if(dest == -1){
-                
-                var arr_durl = dest_url.split('/');                
-                var back_url = '';
-                if(arr_durl.length > 0){                    
-                    arr_durl.pop();
-                    dest = arr_durl[arr_durl.length - 1];                     
-                }                 
-                $.each(arr_durl, function(key, value){
-                     back_url = back_url+'/'+value;   
-                });
-                                
-                var url = "{{URL::to('social-youtube')}}"+back_url;
-                $("#menu_url").val(url);
-                
-                var destination = dest;
-                var datObj = {};
-                datObj.url = url;
-            	datObj.destination = destination;
-                
-            	var params = $.extend({}, doAjax_params_default);
-            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-            	params['data'] = datObj;
-            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-            	doAjax(params); 
-                
-            }else if(dest == 0){
-                e.preventDefault();
-                console.log(dest);
-                $("#tb_destination").css('display', 'none');    
-                $("#tbd_destination").css('display', '');
-            }else{
-                var url = "{{URL::to('social-youtube')}}"+"/"+dest_url+"/"+dest;
-                $("#menu_url").val(url);
-                
-                var destination = dest; 
-                var datObj = {};
-                datObj.url = url;
-            	datObj.destination = destination;
-                
-            	var params = $.extend({}, doAjax_params_default);
-            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-            	params['data'] = datObj;
-            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-            	doAjax(params); 
-            }*/
-           
-           
-        });
-        
-        $(document).on('change', '#instagram_channel', function (e) {  
-            /*var dest = $(this).val();
-            var dest_url = $("#dest_url").val();
-            window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
-            var dest = $(this).val();
-            var dest_url = $("#dest_url").val();
-            console.log(dest_url);
-            if(dest == -1){
-                
-                var arr_durl = dest_url.split('/');                
-                var back_url = '';
-                if(arr_durl.length > 0){                    
-                    arr_durl.pop();
-                    dest = arr_durl[arr_durl.length - 1];                     
-                }                 
-                $.each(arr_durl, function(key, value){
-                     back_url = back_url+'/'+value;   
-                });
-                console.log("hello");
-                getDefaultInstagram(dest);
-                changeBreadcrumbDropdown(dest);                
-                /*var url = "{{URL::to('luxury_destinations')}}"+back_url;
-                $("#menu_url").val(url);
-                
-                var destination = dest;
-                var datObj = {};
-                datObj.url = url;
-            	datObj.destination = destination;
-                
-            	var params = $.extend({}, doAjax_params_default);
-            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-            	params['data'] = datObj;
-            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-            	doAjax(params);*/ 
-                
-            }else if(dest == 0){
-                e.preventDefault(); 
-                /*console.log(dest);
-                $(".tb_social").css('display', 'none');    
-                $(".tbd_social").css('display', '');*/
-                $(".tb_channel").css('display', 'none');    
-                $(".tbd_Channel").css('display', '');
-                $(".tbd_Channel").removeClass('active');
-                $("#tb_destination").css('display', 'none');    
-                $("#tbd_destination").css('display', '');
-                $("#tbd_destination").removeClass('active');
-                $(".tb_Social").css('display', 'none');    
-                $(".tbd_Social").css('display', '');
-                $(".tbd_Social").addClass('active');
-            }else{
-                /*var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
-                $("#menu_url").val(url);
-                
-                var destination = dest; 
-                var datObj = {};
-                datObj.url = url;
-            	datObj.destination = destination;
-                
-            	var params = $.extend({}, doAjax_params_default);
-            	params['url'] = BaseURL + '/destination/emotional-gallery-loader';
-            	params['data'] = datObj;
-            	params['successCallbackFunction'] = renderEmotionalGalleryLoader;
-            	doAjax(params);*/ 
-                getDefaultInstagram(dest);
-                changeBreadcrumbDropdown(dest);
-                
-                
-            }
-           
-           
-        });
-        
-        $(document).on('click', '[href="#tab-destination"]', function(e){
-            var mtype = $("#dest_collection").val();
-            var req_for = $("#req_for").val();
-            var _cat = '';
-            if(req_for=="luxury_experience"){
-                _cat =  $("#dd-destination").val();    
-            }else if(req_for=="luxury_destinations"){                
-                _cat =  $("#dd-destination").val();
-            }           
-            getPropertyByCollection(mtype, _cat, 1, req_for);
-        });
-        
-        $(document).on('click', '[href="#tab-channel"]', function(){
-            var dest = $('#youtube_channel').val();
-            getDefaultChannel(dest);
-        });
-        
-        $(document).on('click', '[href="#tab-social"]', function(){
-            var dest = $('#instagram_channel').val(); console.log(dest);
-            getDefaultInstagram(dest);
-        });
-        
-        function getDefaultInstagram(catt){            
-            $.ajax({
-                url:'{{URL::to("getinstagramchannel/")}}',
-                //dataType:'html',
-                dataType:'json',
-                data: {cat:catt},
-                type: 'post',
-                beforeSend: function(){
-                    
-                },
-                success: function(data){ 
-                    
-                    console.log(data.channel_url); console.log("hell");   
-                    $(".dv-instagram-channel").html('<div class="insta_pic"></div>');
-                    //$(".dv-youtube-channel").html('<div data-yt data-yt-channel="'+data.channel_url+'" data-yt-content-columns="4"  data-yt-content-rows="3"></div>')                    
-                    $('.insta_pic').eappsInstagramFeed({
-                        api: '{{ url("runInsta")}}',
-                        source: data.channel_url,                        
-                        columns: 5,
-                        rows: 2                        
-                    });
-                }
-            });
-        }
-        
-        function getDefaultChannel(catt){            
-            $.ajax({
-                url:'{{URL::to("getyoutubechannel/")}}',
-                //dataType:'html',
-                dataType:'json',
-                data: {cat:catt},
-                type: 'post',
-                beforeSend: function(){
-                    
-                },
-                success: function(data){ 
-                    
-                    console.log(data.channel_url);   
-                    $(".dv-youtube-channel").html('<div class="yt-rvideos"></div>');
-                    //$(".dv-youtube-channel").html('<div data-yt data-yt-channel="'+data.channel_url+'" data-yt-content-columns="4"  data-yt-content-rows="3"></div>')                    
-                        $('.yt-rvideos').yottie({                                
-                            channel: data.channel_url,
-                            content: {
-                                columns: 4,
-                                rows: 2
-                            },
-                        });
-                }
-            });
-        }
         
 	</script>
 @endsection
