@@ -440,10 +440,10 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('globalavailability', 'Frontend\PropertyController@propertyglobalavailability');
     
     Route::post('globalsearchavailability', 'Frontend\PropertyController@globalsearchavailability');
-    Route::post('getyoutubechannel', 'Frontend\FrontendPagesController@getyoutubechannel');
-    Route::post('getinstagramchannel', 'Frontend\FrontendPagesController@getinstagramchannel');
+    Route::get('getyoutubechannel', 'Frontend\FrontendPagesController@getyoutubechannel');
+    Route::get('getinstagramchannel', 'Frontend\FrontendPagesController@getinstagramchannel');
     
-    Route::post('getDropdownBreadcrumb', 'Frontend\PropertyController@getDropdownBreadcrumb');
+    Route::get('getDropdownBreadcrumb', 'Frontend\PropertyController@getDropdownBreadcrumb');
 });
 
 Route::post('propcollection', 'Frontend\PropertyController@propcollection');

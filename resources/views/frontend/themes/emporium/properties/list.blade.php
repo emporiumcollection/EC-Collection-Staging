@@ -1609,7 +1609,7 @@ $grid.imagesLoaded().progress( function() {
                 //dataType:'html',
                 dataType:'json',
                 data: {cat:catt},
-                type: 'post',
+                type: 'get',
                 beforeSend: function(){
                     
                 },
@@ -1634,7 +1634,7 @@ $grid.imagesLoaded().progress( function() {
                 //dataType:'html',
                 dataType:'json',
                 data: {cat:catt},
-                type: 'post',
+                type: 'get',
                 beforeSend: function(){
                     
                 },
