@@ -503,7 +503,7 @@
                             <div class="row">
                                 <ul class="hotelBorderList">
                                     
-                                    <li style="width: 45%;" class="center-calendarbox">
+                                    <li class="center-calendarbox t-picker-width">
                                         <div id="t-middel-picker" class="t-datepicker">
                                             <div class="t-date-divide">
                                                 <h3>Arrival</h3>
