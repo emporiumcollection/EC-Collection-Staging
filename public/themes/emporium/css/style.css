@@ -1289,7 +1289,7 @@ border-radius:0;
 .mobilemenulist li a{padding:15px 25px; display:block; color:#BCBCBF; text-transform:uppercase; font-size:13px; transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;}
 .mobilemenulist li a.scrollpage.active, .mobilemenulist li a:hover{background-color: #19191B; border-left: 4px solid #ABA07C;  color: #fff;outline: 0; text-decoration: none; margin-left :20px; padding-left:5px !important}
 .mobilemenulist li .navheadimage a:hover{border:0; margin:0; padding:0 !important;}
-.mobilemenulist li a.yellowbtn{background:#aba00b }
+.mobilemenulist li a.yellowbtn{background:#aba00b; color: #fff; }
 .mobilemenulist li p{padding:15px 25px; color:#BCBCBF;}
 .mobilemenulist li p.pdlr25px{padding-left:25px; padding-right:25px;}
 .mobilemenulist li p a{padding:3px; display: inline-block; text-transform:capitalize;}

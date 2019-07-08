@@ -128,13 +128,13 @@
 .HamYardHotelInner h2 {
     color: #8b8c8e;
     font-family: ACaslonPro-Regular;
-    font-size: 26px;
+    font-size: 21px;
     font-weight: lighter;
     margin-top: 0;
     text-transform: uppercase;
     width: 100%;
     margin-left: 0px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 .HamYardHotelInner p {
     color: #BCBCBF;
@@ -208,6 +208,9 @@
   border-bottom: 1px solid #545454;
   border-right: 1px solid #545454;
   border-top: 1px solid #545454;
+}
+.hotelBorderList .t-picker-width{
+    width: 45%;    
 }
 .hotelBorderList li {
   border-right: 1px solid #545454;
@@ -468,9 +471,9 @@ position: absolute;
 .sliderContent .btn {
   font-size: 15px;
   padding: 5px 10px;
-  background: #ABA07C;
-  border: 1px solid #ABA07C;
-  color: #BCBCBF;
+  background: #19191B;
+  border: 1px solid #ffffff;
+  color: #ffffff;
   border-radius: 0px;
   margin: 2px 2px;
   width: 48%;
@@ -825,6 +828,9 @@ position: absolute;
     position: relative;
     transform: none;
     -webkit-transform: none;
+  }
+  .hotelBorderList .t-picker-width{
+    width: 100%;    
   }
 }
 @media screen and (max-width: 480px) {
