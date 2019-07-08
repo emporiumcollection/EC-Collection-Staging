@@ -5684,10 +5684,7 @@ ul.item-list-bar {
         padding: 10px;
         font-size: 13px;
     }
-    .search-tab .destinatin .nav-tabs>li.active>a, .search-tab .destinatin .nav-tabs>li.active>a:focus, .search-tab .destinatin .nav-tabs>li.active>a:hover{
-        background: transparent !important;
-        border-color: #8D8C8E;
-        border-bottom-color: #19191B;
+    .search-tab .destinatin .nav-tabs>li.active>a, .search-tab .destinatin .nav-tabs>li.active>a:focus, .search-tab .destinatin .nav-tabs>li.active>a:hover{        
         padding: 10px;
         font-size: 13px;
     }
