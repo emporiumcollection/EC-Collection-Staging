@@ -146,7 +146,8 @@
 {
 font-family: GeomanistLight;  
       line-height:28px;
-    color:#fff;
+    color:#BCBCBF;
+    margin-top: 15px;
 }
 .gridtext h5 a i
 {
@@ -223,8 +224,8 @@ font-family: GeomanistLight;
 }
 .pagination li a
 {
-  font-family: 'SilverSouthSerif';
-    background:#262626;
+  font-family: 'GeomanistLight', sans-serif;
+    background:#19191B;
   border:none;
   color:#fff;
   font-size:18px;
@@ -353,6 +354,7 @@ th.next.available i
 .gridinner img
 {
   width:100%;
+  margin-bottom: 20px;
 }
 .multiple-items
 {
@@ -385,12 +387,12 @@ th.next.available i
 
 .pagination>.active>a
 {
-  background:none;
-  color:#fff !important;
+  background:#19191B;
+  color:#8D8C8E !important;
 }
 .pagination li a
 {
-      color: #ac9898 !important;
+      color: #BCBCBF !important;
 }
 .pagination li a:hover,.pagination>.active>a:hover,.pagination li a:focus,.pagination>.active>a:focus
 {
@@ -469,26 +471,28 @@ opacity:1;
 .gridheading 
 {
  
-  color:#ABA07C;
+  color:#BCBCBF;
   text-align:center;
   width:100%;
   padding:20px 0px;
-  font-size:25px;
+  font-size:18px;
   font-family: GeomanistLight !important;
 }
 .gridheading .newfont
 {
-  font-size:40px;
- font-family: 'SilverSouthScript';
+  font-size:18px;
+  font-family: GeomanistLight !important;
+  text-decoration: underline;
+
   
 }
  a .newfont
 {
-  font-size:50px;
- font-family: 'SilverSouthScript';
+  font-size:14px;
+ font-family: GeomanistLight !important;
   
 }
 a .newfontsimple{
-   font-size:40px;
- font-family: 'SilverSouthScript';
+   font-size:16px;
+ font-family: GeomanistLight !important;
 }

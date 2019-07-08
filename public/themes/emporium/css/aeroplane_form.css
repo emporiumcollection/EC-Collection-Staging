@@ -13,23 +13,23 @@ body{
     background: #19191B;
     font-size: 14px;
     line-height: 1.4;
-    color: #fff
+    color: #BCBCBF;
 }
 
 a , label{
-    color: #fff;
+    color: #BCBCBF;
     font-weight: normal;
 }
 a:hover{
-    color: #aba07c;
+    color: #BCBCBF;
     text-decoration: none;
 
 }
 
 div#aero-book label {    
     margin-bottom: 5px;   
-    color: #aba07c !important;
-    font-size: 15px;
+    color: #BCBCBF !important;
+    font-size: 17px;
     font-weight: 600;
 }
 
@@ -44,9 +44,9 @@ div#aero-book .dropdown button.dropdown-toggle{
     background: transparent;
     border: 0;
     border-radius: 0;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #BCBCBF;
     margin-bottom: 5px;
-    color: #fff;
+    color: #BCBCBF;
     padding-left: 0;
     padding-right: 0;
     margin-top: 10px;
@@ -65,16 +65,16 @@ div#aero-book .nav > li > a {
     letter-spacing: 0.5px;
     font-weight: 600;
     border-radius: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(44,45,51,0.5);
     margin-bottom: 1px;
-    color: #fff !important;
+    color: #BCBCBF !important;
 }
 div#aero-book .nav-tabs > li.active > a,
 div#aero-book .nav-tabs > li > a:hover,
 div#aero-book .nav-tabs > li.active > a:focus {
-    color: #fff !important;
+    color: #BCBCBF !important;
     cursor: default;
-    background-color: #ABA07C;
+    background-color: #2C2D33;
     border: 1px solid #888787;
     border-bottom-color: transparent;
     cursor: pointer;
@@ -85,15 +85,15 @@ div#aero-book  .tab-content {
 }
 
 div#aero-book input.form-control-submit {
-    background-color: #ABA07C;
+    background-color: #BCBCBF;
     border: medium none;
-    color: #fff;
+    color: #BCBCBF;
     font-size: 15px;
     font-weight: bold;
     padding: 15px 30px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #fff;
+    color: #BCBCBF;
     margin-top: 20px;
     transition: all 500ms ease;
     -webkit-transition: all 500ms ease;
@@ -138,7 +138,7 @@ div#aero-book input.form-control-submit:hover,
     height: 25px;
     font-size: 25px;
     text-align: center;
-    border: 1px solid #aba07c;
+    border: 1px solid #BCBCBF;
     line-height: 20px;
     background: rgb(171, 160, 124);
     margin: auto;
@@ -188,7 +188,7 @@ input[type=number]::-webkit-outer-spin-button {
 .datepicker table tr td span.active.disabled:active, .datepicker table tr td span.active.disabled:hover:active,
 .datepicker table tr td span.active.active, .datepicker table tr td span.active:hover.active,
 .datepicker table tr td span.active.disabled.active, .datepicker table tr td span.active.disabled:hover.active{
-    background: #aba07c !important;
+    background: #BCBCBF !important;
 }
 
 
@@ -215,14 +215,14 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     height: 100%;
     content: "";
-    background: rgba(0,0,0,0.83);
+    background: #19191B;
 }
 /*end of bg sec*/
 
 /*start hotel , yacht , jet sec*/
 
 .bg-overlay-book {
-    background: #000;
+    background: #2C2D33;
     padding: 10px 0;
 }
 .bg-overlay-book .nav-tabs{
@@ -234,7 +234,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .bg-overlay-book .nav-tabs > li > a{
     background: transparent;
-    color: #fff !important;
+    color: #BCBCBF !important;
     font-size: 25px;
     border-radius: 0;
     padding:10px 15px; 
@@ -243,7 +243,7 @@ input[type=number]::-webkit-outer-spin-button {
 .bg-overlay-book .nav-tabs > li.active > a, .bg-overlay-book .nav-tabs > li.active > a:hover,
 .bg-overlay-book .nav-tabs > li.active > a:focus , .bg-overlay-book .nav-tabs > li > a:hover{
     background:transparent;
-    color: #aba00b !important;
+    color: #BCBCBF !important;
     border: 0;
 }
 
@@ -252,12 +252,12 @@ div#select-yacht > .row {
 }
 
 .form-group.search-nm input {
-    border: 1px solid #aba07c !important;
+    border: 1px solid #2C2D33 !important;
     padding: 5px 15px !important;
-    background: rgba(0,0,0,0.5) !important;
-    height: 60px;
-    font-size: 20px;
-    color: #ffffff;
+    background: rgba(44,45,51,0.5) !important;
+    height: 40px;
+    font-size: 14px;
+    color: #BCBCBF;
 }
 
 .form-group.search-nm {
@@ -270,18 +270,18 @@ div#select-yacht > .row {
 
 .form-group .dropdown-menu {
     font-size: 15px;
-    background: rgba(0,0,0,0.8);
+    background: rgba(44,45,51,0.5);
     border-radius: 0;
     padding: 15px 0;
     z-index: 55;
-    border: 1px solid #aba07c;
+    border: 1px solid #2C2D33;
     min-width: 250px;
     width: 100%;
 }
 
 .form-group .dropdown-menu li a{
-   color: #fff;
-    border-bottom: 1px solid #aba07c;
+   color: #BCBCBF;
+    border-bottom: 1px solid #BCBCBF;
     padding: 10px 15px 10px;
     margin-bottom: 0;
     cursor: pointer;
@@ -295,7 +295,7 @@ div#select-yacht > .row {
     padding-bottom: 0;
 }
 .hotelPopupHeadings > p {
-    color: #ABA07C;
+    color: #BCBCBF;
     margin-top: 16px;
 }
 
@@ -304,7 +304,7 @@ div#select-yacht > .row {
 }
 .lnk-txt p {
     font-size: 18px;
-    color: #ABA07C;
+    color: #BCBCBF;
 }
 .lnk-txt a{
     text-transform: uppercase;
@@ -315,16 +315,16 @@ div#select-yacht > .row {
 }
 
 #aero-book ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #fff;
+  color: #BCBCBF;
 }
 #aero-book::-moz-placeholder { /* Firefox 19+ */
-  color: #fff;
+  color: #BCBCBF;
 }
 #aero-book :-ms-input-placeholder { /* IE 10+ */
-  color: #fff;
+  color: #BCBCBF;
 }
 #aero-book:-moz-placeholder { /* Firefox 18- */
-  color: #fff;
+  color: #BCBCBF;
 }
 /*end of hotel , yacht , jet sec*/
 

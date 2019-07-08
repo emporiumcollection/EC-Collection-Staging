@@ -84,7 +84,7 @@ input.error {
 #search-result-slider .carousel-inner .item,
 .mobilemenulist .navheadimage .headingoverlay,
 .hotel-card figure {
-    background-color: rgba(37, 37, 37, 0.2);
+    background-color: rgba(25, 25, 25, 0.2);
 }
 
 .mobilemenulist .navheadimage {
@@ -97,10 +97,11 @@ input.error {
     background: rgba(0, 0, 0, .5);
     width: 100%;
     padding: 10px 25px;
+    color: #BCBCBF;
 }
 
 .mobilemenulist .navheadimage .headingoverlay .hashTag {
-    color: #fff;
+    color: #BCBCBF;
     /*font-size: 12px;*/
 }
 
@@ -108,7 +109,7 @@ input.error {
     padding-left: 0;
     padding-top: 0;
     top: 0;
-    background-color: rgba(37, 37, 37, 0.35);
+    background-color: rgba(25, 25, 27, 0.35);
 }
 
 body .ui-widget.ui-widget-content {
@@ -118,20 +119,20 @@ body .ui-widget.ui-widget-content {
 }
 body .ui-widget.ui-widget-content li {
     border-bottom: 1px solid #545454;
-    color: #fff;
+    color: #BCBCBF;
     padding: 6px 48px;
     position: relative;
 }
 body .ui-widget.ui-widget-content li:hover {
     cursor: pointer;
-    color: #fff;
+    color: #BCBCBF;
     background-color: #89837B;
 }
 body .ui-widget.ui-widget-content .ui-state-active {
     border: 1px solid transparent;
     background: transparent;
     font-weight: normal;
-    color: #fff;
+    color: #BCBCBF;
 }
 body .ui-widget.ui-widget-content li i.iconsheet.icon-destinations {
     background-position: 0px -108px;
@@ -172,7 +173,7 @@ body .ui-widget.ui-widget-content li i.iconsheet {
 #filtersearchpopup ul ul.mobilemenulist li a {
     padding: 15px 25px;
     display: block;
-    color: #fff;
+    color: #BCBCBF;
     text-transform: uppercase;
     font-size: 12px;
     transition: all .3s ease 0s;
@@ -182,12 +183,12 @@ body .ui-widget.ui-widget-content li i.iconsheet {
 #filtersearchpopup ul ul.mobilemenulist li a:hover {
     background-color: #19191B;
     border-left: 4px solid #ABA07C;
-    color: #fff;
+    color: #BCBCBF;
     outline: 0;
     text-decoration: none;
 }
 .mobilemenulist i.fa.fa-angle-right {
-    color: #fff;
+    color: #BCBCBF;
     position: absolute;
     top: 35%;
     right: 20px;
@@ -196,7 +197,7 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     color: #ABA07C;
 }
 .daterangepicker.daterangecalendar-design i.fa.fa-close {
-    color: #fff;
+    color: #BCBCBF;
     position: absolute;
     right: 20px;
     font-size: 22px;
@@ -219,7 +220,7 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     width: 8%; float: left;
 }
 .no-referral-label{
-    width: 92%; float: left; color: #fff;
+    width: 92%; float: left; color: #BCBCBF;
 }
 
 .mg-top{
