@@ -496,3 +496,11 @@ a .newfontsimple{
    font-size:16px;
  font-family: GeomanistLight !important;
 }
+
+@media (max-width:767px)
+{
+    .pagination>li
+    {
+      display:inline-block !important;
+    }
+}
