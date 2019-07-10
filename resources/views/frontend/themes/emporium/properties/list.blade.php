@@ -140,12 +140,13 @@
                         @endforeach 
                     @endif
                 </select>
-                                
+                <h5 class="margin-top-20">Choose your Membership Type to make a reservation</h5>                
                 @if(!empty($collections))
                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
                 <ul class="nav nav-tabs">
                     @foreach($collections as $coll)
-                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('luxury_experience')}}/{{$sel_exp}}/{{$coll->category_alias}}" >{{$coll->category_name}} </a></li>
+                        <?php $exp_cat_name = explode(' ', $coll->category_name) ?>  
+                        <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('luxury_experience')}}/{{$sel_exp}}/{{$coll->category_alias}}" >{{$exp_cat_name[0]}} </a></li>
                         {{--*/ $k++;  /*--}}    
                     @endforeach                            
                 </ul>                  
@@ -248,7 +249,7 @@
                     </ul>
                 </div>
                 <select name="dd-destination" id="dd-destination">
-                    <option value="{{$catalias}}">{{$catname}}</option>     
+                    <option value="{{$catalias}}">You are in {{$catname}}</option>     
                     @if(!empty($destinations))               
                         @foreach($destinations as $dest)
                             <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
@@ -261,7 +262,7 @@
                         <option value="0">&lt; Back to Destination</option>
                     @endif
                 </select>
-                <h5 class="margin-top-20">Your Collection</h5>              
+                <h5 class="margin-top-20">Choose your Membership Type to make a reservation</h5>              
                 @if(!empty($collections))
                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
                 <ul class="nav nav-tabs">
@@ -292,7 +293,7 @@
                     </ul>
                 </div>
                 <select name="youtube_channel" id="youtube_channel">
-                    <option value="{{$catalias}}">{{$catname}}</option>     
+                    <option value="{{$catalias}}">You are in {{$catname}}</option>     
                     @if(!empty($youtube_channels))               
                         @foreach($youtube_channels as $dest)
                             <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
@@ -325,7 +326,7 @@
                     </ul>
                 </div>
                 <select name="instagram_channel" id="instagram_channel">
-                    <option value="{{$catalias}}">{{$catname}}</option>     
+                    <option value="{{$catalias}}">You are in {{$catname}}</option>     
                     @if(!empty($instagram_channels))               
                         @foreach($instagram_channels as $dest)
                             <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
@@ -1321,7 +1322,7 @@ $grid.imagesLoaded().progress( function() {
                     //console.log(data.youtube_channels);  
                     var objytchannels = data.youtube_channels; 
                     $("#youtube_channel").empty();
-                    $("#youtube_channel").append('<option>'+data.catname+'</option>');
+                    $("#youtube_channel").append('<option value="'+data.catalias+'">'+data.catname+'</option>');
                     $.each(objytchannels, function(key, vlaue){
                         $("#youtube_channel").append(
                             $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
@@ -1336,7 +1337,7 @@ $grid.imagesLoaded().progress( function() {
                     
                     var objinstachannels = data.instagram_channels; 
                     $("#instagram_channel").empty();
-                    $("#instagram_channel").append('<option>'+data.catname+'</option>');
+                    $("#instagram_channel").append('<option value="'+data.catalias+'">'+data.catname+'</option>');
                     $.each(objinstachannels, function(key, vlaue){
                         $("#instagram_channel").append(
                             $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
@@ -1351,7 +1352,7 @@ $grid.imagesLoaded().progress( function() {
                     
                     var objdestinations = data.destinations; 
                     $("#dd-destination").empty();
-                    $("#dd-destination").append('<option>'+data.catname+'</option>');
+                    $("#dd-destination").append('<option value="'+data.catalias+'">'+data.catname+'</option>');
                     $.each(objdestinations, function(key, vlaue){
                         $("#dd-destination").append(
                             $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
@@ -1365,20 +1366,27 @@ $grid.imagesLoaded().progress( function() {
                     }  
                     
                     var breadcrumb = data.dest_url;
-                    console.log(breadcrumb);
+                    //console.log(breadcrumb);
+                    var destUrl = '';
                     $(".destination-breadcrumb").empty();
                     $(".destination-breadcrumb").append('<li><a href="'+BaseURL+'">{{CNF_APPNAME}}</a></li>');
                     var destpath = 'luxury_destinations';
                     $.each(breadcrumb, function(key, vlaue){
+                        if(destUrl==''){
+                            destUrl = destUrl + vlaue['category_alias'];     
+                        }else{
+                            destUrl = destUrl +'/'+ vlaue['category_alias']; 
+                        }
+                        $("#dest_url").val(destUrl);
                         destpath = destpath+"/"+vlaue['category_alias'];
                         $(".destination-breadcrumb").append('<li><a href="'+BaseURL+'/'+destpath+'">'+vlaue['category_name']+'</a></li>');
                     });
                     
-                    
+                    var yUrl = '';
                     $(".youtube-breadcrumb").empty();
                     $(".youtube-breadcrumb").append('<li><a href="'+BaseURL+'">{{CNF_APPNAME}}</a></li>');
                     var ytpath = 'social-youtube';
-                    $.each(breadcrumb, function(key, vlaue){
+                    $.each(breadcrumb, function(key, vlaue){                        
                         ytpath = ytpath+"/"+vlaue['category_alias'];
                         $(".youtube-breadcrumb").append('<li><a class="yt-bread" data-alias="'+vlaue['category_alias']+'" href="#">'+vlaue['category_name']+'</a></li>');
                     }); 

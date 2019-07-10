@@ -5325,7 +5325,9 @@ ul.item-list-bar {
 	padding-top:0;
 }
 	
-	
+.u-pad-t-sm {
+  padding-top: 0px
+}	
 	
 }
 

@@ -4517,6 +4517,7 @@ class PropertyController extends Controller {
         $destarr = array();
         $dest_url = '';
         $catname = '';
+        $catalias = '';
         $keyword = $request->input('cat');        
         $cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
         $parent_cat = '';
@@ -4552,7 +4553,8 @@ class PropertyController extends Controller {
                     $dest_url = array_reverse($this->fetchcategorybc($cateObj->id));
     				//$dest_url = implode('/',array_reverse($this->fetchcategoryaliaspath($cateObj->id)));
                 }
-                $catname = $cateObj->category_name;                                    
+                $catname = $cateObj->category_name;
+                $catalias = $cateObj->category_alias;                                    
             }
             $parent_cat = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('id', $cateObj->parent_category_id)->first();          
         }        
@@ -4580,6 +4582,7 @@ class PropertyController extends Controller {
         }
         $res['instagram_channels'] = $instagram_channels;
         $res['catname'] = $catname;
+        $res['catalias'] = $catalias;
         
         echo json_encode($res);    
     }

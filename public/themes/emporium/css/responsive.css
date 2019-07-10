@@ -125,7 +125,10 @@ body.open{overflow:hidden;}
 	}
 	.footer-coloumn{padding-right:0;}
 	.sidefixednav{top:85px;}
-	
+    
+	.mobilemenu{min-width:360px;}
+    
+	.mobilemenu-inner{width:320px;} 
 }
 
 @media (max-width:767px){
