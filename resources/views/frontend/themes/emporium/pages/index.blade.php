@@ -317,7 +317,7 @@
         });        
     });*/    
     
-    $("#pills-home-tab").click(function(){
+    /*$("#pills-home-tab").click(function(){
         $("#sitename").val('voyage');
         $("#globalfiltersearchpopup").css('display', 'none'); 
         $('[data-action="global-search"]').val('');     
@@ -336,7 +336,7 @@
         $("#sitename").val('islands');
         $("#globalfiltersearchpopup").css('display', 'none');
         $('[data-action="global-search"]').val('');          
-    });
+    });*/
     
     /*$(document).on('keyup', '[data-action="global-search"]', function () { 
         var sitename = $("#sitename").val();

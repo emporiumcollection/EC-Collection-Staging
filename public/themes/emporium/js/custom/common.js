@@ -1546,3 +1546,23 @@ $(document).on('click', '.whengo', function(e){
     
 });
 /****** End global search all function *******/
+$(document).on('click', "#pills-home-tab", function(){
+    $("#sitename").val('voyage');
+    $("#globalfiltersearchpopup").css('display', 'none'); 
+    $('[data-action="global-search"]').val('');     
+});
+$(document).on('click', "#pills-profile-tab", function(){
+    $("#sitename").val('safari');   
+    $("#globalfiltersearchpopup").css('display', 'none');
+    $('[data-action="global-search"]').val('');     
+});
+$(document).on('click', "#pills-contact-tab", function(){
+    $("#sitename").val('spa');
+    $("#globalfiltersearchpopup").css('display', 'none'); 
+    $('[data-action="global-search"]').val('');        
+});
+$(document).on('click', "#pills-expereince-tab", function(){
+    $("#sitename").val('islands');
+    $("#globalfiltersearchpopup").css('display', 'none');
+    $('[data-action="global-search"]').val('');          
+});
