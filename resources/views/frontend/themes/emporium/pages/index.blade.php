@@ -279,7 +279,7 @@
       });
     }
     
-    $(document).ready(function(){
+    /*$(document).ready(function(){
         var chk_date = new Date(); 
             
         var chk_out_date = new Date();
@@ -310,40 +310,12 @@
             'iconDate':'<i class="fa fa-calendar"></i>',
             'limitDateRanges':'365',
             'dateCheckIn':chk_date,
-            'dateCheckOut':chk_out_date,
-            //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
-            //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+            'dateCheckOut':chk_out_date,            
         });
-        
-        /*$(".global-search-form").submit(function(e){
-            e.preventDefault();
-            var g_arrival = $('input[name="globalarrival"]').val();
-            var g_departure = $('input[name="globaldeparture"]').val();
-            var adult = $('select[name="booking_adults"]').val();
-            var child = $('select[name="booking_children"]').val();
-            var searchfor = $('input[name="sitename"]').val();
-            $.ajax({
-              url: "{{ URL::to('globalavailability')}}"+"?arrival="+g_arrival+"&departure="+g_departure+"&adult="+adult+"&child="+child+"&sname="+searchfor,
-              type: "get",              
-              dataType: "json",
-              success: function(data){
-              var html = '';
-              if(data.status=='error')
-              {
-                
-              }
-              else{
-                
-              }
-              }
-          });
-        });*/
-        
-        
         $(document).on('click', '.global-search-main', function(){
             $(".cstm_search").toggle();    
         });        
-    });    
+    });*/    
     
     $("#pills-home-tab").click(function(){
         $("#sitename").val('voyage');
@@ -366,7 +338,7 @@
         $('[data-action="global-search"]').val('');          
     });
     
-    $(document).on('keyup', '[data-action="global-search"]', function () { 
+    /*$(document).on('keyup', '[data-action="global-search"]', function () { 
         var sitename = $("#sitename").val();
         $('[data-action="global-search-error"]').html('');
         if ($(this).val() == '') {
@@ -381,7 +353,7 @@
     			globalSearchForAll($(this).val(), sitename);
     		}
         }
-    });
+    });*/
     
     $(document).on('click', '.our-collections', function(){         
          if($(this).hasClass('active')){
@@ -442,7 +414,7 @@
     /*
 * For Global Search function
 */
-function globalSearchForAll(searcValue, sitename) {
+/*function globalSearchForAll(searcValue, sitename) {
 
     var datObj = {};
     datObj.keyword = searcValue;
@@ -550,7 +522,7 @@ function globalSearchForAll(searcValue, sitename) {
     };
     doAjax(params);
     $('[data-option="global-search"]').slideDown(300);
-}
+}*/
   </script>
 @endsection
 

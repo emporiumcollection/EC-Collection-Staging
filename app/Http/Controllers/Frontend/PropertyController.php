@@ -2763,8 +2763,8 @@ class PropertyController extends Controller {
         $site_url = '';
         if($sitename=='voyage'){
             //$site_url = 'https://emporium-voyage.com';
-            //$site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
-            $site_url = 'http://staging.emporium-voyage.com';  
+            $site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
+            //$site_url = 'http://staging.emporium-voyage.com';  
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
         }elseif($sitename=='spa'){
@@ -2789,6 +2789,18 @@ class PropertyController extends Controller {
         
         $arrive = $request->input('arrive');
         $departure = $request->input('departure');
+        
+        $arrive_date = '';
+        if($arrive!=''){ 
+            $arrive_date =  \CommonHelper::dateformat(trim($arrive));
+        }
+        
+        $departure_date ='';
+        if($departure!=''){ 
+            $departure_date =  \CommonHelper::dateformat(trim($departure));;
+        }
+        
+        
         $booking_rooms = $request->input('booking_rooms');
         $booking_adults = $request->input('booking_adults');
         $booking_children = $request->input('booking_children');
@@ -2863,6 +2875,23 @@ class PropertyController extends Controller {
             //print_r($props);
             
         }  
+        
+        if(!empty($props)){            
+            foreach($props as $sin){
+                $query = "SELECT COUNT(id) as noOfRooms, property_id, category_id FROM tb_properties_category_rooms where 1=1";
+                if($arrive_date!='' and $departure_date!=''){
+                    $query .=" and (CASE WHEN tb_properties_category_rooms.active_full_year = 0 THEN ";
+                    $query .="( tb_properties_category_rooms.room_active_from <= '".$arrive_date."' AND tb_properties_category_rooms.room_active_to >= '".$departure_date."')";
+                    $query .=" ELSE tb_properties_category_rooms.active_full_year = 1 END) "; 
+                                           
+                    $query .=" and tb_properties_category_rooms.id not IN (select td_reserved_rooms.room_id from tb_reservations INNER join td_reserved_rooms on td_reserved_rooms.reservation_id=tb_reservations.id where '".$arrive_date."' BETWEEN checkin_date and checkout_date or '".$departure_date."' BETWEEN checkin_date and checkout_date)";
+                }                
+                $query .=" and property_id=".$sin->id." GROUP BY category_id";
+                    
+                $result = DB::SELECT($query);    
+            }            
+        } 
+        
           
         //$props = \DB::table('tb_properties')->select('tb_properties.*')->join('tb_properties_category_package','tb_properties_category_package.property_id','=','tb_properties.id')->whereIn('tb_properties_category_package.package_id', explode(',',$this->pckages_ids))->whereRaw("TRIM(TRAILING '-' FROM property_slug ) = ?", [$this->data['slug']])->first();
         
