@@ -638,7 +638,7 @@ svg:not(:root) {
 }
 #home_sld .carousel-caption {
     right: 8.999%;
-    top: 38%;
+    top: 50%;
     width: auto;
     padding: 0 0 0 80px;
     text-align: left;
@@ -5500,18 +5500,23 @@ ul.item-list-bar {
 }
 .global-search-box .our-collections.active{
     background: #19191B;
+    border: 1px solid #aba00b;
 }
 .global-search-box .our-destinations.active{
     background: #19191B;
+    border: 1px solid #aba00b;
 }
 .global-search-box .our-hotels.active{
     background: #19191B;
+    border: 1px solid #aba00b;
 }
 .global-search-box .our-experiences.active{
     background: #19191B;
+    border: 1px solid #aba00b;
 }
 .global-search-box .our-channels.active{
     background: #19191B;
+    border: 1px solid #aba00b;
 }
 .invisible{
     display: none;
@@ -5690,4 +5695,173 @@ ul.item-list-bar {
         padding: 10px;
         font-size: 13px;
     }
+}
+
+/*-----------  Global search tab  --------------*/
+.globalSearchResultSection{
+   margin-left: 14px;
+   margin-right: 85px; 
+}
+.globalSearchResultSection .nav-tabs {
+    border-bottom: 1px solid #505051;
+    margin-top: 20px;
+    text-transform: uppercase    
+}
+.globalSearchResultSection .nav-tabs>li>a {
+    color: #BCBCBF !important;
+}
+.globalSearchResultSection .nav-tabs>li>a:hover {
+    background-color: #505051;
+    border-color: #505051;
+}
+.globalSearchResultSection .nav-tabs>li.active>a, .globalSearchResultSection .nav-tabs>li.active>a:focus, .globalSearchResultSection .nav-tabs>li.active>a:hover{
+    background: #2C2D33;
+    color:#BCBCBF !important;
+    border-color: #2C2D33;
+    text-decoration: underline;
+
+}
+.globalSearchResultSection .nav .open>a, .globalSearchResultSection .nav .open>a:focus, .globalSearchResultSection .nav .open>a:hover{
+    background-color: #2C2D33;
+    border-color: #89837b;
+}
+.globalSearchResultSection .heading{
+    font-size: 16px;        
+}
+/*-----------  Global search tab End  --------------*/
+
+.home-search-bar{
+    width: 100%;
+    position: absolute;
+    top: 30%;
+    z-index: 999;
+}
+.home-search-bar .home-search-bar-inner{
+    width: 40%;
+    margin: 0px auto;    
+    
+    border: 1px solid #2C2D33;
+    background: rgba(44,45,51,0.5) !important;
+    color: #8D8C8E;
+    padding: 10px;
+    font-size: 16px;
+    
+    display: table; 
+            
+}
+.home-search-bar .home-search-bar-inner span{
+    display: table-cell;
+}
+.home-search-bar .home-search-bar-inner .search-input{
+    width: 90%;    
+}
+.home-search-bar .home-search-bar-inner .search-icon{
+    width: 10%;    
+}
+.home-search-bar input[type=text]{
+    background: transparent;
+    border: 0px;   
+}
+@media (max-width: 768px){
+    .home-search-bar{        
+        top: 16%;
+    }
+    .home-search-bar .home-search-bar-inner{
+        width: 90%;                  
+    }        
+}
+/*-- Start Modal popup --*/
+#showMemberLoginPopup .modal-dialog{
+    width: 700px !important;
+}
+#showMemberLoginPopup .modal-header{
+    border: 0px;        
+    padding:0px !important;
+}
+#showMemberLoginPopup .modal-content{
+    background: #252525 !important;        
+    min-height: 300px;
+}
+#showMemberLoginPopup .modal-content .popup-title{
+    color: #fff !important;
+    padding: 0px;
+    margin-top: 0px;
+    font-family: DomaineDisplay;
+}
+#showMemberLoginPopup .modal-content p{
+    color: #fff !important;        
+}
+#showMemberLoginPopup .modal-content h6{
+    color: #fff !important;        
+}
+#showMemberLoginPopup .btnMembershipTypeJoin{
+    margin-top: 25px;
+    float: none;
+    width: 90%;
+    /*margin: 0px auto;*/
+    text-align: center;
+    display: block;
+    cursor: pointer;
+}
+.btnMembershipTypeBack {
+    border: 1px solid #fff;
+    border-radius: 0px;
+    color: #fff;
+    font-size: 12px;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    /*margin-left: 10px;*/
+    float: left;
+    text-decoration: none;
+    /*margin-top: 93px;*/
+    margin-top: 25px;
+    cursor: pointer;
+}
+.btnMembershipTypeBack:hover, .btnMembershipTypeBack:focus {
+    color:#fff;
+}
+.modal-backdrop{background-color:#252525 !important}
+.modal-backdrop.fade{filter:alpha(opacity=0);opacity:0}
+.modal-backdrop.in{filter:alpha(opacity=95);opacity:.95}
+
+.calendar-left-box{
+    margin: 10px 0px;
+}
+.calendar-left-box .season-search{
+    background: #aba00b;
+    color: #fff;
+    border-radius: 0px;
+    text-transform: uppercase;
+    margin-top: 2px;
+    margin-left: -7px;
+}
+.calendar-left-box .pad-0{
+    padding: 0px;
+}
+.t-datepicker-box .t-check-in, .t-datepicker-box .t-check-out {
+    width: 97% !important;
+}
+
+
+@media (max-width:1199px){
+    #showMemberLoginPopup .modal-dialog{
+        width:auto !important;
+    }
+    .btnMembershipTypeBack{
+        width: 100%;
+        text-align: center;
+    }
+}
+/*-- End Modal popup --*/
+
+.main-acordian-search-sidebar .panel{
+    background-color: transparent; 
+    border: 0px;   
+}
+.main-acordian-search-sidebar .panel-default>.panel-heading {
+    color: #fff;
+    background-color: transparent;    
+}
+.main-acordian-search-sidebar .panel-group .panel-heading+.panel-collapse>.list-group, .main-acordian-search-sidebar .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border-top: 1px solid #414246;       
 }

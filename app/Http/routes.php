@@ -433,15 +433,12 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::post('pdproomavailability', 'HomeController@ajaxcheckavailability');
     
-
-    
     Route::post('changeRoomStatus', 'PropertiesController@changeRoomStatus');
-    
-    Route::post('globalavailability', 'Frontend\PropertyController@propertyglobalavailability');
-    
-    Route::post('globalsearchavailability', 'Frontend\PropertyController@globalsearchavailability');
-    
 });
+Route::post('globalavailability', 'Frontend\PropertyController@propertyglobalavailability');
+Route::get('globalsearchavailability', 'Frontend\PropertyController@globalsearchavailability');
+Route::post('getpdppage', 'Frontend\PropertyController@getpdppage');
+Route::post('getdestinationpage', 'Frontend\PropertyController@getdestinationpage');
 
 Route::get('searchavailability', 'Frontend\PropertyController@propertySearchAvailability');
     
@@ -453,6 +450,8 @@ Route::post('propcollection', 'Frontend\PropertyController@propcollection');
 Route::post('searchpropcollection', 'Frontend\PropertyController@searchpropcollection');
 Route::post('propertybycollection', 'Frontend\PropertyController@propertybycollection');
 Route::post('searchpropertybycollection', 'Frontend\PropertyController@searchpropertybycollection');
+
+Route::post('propertysearchlistbycollection', 'Frontend\PropertyController@propertysearchlistbycollection');
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
 

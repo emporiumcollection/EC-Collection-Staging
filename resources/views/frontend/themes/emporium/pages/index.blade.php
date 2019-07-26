@@ -29,15 +29,13 @@
 </div>
 
 
-<div class="custom-menu">
+<!--<div class="custom-menu">
     <ul class="cstm_menu">
        <li><a href="#" data-toggle="modal" data-target="#MenuModal">Menu</a></li>
        <li><a href="#" data-toggle="modal" data-target="#CollectModal">Collection</a></li>
-       <li><a href="#" class="srch_btn"><i class="fa fa-search"></i></a></li>
-       <!-- Modal FOR SEARCH ICON-->
-       
+       <li><a href="#" class="srch_btn"><i class="fa fa-search"></i></a></li>       
     </ul>
-</div>
+</div>-->
 
 
 <div class="u-inline-block menu-bx unlog">
@@ -74,6 +72,17 @@
         </div>
     </button>
 </div>
+
+<div class="home-search-bar">
+    <div class="home-search-bar-inner global-search-main">
+        <span class="search-input">
+        <input type="text" name="input-global-search" class="form-control" placeholder="where do you want to go?" /> 
+        </span>
+        <span class="search-icon"><i class="fa fa-search"></i></span>
+        <!--<button type="button"><i class="fa fa-search"></i></button> --> 
+    </div>   
+</div>
+
     <!-- slider starts here -->
          <section class="sliderSection" id="home_sld">
             @if(!empty($slider))
@@ -330,6 +339,10 @@
           });
         });*/
         
+        
+        $(document).on('click', '.global-search-main', function(){
+            $(".cstm_search").toggle();    
+        });        
     });    
     
     $("#pills-home-tab").click(function(){
@@ -380,8 +393,7 @@
          }
     });
     
-    $(document).on('click', '.our-hotels', function(){ 
-         console.log($(this).closest('.dv').find('input[type="radio"]').attr('checked',true));
+    $(document).on('click', '.our-hotels', function(){         
          if($(this).hasClass('active')){
             $(this).removeClass('active');
             $(this).find('input[type="checkbox"]').attr('checked', false);

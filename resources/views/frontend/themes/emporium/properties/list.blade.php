@@ -249,15 +249,15 @@
                     </ul>
                 </div>
                 <select name="dd-destination" id="dd-destination">
-                    <option value="{{$catalias}}">You are in {{$catname}}</option>     
+                    <option value="{{$catalias}}" data-id="{{$catid}}">You are in {{$catname}}</option>     
                     @if(!empty($destinations))               
                         @foreach($destinations as $dest)
-                            <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
+                            <option data-id="{{$dest->id}}" value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
                             {{--*/ $i++;  /*--}}
                         @endforeach
                     @endif 
                     @if(!empty($parent_cat)) 
-                        <option value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
+                        <option data-id="{{$parent_cat->id}}" value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
                     @else
                         <option value="0">&lt; Back to Destination</option>
                     @endif
@@ -293,15 +293,15 @@
                     </ul>
                 </div>
                 <select name="youtube_channel" id="youtube_channel">
-                    <option value="{{$catalias}}">You are in {{$catname}}</option>     
+                    <option value="{{$catalias}}" data-id="{{$catid}}">You are in {{$catname}}</option>     
                     @if(!empty($youtube_channels))               
                         @foreach($youtube_channels as $dest)
-                            <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
+                            <option data-id="{{$dest->id}}" value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
                             {{--*/ $i++;  /*--}}
                         @endforeach
                     @endif 
                     @if(!empty($parent_cat)) 
-                        <option value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
+                        <option data-id="{{$parent_cat->id}}" value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
                     @else
                         <option value="0">&lt; Back to Channel</option>
                     @endif
@@ -326,15 +326,15 @@
                     </ul>
                 </div>
                 <select name="instagram_channel" id="instagram_channel">
-                    <option value="{{$catalias}}">You are in {{$catname}}</option>     
+                    <option value="{{$catalias}}" data-id="{{$catid}}">You are in {{$catname}}</option>     
                     @if(!empty($instagram_channels))               
                         @foreach($instagram_channels as $dest)
-                            <option value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
+                            <option data-id="{{$dest->id}}" value="{{$dest->category_alias}}" <?php echo ($dest_cat==$dest->category_alias) ? 'selected="selected"' : '' ?>>{{$dest->category_name}}</option>   
                             {{--*/ $i++;  /*--}}
                         @endforeach
                     @endif 
                     @if(!empty($parent_cat)) 
-                        <option value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
+                        <option data-id="{{$parent_cat->id}}" value="-1">&lt; Back to {{$parent_cat->category_name}}</option>
                     @else
                         <option value="0"> &gt; Back to Social</option>
                     @endif
@@ -623,7 +623,7 @@ $grid.imagesLoaded().progress( function() {
                 e.preventDefault();
                 //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 var d_name = $(this).attr('data-name');
-                var cat =  $("#sel_exp").val(); console.log(cat);               
+                var cat =  $("#sel_exp").val();               
                 var coll_type = 'destinations';
                 var req_for = $("#req_for").val();
                 var cobj = $(this);
@@ -720,7 +720,7 @@ $grid.imagesLoaded().progress( function() {
         
         
         
-        function getPropertyByCollection(coll_type, cat, page, req_for){ console.log("hello");
+        function getPropertyByCollection(coll_type, cat, page, req_for){ //console.log("hello");
             $.ajax({
                 url:'{{URL::to("propertybycollection/")}}',
                 //dataType:'html',
@@ -1255,7 +1255,7 @@ $grid.imagesLoaded().progress( function() {
             window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
             var dest = $(this).val();
             var dest_url = $("#dest_url").val();
-            console.log(dest_url);
+            //console.log(dest_url);
             if(dest == -1){
                 
                 var arr_durl = dest_url.split('/');                
@@ -1318,11 +1318,11 @@ $grid.imagesLoaded().progress( function() {
                     
                 },
                 success: function(data){ 
-                    console.log(data);
+                    //console.log(data);
                     //console.log(data.youtube_channels);  
                     var objytchannels = data.youtube_channels; 
                     $("#youtube_channel").empty();
-                    $("#youtube_channel").append('<option value="'+data.catalias+'">'+data.catname+'</option>');
+                    $("#youtube_channel").append('<option value="'+data.catalias+'">You are in '+data.catname+'</option>');
                     $.each(objytchannels, function(key, vlaue){
                         $("#youtube_channel").append(
                             $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
@@ -1330,14 +1330,14 @@ $grid.imagesLoaded().progress( function() {
                     });
                     var objParentCat = data.parent_cat;
                     if(typeof objParentCat != undefined && objParentCat!=null){
-                        $("#youtube_channel").append('<option value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
+                        $("#youtube_channel").append('<option data-id="'+data.parent_cat['id']+'" value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
                     }else{
                         $("#youtube_channel").append('<option value="-1">&lt; Back to Channel</option>');    
                     } 
                     
                     var objinstachannels = data.instagram_channels; 
                     $("#instagram_channel").empty();
-                    $("#instagram_channel").append('<option value="'+data.catalias+'">'+data.catname+'</option>');
+                    $("#instagram_channel").append('<option value="'+data.catalias+'">You are in '+data.catname+'</option>');
                     $.each(objinstachannels, function(key, vlaue){
                         $("#instagram_channel").append(
                             $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
@@ -1345,14 +1345,14 @@ $grid.imagesLoaded().progress( function() {
                     });  
                     var objParentCat = data.parent_cat;
                     if(typeof objParentCat != undefined && objParentCat!=null){
-                        $("#instagram_channel").append('<option value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
+                        $("#instagram_channel").append('<option data-id="'+data.parent_cat['id']+'" value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
                     }else{
                         $("#instagram_channel").append('<option value="-1">&lt; Back to Social</option>');    
                     } 
                     
                     var objdestinations = data.destinations; 
                     $("#dd-destination").empty();
-                    $("#dd-destination").append('<option value="'+data.catalias+'">'+data.catname+'</option>');
+                    $("#dd-destination").append('<option value="'+data.catalias+'">You are in '+data.catname+'</option>');
                     $.each(objdestinations, function(key, vlaue){
                         $("#dd-destination").append(
                             $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
@@ -1360,7 +1360,7 @@ $grid.imagesLoaded().progress( function() {
                     });
                     var objParentCat = data.parent_cat;
                     if(typeof objParentCat != undefined && objParentCat!=null){
-                        $("#dd-destination").append('<option value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
+                        $("#dd-destination").append('<option data-id="'+data.parent_cat['id']+'" value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
                     }else{
                         $("#dd-destination").append('<option value="-1">&lt; Back to Destination</option>');    
                     }  
@@ -1418,8 +1418,9 @@ $grid.imagesLoaded().progress( function() {
         
         $(document).on('change', '#youtube_channel', function (e) { 
             var dest = $(this).val();
+            var destid = $(this).find(':selected').data('id');
             var dest_url = $("#dest_url").val();
-            console.log(dest, dest_url);
+            //console.log(dest, dest_url);
             if(dest == -1){
                 
                 var arr_durl = dest_url.split('/');                
@@ -1432,7 +1433,14 @@ $grid.imagesLoaded().progress( function() {
                      back_url = back_url+'/'+value;   
                 });
                 getDefaultChannel(dest)
-                changeBreadcrumbDropdown(dest);                
+                changeBreadcrumbDropdown(dest); 
+                var datObj = {};
+				datObj.catID = destid;
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/destination/destinatinos-ajax';
+				params['data'] = datObj;
+				params['successCallbackFunction'] = renderDestination;
+				doAjax(params);               
                 /*var url = "{{URL::to('social-youtube')}}"+back_url;
                 $("#menu_url").val(url);
                 
@@ -1458,9 +1466,23 @@ $grid.imagesLoaded().progress( function() {
                 $(".tb_Social").css('display', 'none');    
                 $(".tbd_Social").css('display', '');
                 $(".tbd_Social").removeClass('active');
+                var datObj = {};
+				datObj.catID = 0;
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/destination/destinatinos-ajax';
+				params['data'] = datObj;
+				params['successCallbackFunction'] = renderDestination;
+				doAjax(params);
             }else{
                 getDefaultChannel(dest)
                 changeBreadcrumbDropdown(dest);
+                var datObj = {};
+				datObj.catID = destid;
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/destination/destinatinos-ajax';
+				params['data'] = datObj;
+				params['successCallbackFunction'] = renderDestination;
+				doAjax(params);
             }
             
             /*var dest = $(this).val();
@@ -1525,7 +1547,8 @@ $grid.imagesLoaded().progress( function() {
             window.location.href = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;*/
             var dest = $(this).val();
             var dest_url = $("#dest_url").val();
-            console.log(dest_url);
+            var destid = $(this).find(':selected').data('id');
+            //console.log(dest_url);
             if(dest == -1){
                 
                 var arr_durl = dest_url.split('/');                
@@ -1537,9 +1560,17 @@ $grid.imagesLoaded().progress( function() {
                 $.each(arr_durl, function(key, value){
                      back_url = back_url+'/'+value;   
                 });
-                console.log("hello");
+                //console.log("hello");
                 getDefaultInstagram(dest);
-                changeBreadcrumbDropdown(dest);                
+                changeBreadcrumbDropdown(dest); 
+                
+                var datObj = {};
+				datObj.catID = destid;
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/destination/destinatinos-ajax';
+				params['data'] = datObj;
+				params['successCallbackFunction'] = renderDestination;
+				doAjax(params);                
                 /*var url = "{{URL::to('luxury_destinations')}}"+back_url;
                 $("#menu_url").val(url);
                 
@@ -1568,6 +1599,14 @@ $grid.imagesLoaded().progress( function() {
                 $(".tb_Social").css('display', 'none');    
                 $(".tbd_Social").css('display', '');
                 $(".tbd_Social").addClass('active');
+                
+                var datObj = {};
+				datObj.catID = 0;
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/destination/destinatinos-ajax';
+				params['data'] = datObj;
+				params['successCallbackFunction'] = renderDestination;
+				doAjax(params); 
             }else{
                 /*var url = "{{URL::to('luxury_destinations')}}"+"/"+dest_url+"/"+dest;
                 $("#menu_url").val(url);
@@ -1585,7 +1624,13 @@ $grid.imagesLoaded().progress( function() {
                 getDefaultInstagram(dest);
                 changeBreadcrumbDropdown(dest);
                 
-                
+                var datObj = {};
+				datObj.catID = destid;
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/destination/destinatinos-ajax';
+				params['data'] = datObj;
+				params['successCallbackFunction'] = renderDestination;
+				doAjax(params); 
             }
            
            
@@ -1625,7 +1670,7 @@ $grid.imagesLoaded().progress( function() {
                 },
                 success: function(data){ 
                     
-                    console.log(data.channel_url); console.log("hell");   
+//                    console.log(data.channel_url); console.log("hell");   
                     $(".dv-instagram-channel").html('<div class="insta_pic"></div>');
                     //$(".dv-youtube-channel").html('<div data-yt data-yt-channel="'+data.channel_url+'" data-yt-content-columns="4"  data-yt-content-rows="3"></div>')                    
                     $('.insta_pic').eappsInstagramFeed({

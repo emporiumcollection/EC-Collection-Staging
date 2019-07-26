@@ -129,8 +129,8 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
         <div class="logo-wrapper">
             {{-- <a href="{{url('/')}}">
                 <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage"/>
-            </a> --}}
-            @if(defined('CNF_FRONTEND_LOGO'))
+            </a> --}} 
+             @if(defined('CNF_FRONTEND_LOGO'))
                 @if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !='')
                     <a href="{{url('/')}}">
                         <img src="{{ asset('sximo/images/'.CNF_FRONTEND_LOGO)}}"  alt="{{ CNF_APPNAME }}" class="img-responsive"/>      
@@ -151,7 +151,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 {{--For Top Bar --}}
                 @section('top_search_bar')
                     @parent
-                     @include('frontend.themes.emporium.layouts.sections.top_search_bar')
+                    <?php /* nclude('frontend.themes.emporium.layouts.sections.top_search_bar') */ ?>
                     <?php /*<a class="search-icon srch_btn"><i class="fa fa-search fa-2x"></i></a>
                     
                     <div class="questions">

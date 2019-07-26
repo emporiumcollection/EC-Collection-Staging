@@ -73,7 +73,7 @@ $(document).ready(function () {
         }); 
         e.stopPropagation();        
     });
-    $(document).on('click', '.plus-room', function (e) { 
+    $(document).on('click', '.plus-room', function (e) {
         $(".traveller-type").each(function(index, element){ 
             //var type_id = $(this).attr('data-id');
             if($(this).hasClass('active')){ 
@@ -317,14 +317,15 @@ $(document).ready(function () {
      * For Select By Date of Left Sidebar
      */
     $(document).on('click', '[data-action="search-by-date"]', function () {
-        hideAllOption();
+        $(".cstm_search").toggle();
+        /*hideAllOption();
         var data = {};
         data.main_title = 'Search availability';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
         openSearchByDate();
-
+*/
 
     });
 
@@ -530,9 +531,13 @@ $(document).ready(function () {
         $('[data-action="gobal-search"]').val('');
         $('[data-action="gobal-search-button"]').trigger( "click" );
    });
-
+   
+   $(document).on('click', '[data-action="gobal-search"]', function () {
+        $(".cstm_search").toggle();
+   }); 
    $(document).on('keyup', '[data-action="gobal-search"]', function () {
-        $('[data-action="gobal-search-error"]').html('');
+        $(".cstm_search").toggle();
+        /*$('[data-action="gobal-search-error"]').html('');
         if ($(this).val() == '') {
             $('[data-action="clear-search"]').hide();
             $('[data-option="gobal-search"]').slideUp(300);
@@ -544,11 +549,12 @@ $(document).ready(function () {
 			{
 				globalSearch($(this).val());
 			}
-        }
+        }*/
    });
 
     $(document).on('click', '[data-action="gobal-search-button"]', function () {
-        if ($('[data-action="gobal-search"]').val() == '') {
+        $(".cstm_search").toggle();
+        /*if ($('[data-action="gobal-search"]').val() == '') {
             $('[data-action="gobal-search-error"]').html('Please enter your search term');
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
@@ -558,7 +564,7 @@ $(document).ready(function () {
 				globalSearch($('[data-action="gobal-search"]').val());
 				$('[data-action="gobal-search-error"]').html('');
 			}
-        }
+        }*/
     });
 
    /*
@@ -800,7 +806,7 @@ function remove_child(type){
     $('.traveller-type-'+type+'-child-age .col-30:last').remove();
 }
 
-function check_room_adult_bytype(type){ 
+function check_room_adult_bytype(type){ console.log(type);
     var room_adult = '';
     var room_val = '';
     var adult_val = '';
@@ -835,7 +841,7 @@ function check_room_adult_bytype(type){
         $(".chooseadultroom .column-1").removeClass('width-100');
         $(".chooseadultroom .column-1").addClass('border-1');
         $(".chooseadultroom .column-2").css('display', '');
-        var room = $("#traveller-type-"+type).attr('data-room');
+        var room = $("#traveller-type-"+type).attr('data-room'); console.log(room);
         var adult = $("#traveller-type-"+type).attr('data-adult');   
         var child = $("#traveller-type-"+type).attr('data-child');
         
@@ -876,7 +882,7 @@ function check_room_adult_bytype(type){
         }
         room_adult = adult_val+"<br>"+room_val;
         $(".number-of-adult").html(room_adult);
-        
+        console.log(room_adult);
         ttra_val = room_val+", "+adult_val;
         $(".ttra-"+type).html(ttra_val);
         

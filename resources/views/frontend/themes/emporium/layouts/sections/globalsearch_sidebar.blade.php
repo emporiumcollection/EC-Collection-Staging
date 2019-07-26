@@ -1,0 +1,131 @@
+
+<div class="mobilemenu">
+	<div class="block-content togglenav content active mobilenavclosebtn">
+        <span></span>
+        <span> </span>
+        <span></span>
+    </div>
+    <div class="mobilemenu-inner">
+    	<div class="mobilemainnav openmobilemenu">
+	    	<div class="mobilenavheader">
+                {{-- <a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a> --}}
+                @if(defined('CNF_FRONTEND_LOGO'))
+                    @if(file_exists(public_path().'/sximo/images/'.CNF_FRONTEND_LOGO) && CNF_FRONTEND_LOGO !='')
+                        <a href="{{url('/')}}">
+                            <img src="{{ asset('sximo/images/'.CNF_FRONTEND_LOGO)}}"  alt="{{ CNF_APPNAME }}" class="img-responsive"/>      
+                        </a>
+                    @else
+                        <a href="{{URL::to('/')}}">
+                            <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
+                        </a>
+                    @endif
+                @else
+                    <a href="{{URL::to('/')}}">
+                        <img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
+                    </a>
+                @endif
+            </div>
+            <ul class="mobilemenulist">
+                {{-- Global Search Bar --}}
+                @include('frontend.themes.emporium.layouts.sections.global-search-bar')
+                {{-- End Global Search Bar--}}
+            </ul>
+
+            {{-- For Gobal Search List --}}
+            @include('frontend.themes.emporium.layouts.sections.global-search-list')
+            {{-- End  Gobal Search List --}}
+            
+            <div class="main-acordian-search-sidebar">
+                @if(!empty($allData))                                                        
+                {{--*/ $k=1; $j=1; /*--}} 
+    			<div id="search-sidebar-accordion" class="panel-group">
+                    @foreach($allData as $si_data)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="click0 side-{{$si_data['name']}} <?php echo $k >1 ? 'collapsed' : ''; ?>" data-toggle="collapse" data-parent="#search-sidebar-accordion" href="#collapse_{{$k}}">{{$si_data['name']}}</a>
+                            </h4>
+                        </div>
+                        <div id="collapse_{{$k}}" class="panel-collapse collapse <?php echo ($k==1) ? 'in' : '' ?>">
+                            <div class="panel-body magin-top-30">
+                                @if(!empty($si_data['ddSelected']))                                								
+                                <div id="search-sidebar-accordion-{{$k}}" class="panel-group">
+                                    @foreach($si_data['ddSelected'] as $si_dddata)
+                                    {{-- */ $sidedd = str_replace(' ', '-', $si_dddata); /* --}}
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">                                            
+                                                <a class="click0 side-{{$sidedd}} sd-{{$si_data['name']}}" data-name="{{$si_dddata}}" data-toggle="collapse" data-parent="#search-sidebar-accordion-{{$k}}" href="#collapse_{{$k}}_{{$j}}">{{$si_dddata}}</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_{{$k}}_{{$j}}" class="panel-collapse collapse <?php echo ($j==1) ? 'in' : '' ?>">
+                                            <div class="panel-body magin-top-30">    								
+                                                @if($si_data['name']=='Hotel')
+                                                    <ul class="mobilemenulist sidemenumodulelist-{{$sidedd}}">
+                                                        <li><a href="#hotelInfo" class="closenavlink scrollpage">HOTEL INFO</a></li>       				
+                                       					<li><a href="#roomsSuit" class="closenavlink scrollpage">ROOMS & SUITES</a></li>
+                                        				<li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
+                                       					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
+                                        				
+                                                        <!--<li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK </a></li>-->                                                         
+                                                    </ul>        
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--*/ $j++;  /*--}}
+                                    @endforeach				
+                                </div>
+                                @endif                                 
+                            </div>
+                        </div>
+                    </div>
+                    {{--*/ $k++;  /*--}}
+                    @endforeach				
+                </div>
+                @endif
+            </div>
+            
+            
+            @if (!Auth::check())
+
+                <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob" href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
+                </div>
+                
+            @endif
+            <div class="left-carousal">
+            	<div id="owl-carousel" class="owl-carousel">
+                
+                <div class="item">
+                	<div class="side-bar-why-book-with-us">
+                    	<div class="book-with-us-tittles">
+                            <h2>Why book with us?</h2>
+                        </div>
+                        {{--*/ $uspmod = CommonHelper::getUspMod() /*--}}
+                        @if(!empty($uspmod['whybookwithus']))
+                            <ul class="side-bar-book-with-us-list">
+                                @foreach ($uspmod['whybookwithus'] as $usps)
+                                    <li>
+                                        <h3>{{$usps->title}}</h3>
+                                        <p>{{$usps->sub_title}}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                </div>
+                <?php /* {{--/ $sidebarads = CommonHelper::getDetailpageSidebarAds('detail', $propertyDetail[0]['propertyDetail']['data']->property_category_id); /*--}}
+                @if(!empty($sidebarads['leftsidebarads']))
+                    @foreach($sidebarads['leftsidebarads'] as $ads)
+                        <div class="item">
+                            <a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}"></a>
+                        </div>
+                    @endforeach 
+                @endif */ ?>
+              </div>
+            </div>
+            
+        </div>
+      
+    </div>
+</div>
