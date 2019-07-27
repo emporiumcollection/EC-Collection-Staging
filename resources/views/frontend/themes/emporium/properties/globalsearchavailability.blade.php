@@ -315,6 +315,8 @@
            }else if(active_tab=="destination"){
                 active_cat = $("input[name='activeDestination']").val();
                 getDestinationPage(active_cat);  
+           }else{                
+                getDestinationPage(active_cat); 
            }
            
            $('[href="#tab-Hotel"]').click(function(e){

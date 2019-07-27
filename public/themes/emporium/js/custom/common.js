@@ -1297,7 +1297,7 @@ $(document).on('keyup', '[data-action="global-search"]', function () {
 		var fvalue = $(this).val();
 		
 		if(fvalue.length > 2)
-		{
+		{ console.log($(this).val());
 			globalSearchForAll($(this).val(), sitename);
 		}
     }
@@ -1364,6 +1364,19 @@ function globalSearchForAll(searcValue, sitename) {
             $(data.data.our_collection).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/'+val.category_alias;
                 //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                
+                
+                var cname = searcValue;
+                var arr_str = cname.split(',');
+                $.each(arr_str, function(key, value){
+                    
+                });
+                
+                cat_name = val.category_name; 
+                var regExp = new RegExp("##" + cname + "##", 'g');
+                cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+cname+'</span>');               
+                
+                
                 html += '<li class="our-collections" data-name="'+ val.category_name +'">' + val.category_name + '<input type="radio" name="ourCollections[]" value="'+ val.category_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-our-collection-option-list"]').html(html);
@@ -1378,7 +1391,16 @@ function globalSearchForAll(searcValue, sitename) {
             $(data.data.collection).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/'+val.property_slug;
                 //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
-                html += '<li class="our-hotels" data-name="'+ val.property_name +'">' + val.property_name + '<input type="checkbox" name="ourHotels[]" value="'+ val.property_name +'" class="invisible"></li>';
+                
+                var cat_name = val.property_name;
+                var cname = searcValue;
+                var arr_str = cname.split(',');
+                $.each(arr_str, function(key, value){
+                    var regExp = new RegExp("" + $.trim(value) + "", 'gi');
+                    cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
+                });
+                
+                html += '<li class="our-hotels" data-name="'+ val.property_name +'">' + cat_name + '<input type="checkbox" name="ourHotels[]" value="'+ val.property_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-collection-option-list"]').html(html);
             //$('[data-action="global-collections"]').parent().show();
@@ -1392,7 +1414,16 @@ function globalSearchForAll(searcValue, sitename) {
             $(data.data.dest).each(function (i, val) {
                 var  linkMenu = BaseURL1+'/luxury_destinations/'+val.category_alias;
                 //html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
-                html += '<li class="our-destinations" data-name="'+ val.category_name +'">' + val.category_name + ' (' + val.p_name + ')<input type="checkbox" name="ourDestinations[]" value="'+ val.category_name +'" class="invisible"></li>';
+                
+                var cat_name = val.category_name;
+                var cname = searcValue;
+                var arr_str = cname.split(',');
+                $.each(arr_str, function(key, value){ 
+                    var regExp = new RegExp("" + $.trim(value) + "", 'gi');
+                    cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
+                });
+                
+                html += '<li class="our-destinations" data-name="'+ val.category_name +'">' + cat_name + ' (' + val.p_name + ')<input type="checkbox" name="ourDestinations[]" value="'+ val.category_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-dest-option-list"]').html(html);
             //$('[data-action="global-destinations"]').parent().show();

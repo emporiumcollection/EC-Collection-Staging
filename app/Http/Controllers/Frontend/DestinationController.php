@@ -534,8 +534,8 @@ class DestinationController extends Controller {
     public function getGlobalSearch(Request $request) {
 		
 		$keyword = trim($request->keyword);
-        $sitename = trim($request->sitename);
-
+        $sitename = trim($request->sitename);        
+        
 		$res = $respns = array(); 
 		if($keyword!='')
 		{
@@ -567,8 +567,27 @@ class DestinationController extends Controller {
             //print_r($exp_ids); die;
             
             //$fetchcollection = \DB::connection($conn)->table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->join('tb_properties_category_package','tb_properties_category_package.property_id','=','tb_properties.id')->whereIn('tb_properties_category_package.package_id', explode(',',$this->pckages_ids))->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
-            $fetchcollection = \DB::connection($conn)->table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
+                        
+        
+            //$fetchcollection = \DB::connection($conn)->table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->where('tb_properties.property_status', 1)->where('tb_properties.property_name', 'like', '%'.$keyword.'%')->get();
+            $i=0;
+            $str_keyword = 'Select tb_properties.id, tb_properties.property_name, tb_properties.property_slug from tb_properties where tb_properties.property_status=1 ';
+            if($keyword!=''){
+                $arr_keywords = explode(',', $keyword);
+                if(!empty($arr_keywords)){
+                    foreach($arr_keywords as $si){
+                        if($i==0){
+                            $str_keyword .= " and tb_properties.property_name like '%".trim($si)."%'";
+                        }else{
+                            $str_keyword .= " or tb_properties.property_name like '%".trim($si)."%'";
+                        }
+                        $i++;            
+                    }                    
+                }        
+            }
             
+            //print_r($str_keyword); die;
+            $fetchcollection = DB::SELECT($str_keyword);
             //$fetchcollection = \DB::connection($conn)->table('tb_properties')->select('tb_properties.id', 'tb_properties.property_name', 'tb_properties.property_slug')->where('tb_properties.property_status', 1)->where('tb_properties.city', 'like', '%'.$keyword.'%')->orWhere('tb_properties.country', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchcollection))
@@ -576,8 +595,29 @@ class DestinationController extends Controller {
                 $res['collection'] = $fetchcollection;
             }
             
-            $fetchdestinations = \DB::connection($conn)->table('tb_categories')->select('tb_categories.id', 'tb_categories.parent_category_id', 'tb_categories.category_name', 'tb_categories.category_image', 'tb_categories.category_alias', 'ptc.category_name as p_name')->leftjoin('tb_categories as ptc', 'ptc.id', '=', 'tb_categories.parent_category_id')->where('tb_categories.category_published', 1)->where('tb_categories.category_name', 'like', '%'.$keyword.'%')->where('tb_categories.id', '!=', 8)->where('tb_categories.parent_category_id', '!=', 8)->where('tb_categories.id', '!=', $our_coll_id)->where('tb_categories.parent_category_id', '!=', $our_coll_id)->get();
-
+            //$fetchdestinations = \DB::connection($conn)->table('tb_categories')->select('tb_categories.id', 'tb_categories.parent_category_id', 'tb_categories.category_name', 'tb_categories.category_image', 'tb_categories.category_alias', 'ptc.category_name as p_name')->leftjoin('tb_categories as ptc', 'ptc.id', '=', 'tb_categories.parent_category_id')->where('tb_categories.category_published', 1)->where('tb_categories.category_name', 'like', '%'.$keyword.'%')->where('tb_categories.id', '!=', 8)->where('tb_categories.parent_category_id', '!=', 8)->where('tb_categories.id', '!=', $our_coll_id)->where('tb_categories.parent_category_id', '!=', $our_coll_id)->get();
+            
+            //$fetchdestinations = \DB::connection($conn)->table('tb_categories')->select('tb_categories.id', 'tb_categories.parent_category_id', 'tb_categories.category_name', 'tb_categories.category_image', 'tb_categories.category_alias', 'ptc.category_name as p_name')->leftjoin('tb_categories as ptc', 'ptc.id', '=', 'tb_categories.parent_category_id')->where('tb_categories.category_published', 1)->where('tb_categories.id', '!=', 8)->where('tb_categories.parent_category_id', '!=', 8)->where('tb_categories.id', '!=', $our_coll_id)->where('tb_categories.parent_category_id', '!=', $our_coll_id);
+            
+            $j=0;
+            $str_des_keyword = 'Select tb_categories.id, tb_categories.parent_category_id, tb_categories.category_name, tb_categories.category_image, tb_categories.category_alias, ptc.category_name as p_name from tb_categories left join tb_categories as ptc on ptc.id=tb_categories.parent_category_id where tb_categories.category_published=1 and tb_categories.id!=8 and tb_categories.parent_category_id!=8 and tb_categories.id!='.$our_coll_id.' and tb_categories.parent_category_id!='.$our_coll_id;
+            if($keyword!=''){
+                $arr_keywords = explode(',', $keyword);
+                if(!empty($arr_keywords)){
+                    foreach($arr_keywords as $si){
+                        if($j==0){
+                            $str_des_keyword .= " and tb_categories.category_name like '%".trim($si)."%'";
+                        }else{
+                            $str_des_keyword .= " or tb_categories.category_name like '%".trim($si)."%'";
+                        }
+                        $j++;            
+                    }                    
+                }        
+            }
+            
+            //print_r($str_des_keyword); die;
+            $fetchdestinations= DB::SELECT($str_des_keyword);
+            
             if(!empty($fetchdestinations))
             {
                 $res['dest'] = $fetchdestinations;
