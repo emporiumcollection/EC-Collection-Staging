@@ -5993,5 +5993,6 @@ ul.item-list-bar {
     left: 15%;
 }
 .sliderSection .carousel-caption h1{
+    font-family: BodoniFLF-Roman !important;
     font-size: 30px !important;
 }
