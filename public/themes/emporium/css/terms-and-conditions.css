@@ -105,13 +105,13 @@
     font-size: 18px;
     line-height: 24px;
     text-transform: capitalize;
-    font-family: 'GeomanistLight', sans-serif;
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
     padding: 20px 0 10px;
     margin: 0px;
 }
 .termAndConditionSec p {
-    font-family:'GeomanistLight', sans-serif;
+    font-family:'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: normal;
 	color:#fff;
@@ -124,7 +124,7 @@
     display: inline-block;
     font-size: 15px;
     line-height: 1.42857143;
-    font-family: 'GeomanistLight', sans-serif;
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #fff;
     max-width: 100%;
     margin-bottom: 5px;

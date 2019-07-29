@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,500,600,700');
 @import url(new-style.css);
-body{font-family: 'GeomanistLight', sans-serif; background:#19191B;}
+body{font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif; background:#19191B;}
 *{outline:0;}
 ul, li{margin:0; padding:0; list-style:none;}
 a:hover, a:focus, a:active{text-decoration:none}
@@ -15,7 +15,7 @@ input:focus, .header-content select:focus, textarea:focus{outline:0;box-shadow:n
 .left-sidebar{width:320px; position:fixed; left:0; top:85px; bottom:0; height:100vh; min-height:100%; background:rgba(25, 25, 27, 1); overflow:auto; padding-top:20px;-webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease; z-index:99; display:none;}
-.header-content input[type=text], .header-content input[type=date], .header-content input[type=number], .header-content select{background-color: #505051;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 37px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'GeomanistLight', sans-serif;}
+.header-content input[type=text], .header-content input[type=date], .header-content input[type=number], .header-content select{background-color: #505051;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 37px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
 .header-content select{-webkit-appearance: none; -webkit-border-radius: 0px; background:url(../images/icon-select-arrow.png) 96% 12px no-repeat #505051 !important;}
 .header-content input[type=text]:focus, .header-content input[type=date]:focus, .header-content input[type=number]:focus, .header-content select:focus{outline:none; border:0; box-shadow:none; -webkit-box-shadow:none;}
 .header-search .col-md-4, .header-search .col-md-3, .header-search .col-md-2, .header-search .col-md-1, .header-search .col-sm-2{padding-right:0;}
@@ -731,7 +731,7 @@ border-radius:0;
 /* Footer */
 #footer{background:#19191B; padding:30px 10px; border-top:1px solid;}
 .footer-coloumn{margin-bottom:15px; padding-right:50px}
-.footer-coloumn h2{font-size:14px; margin:20px 0;text-transform: uppercase; font-weight:400; color:#8D8C8E;font-family: 'GeomanistLight', sans-serif;}
+.footer-coloumn h2{font-size:14px; margin:20px 0;text-transform: uppercase; font-weight:400; color:#8D8C8E;font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
 .footer-nav-menu li{margin:5px 0;}
 .footer-nav-menu li a{font-size:14px;color: #BCBCBF; text-decoration: none;}
 .footer-nav-menu li a:hover{color:#ffffff;}
@@ -1889,7 +1889,7 @@ button.searchButton.btn:hover {
 }
 
 
-.termAndConditionPopUp  .form-control{background-color: #505051;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 35px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'GeomanistLight', sans-serif;}
+.termAndConditionPopUp  .form-control{background-color: #505051;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 35px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
 .termAndConditionPopUp  select{-webkit-appearance: none; -webkit-border-radius: 0px; background:url(../images/icon-select-arrow.png) 98% 12px no-repeat #505051 !important;}
 .termAndConditionPopUp .form-control:focus {
   border-color: rgba(255,255,255,0.5); 
@@ -1959,7 +1959,7 @@ button.searchButton.btn:hover {
 #yottie_1 .yottie-widget-header, #yottie_1 .yottie-widget-feed, #yottie_1 .yottie-widget-nav {background:#19191B !important;}
 #yottie_1 .yottie-widget-header-channel-title, #yottie_1 .yottie-widget-header-channel-title a, #yottie_1 .yottie-widget-header-properties-item, #yottie_1 .yottie-widget-video-info-title, #yottie_1 .yottie-widget-video-info-properties-item {
   color: #BCBCBF !important;
-  font-family: 'GeomanistLight', sans-serif;
+  font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
 }

@@ -1,3 +1,40 @@
+@font-face {
+    font-family: 'HKGothicNo2-Bold';    
+    src: url('/emporium/fonts/HKGothicNo2-Bold.woff2') format('woff2'),
+         url('/emporium/fonts/HKGothicNo2-Bold.woff') format('woff'),
+         url('/emporium/fonts/HKGothicNo2-Bold.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'HKGothicNo2-Medium';    
+    src: url('/emporium/fonts/HKGothicNo2-Medium.woff2') format('woff2'),
+         url('/emporium/fonts/HKGothicNo2-Medium.woff') format('woff'),
+         url('/emporium/fonts/HKGothicNo2-Medium.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'HKGothicNo2-Regular';    
+    src: url('/emporium/fonts/HKGothicNo2-Regular.woff2') format('woff2'),
+         url('/emporium/fonts/HKGothicNo2-Regular.woff') format('woff'),
+         url('/emporium/fonts/HKGothicNo2-Regular.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'BodoniFLF-Bold';    
+    src: url('/emporium/fonts/BodoniFLF-Bold.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'BodoniFLF-Bold-Italic';    
+    src: url('/emporium/fonts/BodoniFLF-Bold-Italic.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'BodoniFLF-Medium-Italic';    
+    src: url('/emporium/fonts/BodoniFLF-Medium-Italic.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'BodoniFLF-Roman';    
+    src: url('/emporium/fonts/BodoniFLF-Roman.ttf') format('truetype')
+}
+
+
 .Home .page-container {
     padding: 0 !important;
 }
@@ -4475,7 +4512,7 @@ svg:not(:root) {
     width: 100%;
     background: #505051;
     color: #fff;
-    font-family: 'GeomanistLight', sans-serif;
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 12px;
     display: table;
     height: 37px;
@@ -5864,4 +5901,16 @@ ul.item-list-bar {
 }
 .main-acordian-search-sidebar .panel-group .panel-heading+.panel-collapse>.list-group, .main-acordian-search-sidebar .panel-group .panel-heading+.panel-collapse>.panel-body{
     border-top: 1px solid #414246;       
+}
+#home_sld .carousel-caption {
+    right: 0px;
+    top: 50%;
+    width: auto;
+    padding: 0px;
+    text-align: center;
+    bottom: auto;    
+    max-width: 70%;
+    width: 100%;
+    font-family: HKGothicNo2-Regular;
+    font-size: 30px;
 }

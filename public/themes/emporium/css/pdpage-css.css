@@ -648,7 +648,7 @@ position: absolute;
 
 
 
-.header-search label{color:#BCBCBF;font-family: 'GeomanistLight', sans-serif;}
+.header-search label{color:#BCBCBF;font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
 #reservationForm.pdpreservation-form .input-group-icon{top:25px; height:auto !important;}
 #reservationForm.pdpreservation-form .btn{margin-top:25px; padding:10px 9px 8px; font-size: 13px;}
 .contactfixed{top:309px;}
@@ -1132,7 +1132,7 @@ position: absolute;
     width: 100%;  
     margin-top: 80px;
     color: #BCBCBF;
-    font-family: 'GeomanistLight', sans-serif;
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     padding: 0px 10px; 
     
 }
