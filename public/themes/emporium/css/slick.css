@@ -144,7 +144,7 @@
 
 .gridtext p
 {
-font-family: GeomanistLight;  
+font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;  
       line-height:28px;
     color:#BCBCBF;
     margin-top: 15px;
@@ -207,7 +207,7 @@ font-family: GeomanistLight;
 }
 .slidertext p a
 {
-font-family: GeomanistLight; 
+font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
     color: #fff;
   line-height:28px;
 }
@@ -476,12 +476,12 @@ opacity:1;
   width:100%;
   padding:20px 0px;
   font-size:18px;
-  font-family: GeomanistLight !important;
+  font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 .gridheading .newfont
 {
   font-size:18px;
-  font-family: GeomanistLight !important;
+  font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   text-decoration: underline;
 
   
@@ -489,12 +489,12 @@ opacity:1;
  a .newfont
 {
   font-size:14px;
- font-family: GeomanistLight !important;
+ font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   
 }
 a .newfontsimple{
    font-size:16px;
- font-family: GeomanistLight !important;
+ font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 @media (max-width:767px)

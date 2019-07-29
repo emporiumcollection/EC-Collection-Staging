@@ -45,7 +45,7 @@
 }
 .luxuryHotelSlider .carousel-caption p {
   color: #BCBCBF;
-  font-family: 'GeomanistLight';
+  font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: lighter;
   line-height: 24px;
@@ -53,7 +53,7 @@
 }
 .luxuryHotelSlider .carousel-caption h1 {
     color: #BCBCBF;
-    font-family: 'GeomanistLight';
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 26px;
     font-style: normal;
     margin: 0px;

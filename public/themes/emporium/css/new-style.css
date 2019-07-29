@@ -1315,7 +1315,7 @@ svg:not(:root) {
 }
 
 .Home footer.c-slideshow__footer * {
-    font-family: GeomanistLight !important;
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 @media screen and (min-width:1600px) {

@@ -404,7 +404,7 @@ ul.EVMenu li.smallEV {
 }
 
 .book-with-us-tittles h2 {
-    font-family: GeomanistLight !important;
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     font-size: 15px;
     font-weight: normal;
     color: #BCBCBF;
@@ -474,7 +474,7 @@ ul.EVMenu li.smallEV {
 .hotel-card:hover .content-overlay{bottom:0; }
 .hotel-card:hover figure img{transform:scale(1.1)}
 .hotel-card .title{overflow:hidden;}
-.hotel-card .title h3{font-size: 18px; font-weight:400;font-family: 'GeomanistLight', serif; display:inline-block; margin:10px 0;}
+.hotel-card .title h3{font-size: 18px; font-weight:400;font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif; display:inline-block; margin:10px 0;}
 .hotel-card .title h3 a{color: #000;}
 .hotel-card .cartlink{float:right; margin-top:10px; font-size:18px; color:#000;}
 .hotel-card .quicklinks li a{color:#ABA07C;-webkit-transition: all 0.5s ease 0s;-o-transition: all 0.5s ease 0s; transition:all 0.5s ease 0s}
@@ -794,7 +794,7 @@ border-radius:0;
 }
 .sliderSection  .carousel-caption p {
   color: #fff;
-  font-family: GeomanistLight;
+  font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: lighter;
   line-height: 28px;
@@ -802,7 +802,7 @@ border-radius:0;
 }
 .sliderSection  .carousel-caption h1 {
     color: #ABA07C;
-    font-family: GeomanistLight;
+    font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-style: normal;
     margin: 0px;
@@ -1315,7 +1315,7 @@ border-radius:0;
 .calenderwrapper li{border:0; color:#fff; margin-top:5px; float:left; width:100%;position: relative;}
 .calenderwrapper li:first-child{padding:0 0 10px 40px;}
 .calenderwrapper li h4{margin:0; font-size:14px;}
-.calenderwrapper li label{width:45%; background:#505051; padding:8px 15px 8px 40px;color:#fff; float:left;font-family: 'geomanistlightwebfont';}
+.calenderwrapper li label{width:45%; background:#505051; padding:8px 15px 8px 40px;color:#fff; float:left;font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
 .calenderwrapper li select{ border:0; float:left; color:#333; width:55%; padding:8px 15px 8px 40px; border-radius:0; -webkit-border-radius:0; -webkit-appearance:none;appearance:none; background:url(../images/select-arrow.png) no-repeat 92% center #fff;}
 .calenderwrapper li select:focus{outline:0;}
 .calenderwrapper.departure li label{background:#aba00b;}
