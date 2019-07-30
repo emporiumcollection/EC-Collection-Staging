@@ -302,20 +302,28 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
 
     <script type="text/javascript">
         $(document).ready(function(){
-            var chk_date = new Date(); 
+            var gl_chk_date = new Date(); 
                 
-            var chk_out_date = new Date();
+            var gl_chk_out_date = new Date();
             
-            @if(!empty(Session::get("arrive")))
-                chk_date = '{{Session::get("arrive")}}';
+            @if(!empty(Session::get("arrive"))) 
+                console.log("hha2");      
+                console.log('{{Session::get("arrive")}}');      
+                gl_chk_date = '{{Session::get("arrive")}}';
             @else 
-                chk_date = chk_date;            
+                console.log("55a2");
+                gl_chk_date = gl_chk_date;            
             @endif
             
             @if(!empty(Session::get("departure")))
-                chk_out_date = '{{Session::get("departure")}}'; 
+                console.log("hha");
+                console.log('{{Session::get("departure")}}');
+                gl_chk_out_date = '{{Session::get("departure")}}'; 
             @else  
-                chk_out_date = chk_out_date;
+                console.log("kll");
+                gl_chk_out_date = gl_chk_out_date;
+                
+                gl_chk_out_date.setDate(gl_chk_out_date.getDate()+1);
             @endif
             
             $('#t-global-picker').tDatePicker({
@@ -331,11 +339,14 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 'titleDateRanges':'days',
                 'iconDate':'<i class="fa fa-calendar"></i>',
                 'limitDateRanges':'365',
-                'dateCheckIn':chk_date,
-                'dateCheckOut':chk_out_date,            
+                'dateCheckIn':gl_chk_date,
+                'dateCheckOut':gl_chk_out_date,            
             });
+            console.log(gl_chk_date);
+            console.log(gl_chk_out_date);
             $(document).on('click', '.global-search-main', function(){
-                $(".cstm_search").toggle();    
+                $(".cstm_search").toggle(); 
+                $('[data-action="global-search"]').focus();   
             });        
         }); 
     

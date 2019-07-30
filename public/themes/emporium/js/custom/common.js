@@ -1299,6 +1299,10 @@ $(document).on('keyup', '[data-action="global-search"]', function () {
 		if(fvalue.length > 2)
 		{ console.log($(this).val());
 			globalSearchForAll($(this).val(), sitename);
+            
+            $('input[name="hote_or_dest_has_value"]').val(1);
+		}else{
+		    $('input[name="hote_or_dest_has_value"]').val('');  
 		}
     }
 });
@@ -1596,4 +1600,63 @@ $(document).on('click', "#pills-expereince-tab", function(){
     $("#sitename").val('islands');
     $("#globalfiltersearchpopup").css('display', 'none');
     $('[data-action="global-search"]').val('');          
+});
+
+$(document).on('click', '.our-collections', function(){         
+    if($(this).hasClass('active')){
+        $(this).removeClass('active');
+        $(this).find('input[type="radio"]').attr('checked', false);
+    }else{
+        $(this).addClass('active');
+        $(this).find('input[type="radio"]').attr('checked', true);
+    }
+});
+
+$(document).on('click', '.our-hotels', function(){         
+     if($(this).hasClass('active')){
+        $(this).removeClass('active');
+        $(this).find('input[type="checkbox"]').attr('checked', false);
+     }else{            
+        $(this).addClass('active');
+        $(this).find('input[type="checkbox"]').attr('checked', true);
+     }
+});
+
+$(document).on('click', '.our-destinations', function(){         
+     if($(this).hasClass('active')){
+        $(this).removeClass('active');
+        $(this).find('input[type="checkbox"]').attr('checked', false);
+     }else{
+        $(this).addClass('active');
+        $(this).find('input[type="checkbox"]').attr('checked', true);
+     }
+});
+
+$(document).on('click', '.our-experiences', function(){         
+     if($(this).hasClass('active')){
+        $(this).removeClass('active');
+        $(this).find('input[type="radio"]').attr('checked', false);
+     }else{
+        $(this).addClass('active');
+        $(this).find('input[type="radio"]').attr('checked', true);
+     }
+});
+
+$(document).on('click', '.our-channels', function(){         
+     if($(this).hasClass('active')){
+        $(this).removeClass('active');
+        $(this).find('input[type="radio"]').attr('checked', false);
+     }else{
+        $(this).addClass('active');
+        $(this).find('input[type="radio"]').attr('checked', true);
+     }
+});
+$(document).on('click', '.t-check-in', function(){
+   $("#globalfiltersearchpopup").css('display', 'none'); 
+});
+$(document).on('click', '[data-action="global-search"]', function () {
+    var hote_or_dest_has_value = $('input[name="hote_or_dest_has_value"]').val();
+    if(hote_or_dest_has_value==1){
+        $("#globalfiltersearchpopup").css('display', ''); 
+    } 
 });

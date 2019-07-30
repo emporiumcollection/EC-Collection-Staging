@@ -23,6 +23,8 @@
                 {{--*/ $i++ /*--}}
                 @endif
             @endforeach
+            <li id="channel_url" class="social-tab" style="display: none;"><a href="#tab-channel" data-toggle="tab">Channel</a></li>
+            <li id="social_url" class="social-tab" style="display: none;"><a href="#tab-social" data-toggle="tab">Social</a></li>
         @endif
     </ul>
     <div class="tab-content">
@@ -60,7 +62,7 @@
                                             @endif
                                             @if(!empty($collections))
                                                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}
-                                                <ul class="nav nav-tabs">
+                                                <ul class="nav nav-tabs collection-tabs">
                                                     @foreach($collections as $coll)  
                                                         <?php $exp_cat_name = explode(' ', $coll->category_name) ?>                      
                                                         <li class="<?php echo ($m_type==$coll->category_alias) ? 'active' : '' ?> dest-collection" data-name="{{$coll->category_alias}}"><a href="{{URL::to('/')}}" >{{$exp_cat_name[0]}}</a></li>
@@ -255,6 +257,7 @@
 @section('javascript')
     @parent
 	<!-- instagram -->
+    <script src="{{ asset('lib/yottie/jquery.yottie.bundled.js')}}"></script>
 	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
     
     <script src="{{ asset('themes/emporium/js/masonry.pkgd.min.js')}}"></script>
@@ -392,11 +395,47 @@
                 beforeSend: function(){
                     $(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
                 },
-                success: function(data){                    
+                success: function(data){  console.log(data);
+                    $(".collection-tabs").css('display', ''); 
+                    $("#channel_url").css('display', 'none');
+                    $("#social_url").css('display', 'none');
+                    var channel_url = data.data.channel_url;
+                    if(channel_url!=null){
+                        $("#channel_url").css('display', '');
+                        $("#channel_url").attr('data-url', channel_url);       
+                    }
+                    var social_url = data.data.social_url;
+                    if(social_url!=null){
+                        $("#social_url").css('display', '');
+                        $("#social_url").attr('data-url', social_url);    
+                    }                   
                     listpagestructure(data);                    
                 }
             });
         }
+        $(document).on('click', "#channel_url", function(){
+            $(".collection-tabs").css('display', 'none');             
+            var channel_url = $(this).attr('data-url');            
+            $(".load_ajax").html('<div class="yt-rvideos"></div>');                         
+            $('.yt-rvideos').yottie({                                
+                channel: channel_url,
+                content: {
+                    columns: 4,
+                    rows: 2
+                },
+            }); 
+        });
+        $(document).on('click', "#social_url", function(){
+            $(".collection-tabs").css('display', 'none');              
+            var social_url = $(this).attr('data-url');            
+            $(".load_ajax").html('<div class="insta_pic"></div>');                       
+            $('.insta_pic').eappsInstagramFeed({
+                api: '{{ url("runInsta")}}',
+                source: social_url,                        
+                columns: 5,
+                rows: 2                        
+            });
+        });
         function listpagestructure(data){                    
             
             var _html = '';
@@ -660,7 +699,8 @@
             
             $(document).on('click', '.Destination', function () { 
                 var nm = $(this).attr("data-name"); 
-                
+                $("#channel_url").removeClass('active');
+                $("#social_url").removeClass('active');
                 if($(".side-Destination").hasClass('collapsed')){
                     $(".side-Destination").trigger('click');
                 }

@@ -83,6 +83,25 @@
     </div>   
 </div>
 
+<div class="home-search-bar">
+    <div class="home-search-bar-inner global-search-main">
+        <span class="search-input">
+        <input type="text" name="input-global-search" class="form-control" placeholder="where do you want to go?" /> 
+        </span>
+        <span class="search-icon"><i class="fa fa-search"></i></span>
+        <!--<button type="button"><i class="fa fa-search"></i></button> --> 
+    </div>   
+</div>
+
+<div class="home-search-bar">
+    <div class="home-search-bar-inner global-search-main">
+        <span class="search-input">
+        <input type="text" name="input-global-search" class="form-control" placeholder="Where do you want to go?" /> 
+        </span>
+        <span class="search-icon"><i class="fa fa-search"></i></span>
+        <!--<button type="button"><i class="fa fa-search"></i></button> --> 
+    </div>   
+</div>
     <!-- slider starts here -->
          <section class="sliderSection" id="home_sld">
             @if(!empty($slider))
@@ -96,19 +115,20 @@
                          <a href="{{$slider_row->slider_link}}">
                            <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}"> alt=""/>
                          </a>
+                         
                          <div class="carousel-caption item-front">
-                          <div class="head-sec">
-                           <div class="round-crcle">
-                                  <button class="c-slide__icon-more t-btn u-inline-block u-absolute u-pos-t u-marg-l-xxs u-valign-top u-shape-circle u-marg-t-xs u-marg-t-0@sm" style="left: 20px; transform: translateX(7.14446e-25px) translateY(5.59666e-25px) scale(1) translateZ(0px);"><div class="c-slide__icon-more__container u-absolute u-pos-center"><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div></div> <img src="{{ asset('themes/emporium/images/gradient-circle.svg')}}" class="c-slide__icon-more__gradient o-wrapper--panel u-fit"></button>
-                          </div>
-                          <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
+                            <div class="head-sec">
+                                <?php /*<div class="round-crcle">
+                                    <button class="c-slide__icon-more t-btn u-inline-block u-absolute u-pos-t u-marg-l-xxs u-valign-top u-shape-circle u-marg-t-xs u-marg-t-0@sm" style="left: 20px; transform: translateX(7.14446e-25px) translateY(5.59666e-25px) scale(1) translateZ(0px);"><div class="c-slide__icon-more__container u-absolute u-pos-center"><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div></div> <img src="{{ asset('themes/emporium/images/gradient-circle.svg')}}" class="c-slide__icon-more__gradient o-wrapper--panel u-fit"></button> 
+                                </div>*/ ?>
+                                <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
+                            </div>
+                            <div class="cnt-box slider-cnt-box">
+                                <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
+                            </div>
                          </div>
-
-                           <div class="cnt-box slider-cnt-box">
-                            <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
-                         </div>
-                       </div>
-                      </div>
+                        
+                    </div>
                     @endforeach
           {{--*/ $sliderads = CommonHelper::getSliderAds('landing_slider', 'Hotel') /*--}}
           @if(!empty($sliderads['leftsidebarads']))
@@ -355,7 +375,7 @@
         }
     });*/
     
-    $(document).on('click', '.our-collections', function(){         
+    /*$(document).on('click', '.our-collections', function(){         
          if($(this).hasClass('active')){
             $(this).removeClass('active');
             $(this).find('input[type="radio"]').attr('checked', false);
@@ -403,7 +423,7 @@
             $(this).addClass('active');
             $(this).find('input[type="radio"]').attr('checked', true);
          }
-    });
+    });*/
     
     
     function fun_add_remove_hotel_arr(){

@@ -12,7 +12,7 @@
 
     <div class="forms-box-tct">
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="hotel">
+            <div role="tabpanel" class="tab-pane tab-width active" id="hotel">
                 <div class="text-box">
                     <div class="row">
     							
@@ -113,6 +113,78 @@
                                         
                                     </ul>
                                 </div>
+                                <div class="search-value">                                    
+                                    <?php
+                                        $search_hotel_values = '';
+                                        $sess_hotel ="";
+                                        if(\Session::has('hotels')){ 
+                                            $sess_hotel = \Session::get('hotels');
+                                            /*$arr_hotels = explode(',', $sess_hotel);
+                                            if(!empty($arr_hotels)){
+                                                if(count($arr_hotels)>1){
+                                                    for($i=0; $i<count($arr_hotels); $i++){
+                                                        if($i==0){
+                                                            $search_hotel_values .= $arr_hotels[$i];
+                                                        }elseif($i==(count($arr_hotels)-1)){
+                                                            $search_hotel_values .= " and ".$arr_hotels[$i];
+                                                        }else{
+                                                            $search_hotel_values .= ", ".$arr_hotels[$i];
+                                                        }    
+                                                    }
+                                                }
+                                            }*/
+                                            //echo $sess_hotel;
+                                        }                                        
+                                        //echo $search_hotel_values;
+                                        $search_dest_values = '';
+                                        $sess_dest='';
+                                        if(\Session::has('destinations')){ 
+                                            $sess_dest = \Session::get('destinations');
+                                            /*$arr_destinations = explode(',', $sess_dest);
+                                            if(!empty($arr_destinations)){
+                                                if(count($arr_destinations)>1){
+                                                    for($i=0; $i<count($arr_destinations); $i++){
+                                                        if($i==0){
+                                                            $search_dest_values .= $arr_destinations[$i];
+                                                        }elseif($i==(count($arr_destinations)-1)){
+                                                            $search_dest_values .= " and ".$arr_destinations[$i]." destinations";
+                                                        }else{
+                                                            $search_dest_values .= ", ".$arr_destinations[$i];
+                                                        }    
+                                                    }
+                                                }else{
+                                                    $search_dest_values .= $arr_destinations[$i]." destination";    
+                                                }
+                                            }*/
+                                            //echo $sess_dest;
+                                        }
+                                        //echo $search_dest_values;
+                                        $search_txt = '';
+                                        if(strlen(trim($sess_hotel))>0 || strlen(trim($sess_dest))>0){
+                                            $search_txt = "Your search returned the following results :";
+                                        }
+                                        if(strlen(trim($sess_hotel))>0){
+                                            $search_txt .= "<br>";
+                                            $search_txt .= "Hotel(s):".$sess_hotel;    
+                                        }
+                                        if(strlen(trim($sess_dest))>0){
+                                            $search_txt .= "<br>";
+                                            $search_txt .= "Destination(s) :".$sess_dest;    
+                                        }
+                                        /*$search_txt = '';
+                                        if(strlen(trim($search_hotel_values))>0 && strlen(trim($search_dest_values))>0){
+                                            $search_txt = '';
+                                            $search_txt ="You have searched for ".$search_hotel_values." hotel and ".$search_dest_values;   
+                                        }elseif(strlen(trim($search_hotel_values))>0 && strlen(trim($search_dest_values))==0){
+                                            $search_txt = '';
+                                            $search_txt ="You have searched for ".$search_hotel_values." hotel.";
+                                        }elseif(strlen(trim($search_hotel_values))==0 && strlen(trim($search_dest_values))>0){
+                                            
+                                            $search_txt ="You have searched for ".$search_dest_values;
+                                        }*/
+                                        echo $search_txt;
+                                    ?>
+                                </div>
                                 <div class="info">*Info->You can search one or more hotel or destinations by selecting above</div>
                                 <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London tomreturn multiple city results.</div>
     						</div>            								
@@ -123,7 +195,7 @@
                             </div>	
                             <div class="border-01 margin-bot-30">  
                                                                                                     
-                                <div class="col-md-9 global-search t-date-box">
+                                <div class="col-md-12 global-search t-date-box">
                                                                      	
                                         <div id="t-global-picker" class="t-datepicker">
                                             <div class="t-date-divide">
@@ -137,7 +209,7 @@
                                         </div>                                             
                                     
                                 </div>
-                                <div class="col-md-3 margin-top-10">
+                                <!--<div class="col-md-3 margin-top-10">
                                     <div class="col-md-12">
                                         <h3 class="alternate-heading">Flexible search sequence : 5 Days</h3>
                                     </div>
@@ -149,7 +221,7 @@
                                     <div class="col-md-4">
                                         <input class="form-control alternate-txt-box" type="number" value="5" name="numberofdate">
                                     </div>
-                                </div>
+                                </div>-->
                                 
                             </div>	
                             <div class="col-md-12 padding-0">
@@ -308,7 +380,7 @@
                                                 <div class="rw">
                                                     <div class="col-55">
                                                         <a href="#" class="traveller-type {{!empty(Session::get('travellerType')) ? (Session::get('travellerType')==4 ? 'active' : '') : ''}}" id="traveller-type-4" data-id='4' data-room='{{$tr_4_rooms}}' data-adult='{{$tr_4_adults}}'>
-                                                            <span class="span-left"><span>Business travelers</span></span>
+                                                            <span class="span-left"><span>Business / Leisure travelers</span></span>
                                                             <span class="span-right"><i class="right traveller-type-arrow tta-4"></i></span>
                                                         </a>
                                                         <input type="hidden" name="tr_4_rooms" id="tr_4_rooms" value="{{$tr_4_rooms}}" />
@@ -384,6 +456,8 @@
         									
     						<div class="col-md-12 border-style-02">
     							<div class="text-center hotelBookNowButton">
+                                    <input type="hidden" name="hote_or_dest_has_value" />
+                                    
                                     <input type="hidden" name="sitename" value="voyage" id="sitename" />                             
                                     
                                     <input type="hidden" name="hid_our_collections" id="hid_our_collections" />

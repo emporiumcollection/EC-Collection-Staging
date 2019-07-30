@@ -137,7 +137,7 @@
     margin-right: 3px;
 }
 #home_sld .image-overaly-bg{
-background: rgba(37,37,37,0.4);  
+background: rgba(37,37,37,0.6);  
 }
 #home_sld .image-overaly-bg.bg-dark {
 background: -moz-linear-gradient(top, rgba(55,55,55,0.25) 0%, rgba(54,54,54,0.25) 1%, rgba(10,10,10,0.46) 60%, rgba(10,10,10,0.92) 100%); /* FF3.6-15 */
@@ -147,7 +147,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40373737', e
 z-index: 1;
 }
 #home_sld .head-sec h1 a {
-    color: #fff;
+    color: #fff;    
 }
 #home_sld .carousel-control  > img{
   display: none;
@@ -4623,7 +4623,7 @@ svg:not(:root) {
 }
 .chooseadultroom{    
     position: absolute;
-    background: #19191B;
+    background: #222326;
     width: 430px;
     z-index: 100;
     color: #BCBCBF;
@@ -5495,7 +5495,7 @@ ul.item-list-bar {
 #globalfiltersearchpopup ul li{
     list-style-type: none;
     display: inline-block;
-    width: 19%;
+    width: 24%;
     vertical-align: top;
     padding: 5px;
 }
@@ -5852,9 +5852,9 @@ ul.item-list-bar {
     width: 40%;
     margin: 0px auto;    
     
-    border: 1px solid #2C2D33;
-    background: rgba(44,45,51,0.5) !important;
-    color: #8D8C8E;
+    border: 2px solid #ffffff;
+    background: rgba(34,35,38,0.7) !important;
+    color: #fff;
     padding: 10px;
     font-size: 16px;
     
@@ -5977,6 +5977,16 @@ ul.item-list-bar {
 .main-acordian-search-sidebar .panel-group .panel-heading+.panel-collapse>.list-group, .main-acordian-search-sidebar .panel-group .panel-heading+.panel-collapse>.panel-body{
     border-top: 1px solid #414246;       
 }
+.info{
+    color: #aba00b;
+}
+.tab-width{
+    width: 80%;
+    margin: 0px auto;
+}
+.search-value{
+    margin-top: 10px;
+}
 #home_sld .carousel-caption-main{
     width: 70%;
     margin: 0px auto;
@@ -5994,5 +6004,24 @@ ul.item-list-bar {
 }
 .sliderSection .carousel-caption h1{
     font-family: BodoniFLF-Roman !important;
-    font-size: 30px !important;
+    font-size: 45px !important;
+}
+.chooseadultroom select{
+    background: rgba(44,45,51,0.5) !important;
+}
+@media screen and (min-width:1600px) {
+    .sliderSection .carousel-caption h1{
+        font-family: BodoniFLF-Roman !important;
+        font-size: 60px !important;
+    }
+}
+
+@media (max-width: 768px){
+    .home-search-bar{        
+        top: 16%;
+    }
+    .sliderSection .carousel-caption h1{
+        font-family: BodoniFLF-Roman !important;
+        font-size: 30px !important;
+    }      
 }

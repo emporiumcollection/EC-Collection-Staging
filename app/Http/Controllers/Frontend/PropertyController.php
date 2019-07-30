@@ -2857,10 +2857,12 @@ class PropertyController extends Controller {
         $this->data['slug'] = rtrim($request->slug,'-');
         $arr_hotels = array();
         if($hotels!=''){
+            \Session::put('hotels', $hotels);
             $arr_hotels = explode(',', $hotels);    
         }
         $arr_destinations = array();
         if($destinations!=''){
+            \Session::put('destinations', $destinations);
             $arr_destinations = explode(',', $destinations);    
         }
         
@@ -2968,6 +2970,7 @@ class PropertyController extends Controller {
         if(!empty($child_3_ages)){
             \Session::put('child_3_ages', $child_3_ages);
         }
+        
         //print_r($child_3_ages); die;
         
         //Get Total guest
@@ -5341,6 +5344,9 @@ class PropertyController extends Controller {
             $channel_url = $cateObj->category_youtube_channel_url;
             $this->data['channel_url'] = $channel_url;
             
+            $social_url = $cateObj->category_instagram_channel;
+            $this->data['social_url'] = $social_url;
+            
             //get all children start
             $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
             //End
@@ -5598,5 +5604,115 @@ class PropertyController extends Controller {
 		//return view('frontend.themes.emporium.properties.ajax_list', $this->data);
                 
     }
-    
+    function allPropertySearch(Request $request) {        
+        $membershiptype =  $request->membershiptype;
+                
+		$selCurrency=$request->input("currencyOption");
+        \Session::put('currencyOption', $selCurrency);
+		
+		$this->data["convertedOneUnitPrice"]=0;
+        
+        $keyword = trim($request->cat);
+        $show = 'asc';
+        
+        $this->data['dateslug'] = '';
+		$arrive = $departure = $adult = $childs = '';
+		if (!is_null($request->arrive) && $request->arrive != '') {
+			\Session::put('arrive', $request->arrive);			
+			$arrive = date("Y-m-d", strtotime(trim($request->arrive)));
+		}
+		if (!is_null($request->departure) && $request->departure != '') {
+			\Session::put('departure', $request->departure);			
+			$departure = date("Y-m-d", strtotime(trim($request->departure)));
+		}
+
+
+		$catprops = '';   
+        $catname = '';
+        $catalias = '';
+        $catid = '';
+		/* Default package */
+        $pckages_ids = '';
+        $default_package = '';
+        
+        $public_package = \DB::table('tb_packages')->select('id')->where('package_category', 'B2C')->where('is_public', 1)->first();
+        if(!empty($public_package)){
+            $pckages_ids = $public_package->id;            
+        } 
+        
+        $selected_category = '';
+        
+        if($membershiptype!=''){
+            if($membershiptype!='lifestyle-collection'){
+                $exp_membership = explode('-', $membershiptype);
+                if(!empty($exp_membership)){
+                    $_type = $exp_membership[0];
+                    if($_type=='dedicated'){
+                        $mem_package = \DB::table('tb_packages')->select('id')->where('package_title', 'Dedicated Membership')->first();
+                        $pckages_ids = $mem_package->id;   
+                    }else if($_type=='bespoke'){
+                        $mem_package = \DB::table('tb_packages')->select('id')->where('package_title', 'Bespoke Membership')->first();
+                        $pckages_ids = $mem_package->id;  
+                    }
+                }
+                $public_package = \DB::table('tb_packages')->select('id')->where('package_category', 'B2C')->where('is_public', 1)->first();
+            }
+        }else{
+            if (\Auth::check() == true) {
+                if(\Auth::user()->group_id!=1){
+                    $uid = \Auth::user()->id;
+                    if(\Auth::user()->member_type!=''){
+                        $memtype = str_replace('-', ' ', \Auth::user()->member_type); 
+                        $arr_membershiptype = explode('-', \Auth::user()->member_type); 
+                        if(count($arr_membershiptype)>0){
+                            $membershiptype = $arr_membershiptype[0]."-collection";    
+                        }    
+                        //print_r($membershiptype);      
+                        $mem_package = \DB::table('tb_packages')->select('id')->where('package_title', $memtype)->first();
+                        //print_r($mem_package); die;  
+                        $pckages_ids = $mem_package->id;
+                    }    
+                }
+            }            
+        }
+        $this->data['default_package'] = $default_package;           
+        /* End */   
+           
+		//$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
+       
+        
+		$this->data['slug'] = $keyword;
+
+		$this->data['action']=request()->segments(1);
+        $this->data['destination_category'] =0;       
+        
+        $search_for = '';
+        
+        $destarr = array();
+        $dd_destarr = array();
+        
+        $m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->where('category_approved', 1)->where('category_published', 1)->first();   
+        $cat_collection = array();                
+        if(!empty($m_collection)){
+            $cat_collection = \DB::table('tb_categories')->where('parent_category_id', $m_collection->id)->where('category_approved', 1)->where('category_published', 1)->orderBy('category_order_num', 'asc')->get();
+        }
+        $this->data['collections'] = $cat_collection;
+        $this->data['selected_category'] = $selected_category;
+        $this->data['bc_dest'] = $dest_url; //print_r($this->data['bc_dest']); die;
+        $this->data['destinations'] = $destarr;
+        
+        $this->data['dd_destinations'] = $dd_destarr;
+        
+        $this->data['search_for'] = $search_for;
+        
+        $this->data['req_for'] = request()->segment(1);
+        $this->data['sel_exp'] = trim($request->cat);
+        $this->data['catname'] = $catname;
+        $this->data['catalias'] = $catalias;
+        $this->data['catid'] = $catid;
+        $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
+        
+		return view('frontend.themes.emporium.properties.list', $this->data);
+                    
+    }
 }
