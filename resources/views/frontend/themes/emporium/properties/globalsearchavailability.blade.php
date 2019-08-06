@@ -15,7 +15,7 @@
             <span class="sub-heading">The following suites are available for the selected criteria.</span>
         </div>
     </div>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs main-nav-tab">
         @if(!empty($allData))
             @foreach($allData as $data) 
                 @if(count($data['ddSelected'])>0)                               
@@ -457,7 +457,7 @@
                     				if(Request::has("departure") || Request::has("arrive"))
                     				{
              				    ?>
-                    					_url+='?arrive='+{{Request::input("arrive")}}+'&departure='+{{Request::input("departure")}};
+                    					//_url+='?arrive='+{{Request::input("arrive")}}+'&departure='+{{Request::input("departure")}};
                                 <?php
                     				}
                     			?>
@@ -500,7 +500,7 @@
                     				if(Request::has("departure") || Request::has("arrive"))
                     				{
                  				    ?>
-                   					    _url+='?arrive='+{{Request::input("arrive")}}+'&departure='+{{Request::input("departure")}};
+                   					    //_url+='?arrive='+{{Request::input("arrive")}}+'&departure='+{{Request::input("departure")}};
                                     <?php
                      				}
                         			?>
@@ -525,7 +525,7 @@
                                                 _html += '<div class="gridtext">';
                                                     _html += '<h5 class="entry-title">';
                                                         _html += '<a href="'+_url+'" rel="bookmark" style="">'+value['property_name']+' -- Featured  </a>';
-                                                        _html += '<a href="'+_url+'"><i class="fa fa-shopping-cart"></i></a>';
+                                                        //_html += '<a href="'+_url+'"><i class="fa fa-shopping-cart"></i></a>';
                                                     _html += '</h5>';
                                                     _html += '<p>'+  value['property_usp'] +'</p>';
                                                     _html += '<a class="read-more-link" href="'+_url+'"  title="Discover" ><span class="newfont"> Discover</span></a>';
@@ -579,7 +579,7 @@
                 				if(Request::has("departure") || Request::has("arrive"))
                 				{
              				    ?>
-               					    _url+='?arrive='+{{Request::input("arrive")}}+'&departure='+{{Request::input("departure")}};
+               					    //_url+='?arrive='+{{Request::input("arrive")}}+'&departure='+{{Request::input("departure")}};
                                 <?php
                  				}
                     			?>
@@ -627,7 +627,7 @@
             				                    _html += '<div class="gridtext">';
                                                     _html += '<h5 class="entry-title">';
                                                         _html += '<a href="'+_url+'" rel="bookmark" style="">'+value['property_name']+'</a>';
-                                                        _html += '<a href="'+_url+'"><i class="fa fa-shopping-cart"></i></a>';
+                                                        //_html += '<a href="'+_url+'"><i class="fa fa-shopping-cart"></i></a>';
                                                     _html += '</h5>';
                                                     _html += '<p>'+value['property_usp']+'</p>';
                                                     _html += '<a class="read-more-link" href="'+_url+'" title="discover"><span class="newfontsimple">Discover</span></a>';
