@@ -79,7 +79,7 @@ return [
         'voyageconn' => [
             'driver'    => 'mysql',
             'host'      => '172.104.152.49',
-            'database'  => 'emporium_voyage_live',
+            'database'  => 'emporium_voyage_staging',
             'username'  => 'voyage',
             'password'  => 'kjeDB/Jr',
             'charset'   => 'utf8',
