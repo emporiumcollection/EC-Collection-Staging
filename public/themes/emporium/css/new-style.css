@@ -5312,6 +5312,7 @@ ul.item-list-bar {
 }
 .text-center.hotelBookNowButton {
     padding-top: 40px;
+    text-align: right;
 }
 .tabs-custom-id-145 .text-center.hotelBookNowButton .btn {
     background-color: transparent!important;
@@ -5392,6 +5393,7 @@ ul.item-list-bar {
     padding-top: 40px;
     margin-top: 16px;
 	padding-bottom: 70px;
+    text-align: right;
 }
 .border-style-02 {
     padding-left: 0;
@@ -5482,7 +5484,7 @@ ul.item-list-bar {
 }
 .global-search .t-check-in, .global-search .t-check-out{
     width: 98% !important;
-    font-size: 18px;
+    font-size: 14px;
     word-spacing: 3px;
 }
 .global-search .t-dates{
@@ -5549,7 +5551,7 @@ ul.item-list-bar {
     max-width: none;
 }
 .global-search-box .t-date-box{
-    padding: 10px;
+    padding: 10px 10px 5px 10px;
 }
 .global-search-box .t-dates{
     color: #8D8C8E !important;
@@ -5608,7 +5610,7 @@ ul.item-list-bar {
 }
 .global-search-box .lbl-search-txt{
     font-size: 21px;
-    margin-left: 18px;  
+    /*margin-left: 18px;*/  
 }
 .global-search-box .our-collections.active{
     background: #19191B;
@@ -5635,7 +5637,8 @@ ul.item-list-bar {
 }
 .global-search h3{
     padding:0px 15px;
-    font-size: 20px;
+    /*font-size: 20px;*/
+    font-size: 16px;
 }
 .global-search-box .alternate-heading{
     font-size: 15px;
@@ -6009,19 +6012,105 @@ ul.item-list-bar {
 .chooseadultroom select{
     background: rgba(44,45,51,0.5) !important;
 }
+.global-error{
+    color: #ff0000;
+}
+.remove{
+    color: #ff0000;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.sidebar-search-criteria{
+    color: #fff;
+    padding: 2px;
+    line-height: 25px;
+}
+.font-white{
+    color: #fff !important;
+}
+.sidebar-availability{
+    color: #fff;
+}
 @media screen and (min-width:1600px) {
     .sliderSection .carousel-caption h1{
         font-family: BodoniFLF-Roman !important;
-        font-size: 60px !important;
+        font-size: 65px !important;
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 1024px){   
+    .home-search-bar .home-search-bar-inner {
+        width: 80%;
+    } 
     .home-search-bar{        
-        top: 16%;
+        right: 5%;
+        top: 30%;
+        width: auto;
+        padding: 0px;
+        text-align: center;
+        bottom: auto;
+        max-width: 90%;
+        width: 100%;
+        left: 5%;
+    }
+    #home_sld .carousel-caption {        
+        right: 5%;
+        top: 40%;
+        width: auto;
+        padding: 0px;
+        text-align: center;
+        bottom: auto;
+        max-width: 90%;
+        width: 100%;
+        left: 5%;        
     }
     .sliderSection .carousel-caption h1{
         font-family: BodoniFLF-Roman !important;
-        font-size: 30px !important;
+        font-size: 60px !important;
+    }        
+}
+@media (max-width: 768px){
+    .home-search-bar{        
+        top: 20%;
+    }
+    .home-search-bar .home-search-bar-inner {
+        width: 90%;
+    }
+    #home_sld .carousel-caption {
+        right: 5%;
+        top: 30%;
+        width: auto;
+        padding: 0px;
+        text-align: center;
+        bottom: auto;
+        max-width: 90%;
+        width: 100%;
+        left: 5%;
+    }
+    .sliderSection .carousel-caption h1{
+        font-family: BodoniFLF-Roman !important;
+        font-size: 50px !important;
     }      
+}
+@media (max-width: 480px){   
+    .home-search-bar .home-search-bar-inner {
+        width: 98%;
+    }
+    #home_sld .carousel-caption {
+        right: 5%;
+        top: 35%;
+        width: auto;
+        padding: 0px;
+        text-align: center;
+        bottom: auto;
+        max-width: 90%;
+        width: 100%;
+        left: 5%;
+    }
+    .sliderSection .carousel-caption h1{
+        font-family: BodoniFLF-Roman !important;
+        font-size: 25px !important;
+    }   
+       
 }
