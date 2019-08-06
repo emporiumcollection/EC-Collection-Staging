@@ -26,7 +26,7 @@
     								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Safari</a>
     							</li>
     							<li class="nav-item">
-    								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Spa & Wellness.</a>
+    								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Spa & Wellness</a>
     							</li>
     							<li class="nav-item">
     								<a class="nav-link" id="pills-expereince-tab" data-toggle="pill" href="#pills-expereince" role="tab" aria-controls="pills-expereince" aria-selected="false">Islands</a>
@@ -89,7 +89,7 @@
                             <div class="form-group search-nm">                                        
                                 <div class="mobile-leftsearch">
                                     <div class="mobile-leftsearch-error" data-action="global-search-error"></div>
-                                    <label class="lbl-search-txt">Where do you want to go?</label> 
+                                    <label class="lbl-search-txt">Where to?</label> 
                                     <input title="Search" type="text" class="form-control" placeholder="Enter your Hotel or select one or more destinations." data-action="global-search"/>                                    
                                 </div>
                                 <div id="globalfiltersearchpopup" data-option="global-search" style="display:none;">
@@ -185,13 +185,18 @@
                                         echo $search_txt;
                                     ?>
                                 </div>
+                                <div class="main-hotel-dest-sel-dv">
+                                    <div class="">Your search returned the following results :</div> 
+                                    <div class="">Hotel(s):<span class="selected-hotels"></span></div>
+                                    <div class="">Destination(s):<span class="selected-destinations"></span></div>   
+                                </div>
                                 <div class="info">*Info->You can search one or more hotel or destinations by selecting above</div>
-                                <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London tomreturn multiple city results.</div>
+                                <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London to return multiple city results.</div>
     						</div>            								
     							
                             	
                             <div class="col-md-12 padding-0">
-                                <label class="lbl-search-txt">When do you want to go?</label> 
+                                <label class="lbl-search-txt">When?</label> 
                             </div>	
                             <div class="border-01 margin-bot-30">  
                                                                                                     
@@ -209,6 +214,7 @@
                                         </div>                                             
                                     
                                 </div>
+                                <div class="col-md-12 global-error min-stay-error" style="display: none;"></div>
                                 <!--<div class="col-md-3 margin-top-10">
                                     <div class="col-md-12">
                                         <h3 class="alternate-heading">Flexible search sequence : 5 Days</h3>
@@ -225,7 +231,7 @@
                                 
                             </div>	
                             <div class="col-md-12 padding-0">
-                                <label class="lbl-search-txt">Who will be travelling</label> 
+                                <label class="lbl-search-txt">Who?</label> 
                             </div>	
                             <div class="border-01">	
                             	<div class="col-md-12">                                
@@ -239,7 +245,7 @@
                                         @if(!empty(Session::get('booking_adults'))) 
                                             {{--*/ $adult = Session::get('booking_adults') /*--}} 
                                         @else
-                                            {{--*/ $adult = 1 /*--}} 
+                                            {{--*/ $adult = 2 /*--}} 
                                         @endif
                                         @if(!empty(Session::get('booking_children'))) 
                                             {{--*/ $child = Session::get('booking_children') /*--}} 
@@ -257,7 +263,7 @@
                                                 else if($travellerType==4){ $strdisable=''; }
                                             ?>
                                         @else
-                                            {{--*/ $travellerType = 0; $strdisable='disabled="disabled"'; /*--}} 
+                                            {{--*/ $travellerType = 1; $strdisable='disabled="disabled"'; /*--}} 
                                         @endif          
                                          
                                         
@@ -340,13 +346,13 @@
                                         <div class="column-1 width-100">
                                             <div class="tbl">
                                                 <div class="rw">
-                                                    <div class="col-55"><a href="#" class="traveller-type {{!empty(Session::get('travellerType')) ? (Session::get('travellerType')==0 ? 'active' : '') : 'active'}}" id="traveller-type-0" data-id='0'>Solo traveler</a></div>
+                                                    <div class="col-55"><a href="#" class="traveller-type {{!empty(Session::get('travellerType')) ? (Session::get('travellerType')==0 ? 'active' : '') : ''}}" id="traveller-type-0" data-id='0'>Solo traveler</a></div>
                                                     <div class="col-45 txt-small">
                                                         1 room, 1 adult                            
                                                     </div>
                                                 </div>
                                                 <div class="rw">
-                                                    <div class="col-55"><a href="#" class="traveller-type {{!empty(Session::get('travellerType')) ? (Session::get('travellerType')==1 ? 'active' : '') : ''}}" id="traveller-type-1" data-id='1'>Couple/Pair</a></div>
+                                                    <div class="col-55"><a href="#" class="traveller-type {{!empty(Session::get('travellerType')) ? (Session::get('travellerType')==1 ? 'active' : '') : 'active'}}" id="traveller-type-1" data-id='1'>Couple/Pair</a></div>
                                                     <div class="col-45 txt-small">1 room, 2 adults</div>
                                                 </div>
                                                 <div class="rw">
@@ -468,7 +474,7 @@
                                     
                                     <button type="submit" class="btn">Check Availability</button>
     								<div class="hotelCancelBooking text-center">
-                                        <a href="javascript:void(0);">View, Modify or Cancel your Booking</a>
+                                        <a href="javascript:void(0);" class="viewModifyCancel">View, Modify or Cancel your Booking</a>
                                     </div>    									
                                 </div>
     						</div>

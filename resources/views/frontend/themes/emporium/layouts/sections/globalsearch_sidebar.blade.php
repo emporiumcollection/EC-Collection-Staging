@@ -86,6 +86,39 @@
                 @endif
             </div>
             
+            <div class="sidebar-search-criteria">
+                <div class="col-md-12 yellowbtn"><a href="javascript:void(0)" onclick="window.history.back();" class="font-white">Back to search</a></div>
+                <div class="col-md-12 margin-top-10">Your search criteria :</div>
+                {{-- */  $sidebar_hotels=[]; $sidebar_destinations=[];  /* --}}
+                @if(!empty($allData))
+                    @foreach($allData as $data) 
+                        @if(count($data['ddSelected'])>0)                               
+                            @foreach($data['ddSelected'] as $seldd)
+                                @if($data['name']=='Hotel')
+                                    {{-- */ $sidebar_hotels[] = $seldd; /* --}}        
+                                @endif 
+                                @if($data['name']=='Destination')
+                                    {{-- */ $sidebar_destinations[] = $seldd; /* --}} 
+                                @endif        
+                            @endforeach                          
+                        @endif
+                    @endforeach                        
+                @endif
+                <div class="col-md-12">                    
+                    @if($sidebar_hotels != '')
+                        Hotels: {{implode(', ',$sidebar_hotels)}}
+                    @endif    
+                </div>
+                <div class="col-md-12">
+                    @if(!empty($sidebar_destinations))
+                        Destinations: {{implode(', ', $sidebar_hotels)}}
+                    @endif  
+                </div>
+                <div class="col-md-12">
+                    <a href="#" class="sidebar-availability"> Availability <br />From: {{$arrive_new}} <br />To: {{$departure_new}}</a>
+                </div>
+                <div class="col-md-12 margin-bot-30"></div>                 
+            </div>
             
             @if (!Auth::check())
 
@@ -93,6 +126,7 @@
                 </div>
                 
             @endif
+            
             <div class="left-carousal">
             	<div id="owl-carousel" class="owl-carousel">
                 

@@ -413,7 +413,7 @@ ul.EVMenu li.smallEV {
 	text-transform:uppercase;
 }
 
-.side-bar-why-book-with-us ul {margin:0; padding:0;}
+.side-bar-why-book-with-us ul {margin:0; padding:0; margin-top: 20px;}
 .side-bar-why-book-with-us ul li{list-style:none; text-align:left;}
 .side-bar-why-book-with-us ul h3 {
     font-size: 14px;

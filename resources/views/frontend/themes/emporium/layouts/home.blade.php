@@ -307,20 +307,20 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             var gl_chk_out_date = new Date();
             
             @if(!empty(Session::get("arrive"))) 
-                console.log("hha2");      
-                console.log('{{Session::get("arrive")}}');      
+                //console.log("hha2");      
+                //console.log('{{Session::get("arrive")}}');      
                 gl_chk_date = '{{Session::get("arrive")}}';
             @else 
-                console.log("55a2");
+                //console.log("55a2");
                 gl_chk_date = gl_chk_date;            
             @endif
             
             @if(!empty(Session::get("departure")))
-                console.log("hha");
-                console.log('{{Session::get("departure")}}');
+                //console.log("hha");
+                //console.log('{{Session::get("departure")}}');
                 gl_chk_out_date = '{{Session::get("departure")}}'; 
             @else  
-                console.log("kll");
+                //console.log("kll");
                 gl_chk_out_date = gl_chk_out_date;
                 
                 gl_chk_out_date.setDate(gl_chk_out_date.getDate()+1);
@@ -330,11 +330,12 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 'numCalendar':'2',
                 'autoClose':true,
                 'durationArrowTop':'200',
+                'iconArrowTop': false,
                 'formatDate':'mm-dd-yyyy',
                 'titleCheckIn':'Arrival',
                 'titleCheckOut':'Departure',
-                'inputNameCheckIn':'arrive',
-                'inputNameCheckOut':'departure',
+                'inputNameCheckIn':'gl_arrive',
+                'inputNameCheckOut':'gl_departure',
                 'titleDateRange':'days',
                 'titleDateRanges':'days',
                 'iconDate':'<i class="fa fa-calendar"></i>',

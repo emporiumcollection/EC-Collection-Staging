@@ -1403,8 +1403,9 @@ function globalSearchForAll(searcValue, sitename) {
                     var regExp = new RegExp("" + $.trim(value) + "", 'gi');
                     cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
                 });
-                
-                html += '<li class="our-hotels" data-name="'+ val.property_name +'">' + cat_name + '<input type="checkbox" name="ourHotels[]" value="'+ val.property_name +'" class="invisible"></li>';
+                var h_cat_name = val.property_name;
+                var r_h_cat_name = h_cat_name.replace(/ /gi, '-');
+                html += '<li class="our-hotels our-hotels-'+r_h_cat_name+'" data-name="'+ val.property_name +'">' + cat_name + '<input type="checkbox" name="ourHotels[]" value="'+ val.property_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-collection-option-list"]').html(html);
             //$('[data-action="global-collections"]').parent().show();
@@ -1426,8 +1427,9 @@ function globalSearchForAll(searcValue, sitename) {
                     var regExp = new RegExp("" + $.trim(value) + "", 'gi');
                     cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
                 });
-                
-                html += '<li class="our-destinations" data-name="'+ val.category_name +'">' + cat_name + ' (' + val.p_name + ')<input type="checkbox" name="ourDestinations[]" value="'+ val.category_name +'" class="invisible"></li>';
+                var h_cat_name = val.category_name;
+                var r_h_cat_name = h_cat_name.replace(/ /gi, '-');
+                html += '<li class="our-destinations our-destinations-'+r_h_cat_name+'" data-name="'+ val.category_name +'">' + cat_name + ' (' + val.p_name + ')<input type="checkbox" name="ourDestinations[]" value="'+ val.category_name +'" class="invisible"></li>';
             });
             $('[data-option="global-search-dest-option-list"]').html(html);
             //$('[data-action="global-destinations"]').parent().show();
@@ -1611,25 +1613,80 @@ $(document).on('click', '.our-collections', function(){
         $(this).find('input[type="radio"]').attr('checked', true);
     }
 });
-
+var arrhotels = [];
+var _hid_our_hotels = $('#hid_our_hotels').val();
+if(_hid_our_hotels!=''){
+    var _spl_hotel= _hid_our_hotels.split(',');
+    if(_spl_hotel.length > 0){
+        for(i=0; i<_spl_hotel.length; i++){
+            arrhotels.push(_spl_hotel[i]);        
+        }
+    }
+}
+console.log(arrhotels);
 $(document).on('click', '.our-hotels', function(){         
      if($(this).hasClass('active')){
         $(this).removeClass('active');
         $(this).find('input[type="checkbox"]').attr('checked', false);
+        var _hotel = $(this).find('input[type="checkbox"]').val();        
+        arrhotels.splice($.inArray(_hotel, arrhotels), 1);        
      }else{            
         $(this).addClass('active');
         $(this).find('input[type="checkbox"]').attr('checked', true);
+        var _hotel = $(this).find('input[type="checkbox"]').val();        
+        arrhotels.push(_hotel);        
      }
+     //console.log(arrhotels);
+     $(".selected-hotels").html('');
+     $('#hid_our_hotels').val(arrhotels);
+     var sel_hotel = $('#hid_our_hotels').val();     
+     $str_htl = '';
+     if($.isArray(sel_hotel)){ }  
+     var spl_hotel = sel_hotel.split(',');
+     if(spl_hotel.length > 0){
+        for(i=0; i<spl_hotel.length; i++){
+            if(spl_hotel[i]!=''){
+                $str_htl += '<span class="selected-hotels">'+spl_hotel[i]+'<span class="remove removehotel" data-name="'+spl_hotel[i]+'">x</span></span>';
+            }        
+        }
+     }
+     $(".selected-hotels").html($str_htl);   
 });
-
+var arrdestinations = [];
+var _hid_our_destinations = $('#hid_our_destinations').val();
+if(_hid_our_destinations!=''){
+    var _spl_destinations = _hid_our_destinations.split(',');
+    if(_spl_destinations.length > 0){
+        for(i=0; i<_spl_destinations.length; i++){
+            arrdestinations.push(_spl_destinations[i]);        
+        }
+    }
+}
 $(document).on('click', '.our-destinations', function(){         
      if($(this).hasClass('active')){
         $(this).removeClass('active');
         $(this).find('input[type="checkbox"]').attr('checked', false);
+        var _dest = $(this).find('input[type="checkbox"]').val();        
+        arrdestinations.splice($.inArray(_dest, arrdestinations), 1);     
      }else{
         $(this).addClass('active');
-        $(this).find('input[type="checkbox"]').attr('checked', true);
+        $(this).find('input[type="checkbox"]').attr('checked', true);        
+        var _dest = $(this).find('input[type="checkbox"]').val();        
+        arrdestinations.push(_dest); 
      }
+     //console.log(arrhotels);
+     $('#hid_our_destinations').val(arrdestinations);
+     var sel_dest = $('#hid_our_destinations').val();
+     console.log(sel_dest);
+     str_dest = '';
+     if($.isArray(sel_dest)){ }  
+     var spl_dest = sel_dest.split(',');
+     if(spl_dest.length > 0){
+        for(i=0; i<spl_dest.length; i++){
+            str_dest += '<span class="selected-destinations">'+spl_dest[i]+'<span class="remove removedestination" data-name="'+spl_dest[i]+'">x</span></span>';        
+        }
+     }
+     $(".selected-destinations").html(str_dest);   
 });
 
 $(document).on('click', '.our-experiences', function(){         
@@ -1659,4 +1716,96 @@ $(document).on('click', '[data-action="global-search"]', function () {
     if(hote_or_dest_has_value==1){
         $("#globalfiltersearchpopup").css('display', ''); 
     } 
+});
+$(document).on('submit', '.global-search-form', function(){
+    
+    var site_name = $("#sitename").val();
+    var arrive = $('input[name="gl_arrive"]').val();
+    var departure = $('input[name="gl_departure"]').val();
+    
+    var jarrive = new Date(arrive);
+    var jdeparture = new Date(departure);    
+    var date_diff = jdeparture - jarrive;
+    var millisecondsPerDay = 1000 * 60 * 60 * 24;
+    var days = Math.floor(date_diff/millisecondsPerDay);
+    console.log(days);
+    //console.log(date_diff);
+    //console.log()
+    //console.log(jarrive);
+    //console.log(jdeparture);
+    //console.log(arrive);
+    //console.log(departure);
+    if(site_name=="safari"){
+        if(days>=2){ 
+            //$('.global-search-form').submit();        
+        }else{
+            $(".min-stay-error").html('');
+            $(".min-stay-error").css('display', '');
+            $(".min-stay-error").html("Please select min two days stay");
+            return false; 
+            //alert("Please select min two days stay");    
+        }        
+    }else if(site_name=="islands"){
+        if(days>=3){ 
+            //$('.global-search-form').submit();        
+        }else{
+            $(".min-stay-error").html('');
+            $(".min-stay-error").css('display', '');
+            $(".min-stay-error").html("Please select min three days stay");
+            return false; 
+            //alert("Please select min two days stay");    
+        }               
+    }
+           
+});
+$(document).on('click', '.removehotel', function(){
+    var name = $(this).attr('data-name');
+    
+    var sel_hotel = $('#hid_our_hotels').val();
+     
+     $str_htl = '';
+     if($.isArray(sel_hotel)){ }  
+     var spl_hotel = sel_hotel.split(',');
+     
+     spl_hotel.splice($.inArray(name, spl_hotel), 1); 
+     arrhotels.splice($.inArray(name, arrhotels), 1); 
+     $('#hid_our_hotels').val(spl_hotel);
+     if(spl_hotel.length > 0){
+        for(i=0; i<spl_hotel.length; i++){
+            $str_htl += '<span class="selected-hotels">'+spl_hotel[i]+'<span class="remove removehotel" data-name="'+spl_hotel[i]+'">x</span></span>';        
+        }
+     }
+     $(".selected-hotels").html($str_htl);   
+     var r_name = name.replace(/ /gi, '-');
+     
+     $(".our-hotels-"+r_name).removeClass('active');    
+});
+$(document).on('click', '.removedestination', function(){
+    var name = $(this).attr('data-name');
+    
+    var sel_dest = $('#hid_our_destinations').val();
+     
+     str_dest = '';
+     if($.isArray(sel_dest)){ }  
+     var spl_dest = sel_dest.split(',');
+     
+     spl_dest.splice($.inArray(name, spl_dest), 1); 
+     arrdestinations.splice($.inArray(name, arrdestinations), 1); 
+     $('#hid_our_destinations').val(spl_dest);
+     if(spl_dest.length > 0){
+        for(i=0; i<spl_dest.length; i++){
+            str_dest += '<span class="selected-destinations">'+spl_dest[i]+'<span class="remove removedestination" data-name="'+spl_dest[i]+'">x</span></span>';        
+        }
+     }
+     $(".selected-destinations").html(str_dest);   
+     var r_name = name.replace(/ /gi, '-');
+     
+     $(".our-destinations-"+r_name).removeClass('active');    
+});
+
+$(document).on('click', '.viewModifyCancel', function(){
+    $(".clicktologin").trigger("click");
+});
+$(document).on('click', '.sidebar-availability', function(){
+    $(".cstm_search").toggle();        
 });

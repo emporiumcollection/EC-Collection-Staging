@@ -2684,11 +2684,16 @@ class PropertyController extends Controller {
     
     function propertyglobalavailability(Request $request) {
         
-        $ourHotels = $request->input("ourHotels");
-        $ourDestinations = $request->input("ourDestinations");
+        //$ourHotels = $request->input("ourHotels");
+        //$ourDestinations = $request->input("ourDestinations");
+        $str_hotels = $request->input("hid_our_hotels");
+        $str_destinations = $request->input("hid_our_destinations");
         
-        $arrive = $request->input("arrive");
-        $departure = $request->input("departure");
+        
+        //print_r($request->all()); die;
+        
+        $arrive = $request->input("gl_arrive");
+        $departure = $request->input("gl_departure");
         
         $alternate_dates = $request->input('alternate_dates');
         $numberofdate = $request->input('numberofdate');
@@ -2748,7 +2753,7 @@ class PropertyController extends Controller {
         //$ourExperiences = $request->input("ourExperiences");
         //$ourChannels = $request->input("ourChannels");        
         
-        $arr_hotels = is_array($ourHotels) ? $ourHotels : array();
+        /*$arr_hotels = is_array($ourHotels) ? $ourHotels : array();
         $arr_destinations = is_array($ourDestinations) ? $ourDestinations : array();
         $str_hotels = '';
         if(!empty($arr_hotels)){
@@ -2758,13 +2763,13 @@ class PropertyController extends Controller {
         $str_destinations = '';
         if(!empty($arr_destinations)){
             $str_destinations = implode(',', $arr_destinations);  
-        }        
+        }*/        
         
         $site_url = '';
         if($sitename=='voyage'){
-            //$site_url = 'https://emporium-voyage.com';
+            $site_url = 'https://emporium-voyage.com';
             //$site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
-            $site_url = 'http://staging.emporium-voyage.com';  
+            //$site_url = 'http://staging.emporium-voyage.com';  
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
         }elseif($sitename=='spa'){
