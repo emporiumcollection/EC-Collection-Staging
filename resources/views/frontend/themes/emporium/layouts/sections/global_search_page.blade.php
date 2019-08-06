@@ -113,50 +113,17 @@
                                         
                                     </ul>
                                 </div>
-                                <div class="search-value">                                    
+                                <?php /* <div class="search-value">                                    
                                     <?php
                                         $search_hotel_values = '';
                                         $sess_hotel ="";
                                         if(\Session::has('hotels')){ 
                                             $sess_hotel = \Session::get('hotels');
-                                            /*$arr_hotels = explode(',', $sess_hotel);
-                                            if(!empty($arr_hotels)){
-                                                if(count($arr_hotels)>1){
-                                                    for($i=0; $i<count($arr_hotels); $i++){
-                                                        if($i==0){
-                                                            $search_hotel_values .= $arr_hotels[$i];
-                                                        }elseif($i==(count($arr_hotels)-1)){
-                                                            $search_hotel_values .= " and ".$arr_hotels[$i];
-                                                        }else{
-                                                            $search_hotel_values .= ", ".$arr_hotels[$i];
-                                                        }    
-                                                    }
-                                                }
-                                            }*/
-                                            //echo $sess_hotel;
-                                        }                                        
-                                        //echo $search_hotel_values;
+                                        }
                                         $search_dest_values = '';
                                         $sess_dest='';
                                         if(\Session::has('destinations')){ 
-                                            $sess_dest = \Session::get('destinations');
-                                            /*$arr_destinations = explode(',', $sess_dest);
-                                            if(!empty($arr_destinations)){
-                                                if(count($arr_destinations)>1){
-                                                    for($i=0; $i<count($arr_destinations); $i++){
-                                                        if($i==0){
-                                                            $search_dest_values .= $arr_destinations[$i];
-                                                        }elseif($i==(count($arr_destinations)-1)){
-                                                            $search_dest_values .= " and ".$arr_destinations[$i]." destinations";
-                                                        }else{
-                                                            $search_dest_values .= ", ".$arr_destinations[$i];
-                                                        }    
-                                                    }
-                                                }else{
-                                                    $search_dest_values .= $arr_destinations[$i]." destination";    
-                                                }
-                                            }*/
-                                            //echo $sess_dest;
+                                            $sess_dest = \Session::get('destinations');                                            
                                         }
                                         //echo $search_dest_values;
                                         $search_txt = '';
@@ -170,32 +137,21 @@
                                         if(strlen(trim($sess_dest))>0){
                                             $search_txt .= "<br>";
                                             $search_txt .= "Destination(s) :".$sess_dest;    
-                                        }
-                                        /*$search_txt = '';
-                                        if(strlen(trim($search_hotel_values))>0 && strlen(trim($search_dest_values))>0){
-                                            $search_txt = '';
-                                            $search_txt ="You have searched for ".$search_hotel_values." hotel and ".$search_dest_values;   
-                                        }elseif(strlen(trim($search_hotel_values))>0 && strlen(trim($search_dest_values))==0){
-                                            $search_txt = '';
-                                            $search_txt ="You have searched for ".$search_hotel_values." hotel.";
-                                        }elseif(strlen(trim($search_hotel_values))==0 && strlen(trim($search_dest_values))>0){
-                                            
-                                            $search_txt ="You have searched for ".$search_dest_values;
-                                        }*/
+                                        }                                        
                                         echo $search_txt;
-                                    ?>
-                                </div>
+                                    
+                                </div> */ ?>
                                 <div class="main-hotel-dest-sel-dv">
                                     <div class="">Your search returned the following results :</div> 
-                                    <div class="">Hotel(s):<span class="selected-hotels"></span></div>
-                                    <div class="">Destination(s):<span class="selected-destinations"></span></div>   
+                                    <div class="sidebar-hotel-dest">Hotel(s):<span class="selected-hotels"></span></div>
+                                    <div class="sidebar-hotel-dest">Destination(s):<span class="selected-destinations"></span></div>   
                                 </div>
                                 <div class="info">*Info->You can search one or more hotel or destinations by selecting above</div>
                                 <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London to return multiple city results.</div>
     						</div>            								
     							
                             	
-                            <div class="col-md-12 padding-0">
+                            <div class="">
                                 <label class="lbl-search-txt">When?</label> 
                             </div>	
                             <div class="border-01 margin-bot-30">  
@@ -230,7 +186,7 @@
                                 </div>-->
                                 
                             </div>	
-                            <div class="col-md-12 padding-0">
+                            <div class="">
                                 <label class="lbl-search-txt">Who?</label> 
                             </div>	
                             <div class="border-01">	
@@ -460,7 +416,7 @@
                                 	
                              </div>
         									
-    						<div class="col-md-12 border-style-02">
+    						<div class=" border-style-02">
     							<div class="text-center hotelBookNowButton">
                                     <input type="hidden" name="hote_or_dest_has_value" />
                                     

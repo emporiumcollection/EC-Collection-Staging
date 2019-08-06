@@ -22,7 +22,7 @@ $(document).ready(function () {
         $(".chooseadultroom").css('display', 'none');
     });
     
-    $(document).on('click', '#down-arrow', function (e) {
+    $(document).on('click', '#down-arrow', function (e) { console.log("hello");
         $(".chooseadultroom").toggle();
         e.stopPropagation();
     });

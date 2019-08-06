@@ -2767,9 +2767,9 @@ class PropertyController extends Controller {
         
         $site_url = '';
         if($sitename=='voyage'){
-            $site_url = 'https://emporium-voyage.com';
+            //$site_url = 'https://emporium-voyage.com';
             //$site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
-            //$site_url = 'http://staging.emporium-voyage.com';  
+            $site_url = 'http://staging.emporium-voyage.com';  
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
         }elseif($sitename=='spa'){

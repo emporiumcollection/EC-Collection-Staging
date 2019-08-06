@@ -73,15 +73,7 @@
     </button>
 </div>
 
-<div class="home-search-bar">
-    <div class="home-search-bar-inner global-search-main">
-        <span class="search-input">
-        <input type="text" name="input-global-search" class="form-control" placeholder="where to?" /> 
-        </span>
-        <span class="search-icon"><i class="fa fa-search"></i></span>
-        <!--<button type="button"><i class="fa fa-search"></i></button> --> 
-    </div>   
-</div>
+
 
     <!-- slider starts here -->
          <section class="sliderSection" id="home_sld">
@@ -107,6 +99,17 @@
                             <div class="cnt-box slider-cnt-box">
                                 <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
                             </div>
+                            
+                         </div>
+                         
+                         <div class="home-search-bar">
+                            <div class="home-search-bar-inner global-search-main">
+                                <span class="search-input">
+                                <input type="text" name="input-global-search" class="form-control" placeholder="where to?" /> 
+                                </span>
+                                <span class="search-icon"><i class="fa fa-search"></i></span>
+                                <!--<button type="button"><i class="fa fa-search"></i></button> --> 
+                            </div>   
                          </div>
                         
                     </div>

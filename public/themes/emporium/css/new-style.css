@@ -675,7 +675,7 @@ svg:not(:root) {
 }
 #home_sld .carousel-caption {
     right: 8.999%;
-    top: 50%;
+    top: 25%;
     width: auto;
     padding: 0 0 0 80px;
     text-align: left;
@@ -5311,7 +5311,7 @@ ul.item-list-bar {
     list-style: none;
 }
 .text-center.hotelBookNowButton {
-    padding-top: 40px;
+    padding-top: 80px;
     text-align: right;
 }
 .tabs-custom-id-145 .text-center.hotelBookNowButton .btn {
@@ -5510,6 +5510,9 @@ ul.item-list-bar {
 #globalfiltersearchpopup ul li a:hover{
     background-color: transparent !important;
 }
+#globalfiltersearchpopup ul ul{    
+    padding-left: 12px;
+}
 #globalfiltersearchpopup ul ul li{    
     width: 100%;
     cursor: pointer;
@@ -5536,7 +5539,7 @@ ul.item-list-bar {
     margin: 40px 0 49px;
 }
 .global-search-form .chooseadultroom{    
-    top: 84px !important;
+    top: 56px !important;
 }
 .global-search-box .adult-room{
     background: transparent;
@@ -5843,12 +5846,23 @@ ul.item-list-bar {
 .globalSearchResultSection .heading{
     font-size: 16px;        
 }
+
+.globalSearchResultSection .main-nav-tab{
+    border-bottom: 0px;  
+}
+
+.globalSearchResultSection .collection-tabs>li.active>a, .globalSearchResultSection .collection-tabs>li.active>a:focus, .globalSearchResultSection .collection-tabs>li.active>a:hover{
+    background: transparent !important;
+    border-color: #8D8C8E;
+    border-bottom-color: #19191B;   
+}
+
 /*-----------  Global search tab End  --------------*/
 
 .home-search-bar{
     width: 100%;
     position: absolute;
-    top: 30%;
+    top: 60%;
     z-index: 999;
 }
 .home-search-bar .home-search-bar-inner{
@@ -5996,7 +6010,7 @@ ul.item-list-bar {
 }
 #home_sld .carousel-caption {
     right: 15%;
-    top: 50%;
+    top: 25%;
     width: auto;
     padding: 0px;
     text-align: center;
@@ -6032,6 +6046,9 @@ ul.item-list-bar {
 .sidebar-availability{
     color: #fff;
 }
+.sidebar-hotel-dest{
+    padding-left: 22px;
+}
 @media screen and (min-width:1600px) {
     .sliderSection .carousel-caption h1{
         font-family: BodoniFLF-Roman !important;
@@ -6039,13 +6056,22 @@ ul.item-list-bar {
     }
 }
 
+@media (max-width:1366px){
+    .home-search-bar{
+        top: 60%;        
+    } 
+    #home_sld .carousel-caption {
+        top: 25%;
+    }   
+}
+    
 @media (max-width: 1024px){   
     .home-search-bar .home-search-bar-inner {
         width: 80%;
     } 
     .home-search-bar{        
         right: 5%;
-        top: 30%;
+        top: 60%;
         width: auto;
         padding: 0px;
         text-align: center;
@@ -6056,7 +6082,7 @@ ul.item-list-bar {
     }
     #home_sld .carousel-caption {        
         right: 5%;
-        top: 40%;
+        top: 25%;
         width: auto;
         padding: 0px;
         text-align: center;
@@ -6072,14 +6098,14 @@ ul.item-list-bar {
 }
 @media (max-width: 768px){
     .home-search-bar{        
-        top: 20%;
+        top: 50%;
     }
     .home-search-bar .home-search-bar-inner {
         width: 90%;
     }
     #home_sld .carousel-caption {
         right: 5%;
-        top: 30%;
+        top: 20%;
         width: auto;
         padding: 0px;
         text-align: center;
@@ -6099,7 +6125,7 @@ ul.item-list-bar {
     }
     #home_sld .carousel-caption {
         right: 5%;
-        top: 35%;
+        top: 20%;
         width: auto;
         padding: 0px;
         text-align: center;
@@ -6111,6 +6137,45 @@ ul.item-list-bar {
     .sliderSection .carousel-caption h1{
         font-family: BodoniFLF-Roman !important;
         font-size: 25px !important;
+    } 
+    .home-search-bar{        
+        top: 65%;
+    }  
+    .tab-width{
+        width: 100%;
+        margin: 0px auto;
     }   
+    .hotelPopupHeadings-header-title h2{
+        font-size: 16px;
+    }
+    .hotelPopupHeadings-header-title p{
+        font-size: 12px;
+    }
+    .global-search-box .lbl-search-txt{
+        font-size: 16px;
+    }
+}
+@media (max-width: 320px){   
+    .home-search-bar .home-search-bar-inner {
+        width: 98%;
+    }
+    #home_sld .carousel-caption {
+        right: 5%;
+        top: 15%;
+        width: auto;
+        padding: 0px;
+        text-align: center;
+        bottom: auto;
+        max-width: 90%;
+        width: 100%;
+        left: 5%;
+    }
+    .sliderSection .carousel-caption h1{
+        font-family: BodoniFLF-Roman !important;
+        font-size: 25px !important;
+    } 
+    .home-search-bar{        
+        top: 70%;
+    }  
        
 }
