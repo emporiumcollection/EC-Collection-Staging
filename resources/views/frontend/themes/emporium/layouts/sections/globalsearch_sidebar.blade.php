@@ -35,6 +35,56 @@
             @include('frontend.themes.emporium.layouts.sections.global-search-list')
             {{-- End  Gobal Search List --}}
             
+            <div class="sidebar-search-criteria">
+                <div class="col-md-12 yellowbtn"><a href="javascript:void(0)" onclick="window.history.back();" class="font-white">Back to search</a></div>
+                <div class="col-md-12 margin-top-10">Your search criteria :</div>
+                {{-- */  $sidebar_hotels=[]; $sidebar_destinations=[];  /* --}}
+                @if(!empty($allData))
+                    @foreach($allData as $data) 
+                        @if(count($data['ddSelected'])>0)                               
+                            @foreach($data['ddSelected'] as $seldd)
+                                @if($data['name']=='Hotel')
+                                    {{-- */ $sidebar_hotels[] = $seldd; /* --}}        
+                                @endif 
+                                @if($data['name']=='Destination')
+                                    {{-- */ $sidebar_destinations[] = $seldd; /* --}} 
+                                @endif        
+                            @endforeach                          
+                        @endif
+                    @endforeach                        
+                @endif
+                <div class="col-md-12">                    
+                    @if($sidebar_hotels != '')
+                        Hotels: 
+                        @foreach($sidebar_hotels as $s_hotel)
+                            <span class="">{{$s_hotel}} <span class="remove sidebar-hotel-remove" data-name="{{$s_hotel}}">x</span></span>    
+                        @endforeach
+                    @endif    
+                </div>
+                <div class="col-md-12">
+                    @if(!empty($sidebar_destinations))
+                        Destinations: 
+                        @foreach($sidebar_destinations as $s_dest)
+                            <span class="">{{$s_dest}}<span class="remove sidebar-dest-remove" data-name="{{$s_dest}}">x</span></span>    
+                        @endforeach
+                    @endif  
+                </div>
+                <?php /*<div class="col-md-12">                    
+                    @if($sidebar_hotels != '')
+                        Hotels: {{implode(', ',$sidebar_hotels)}}
+                    @endif    
+                </div>
+                <div class="col-md-12">
+                    @if(!empty($sidebar_destinations))
+                        Destinations: {{implode(', ', $sidebar_destinations)}}
+                    @endif  
+                </div> */ ?>
+                <div class="col-md-12">
+                    <a href="#" class="sidebar-availability"> Availability <br />From: {{$arrive_new}} <br />To: {{$departure_new}}</a>
+                </div>
+                <div class="col-md-12 margin-bot-30"></div>                 
+            </div>
+            
             <div class="main-acordian-search-sidebar">
                 @if(!empty($allData))                                                        
                 {{--*/ $k=1; $j=1; /*--}} 
@@ -85,41 +135,8 @@
                 </div>
                 @endif
             </div>
-            
-            <div class="sidebar-search-criteria">
-                <div class="col-md-12 yellowbtn"><a href="javascript:void(0)" onclick="window.history.back();" class="font-white">Back to search</a></div>
-                <div class="col-md-12 margin-top-10">Your search criteria :</div>
-                {{-- */  $sidebar_hotels=[]; $sidebar_destinations=[];  /* --}}
-                @if(!empty($allData))
-                    @foreach($allData as $data) 
-                        @if(count($data['ddSelected'])>0)                               
-                            @foreach($data['ddSelected'] as $seldd)
-                                @if($data['name']=='Hotel')
-                                    {{-- */ $sidebar_hotels[] = $seldd; /* --}}        
-                                @endif 
-                                @if($data['name']=='Destination')
-                                    {{-- */ $sidebar_destinations[] = $seldd; /* --}} 
-                                @endif        
-                            @endforeach                          
-                        @endif
-                    @endforeach                        
-                @endif
-                <div class="col-md-12">                    
-                    @if($sidebar_hotels != '')
-                        Hotels: {{implode(', ',$sidebar_hotels)}}
-                    @endif    
-                </div>
-                <div class="col-md-12">
-                    @if(!empty($sidebar_destinations))
-                        Destinations: {{implode(', ', $sidebar_hotels)}}
-                    @endif  
-                </div>
-                <div class="col-md-12">
-                    <a href="#" class="sidebar-availability"> Availability <br />From: {{$arrive_new}} <br />To: {{$departure_new}}</a>
-                </div>
-                <div class="col-md-12 margin-bot-30"></div>                 
-            </div>
-            
+            <ul class="mobilemenulist hide" data-option="selected-option-list">
+            </ul>
             @if (!Auth::check())
 
                 <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob" href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>

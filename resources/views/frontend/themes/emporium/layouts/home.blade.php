@@ -342,6 +342,8 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 'limitDateRanges':'365',
                 'dateCheckIn':gl_chk_date,
                 'dateCheckOut':gl_chk_out_date,            
+            }).on('afterCheckOut',function(e, dateCO) {
+                $("#down-arrow").trigger('click');    
             });
             console.log(gl_chk_date);
             console.log(gl_chk_out_date);

@@ -534,6 +534,7 @@ $(document).ready(function () {
    
    $(document).on('click', '[data-action="gobal-search"]', function () {
         $(".cstm_search").toggle();
+        $('[data-action="global-search"]').focus();   
    }); 
    $(document).on('keyup', '[data-action="gobal-search"]', function () {
         $(".cstm_search").toggle();
@@ -554,6 +555,7 @@ $(document).ready(function () {
 
     $(document).on('click', '[data-action="gobal-search-button"]', function () {
         $(".cstm_search").toggle();
+        $('[data-action="global-search"]').focus();
         /*if ($('[data-action="gobal-search"]').val() == '') {
             $('[data-action="gobal-search-error"]').html('Please enter your search term');
             $('[data-option="gobal-search"]').slideUp(300);
@@ -1807,5 +1809,12 @@ $(document).on('click', '.viewModifyCancel', function(){
     $(".clicktologin").trigger("click");
 });
 $(document).on('click', '.sidebar-availability', function(){
-    $(".cstm_search").toggle();        
+    $(".cstm_search").toggle();
+    $(".t-check-in").trigger('click');
+});
+$(document).on('click', '.sidebar-dest-remove', function(){
+    var nm = $(this).attr('data-name');
+    $(".right-"+nm).css('display', 'none');
+    $(this).css('display', 'none');
+    //console.log(nm); 
 });
