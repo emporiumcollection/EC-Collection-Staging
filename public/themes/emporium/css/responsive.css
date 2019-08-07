@@ -159,7 +159,7 @@ body.open{overflow:hidden;}
 	.sliderFooter ul li a{font-size:12px;}
 	#menu ul li a::before{height:3px;}
 	.sliderSection .carousel-caption h1 {font-size: 25px;line-height: 1.2;}
-	.sliderSection .carousel-caption p {font-size: 15px;line-height: 22px;}
+	.sliderSection .carousel-caption p {font-size: 12px;line-height: 18px;}
 	.sliderSection .carousel-control {width: 60px;height: 76px; padding: 22px 0 0;}
 	.sliderSection .left.carousel-control {right: 70px;}
 	.sliderFooter {padding: 18px 10px;}
