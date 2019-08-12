@@ -4594,7 +4594,7 @@ svg:not(:root) {
 }
 .adult-room .number-of-adult{
     display: block;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 .adult-room i{
   border: solid #fff;
@@ -4807,8 +4807,9 @@ svg:not(:root) {
 .custom-menu{
     position: absolute;
     z-index: 2;
-    right: 25%;
+    right: 16%;
     top: 9.333vh;
+    margin-top: 9px;
 }
 .custom-menu ul{
     list-style-type: none;
@@ -4822,6 +4823,9 @@ svg:not(:root) {
     color: #fff;
     font-weight: 500;
     font-size: 16px;
+}
+.custom-menu ul li a img{
+    width: 12%;
 }
 .cstm_search {
     display: none;
@@ -4847,6 +4851,7 @@ svg:not(:root) {
       color: #8D8C8E;
       margin: 0px;
       padding: 0px;
+      z-index: 1;
     }
     .cstm_banner>.container{
       position: absolute;
@@ -6232,4 +6237,312 @@ ul.item-list-bar {
         top: 17%;
     }  
        
+}
+.daterangepicker{
+    z-index: 9999;
+    background: #222326;
+    border-color: #2C2D33;
+    color: #BCBCBF;
+    margin-top: 18px;
+}
+.global-search-box input{    
+    width: 100%;
+    background: transparent;
+    border: 0px;
+    padding: 10px 20px;
+}
+.global-search-box .globaldpheading{
+    padding: 10px 0px 0px 20px;
+    font-size: 18px;   
+}
+.daterangepicker .calendar-table .next span, .daterangepicker .calendar-table .prev span{    
+    border-color: #fff;
+    color: #19191B;
+}
+.daterangepicker td.available:hover, .daterangepicker th.available:hover{
+    background-color: transparent;
+}
+.global-search-wrapper{
+    
+    height: 100vh;
+    object-fit: cover;
+    object-position: center 0px;
+    width: 100%;
+    background-color: #19191B;
+    z-index: 1;
+}
+.gs-image-overaly-bg{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37,37,37,0.6);
+    z-index: 2;
+}
+.global-search-wrapper:before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    background: rgba(37,37,37,0.6);
+}
+.gs-search-form{
+    position: absolute;
+    margin-top: 12%;
+    left: 8.333333333333334%;
+    right: 8%;
+    color:#fff;
+}
+.gs-search-form label{
+    color:#fff;
+}
+.gs-home-search-bar{
+    width: 70%;    
+}
+.gs-table{
+    display: table;
+    width: 100%;    
+}
+.gs-table .gs-table-inner{
+    background: rgba(34,35,38,0.7) !important;
+    padding: 0.5%;
+    border: 1px solid #fff;    
+}
+.gs-col{
+    display: table-cell;
+}
+.col-width:first-child{
+    margin-left: 0;    
+}
+.col-width{
+    float: left;    
+    width: 22.5%;
+    margin-left: 1.4%;
+    
+    background: rgba(34,35,38,0.7) !important;
+    padding: 0.5%;
+    border: 1px solid #fff;
+    
+}
+.gs-home-search-bar{
+    width: 84%;
+    position: absolute;
+    top: 30%;
+    z-index: 99;
+    left: 8.3333%;
+    right:7.6666%;
+    color:#fff;
+    font-size: 12px;
+}
+.gs-home-search-bar input[type=text], .gs-home-search-bar select, .gs-home-search-bar button{
+    background: transparent;
+    border: 0px;
+}
+.gs-home-search-bar input[type=text]{
+    margin-left: 10px;
+}
+.gs-home-search-bar select{
+    height: 35px; 
+    width: 100%;
+    width: 95%;
+    margin-left: 8px;  
+}
+.gs-home-search-bar select option{
+    background: rgba(34,35,38,0.7) !important;
+    padding: 5px;  
+}
+.gs-home-search-bar #globalfiltersearchpopup{
+    position: absolute;
+    background: #222326;
+    margin-top: 10px;
+    width: 70%;
+}
+.gs-home-search-bar .adult-room{
+    background: transparent; 
+    height: 34px;   
+}
+.gs-home-search-bar .search-icon{
+    width: 10%;    
+    vertical-align: middle;
+    text-align: center;
+}
+.gs-home-search-bar .search-icon img{
+    width: 75%;
+}
+.gs-home-search-bar .search-input{
+    width: 90%;  
+    vertical-align: middle;  
+}
+.gs-home-search-bar .btn-search-icon{
+    width: 100%;    
+    vertical-align: middle;
+    height: 50px;    
+}
+.btn-search{
+    float: left;
+    width: 50px;    
+    margin-left: 1.4%;
+    border-radius: 50%; 
+    height: 50px;
+    text-align: center;
+    /*background: rgba(34,35,38,0.7) !important; border:1px solid #fff;*/
+}
+.gs-home-search-bar .common-height{
+    height: 34px;
+}
+.gs-home-search-bar .globaldatepickerrange{
+    position: absolute;
+    margin-top: 8px;
+    /*margin-left: 8px;*/
+}
+.gs-home-search-bar .chooseadultroom{
+    left:auto;   
+    /*margin-left: -30px;*/
+    margin-top: 10px;
+    right: 5.6%;
+    width: 70%;
+}
+.gs-home-search-bar .adult-room .left{
+    display: table;   
+}
+.gs-home-search-bar .adult-room .number-of-adult{
+    display: table-cell;  
+    vertical-align: middle; 
+    height: 34px;
+    padding-left: 8px;
+}
+@media screen and (min-width: 1400px){   
+    .custom-menu{
+        right:13%;
+    }
+}
+@media screen and (max-width: 1024px){   
+    .col-width{
+        margin-left: 1%;
+    }
+    .btn-search {
+        margin-left: 1%;
+    }
+    
+}
+
+@media screen and (max-width: 768px){   
+    .gs-home-search-bar {
+        width: 98%;        
+        left: 20px;
+        right: 20px;
+        
+    }
+    .custom-menu {       
+        right: 25px;
+        top: 25px;
+    }
+    .col-width{
+        width: 22%;
+        margin-left: 1%;    
+    }
+    .btn-search{
+        margin-left: 1%;
+        width: 45px;
+        height: 45px;
+    }
+    .gs-home-search-bar .btn-search-icon{
+        height: 45px;
+    }
+}
+@media screen and (max-width: 480px){   
+    .gs-home-search-bar {
+        width: 98%;        
+        left: 15px;        
+        top: 25%;
+        font-size: 10px;
+    }
+    #home_sld .carousel-caption{
+        top: 35%;
+    }
+    .gs-home-search-bar .fa-3x {
+        font-size: 2em;
+    }
+    .custom-menu {       
+        right: 25px;
+        top: 25px;
+    }
+    .col-width{
+        width: 21%;
+        margin-left: 1%;    
+    }
+    .btn-search{
+        margin-left: 1%;
+        width: 25px;
+        height: 25px;
+    }
+    .gs-home-search-bar .btn-search-icon{
+        height: 45px;
+    }
+    .gs-home-search-bar input[type=text], .gs-home-search-bar select, .gs-home-search-bar button{
+        width: 100%;
+        margin-left: 2px; 
+        height: 25px;   
+    }
+    .gs-home-search-bar .globaldatepickerrange{
+        width: 17%;
+        margin-top: 0px;
+    }
+    .gs-home-search-bar select{
+        height: 25px;
+        margin-left: 0px;
+    }
+    .gs-home-search-bar .common-height{
+        height: 25px;    
+    }
+    .gs-home-search-bar .adult-room .number-of-adult{
+        height: 25px;
+        padding-left: 2px;
+    }
+    .gs-home-search-bar .adult-room {
+        font-size: 10px;
+        height: 25px;
+    }
+    .gs-home-search-bar .btn-search-icon {
+        height: 30px;
+    }
+    .gs-home-search-bar .search-icon img{
+        width: 100%;    
+    }
+    .gs-home-search-bar .search-icon{
+        width: 11%;
+    }
+}
+@media screen and (max-width: 320px){   
+    .gs-home-search-bar {
+        width: 98%;        
+        left: 15px;        
+        top: 25%;
+    }
+    #home_sld .carousel-caption{
+        top: 35%;
+    }
+    .gs-home-search-bar .fa-3x {
+        font-size: 2em;
+    }
+    .custom-menu {       
+        right: 25px;
+        top: 25px;
+    }
+    .col-width{
+        width: 20%;
+        margin-left: 1%;    
+    }
+    .btn-search{
+        margin-left: 1%;
+        width: 25px;
+        height: 25px;
+    }
+    
+    .gs-home-search-bar input[type=text], .gs-home-search-bar select, .gs-home-search-bar button{
+        width: 100%;    
+    }
 }

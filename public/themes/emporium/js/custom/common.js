@@ -20,6 +20,7 @@ $(document).ready(function () {
     
     $(document).on('click', function(e){
         $(".chooseadultroom").css('display', 'none');
+        //$("#globalfiltersearchpopup").css('display', 'none');
     });
     
     $(document).on('click', '#down-arrow', function (e) { console.log("hello");
@@ -1817,4 +1818,7 @@ $(document).on('click', '.sidebar-dest-remove', function(){
     $(".right-"+nm).css('display', 'none');
     $(this).css('display', 'none');
     //console.log(nm); 
+});
+$(document).on('click', '.top-menu-login', function(){    
+    $(".clicktologin").trigger("click");    
 });

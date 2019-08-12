@@ -58,6 +58,7 @@
         @parent
         {{--<link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
         <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">--}}
+        <link href="{{ asset('themes/emporium/daterangepickernew/daterangepicker.css') }}" rel="stylesheet">
     @show
 
     <link href="{{ asset('themes/emporium/css/style.css') }}" rel="stylesheet">
@@ -285,9 +286,9 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
     <script src="{{ asset('themes/emporium/daterangepicker/js/t-datepicker.js') }}"></script>
     <!-- Date Picker js -->
     <script src="{{ asset('themes/emporium/js/moment.min.js') }}"></script>
-
-    {{--<script src="{{ asset('themes/emporium/js/daterangepicker.js') }}"></script>
-    <script src="{{ asset('themes/emporium/js/single-date.js') }}"></script>--}}
+    <script src="{{ asset('themes/emporium/daterangepickernew/daterangepicker.js') }}"></script>
+    {{-- <script src="{{ asset('themes/emporium/js/daterangepicker.js') }}"></script>
+    <script src="{{ asset('themes/emporium/js/single-date.js') }}"></script> --}}
     <script src="{{ asset('themes/emporium/js/custom.js') }}"></script>
     <script src="{{ asset('themes/emporium/js/custom/destination.js') }}"></script>
     <script src="{{ asset('themes/emporium/js/custom/experience.js') }}"></script>
@@ -330,7 +331,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 'numCalendar':'2',
                 'autoClose':true,
                 'durationArrowTop':'200',
-                'iconArrowTop': false,
+                'iconArrowTop': true,
                 'formatDate':'mm-dd-yyyy',
                 'titleCheckIn':'Arrival',
                 'titleCheckOut':'Departure',
@@ -350,7 +351,70 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             $(document).on('click', '.global-search-main', function(){
                 $(".cstm_search").toggle(); 
                 $('[data-action="global-search"]').focus();   
-            });        
+            });
+            
+            
+            var gl_check_in = new Date(); // check-in
+            //var check_out = new Date(dateCO[1]) // check-out
+            var gl_check_out_date = new Date();
+            
+            var gl_check_in_year = gl_check_in.getFullYear(); 
+            var gl_check_in_month = gl_check_in.getMonth()+1; 
+            var gl_check_in_day = gl_check_in.getDate();
+            var gl_check_in_date = gl_check_in_month+"/"+gl_check_in_day+"/"+gl_check_in_year;
+            console.log(gl_check_in_date);
+            gl_check_out_date.setDate(gl_check_out_date.getDate()+1);
+            var gl_check_out_year = gl_check_out_date.getFullYear(); 
+            var gl_check_out_month = gl_check_out_date.getMonth()+1; 
+            var gl_check_out_day = gl_check_out_date.getDate();
+            gl_check_out_date = gl_check_out_month+"/"+gl_check_out_day+"/"+gl_check_out_year;
+            
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'right',
+                autoApply: true,
+                autoUpdateInput: false,
+                startDate: gl_check_in_date, 
+                endDate: gl_check_out_date                
+            }, function(start, end, label) {
+                $('input[name="daterange"]').val(start.format('MM/DD/YYYY') + ' - ' +end.format('MM/DD/YYYY'));
+                $('input[name="gl_arrive"]').val(start.format('MM-DD-YYYY'));
+                $('input[name="gl_departure"]').val(end.format('MM-DD-YYYY'));
+                $("#down-arrow").trigger('click');
+                //console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+            
+            //$('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+                
+            //});
+            
+            /*Date Range Picker Start Here*/
+            /*$('#search-by-date').dateRangePicker(
+                {
+                    selectForward: (Boolean),
+                    stickyMonths: (Boolean),
+                    startDate: "<?php echo date("d-m-Y") ?>",
+                    format: ' DD.MM.YYYY',
+                    autoClose: true,
+                    separator: ' to ',
+                    getValue: function ()
+                    {
+                        if ($('#search-date-range-destination').val() && $('#search-date-range-arrive').val())
+                            return $('#search-date-range-destination').val() + ' to ' + $('#search-date-range-arrive').val();
+                        else
+                            return '';
+                    },
+                    setValue: function (s, s1, s2)
+                    {
+                        $('#date-range-arrive').val(s1);
+                        $('#date-range-destination').val(s2);
+                    }
+                }
+            ).bind('datepicker-first-date-selected', function (event, obj) {
+                $("#date-range-destination").val('');
+            });*/
+            
+            
+                    
         }); 
     
         function checkMembership(param){
