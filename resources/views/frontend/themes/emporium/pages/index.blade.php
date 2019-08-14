@@ -130,7 +130,7 @@
                 <!--</div> -->               
             </div>
             <div id="globalfiltersearchpopup" data-option="global-search" style="display:none;">
-                <div>
+                <div class="gs-notes">
                     <div class="info">*Info->You can search one or more hotel or destinations by selecting above</div>
                     <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London to return multiple city results.</div>
                 </div>
