@@ -653,7 +653,7 @@ position: absolute;
 #reservationForm.pdpreservation-form .btn{margin-top:25px; padding:10px 9px 8px; font-size: 13px;}
 .contactfixed{top:309px;}
 .backcontrol{top:386px;}
-.header-content{padding:10px 0 0 10px;}
+.header-content{padding:10px 0 0 0px;}
 
 /** 18-04-2018 **/
 .roomSuitSlider .noPadding {

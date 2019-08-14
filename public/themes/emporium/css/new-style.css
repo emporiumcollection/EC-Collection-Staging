@@ -5850,6 +5850,7 @@ ul.item-list-bar {
 .globalSearchResultSection{
    margin-left: 14px;
    margin-right: 85px; 
+   margin-top: 100px;
 }
 .globalSearchResultSection .nav-tabs {
     border-bottom: 1px solid #505051;
@@ -6329,7 +6330,7 @@ ul.item-list-bar {
 }
 .col-width{
     float: left;    
-    width: 22.5%;
+    width: 22.4%;
     margin-left: 1.4%;
     
     background: rgba(34,35,38,0.7) !important;
@@ -6368,7 +6369,7 @@ ul.item-list-bar {
     position: absolute;
     background: #222326;
     margin-top: 10px;
-    width: 70%;
+    width: 69.5%;
 }
 .gs-home-search-bar .adult-room{
     background: transparent; 
@@ -6401,7 +6402,7 @@ ul.item-list-bar {
     /*background: rgba(34,35,38,0.7) !important; border:1px solid #fff;*/
 }
 .gs-home-search-bar .common-height{
-    height: 34px;
+    height: 35px;
 }
 .gs-home-search-bar .globaldatepickerrange{
     position: absolute;
@@ -6437,6 +6438,10 @@ ul.item-list-bar {
     display: block;
     margin: 0px;
 }
+.custom-menu ul li ul .gs-dd-collection a{
+    margin-left: 0px;  
+    font-size: 14px;  
+}
 .custom-menu ul li ul .gs-dd-collection .active{
     background: #aba00b;
 }
@@ -6458,7 +6463,16 @@ ul.item-list-bar {
 }
 .gs-searchbar-dd-collection{
     padding: 5px;
+    color: #fff;
 }
+.gs-searchbar-dd-collection a{
+    padding: 5px;
+    color: #fff;
+}
+.sidebar-li{
+    margin-left: 15px;
+}
+
 @media screen and (min-width: 1400px){   
     .custom-menu{
         right:13%;
@@ -6496,6 +6510,15 @@ ul.item-list-bar {
     }
     .gs-home-search-bar .btn-search-icon{
         height: 45px;
+    }
+    .daterangepicker{        
+        margin-right: 6px;
+    }
+    .daterangepicker.opensright:before{
+        left: 120px;
+    }
+    .daterangepicker.opensright:after{
+        left: 120px;
     }
 }
 @media screen and (max-width: 480px){   
@@ -6560,6 +6583,32 @@ ul.item-list-bar {
     .gs-home-search-bar .search-icon{
         width: 11%;
     }
+    #globalfiltersearchpopup ul li{        
+        display: inline-block;
+        width: 100%;
+    } 
+    .gs-searchbar-main-collection{
+        width:40%;
+    }
+    .gs-searchbar-collection{
+        margin-left: 2px;        
+    }
+    .custom-menu ul li ul .gs-dd-collection a{
+        font-size: 12px;
+    }
+    .custom-menu ul li a{
+        margin-left: 15px;
+    }
+    .daterangepicker{
+        margin-top: 12px;
+        margin-right: 6px;
+    }
+    .daterangepicker.opensright:before{
+        left: 100px;
+    }
+    .daterangepicker.opensright:after{
+        left: 100px;
+    }
 }
 @media screen and (max-width: 320px){   
     .gs-home-search-bar {
@@ -6589,5 +6638,15 @@ ul.item-list-bar {
     
     .gs-home-search-bar input[type=text], .gs-home-search-bar select, .gs-home-search-bar button{
         width: 100%;    
+    }
+    #globalfiltersearchpopup ul li{        
+        display: inline-block;
+        width: 100%;
+    }   
+    .daterangepicker.opensright:before{
+        left: 120px;
+    }
+    .daterangepicker.opensright:after{
+        left: 120px;
     }
 }

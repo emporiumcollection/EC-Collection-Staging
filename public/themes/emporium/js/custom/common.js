@@ -30,7 +30,11 @@ $(document).ready(function () {
         $('.gs-searchbar-main-collection').css('display', 'none');
         e.stopPropagation();
     });
-    
+    $(document).on('click', '.who', function (e) { 
+        $(".chooseadultroom").toggle();
+        $('.gs-searchbar-main-collection').css('display', 'none');
+        e.stopPropagation();
+    });
     /*$(document).on('click', '#pdp_check_availibility', function(e){
         e.preventDefault();
         $('.header-content').addClass('showsearch');
@@ -1629,8 +1633,8 @@ if(_hid_our_hotels!=''){
         }
     }
 }
-console.log(arrhotels);
-$(document).on('click', '.our-hotels', function(e){  console.log("llkkl");       
+//console.log(arrhotels);
+$(document).on('click', '.our-hotels', function(e){     
      if($(this).hasClass('active')){
         $(this).removeClass('active');
         $(this).find('input[type="checkbox"]').attr('checked', false);
@@ -1842,7 +1846,7 @@ $(document).on('click', '.gs-top-what-collection', function(e){
       
     e.stopPropagation();
 });
-$(document).on('click', '.gs-searchbar-collection', function(e){
+$(document).on('click', '.collection', function(e){ console.log("hello");
     $('.gs-searchbar-main-collection').toggle(); 
     
     $(".chooseadultroom").css('display', 'none');
@@ -1851,4 +1855,7 @@ $(document).on('click', '.gs-searchbar-collection', function(e){
     $(".gs-main-collection").css('display', 'none');
         
     e.stopPropagation();
+});
+$(document).on('click', '.sidebar-hotel-remove', function(){
+    console.log("je");    
 });

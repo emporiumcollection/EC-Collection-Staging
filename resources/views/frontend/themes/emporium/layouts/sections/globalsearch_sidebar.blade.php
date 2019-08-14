@@ -54,19 +54,23 @@
                     @endforeach                        
                 @endif
                 <div class="col-md-12">                    
-                    @if($sidebar_hotels != '')
-                        Hotels: 
-                        @foreach($sidebar_hotels as $s_hotel)
-                            <span class="">{{$s_hotel}} <span class="remove sidebar-hotel-remove" data-name="{{$s_hotel}}">x</span></span>    
-                        @endforeach
+                    @if($sidebar_hotels != '')                         
+                        <ul class="sidebar-ul">
+                            Hotels:
+                            @foreach($sidebar_hotels as $s_hotel)
+                                <li class="sidebar-li" >{{$s_hotel}} <a class="remove sidebar-hotel-remove" data-name="{{$s_hotel}}">x</a></li>    
+                            @endforeach
+                        </ul>
                     @endif    
                 </div>
                 <div class="col-md-12">
-                    @if(!empty($sidebar_destinations))
-                        Destinations: 
-                        @foreach($sidebar_destinations as $s_dest)
-                            <span class="">{{$s_dest}}<span class="remove sidebar-dest-remove" data-name="{{$s_dest}}">x</span></span>    
-                        @endforeach
+                    @if(!empty($sidebar_destinations))                        
+                        <ul>
+                            Destinations: 
+                            @foreach($sidebar_destinations as $s_dest)
+                                <li class="">{{$s_dest}}<a class="remove sidebar-dest-remove" data-name="{{$s_dest}}">x</a></li>    
+                            @endforeach
+                        </ul>
                     @endif  
                 </div>
                 <?php /*<div class="col-md-12">                    

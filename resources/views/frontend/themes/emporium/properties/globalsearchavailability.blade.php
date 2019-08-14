@@ -9,12 +9,12 @@
 @section('content')
 <section id="globalSearchResult" class="globalSearchResultSection">
     {{-- */  $i=1; $j=1;  /* --}}
-    <div class="col-sm-12">
+    <!--<div class="col-sm-12">
         <div class="heading">
             Search Results <br />                        
             <span class="sub-heading">The following suites are available for the selected criteria.</span>
         </div>
-    </div>
+    </div>-->
     <ul class="nav nav-tabs main-nav-tab">
         @if(!empty($allData))
             @foreach($allData as $data) 
@@ -210,21 +210,20 @@
     @include('frontend.themes.emporium.layouts.sections.pdp_right_iconbar')
 @endsection
 
-{{-- For Include style files --}}
-@section('head')
-    @parent
-    
-@endsection
-
-
 {{-- For Include Top Bar --}}
 @section('top_search_bar')
-    
+    @include('frontend.themes.emporium.layouts.sections.global_search_top_bar')
 @endsection
 
 {{-- For Include Side Bar --}}
 @section('sidebar')
     @include('frontend.themes.emporium.layouts.sections.globalsearch_sidebar')
+@endsection
+
+{{-- For Include style files --}}
+@section('head')
+    @parent
+    
 @endsection
 
 {{-- For custom style  --}}

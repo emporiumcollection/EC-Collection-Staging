@@ -38,10 +38,10 @@
         <li>
             <a href="#" class="gs-top-what-collection"><img src="{{URL::to('images/What-collection.png')}}" /></a>
             <ul class="gs-main-collection" style="display: none;">                
-                <li class="gs-dd-collection active" data-value="voyage">Hotel</li>
-                <li class="gs-dd-collection" data-value="safari">Safari</li>
-                <li class="gs-dd-collection" data-value="spa">Spa & Wellness</li>
-                <li class="gs-dd-collection" data-value="islands">Islands</li>
+                <li class="gs-dd-collection active" data-value="voyage"><a href="https://emporium-voyage.com">Hotel</a></li>
+                <li class="gs-dd-collection" data-value="safari"><a href="https://emporium-safari.com">Safari</a></li>
+                <li class="gs-dd-collection" data-value="spa"><a href="https://emporium-islands.com">Spa & Wellness</a></li>
+                <li class="gs-dd-collection" data-value="islands"><a href="https://emporium-spa.com">Islands</a></li>
             </ul>
         </li>       
     </ul>
@@ -93,7 +93,7 @@
         </div>   
      </div>
     */ ?>
-    
+<form action="{{URL::to('globalavailability')}}" method="post">
     <div class="gs-home-search-bar">
     
         <div class="col-width collection">
@@ -114,10 +114,10 @@
                 <!--</div> -->               
             </div>
             <ul class="gs-searchbar-main-collection" style="display: none;">                
-                <li class="gs-searchbar-dd-collection active" data-value="voyage">Hotel</li>
-                <li class="gs-searchbar-dd-collection" data-value="safari">Safari</li>
-                <li class="gs-searchbar-dd-collection" data-value="spa">Spa & Wellness</li>
-                <li class="gs-searchbar-dd-collection" data-value="islands">Islands</li>
+                <li class="gs-searchbar-dd-collection active" data-value="voyage"><a href="https://emporium-voyage.com">Hotel</a></li>
+                <li class="gs-searchbar-dd-collection" data-value="safari"><a href="https://emporium-safari.com">Safari</a></li>
+                <li class="gs-searchbar-dd-collection" data-value="spa"><a href="https://emporium-islands.com">Spa & Wellness</a></li>
+                <li class="gs-searchbar-dd-collection" data-value="islands"><a href="https://emporium-spa.com">Islands</a></li>
             </ul>
         </div>
         <div class="col-width where">
@@ -130,6 +130,10 @@
                 <!--</div> -->               
             </div>
             <div id="globalfiltersearchpopup" data-option="global-search" style="display:none;">
+                <div>
+                    <div class="info">*Info->You can search one or more hotel or destinations by selecting above</div>
+                    <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London to return multiple city results.</div>
+                </div>
                 <ul>
                     
                     <li>
@@ -421,7 +425,7 @@
             <span class="search-icon"><i class="fa fa-search"></i></span>            
         </div> -->   
      </div>
-    
+</form>    
     <!-- slider starts here -->
          <section class="sliderSection" id="home_sld">
             @if(!empty($slider))
