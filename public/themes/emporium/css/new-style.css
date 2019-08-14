@@ -4806,7 +4806,7 @@ svg:not(:root) {
 }
 .custom-menu{
     position: absolute;
-    z-index: 2;
+    z-index: 100;
     right: 16%;
     top: 9.333vh;
     margin-top: 9px;
@@ -4817,12 +4817,13 @@ svg:not(:root) {
 .custom-menu ul li{
     list-style: none;
     display: inline;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 .custom-menu ul li a{
     color: #fff;
     font-weight: 500;
     font-size: 16px;
+    margin-left: 20px;
 }
 .custom-menu ul li a img{
     width: 12%;
@@ -5502,7 +5503,7 @@ ul.item-list-bar {
 #globalfiltersearchpopup ul li{
     list-style-type: none;
     display: inline-block;
-    width: 24%;
+    width: 30%;
     vertical-align: top;
     padding: 5px;
 }
@@ -6079,6 +6080,15 @@ ul.item-list-bar {
 .sidebar-hotel-dest{
     padding-left: 22px;
 }
+.gs-home-search-bar .our-hotels.active{
+    background: #19191B;
+    border: 1px solid #aba00b;
+}
+.gs-home-search-bar .our-destinations.active{
+    background: #19191B;
+    border: 1px solid #aba00b;
+}
+
 @media screen and (min-width:1600px) {
     .sliderSection .carousel-caption h1{
         font-family: BodoniFLF-Roman !important;
@@ -6413,6 +6423,41 @@ ul.item-list-bar {
     vertical-align: middle; 
     height: 34px;
     padding-left: 8px;
+}
+
+.custom-menu ul li .gs-main-collection{
+    list-style-type: none;
+    background: #222326;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 6px 0px;   
+}
+.custom-menu ul li ul .gs-dd-collection{
+    padding: 2px 2px 2px 10px;
+    display: block;
+    margin: 0px;
+}
+.custom-menu ul li ul .gs-dd-collection .active{
+    background: #aba00b;
+}
+.gs-searchbar-collection{
+    width: 100%;
+    height: 35px;
+    color: #fff;
+    margin-left: 10px;
+}
+.gs-searchbar-collection:hover{    
+    color: #fff;
+}
+.gs-searchbar-main-collection{    
+    position: absolute;
+    margin-top: 10px;
+    background: #222326;
+    padding: 10px;
+    width: 22%;
+}
+.gs-searchbar-dd-collection{
+    padding: 5px;
 }
 @media screen and (min-width: 1400px){   
     .custom-menu{

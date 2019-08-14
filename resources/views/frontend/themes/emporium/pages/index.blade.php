@@ -36,8 +36,13 @@
         <li><a href="#" class="top-menu-login"><img src="{{URL::to('images/Who-collection.png')}}" /></a></li>
         @endif
         <li>
-            <a href="#" class=""><img src="{{URL::to('images/What-collection.png')}}" /></a>
-            
+            <a href="#" class="gs-top-what-collection"><img src="{{URL::to('images/What-collection.png')}}" /></a>
+            <ul class="gs-main-collection" style="display: none;">                
+                <li class="gs-dd-collection active" data-value="voyage">Hotel</li>
+                <li class="gs-dd-collection" data-value="safari">Safari</li>
+                <li class="gs-dd-collection" data-value="spa">Spa & Wellness</li>
+                <li class="gs-dd-collection" data-value="islands">Islands</li>
+            </ul>
         </li>       
     </ul>
 </div>
@@ -92,20 +97,28 @@
     <div class="gs-home-search-bar">
     
         <div class="col-width collection">
-            <div class="gs-table "> 
+            <div class="gs-table common-height "> 
                 <!--<div class="gs-table-inner"> -->              
                     <span class="gs-col search-icon"><img src="{{URL::to('images/What-collection.png')}}" /></span>
                     <span class="gs-col search-input">
-                        <select name="sitename">
+                        <a class="gs-searchbar-collection">Collection</a>
+                        
+                        <!--<select name="sitename">
                             <option value="voyage">Collection</option>
                             <option value="voyage">Hotel</option>
                             <option value="safari">Safari</option>
                             <option value="spa">Spa & Wellness</option>
                             <option value="islands">Islands</option>
-                        </select> 
+                        </select>--> 
                     </span>
                 <!--</div> -->               
             </div>
+            <ul class="gs-searchbar-main-collection" style="display: none;">                
+                <li class="gs-searchbar-dd-collection active" data-value="voyage">Hotel</li>
+                <li class="gs-searchbar-dd-collection" data-value="safari">Safari</li>
+                <li class="gs-searchbar-dd-collection" data-value="spa">Spa & Wellness</li>
+                <li class="gs-searchbar-dd-collection" data-value="islands">Islands</li>
+            </ul>
         </div>
         <div class="col-width where">
             <div class="gs-table common-height"> 
@@ -386,7 +399,16 @@
         </div>
         <div class="btn-search">
             <div class="gs-table ">
-                <span class="gs-col btn-search-icon"><i class="fa fa-search fa-3x"></i></span>
+                <input type="hidden" name="hote_or_dest_has_value" />                                    
+                <input type="hidden" name="sitename" value="voyage" id="sitename" />                                    
+                <input type="hidden" name="hid_our_collections" id="hid_our_collections" />
+                <input type="hidden" name="hid_our_hotels" id="hid_our_hotels" />
+                <input type="hidden" name="hid_our_destinations" id="hid_our_destinations" />
+                <input type="hidden" name="hid_our_experiences" id="hid_our_experiences" />
+                <input type="hidden" name="hid_our_channels" id="hid_our_channels" />
+                <div class="gs-col btn-search-icon">
+                    <button type="submit"><i class="fa fa-search fa-3x"></i></button>
+                </div>
                 <!--<span class="gs-col search-input">
                     <button name="">Search</button>
                 </span>-->                

@@ -18,13 +18,16 @@ $(document).ready(function () {
         $(".cookie-bar-page").fadeOut();
     });
     
-    $(document).on('click', function(e){
+    $(document).on('click', function(e){ 
         $(".chooseadultroom").css('display', 'none');
-        //$("#globalfiltersearchpopup").css('display', 'none');
+        $("#globalfiltersearchpopup").css('display', 'none');
+        $('.gs-searchbar-main-collection').css('display', 'none');
+        $(".gs-main-collection").css('display', 'none');
     });
     
-    $(document).on('click', '#down-arrow', function (e) { console.log("hello");
+    $(document).on('click', '#down-arrow', function (e) { 
         $(".chooseadultroom").toggle();
+        $('.gs-searchbar-main-collection').css('display', 'none');
         e.stopPropagation();
     });
     
@@ -1627,7 +1630,7 @@ if(_hid_our_hotels!=''){
     }
 }
 console.log(arrhotels);
-$(document).on('click', '.our-hotels', function(){         
+$(document).on('click', '.our-hotels', function(e){  console.log("llkkl");       
      if($(this).hasClass('active')){
         $(this).removeClass('active');
         $(this).find('input[type="checkbox"]').attr('checked', false);
@@ -1653,7 +1656,8 @@ $(document).on('click', '.our-hotels', function(){
             }        
         }
      }
-     $(".selected-hotels").html($str_htl);   
+     $(".selected-hotels").html($str_htl); 
+     e.stopPropagation();  
 });
 var arrdestinations = [];
 var _hid_our_destinations = $('#hid_our_destinations').val();
@@ -1665,7 +1669,7 @@ if(_hid_our_destinations!=''){
         }
     }
 }
-$(document).on('click', '.our-destinations', function(){         
+$(document).on('click', '.our-destinations', function(e){         
      if($(this).hasClass('active')){
         $(this).removeClass('active');
         $(this).find('input[type="checkbox"]').attr('checked', false);
@@ -1689,7 +1693,8 @@ $(document).on('click', '.our-destinations', function(){
             str_dest += '<span class="selected-destinations">'+spl_dest[i]+'<span class="remove removedestination" data-name="'+spl_dest[i]+'">x</span></span>';        
         }
      }
-     $(".selected-destinations").html(str_dest);   
+     $(".selected-destinations").html(str_dest);  
+     e.stopPropagation(); 
 });
 
 $(document).on('click', '.our-experiences', function(){         
@@ -1714,11 +1719,16 @@ $(document).on('click', '.our-channels', function(){
 $(document).on('click', '.t-check-in', function(){
    $("#globalfiltersearchpopup").css('display', 'none'); 
 });
-$(document).on('click', '[data-action="global-search"]', function () {
+$(document).on('click', '[data-action="global-search"]', function (e) {
     var hote_or_dest_has_value = $('input[name="hote_or_dest_has_value"]').val();
     if(hote_or_dest_has_value==1){
         $("#globalfiltersearchpopup").css('display', ''); 
     } 
+    $(".chooseadultroom").css('display', 'none');
+    //$("#globalfiltersearchpopup").css('display', 'none');
+    $('.gs-searchbar-main-collection').css('display', 'none');
+    $(".gs-main-collection").css('display', 'none');
+    e.stopPropagation();
 });
 $(document).on('submit', '.global-search-form', function(){
     
@@ -1821,4 +1831,24 @@ $(document).on('click', '.sidebar-dest-remove', function(){
 });
 $(document).on('click', '.top-menu-login', function(){    
     $(".clicktologin").trigger("click");    
+});
+$(document).on('click', '.gs-top-what-collection', function(e){
+    $(".gs-main-collection").toggle();
+      
+    $(".chooseadultroom").css('display', 'none');
+    $("#globalfiltersearchpopup").css('display', 'none');
+    $('.gs-searchbar-main-collection').css('display', 'none');
+    //$(".gs-main-collection").css('display', 'none');
+      
+    e.stopPropagation();
+});
+$(document).on('click', '.gs-searchbar-collection', function(e){
+    $('.gs-searchbar-main-collection').toggle(); 
+    
+    $(".chooseadultroom").css('display', 'none');
+    $("#globalfiltersearchpopup").css('display', 'none');
+    //$('.gs-searchbar-main-collection').css('display', 'none');
+    $(".gs-main-collection").css('display', 'none');
+        
+    e.stopPropagation();
 });
