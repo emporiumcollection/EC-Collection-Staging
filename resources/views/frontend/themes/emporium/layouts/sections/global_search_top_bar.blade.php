@@ -1,7 +1,7 @@
 
 			<?php /* <form action="{{url().'/book-property/'.$propertyDetail['data']->property_slug}}" id="reservationForm" name="reservationform" class="reservation-form pdpreservation-form"> */ ?>
-            <form action="" id="reservationForm" name="reservationform" class="reservation-form pdpreservation-form">
-				<div class="row">					
+            <form action="{{URL::to('globalavailability')}}" method="post" class="gs-top-bar-form">
+				<div class="gs-top-bar">					
 					<?php /* <div class="col-sm-3 col-md-2">
 						<div class="form-group">
 							<label>at</label>
@@ -10,20 +10,59 @@
 							</select>
 						</div>
 					</div> */ ?>
-                    
-                    
-					<div class="col-sm-4 col-md-4 calendarbox">
-						<div class="row">
-                            <div id="t-topbar-picker" class="col-xs-12 col-md-12 t-datepicker t-margin-top25">
-                                <div class="t-check-in"></div>
-                                <div class="t-check-out"></div>
+                    <div class="gs-top-bar-col-icon">                        
+                        <span class="gs-top-bar-collection"><img src="{{URL::to('images/What-collection.png')}}" /></span>
+                        <ul class="gs-searchbar-main-collection" style="display: none;">                
+                            <li class="gs-searchbar-dd-collection active" data-value="voyage"><a href="https://emporium-voyage.com">Hotel</a></li>
+                            <li class="gs-searchbar-dd-collection" data-value="safari"><a href="https://emporium-safari.com">Safari</a></li>
+                            <li class="gs-searchbar-dd-collection" data-value="spa"><a href="https://emporium-spa.com">Spa & Wellness</a></li>
+                            <li class="gs-searchbar-dd-collection" data-value="islands"><a href="https://emporium-islands.com">Islands</a></li>
+                        </ul>                        
+                    </div>
+                    <div class="gs-top-bar-col gs-top-bar-col-20">
+                        
+                        <span>
+                            <input title="Search" type="text" placeholder="Where to?" data-action="global-search"/> 
+                        </span>
+                        
+                        <div id="globalfiltersearchpopup" data-option="global-search" style="display:none;">
+                            <div class="gs-notes">
+                                <div class="info">*Info->You can search one or more hotel or destinations by selecting above</div>
+                                <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London to return multiple city results.</div>
                             </div>
-						</div>
+                            <ul>
+                                
+                                <li>
+                                    <a class="searchresultdata cursor" data-action="global-search-collections">
+                                        <i class="iconsheet icon-collections"></i> <span>Collection (0)</span>
+                                    </a>
+                    
+                                    <ul class="searchmenulist" data-option="global-search-collection-option-list"></ul>
+                                </li>
+                    
+                                <li>
+                                    <a class="searchresultdata cursor" data-action="global-search-destinations">
+                                        <i class="iconsheet icon-destinations"></i> <span>Destination (0)</span>
+                                    </a>
+                    
+                                    <ul class="searchmenulist" data-option="global-search-dest-option-list"></ul> 
+                                </li>                                        
+                                
+                            </ul>
+                        </div>
+                    </div>
+					<div class="gs-top-bar-col gs-top-bar-col-40 calendarbox">
+						
+                        <div id="t-topbar-picker" class="t-datepicker">
+                            <div class="t-check-in"></div>
+                            <div class="t-check-out"></div>
+                        </div>
+						
 					</div>
                     
-                    <div class="col-sm-3 col-md-2">
-                        <label>&nbsp;</label>
-                	    <div class="form-group adult-room">
+                    <div class="gs-top-bar-col gs-top-bar-col-20">
+                        
+                	    <div class="adult-room">
                             
                                 @if(!empty(Session::get('booking_rooms'))) 
                                         {{--*/ $rooms = Session::get('booking_rooms') /*--}}
@@ -282,10 +321,18 @@
 							</select>
 						</div>
 					</div> */ ?>
-                    
-                    <div class="col-sm-3 col-md-2"><button class="btn yellowbtn" id="btn-check-availibility">Check Availability</button></div>
-                    <?php /* <div class="col-sm-3 col-md-2"><button class="btn yellowbtn" id="pdp_check_availibility">Check Availability</button></div>
-					<div class="col-sm-3 col-md-2"><button class="btn yellowbtn">MAKE RESERVATION</button></div> */ ?>
+                    <div class="gs-top-bar-col gs-top-bar-col-20">
+                        <input type="hidden" name="hote_or_dest_has_value" />                                    
+                        <input type="hidden" name="sitename" value="voyage" id="sitename" />                                    
+                        <input type="hidden" name="hid_our_collections" id="hid_our_collections" />
+                        <input type="hidden" name="hid_our_hotels" id="hid_our_hotels" value="{{$hotels}}" />
+                        <input type="hidden" name="hid_our_destinations" id="hid_our_destinations" value="{{$destinations}}" />
+                        <input type="hidden" name="hid_our_experiences" id="hid_our_experiences" />
+                        <input type="hidden" name="hid_our_channels" id="hid_our_channels" />
+                        <div class=""><button class="btn yellowbtn" id="btn-check-availibility">Check Availability</button></div>
+                        <?php /* <div class="col-sm-3 col-md-2"><button class="btn yellowbtn" id="pdp_check_availibility">Check Availability</button></div>
+    					<div class="col-sm-3 col-md-2"><button class="btn yellowbtn">MAKE RESERVATION</button></div> */ ?>
+                    </div>
 				</div>
 			</form>
 		

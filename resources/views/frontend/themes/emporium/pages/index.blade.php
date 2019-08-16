@@ -40,8 +40,8 @@
             <ul class="gs-main-collection" style="display: none;">                
                 <li class="gs-dd-collection active" data-value="voyage"><a href="https://emporium-voyage.com">Hotel</a></li>
                 <li class="gs-dd-collection" data-value="safari"><a href="https://emporium-safari.com">Safari</a></li>
-                <li class="gs-dd-collection" data-value="spa"><a href="https://emporium-islands.com">Spa & Wellness</a></li>
-                <li class="gs-dd-collection" data-value="islands"><a href="https://emporium-spa.com">Islands</a></li>
+                <li class="gs-dd-collection" data-value="spa"><a href="https://emporium-spa.com">Spa & Wellness</a></li>
+                <li class="gs-dd-collection" data-value="islands"><a href="https://emporium-islands.com">Islands</a></li>
             </ul>
         </li>       
     </ul>
@@ -116,8 +116,8 @@
             <ul class="gs-searchbar-main-collection" style="display: none;">                
                 <li class="gs-searchbar-dd-collection active" data-value="voyage"><a href="https://emporium-voyage.com">Hotel</a></li>
                 <li class="gs-searchbar-dd-collection" data-value="safari"><a href="https://emporium-safari.com">Safari</a></li>
-                <li class="gs-searchbar-dd-collection" data-value="spa"><a href="https://emporium-islands.com">Spa & Wellness</a></li>
-                <li class="gs-searchbar-dd-collection" data-value="islands"><a href="https://emporium-spa.com">Islands</a></li>
+                <li class="gs-searchbar-dd-collection" data-value="spa"><a href="https://emporium-spa.com">Spa & Wellness</a></li>
+                <li class="gs-searchbar-dd-collection" data-value="islands"><a href="https://emporium-islands.com">Islands</a></li>
             </ul>
         </div>
         <div class="col-width where">
@@ -130,9 +130,9 @@
                 <!--</div> -->               
             </div>
             <div id="globalfiltersearchpopup" data-option="global-search" style="display:none;">
-                <div class="gs-notes">
-                    <div class="info">*Info->You can search one or more hotel or destinations by selecting above</div>
-                    <div class="info">*Search multiple destination by adding a comma ( , ) for example New York, London to return multiple city results.</div>
+                <div class="gs-notes">                    
+                    <div class="info">*Search multiple destinations by entering a comma. For example New York, London. </div>
+                    <div class="info">*Info->Select multiple hotels or destinations.</div>
                 </div>
                 <ul>
                     
@@ -158,7 +158,7 @@
         <div class="col-width when">            
             <div class="gs-table"> 
                 
-                    <span class="gs-col search-icon"><img src="{{URL::to('images/When-collection.png')}}" /></span>  
+                    <span class="gs-col search-icon when-coll"><img src="{{URL::to('images/When-collection.png')}}" /></span>  
                     <div class="search-input common-height">              
                         <div class="globaldatepickerrange">
                             <!--<div class="globaldpheading">From-to</div>-->

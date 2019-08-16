@@ -56,7 +56,7 @@
                 <div class="col-md-12">                    
                     @if($sidebar_hotels != '')                         
                         <ul class="sidebar-ul">
-                            Hotels:
+                            <div class="gs-result-sidebar-heading">Hotels</div>
                             @foreach($sidebar_hotels as $s_hotel)
                                 <li class="sidebar-li" >{{$s_hotel}} <a class="remove sidebar-hotel-remove" data-name="{{$s_hotel}}">x</a></li>    
                             @endforeach
@@ -65,10 +65,10 @@
                 </div>
                 <div class="col-md-12">
                     @if(!empty($sidebar_destinations))                        
-                        <ul>
-                            Destinations: 
+                        <ul class="sidebar-ul">
+                            <div class="gs-result-sidebar-heading">Destinations</div> 
                             @foreach($sidebar_destinations as $s_dest)
-                                <li class="">{{$s_dest}}<a class="remove sidebar-dest-remove" data-name="{{$s_dest}}">x</a></li>    
+                                <li class="sidebar-li">{{$s_dest}}<a class="remove sidebar-dest-remove" data-name="{{$s_dest}}">x</a></li>    
                             @endforeach
                         </ul>
                     @endif  
@@ -84,7 +84,10 @@
                     @endif  
                 </div> */ ?>
                 <div class="col-md-12">
-                    <a href="#" class="sidebar-availability"> Availability <br />From: {{$arrive_new}} <br />To: {{$departure_new}}</a>
+                    <ul class="sidebar-ul">
+                    <div class="gs-result-sidebar-heading sidebar-availability"> Availability</div>
+                    <li class="sidebar-li">From: {{--*/ echo date('d M Y', strtotime($arrive_new)); /* --}}</li>
+                    <li class="sidebar-li">To: {{--*/ echo date('d M Y', strtotime($departure_new)); /* --}}</li>
                 </div>
                 <div class="col-md-12 margin-bot-30"></div>                 
             </div>

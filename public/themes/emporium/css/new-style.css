@@ -6370,6 +6370,7 @@ ul.item-list-bar {
     background: #222326;
     margin-top: 10px;
     width: 69.5%;
+    padding: 15px 10px;
 }
 .gs-home-search-bar .adult-room{
     background: transparent; 
@@ -6381,7 +6382,8 @@ ul.item-list-bar {
     text-align: center;
 }
 .gs-home-search-bar .search-icon img{
-    width: 75%;
+    /*width: 75%;*/
+    height: 34px;
 }
 .gs-home-search-bar .search-input{
     width: 90%;  
@@ -6475,6 +6477,78 @@ ul.item-list-bar {
 #globalfiltersearchpopup .gs-notes{
     padding: 5px;
 }
+.gs-top-collection{
+    width: 100%;
+    color:#fff;
+    background: #505051;
+}
+.gs-result-sidebar-heading{
+    text-decoration: underline;
+}
+
+/* --- Global search top bar -----*/
+
+.gs-top-bar{
+    display: table;
+}
+.gs-top-bar-col-icon{
+    display: table-cell;
+    vertical-align: middle;    
+    width: 4%;
+    padding-right: 1%;
+}
+.gs-top-bar-col{
+    display: table-cell;
+    vertical-align: middle; 
+    padding-right: 1%;   
+}
+.gs-top-bar-col-btn{
+    display: table-cell;
+    vertical-align: middle;    
+    width: 10%;
+}
+.gs-top-bar-col-10{    
+    width: 10%;
+}
+.gs-top-bar-col-20{    
+    width: 19%;
+}
+.gs-top-bar-col-30{    
+    width: 30%;
+}
+.gs-top-bar-col-40{    
+    width: 40%;
+}
+.gs-top-bar-col img{
+    width: 50%;
+}
+.gs-top-bar .btn{
+    margin-top: 0px !important;
+}
+.gs-top-bar #globalfiltersearchpopup{
+    position: absolute;
+    background: #222326;
+    margin-top: 10px;
+    width: 69.5%;
+}
+.gs-top-bar .chooseadultroom{
+    width: 59%;
+    right: 16.5%;
+    left: auto;
+}
+.gs-top-bar-form{
+    padding: 15px 0px 0px 0px;
+}
+#globalfiltersearchpopup ul ul li.our-hotels.active{
+    background: #19191B;
+    border: 1px solid #aba00b;
+}
+#globalfiltersearchpopup ul ul li.our-destinations.active{
+    background: #19191B;
+    border: 1px solid #aba00b;
+}
+/* ---- End Global search top bar -------*/
+
 @media screen and (min-width: 1400px){   
     .custom-menu{
         right:13%;

@@ -1859,3 +1859,11 @@ $(document).on('click', '.collection', function(e){ console.log("hello");
 $(document).on('click', '.sidebar-hotel-remove', function(){
     console.log("je");    
 });
+$(document).on('click', '.gs-top-bar-collection', function(e){ console.log("hello");
+    $(".gs-searchbar-main-collection").toggle();  
+    e.stopPropagation();      
+});
+$(document).on('click', '.when-coll', function(e){ console.log("hello");
+    
+    e.stopImmediatePropagation();    
+});

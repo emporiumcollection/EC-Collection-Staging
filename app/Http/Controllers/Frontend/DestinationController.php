@@ -551,7 +551,7 @@ class DestinationController extends Controller {
             }
             
             $our_coll_id = '';
-            $our_collection = \DB::connection($conn)->table('tb_categories')->select('id')->where('category_alias', 'our-collection')->where('category_published', 1)->first();
+            $our_collection = \DB::connection($conn)->table('tb_categories')->select('id')->where('category_alias', 'our-collection')->first();
             if(!empty($our_collection)){
                 $our_coll_id = $our_collection->id;
             };

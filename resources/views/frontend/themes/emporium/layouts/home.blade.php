@@ -497,9 +497,9 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             
             //console.log(window.location.href);            
             <?php if(!((bool) \auth()->check())){ ?>
-                $("#btn-check-availibility").attr('disabled', true);
-                $("#btn-check-availibility").text("availability/login");
-                $("#btn-check-availibility").css('opacity', 1);
+                //$("#btn-check-availibility").attr('disabled', true);
+//                $("#btn-check-availibility").text("availability/login");
+//                $("#btn-check-availibility").css('opacity', 1);
             <?php }else{ ?>
                 $("#btn-check-availibility").attr('disabled', false);
             <?php } ?>
@@ -681,8 +681,8 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 'formatDate':'mm-dd-yyyy',
                 'titleCheckIn':'Arrival',
                 'titleCheckOut':'Departure',
-                'inputNameCheckIn':'arrive',
-                'inputNameCheckOut':'departure',
+                'inputNameCheckIn':'gl_arrive',
+                'inputNameCheckOut':'gl_departure',
                 'titleDateRange':'days',
                 'titleDateRanges':'days',
                 'iconDate':'<i class="fa fa-calendar"></i>',
