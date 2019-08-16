@@ -6497,6 +6497,9 @@ ul.item-list-bar {
     width: 4%;
     padding-right: 1%;
 }
+.gs-top-bar-col-icon img{
+    width: 50%;    
+}
 .gs-top-bar-col{
     display: table-cell;
     vertical-align: middle; 
