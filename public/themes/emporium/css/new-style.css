@@ -4590,7 +4590,7 @@ svg:not(:root) {
     font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 12px;
     display: table;
-    height: 37px;
+    height: 36px;
 }
 .adult-room .number-of-adult{
     display: block;
@@ -4611,14 +4611,15 @@ svg:not(:root) {
 
 .adult-room .left{
     float: left;
-    width: 80%;    
+    width: 80%;
+    margin-top: 2px;    
 }
 
 .adult-room .right{
     float: left;
     width: 20%;   
     text-align: center; 
-    height: 38px;
+    height: 35px;
     cursor: pointer;
 }
 .chooseadultroom{    
