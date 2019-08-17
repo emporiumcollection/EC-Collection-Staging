@@ -6271,7 +6271,8 @@ ul.item-list-bar {
     color: #19191B;
 }
 .daterangepicker td.available:hover, .daterangepicker th.available:hover{
-    background-color: transparent;
+    /*background-color: transparent;*/
+    color:#000;
 }
 .global-search-wrapper{
     
@@ -6502,7 +6503,7 @@ ul.item-list-bar {
 }
 .gs-top-bar-col{
     display: table-cell;
-    vertical-align: middle; 
+    vertical-align: bottom; 
     padding-right: 1%;   
 }
 .gs-top-bar-col-btn{
@@ -6541,7 +6542,7 @@ ul.item-list-bar {
     left: auto;
 }
 .gs-top-bar-form{
-    padding: 15px 0px 0px 0px;
+    padding: 5px 0px 0px 0px;
 }
 #globalfiltersearchpopup ul ul li.our-hotels.active{
     background: #19191B;
@@ -6551,11 +6552,20 @@ ul.item-list-bar {
     background: #19191B;
     border: 1px solid #aba00b;
 }
+.gs-top-bar-lbl{
+    color: #fff !important;    
+}
+.gs-top-bar input[type=text]{
+    text-transform:none !important;
+}
+.gs-top-bar .t-datepicker{
+    font-size: 12px;
+}
 /* ---- End Global search top bar -------*/
 
 @media screen and (min-width: 1400px){   
     .custom-menu{
-        right:13%;
+        right:15%;
     }
 }
 @media screen and (max-width: 1024px){   
@@ -6619,7 +6629,8 @@ ul.item-list-bar {
         top: 25px;
     }
     .col-width{
-        width: 21%;
+        /*width: 21%;*/
+        width: 28%;
         margin-left: 1%;    
     }
     .btn-search{
@@ -6658,7 +6669,8 @@ ul.item-list-bar {
         height: 30px;
     }
     .gs-home-search-bar .search-icon img{
-        width: 100%;    
+        width: 100%;
+        height: auto;    
     }
     .gs-home-search-bar .search-icon{
         width: 11%;
@@ -6688,6 +6700,12 @@ ul.item-list-bar {
     }
     .daterangepicker.opensright:after{
         left: 100px;
+    }
+    .gs-margin-left{
+        margin-left: 0px !important;
+    }
+    .collection{
+        display: none;
     }
 }
 @media screen and (max-width: 320px){   

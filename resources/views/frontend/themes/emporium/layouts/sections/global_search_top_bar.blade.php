@@ -20,7 +20,7 @@
                         </ul>                        
                     </div>
                     <div class="gs-top-bar-col gs-top-bar-col-20">
-                        
+                        <label class="gs-top-bar-lbl">Where to?</label>
                         <span>
                             <input title="Search" type="text" placeholder="Where to?" data-action="global-search"/> 
                         </span>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
 					<div class="gs-top-bar-col gs-top-bar-col-40 calendarbox">
-						
+						<label class="gs-top-bar-lbl">When?</label>
                         <div id="t-topbar-picker" class="t-datepicker">
                             <div class="t-check-in"></div>
                             <div class="t-check-out"></div>
@@ -61,7 +61,7 @@
 					</div>
                     
                     <div class="gs-top-bar-col gs-top-bar-col-20">
-                        
+                        <label class="gs-top-bar-lbl">Who?</label>
                 	    <div class="adult-room">
                             
                                 @if(!empty(Session::get('booking_rooms'))) 

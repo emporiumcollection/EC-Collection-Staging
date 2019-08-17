@@ -120,7 +120,7 @@
                 <li class="gs-searchbar-dd-collection" data-value="islands"><a href="https://emporium-islands.com">Islands</a></li>
             </ul>
         </div>
-        <div class="col-width where">
+        <div class="col-width where gs-margin-left">
             <div class="gs-table common-height"> 
                 <!--<div class="gs-table-inner"> -->              
                     <span class="gs-col search-icon"><img src="{{URL::to('images/Where-collection.png')}}" /></span>
