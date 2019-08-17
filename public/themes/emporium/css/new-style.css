@@ -6352,6 +6352,7 @@ ul.item-list-bar {
 .gs-home-search-bar input[type=text], .gs-home-search-bar select, .gs-home-search-bar button{
     background: transparent;
     border: 0px;
+    caret-color: #aba00b;
 }
 .gs-home-search-bar input[type=text]{
     margin-left: 10px;
@@ -6561,6 +6562,7 @@ ul.item-list-bar {
 .gs-top-bar .t-datepicker{
     font-size: 12px;
 }
+
 /* ---- End Global search top bar -------*/
 
 @media screen and (min-width: 1400px){   
