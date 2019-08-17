@@ -1861,7 +1861,7 @@ $(document).on('click', '.collection', function(e){ console.log("hello");
     e.stopPropagation();
 });
 $(document).on('click', '.sidebar-hotel-remove', function(){
-    console.log("je");    
+    var nm = $(this).attr('data-name');    
 });
 $(document).on('click', '.gs-top-bar-collection', function(e){ console.log("hello");
     $(".gs-searchbar-main-collection").toggle();  

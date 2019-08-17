@@ -6530,6 +6530,7 @@ ul.item-list-bar {
 }
 .gs-top-bar .btn{
     margin-top: 0px !important;
+    padding: 8px 9px;
 }
 .gs-top-bar #globalfiltersearchpopup{
     position: absolute;
