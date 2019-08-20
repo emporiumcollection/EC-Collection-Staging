@@ -1402,6 +1402,8 @@ function globalSearchForAll(searcValue, sitename) {
         if (data.data.collection == undefined) {
             $('[data-action="global-search-collections"] span').html('Our Hotel (0)');
         }else{
+            console.log(data.data.collection);
+            //console.log(html);
             var html ='';
             var collString = (data.data.collection.length > 1) ? "Our Hotels" : "Our Hotel";
             $('[data-action="global-search-collections"] span').html(collString + ' ('+data.data.collection.length+')');
@@ -1413,8 +1415,10 @@ function globalSearchForAll(searcValue, sitename) {
                 var cname = searcValue;
                 var arr_str = cname.split(',');
                 $.each(arr_str, function(key, value){
-                    var regExp = new RegExp("" + $.trim(value) + "", 'gi');
-                    cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
+                    if($.trim(value)!=''){
+                        var regExp = new RegExp("" + $.trim(value) + "", 'gi');
+                        cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
+                    }
                 });
                 var h_cat_name = val.property_name;
                 var r_h_cat_name = h_cat_name.replace(/ /gi, '-');
@@ -1437,8 +1441,10 @@ function globalSearchForAll(searcValue, sitename) {
                 var cname = searcValue;
                 var arr_str = cname.split(',');
                 $.each(arr_str, function(key, value){ 
-                    var regExp = new RegExp("" + $.trim(value) + "", 'gi');
-                    cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
+                    if($.trim(value)!=''){
+                        var regExp = new RegExp("" + $.trim(value) + "", 'gi');
+                        cat_name = cat_name.replace(regExp,'<span style="text-decoration:underline;">'+$.trim(value)+'</span>');
+                    }
                 });
                 var h_cat_name = val.category_name;
                 var r_h_cat_name = h_cat_name.replace(/ /gi, '-');
@@ -1842,7 +1848,17 @@ $(document).on('click', '.top-menu-login', function(){
 });
 $(document).on('click', '.gs-top-what-collection', function(e){
     $(".gs-main-collection").toggle();
+    $(".gs-main-user-collection").css('display', 'none');
+    $(".chooseadultroom").css('display', 'none');
+    $("#globalfiltersearchpopup").css('display', 'none');
+    $('.gs-searchbar-main-collection').css('display', 'none');
+    //$(".gs-main-collection").css('display', 'none');
       
+    e.stopPropagation();
+});
+$(document).on('click', '.top-menu-user', function(e){
+    $(".gs-main-user-collection").toggle();    
+    $(".gs-main-collection").css('display', 'none');      
     $(".chooseadultroom").css('display', 'none');
     $("#globalfiltersearchpopup").css('display', 'none');
     $('.gs-searchbar-main-collection').css('display', 'none');
@@ -1863,11 +1879,29 @@ $(document).on('click', '.collection', function(e){ console.log("hello");
 $(document).on('click', '.sidebar-hotel-remove', function(){
     var nm = $(this).attr('data-name');    
 });
-$(document).on('click', '.gs-top-bar-collection', function(e){ console.log("hello");
+$(document).on('click', '.gs-top-bar-collection', function(e){
     $(".gs-searchbar-main-collection").toggle();  
     e.stopPropagation();      
 });
-$(document).on('click', '.when-coll', function(e){ console.log("hello");
+$(document).on('click', '.when-coll', function(e){
     
     e.stopImmediatePropagation();    
+});
+$(document).on('click', '.gs-lnk-destination', function(e){
+    //$( this ).toggleClass( "highlight" );
+    $(".homerightmenu").addClass("me-right");
+    $(".mobilemenu").addClass("me-left");
+    $(".menu-bx").addClass( "is-nav-active"); 
+    $(".Home .logo-box").addClass( "remove-h-logo");
+    $('[data-action="select-destination"]').trigger('click');
+    e.stopPropagation(); 
+});
+$(document).on('click', '.gs-lnk-experience', function(e){
+    //$( this ).toggleClass( "highlight" );
+    $(".homerightmenu").addClass("me-right");
+    $(".mobilemenu").addClass("me-left");
+    $(".menu-bx").addClass( "is-nav-active"); 
+    $(".Home .logo-box").addClass( "remove-h-logo");
+    $('[data-action="select-experience"]').trigger('click');
+    e.stopPropagation(); 
 });

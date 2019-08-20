@@ -32,6 +32,47 @@
 <div class="custom-menu">
     <ul class="cstm_menu">
         @if(Session::get('uid')>0)
+        <li>
+            <a href="#" class="top-menu-user"><i class="fa fa-user"></i></a>
+            <ul class="gs-main-user-collection" style="display: none;">
+                {{--*/ $is_demo6 = trim(\CommonHelper::isHotelDashBoard()); /*--}}
+                @if(strlen($is_demo6) > 0)
+                    <li class="gs-dd-user-collection"><a href="{{ URL::to('dashboard')}}">Dashboard</a></li>
+                    <li class="gs-dd-user-collection"><a href="{{ URL::to('user/profile')}}">Change Password</a></li>
+                    @if(\Session::get('prop_slug'))
+                    <li class="gs-dd-user-collection">
+						<a href="{{Url::to('/')}}/{{\Session::get('prop_slug')}}">My Hotel</a>
+					</li>
+                    @endif
+					<li class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/profile')}}">{{ Lang::get('profile.my-profile') }}</a>
+					</li>
+					
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('hotel/bookings')}}">My Reservations</a>
+					</li>
+                    
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/profile')}}" >{{ Lang::get('profile.my-company') }}</a>
+					</li>
+					
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/profile')}}">{{ Lang::get('profile.my-users') }}</a>
+					</li>
+                    
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('press')}}">Press</a>
+					</li>
+                    
+                @else
+                    <li class="gs-dd-user-collection"><a href="{{ URL::to('customer/profile')}}">Profile</a></li>
+                    <li class="gs-dd-user-collection"><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Password</a></li>
+                @endif
+                
+                <?php /* <li><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Possword</a></li> */ ?>
+                <li class="gs-dd-user-collection"><a href="{{ URL::to('customer/logout')}}">Logout</a></li>
+            </ul>
+        </li>
         @else    
         <li><a href="#" class="top-menu-login"><img src="{{URL::to('images/Who-collection.png')}}" /></a></li>
         @endif
@@ -418,6 +459,16 @@
                 </span>-->                
             </div>
         </div>
+        <div class="col-width-bot"></div>
+        <div class="col-width-bot"></div>
+        <div class="col-width-bot"></div>
+        <div class="col-width-bot">
+            <div class="">
+                Alternatively search by:<br />
+                <a href="#" class="gs-lnk-destination">Destination</a> or <a href="#" class="gs-lnk-experience">Experience</a>
+            </div>
+        </div>
+        <div class="btn-search"></div>
         <!--<div class="home-search-bar-inner global-search-main">
             <span class="search-input">
             <input type="text" name="input-global-search" class="form-control" placeholder="where to?" /> 

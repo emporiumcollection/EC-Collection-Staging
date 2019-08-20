@@ -56,7 +56,7 @@
                 <div class="col-md-12">                    
                     @if($sidebar_hotels != '')                         
                         <ul class="sidebar-ul">
-                            <div class="gs-result-sidebar-heading">What</div>
+                            <div class="gs-result-sidebar-heading">What?</div>
                             @foreach($sidebar_hotels as $s_hotel)
                                 <li class="sidebar-li" >{{$s_hotel}} <a class="remove sidebar-hotel-remove" data-name="{{$s_hotel}}">x</a></li>    
                             @endforeach
@@ -66,7 +66,7 @@
                 <div class="col-md-12">
                     @if(!empty($sidebar_destinations))                        
                         <ul class="sidebar-ul">
-                            <div class="gs-result-sidebar-heading">Where</div> 
+                            <div class="gs-result-sidebar-heading">Where to?</div> 
                             @foreach($sidebar_destinations as $s_dest)
                                 <li class="sidebar-li">{{$s_dest}}<a class="remove sidebar-dest-remove" data-name="{{$s_dest}}">x</a></li>    
                             @endforeach
@@ -86,7 +86,7 @@
                 <div class="col-md-12">
                     <ul class="sidebar-ul">
                         <!--<div class="gs-result-sidebar-heading sidebar-availability">When</div>-->
-                        <div class="gs-result-sidebar-heading">When</div>
+                        <div class="gs-result-sidebar-heading">When?</div>
                         <li class="sidebar-li">From: {{--*/ echo date('d M Y', strtotime($arrive_new)); /* --}}</li>
                         <li class="sidebar-li">To: {{--*/ echo date('d M Y', strtotime($departure_new)); /* --}}</li>
                     </ul>
@@ -94,7 +94,7 @@
                 
                 <div class="col-md-12">
                     <ul class="sidebar-ul">
-                        <div class="gs-result-sidebar-heading">Who</div>
+                        <div class="gs-result-sidebar-heading">Who?</div>
                         <li class="sidebar-li">{{--*/ echo ($booking_adults > 1) ? $booking_adults." adults" : $booking_adults." adult";  /* --}} / {{--*/ echo ($booking_rooms > 1) ? $booking_rooms." rooms" : $booking_rooms." room";  /* --}}</li>
                     </ul>
                 </div>

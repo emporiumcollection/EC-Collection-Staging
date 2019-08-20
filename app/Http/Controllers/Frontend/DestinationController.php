@@ -576,12 +576,14 @@ class DestinationController extends Controller {
                 $arr_keywords = explode(',', $keyword);
                 if(!empty($arr_keywords)){
                     foreach($arr_keywords as $si){
-                        if($i==0){
-                            $str_keyword .= " and tb_properties.property_name like '%".trim($si)."%'";
-                        }else{
-                            $str_keyword .= " or tb_properties.property_name like '%".trim($si)."%'";
-                        }
-                        $i++;            
+                        if(!empty($si)){
+                            if($i==0){
+                                $str_keyword .= " and tb_properties.property_name like '%".trim($si)."%'";
+                            }else{
+                                $str_keyword .= " or tb_properties.property_name like '%".trim($si)."%'";
+                            }
+                            $i++; 
+                        }           
                     }                    
                 }        
             }
@@ -605,12 +607,14 @@ class DestinationController extends Controller {
                 $arr_keywords = explode(',', $keyword);
                 if(!empty($arr_keywords)){
                     foreach($arr_keywords as $si){
-                        if($j==0){
-                            $str_des_keyword .= " and tb_categories.category_name like '%".trim($si)."%'";
-                        }else{
-                            $str_des_keyword .= " or tb_categories.category_name like '%".trim($si)."%'";
-                        }
-                        $j++;            
+                        if(!empty($si)){
+                            if($j==0){
+                                $str_des_keyword .= " and tb_categories.category_name like '%".trim($si)."%'";
+                            }else{
+                                $str_des_keyword .= " or tb_categories.category_name like '%".trim($si)."%'";
+                            }
+                            $j++;
+                        }          
                     }                    
                 }        
             }

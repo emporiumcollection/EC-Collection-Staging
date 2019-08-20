@@ -475,12 +475,14 @@ opacity:1;
   text-align:center;
   width:100%;
   padding:20px 0px;
-  font-size:18px;
+  /*font-size:18px;*/
+  font-size:12px;
   font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 .gridheading .newfont
 {
-  font-size:18px;
+  /*font-size:18px;*/
+  font-size:12px;
   font-family: 'HKGothicNo2-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   text-decoration: underline;
 
