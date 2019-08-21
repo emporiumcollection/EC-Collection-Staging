@@ -23,6 +23,7 @@ $(document).ready(function () {
         $("#globalfiltersearchpopup").css('display', 'none');
         $('.gs-searchbar-main-collection').css('display', 'none');
         $(".gs-main-collection").css('display', 'none');
+        $(".gs-main-user-collection").css('display', 'none');
     });
     
     $(document).on('click', '#down-arrow', function (e) { 
@@ -542,12 +543,12 @@ $(document).ready(function () {
    
    $(document).on('click', '[data-action="gobal-search"]', function () {
         //$(".cstm_search").toggle();
-        window.location.reload(BaseURL);
+        window.location.href = BaseURL;
         $('[data-action="global-search"]').focus();   
    }); 
    $(document).on('keyup', '[data-action="gobal-search"]', function () {
         //$(".cstm_search").toggle();
-        window.location.reload(BaseURL);
+        window.location.href = BaseURL;
         /*$('[data-action="gobal-search-error"]').html('');
         if ($(this).val() == '') {
             $('[data-action="clear-search"]').hide();
@@ -565,7 +566,7 @@ $(document).ready(function () {
 
     $(document).on('click', '[data-action="gobal-search-button"]', function () {
         //$(".cstm_search").toggle();
-        window.location.reload(BaseURL);
+        window.location.href = BaseURL;
         $('[data-action="global-search"]').focus();
         /*if ($('[data-action="gobal-search"]').val() == '') {
             $('[data-action="gobal-search-error"]').html('Please enter your search term');
@@ -1281,10 +1282,11 @@ function renderEmotionalGalleryLoader(dataObj){
         //_html +='</div>';
         
         _html +='<div class="loader-logo-title">';
+            _html +='<span>Loading '+obj[0].display_name+' </span>';
             _html +='<h3>'+obj[0].title+'</h3>';
             _html +='<p>'+obj[0].description+'.</p>';
              //_html +='<div class="loader-text">';                
-                _html +='<span>Loading '+obj[0].display_name+' </span>';
+                //_html +='<span>Loading '+obj[0].display_name+' </span>';
             //_html +='</div>';
         _html +='</div>';    
         $(".emotional-gellery-loader").css('display', '');
@@ -1904,4 +1906,16 @@ $(document).on('click', '.gs-lnk-experience', function(e){
     $(".Home .logo-box").addClass( "remove-h-logo");
     $('[data-action="select-experience"]').trigger('click');
     e.stopPropagation(); 
+});
+$(document).on('click', '.gs-sb-calendar-from', function(e){ console.log("hello");
+    $("#t-topbar-picker .t-date-check-in").trigger('click');
+    e.stopPropagation();
+});
+$(document).on('click', '.gs-sb-calendar-to', function(e){ console.log("hello");
+    $("#t-topbar-picker .t-date-check-out").trigger('click');
+    e.stopPropagation();
+});
+$(document).on('click', '.gs-sb-adult', function(e){
+    $("#down-arrow").trigger('click');
+    e.stopPropagation();
 });

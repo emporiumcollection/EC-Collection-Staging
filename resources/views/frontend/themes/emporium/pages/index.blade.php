@@ -36,12 +36,10 @@
             <a href="#" class="top-menu-user"><i class="fa fa-user"></i></a>
             <ul class="gs-main-user-collection" style="display: none;">
                 {{--*/ $is_demo6 = trim(\CommonHelper::isHotelDashBoard()); /*--}}
-                @if(strlen($is_demo6) > 0)
-                    <li class="gs-dd-user-collection"><a href="{{ URL::to('dashboard')}}">Dashboard</a></li>
-                    <li class="gs-dd-user-collection"><a href="{{ URL::to('user/profile')}}">Change Password</a></li>
+                @if(Session::get('gid')==5)                   
                     @if(\Session::get('prop_slug'))
                     <li class="gs-dd-user-collection">
-						<a href="{{Url::to('/')}}/{{\Session::get('prop_slug')}}">My Hotel</a>
+						<a href="{{URL::to('/')}}/{{\Session::get('prop_slug')}}">My Hotel</a>
 					</li>
                     @endif
 					<li class="gs-dd-user-collection">
@@ -63,7 +61,54 @@
                     <li class="gs-dd-user-collection">
 						<a href="{{ URL::to('press')}}">Press</a>
 					</li>
+                @elseif(Session::get('gid')==3) 
+                    @if(!\CommonHelper::checkDeactivatedUser())
+					<li  class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/profile')}}">
+						  My Profile
+						</a>
+					</li>
                     
+                    <li  class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/preferences')}}">
+						  My Preferences
+						</a>
+					</li>	                                                                
+                    																
+                    <li  class="gs-dd-user-collection">
+						<a href="{{ URL::to('traveller/bookings')}}">
+						  My Reservations
+						</a>
+					</li>
+					<li  class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/companion')}}">
+				            My Companions								
+						</a>
+					</li>
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/invite')}}">							
+				            Invite Guests / Invite Guest System
+						</a>
+					</li>
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/settings')}}">
+				            Account Settings
+						</a>
+					</li> 
+                    
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('user/security')}}">							
+				            Security &amp; Privacy								
+						</a>
+					</li> 
+                    
+                    <li class="gs-dd-user-collection">
+						<a href="{{ URL::to('traveller/invoices')}}">							
+				            Billings & Contracts								
+						</a>
+					</li>
+                    @endif 	
+					  
                 @else
                     <li class="gs-dd-user-collection"><a href="{{ URL::to('customer/profile')}}">Profile</a></li>
                     <li class="gs-dd-user-collection"><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Password</a></li>
@@ -74,10 +119,10 @@
             </ul>
         </li>
         @else    
-        <li><a href="#" class="top-menu-login"><img src="{{URL::to('images/Who-collection.png')}}" /></a></li>
+        <li><a href="#" class="top-menu-login"><img src="{{URL::to('images/Who-collection.png')}}" /><span class="top-menu-text">Account</span> </a></li>
         @endif
         <li>
-            <a href="#" class="gs-top-what-collection"><img src="{{URL::to('images/What-collection.png')}}" /></a>
+            <a href="#" class="gs-top-what-collection"><img src="{{URL::to('images/What-collection.png')}}" /><span class="top-menu-text">Collection</span></a>
             <ul class="gs-main-collection" style="display: none;">                
                 <li class="gs-dd-collection active" data-value="voyage"><a href="https://emporium-voyage.com">Hotel</a></li>
                 <li class="gs-dd-collection" data-value="safari"><a href="https://emporium-safari.com">Safari</a></li>
@@ -459,7 +504,7 @@
                 </span>-->                
             </div>
         </div>
-        <div class="col-width-bot"></div>
+        <div class="col-width-bot col-width-mob"></div>
         <div class="col-width-bot"></div>
         <div class="col-width-bot"></div>
         <div class="col-width-bot">

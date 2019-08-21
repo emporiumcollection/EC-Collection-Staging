@@ -442,7 +442,10 @@
             var _cat = item;                      
             getPropertyByCollection(mtype, _cat, 1, '');  
             
-            changeBreadcrumbDropdown(_cat);                        
+            changeBreadcrumbDropdown(_cat);  
+            
+            $('#gs_sb_navhead').addClass('navheadimage');
+            $('#gs_sb_criteria').addClass('sdestination');                      
         }
         function getPropertyByCollection(coll_type, cat, page, req_for){ 
             $.ajax({
@@ -474,7 +477,7 @@
     				var params = $.extend({}, doAjax_params_default);
     				params['url'] = BaseURL + '/destination/destinatinos-ajax';
     				params['data'] = datObj;
-    				params['successCallbackFunction'] = renderDestination;
+    				params['successCallbackFunction'] = renderSearchDestination;
     				doAjax(params); 
                     
                     listpagestructure(data);                    
@@ -509,8 +512,24 @@
             var _html = '';
             var jsonobj = data.data;
             if($.isEmptyObject(jsonobj)){
-                
+                    
             }else{ 
+                
+                
+                var cat_image = jsonobj.category_image;
+                var gs_side_image_path = BaseURL+'/uploads/category_imgs/'+cat_image;
+                if(cat_image==''){
+                    gs_side_image_path = BaseURL+'/themes/emporium/images/mountain-image.jpg';   
+                }
+                $(".gs-sidebar-criteria-image").html('');
+                $(".gs-sidebar-criteria-image").html('<img src="'+gs_side_image_path+'" alt="" class="mCS_img_loaded desaturate">');
+                
+                var cat_insta_tag = jsonobj.category_instagram_tag;
+                var cat_nm = jsonobj.category_name;
+                $(".destinationTitle").html('');
+                $(".destinationTitle").html(cat_nm+"<br><span class='hashTag'>"+cat_insta_tag+"</span>");
+                
+                
                 var editorPropertiesArr = jsonobj.editorPropertiesArr;
                                                 
                 if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){
@@ -1138,6 +1157,8 @@
                     }
                     
                     
+                    $('#gs_sb_navhead').removeClass('navheadimage');
+                    $('#gs_sb_criteria').removeClass('sdestination');
                           
                     
                 }

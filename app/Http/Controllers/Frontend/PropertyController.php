@@ -2693,8 +2693,17 @@ class PropertyController extends Controller {
         //print_r($request->all()); die;
         
         $arrive = $request->input("gl_arrive");
+        if($arrive!=''){
+            $arrive = $request->input("gl_arrive");    
+        }else{
+            $arrive = date('m-d-Y');    
+        }
         $departure = $request->input("gl_departure");
-        
+        if($departure!=''){
+            $departure = $request->input("gl_departure");    
+        }else{
+            $departure = date('m-d-Y',strtotime("+1 day"));
+        }
         $alternate_dates = $request->input('alternate_dates');
         $numberofdate = $request->input('numberofdate');
         
@@ -5355,6 +5364,10 @@ class PropertyController extends Controller {
             $this->data['social_url'] = $social_url;
             
             $this->data['dest_id'] = $cateObj->id;
+            
+            $this->data['category_image'] = $cateObj->category_image;
+            $this->data['category_instagram_tag'] = $cateObj->category_instagram_tag;
+            $this->data['category_name'] = $cateObj->category_name;
             
             //get all children start
             $chldIds = $this->fetchcategoryChildListIds($cateObj->id);

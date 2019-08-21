@@ -360,4 +360,83 @@ function renderExperience(dataObj) {
     $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
 }
+/*
+ * For Get Response of Destination Ajax
+ */
+function renderSearchDestination(dataObj) {
+    if(dataObj.dests==undefined){
+        //location.href = BaseURL+'/luxury_destinations/'+dataObj.path;
+        //return false;
+    }
+    var data = {};
+    data.main_title = 'Search By Destination';
+    data.sub_title = 'Home';
+    data.id = 0;
+    data.type = 'home';
+    var destinationHtml = '';
+    if (dataObj.current_category != undefined) {
+        data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
+        if (dataObj.currentParentCate != undefined) {
+            var  linku = BaseURL+'/luxury_destinations/'+dataObj.currentParentCate.category_name;
+            if(dataObj.path!=undefined){
+                  var _path = dataObj.path;                  
+                  var _path1 = _path.slice(0, _path.lastIndexOf("/"));                  
+                  linku = BaseURL+'/luxury_destinations/'+_path1;
+            }
+            //data.sub_title = '<a style="color:#fff;" href="'+linku+'">Back To '+dataObj.currentParentCate.category_name+'</a>';
+            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
+            data.id = dataObj.currentParentCate.id;
+        }else{
+            data.sub_title = 'Back To Destination';
+            data.id = dataObj.current_category.parent_category_id;
+        }
+
+        data.type = 'destination';
+        /*var imagePath = BaseURL+'/uploads/category_imgs/'+dataObj.current_category.category_image;
+        if(dataObj.current_category.category_image==''){
+            imagePath = BaseURL+'/themes/emporium/images/mountain-image.jpg';
+        }
+        destinationHtml += '<li>';
+        destinationHtml += '<div class="navheadimage">';
+        destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded desaturate">';
+        destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '<br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></span></div></div>';
+        destinationHtml += '</li>';*/
+        
+        
+    }
+
+    hideAllOption();
+    //putDataOnLeft(data);
+    destinationHtml += '<div class="sidebartopheader" data-option="child-global">';
+    destinationHtml += '<h3 data-option-title="global">'+data.main_title+'</h3>';
+    destinationHtml += '<a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="'+data.type+'" data-id="'+data.id+'"><i class="fa fa-angle-left"></i> <span>'+data.sub_title+'</span></a>';
+    destinationHtml += '</div>';
+    
+    if (dataObj.current_category != undefined) {
+        destinationHtml += '<li><ul class="mobilesublinks">';    
+    }
+    
+    $(dataObj.dests).each(function (i, val) {
+            var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
+            if(dataObj.path!=undefined){
+                  linkMenu = BaseURL+'/luxury_destinations/'+dataObj.path+'/'+val.category_alias;
+            }
+        
+        
+        destinationHtml += '<li><a class="cursor menu_item EGloader" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+             //destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
+       // destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
+         
+       
+       });
+    if (dataObj.current_category != undefined) {
+        destinationHtml += '</ul></li>';
+    }
+
+    $('[data-option="selected-option-list"]').html(destinationHtml);
+    $('[data-option="global"]').removeClass('hide');
+    $('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="selected-option-list"]').removeClass('hide');
+
+}
 
