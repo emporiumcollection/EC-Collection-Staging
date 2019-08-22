@@ -34,61 +34,6 @@
             {{-- For Gobal Search List --}}
             @include('frontend.themes.emporium.layouts.sections.global-search-list')
             {{-- End  Gobal Search List --}}
-            
-            
-            
-            <div class="main-acordian-search-sidebar">
-                @if(!empty($allData))                                                        
-                {{--*/ $k=1; $j=1; /*--}} 
-    			<div id="search-sidebar-accordion" class="panel-group">
-                    @foreach($allData as $si_data)
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="click0 side-{{$si_data['name']}} <?php echo $k >1 ? 'collapsed' : ''; ?>" data-toggle="collapse" data-parent="#search-sidebar-accordion" href="#collapse_{{$k}}">{{$si_data['name']}}</a>
-                            </h4>
-                        </div>
-                        <div id="collapse_{{$k}}" class="panel-collapse collapse <?php echo ($k==1) ? 'in' : '' ?>">
-                            <div class="panel-body magin-top-30">
-                                @if(!empty($si_data['ddSelected']))                                								
-                                <div id="search-sidebar-accordion-{{$k}}" class="panel-group">
-                                    @foreach($si_data['ddSelected'] as $si_dddata)
-                                    {{-- */ $sidedd = str_replace(' ', '-', $si_dddata); /* --}}
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">                                            
-                                                <a class="click0 side-{{$sidedd}} sd-{{$si_data['name']}}" data-name="{{$si_dddata}}" data-toggle="collapse" data-parent="#search-sidebar-accordion-{{$k}}" href="#collapse_{{$k}}_{{$j}}">{{$si_dddata}}</a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse_{{$k}}_{{$j}}" class="panel-collapse collapse <?php echo ($j==1) ? 'in' : '' ?>">
-                                            <div class="panel-body magin-top-30">    								
-                                                @if($si_data['name']=='Hotel')
-                                                    <ul class="mobilemenulist sidemenumodulelist-{{$sidedd}}">
-                                                        <li><a href="#hotelInfo" class="closenavlink scrollpage">HOTEL INFO</a></li>       				
-                                       					<li><a href="#roomsSuit" class="closenavlink scrollpage">ROOMS & SUITES</a></li>
-                                        				<li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
-                                       					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
-                                        				
-                                                        <!--<li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK </a></li>-->                                                         
-                                                    </ul>        
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{--*/ $j++;  /*--}}
-                                    @endforeach				
-                                </div>
-                                @endif                                 
-                            </div>
-                        </div>
-                    </div>
-                    {{--*/ $k++;  /*--}}
-                    @endforeach				
-                </div>
-                @endif
-            </div>
-            
-            
                         
             <ul class="gs-sidebar-criteria-onimage">
                 <li>
@@ -170,8 +115,61 @@
                     </div>
                 </li>
             </ul>
+            
             <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
+            
+            <div class="main-acordian-search-sidebar">
+                @if(!empty($allData))                                                        
+                {{--*/ $k=1; $j=1; /*--}} 
+    			<div id="search-sidebar-accordion" class="panel-group">
+                    @foreach($allData as $si_data)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="click0 side-{{$si_data['name']}} <?php echo $k >1 ? 'collapsed' : ''; ?>" data-toggle="collapse" data-parent="#search-sidebar-accordion" href="#collapse_{{$k}}">{{$si_data['name']}}</a>
+                            </h4>
+                        </div>
+                        <div id="collapse_{{$k}}" class="panel-collapse collapse <?php echo ($k==1) ? 'in' : '' ?>">
+                            <div class="panel-body magin-top-30">
+                                @if(!empty($si_data['ddSelected']))                                								
+                                <div id="search-sidebar-accordion-{{$k}}" class="panel-group">
+                                    @foreach($si_data['ddSelected'] as $si_dddata)
+                                    {{-- */ $sidedd = str_replace(' ', '-', $si_dddata); /* --}}
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">                                            
+                                                <a class="click0 side-{{$sidedd}} sd-{{$si_data['name']}}" data-name="{{$si_dddata}}" data-toggle="collapse" data-parent="#search-sidebar-accordion-{{$k}}" href="#collapse_{{$k}}_{{$j}}">{{$si_dddata}}</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_{{$k}}_{{$j}}" class="panel-collapse collapse <?php echo ($j==1) ? 'in' : '' ?>">
+                                            <div class="panel-body magin-top-30">    								
+                                                @if($si_data['name']=='Hotel')
+                                                    <ul class="mobilemenulist sidemenumodulelist-{{$sidedd}}">
+                                                        <li><a href="#hotelInfo" class="closenavlink scrollpage">HOTEL INFO</a></li>       				
+                                       					<li><a href="#roomsSuit" class="closenavlink scrollpage">ROOMS & SUITES</a></li>
+                                        				<li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
+                                       					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
+                                        				
+                                                        <!--<li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK </a></li>-->                                                         
+                                                    </ul>        
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--*/ $j++;  /*--}}
+                                    @endforeach				
+                                </div>
+                                @endif                                 
+                            </div>
+                        </div>
+                    </div>
+                    {{--*/ $k++;  /*--}}
+                    @endforeach				
+                </div>
+                @endif
+            </div>
+            
             @if (!Auth::check())
 
                 <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob" href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>

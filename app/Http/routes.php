@@ -445,7 +445,7 @@ Route::get('searchavailability', 'Frontend\PropertyController@propertySearchAvai
 Route::post('getyoutubechannel', 'Frontend\FrontendPagesController@getyoutubechannel');
 Route::post('getinstagramchannel', 'Frontend\FrontendPagesController@getinstagramchannel');    
 Route::post('getDropdownBreadcrumb', 'Frontend\PropertyController@getDropdownBreadcrumb');
-
+Route::post('getSearchDropdownBreadcrumb', 'Frontend\PropertyController@getSearchDropdownBreadcrumb');
 Route::post('propcollection', 'Frontend\PropertyController@propcollection');
 Route::post('searchpropcollection', 'Frontend\PropertyController@searchpropcollection');
 Route::post('propertybycollection', 'Frontend\PropertyController@propertybycollection');

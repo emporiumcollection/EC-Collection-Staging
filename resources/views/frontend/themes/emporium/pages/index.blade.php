@@ -32,9 +32,9 @@
 <div class="custom-menu">
     <ul class="cstm_menu">
         @if(Session::get('uid')>0)
-        <li>
-            <a href="#" class="top-menu-user"><i class="fa fa-user"></i></a>
-            <ul class="gs-main-user-collection" style="display: none;">
+        <li class="main-li">
+            <a href="#" class="top-menu-user"><img src="{{URL::to('images/Who-collection.png')}}" /><span class="top-menu-text">My Account</span></a>
+            <ul class="gs-main-user-collection gs-main-left" style="display: none;">
                 {{--*/ $is_demo6 = trim(\CommonHelper::isHotelDashBoard()); /*--}}
                 @if(Session::get('gid')==5)                   
                     @if(\Session::get('prop_slug'))
@@ -119,11 +119,11 @@
             </ul>
         </li>
         @else    
-        <li><a href="#" class="top-menu-login"><img src="{{URL::to('images/Who-collection.png')}}" /><span class="top-menu-text">Account</span> </a></li>
+        <li class="main-li"><a href="#" class="top-menu-login"><img src="{{URL::to('images/Who-collection.png')}}" /><span class="top-menu-text">Account</span> </a></li>
         @endif
-        <li>
+        <li class="main-li">
             <a href="#" class="gs-top-what-collection"><img src="{{URL::to('images/What-collection.png')}}" /><span class="top-menu-text">Collection</span></a>
-            <ul class="gs-main-collection" style="display: none;">                
+            <ul class="gs-main-collection gs-main-right" style="display: none;">                
                 <li class="gs-dd-collection active" data-value="voyage"><a href="https://emporium-voyage.com">Hotel</a></li>
                 <li class="gs-dd-collection" data-value="safari"><a href="https://emporium-safari.com">Safari</a></li>
                 <li class="gs-dd-collection" data-value="spa"><a href="https://emporium-spa.com">Spa & Wellness</a></li>
@@ -513,7 +513,7 @@
                 <a href="#" class="gs-lnk-destination">Destination</a> or <a href="#" class="gs-lnk-experience">Experience</a>
             </div>
         </div>
-        <div class="btn-search"></div>
+        
         <!--<div class="home-search-bar-inner global-search-main">
             <span class="search-input">
             <input type="text" name="input-global-search" class="form-control" placeholder="where to?" /> 
@@ -533,9 +533,9 @@
           <!--<a href="{{$slider_row->slider_link}}"><div class="image-overaly-bg"></div></a>
           <a href="{{$slider_row->slider_link}}"><div class="image-overaly-bg bg-dark"></div></a>
                          <a href="{{$slider_row->slider_link}}">-->
-                         <a href="#"><div class="image-overaly-bg"></div></a>
-                         <a href="#"><div class="image-overaly-bg bg-dark"></div></a>
-                         <a href="#"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt=""/></a>
+                         <a href="{{$slider_row->slider_link}}"><div class="image-overaly-bg"></div></a>
+                         <a href="{{$slider_row->slider_link}}"><div class="image-overaly-bg bg-dark"></div></a>
+                         <a href="{{$slider_row->slider_link}}"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt=""/></a>
                          
                          
                          <div class="carousel-caption item-front">

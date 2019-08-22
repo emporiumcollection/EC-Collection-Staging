@@ -301,7 +301,7 @@
         
         function changeBreadcrumbDropdown(catt){
             $.ajax({
-                url:'{{URL::to("getDropdownBreadcrumb/")}}',
+                url:'{{URL::to("getSearchDropdownBreadcrumb/")}}',
                 //dataType:'html',
                 dataType:'json',
                 data: {cat:catt},

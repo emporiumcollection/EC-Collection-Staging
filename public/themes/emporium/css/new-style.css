@@ -4831,7 +4831,13 @@ svg:not(:root) {
     list-style: none;
     display: inline;
     /*margin-left: 20px;*/
+    /*border-right: 2px solid;*/
 }
+.custom-menu ul li.main-li:after{
+    padding: 0 5px;
+    color: #ccc;
+    content: "|";
+}    
 .custom-menu ul li a{
     color: #fff;
     font-weight: 500;
@@ -4840,12 +4846,13 @@ svg:not(:root) {
     line-height: 30px;
     text-transform: uppercase;
     letter-spacing: .08em;
+    margin-right: 20px;
 }
 .custom-menu ul li a .top-menu-text{
     margin-left: 8px;
 }
 .custom-menu ul li a img{
-    width: 6%;
+    width: 4%;
 }
 .cstm_search {
     display: none;
@@ -5847,7 +5854,7 @@ ul.item-list-bar {
 .search-breadcrum .s-breadcrumb{
     list-style: none;
     padding: 10px;
-    text-transform: lowercase;
+    text-transform: capitalize;
     font-size: 13px;
     color: #BCBCBF;
 }
@@ -6492,6 +6499,12 @@ ul.item-list-bar {
     position: absolute;
     width: 160px;  
 }
+.custom-menu ul li .gs-main-collection.gs-main-right{
+    right: 12%;    
+}
+.custom-menu ul li .gs-main-user-collection.gs-main-left{
+    left: 5%;    
+}
 .custom-menu ul li ul .gs-dd-collection{
     padding: 2px 2px 2px 10px;
     display: block;
@@ -6499,7 +6512,8 @@ ul.item-list-bar {
 }
 .custom-menu ul li ul .gs-dd-collection a{
     margin-left: 0px;  
-    font-size: 12px;  
+    font-size: 12px;
+    text-transform: capitalize;  
 }
 
 
@@ -6520,7 +6534,8 @@ ul.item-list-bar {
 }
 .custom-menu ul li ul .gs-dd-user-collection a{
     margin-left: 0px;  
-    font-size: 12px;  
+    font-size: 12px;
+    text-transform: capitalize;  
 }
 
 
@@ -6863,6 +6878,13 @@ ul.item-list-bar {
     }
     .col-width-mob{
         display: none;
+    }
+    .custom-menu ul li a{
+        margin-right: 0px;    
+    }
+    .custom-menu ul li.main-li:after{
+        padding:0px;
+        content: "";
     }
 }
 @media screen and (max-width: 320px){   

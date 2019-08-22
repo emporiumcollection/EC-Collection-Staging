@@ -202,20 +202,20 @@ input[type=number]::-webkit-outer-spin-button {
 /*bg-sec*/
 .forms-box-tct {
     padding: 20px;
-    background: url('../images/bg-yard.jpg') no-repeat center center;
+    /*background: url('https://emporium-voyage.com/uploads/slider_images/1560607636-73359818.jpg') no-repeat center center;
     background-size:cover;    
     min-height: 500px;
-    position: relative; 
+    position: relative; */
 }
 .forms-box-tct:before{
-    position: absolute;
+    /*position: absolute;
     z-index: 0;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    content: "";
-    background: #19191B;
+    content: "";*/
+    /*background: #19191B;*/
 }
 /*end of bg sec*/
 
