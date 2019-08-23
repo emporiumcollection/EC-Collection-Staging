@@ -727,7 +727,7 @@
         var hotl = $("#hid_our_hotels").val();
         if(dest=='' && hotl==''){ 
             $(".gs-message").html('');
-            $(".gs-message").html('Please search hotel or destination and select any of them');
+            $(".gs-message").html('Unfortunately, your search returned no results. Be sure to select, the combination of where you wish to travel & when or who will be accompanying you on the journey to help you find a memorable experience with emporium-voyage');
             $("#showGSPopup").modal();
             flag = false;        
         }
