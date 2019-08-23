@@ -3584,29 +3584,21 @@ class ContainerController extends Controller {
 		);
 		// Get Query 
 		$results = $this->model->getRows( $params );
-      if(\Auth::check() == true)
-      {  
-          if(\Auth::user()->group_id==5)
-    	  {  
-    	       foreach($results['rows'] as $row) {
-        			$parent_folders_array[] = $row;    			
-        	   }
-          }else{
-        	  if ($results) {
-        		foreach($results['rows'] as $row) {
-        			$parent_folders_array[] = $row;
-        			$parent_folders_array = $this->fetchFolderParentListArray($row->parent_id, $parent_folders_array);
-        		}
-        	  }
-          }
+        
+      if(\Auth::user()->group_id==5)
+	  {  
+	       foreach($results['rows'] as $row) {
+    			$parent_folders_array[] = $row;    			
+    	   }
       }else{
-            if ($results) {
-                foreach($results['rows'] as $row) {
-                	$parent_folders_array[] = $row;
-                	$parent_folders_array = $this->fetchFolderParentListArray($row->parent_id, $parent_folders_array);
-                }
-            }  
-      }
+    	  if ($results) {
+    		foreach($results['rows'] as $row) {
+    			$parent_folders_array[] = $row;
+    			$parent_folders_array = $this->fetchFolderParentListArray($row->parent_id, $parent_folders_array);
+    		}
+    	  }
+       }
+      
 	  return $parent_folders_array;
 	}
 	
@@ -5463,13 +5455,12 @@ class ContainerController extends Controller {
     
     public function media_relations( Request $request, $id = 0, $wnd = '' )
 	{
-		/*if($this->access['is_view'] ==1) 
+		if($this->access['is_view'] ==0) 
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
 		$uid = \Auth::user()->id;
 		
-		$filter = " AND parent_id='".$id."'";*/
-        /*$filter = '';
+		$filter = " AND parent_id='".$id."'";
 		if(\Auth::user()->group_id==3 && $wnd!='iframe')
 		{
 			$filter .= " AND (id in (select folder_id from tb_permissions where user_id='".$uid."' and no_permission='0') or global_permission='1')";
@@ -5479,8 +5470,8 @@ class ContainerController extends Controller {
 			'params'	=> $filter
 		);
 		// Get Query 
-		$results = $this->model->getRows( $params );*/
-		//print_r($results);
+		$results = $this->model->getRows( $params );
+		
 		$foldername = DB::table('tb_container')->where('name','media-relations');
         
 		$this->data['foldername'] = $foldername->select('id', 'display_name','parent_id','user_id', 'global_permission', 'title', 'description','display_name_eng','title_eng','description_eng')->first();
@@ -5492,11 +5483,11 @@ class ContainerController extends Controller {
 		$filess_temp = DB::table('tb_container_files')->select('id','file_name','folder_id','file_title','file_description','file_display_name','file_sort_num','file_type')->where('folder_id',$id);
 		
 		$filess = $filess_temp->get();
-	//print_r($filess); die;
+	
 		$ct=0; 
 		$this->data['rowData'] = array();
 		
-		/*foreach($results['rows'] as $folderObj ){
+		foreach($results['rows'] as $folderObj ){
 			
 			$totfiles = DB::table('tb_container_files')->select('id')->where('folder_id',$folderObj->id)->count();
 			$totfolders = DB::table('tb_container')->select('id')->where('parent_id',$folderObj->id)->count();
@@ -5589,17 +5580,17 @@ class ContainerController extends Controller {
 			$ct++;
 			
 			
-		}*/
+		}
 		if(!empty($filess))
 		{
 			$imgsrc = $this->getThumbpath($filess[0]->folder_id);
 			$imgpath = $this->getContainerUserPath($filess[0]->folder_id);
-			print_r($filess); die;
-			//$selfiles = DB::table('tb_permissions')->select('view','inherit')->where('folder_id',$id)->where('user_id',$uid)->first();
-			//if(!empty($selfiles))
-			//{
-				//if($selfiles->view==1 || $selfiles->inherit==1)
-				//{
+			
+			$selfiles = DB::table('tb_permissions')->select('view','inherit')->where('folder_id',$id)->where('user_id',$uid)->first();
+			if(!empty($selfiles))
+			{
+				if($selfiles->view==1 || $selfiles->inherit==1)
+				{
 					foreach($filess as $filesObj ){
 						$this->data['rowData'][$ct]['id'] = $filesObj->id;
 						$this->data['rowData'][$ct]['name'] = $filesObj->file_name;
@@ -5737,8 +5728,8 @@ class ContainerController extends Controller {
 						}
 						$ct++;
 					}
-				//}
-			//}
+				}
+			}
 			
 		}
         		
