@@ -1300,7 +1300,7 @@ function renderEmotionalGalleryLoader(dataObj){
         window.location.href = url;
     }
 }
-
+var timeout = null;
 $(document).on('keyup', '[data-action="global-search"]', function () { 
     var sitename = $("#sitename").val();
     $('[data-action="global-search-error"]').html('');
@@ -1312,10 +1312,12 @@ $(document).on('keyup', '[data-action="global-search"]', function () {
 		var fvalue = $(this).val();
 		
 		if(fvalue.length > 2)
-		{ console.log($(this).val());
-			globalSearchForAll($(this).val(), sitename);
-            
-            $('input[name="hote_or_dest_has_value"]').val(1);
+		{     
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+    			globalSearchForAll(fvalue, sitename);                
+                $('input[name="hote_or_dest_has_value"]').val(1);
+            }, 500);
 		}else{
 		    $('input[name="hote_or_dest_has_value"]').val('');  
 		}

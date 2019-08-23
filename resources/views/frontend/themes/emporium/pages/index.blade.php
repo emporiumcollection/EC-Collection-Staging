@@ -179,7 +179,7 @@
         </div>   
      </div>
     */ ?>
-<form action="{{URL::to('globalavailability')}}" method="post">
+<form action="{{URL::to('globalavailability')}}" method="post" class="gs-form">
     <div class="gs-home-search-bar">
     
         <div class="col-width collection">
@@ -721,7 +721,18 @@
           }
       });
     }
-    
+    $(document).on('submit', '.gs-form', function(){        
+        var flag = true;
+        var dest = $("#hid_our_destinations").val();
+        var hotl = $("#hid_our_hotels").val();
+        if(dest=='' && hotl==''){ 
+            $(".gs-message").html('');
+            $(".gs-message").html('Please search hotel or destination and select any of them');
+            $("#showGSPopup").modal();
+            flag = false;        
+        }
+        return flag;    
+    });    
     /*$(document).ready(function(){
         var chk_date = new Date(); 
             

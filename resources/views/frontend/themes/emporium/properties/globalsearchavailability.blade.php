@@ -65,7 +65,7 @@
                                                 <ul class="s-breadcrumb destination-breadcrumb">                                                
                                                 </ul>
                                             </div>
-                                            <select name="dd-destination" id="dd-destination">                                                
+                                            <select name="dd-destination" id="dd-destination" class="dd-destination">                                                
                                             </select>
                                             <h5 class="margin-top-20">Choose your Membership Type to make a reservation</h5>  
                                             
@@ -311,8 +311,21 @@
                 },
                 success: function(data){ 
                     
-                    var objdestinations = data.destinations; 
-                    $("#dd-destination").empty();
+                    var objdestinations = data.destinations; console.log(objdestinations);
+                    $(".dd-destination").empty();
+                    $(".dd-destination").append('<option value="'+data.catalias+'">You are in '+data.catname+'</option>');
+                    $.each(objdestinations, function(key, vlaue){
+                        $(".dd-destination").append(
+                            $('<option></option>').val(vlaue['category_alias']).html(vlaue['category_name'])
+                        );
+                    });
+                    var objParentCat = data.parent_cat;
+                    if(typeof objParentCat != undefined && objParentCat!=null){
+                        $(".dd-destination").append('<option data-id="'+data.parent_cat['id']+'" value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
+                    }else{
+                        $(".dd-destination").append('<option value="-1">&lt; Back to Destination</option>');    
+                    }
+                    /*$("#dd-destination").empty();
                     $("#dd-destination").append('<option value="'+data.catalias+'">You are in '+data.catname+'</option>');
                     $.each(objdestinations, function(key, vlaue){
                         $("#dd-destination").append(
@@ -324,7 +337,7 @@
                         $("#dd-destination").append('<option data-id="'+data.parent_cat['id']+'" value="-1">&lt; Back to '+data.parent_cat['category_name']+'</option>');
                     }else{
                         $("#dd-destination").append('<option value="-1">&lt; Back to Destination</option>');    
-                    }  
+                    } */ 
                     
                     var breadcrumb = data.dest_url;
                     //console.log(breadcrumb);

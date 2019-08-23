@@ -5866,6 +5866,10 @@ ul.item-list-bar {
     color: #ccc;
     content: "|";
 }
+.search-breadcrum .s-breadcrumb li:last-of-type a{
+    text-decoration: underline;
+    text-underline-position: under;   
+}
 /*---- End search ----*/
 .homelinknav{
     background-color: #aba00b;
@@ -6143,6 +6147,27 @@ ul.item-list-bar {
     border: 1px solid #aba00b;
 }
 
+#showGSPopup .modal-content{
+    background: #252525 !important;
+}
+#showGSPopup .modal-content .popup-title{
+    color: #fff !important;    
+}
+#showGSPopup .modal-content p{
+    color: #fff !important;        
+}
+#showGSPopup .modal-content h6{
+    color: #fff !important;        
+}
+#showGSPopup .btnMembershipTypeJoin{
+    margin-top: 25px;
+    float: none;
+    width: 90%;
+    /*margin: 0px auto;*/
+    text-align: center;
+    display: block;
+    cursor: pointer;
+}
 @media screen and (min-width:1600px) {
     .sliderSection .carousel-caption h1{
         font-family: BodoniFLF-Roman !important;

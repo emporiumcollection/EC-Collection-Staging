@@ -258,6 +258,30 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
    <!-- modal-dialog -->
 </div>
 <!-- End Modal FOR MENU -->
+
+<!-- ModalPop For Global Search -->
+<div id="showGSPopup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                <h4 class="modal-title">Alert</h4>
+            </div>
+            <div class="modal-body">
+                <div class="gs-message"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- End Modal content-->
+    
+    </div>
+</div>
+<!-- End global search Modal -->
+
 <!-- search form-->
     <div class="cstm_search animated zoomIn" style="display: none;">
         <div id="includedsearch">
@@ -346,8 +370,8 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             }).on('afterCheckOut',function(e, dateCO) {
                 $("#down-arrow").trigger('click');    
             });
-            console.log(gl_chk_date);
-            console.log(gl_chk_out_date);
+            //console.log(gl_chk_date);
+            //console.log(gl_chk_out_date);
             $(document).on('click', '.global-search-main', function(){
                 $(".cstm_search").toggle(); 
                 $('[data-action="global-search"]').focus();   
@@ -362,7 +386,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
             var gl_check_in_month = gl_check_in.getMonth()+1; 
             var gl_check_in_day = gl_check_in.getDate();
             var gl_check_in_date = gl_check_in_month+"/"+gl_check_in_day+"/"+gl_check_in_year;
-            console.log(gl_check_in_date);
+            //console.log(gl_check_in_date);
             gl_check_out_date.setDate(gl_check_out_date.getDate()+1);
             var gl_check_out_year = gl_check_out_date.getFullYear(); 
             var gl_check_out_month = gl_check_out_date.getMonth()+1; 
@@ -510,7 +534,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 var left = (screen.width/2)-(w/2);
                 var top = (screen.height/2)-(h/2);
                 window.open("https://www.iubenda.com/privacy-policy/70156957", "Emporium Voyage Privacy Policy", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-               console.log("hee"); 
+               //console.log("hee"); 
             });
             $(document).on('click', ".iubenda-white", function(e){
                 e.preventDefault();
@@ -728,7 +752,7 @@ if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfP
                 //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
                 //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
             }).on('afterCheckOut',function(e, dateCO) {
-                console.log("hello");
+                //console.log("hello");
                 $('#btn_search_submit').trigger('click');
             });
             
