@@ -67,7 +67,7 @@
                                             </div>
                                             <select name="dd-destination" id="dd-destination" class="dd-destination">                                                
                                             </select>
-                                            <h5 class="margin-top-20">Choose your Membership Type to make a reservation</h5>  
+                                            <h5 class="margin-top-20">Choose your <span class="mem_underline">Membership Type</span> to make a reservation</h5>  
                                             
                                             @if(!empty($collections))
                                                 {{--*/ $i=1; $j=1; $k=1; $l=1; $arr_key=''; /*--}}

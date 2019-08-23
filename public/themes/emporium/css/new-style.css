@@ -6159,14 +6159,9 @@ ul.item-list-bar {
 #showGSPopup .modal-content h6{
     color: #fff !important;        
 }
-#showGSPopup .btnMembershipTypeJoin{
-    margin-top: 25px;
-    float: none;
-    width: 90%;
-    /*margin: 0px auto;*/
-    text-align: center;
-    display: block;
-    cursor: pointer;
+.mem_underline{
+    text-decoration: underline;
+    text-underline-position: under;
 }
 @media screen and (min-width:1600px) {
     .sliderSection .carousel-caption h1{
@@ -6440,6 +6435,7 @@ ul.item-list-bar {
 }
 .gs-home-search-bar input[type=text]{
     margin-left: 10px;
+    width: 100%;
 }
 .gs-home-search-bar select{
     height: 35px; 
