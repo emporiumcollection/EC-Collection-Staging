@@ -5488,7 +5488,7 @@ class ContainerController extends Controller {
         $id = $this->data['foldername']->id;
         
 		$this->data['parentArr'] = array_reverse($this->fetchFolderParentListArray($id));
-print_r($this->data['parentArr']); die;
+
 		$filess_temp = DB::table('tb_container_files')->select('id','file_name','folder_id','file_title','file_description','file_display_name','file_sort_num','file_type')->where('folder_id',$id);
 		
 		$filess = $filess_temp->get();
@@ -5594,7 +5594,7 @@ print_r($this->data['parentArr']); die;
 		{
 			$imgsrc = $this->getThumbpath($filess[0]->folder_id);
 			$imgpath = $this->getContainerUserPath($filess[0]->folder_id);
-			
+			print_r($filess); die;
 			//$selfiles = DB::table('tb_permissions')->select('view','inherit')->where('folder_id',$id)->where('user_id',$uid)->first();
 			//if(!empty($selfiles))
 			//{
