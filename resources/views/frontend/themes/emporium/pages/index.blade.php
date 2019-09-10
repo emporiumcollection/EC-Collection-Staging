@@ -1,10 +1,10 @@
 @extends('frontend.themes.emporium.layouts.home')
 {{--  For Title --}}
-@section('title', 'Emporium Voyage - Your Ultimate Luxury Travel Partner')
+@section('title', 'Your Ultimate Luxury Travel Partner')
 {{-- For Meta Keywords --}}
-@section('meta_keywords', 'Emporium Voyage, Luxury Hotel Booking, Luxury 5 Star Hotels')
+@section('meta_keywords', 'Luxury Hotel Booking, Luxury 5 Star Hotels')
 {{-- For Meta Description --}}
-@section('meta_description', 'Emporium Voyage - Your Ultimate Luxury Travel Partner')
+@section('meta_description', 'Your Ultimate Luxury Travel Partner')
 {{-- For Page's Content Part --}}
 @section('content')
 <div class="logo-box">
@@ -510,7 +510,7 @@
         <div class="col-width-bot">
             <div class="">
                 Alternatively search by:<br />
-                <a href="#" class="gs-lnk-destination">Destination</a> or <a href="#" class="gs-lnk-experience">Experience</a>
+                <a href="#" class="gs-lnk-destination">Destination</a> or <a href="#" class="gs-lnk-experience">Experience</a> or <a href="#" class="gs-lnk-channel">Channel</a>
             </div>
         </div>
         
@@ -525,7 +525,7 @@
     <!-- slider starts here -->
          <section class="sliderSection" id="home_sld">
             @if(!empty($slider))
-              <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+              <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
                  <!-- Wrapper for slides -->
                  <div class="carousel-inner wrapper">
                     @foreach($slider as $key => $slider_row)
@@ -546,7 +546,7 @@
                                 <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
                             </div>
                             <div class="cnt-box slider-cnt-box">
-                                <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
+                                <p><a href="{{$slider_row->slider_link}}" style="color:white;">{!! nl2br($slider_row->slider_description) !!}</a></p>
                             </div>
                             
                          </div>

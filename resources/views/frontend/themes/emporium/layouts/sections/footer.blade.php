@@ -36,7 +36,8 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="footer-coloumn">
-                    <h2>ABOUT EMPORIUM VOYAGE</h2>
+                    <h2>{{--*/ $aboutHeaderText = CommonHelper::getAboutHeaderInfo(); /*--}}
+                        {{$aboutHeaderText['about_header_text']->content}}</h2>
                     <p>{{--*/ $abouttext = CommonHelper::getAboutInfo(); /*--}}
                         {{$abouttext['about_text']->content}}</p>
                 </div>

@@ -47,7 +47,8 @@
                 </li>
             </ul>
             <ul class="mobilemenulist" data-option="home">
-                <li><a class="cursor" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
+                <!--<li><a class="cursor" data-action="select-collection">SEARCH OUR COLLECTION</a></li>-->
+                <li><a class="cursor" data-action="select-collection">Search by membership level</a></li>
                 <li><a class="cursor" data-action="search-by-date">Search availability</a></li>
                 <li><a class="cursor" data-action="select-destination" data-id="0">Search by destination</a></li>
                 <li><a class="cursor" data-action="select-experience">Search by Experience</a></li>

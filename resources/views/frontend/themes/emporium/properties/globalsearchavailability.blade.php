@@ -1,6 +1,6 @@
 @extends('frontend.themes.emporium.layouts.home')
 {{--  For Title --}}
-@section('title', 'PDP Page')
+@section('title', 'Global search availability')
 {{-- For Meta Keywords --}}
 @section('meta_keywords', '')
 {{-- For Meta Description --}}
@@ -1215,11 +1215,26 @@
                     _html +='</div>';   
                     _html +='<span class="scrollNextDivHotel"><a href="#hotelInfo">Scroll Down</a></span>'; 
                 _html +='</section>';
-                
+                var pFInnerImg = '';
+                var pSInnerImg = '';
+                var pTInnerImg = '';
+                var pFotInnerImg = '';
+                if(propimage.length > 1){
+                    pFInnerImg = propertydtl['propimage_thumbpath']+propimage[1]['file_name'];
+                }
+                if(propimage.length > 2){
+                    pSInnerImg = propertydtl['propimage_thumbpath']+propimage[2]['file_name'];
+                }
+                //if(propimage.length >= 1){
+                    pTInnerImg = 'images/connoiser-bg.jpg';
+                //}
+                if(propimage.length > 3){
+                    pFotInnerImg = propertydtl['propimage_thumbpath']+propimage[3]['file_name'];
+                }
                 
                 _html +='<!-- HAM YARD HOTEL -->';
                 _html +='<section id="hotelInfo" class="HamYardHotelSection">';
-                    _html +='<div class="HamYardHotelInner HamYardHotelInnerfirst">';
+                    _html +='<div class="HamYardHotelInner HamYardHotelInnerfirst" style="background-image:url('+pFInnerImg+')">';
                         _html +='<div class="container">';
                             _html +='<div class="row">';
                                 _html +='<div class="col-md-6">';
@@ -1248,7 +1263,7 @@
                 
                 _html +='<!-- HAM YARD HOTEL -->';
                 _html +='<section class="HamYardHotelSection">';
-                    _html +='<div class="HamYardHotelInner HamYardHotelInnersecond">';
+                    _html +='<div class="HamYardHotelInner HamYardHotelInnersecond" style="background-image:url('+pSInnerImg+')">';
                         _html +='<div class="container">';
                             _html +='<div class="row">';
                                 _html +='<div class="col-md-6">';
@@ -1277,7 +1292,7 @@
                 
                 _html +='<!-- MEMBERSHIP SECTION -->';
                 _html +='<setion class="HamYardHotelSection" id="cont_connoiss">';
-                    _html +='<div class="HamYardHotelInner HamYardHotelInnerthird">';
+                    _html +='<div class="HamYardHotelInner HamYardHotelInnerthird" style="background-image:url('+pTInnerImg+')">';
                         _html +='<div class="container">';
                             _html +='<div class="row">';
                                 _html +='<div class="col-md-6">';
@@ -1710,7 +1725,7 @@
         
         
                 _html +='<section id="bookHotel" class="hotelSearchDateSection">';
-                    _html +='<div class="HamYardHotelInner HamYardHotelInnerfooter">';
+                    _html +='<div class="HamYardHotelInner HamYardHotelInnerfooter" style="background-image:url('+pFInnerImg+')">>';
                         _html +='<div class="hotelSearchDateInnerContent text-center">';
                             _html +='<div class="container-fluid">';
                                 _html +='<div class="row">';

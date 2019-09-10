@@ -700,7 +700,14 @@ class CommonHelper
     	$data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
     	return $data;
     }
+    
+    static function getAboutHeaderInfo(){
 
+        $data = array();
+        $data['about_header_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_header_text')->first();
+        return $data;
+    }
+    
     static function getAboutInfo(){
 
         $data = array();

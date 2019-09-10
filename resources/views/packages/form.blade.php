@@ -105,7 +105,9 @@
 					<label class='radio radio-inline'>
 					<input type='radio' name='package_price_type' value ='0'  @if($row['package_price_type'] == '0') checked="checked" @endif > Price </label>
 					<label class='radio radio-inline'>
-					<input type='radio' name='package_price_type' value ='1'  @if($row['package_price_type'] == '1') checked="checked" @endif > On Request </label> 
+					<input type='radio' name='package_price_type' value ='1'  @if($row['package_price_type'] == '1') checked="checked" @endif > On Request </label>
+                    <label class='radio radio-inline'>
+					<input type='radio' name='package_price_type' value ='2'  @if($row['package_price_type'] == '2') checked="checked" @endif > Free </label> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -173,7 +175,7 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div>
+								  </div>                                  
                                   <div class="form-group is_public_div" style="display: none;">
 									<label for="Is Public" class=" control-label col-md-4 text-left">Is Public <span class="asterix">*</span></label>
 									<div class="col-md-6">									  

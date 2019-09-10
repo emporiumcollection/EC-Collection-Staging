@@ -744,12 +744,16 @@ public function generateInvoice($ordid)
                         if(!empty($pchkdet))
                         {
                             $title = $pchkdet->package_title;
-                            if($pchkdet->package_price_type!=1){
-							 $pacpric = $pchkdet->package_price;
-                             $pacprice_show = $currency->content.$pchkdet->package_price;
+                            if($pchkdet->package_price_type==2){
+                                $pacprice_show = 0.00;       
                             }else{
-                              $pacpric =0;  
-                              $pacprice_show = "Price on Request";
+                                if($pchkdet->package_price_type!=1){
+    							 $pacpric = $pchkdet->package_price;
+                                 $pacprice_show = $currency->content.$pchkdet->package_price;
+                                }else{
+                                  $pacpric =0;  
+                                  $pacprice_show = "Price on Request";
+                                }
                             }
                         }
                         $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$pacprice_show.'</td></tr>';
@@ -796,12 +800,16 @@ public function generateInvoice($ordid)
                         if(!empty($pchkdet))
                         {
                             $title = $pchkdet->package_title;
-                            if($pchkdet->package_price_type!=1){
-							 $pacpric = $pchkdet->package_price;
-                             $pacprice_show = $currency->content.$pchkdet->package_price;
+                            if($pchkdet->package_price_type==2){
+                                $pacprice_show = 0.00;       
                             }else{
-                              $pacpric =0;  
-                              $pacprice_show = "Price on Request";
+                                if($pchkdet->package_price_type!=1){
+    							 $pacpric = $pchkdet->package_price;
+                                 $pacprice_show = $currency->content.$pchkdet->package_price;
+                                }else{
+                                  $pacpric =0;  
+                                  $pacprice_show = "Price on Request";
+                                }
                             }
                         }
                         $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$pacprice_show.'</td></tr>';
@@ -1499,6 +1507,134 @@ public function generateInvoice($ordid)
             }
             
     }
+    
+    public function freeMembership(Request $request){
+        $userID=\Session::get('uid'); 
+        $user = User::find($userID);
+        $pkg_desc = '';   
+        $input = $request->all();                        
+                        
+        $orddta['status'] = 'Success'; 
+        $orddta['comments'] = "Free Membership"; 
+        $orddta['user_id'] = \Session::get('uid'); 
+        $orddta['created'] = date('y-m-d h:i:s'); 
+        //echo "<pre>";
+        //print_r($orddta);
+        $ord_id = \DB::table('tb_orders')->insertGetId($orddta);
+        //$ord_id = "2";
+        $package_idsarr = array();
+        //foreach ($request->session()->get('traveller_cart') as $cartkey => $cartValue) {
+        $pid = $request->input('hid_package');
+        $package = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->where('id', $pid)->first();
+        //print_r($package); die;
+            $orditemdta['order_id'] = $ord_id; 
+           
+            if(!empty($package)){
+                 $orditemdta['package_type'] = 'traveller'; 
+                 $orditemdta['package_id'] = $package->id;
+                 $package_idsarr[] = $orditemdta['package_id'];
+                
+                $packgeDataDetalis = DB::table('tb_packages')->where('id',$package->id)->get();
+                $orditemdta['package_data'] = json_encode($packgeDataDetalis);
+                $pkg_desc = $packgeDataDetalis[0]->package_description;
+               
+                
+            }
+            
+            $orditemdta['user_id'] = \Session::get('uid'); 
+            $orditemdta['created'] = date('y-m-d h:i:s');
+      //print_r($orditemdta); die;       
+            \DB::table('tb_order_items')->insertGetId($orditemdta);
+        //}
 
+                   
+						
+		$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
+		$exp_num = $invoice_num->content;
+
+        $orddta['status'] = 'Success'; 
+        $orddta['comments'] = "Free Membership"; 
+        $orddta['user_id'] = \Session::get('uid'); 
+        $orddta['updated'] = date('y-m-d h:i:s'); 
+		$orddta['invoice_num'] = $exp_num; 
+        \DB::table('tb_orders')->where('id',$ord_id)->update($orddta);
+		
+		\DB::table('tb_settings')->where('key_value', 'default_invoice_num')->update(['content' => ++$exp_num]); 
+       
+        \DB::table('tb_users')->where('id', \Session::get('uid'))->update(array('new_user'=>0, 'form_wizard'=>4));
+       
+        $userinfom = User::find(\Session::get('uid'));
+        $attched_files = array();
+        $useremail = $userinfom->email;
+         
+        $pathToFile['path'] = $this->generateInvoice($ord_id);
+        //echo $pathToFile; die;
+        $pathToFile['name'] = 'invoice-'.$userinfom->id.'-'.date('d-m-Y-h:i:s').'.pdf';
+        $pathToFile['useremail'] = $userinfom->email;
+        $attched_files[] = $pathToFile;
+        $pathToFile2['path'] = $this->attach_contract();
+        //echo $pathToFile; die;
+        $pathToFile2['name'] = 'contract-signup-'.$userinfom->id.'-'.date('d-m-Y').'.pdf';
+        
+        $attched_files[] = $pathToFile2;
+        
+        $email_data = array('email'=>$useremail, 'attched_files'=>$attched_files);
+        //print_r($attched_files); die;
+        if($pathToFile)
+        {
+            $data = array();
+            \Mail::send('user.emails.invoice', $data, function($message) use ($email_data)
+            {
+                $message->from(CNF_EMAIL, CNF_APPNAME);
+                $message->subject("Your Order Invoice");
+                $message->to($email_data['email']);
+                $attched_files = $email_data['attched_files'];
+                foreach($attched_files as $pathToFile){
+                    $message->attach($pathToFile['path'], ['as' => $pathToFile['name'], 'mime' => 'pdf']);
+                }                
+            });
+        }
+        /*$this->data['pkg_desc'] = $pkg_desc;
+        
+        $this->data['user'] = $user;
+        $this->data['order_id'] = $ord_id;
+        $this->data['pageTitle'] = 'Thank you Page';
+        $this->data['data'] = CommonHelper::getInfo();
+        $this->data['pageslider'] = "";
+        $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();              
+        
+        $group_id = \Session::get('gid');
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($group_id));
+        
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'/frontend.hotel_membership.thanks':'frontend.hotel_membership.thanks';   
+        return view($file_name, $this->data);*/
+        echo json_encode(array('status'=>'success', 'order_id'=>$ord_id));        
+             
+    }
+    
+    public function thanks(Request $request,$order_id = null){
+        $order_id  = $order_id;
+        //echo($order_id);
+        $obj_order = \DB::table('tb_orders')->join('tb_order_items', 'tb_order_items.order_id', '=', 'tb_orders.id')->where('tb_orders.id', $order_id)->first();
+        //print_r($obj_order); die;
+        $package = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->where('id', $obj_order->package_id)->first();
+        //print_r($package); die;
+        $userID=\Session::get('uid');
+        $user = User::find($userID);
+        $this->data['pkg_desc'] = $package->package_description;
+        
+        $this->data['user'] = $user;
+        $this->data['order_id'] = $order_id;
+        $this->data['pageTitle'] = 'Thank you Page';
+        $this->data['data'] = CommonHelper::getInfo();
+        $this->data['pageslider'] = "";
+        $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();              
+        
+        $group_id = \Session::get('gid');
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($group_id));
+        
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'/frontend.hotel_membership.free_thanks':'frontend.hotel_membership.thanks';   
+        return view($file_name, $this->data);        
+    }
     
 }

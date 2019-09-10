@@ -68,7 +68,12 @@
 				<textarea rows="6" name="footerText" class="form-control input-sm" required="required">{{$footer_text->content}}</textarea>
 			</div>
 		  </div>
-		  
+		  <div class="form-group">
+			<label for="About Text" class=" control-label col-md-4"> About Header Text</label>
+			<div class="col-md-8">			
+				<textarea rows="6" name="aboutHeaderText" class="form-control input-sm">{{$about_header_text->content}}</textarea>
+			</div>
+		  </div>
 		  <div class="form-group">
 			<label for="About Text" class=" control-label col-md-4"> About Text</label>
 			<div class="col-md-8">			

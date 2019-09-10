@@ -1,6 +1,6 @@
 #search-result-slider .carousel-inner .item{height:600px; background-size:cover; background-position:50% 50%;}
 /*#search-result-slider .carousel-inner .item:after{opacity:0;-webkit-opacity:0;}*/
-#search-result-slider .carousel-caption{max-width:530px; height:100%; top:0; bottom:0; padding:136px 100px 50px 70px;}
+#search-result-slider .carousel-caption{max-width:530px; height:100%; top:0; bottom:0;  padding:65px 100px 50px 70px; /* padding:136px 100px 50px 70px;*/}
 #search-result-slider .carousel-caption h6{margin:24px 0 0;}
 #search-result-slider .carousel-caption h2{font-family: DomaineDisplay; font-size:26px; color:#8D8C8E; margin:10px 0 10px; line-height:30px;}
 #search-result-slider .carousel-caption h2 a, #search-result-slider .carousel-caption h2 a:hover{color:#8D8C8E;}

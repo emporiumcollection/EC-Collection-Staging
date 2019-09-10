@@ -663,7 +663,7 @@ border-radius:0;
 .backcontrol{position:fixed; right:0; top:339px; width:65px; z-index:99999;}
 .backcontrol ul li{border-left: 1px solid #ABA07C; border-bottom: 1px solid #414246;}
 .backcontrol ul li:last-child{border-bottom:0;}
-.backcontrol ul li a{background-color: #aba00b; display:block;border: 0 none;border-radius: 0;font-size: 12px;height: 38px;font-weight:bold;padding:10px 3px;opacity: 1;color: #fff; text-align:center;}
+.backcontrol ul li a{background-color: #aba00b; display:block;border: 0 none;border-radius: 0;font-size: 12px;height: 38px;font-weight:normal;padding:10px 3px;opacity: 1;color: #fff; text-align:center;}
 
 /* Range slider */
 
@@ -806,7 +806,9 @@ border-radius:0;
     font-size: 18px;
     font-style: normal;
     margin: 0px;
-    line-height: 1.42857143;
+    /*line-height: 1.42857143;*/
+    line-height: 1;
+    margin-top: 10px;
     font-weight: normal;
 }
 .sliderSection .carousel-caption h1 a, .sliderSection .carousel-caption h1 a:hover {

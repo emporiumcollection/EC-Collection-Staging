@@ -620,6 +620,7 @@ class ConfigController extends Controller {
 		$this->data['gesamtvertrieb'] = \DB::table('tb_settings')->where('key_value', 'gesamtvertrieb')->first();
 		$this->data['presse'] = \DB::table('tb_settings')->where('key_value', 'presse')->first();
 		$this->data['footer_text'] = \DB::table('tb_settings')->where('key_value', 'footer_text')->first();
+        $this->data['about_header_text'] = \DB::table('tb_settings')->where('key_value', 'about_header_text')->first();
 		$this->data['about_text'] = \DB::table('tb_settings')->where('key_value', 'about_text')->first();
 		
 		$this->data['services_titles'] = \DB::table('tb_services')->select('id','title')->where('status', 1)->get();
@@ -659,6 +660,7 @@ class ConfigController extends Controller {
 			\DB::table('tb_settings')->where('key_value', 'gesamtvertrieb')->update(['content' => Input::get('gesamtvertrieb')]);
 			\DB::table('tb_settings')->where('key_value', 'presse')->update(['content' => Input::get('presse')]);
 			\DB::table('tb_settings')->where('key_value', 'footer_text')->update(['content' => Input::get('footerText')]);
+            \DB::table('tb_settings')->where('key_value', 'about_header_text')->update(['content' => Input::get('aboutHeaderText')]);
 			\DB::table('tb_settings')->where('key_value', 'about_text')->update(['content' => Input::get('aboutText')]);
 			if(!empty(Input::get('services_column1')))
 			{

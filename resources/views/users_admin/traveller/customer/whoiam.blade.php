@@ -694,6 +694,7 @@
                                                                                     ?>
                                                                                     {{--*/ $k=1; /*--}}
                                                                                     {{--*/ $m=0; /*--}} 
+                                                                                    {{--*/ $prc_flag = 0; /*--}} 
                                                                                     @foreach($packages as $key=>$package) 
                                                             						<div class="m-accordion__item">
                                                             							<div class="m-accordion__item-head <?php echo ($m==0) ? '' : 'collapsed' ?>"  role="tab" id="m_accordion_item_membershiptype_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_item_membershiptype_{{ $k }}_body" aria-expanded="    false">
@@ -702,7 +703,7 @@
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
                                                             									{{$package->package_title}}
-                                                                                                Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}                                                                                                
+                                                                                               @if($package->package_price_type!=2) Price: {!! isset($currency->content)?$currency->content:'&euro;' !!}  {{ number_format($package->package_price,2) }} @endif                                                                                               
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -720,10 +721,15 @@
                                                                                                                 <p>{!! nl2br($package->package_description) !!}</p>
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
-                                                                                                                    @if($package->package_price_type!=1)  
-                                                                                                                        <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                    @if($package->package_price_type==2)
+                                                                                                                        <input type="hidden" name="hid_package" value="{{$package->id}}" />    
                                                                                                                     @else
-                                                                                                                        <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>   
+                                                                                                                        {{--*/ $prc_flag = 1; /*--}}
+                                                                                                                        @if($package->package_price_type!=1)                                                                                          
+                                                                                                                            <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                        @else
+                                                                                                                            <h6><a href="#" class="btn btn-primary priceonrequest">Request Consultation</a></h6>   
+                                                                                                                        @endif
                                                                                                                     @endif
                                                                                                                     </div>
                                                                                                                 </div>
@@ -761,7 +767,7 @@
                                                                             
                                                 				</div>                                						
                                 					       </div>
-                                                           <div class="col-lg-12 m--align-right" id="pgk_continue_btn">                     						
+                                                           <div class="col-lg-12 m--align-right" id="pgk_continue_btn">                     						                                                              <input type="hidden" name="hid_ptype" value="{{$prc_flag}}" />
                                                                 <a id="continue_btn" class="btn btn-success pull-right" style="color: #fff;">Continue</a>		
                                                             </div> 
                                                         </div>
@@ -1280,21 +1286,44 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
             
             $("#continue_btn").click(function(e){
                 e.preventDefault();
-                                              
-                $.ajax({
-                    url:base_url+'/traveller/get_cart', 
-                    type:'get',    
-                   
-                    success:function(response){ 
-                        
-                        $("#cart_row").css('display', '');
-                        $("#cart_row").html('');
-                        $("#dv_pkg").css('display', 'none');
-                        $("#cart_row").html(response);   
-                        
-                        
-                    }
-                });
+                var prc  = $('input[name="hid_ptype"]').val(); 
+                
+;                if(prc>0){                         
+                    $.ajax({
+                        url:base_url+'/traveller/get_cart', 
+                        type:'get',    
+                       
+                        success:function(response){ 
+                            
+                            $("#cart_row").css('display', '');
+                            $("#cart_row").html('');
+                            $("#dv_pkg").css('display', 'none');
+                            $("#cart_row").html(response);   
+                            
+                            
+                        }
+                    });
+                }else{
+                    hid_package = $('input[name="hid_package"]').val();
+                    
+                    $.ajax({
+                        url:base_url+'/traveller/free_membership',
+                        type:'post',
+                        dataType:'json', 
+                        data:{hid_package:hid_package},                      
+                        success:function(response){ //console.log(response);
+                            if(response.status=="success"){
+                                window.location.href=base_url+'/traveller/thanks/'+response.order_id;
+                            }
+                            //$("#cart_row").css('display', '');
+                            //$("#cart_row").html('');
+                            //$("#dv_pkg").css('display', 'none');
+                            //$("#cart_row").html(response);   
+                            
+                            
+                        }
+                    });   
+                }
             });
             
             $(document).on('click', '.rdocheckouttype', function(e){                

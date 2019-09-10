@@ -921,12 +921,16 @@ class UserorderController extends Controller {
 						if(!empty($pchkdet))
 						{
 							$title = $pchkdet->package_title;
-                            if($pchkdet->package_price_type!=1){
-							 $pacpric = $pchkdet->package_price;
-                             $pacprice_show = $currency->content.$pchkdet->package_price;
+                            if($pchkdet->package_price_type==2){
+                                $pacprice_show = 0.00;       
                             }else{
-                              $pacpric =0;  
-                              $pacprice_show = "Price on Request";
+                                if($pchkdet->package_price_type!=1){
+    							 $pacpric = $pchkdet->package_price;
+                                 $pacprice_show = $currency->content.$pchkdet->package_price;
+                                }else{
+                                  $pacpric =0;  
+                                  $pacprice_show = "Price on Request";
+                                }
                             }
 						}
 						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$pacprice_show.'</td></tr>';
@@ -973,12 +977,16 @@ class UserorderController extends Controller {
                         if(!empty($pchkdet))
                         {
                             $title = $pchkdet->package_title;
-                            if($pchkdet->package_price_type!=1){
-							 $pacpric = $pchkdet->package_price;
-                             $pacprice_show = $currency->content.$pchkdet->package_price;
+                            if($pchkdet->package_price_type==2){
+                                $pacprice_show = 0.00;       
                             }else{
-                              $pacpric =0;  
-                              $pacprice_show = "Price on Request";
+                                if($pchkdet->package_price_type!=1){
+    							 $pacpric = $pchkdet->package_price;
+                                 $pacprice_show = $currency->content.$pchkdet->package_price;
+                                }else{
+                                  $pacpric =0;  
+                                  $pacprice_show = "Price on Request";
+                                }
                             }
                         }
                         $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$pacprice_show.'</td></tr>';
