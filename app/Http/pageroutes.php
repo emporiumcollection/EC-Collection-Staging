@@ -37,4 +37,5 @@ Route::get('social-youtube', 'HomeController@index');
 Route::get('restaurants', 'HomeController@index');
 Route::get('membership_hotel', 'HomeController@index');
 Route::get('mapsearch', 'HomeController@index');
+Route::get('EventsMod', 'HomeController@index');
 ?>
