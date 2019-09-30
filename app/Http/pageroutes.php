@@ -1,4 +1,5 @@
 <?php 
+Route::get('Imprint', 'HomeController@index');
 Route::get('contact-us', 'HomeController@index');
 Route::get('portpolio', 'HomeController@index');
 Route::get('plans', 'HomeController@index');
@@ -35,4 +36,5 @@ Route::get('social-stream', 'HomeController@index');
 Route::get('social-youtube', 'HomeController@index');
 Route::get('restaurants', 'HomeController@index');
 Route::get('membership_hotel', 'HomeController@index');
+Route::get('mapsearch', 'HomeController@index');
 ?>
