@@ -101,6 +101,10 @@
       
       <li ><a href="#requestReferralEmailtoSuperAdmin" data-toggle="tab"> Request Referral Email to Super Admin   </a></li>
       <li ><a href="#requestReferralEmailtoUser" data-toggle="tab"> Request Referral Email to User </a></li>
+      
+      <li ><a href="#priceOnRequestEmailtoSuperAdmin" data-toggle="tab"> Price On Request Email to Admin   </a></li>
+      <li ><a href="#priceOnRequestEmailtoUser" data-toggle="tab"> Price On Request Email to User </a></li>
+      
 	</ul>
 
 	<div class="tab-content">
@@ -435,6 +439,50 @@
 			  </div>	
 			</div>
 		</div>
+        
+        <div class="tab-pane m-t" id="priceOnRequestEmailtoSuperAdmin">
+            <div class="col-sm-6 animated fadeInRight">
+            	<div class="sbox  "> 
+            		<div class="sbox-title">  {{ Lang::get('core.request_refferal_email_to_superadmin') }}</div>
+            		<div class="sbox-content"> 	
+                        <div class="form-group">
+                            <label for="ipt" class=" control-label ">{{ Lang::get('core.tab_email') }} </label>					
+                            <textarea rows="20" name="priceOnRequestEmailtoSuperAdmin" class="form-control input-sm markItUp">{{ $priceOnRequestEmailtoSuperAdmin }}</textarea>					 
+                        </div> 
+                        <div class="form-group">
+                            Please use "&#123;&#33;&#33; $msg &#33;&#33;&#125;" shortcode for print massage in the template.    
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }}</button>
+                        </div> 
+            		</div>	 
+              </div>
+            </div>
+      </div>
+        
+      <div class="tab-pane m-t" id="priceOnRequestEmailtoUser">
+            <div class="col-sm-6 animated fadeInRight">
+            	<div class="sbox  "> 
+            		<div class="sbox-title">  {{ Lang::get('core.request_refferal_email_to_user') }}</div>
+            		<div class="sbox-content"> 	
+                        <div class="form-group">
+                            <label for="ipt" class=" control-label ">{{ Lang::get('core.tab_email') }} </label>					
+                            <textarea rows="20" name="priceOnRequestEmailtoUser" class="form-control input-sm markItUp">{{ $priceOnRequestEmailtoUser }}</textarea>					 
+                        </div> 
+                            
+                        <div class="form-group">
+							Please use "&#123;&#123; $firstname &#125;&#125;" shortcode for print massage in the template.
+					    </div>
+                            
+            		    <div class="form-group">
+            				<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }}</button>
+            			</div> 
+            		</div>	 
+                </div>
+            </div>
+      </div>
+      
+        
 	</div>
 	</div>
  {!! Form::close() !!}

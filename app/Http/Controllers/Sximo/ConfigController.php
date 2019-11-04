@@ -147,6 +147,9 @@ class ConfigController extends Controller {
         $requestReferralEmailtoSuperAdmin = base_path()."/resources/views/user/emails/request_referral.blade.php";
         $requestReferralEmailtoUser = base_path()."/resources/views/user/emails/request_referral_user.blade.php";
         
+        $priceOnRequestEmailtoSuperAdmin = base_path()."/resources/views/user/emails/price_on_request_admin.blade.php";
+        $priceOnRequestEmailtoUser = base_path()."/resources/views/user/emails/price_on_request_user.blade.php";
+        
 		$this->data = array(
 			'groups'	=> Groups::all(),
 			'pageTitle'	=> 'Blast Email',
@@ -168,6 +171,9 @@ class ConfigController extends Controller {
             'refferalInvitation'	=> 	file_get_contents($refferalInvitation),
             'requestReferralEmailtoSuperAdmin'	=> 	file_get_contents($requestReferralEmailtoSuperAdmin),
             'requestReferralEmailtoUser'	=> 	file_get_contents($requestReferralEmailtoUser),
+            
+            'priceOnRequestEmailtoSuperAdmin'	=> 	file_get_contents($priceOnRequestEmailtoSuperAdmin),
+            'priceOnRequestEmailtoUser'	=> 	file_get_contents($priceOnRequestEmailtoUser),
 		);	
 		return view('sximo.config.email',$this->data);		
 	
@@ -845,6 +851,46 @@ class ConfigController extends Controller {
 		}	else {
 
 			return Redirect::to('sximo/config/contract')->with('messagetext', 'The following errors occurred')->with('msgstatus','success')
+			->withErrors($validator)->withInput();
+		}
+	
+	}
+    
+    public function getSeason()
+	{
+		$this->data = array(
+			'pageTitle'	=> 'Help Manual',
+			'pageNote'	=> 'Documentation',
+			'active'	=> 'season'
+		);	
+		
+        $this->data['season_start_date'] = \DB::table('tb_settings')->where('key_value', 'season_start_date')->first();
+        $this->data['season_end_date'] = \DB::table('tb_settings')->where('key_value', 'season_end_date')->first();  
+		
+		
+		return view('sximo.config.season',$this->data);	
+	}	
+	
+	
+	function postSeason( Request $request)
+	{
+		
+		//print_r($_POST);exit;
+		$rules = array(
+			'season_start_date'		=> 'required',
+            'season_end_date'		=> 'required',			
+		);	
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) 
+		{            
+            \DB::table('tb_settings')->where('key_value', 'season_start_date')->update(['content' => Input::get('season_start_date')]);			
+			\DB::table('tb_settings')->where('key_value', 'season_end_date')->update(['content' => Input::get('season_end_date')]);            
+			
+			return Redirect::to('sximo/config/season')->with('messagetext', 'Default season settings has been updated')->with('msgstatus','success');	
+			
+		}	else {
+
+			return Redirect::to('sximo/config/season')->with('messagetext', 'The following errors occurred')->with('msgstatus','success')
 			->withErrors($validator)->withInput();
 		}
 	

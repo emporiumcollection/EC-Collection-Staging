@@ -258,7 +258,12 @@
                                         <h3>{{$type->category_name}}</h3>
                                         <p>{{(strlen($type->room_desc) > 100) ? substr($type->room_desc,0,100).'...':$type->room_desc}}</p>
                                         <button class="btn btn-default moreButtonPopup" type="button" rel="{{$type->id}}">More</button>
-                                        <button class="btn btn-default bg-color" type="button" onclick="choose_room_type('{{$type->id}}');">Reservation</button>
+                                        @if($propertyDetail['data']->prcOnReq)
+                                            <input type="hidden" name="hidprconreq" id="hidprconreq" value="1" />
+                                            <button class="btn btn-default bg-color" data-id="{{$type->id}}" type="button" onclick="price_on_request('{{$type->id}}');">Price on request</button>
+                                        @else
+                                            <button class="btn btn-default bg-color" type="button" onclick="choose_room_type('{{$type->id}}');">Reservation</button>
+                                        @endif
                                         
                                         @if($type->price!='')
                                             <a class="btn btn-default" title="{{$type->season}}" id="loginToView"> {{($currency->content!='') ? $currency->content : '$'}} {{ isset(\Auth::user()->id) ? $type->price : 'Login to view'}} </a>
@@ -506,6 +511,9 @@
                               action="{{url().'/book-property/'.$propertyDetail['data']->property_slug}}" method="get">
                             <input type="hidden" name="property" id="property" value="{{$propertyDetail['data']->id}}"/>
                             <input type="hidden" name="roomType" id="roomType" value=""/>
+                            @if($propertyDetail['data']->prcOnReq)
+                                <input type="hidden" name="hidprconreq" id="hidprconreq" value="1" />
+                            @endif
                             <div class="row">
                                 <ul class="hotelBorderList">
                                     
@@ -806,6 +814,76 @@
     	</div>
       </div>
     </div> */ ?>
+    <!-- Property Season Rates Modal -->
+    <div class="modal fade" id="priceOnReqModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+    	  <div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    		<h4 class="modal-title" id="myModalLabel">Price On Request</h4>
+    	  </div>
+    	  <div class="modal-body">                
+                <div class="break-border-bottom">
+                    <div class="your-contact-detail-form">
+                        <div class="contact-form-alignment">
+                            
+                            <!-- Guest Contact Details -->
+                            <div class="">
+                                <div class="col-sm-12 col-md-2">
+                                    <div class="form-group">
+                                        <label for="email">Title</label>
+                                        <select name="guest_title" class="form-control">
+                                            <option value="0"></option>
+                                            <option>Mr.</option>
+                                            <option>Mrs.</option>
+                                            <option>Miss</option>
+                                        </select>
+                                    </div> 
+                                </div>  
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <label for="email">Last name</label>
+                                        <input name="guest_last_name" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2">
+                                    <div class="form-group">
+                                        <label for="email">First Name</label>
+                                        <input name="guest_first_name" class="form-control" type="text">
+                                    </div> 
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input name="guest_email" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Land Line</label>
+                                        <input name="guest_landline_code" class="form-control" type="text">
+                                        <input name="guest_landline_number" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Mobile</label>
+                                        <input name="guest_mobile_number" class="form-control" type="text">
+                                    </div>                                
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" class="step-4 margin-top-25 validate-btn" value="SUBMIT CONTACT DETAILS">
+                    </div>
+                </div>
+    	  </div>
+    	  <div class="modal-footer">
+    		<button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK</button>
+    	  </div>
+    	  </form>
+    	</div>
+      </div>
+    </div>
 @endsection
 
 
@@ -1219,6 +1297,14 @@
                 }
             });
         });
+        
+        $(document).on('click', '.priceOnReq', function(e){
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+            console.log(id);
+            $("#priceOnReqModal").modal();
+        });
+        
 		function renderRoomimages(data) {
 			$('.galleryImgdata').html('');
 			var imagesPro = '';
@@ -1295,6 +1381,16 @@
     				$(".detail-page-booking-form").trigger("submit");
     			}
             }
+		}
+        
+        function price_on_request(type)
+		{            
+    		$('#roomType').val('');
+    		if (type != '' && type > 0)
+    		{
+    			$('#roomType').val(type);
+    			$(".detail-page-booking-form").trigger("submit");
+    		}            
 		}
         
         function show_modal_content(memtype){
