@@ -1427,7 +1427,8 @@ class PropertiesController extends Controller {
             $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_terms_and_conditions':'properties.settings_terms_and_conditions'; 
             return view($file_name, $this->data);
             
-        }elseif ($active == 'custom-price') {            
+        }elseif ($active == 'custom-price') {  
+            echo "heelo"; die;
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
             //if($is_demo6!=''){
             $seasons = \DB::table('tb_seasons')->where('property_id', $property_id)->get();
