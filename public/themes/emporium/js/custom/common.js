@@ -1640,7 +1640,7 @@ $(document).on('click', '.our-collections', function(){
 });
 var arrhotels = [];
 var _hid_our_hotels = $('#hid_our_hotels').val();
-if(_hid_our_hotels!=''){
+if(_hid_our_hotels!='' && _hid_our_hotels!= undefined){
     var _spl_hotel= _hid_our_hotels.split(',');
     if(_spl_hotel.length > 0){
         for(i=0; i<_spl_hotel.length; i++){
@@ -1680,7 +1680,7 @@ $(document).on('click', '.our-hotels', function(e){
 });
 var arrdestinations = [];
 var _hid_our_destinations = $('#hid_our_destinations').val();
-if(_hid_our_destinations!=''){
+if(_hid_our_destinations!='' && _hid_our_destinations != undefined){
     var _spl_destinations = _hid_our_destinations.split(',');
     if(_spl_destinations.length > 0){
         for(i=0; i<_spl_destinations.length; i++){

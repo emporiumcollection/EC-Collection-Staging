@@ -1,7 +1,7 @@
 <?php 
-define('CNF_APPNAME','Emporium-Collection Membership Portal');
-define('CNF_APPDESC','Emporium-Collection Membership Portal');
-define('CNF_COMNAME','Emporium-Collection Membership Portal');
+define('CNF_APPNAME','Emporium-Voyage');
+define('CNF_APPDESC','Emporium Voyage Membership Portal');
+define('CNF_COMNAME','Emporium Voyage Membership Portal');
 define('CNF_EMAIL','marketing@emporium-collection.com');
 define('CNF_METAKEY','Emporium Voyage Membership Portal');
 define('CNF_METADESC','Emporium Voyage Membership Portal');
@@ -24,4 +24,5 @@ define('CNF_RESTRICIP','192.116.134 , 194.111.606.21 ');
 define('CNF_YOUTUBE_API_KEY','');
 define('CNF_SUPERADMIN_EMAIL','dalip.01rad@gmail.com');
 define('CNF_GOOGLE_ANALYTIC_KEY','UA-110391807-1');
+define('CNF_HUBSPOT_SCRIPT','<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5278766.js"></script>');
 ?>

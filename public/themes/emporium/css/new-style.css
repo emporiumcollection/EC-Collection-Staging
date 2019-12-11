@@ -137,7 +137,7 @@
     margin-right: 3px;
 }
 #home_sld .image-overaly-bg{
-background: rgba(37,37,37,0.6);  
+background: rgba(37,37,37,0.2);  
 }
 #home_sld .image-overaly-bg.bg-dark {
 background: -moz-linear-gradient(top, rgba(55,55,55,0.25) 0%, rgba(54,54,54,0.25) 1%, rgba(10,10,10,0.46) 60%, rgba(10,10,10,0.92) 100%); /* FF3.6-15 */
@@ -6746,6 +6746,13 @@ ul.item-list-bar {
 .gs-sb-adult{
     cursor: pointer;
 }
+
+/* Modal Popup priceOnReqModal*/
+#priceOnReqModal .modal-content{
+    background: #252525;
+}
+/* End Modal*/
+
 /* ---- End Global search top bar -------*/
 
 @media screen and (min-width: 1400px){   

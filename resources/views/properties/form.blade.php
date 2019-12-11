@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style>
+.radio-inline{ padding-left: 0px;}
+</style>
 <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -127,7 +129,25 @@
                                 <div class="form-group  " >
                                     <label for="City Tax ( in % )" class=" control-label col-md-4 text-left"> City Tax ( in % ) </label>
                                     <div class="col-md-6">
-                                        {!! Form::text('city_tax', $row['city_tax'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                        <label class="radio-inline"><input type="radio" name="rdcitytax" value="no" {{$row['citytaxyesno']=='no' ? "checked='checked'" : '' }} >No</label>
+                                        <label class="radio-inline"><input type="radio" name="rdcitytax" value="yes"  {{$row['citytaxyesno']=='yes' ? "checked='checked'" : '' }}>Yes</label>
+                                        <div class="dvcitytax" style="{{$row['citytaxyesno']=='yes' ? "display: '';" : 'display: none;' }} padding: 8px 0px 0px 0px;">
+                                            <div class="col-md-3">
+                                                <label>Adult</label>
+                                                {{-- */ $adult_tax  = ($row['adult_tax']!='' and $row['adult_tax']!=NULL) ? $row['adult_tax'] : $default_adult_tax->content; /* --}}
+                                                {!! Form::text('adult_tax', $adult_tax, array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                            </div>                                            
+                                            <div class="col-md-3">
+                                                <label>Junior</label>
+                                                {{-- */ $junior_tax  = ($row['junior_tax']!='' and $row['junior_tax']!=NULL) ? $row['junior_tax'] : $default_junior_tax->content; /* --}}
+                                                {!! Form::text('junior_tax', $junior_tax, array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Infant</label>
+                                                {{-- */ $baby_tax  = ($row['baby_tax']!='' and $row['baby_tax']!=NULL) ? $row['baby_tax'] : $default_baby_tax->content; /* --}}
+                                                {!! Form::text('baby_tax', $baby_tax, array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                            </div>
+                                        </div>
                                     </div> 
                                     <div class="col-md-2">
 
@@ -2288,7 +2308,15 @@
                     </div>
 
                     <div class="tab-pane m-t " id="HotelAdress"> 
+                        <div class="form-group  " >
+                            <label for="City" class=" control-label col-md-4 text-left"> Address </label>
+                            <div class="col-md-6">
+                                {!! Form::text('address', $row['address'],array('class'=>'form-control', 'placeholder'=>'Copy the address from google map to get lat long',   )) !!} 
+                            </div> 
+                            <div class="col-md-2">
 
+                            </div>
+                        </div> 	    
                         <div class="form-group  " >
                             <label for="City" class=" control-label col-md-4 text-left"> City </label>
                             <div class="col-md-6">
@@ -2315,7 +2343,27 @@
                             <div class="col-md-2">
 
                             </div>
-                        </div> 					
+                        </div> 
+                        
+                        <div class="form-group  " >
+                            <label for="Website" class=" control-label col-md-4 text-left"> Latitude </label>
+                            <div class="col-md-6">
+                                {!! Form::text('latitude', $row['latitude'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                            </div> 
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <div class="form-group  " >
+                            <label for="Website" class=" control-label col-md-4 text-left"> Longitude </label>
+                            <div class="col-md-6">
+                                {!! Form::text('longitude', $row['longitude'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                            </div> 
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        					
                         <div class="form-group  " >
                             <label for="Phone" class=" control-label col-md-4 text-left"> Phone </label>
                             <div class="col-md-6">
@@ -2865,5 +2913,15 @@
                 $('.yachtin').hide();
             }
         }
+        $('input[type="radio"][name="rdcitytax"]').on('ifChecked', function (event) {
+            var _val = event.target.value;
+            if(_val=='yes'){
+                $(".dvcitytax").show();    
+            }else{
+                $(".dvcitytax").hide();
+            }
+        });
+        
+        
     </script>		 
     @stop

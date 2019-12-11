@@ -206,7 +206,8 @@
                     @endforeach 
                   @endif
                 </ul>
-            </li>  
+            </li> 
+            <li class="tb_Social"><a href="#tab-social" data-toggle="tab">Map</a></li> 
             <!--<li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Channel <span class="caret"></span></a>
                 <ul class="dropdown-menu">                  
@@ -1698,7 +1699,8 @@ $grid.imagesLoaded().progress( function() {
                     console.log(data.channel_url);   
                     $(".dv-youtube-channel").html('<div class="yt-rvideos"></div>');
                     //$(".dv-youtube-channel").html('<div data-yt data-yt-channel="'+data.channel_url+'" data-yt-content-columns="4"  data-yt-content-rows="3"></div>')                    
-                        $('.yt-rvideos').yottie({                                
+                        $('.yt-rvideos').yottie({ 
+                            key:'AIzaSyAry0SsGLQVtzh61SGb2-OtBpAWtZh7zGo',
                             channel: data.channel_url,
                             content: {
                                 columns: 4,

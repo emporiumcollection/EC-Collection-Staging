@@ -95,6 +95,14 @@
     @endif
 @endif
 
+@if(defined('CNF_HUBSPOT_SCRIPT'))
+    @if(CNF_HUBSPOT_SCRIPT != '')
+    <!-- Start of HubSpot Embed Code -->
+    {!! CNF_HUBSPOT_SCRIPT !!}
+    <!-- End of HubSpot Embed Code -->
+    @endif
+@endif
+
 {{--*/
 $isfLoginned = (bool) \auth()->check();
 if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfPublic; }

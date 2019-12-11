@@ -49,6 +49,7 @@
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#tab_property_image" data-toggle="tab">Property Images</a></li>
 							<li><a href="#tab_property_slider_image" data-toggle="tab">Property Slider Images</a></li>
+                            <li><a href="#tab_grid_image" data-toggle="tab">Grid</a></li>
 						</ul>
 						<div class="tab-content" style="margin-top: 20px;">
 							<div class="tab-pane use-padding active" id="tab_property_image">
@@ -242,6 +243,107 @@
 									<ol class="indicator"></ol>
 								</div>
 							</div>
+                            
+                            
+                            
+                            <div class="tab-pane use-padding active" id="tab_grid_image">
+								<!-- The file upload form used as target for the file upload widget -->
+								<form id="fileupload" class="fileupload" action="{{URL::to('property_images_uploads')}}" method="POST" enctype="multipart/form-data">
+									<input type="hidden" name="propId" value="{{$pid}}" />
+									<input type="hidden" name="uploadType" value="Property Grid" />
+									<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+									<div class="row fileupload-buttonbar">
+										<div class="col-lg-7">
+											<!-- The fileinput-button span is used to style the file input field as button -->
+											<span class="btn btn-success fileinput-button">
+												<i class="glyphicon glyphicon-plus"></i>
+												<span>Add files...</span>
+												<input type="file" name="files[]" multiple>
+											</span>
+											<button type="submit" class="btn btn-primary start">
+												<i class="glyphicon glyphicon-upload"></i>
+												<span>Start upload</span>
+											</button>
+											<button type="reset" class="btn btn-warning cancel">
+												<i class="glyphicon glyphicon-ban-circle"></i>
+												<span>Cancel upload</span>
+											</button>
+											<a class="btn btn-success" @if(!empty($grid_imgs)) href="{{URL::to('folders/'.$grid_imgs[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+												<span>Re-Order</span>
+											</a>
+											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('ff');" >
+												<i class="glyphicon glyphicon-trash"></i>
+												<span>Delete</span>
+											</button>
+											<!-- The global file processing state -->
+											<span class="fileupload-process"></span>
+										</div>
+										<!-- The global progress state -->
+										<div class="col-lg-5 fileupload-progress fade">
+											<!-- The global progress bar -->
+											<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+												<div class="progress-bar progress-bar-success" style="width:0%;"></div>
+											</div>
+											<!-- The extended global progress state -->
+											<div class="progress-extended">&nbsp;</div>
+										</div>
+									</div>
+									<!-- The table listing the files available for upload/download -->
+									<table role="presentation" class="table table-striped prese">
+										<tbody class="files">
+											@if(!empty($grid_imgs))
+												<tr>
+													<td colspan="5"><input type="checkbox" value="1" id="check_all" class="check-all"> Select all</td>
+												</tr>
+												@foreach($grid_imgs as $img)
+													<tr class="template-download fade in row{{$img->id}}">
+														<td>
+															<input type="checkbox" name="compont[]" id="compont" value="{{$img->id}}" class="no-border check-files ff">
+														</td>
+														<td>
+															<span class="preview">
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
+																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
+																</a>
+															</span>
+														</td>
+														<td>
+															<p class="name">
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">{{$img->file_display_name}}</a>
+															</p>
+														</td>
+														<td>
+															<span class="size">
+																{{--*/ $sizeKb = ($img->file_size/1024); /*--}} {{ round($sizeKb,2,PHP_ROUND_HALF_UP) }} KB
+															</span>
+														</td>
+														<td>
+															<button type="button" class="btn btn-danger" onclick="delete_property_image({{$img->id}});" >
+																<i class="glyphicon glyphicon-trash"></i>
+																<span>Delete</span>
+															</button>
+														</td>
+													</tr>
+												@endforeach
+											@endif
+										</tbody>
+									</table>
+								</form>
+								
+								<!-- The blueimp Gallery widget -->
+								<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+									<div class="slides"></div>
+									<h3 class="title"></h3>
+									<a class="prev">‹</a>
+									<a class="next">›</a>
+									<a class="close">×</a>
+									<a class="play-pause"></a>
+									<ol class="indicator"></ol>
+								</div>
+							</div>
+                            
+                            
+                            
 						</div>
 					</div>
 				</div>

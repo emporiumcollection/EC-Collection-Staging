@@ -60,4 +60,9 @@
                     Route::controller('events', 'EventsController');
                     Route::controller('eventpackages', 'EventpackagesController');
                     Route::controller('eventreservations', 'EventreservationsController');
+                    Route::controller('storecategories', 'StorecategoriesController');
+                    Route::controller('customplan', 'CustomplanController');
+                    Route::controller('teams', 'TeamsController');
+                    Route::controller('globalcustomplan', 'GlobalcustomplanController');
+                    Route::controller('vatclass', 'VatclassController');
                     ?>

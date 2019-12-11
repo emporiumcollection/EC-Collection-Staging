@@ -1,0 +1,239 @@
+#globalfiltersearchpopup{
+    font-family: Playfair-display;
+    position: absolute;
+    background: #222326;
+    margin-top: 10px;
+    width: 687px;
+    padding: 15px 10px;
+    z-index: 1;
+    color: #ffffff;
+}
+#globalfiltersearchpopup ul{
+    list-style-type: none;
+    vertical-align: top;
+}
+#globalfiltersearchpopup ul li{
+    list-style-type: none;
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    padding: 5px;
+}
+#globalfiltersearchpopup ul li a{
+    margin: 0px;
+    padding: 0px;
+    color: #BCBCBF;
+    font-size: 16px !important;
+}
+#globalfiltersearchpopup ul li a:hover{
+    background-color: transparent !important;
+}
+#globalfiltersearchpopup ul ul{    
+    padding-left: 12px;
+}
+#globalfiltersearchpopup ul ul li{    
+    width: 100%;
+    cursor: pointer;
+    margin: 1px;
+}
+#globalfiltersearchpopup .searchmenulist li a{    
+    display:block; 
+    color:#fff; 
+    font-size:13px; 
+    transition: all .3s ease 0s;
+    -webkit-transition: all .3s ease 0s;
+}
+.global-search-input .form-control{
+    padding-left: 7px !important;
+    border: 1px solid #2C2D33 !important;
+    margin-left: 10px;
+    font-size: 14px;
+    width: 93%;
+    margin: 40px 0 49px;
+}
+.global-search-form .adult-room{
+    /*background-color: rgba(0,0,0,0.5) !important;
+    border: 1px solid #8D8C8E !important;*/
+    margin: 40px 0 49px;
+}
+.global-search-form .chooseadultroom{    
+    top: 56px !important;
+}
+.global-search-box .adult-room{
+    background: transparent;
+    margin: 10px 0px 10px;
+}
+.global-search-box .left{
+    width: 100%;
+    font-size: 14px;
+    color: #8D8C8E;
+}
+.global-search-box .t-datepicker{
+    max-width: none;
+}
+.global-search-box .t-date-box{
+    padding: 10px 10px 5px 10px;
+}
+.global-search-box .t-dates{
+    color: #8D8C8E !important;
+}
+.global-search-box .t-check-in {
+    border-right-color: #8D8C8E;
+}
+.global-search-box .chooseadultroom{
+    width:60%;
+    left: 0px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+.global-search-box .chooseadultroom .tbl .rw .txt-small{
+    font-size: 16px;
+}
+.global-search-box .chooseadultroom .tbl .rw .traveller-type.active{
+    font-size: 16px;
+}
+.global-search-box .chooseadultroom .tbl .rw .traveller-type-room-adult{
+    font-size: 16px;
+}
+.global-search-box .btn{
+    font-size: 18px;
+    color: #8D8C8E;
+    border: 1px solid #aba00b; 
+    background: rgba(44,45,51,0.5) !important;
+    border-radius: 0px;  
+}
+
+/*----------------------- cchoose adult -------------------------*/
+.chooseadultroom{    
+    position: absolute;
+    background: #222326;
+    width: 430px;
+    z-index: 100;
+    color: #BCBCBF;
+    border: 0px solid #BCBCBF;
+    padding: 5px;
+    font-size: 13px;
+    display: table;
+    left: -70px;
+}
+.chooseadultroom .column-1{
+    width: 70%;
+    display: table-cell;
+}
+.chooseadultroom .column-1.border-1{
+    border-right: 1px solid #BCBCBF;
+}
+.chooseadultroom .column-1 i{
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.chooseadultroom .column-1 i.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.chooseadultroom .column-1.width-100{
+    width: 100% !important;
+    float: left;
+}
+.chooseadultroom .column-2{
+    width: 30%;
+    display: table-cell;
+}
+.chooseadultroom .tbl{    
+    display: table;
+    width: 100%;
+}
+.chooseadultroom .tbl .rw{
+    width: 100%;
+    display: table-row;
+}
+.chooseadultroom .tbl .rw .traveller-type{
+    color: #fff;
+    text-decoration: none;
+}
+.chooseadultroom .tbl .rw .traveller-type span.span-left{
+    float: left; width: 90%;
+}
+.chooseadultroom .tbl .rw .traveller-type span.span-right{
+    float: right; width: 10%; text-align: right;
+}
+.chooseadultroom .tbl .rw .traveller-type.active{
+    color: #aba00b;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 1px solid;
+}
+.chooseadultroom .tbl .rw .traveller-type.active span span{    
+    border-bottom: 1px solid;
+}
+.chooseadultroom .tbl .rw .col-55{
+    width: 55%;
+    display: table-cell;
+    padding: 10px;
+}
+.chooseadultroom .tbl .rw .col-45{
+    width: 45%;
+    display: table-cell;
+}
+.chooseadultroom .tbl .rw .minus-room, .chooseadultroom .tbl .rw .plus-room{
+    cursor: pointer;
+}
+.chooseadultroom .tbl .rw .minus-adult, .chooseadultroom .tbl .rw .plus-adult{
+    cursor: pointer;
+}
+.chooseadultroom .tbl .rw .minus-child, .chooseadultroom .tbl .rw .plus-child{
+    cursor: pointer;
+}
+.chooseadultroom .tbl .rw .txt-small{
+    font-size: 11px;
+}
+.chooseadultroom .tbl .rw .traveller-type-room-adult{
+    font-size: 11px;
+}
+.chooseadultroom .tbl .rw .col-20{
+    width: 20%;
+    display: table-cell;
+    padding: 10px;
+}
+.chooseadultroom .tbl .rw .col-60{
+    width: 60%;
+    display: table-cell;
+    padding: 10px;
+}
+.chooseadultroom .tbl .rw .col-30{
+    width: 30%;
+    display: table-cell;  
+    padding: 5px; 
+}
+.chooseadultroom .col-30{
+    width: 33%;
+    float:left;
+    padding: 2px; 
+}
+/*---------------------- End -----------------------------------*/
+#globalfiltersearchpopup ul ul li.our-hotels{
+    text-transform: capitalize;
+}
+#globalfiltersearchpopup ul ul li.our-destinations{
+    text-transform: capitalize;
+}
+#globalfiltersearchpopup ul ul li.our-hotels.active{
+    background: #19191B;
+    border: 1px solid #aba00b;
+}
+#globalfiltersearchpopup ul ul li.our-destinations.active{
+    background: #19191B;
+    border: 1px solid #aba00b;
+}
+/*.adult-room{ 
+    border:1px solid #898b96;
+    font-size: 1rem;
+    color: #898b96 !important;    
+}*/
+.input-height{
+    height: 50px;
+}

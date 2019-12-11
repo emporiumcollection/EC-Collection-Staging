@@ -358,6 +358,13 @@ class PropertiesController extends Controller {
         
         $this->data['active_tab']=0;
         
+        $this->data['default_adult_tax'] = \DB::table('tb_settings')->where('key_value', 'adult_citytax')->first();
+        $this->data['default_baby_tax'] = \DB::table('tb_settings')->where('key_value', 'baby_citytax')->first();
+        $this->data['default_junior_tax'] = \DB::table('tb_settings')->where('key_value', 'junior_citytax')->first();
+        
+        //echo "<pre>";
+        //print_r($this->data); die;
+        
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.form':'properties.form'; 
         
@@ -468,7 +475,29 @@ class PropertiesController extends Controller {
             $data['social_pinterest'] = $request->input('social_pinterest');
             $data['social_vimeo'] = $request->input('social_vimeo');
             $data['social_instagram'] = $request->input('social_instagram');
-
+            
+            $address = $request->input('address');
+            $latitude = '';
+            $longitude = '';
+            if($request->input('latitude')=='' && $request->input('longitude')==''){                
+                if($address!=''){
+                    $geo = file_get_contents("https://maps.google.com/maps/api/geocode/json?key=AIzaSyBqf2xJGZFRECA_eVTNek_Y7sxBzmcgXrs&address=".urlencode($address).'&sensor=false');
+                    $geo = json_decode($geo, true); // Convert the JSON to an array                
+                    if(isset($geo['status']) && ($geo['status'] == 'OK')) {
+                      $latitude = $geo['results'][0]['geometry']['location']['lat']; // Latitude
+                      $longitude = $geo['results'][0]['geometry']['location']['lng']; // Longitude
+                    } 
+                }   
+            }else{
+                $latitude = $request->input('latitude');
+                $longitude = $request->input('longitude');        
+            }
+            $data['latitude'] = $latitude;
+            $data['longitude'] = $longitude;
+            $data['address'] = $address;
+            /*$data['latitude'] = $request->input('latitude');
+            $data['longitude'] = $request->input('longitude');*/
+            
             if (!empty($request->input('assigned_amenities'))) {
                 $data['assign_amenities'] = implode(',', $request->input('assigned_amenities'));
             } else {
@@ -1148,6 +1177,10 @@ class PropertiesController extends Controller {
                     $data['video_video'] = $video_videofilename;
                 }
             }
+            $data['citytaxyesno'] = $request->input('rdcitytax');
+            $data['adult_tax'] = $request->input('adult_tax');
+            $data['junior_tax'] = $request->input('junior_tax');
+            $data['baby_tax'] = $request->input('baby_tax');
 
             $id = $this->model->insertRow($data, $request->input('id'));
 
@@ -1169,7 +1202,7 @@ class PropertiesController extends Controller {
                         }
                     }
                 }
-            }
+            }            
             
             /** insert property packages relation start **/
             $finproperty_package_relation = array();
@@ -1345,7 +1378,7 @@ class PropertiesController extends Controller {
         } elseif ($active == 'property_images') {
             $this->data['imgs'] = $this->get_property_files($property_id, 'Property Images');
             $this->data['slider_imgs'] = $this->get_property_files($property_id, 'Property Slider Images');
-            
+            $this->data['grid_imgs'] = $this->get_property_files($property_id, 'Property Grid');
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
             $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_property_images':'properties.settings_property_images';
             
@@ -1395,12 +1428,44 @@ class PropertiesController extends Controller {
             return view($file_name, $this->data);
             
         }elseif ($active == 'custom-price') {            
-            $this->data[] = '';            
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-            if($is_demo6!=''){
-                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_customprice':'properties.custom_price';                
-                return view($file_name, $this->data);
+            //if($is_demo6!=''){
+            $seasons = \DB::table('tb_seasons')->where('property_id', $property_id)->get();
+            $this->data['seasons'] = $seasons;
+            $this->data['customseasons'] = \DB::table('tb_properties_custom_plan')->where('property_id', $property_id)->get();
+            
+            $this->data['cattypes'] = \DB::table('tb_properties_category_types')->where('property_id', $property_id)->get();
+            
+            $this->data['boards'] = \DB::table('tb_boards')->where('property_id', $property_id)->get();
+            
+            $globalcustomplan = \DB::table('tb_global_custom_plan_assined')->join('tb_global_custom_plan', 'tb_global_custom_plan_assined.global_plan_id', '=', 'tb_global_custom_plan.id')->select('tb_global_custom_plan.*')->where('property_id', $property_id)->get();
+            
+            $override_plans = \DB::table('tb_global_custom_plan_override')->where('property_id', $property_id)->get();
+            $over_arr = array();
+            $over_plan_obj = array();
+            if(!empty($override_plans)){
+                foreach($override_plans as $sio){
+                    $over_arr[] = $sio->global_plan_id;
+                    $over_plan_obj[$sio->global_plan_id] = $sio;
+                }
             }
+            $gl_plans = array();
+            if(!empty($globalcustomplan)){
+                foreach($globalcustomplan as $sip){
+                    if(in_array($sip->id, $over_arr)){
+                        $gl_plans[] = $over_plan_obj[$sip->id];        
+                    }else{
+                        $gl_plans[] = $sip;    
+                    }
+                }
+            }
+            //echo "<pre>";
+            //print_r($gl_plans); die;
+            $this->data['globalcustomplan'] = $gl_plans;
+            
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_customprice':'properties.custom_price';                
+            return view($file_name, $this->data);
+            //}
         }elseif ($active == 'restrictions') {            
             $this->data[] = '';            
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
@@ -1409,19 +1474,22 @@ class PropertiesController extends Controller {
                 return view($file_name, $this->data);
             }
         }elseif ($active == 'options') {            
-            $this->data[] = '';            
-            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-            if($is_demo6!=''){
-                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_options':'properties.custom_price';                
-                return view($file_name, $this->data);
-            }
-        }elseif ($active == 'boards') {            
-            $this->data[] = '';            
-            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-            if($is_demo6!=''){
-                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_boards':'properties.custom_price';                
-                return view($file_name, $this->data);
-            }
+            $vattaxes = \DB::table('tb_vat_taxes')->get();
+            $this->data['vattaxes'] = $vattaxes;       
+            $prop_vatid = \DB::table('tb_properties')->select('vattax_id')->where('id', $property_id)->get();
+            $this->data['prop_vatid'] = $prop_vatid;                         
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());            
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_options':'properties.settings_options';                
+            return view($file_name, $this->data);
+            
+        }elseif ($active == 'boards') {  
+            $boards = \DB::table('tb_boards')->where('property_id', $property_id)->get();            
+            $this->data['boards'] = $boards;                                
+            $vattaxes = \DB::table('tb_vat_taxes')->get();
+            $this->data['vattaxes'] = $vattaxes;   
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());      
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_boards':'properties.settings_boards';                
+            return view($file_name, $this->data);            
         }elseif ($active == 'meals') {            
             $this->data[] = '';            
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
@@ -1786,6 +1854,7 @@ class PropertiesController extends Controller {
 
     function property_images_uploads(Request $request) {
         $checkProp = \DB::table('tb_properties')->select('property_name')->where('id', $request->input('propId'))->first();
+        //print_r($checkProp); die;
         if (!empty($checkProp)) {
             $checkDir = \DB::table('tb_container')->select('id')->where('name', 'locations')->first();
             if (!empty($checkDir)) {
@@ -5091,5 +5160,184 @@ function property_images_wetransfer(Request $request) {
             return json_encode($res);
         }
     }
-
+    
+    function postAddvattax( Request $request){
+        $uid = \Auth::user()->id;
+		$rules['name'] = 'required';
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) {
+			$data['vat_tax_name'] = $request->input('name');
+			$data['vat_tax_amount'] = $request->input('amount');
+            
+            $data['vat_tax_status'] = 1;
+			//$data['user_id'] = $uid;
+			if(!is_null($request->input('property_id')))
+			{
+				$data['property_id'] = $request->input('property_id');
+			}
+			if($request->input('edit_id')=='')
+			{
+				$data['created'] = date('Y-m-d h:i:s');
+				$instype = 'add';
+				$id = \DB::table('tb_vat_taxes')->insertGetId($data);                
+			}
+			else
+			{
+				$data['updated'] = date('Y-m-d h:i:s');
+				$instype = 'update';
+				$id = \DB::table('tb_vat_taxes')->where('id', $request->input('edit_id'))->update($data);
+			}
+			
+			/*$cplandata = array();
+			$customplan = \DB::table('tb_properties_custom_plan')->where('id', $id)->first();
+			if(!empty($customplan))
+			{
+				$cplandata = $customplan;
+			}*/
+			
+			$res['status'] = 'success';
+			//$res['season'] = $cplandata;
+			$res['type'] = $instype;
+			return json_encode($res);
+			
+		} else {
+			$res['status'] = 'error';
+			$res['errors'] = $validator->errors()->all();
+			return json_encode($res);
+		}    
+    }
+    function getEditvattax(Request $request){
+        $vt_id = $request->input('pid');        
+        $vattax = array();        
+        if($vt_id > 0){ 
+            $vattax = \DB::table('tb_vat_taxes')->where('id', $vt_id)->first();            
+        }
+        
+        if(!empty($vattax)){
+            $res['status'] = 'success';
+            $res['vattax'] = $vattax;                       
+        }else{
+            $res['status'] = 'error';            
+        }
+        
+        echo json_encode($res);
+    }
+    public function postDeletevattax( Request $request)
+	{		
+		$vtId = $request->input('vtId');
+        if($vtId > 0){
+            $deleteVT = \DB::table('tb_vat_taxes')->where('id', $vtId)->delete();            
+        }
+		if($deleteVT >0 )
+		{			
+			$res['status'] = 'success';
+			return json_encode($res);
+		}
+		else
+		{
+			$res['status'] = 'error';
+			return json_encode($res);
+		}
+	}
+    
+    function postAddboard( Request $request){
+        $uid = \Auth::user()->id;
+		$rules['board_name'] = 'required';
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) {
+			$data['board_name'] = $request->input('board_name');
+			$data['board_shortname'] = $request->input('board_shortname');
+            $data['board_rackrate'] = $request->input('board_rackrate');
+			$data['board_vat'] = $request->input('board_vat');
+            
+            $data['board_status'] = 1;			
+			if(!is_null($request->input('property_id')))
+			{
+				$data['property_id'] = $request->input('property_id');
+			}
+			if($request->input('edit_id')=='')
+			{
+				$data['created'] = date('Y-m-d h:i:s');
+				$instype = 'add';
+				$id = \DB::table('tb_boards')->insertGetId($data);                
+			}
+			else
+			{
+				$data['updated'] = date('Y-m-d h:i:s');
+				$instype = 'update';
+				$id = \DB::table('tb_boards')->where('id', $request->input('edit_id'))->update($data);
+			}		
+			
+			$res['status'] = 'success';
+			//$res['season'] = $cplandata;
+			$res['type'] = $instype;
+			return json_encode($res);
+			
+		} else {
+			$res['status'] = 'error';
+			$res['errors'] = $validator->errors()->all();
+			return json_encode($res);
+		}    
+    }
+    function getEditboard(Request $request){
+        $bid = $request->input('bid');        
+        $boards = array();        
+        if($bid > 0){ 
+            $boards = \DB::table('tb_boards')->where('id', $bid)->first();            
+        }
+        
+        if(!empty($boards)){
+            $res['status'] = 'success';
+            $res['board'] = $boards;                       
+        }else{
+            $res['status'] = 'error';            
+        }
+        
+        echo json_encode($res);
+    }
+    public function postDeleteboard( Request $request)
+	{		
+		$bId = $request->input('bId');
+        if($bId > 0){
+            $deleteB = \DB::table('tb_boards')->where('id', $bId)->delete();            
+        }
+		if($deleteB >0 )
+		{			
+			$res['status'] = 'success';
+			return json_encode($res);
+		}
+		else
+		{
+			$res['status'] = 'error';
+			return json_encode($res);
+		}
+	}
+    
+    function postAddroomsvat( Request $request){
+        $uid = \Auth::user()->id;
+		$rules['rooms_vat'] = 'required';
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) {
+			$data['vattax_id'] = $request->input('rooms_vat');
+					
+			if(!is_null($request->input('property_id')))
+			{
+				//$data['property_id'] = $request->input('property_id');
+			
+				$data['updated'] = date('Y-m-d h:i:s');
+				$instype = 'update';
+				$id = \DB::table('tb_properties')->where('id', $request->input('property_id'))->update($data);
+			}		
+			
+			$res['status'] = 'success';
+			//$res['season'] = $cplandata;
+			$res['type'] = $instype;
+			return json_encode($res);
+			
+		} else {
+			$res['status'] = 'error';
+			$res['errors'] = $validator->errors()->all();
+			return json_encode($res);
+		}    
+    }
 }

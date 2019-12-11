@@ -11,7 +11,9 @@ $tabs = array(
 		'kontakte'			=> 'Kontakte',
 		'container'			=> 'Container',
 		'designer'			=> 'Designer',
-        'contract'			=> 'Contract'
+        'contract'			=> 'Contract',
+        'season'			=> 'Default Season',
+        'citytax'			=> 'City Tax'
 	);
 
 ?>

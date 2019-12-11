@@ -24,6 +24,7 @@
         <link href="{{ asset('metronic/assets/css/fonts/awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('metronic/assets/css/icons.min.css') }}" rel="stylesheet" /> 
         <link href="{{ asset('metronic/assets/demo/demo6/base/custom.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/assets/demo/demo6/base/new_style.css') }}" rel="stylesheet" type="text/css" />
 		<!--end::Base Styles -->
 		
         <!-- Favicon Start -->
@@ -49,6 +50,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
         <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+        <link href="{{ asset('themes/emporium/daterangepickernew/daterangepicker.css') }}" rel="stylesheet">
         @yield('style')
 	</head>
 	<!-- end::Head -->
@@ -862,6 +864,8 @@
     	<!--begin::Base Scripts -->
 		<script src="{{ asset('metronic/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
 		<script src="{{ asset('metronic/assets/demo/demo6/base/scripts.bundle.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('themes/emporium/js/moment.min.js') }}"></script>
+        <script src="{{ asset('themes/emporium/daterangepickernew/daterangepicker.js') }}"></script>
 		<!--end::Base Scripts -->  
         
         @yield('script')
@@ -871,10 +875,11 @@
 		<script src="{{ asset('metronic/assets/app/js/dashboard.js') }}" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
-               $("#top_menu_communication").click(function(){
+                $("#top_menu_communication").click(function(){
                     $(".m-topbar__nav #m_quick_sidebar_toggle").trigger('click');
                     $('#m_quick_sidebar_tabs [href="#m_quick_sidebar_tabs_messenger"]').trigger('click');
-               }); 
+                }); 
+                
             });
         </script>
 		<!--end::Page Snippets -->

@@ -87,7 +87,7 @@ class PropertyController extends Controller {
         $this->data['total_record'] = $getRec[0]->total_record;
         $this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
         $this->data['active_page']=$pageNumber;	
-		return view('frontend.themes.emporium.properties.list', $this->data);
+		return view('frontend.themes.emporium.properties.list_hotel', $this->data);
 	}
 	
     function propertySearch_new(Request $request) {
@@ -1133,6 +1133,16 @@ class PropertyController extends Controller {
         if (!empty($props)) {
                         
             $propertiesArr['data'] = $props;
+            
+            /* Price on Rquest */
+            $prcOnReq = false;
+            $chkseasonset = \DB::table('tb_seasons')->where('property_id', $props->id)->orderBy('season_priority', 'asc')->get();
+            if ($props->default_seasons == 1 || empty($chkseasonset)){
+                $prcOnReq = true;    
+            }                        
+            $propertiesArr['data']->prcOnReq = $prcOnReq;
+            /* End */
+            
             $propertiesArr['propimage'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
             $propertiesArr['propimage_thumbpath'] = '';
             $propertiesArr['propimage_thumbpath_dir']= '';
@@ -1232,6 +1242,41 @@ class PropertyController extends Controller {
 						$c++;
                     }
                     
+                    /*------- Custom Plan ---------*/
+                    $custom_plans = \DB::table('tb_properties_custom_plan')->where('property_id', $props->id)->get();
+                    
+                    $propertiesArr['cplans'][$type->id] = $custom_plans;
+                    
+                    //$globalcustomplan = \DB::table('tb_global_custom_plan')->join('tb_global_custom_plan_assined', 'tb_global_custom_plan.id', '=',  'tb_global_custom_plan_assined.global_plan_id')->where('tb_global_custom_plan_assined.property_id', $props->id)->get();
+                    
+                    $globalcustomplan = \DB::table('tb_global_custom_plan_assined')->join('tb_global_custom_plan', 'tb_global_custom_plan_assined.global_plan_id', '=', 'tb_global_custom_plan.id')->select('tb_global_custom_plan.*')->where('property_id', $props->id)->get();
+                    
+                    $override_plans = \DB::table('tb_global_custom_plan_override')->where('property_id', $props->id)->get();
+                    //print_r($override_plans);
+                    $over_arr = array();
+                    $over_plan_obj = array();
+                    if(!empty($override_plans)){
+                        foreach($override_plans as $sio){
+                            $over_arr[] = $sio->global_plan_id;
+                            $over_plan_obj[$sio->global_plan_id] = $sio;
+                        }
+                    }
+                    $gl_plans = array();
+                    if(!empty($globalcustomplan)){
+                        foreach($globalcustomplan as $sip){
+                            if(in_array($sip->id, $over_arr)){
+                                $gl_plans[] = $over_plan_obj[$sip->id];        
+                            }else{
+                                $gl_plans[] = $sip;    
+                            }
+                        }
+                    }
+                    $propertiesArr['overrideplans'][$type->id] = $gl_plans;
+                    //echo "<pre>";
+                    //print_r($propertiesArr); die;
+                    //print_r($custom_plans); print_r($custom_aplans);
+                    //print_r($custom_oplans); die;
+                    /*-------End Custom Plan ---------*/
                     
                 }
 
@@ -1277,10 +1322,22 @@ class PropertyController extends Controller {
                     }
                 }
             }*/
+            /*------- Custom Plan ---------*/
+            /*$custom_plans = \DB::table('tb_properties_custom_plan')->where('property_id', $props->id)->get();
+            
+            $custom_aplans = \DB::table('tb_global_custom_plan')->join('tb_global_custom_plan_assined', 'tb_global_custom_plan.id', '=',  'tb_global_custom_plan_assined.global_plan_id')->where('tb_global_custom_plan_assined.property_id', $props->id)->get();
+            
+            $custom_oplans = \DB::table('tb_global_custom_plan_override')->where('property_id', $props->id)->get();
+            //echo "<pre>";
+            //print_r($custom_plans); print_r($custom_aplans);
+            //print_r($custom_oplans); die;*/
+            /*-------End Custom Plan ---------*/
+            
             $this->data['ptype'] = $type;            
             
             $isPackage = $this->checkPropertyPackage($props->id);                        
             $this->data['propertyPackage'] = $isPackage;      
+            //echo "<pre>";
             //print_r($this->data['propertyPackage']); die;      
             
             $this->data['propertyDetail'] = $propertiesArr;
@@ -1290,7 +1347,7 @@ class PropertyController extends Controller {
     		$this->data['propertyEvents'] = \DB::table('tb_events')->where('property_id', $props->id)->get();
             
             $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();            
-    
+            //print_r($this->data['propertyDetail']); die;
     		//dd($this->data['propertyEvents']);
             return view('frontend.themes.emporium.properties.detail', $this->data);
 
@@ -2777,8 +2834,8 @@ class PropertyController extends Controller {
         $site_url = '';
         if($sitename=='voyage'){
             //$site_url = 'https://emporium-voyage.com';
-            //$site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
-            $site_url = 'http://staging.emporium-voyage.com';  
+            $site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
+            //$site_url = 'http://staging.emporium-voyage.com';  
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
         }elseif($sitename=='spa'){
@@ -3001,7 +3058,7 @@ class PropertyController extends Controller {
         //End Number of night
         //print_r($total_guests); die;
         
-        $m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->where('category_approved', 1)->where('category_published', 1)->first();   
+        $m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->first();   
         $cat_collection = array();                
         if(!empty($m_collection)){
             $cat_collection = \DB::table('tb_categories')->where('parent_category_id', $m_collection->id)->where('category_approved', 1)->where('category_published', 1)->orderBy('category_order_num', 'asc')->get();
