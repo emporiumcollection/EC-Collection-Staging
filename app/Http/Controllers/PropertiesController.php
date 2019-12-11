@@ -1336,7 +1336,7 @@ class PropertiesController extends Controller {
             }
         }
         $this->data['tabss'] = $tabdata;
-        if ($active == 'types') { echo "hello"; die;
+        if ($active == 'types') {
             $this->data['cat_types'] = $this->find_categories($property_id);
             
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
@@ -1427,8 +1427,7 @@ class PropertiesController extends Controller {
             $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_terms_and_conditions':'properties.settings_terms_and_conditions'; 
             return view($file_name, $this->data);
             
-        }elseif ($active == 'custom-price') {  
-            echo "heelo"; die;
+        }elseif ($active == 'custom-price') {            
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
             //if($is_demo6!=''){
             $seasons = \DB::table('tb_seasons')->where('property_id', $property_id)->get();
