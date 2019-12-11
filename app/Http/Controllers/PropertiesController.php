@@ -1336,7 +1336,7 @@ class PropertiesController extends Controller {
             }
         }
         $this->data['tabss'] = $tabdata;
-        if ($active == 'types') {
+        if ($active == 'types') { echo "hello"; die;
             $this->data['cat_types'] = $this->find_categories($property_id);
             
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
