@@ -279,7 +279,7 @@ class PropertyController extends Controller {
                     
     }
     
-    function propertySearch(Request $request) {    
+    function propertySearch(Request $request) {   echo "hello"; die;     
         $membershiptype =  $request->membershiptype;
                 
 		$selCurrency=$request->input("currencyOption");
