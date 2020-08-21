@@ -279,7 +279,7 @@ class PropertyController extends Controller {
                     
     }
     
-    function propertySearch(Request $request) {    
+    function propertySearch(Request $request) {     
         $membershiptype =  $request->membershiptype;
                 
 		$selCurrency=$request->input("currencyOption");
@@ -356,7 +356,9 @@ class PropertyController extends Controller {
                     //print_r($membershiptype);      
                     $mem_package = \DB::table('tb_packages')->select('id')->where('package_title', $memtype)->first();
                     //print_r($mem_package); die;  
-                    $pckages_ids = $mem_package->id;    
+                    if(!empty($mem_package)){
+                        $pckages_ids = $mem_package->id;
+                    }    
                 }
             }            
         }
@@ -566,7 +568,9 @@ class PropertyController extends Controller {
         $this->data['catalias'] = $catalias;
         $this->data['catid'] = $catid;
         $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
-        
+        if(!empty($cateObj)){
+            $this->data['metatags'] = \DB::table('tb_category_metatags')->where('category_id', $cateObj->id)->first();
+        }
 		return view('frontend.themes.emporium.properties.list', $this->data);
                     
     }
@@ -1333,6 +1337,34 @@ class PropertyController extends Controller {
             //print_r($custom_oplans); die;*/
             /*-------End Custom Plan ---------*/
             
+            $arc_thumb_path = '';
+            $arr_landscape = array();
+            $arr_portrait = array();
+            $system_module = \DB::table('tb_container')->select('id', 'name', 'display_name')->where('parent_id', 0)->where('name','system-module')->first();
+            if(!empty($system_module)){
+                $sub_sys_mod =  \DB::table('tb_container')->select('id', 'name', 'display_name')->where('parent_id', $system_module->id)->get();
+                if(!empty($sub_sys_mod)){
+                    foreach($sub_sys_mod as $mod){
+                        if($mod->name=="architecture"){
+                            $arc_mod =  \DB::table('tb_container')->select('id', 'name', 'display_name')->where('parent_id', $mod->id)->get();
+                            
+                            if(!empty($arc_mod)){
+                                $arc_thumb_path = (new ContainerController)->getThumbpath($arc_mod[0]->id);
+                                foreach($arc_mod as $a_mod){
+                                    if($a_mod->name=="landscape"){
+                                        $arr_landscape = \DB::table('tb_container')->select('tb_container_files.id','tb_container.display_name','tb_container_files.file_name','tb_container_files.folder_id','tb_container.name', 'tb_container.title', 'tb_container.description')->join('tb_container_files','tb_container_files.folder_id','=','tb_container.id')->where('tb_container.id',$a_mod->id)->orderby('tb_container_files.file_sort_num','asc')->get();
+                                    }
+                                    if($a_mod->name=="portraite"){
+                                        $arr_portrait = \DB::table('tb_container')->select('tb_container_files.id','tb_container.display_name','tb_container_files.file_name','tb_container_files.folder_id','tb_container.name', 'tb_container.title', 'tb_container.description')->join('tb_container_files','tb_container_files.folder_id','=','tb_container.id')->where('tb_container.id',$a_mod->id)->orderby('tb_container_files.file_sort_num','asc')->get();
+                                    }
+                                }
+                                //print_r($arc_mod);    
+                            }            
+                        }                            
+                    }
+                }
+            }
+            
             $this->data['ptype'] = $type;            
             
             $isPackage = $this->checkPropertyPackage($props->id);                        
@@ -1346,7 +1378,10 @@ class PropertyController extends Controller {
     	
     		$this->data['propertyEvents'] = \DB::table('tb_events')->where('property_id', $props->id)->get();
             
-            $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get();            
+            $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get(); 
+            
+            $this->data['metatags'] = \DB::table('tb_property_metatags')->where('property_id',  $props->id)->first();
+            //print_r($this->data['metatags']); die;           
             //print_r($this->data['propertyDetail']); die;
     		//dd($this->data['propertyEvents']);
             return view('frontend.themes.emporium.properties.detail', $this->data);
@@ -2739,8 +2774,54 @@ class PropertyController extends Controller {
         //print_r($prop_package);
     }
     
-    function propertyglobalavailability(Request $request) {
+    function propertyglobalavailability(Request $request) {       
+        $coll_type = $request->input("coll_type");
+        $coll_where = $request->input("coll_where");       
+        $arrive = $request->input("gl_arrive");
+        if($arrive!=''){
+            $arrive = $request->input("gl_arrive");    
+        }else{
+            $arrive = date('m-d-Y');    
+        }
+        $departure = $request->input("gl_departure");
+        if($departure!=''){
+            $departure = $request->input("gl_departure");    
+        }else{
+            $departure = date('m-d-Y',strtotime("+1 day"));
+        }
         
+        
+        $rooms = $request->input('rooms');
+        $adults = $request->input('adult');
+        $childs = $request->input('child');        
+        
+        $rac = '';
+        if(count($rooms)>0){
+            for($j=0; $j<count($rooms); $j++){                
+                $rac .= 'r'.$j.'a'.$adults[$j].'c'.$childs[$j];
+            }
+        }
+        
+        $sitename = $request->input("sitename");        
+        
+        $site_url = '';
+        if($sitename=='voyage'){
+            $site_url = 'https://emporium-voyage.com';              
+        }elseif($sitename=='safari'){
+            $site_url = 'https://emporium-safari.com';
+        }elseif($sitename=='spa'){
+            $site_url = 'https://emporium-spa.com'; 
+        }elseif($sitename=='islands'){
+            $site_url = 'https://emporium-islands.com';
+        }
+                
+        $querry_string = $site_url."/globalsearchavailability?s=".$coll_where."&arrive=".$arrive."&departure=".$departure."&type=".$coll_type."&rac=".$rac;       
+        
+        return Redirect::to($querry_string); 
+    }
+    
+    function propertyglobalavailability_20082020(Request $request) {
+        print_r($request->all() ); die;
         //$ourHotels = $request->input("ourHotels");
         //$ourDestinations = $request->input("ourDestinations");
         $str_hotels = $request->input("hid_our_hotels");
@@ -2852,8 +2933,86 @@ class PropertyController extends Controller {
         return Redirect::to($querry_string); 
     }
     
+    function globalsearchavailability(Request $request) {       
+        $keyword = $request->input('s');
+        $type = $request->input('type');        
+        $arrive = $request->input('arrive');
+        $departure = $request->input('departure');
+        
+        $arrive_date = '';
+        if($arrive!=''){ 
+            $arrive_date =  \CommonHelper::dateformat(trim($arrive));
+        }        
+        $departure_date ='';
+        if($departure!=''){ 
+            $departure_date =  \CommonHelper::dateformat(trim($departure));;
+        }        
+        
+        $rooms = array();
+        $adults = array();
+        $childs = array();
+        $total_guests = 0;
+        $rac = $request->input('rac');
+        if(strlen($rac)>0){
+            $rac_arr = explode('r', $rac);
+            if(count($rac_arr)>0){
+                foreach($rac_arr as $rsp){
+                    if(!empty($rsp)){
+                        $rac_ad = explode('a', $rsp);
+                        if(count($rac_ad)>0){
+                            $rooms[] = $rac_ad[0];
+                            $restac = $rac_ad[1];
+                            //print_r($rac_ad);                        
+                            $rac_ac_arr = explode('c', $restac);
+                            if(count($rac_ac_arr)>1){                       
+                                $adults[] = $rac_ac_arr[0];
+                                $childs[] =  $rac_ac_arr[1];
+                                $total_guests += ((int) $rac_ac_arr[0] + (int) $rac_ac_arr[1]);  
+                            }
+                        }                    
+                    }
+                }
+            }
+        }
+        //print_r($keyword);
+//        print_r($type); 
+//        print_r($arrive_date);
+//        print_r($departure_date);
+//        print_r($total_guests);
+//        print_r($childs);
+//        print_r($adults);
+//        print_r($rooms);        
+        
+        //Get Number of night
+        $number_of_nights = '';
+        if($arrive != '' && $departure != '') {
+            $date1 = date_create(date('Y-m-d H:i:s', strtotime($departure)));
+            $date2 = date_create(date('Y-m-d H:i:s', strtotime($arrive)));
+            $diff = date_diff($date1, $date2);
+            $number_of_nights = $diff->format("%a");            
+        }        
+        //$this->data['active_tab'] = $active_tab;
+        //$this->data['allData'] = $allData;
+        //$this->data['hotels'] = $hotels;
+        //$this->data['destinations'] = $destinations;
+        
+        $this->data['keyword'] = $keyword;
+        $this->data['type'] = $type;
+        $this->data['arrive'] = $arrive;
+        $this->data['departure'] = $departure;
+        $this->data['arrive_date'] = $arrive_date;
+        $this->data['departure_date'] = $departure_date;
+        $this->data['total_guests'] = $total_guests;
+        $this->data['rooms'] = $rooms;
+        $this->data['adults'] = $adults;
+        $this->data['childs'] = $childs;
+        $this->data['number_of_nights'] = $number_of_nights;
+        
+        return view('frontend.themes.EC.properties.globalsearchavailability', $this->data);
+                    
+    }
     
-    function globalsearchavailability(Request $request) {
+    function globalsearchavailability_18082020(Request $request) {
         $allData = array();
         $hotels = $request->input('hotels');
         $destinations = $request->input('destinations');
@@ -5872,5 +6031,118 @@ class PropertyController extends Controller {
         
 		return view('frontend.themes.emporium.properties.list', $this->data);
                     
+    }
+    function featuredproperties(Request $request){
+        $type = $request->input('type');
+        $collection = $request->input('collection');
+        /** Collection connection **/
+        $voyageconn = "voyageconn";            
+        $safariconn = "safariconn";          
+        $spaconn = "spaconn";            
+        $islandconn = "islandconn";
+        /** End Connection */ 
+        $featured_hotel = array();
+        $obj_featured_hotel = array();
+        /*if($type=="hotel"){*/
+            if($collection == 'voyage'){
+                $featured_hotel = \DB::connection($voyageconn)->table('tb_properties')->where('feature_property', 1)->orderByRaw(DB::raw("RAND()"))->limit(2)->get();             
+                foreach($featured_hotel as $props){                
+                
+                    $propimage = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+                    $propimage_thumbpath = '';
+                    $propimage_thumbpath_dir= '';
+                    $propimage_containerpath = '';
+                    if(!empty($propimage)){
+                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
+            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+        			}
+                    $prop['propimage'] = $propimage;
+                    $prop['thumb'] = $propimage_thumbpath;
+                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    $prop['objprop'] = $props;
+                    
+                    $obj_featured_hotel[] = $prop;
+                }
+                
+            }elseif($collection == 'spa'){
+                $featured_hotel = \DB::connection($spaconn)->table('tb_properties')->where('feature_property', 1)->orderByRaw(DB::raw("RAND()"))->limit(2)->get();
+                foreach($featured_hotel as $props){                
+                
+                    $propimage = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+                    $propimage_thumbpath = '';
+                    $propimage_thumbpath_dir= '';
+                    $propimage_containerpath = '';
+                    if(!empty($propimage)){
+                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
+            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+        			}
+                    $prop['propimage'] = $propimage;
+                    $prop['thumb'] = $propimage_thumbpath;
+                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    $prop['objprop'] = $props;
+                    
+                    $obj_featured_hotel[] = $prop;
+                }
+            }elseif($collection == 'safari'){
+                $featured_hotel = \DB::connection($safariconn)->table('tb_properties')->where('feature_property', 1)->orderByRaw(DB::raw("RAND()"))->limit(2)->get();
+                foreach($featured_hotel as $props){                
+                
+                    $propimage = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+                    $propimage_thumbpath = '';
+                    $propimage_thumbpath_dir= '';
+                    $propimage_containerpath = '';
+                    if(!empty($propimage)){
+                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
+            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+        			}
+                    $prop['propimage'] = $propimage;
+                    $prop['thumb'] = $propimage_thumbpath;
+                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    $prop['objprop'] = $props;
+                    
+                    $obj_featured_hotel[] = $prop;
+                }
+            }elseif($collection == 'islands'){
+                $featured_hotel = \DB::connection($islandconn)->table('tb_properties')->where('feature_property', 1)->orderByRaw(DB::raw("RAND()"))->limit(2)->get();
+                foreach($featured_hotel as $props){                
+                
+                    $propimage = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+                    $propimage_thumbpath = '';
+                    $propimage_thumbpath_dir= '';
+                    $propimage_containerpath = '';
+                    if(!empty($propimage)){
+                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
+            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+        			}
+                    $prop['propimage'] = $propimage;
+                    $prop['thumb'] = $propimage_thumbpath;
+                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    $prop['objprop'] = $props;
+                    
+                    $obj_featured_hotel[] = $prop;
+                }
+            }             
+        /*}else{
+            
+        }*/
+        //echo "</pre>";
+        //print_r($obj_featured_hotel); die;
+        
+        if(count($obj_featured_hotel)>0){
+            $res['status'] = 'success';
+            $res['data'] = $obj_featured_hotel;
+        }else{
+            $res['status'] = 'error';
+        }
+        
+        echo json_encode($res);
     }
 }
