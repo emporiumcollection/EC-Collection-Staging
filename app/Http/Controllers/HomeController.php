@@ -39,8 +39,8 @@ class HomeController extends Controller {
             $package_cond = (array) $this->getPackagesIdsAccordingMembership();
             $this->data['isfPublic'] = ((count($package_cond) > 0)?true:false);
         }   
-        return view('frontend.themes.emporium.pages.index', $this->data);
-        //return view('frontend.themes.EC.pages.index', $this->data);
+        //return view('frontend.themes.emporium.pages.index', $this->data);
+        return view('frontend.themes.EC.pages.index', $this->data);
     }
     
      public function evpages(Request $request) {
