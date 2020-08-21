@@ -26,6 +26,9 @@ Route::get('press', 'ContainerController@media_relations');
 Route::get('presssearch', 'ContainerController@pressSearchAjax');
 Route::get('getPressFolderListAjaxonload/{id}', 'ContainerController@getPressFolderListAjaxonload');
 
+Route::get('/sitemap.xml', 'SitemapController@index');
+Route::get('/sitemap/{type}.xml', 'SitemapController@properties');
+
 Route::group(['middleware' => 'auth'], function()
 {
     
@@ -78,6 +81,8 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('evcustomfields/updateCustomField/{id}', 'EvcustomfieldsController@updateCustomFieldAjax');
 	Route::post('evcustomfields/updateCustomFieldOrders', 'EvcustomfieldsController@updateCustomFieldOrderAjax');
 	Route::post('evcustomfields/updateGroupOrders', 'EvcustomfieldsController@updateGroupOrderAjax');
+    
+    Route::post('addUpdateUserSetting', 'UserController@addUpdateUserSetting');
 
 });
 
@@ -101,6 +106,9 @@ Route::controller('home', 'HomeController');
 Route::controller('/user', 'UserController');
 Route::controller('/customer', 'CustomerController');
 Route::get('/traveller', 'CustomerController@traveller'); 
+
+Route::get('/supplier', 'CustomerController@supplier');
+
 Route::post('/traveller_skip_preferences', 'CustomerController@skipPreferences');  
 
 Route::get('/whoiam', 'CustomerController@whoIam');
@@ -295,7 +303,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('delete_property_category_rooms', 'PropertiesController@delete_property_room');
 	Route::post('copy_category_rooms', 'PropertiesController@copy_category_rooms');
 	Route::post('property_images_uploads', 'PropertiesController@property_images_uploads');
-
+    Route::post('event_images_uploads', 'EventsController@event_images_uploads');
 
 	Route::post('property_images_wetransfer', 'PropertiesController@property_images_wetransfer');
 
@@ -355,16 +363,18 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('save_new_profile', 'UserController@saveNewprofile');
     
     Route::post('save_new_hotel_profile', 'UserController@saveNewHotelprofile');
-    
+    Route::post('save_new_supplier_profile', 'UserController@saveNewSupplierprofile');
     Route::post('save_new_traveller_profile', 'UserController@saveNewTravellerProfile');
         
     Route::post('save_new_company_details', 'UserController@saveNewcompanydetails');
     Route::post('confirm_new_profile', 'UserController@confirmNewprofile');
     
     Route::get('signup-contract/{isview}', 'ContractController@download_signup_contract');
+    Route::get('supplier-contract/{isview}', 'ContractController@download_supplier_contract');
     
     Route::post('ownhotelsetup', 'UserController@ownhotelsetup');
     Route::post('hotelavaibility', 'UserController@hotelavaibility');
+    Route::post('suppliercommissiontype', 'UserController@suppliercommissiontype');
     
     Route::post('upload_contract', 'PropertiesController@contract_upload');
     
@@ -434,6 +444,32 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('pdproomavailability', 'HomeController@ajaxcheckavailability');
     
     Route::post('changeRoomStatus', 'PropertiesController@changeRoomStatus');
+    
+   	Route::post('resturant_images_uploads', 'RestaurantController@resturant_images_uploads');
+    Route::post('delete_restaurant_image', 'RestaurantController@delete_restaurant_image');
+    Route::post('delete_rest_selected_image', 'RestaurantController@delete_selected_image');
+    
+    Route::post('event_images_uploads', 'EventsController@event_images_uploads');
+   	Route::post('delete_event_image', 'EventsController@delete_event_image');
+    Route::post('delete_selected_event_image', 'EventsController@delete_selected_event_image');
+    
+    Route::post('addmenutitle', 'RestaurantController@addmenutitle');
+    
+    Route::post('spa_images_uploads', 'SpaController@spa_images_uploads');
+    Route::post('bar_images_uploads', 'BarController@bar_images_uploads');
+    
+    Route::post('add_event_type', 'EventsController@save_event_type_data');
+    Route::post('delete_event_ticket_type', 'EventsController@delete_event_ticket_type');
+    
+   	Route::post('add_event_season_details', 'SeasonsController@add_event_season_details');    
+	Route::post('add_event_season_dates_details', 'SeasonsController@add_event_season_dates_details');
+	Route::post('delete_event_season_data', 'SeasonsController@delete_event_season_data');
+	Route::post('delete_event_season_dates_data', 'SeasonsController@delete_event_season_dates_data');
+    Route::post('get_event_seasons', 'SeasonsController@get_event_seasons');
+    Route::post('add_event_term', 'EventsController@save_event_term');
+    Route::post('add_event_ticket_price', 'EventsController@save_event_ticket_price');
+    
+    Route::post('addtagtitle', 'TagmanagerController@addtagtitle');
 });
 Route::post('globalavailability', 'Frontend\PropertyController@propertyglobalavailability');
 Route::get('globalsearchavailability', 'Frontend\PropertyController@globalsearchavailability');
@@ -464,7 +500,8 @@ Route::get('hotel/add_package_to_cart', 'Frontend\HotelMembershipController@addT
 Route::post('hotel/getAdvertPrice', 'Frontend\HotelMembershipController@getAdvertPriceAjax');
 Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');	
 Route::get('thanks', 'Frontend\HotelMembershipController@getThanks');
-Route::get('removecartitem', 'Frontend\HotelMembershipController@getCartItemRemovedAjax');	
+Route::get('removecartitem', 'Frontend\HotelMembershipController@getCartItemRemovedAjax');
+Route::get('removesuppliercartitem', 'Frontend\HotelMembershipController@getSupplierCartItemRemovedAjax');		
 Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
 
 Route::get('hotel/transferimages', 'Frontend\PropertyimagesmanagementController@propertyImageupload');
@@ -601,6 +638,7 @@ Route::post('order-post', 'StripepaymentController@checkoutPost');
 Route::post('wizard-order-post', 'StripepaymentController@wizardcheckoutPost');
 Route::post('wizard-subtract-fee', 'StripepaymentController@wizardSubtractFee');
 Route::post('traveller-order-post', 'StripepaymentController@travellercheckoutPost');
+Route::post('supplier-order-post', 'StripepaymentController@suppliercheckoutPost');
 // Add this route for checkout or submit form to pass the item into paypal
 Route::post('payment', array(
 	'as' => 'payment',
@@ -681,6 +719,13 @@ Route::get('hotel/add_package_to_cart_wizard', 'Frontend\HotelMembershipControll
 
 Route::get('hotel/thanks/{id}', 'Frontend\HotelMembershipController@hotelThanks');	
 
+Route::get('supplier/get_cart', 'Frontend\HotelMembershipController@getsupplierwizardCart');
+Route::post('supplier/update_cart', 'Frontend\HotelMembershipController@postwizardCart');
+Route::get('supplier/get_checkout', 'Frontend\HotelMembershipController@getsupplierwizardCheckout');
+Route::get('supplier/add_package_to_cart_wizard', 'Frontend\HotelMembershipController@addToCartSupplierWizardAjax');
+Route::get('supplier/thanks/{id}', 'Frontend\HotelMembershipController@hotelThanks');	
+
+
 Route::get('traveller/add_package_to_cart_wizard', 'Frontend\HotelMembershipController@addToCartTravellerWizardAjax');
 Route::get('traveller/get_cart', 'Frontend\HotelMembershipController@getTravellerWizardCart');
 Route::post('traveller/free_membership', 'StripepaymentController@freeMembership');
@@ -704,3 +749,6 @@ Route::get('{slug}/room-availability', 'Frontend\PropertyController@roomavailabi
 Route::post('topSearch', 'Frontend\PropertyController@topSearch');
 
 Route::post('price_on_request', 'HomeController@price_on_request');
+
+Route::get('property/featuredproperties', 'Frontend\PropertyController@featuredproperties');
+
