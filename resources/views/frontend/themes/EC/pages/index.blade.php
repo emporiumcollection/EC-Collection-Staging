@@ -304,10 +304,8 @@
             </div>
             
             <div class="herl">
-                <div class="quick-prev-when when-quick-prev">
-                    <div>
-                        <img src="{{ asset('themes/EC/images/5ac27a91813631.5e3b3fe359ee2.jpg') }}" class="img-fluid" alt="" >
-                    </div>
+                <div class="quick-prev-when1 when-quick-prev">
+                    
                 </div>
             </div>
             

@@ -2807,7 +2807,7 @@ class PropertyController extends Controller {
         $site_url = '';
         if($sitename=='voyage'){
             //$site_url = 'https://emporium-voyage.com';              
-            $site_url = 'http://staging.emporium-voyage.com/';
+            $site_url = 'http://staging.emporium-voyage.com';
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
         }elseif($sitename=='spa'){
@@ -6042,6 +6042,20 @@ class PropertyController extends Controller {
         $spaconn = "spaconn";            
         $islandconn = "islandconn";
         /** End Connection */ 
+        
+        /** Start */
+        $site_url = '';
+        if($collection=='voyage'){
+            $site_url = 'https://emporium-voyage.com';              
+            //$site_url = 'http://staging.emporium-voyage.com/';
+        }elseif($collection=='safari'){
+            $site_url = 'https://emporium-safari.com';
+        }elseif($collection=='spa'){
+            $site_url = 'https://emporium-spa.com'; 
+        }elseif($collection=='islands'){
+            $site_url = 'https://emporium-islands.com';
+        }
+        /** End */
         $featured_hotel = array();
         $obj_featured_hotel = array();
         /*if($type=="hotel"){*/
@@ -6054,14 +6068,14 @@ class PropertyController extends Controller {
                     $propimage_thumbpath_dir= '';
                     $propimage_containerpath = '';
                     if(!empty($propimage)){
-                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
-            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
-                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+                        $propimage_thumbpath = $site_url.(new ContainerController)->getThumbpathForSearch($propimage[0]->folder_id);
+            			//$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        //$propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
         			}
                     $prop['propimage'] = $propimage;
                     $prop['thumb'] = $propimage_thumbpath;
-                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
-                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    //$prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    //$prop['containerpath'] = $propimage_thumbpath_dir;
                     $prop['objprop'] = $props;
                     
                     $obj_featured_hotel[] = $prop;
@@ -6076,14 +6090,14 @@ class PropertyController extends Controller {
                     $propimage_thumbpath_dir= '';
                     $propimage_containerpath = '';
                     if(!empty($propimage)){
-                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
-            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
-                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+                        $propimage_thumbpath = $site_url.(new ContainerController)->getThumbpathForSearch($propimage[0]->folder_id);
+            			//$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        //$propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
         			}
                     $prop['propimage'] = $propimage;
                     $prop['thumb'] = $propimage_thumbpath;
-                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
-                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    //$prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    //$prop['containerpath'] = $propimage_thumbpath_dir;
                     $prop['objprop'] = $props;
                     
                     $obj_featured_hotel[] = $prop;
@@ -6097,14 +6111,14 @@ class PropertyController extends Controller {
                     $propimage_thumbpath_dir= '';
                     $propimage_containerpath = '';
                     if(!empty($propimage)){
-                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
-            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
-                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+                        $propimage_thumbpath = $site_url.(new ContainerController)->getThumbpathForSearch($propimage[0]->folder_id);
+            			//$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        //$propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
         			}
                     $prop['propimage'] = $propimage;
                     $prop['thumb'] = $propimage_thumbpath;
-                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
-                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    //$prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    //$prop['containerpath'] = $propimage_thumbpath_dir;
                     $prop['objprop'] = $props;
                     
                     $obj_featured_hotel[] = $prop;
@@ -6118,14 +6132,14 @@ class PropertyController extends Controller {
                     $propimage_thumbpath_dir= '';
                     $propimage_containerpath = '';
                     if(!empty($propimage)){
-                        $propimage_thumbpath = (new ContainerController)->getThumbpath($propimage[0]->folder_id);
-            			$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
-                        $propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
+                        $propimage_thumbpath = $site_url.(new ContainerController)->getThumbpathForSearch($propimage[0]->folder_id);
+            			//$propimage_thumbpath_dir = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propimage[0]->folder_id))); 
+                        //$propimage_containerpath = (new ContainerController)->getContainerUserPath($propimage[0]->folder_id);
         			}
                     $prop['propimage'] = $propimage;
                     $prop['thumb'] = $propimage_thumbpath;
-                    $prop['thumb_dir'] = $propimage_thumbpath_dir;
-                    $prop['containerpath'] = $propimage_thumbpath_dir;
+                    //$prop['thumb_dir'] = $propimage_thumbpath_dir;
+                    //$prop['containerpath'] = $propimage_thumbpath_dir;
                     $prop['objprop'] = $props;
                     
                     $obj_featured_hotel[] = $prop;

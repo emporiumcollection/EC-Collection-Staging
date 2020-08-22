@@ -749,6 +749,11 @@
     $("#sitename").val(_collection);
     $("#coll_type").val(_type);
     get_featured_prop(_type, _collection);
+    $('.quick-prev-when1').slick({
+                    slidesToShow: 1,
+                    prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                    nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+                });
   });
   
   function get_featured_prop(_type, _collection){
@@ -793,7 +798,14 @@
                     var ipath2 = objproppathwho +'/'+ objpropimgwho[i].file_name;
                     whosimage += '<div><img src="'+ipath2+'" class="img-fluid" alt=""></div>'; 
                 }  console.log(whosimage);
-                $(".who-quick-prev").html(whosimage);         
+                $(".who-quick-prev").html(whosimage);   
+                
+                $('.quick-prev-when1').slick('unslick');
+                $('.quick-prev-when1').slick({
+                    slidesToShow: 1,
+                    prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                    nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+                });      
             }
         }
     });
@@ -1238,7 +1250,7 @@
       nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
     });
     
-    $('.quick-prev-when').slick({
+    $('.quick-prev-when1').slick({
       slidesToShow: 1,
       prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
       nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
