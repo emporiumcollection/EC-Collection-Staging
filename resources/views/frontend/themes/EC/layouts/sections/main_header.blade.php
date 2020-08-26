@@ -51,7 +51,7 @@
           </a>
           <a href="#calcF" class="menu-nav text-menu cal-f" data-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="calcF">
-            <span class="cal-date">25 Aug - 28 aug</span>
+            <span class="cal-date"></span>
           </a>
           <a href="#whoF" class="menu-nav text-menu who-f" data-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="whoF">
@@ -165,6 +165,7 @@
             <div class="collapse clp" id="calcF" data-parent="#menunav">
               <div id="cal1"></div>
             </div>
+            
             <div class="collapse clp" id="whoF" data-parent="#menunav">
               <div class="filter-container-fl filter-container-mm  w-100" id="guest-pick" style="display: block;">
                 <div class="guest-pick-container mt-0">
@@ -227,6 +228,7 @@
                 </div>
               </div>
             </div>
+                  
           </div>
         </div>
       </div>
@@ -271,7 +273,28 @@
               <div class="row w-100">
                 <div class="col-4">
                   <ul class="nav flex-column nav-sidebar" data-wow-delay=".3s">
-                    <li class="nav-item">
+                    <?php 
+                    $sr = 1;
+                    if(!empty($experiences)){
+                        foreach($experiences as $exp){
+                            if($sr==1){
+                    ?>
+                                <li class="nav-item">
+                                  <a class="nav-link active" href="#">{{ $exp->category_name }}</a>
+                                </li>
+                    <?php   
+                                $sr++;             
+                            }else{
+                    ?>
+                                <li class="nav-item">
+                                  <a class="nav-link " href="#">{{ $exp->category_name }}</a>
+                                </li>    
+                    <?php   
+                            }     
+                        }                   
+                    } 
+                    ?>
+                    <!--<li class="nav-item">
                       <a class="nav-link active" href="#">Boutique</a>
                     </li>
                     <li class="nav-item">
@@ -291,7 +314,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Infinity</a>
-                    </li>
+                    </li>-->
                   </ul>
 
                   <div class="menu-media">

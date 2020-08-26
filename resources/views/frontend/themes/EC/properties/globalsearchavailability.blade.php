@@ -7,39 +7,45 @@
 @section('meta_description', '')
 {{-- For Page's Content Part --}}
 @section('content')
+<div class="content-em1">
 <div class="content-em">
     <div class="container-fluid pt-5">
       <div class="title-main offset-931 mt-5 ">
-        <h2>New York <a href="index.html"><i class="ico ico-reload reload-offset"></i></a> </h2>
+        <h2>{{$keyword}} <a href="#"><i class="ico ico-reload reload-offset"></i></a> </h2>
+        <input type="hidden" name="activeDestination" value="{{$keyword}}" />
+        <input type="hidden" name="m_type" value="{{$m_type}}" />
       </div>
       <div class="row mt-5">
         <div class="col-3">
-          <ul class="nav flex-column nav-sidebar onstick">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Boutique</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Design</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Lifestyle</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Beach</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Cullinary</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Urban</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Infinity</a>
-            </li>
+          <ul class="nav flex-column nav-sidebar onstick">            
+            <?php 
+            $sr = 1;
+            if(!empty($experiences)){
+                foreach($experiences as $exp){
+                    if($sr==1){
+            ?>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">{{ $exp->category_name }}</a>
+                        </li>
+            <?php   
+                        $sr++;             
+                    }else{
+            ?>
+                        <li class="nav-item">
+                          <a class="nav-link " href="#">{{ $exp->category_name }}</a>
+                        </li>    
+            <?php   
+                    }     
+                }                   
+            } 
+            ?>            
           </ul>
         </div>
         <div class="col-9">
-          <a href="detail-page.html" class="dtl-link">
+          <!-- Loading ajax class -->
+          <div class="load_ajax"></div>
+          <!-- End Loading ajax class -->
+          <!--<a href="detail-page.html" class="dtl-link">
             <div class="row">
               <div class="col-8 ">
                 <div class="content-img"
@@ -212,12 +218,15 @@
               </div>
             </div>
           </a>
-          <div class="line-separate "></div>
+          <div class="line-separate "></div>-->
 
 
         </div>
       </div>
-      <div class="row">
+      
+      <div class="load_property_ajax"></div>
+      
+      <!--<div class="row">
         <div class="col-3"></div>
         <div class="col-9">
           <div class="row">
@@ -297,10 +306,14 @@
                 </div>
               </a>
             </div>
+            
           </div>
         </div>
-      </div>
+      </div> -->
+      
+      
     </div>
 </div>	
+</div>
 @endsection
 
