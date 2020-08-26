@@ -287,15 +287,18 @@
             if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){
                  
                     //_html += '<div class="row">';
+                    $(editorPropertiesArr).each(function(_key, _val){
+                        
+                        
+                    
                         _html += '<a href="detail-page.html" class="dtl-link">';
                         _html += '<div class="row">';
                             _html += '<div class="col-8 ">';
-                                _html += '<div class="content-img" style="background: url("http://localhost:8181/emporium-staging-forge/public/themes/EC/images/aaabf028325021.5637326997cb1.jpg") no-repeat center center;"></div>';                        
+                                _html += '<div class="content-img" style="background: url("http://localhost:8181/emporium-staging-forge/public/themes/EC/images/aaabf028325021.5637326997cb1.jpg") no-repeat center center;" id="ecp-bg-img-'+_val['id']+'"></div>';                        
                             _html += '</div>';
                             
                             _html += '<div class="col-4 ">';
-                                _html += '<h3 class="title-font-2 title-line is-small  fadeInUp "><b>editors choice hotel</b></h3>';
-                                _html += '<h3 class="title-font-2 title-line is-small  fadeInUp "><b>'+jsonobj.slug+'</b></h3>';
+                                _html += '<h3 class="title-font-2 title-line is-small  fadeInUp "><b>editors choice hotel</b></h3>';  
                                 _html += '<p class="font-2 mt-4 ">';
                                     _html += '<i>';
                                         _html += 'CONTENT';
@@ -308,14 +311,44 @@
                         _html += '<div class="row relax-offset" data-rellax-speed="2">';
                             _html += '<div class="col-4 ">';
                                 _html += '<div class="title-offset mt-5 ">';
-                                    _html += '<h3 class="title-second title-line mb-0">The Ludlow Hotel</h3>';
+                                    _html += '<h3 class="title-second title-line mb-0">'+_val['property_name']+'</h3>';
                                     _html += '<h4 class="title-font-2 title-third">experience</h4>';
                                 _html += '</div>';
                             _html += '</div>';
                             _html += '<div class="col-8 ">';
                                 _html += '<div class="img-offset ">';
-                                    _html += '<div class="img-offset-slide">';
-                                        _html += '<div>';
+                                    _html += '<div class="img-offset-slide" id="ecp-img-slk-'+_val['id']+'">';
+                                        
+                                        var _ecid = _val['id'];
+                                        $.ajax({
+                                            url:'{{URL::to("propertyimagesbypid/")}}',                            
+                                            dataType:'json',
+                                            data: {'propid':_ecid},
+                                            type: 'get',
+                                            
+                                            beforeSend: function(){
+                                                //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
+                                            },
+                                            success: function(data){
+                                                var _ecpimg = '';
+                                                var _ecpbg = '';
+                                                $(data).each(function(_key, _value){
+                                                    _ecpimg += '<div><a href="detail-page.html"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';                                                           _ecpbg = _value;      
+                                                });
+                                                $("#ecp-img-slk-"+_val['id']).html(_ecpimg);
+                                                $("#ecp-bg-img-"+_val['id']).css('background-image', 'url(' + _ecpbg + ')')
+                                                
+                                            }
+                                        }).done(function(){           
+                                            $("#ecp-img-slk-"+_val['id']).slick({
+                                                slidesToShow: 1,
+                                                prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                                                nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+                                            });  
+                                        });
+                                        
+                                    
+                                        /*_html += '<div>';
                                             _html += '<a href="detail-page.html">';
                                                 _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
                                             _html += '</a>';
@@ -329,46 +362,84 @@
                                             _html += '<a href="detail-page.html">';
                                                 _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
                                             _html += '</a>';
-                                        _html += '</div>';
+                                        _html += '</div>';*/
+                                        
+                                        
                                     _html += '</div>';
                                 _html += '</div>';
                             _html += '</div>';
                         _html += '</div>';
                         
-                              
+                      });        
                  
             }
             
             var featurePropertiesArr = jsonobj.featurePropertiesArr;
+            
             var i=1; 
             if(typeof featurePropertiesArr !== undefined && featurePropertiesArr.length > 0){                         
-    
+                
+                var fp1 = featurePropertiesArr[0];
+                var fp2 = featurePropertiesArr[1];
+                
+                if(typeof fp1 !== 'undefined'){                
                 _html += '<div class="row">';
                     _html += '<div class="col-7 ">';
-                      _html += '<div class="img-offset-slide">';
+                      _html += '<div class="img-offset-slide" id="fp-img-slk-'+fp1['id']+'">';
+                        var _fpid = fp1['id'];
+                        $.ajax({
+                            url:'{{URL::to("propertyimagesbypid/")}}',                            
+                            dataType:'json',
+                            data: {'propid':_fpid},
+                            type: 'get',
+                            
+                            beforeSend: function(){
+                                //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
+                            },
+                            success: function(data){
+                                var _fpimg = '';
+                                $(data).each(function(_key, _value){
+                                    _fpimg += '<div><a href="detail-page.html"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';        
+                                });
+                                $("#fp-img-slk-"+fp1['id']).html(_fpimg);
+                                
+                                
+                            }
+                        }).done(function(){           
+                            $("#fp-img-slk-"+fp1['id']).slick({
+                                slidesToShow: 1,
+                                prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                                nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+                            });  
+                        });
+                        /*_html += '<div>';
+                          _html += '<a href="detail-page.html">';
+                            _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
+                          _html += '</a>';
+                        _html += '</div>';
+                        
                         _html += '<div>';
                           _html += '<a href="detail-page.html">';
                             _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
                           _html += '</a>';
                         _html += '</div>';
+                        
                         _html += '<div>';
                           _html += '<a href="detail-page.html">';
                             _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
                           _html += '</a>';
                         _html += '</div>';
+                        
                         _html += '<div>';
                           _html += '<a href="detail-page.html">';
                             _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
                           _html += '</a>';
-                        _html += '</div>';
-                        _html += '<div>';
-                          _html += '<a href="detail-page.html">';
-                            _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                          _html += '</a>';
-                        _html += '</div>';
+                        _html += '</div>';*/
+                        
                       _html += '</div>';
+                      
                       _html += '<div class="title-offset mt-5 relax-offset" data-rellax-speed="2" data-rellax-percentage="0.1">';
-                        _html += '<h3 class="title-second title-line mb-0">The Ludlow Hotel</h3>';
+                        _html += '<h3 class="title-second title-line mb-0">'+fp1["property_name"]+'</h3>';
                         _html += '<h4 class="title-font-2 title-third">experience</h4>';
                       _html += '</div>';
         
@@ -378,14 +449,15 @@
                         _html += '<h3 class="title-3 title-i ">- featured hotel -</h3>';
                         _html += '<p class="font-2 ">';
                           _html += '<i>';
-                            _html += 'Think about New York of the 1980s with its large artwork, early hip hop, and punk rock scenes.';                    
+                            _html += fp1["property_name"];                    
                           _html += '</i>';
                         _html += '</p>';
                       _html += '</div>';
                     _html += '</div>';
               _html += '</div>';
-                
-                
+              
+              }  
+              if(typeof fp2 !== 'undefined'){   
               _html += '<a href="detail-page.html" class="dtl-link">';
                 _html += '<div class="row mt-5">';
                   _html += '<div class="col-5 ">';
@@ -393,20 +465,58 @@
                       _html += '<h3 class="title-3 title-i text-right">- featured hotel -</h3>';
                       _html += '<p class="font-2 text-right">';
                         _html += '<i>';
-                          _html += 'Think about New York of the 1980s with its large artwork, early hip hop, and punk rock scenes.';                      
+                          _html += fp2["property_name"];                      
                         _html += '</i>';
                       _html += '</p>';
                     _html += '</div>';
                   _html += '</div>';
                   _html += '<div class="col-7 ">';
-                    _html += '<img src="{{ asset("themes/EC/images/dummy-as.jpg") }}" class="w-100 " alt="">';
+                    _html += '<div class="img-offset-slide" id="fp-img-slk-'+fp1['id']+'">';
+                    
+                        var _fpid2 = fp2['id'];
+                        $.ajax({
+                            url:'{{URL::to("propertyimagesbypid/")}}',                            
+                            dataType:'json',
+                            data: {'propid':_fpid2},
+                            type: 'get',
+                            
+                            beforeSend: function(){
+                                //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
+                            },
+                            success: function(data){
+                                var _fpimg2 = '';
+                                $(data).each(function(_key, _value){
+                                    _fpimg2 += '<div><img src="'+_value+'" class="w-100" alt=""></div>';        
+                                });
+                                $("#fp-img-slk-"+fp2['id']).html(_fpimg2);
+                                
+                                
+                            }
+                        }).done(function(){           
+                            $("#fp-img-slk-"+fp2['id']).slick({
+                                slidesToShow: 1,
+                                prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                                nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+                            });  
+                        });
+                    
+                    
+                    _html += '</div>';
+                    
                     _html += '<div class="title-offset mt-5 relax-offset" data-rellax-speed="2" data-rellax-percentage="0.1">';
-                      _html += '<h3 class="title-second title-line mb-0">11 Howard</h3>';
+                      _html += '<h3 class="title-second title-line mb-0">'+fp2["property_name"]+'</h3>';
                       _html += '<h4 class="title-font-2 title-third">experience</h4>';
                     _html += '</div>';
                   _html += '</div>';
                 _html += '</div>';
               _html += '</a>';
+              
+              $('.img-offset-slide').slick({
+                slidesToShow: 1,
+                prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+              });
+              }
             
           }
           
