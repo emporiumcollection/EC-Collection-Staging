@@ -19,6 +19,7 @@ Route::get('wetransfer', 'PropertiesController@show_wetransfer');
 /*
  * AIC: CRM Layout Module
  */
+
 Route::get('memberships', 'HomeController@memberships');
 Route::get('membershiptypes', 'HomeController@membershiptypes');
 Route::get('press/{id}', 'ContainerController@media_relations');
@@ -487,6 +488,7 @@ Route::post('searchpropcollection', 'Frontend\PropertyController@searchpropcolle
 Route::post('propertybycollection', 'Frontend\PropertyController@propertybycollection');
 Route::post('searchpropertybycollection', 'Frontend\PropertyController@searchpropertybycollection');
 
+Route::get('propertyimagesbypid', 'Frontend\PropertyController@propertyimagesbypid');
 Route::post('propertysearchlistbycollection', 'Frontend\PropertyController@propertysearchlistbycollection');
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
@@ -567,6 +569,9 @@ Route::get('article/{id}', 'HomeController@viewArticleDetails');
 Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 
 // property search urls
+
+Route::get('propertyimagesbypid/{pid}', 'Frontend\PropertyController@propertyImagesByPid');
+
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('search-property-ajax', 'Frontend\PropertyController@getSearchPropertyAjax');
 Route::get('propertyimagebyid/{propid}', 'Frontend\PropertyController@getPropertyImageById');
