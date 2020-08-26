@@ -471,7 +471,7 @@
                     _html += '</div>';
                   _html += '</div>';
                   _html += '<div class="col-7 ">';
-                    _html += '<div class="img-offset-slide" id="fp-img-slk-'+fp1['id']+'">';
+                    _html += '<div class="img-offset-slide" id="fp-img-slk-'+fp2['id']+'">';
                     
                         var _fpid2 = fp2['id'];
                         $.ajax({
