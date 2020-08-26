@@ -2806,8 +2806,8 @@ class PropertyController extends Controller {
         
         $site_url = '';
         if($sitename=='voyage'){
-            $site_url = 'http://localhost:8181/emporium-staging-forge/public';
-            //$site_url = 'https://emporium-voyage.com';              
+            //$site_url = 'http://localhost:8181/emporium-staging-forge/public';
+            $site_url = 'https://emporium-voyage.com';              
             //$site_url = 'http://staging.emporium-voyage.com';
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
@@ -2917,8 +2917,8 @@ class PropertyController extends Controller {
         $site_url = '';
         if($sitename=='voyage'){
             //$site_url = 'https://emporium-voyage.com';
-            $site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
-            //$site_url = 'http://staging.emporium-voyage.com';  
+            //$site_url = 'http://localhost:8181/emporium-staging-forge/public'; 
+            $site_url = 'http://staging.emporium-voyage.com';  
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
         }elseif($sitename=='spa'){
@@ -2975,15 +2975,7 @@ class PropertyController extends Controller {
                     }
                 }
             }
-        }
-        //print_r($keyword);
-//        print_r($type); 
-//        print_r($arrive_date);
-//        print_r($departure_date);
-//        print_r($total_guests);
-//        print_r($childs);
-//        print_r($adults);
-//        print_r($rooms);        
+        }             
         
         //Get Number of night
         $number_of_nights = '';
@@ -2993,11 +2985,7 @@ class PropertyController extends Controller {
             $diff = date_diff($date1, $date2);
             $number_of_nights = $diff->format("%a");            
         }        
-        //$this->data['active_tab'] = $active_tab;
-        //$this->data['allData'] = $allData;
-        //$this->data['hotels'] = $hotels;
-        //$this->data['destinations'] = $destinations;
-        
+                
         $this->data['experiences'] = \DB::table('tb_categories')->where('category_approved', 1)->where('category_published', 1)->where('parent_category_id', 8)->get();
         $membershiptype = '';        
         $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
@@ -5782,7 +5770,7 @@ class PropertyController extends Controller {
             $catprops = " AND pr.id in(".$timplod.") ";
 		
             
-            $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price, tb_properties_category_package.package_id ";
+            $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price, tb_properties_category_package.package_id, (SELECT MIN(rack_rate) FROM tb_properties_category_rooms_price WHERE property_id=pr.id) as prc ";
     		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id ";
             $query .= " JOIN tb_properties_category_package ON tb_properties_category_package.property_id = pr.id ";
     		//$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 AND tb_properties_category_package.package_id IN (".$this->pckages_ids.") ";
@@ -5798,7 +5786,7 @@ class PropertyController extends Controller {
     		$CountRecordQry = "Select count(*) as total_record from tb_properties pr  JOIN tb_properties_category_package ON tb_properties_category_package.property_id = pr.id ".$whereClause ;
     			
     		//Feature Query
-    		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price, tb_properties_category_package.package_id ";
+    		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price, tb_properties_category_package.package_id, (SELECT MIN(rack_rate) FROM tb_properties_category_rooms_price WHERE property_id=pr.id) as prc ";
     		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id ";
             $query .= " JOIN tb_properties_category_package ON tb_properties_category_package.property_id = pr.id ";
     		//$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 1 AND tb_properties_category_package.package_id IN (".$this->pckages_ids.") ";
@@ -5808,7 +5796,7 @@ class PropertyController extends Controller {
     		$featureQuery = "SELECT * FROM (".$query.$whereClause." ORDER BY price DESC) tempX GROUP BY id ".$orderBy.$limit ; 
     		
     		//Editor choice editor_choice_property
-            $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price, tb_properties_category_package.package_id ";
+            $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price, tb_properties_category_package.package_id, (SELECT MIN(rack_rate) FROM tb_properties_category_rooms_price WHERE property_id=pr.id) as prc ";
     		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id ";
             $query .= " JOIN tb_properties_category_package ON tb_properties_category_package.property_id = pr.id ";
     		//$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.editor_choice_property = 1 AND tb_properties_category_package.package_id IN (".$this->pckages_ids.") ";

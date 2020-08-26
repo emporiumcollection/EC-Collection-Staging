@@ -265,9 +265,7 @@
         var jsonobj = data.data;
         if($.isEmptyObject(jsonobj)){
                 
-        }else{ 
-            
-            
+        }else{            
             var cat_image = jsonobj.category_image;
             var gs_side_image_path = BaseURL+'/uploads/category_imgs/'+cat_image;
             if(cat_image==''){
@@ -284,12 +282,9 @@
             
             var editorPropertiesArr = jsonobj.editorPropertiesArr;
                                             
-            if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){
-                 
-                    //_html += '<div class="row">';
+            if (typeof editorPropertiesArr !== undefined && editorPropertiesArr.length > 0){                 
+                    
                     $(editorPropertiesArr).each(function(_key, _val){
-                        
-                        
                     
                         _html += '<a href="detail-page.html" class="dtl-link">';
                         _html += '<div class="row">';
@@ -301,7 +296,7 @@
                                 _html += '<h3 class="title-font-2 title-line is-small  fadeInUp "><b>editors choice hotel</b></h3>';  
                                 _html += '<p class="font-2 mt-4 ">';
                                     _html += '<i>';
-                                        _html += 'CONTENT';
+                                        _html += _val['property_usp'];
                                     _html += '</i>';
                                 _html += '</p>';
                             _html += '</div>';
@@ -324,8 +319,7 @@
                                             url:'{{URL::to("propertyimagesbypid/")}}',                            
                                             dataType:'json',
                                             data: {'propid':_ecid},
-                                            type: 'get',
-                                            
+                                            type: 'get',                                            
                                             beforeSend: function(){
                                                 //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
                                             },
@@ -333,7 +327,7 @@
                                                 var _ecpimg = '';
                                                 var _ecpbg = '';
                                                 $(data).each(function(_key, _value){
-                                                    _ecpimg += '<div><a href="detail-page.html"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';                                                           _ecpbg = _value;      
+                                                    _ecpimg += '<div><a href="#"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';                                                           _ecpbg = _value;      
                                                 });
                                                 $("#ecp-img-slk-"+_val['id']).html(_ecpimg);
                                                 $("#ecp-bg-img-"+_val['id']).css('background-image', 'url(' + _ecpbg + ')')
@@ -346,24 +340,6 @@
                                                 nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
                                             });  
                                         });
-                                        
-                                    
-                                        /*_html += '<div>';
-                                            _html += '<a href="detail-page.html">';
-                                                _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                                            _html += '</a>';
-                                        _html += '</div>';
-                                        _html += '<div>';
-                                            _html += '<a href="detail-page.html">';
-                                                _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                                            _html += '</a>';
-                                        _html += '</div>';
-                                        _html += '<div>';
-                                            _html += '<a href="detail-page.html">';
-                                                _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                                            _html += '</a>';
-                                        _html += '</div>';*/
-                                        
                                         
                                     _html += '</div>';
                                 _html += '</div>';
@@ -391,8 +367,7 @@
                             url:'{{URL::to("propertyimagesbypid/")}}',                            
                             dataType:'json',
                             data: {'propid':_fpid},
-                            type: 'get',
-                            
+                            type: 'get',                            
                             beforeSend: function(){
                                 //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
                             },
@@ -401,9 +376,7 @@
                                 $(data).each(function(_key, _value){
                                     _fpimg += '<div><a href="detail-page.html"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';        
                                 });
-                                $("#fp-img-slk-"+fp1['id']).html(_fpimg);
-                                
-                                
+                                $("#fp-img-slk-"+fp1['id']).html(_fpimg);                                
                             }
                         }).done(function(){           
                             $("#fp-img-slk-"+fp1['id']).slick({
@@ -412,30 +385,7 @@
                                 nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
                             });  
                         });
-                        /*_html += '<div>';
-                          _html += '<a href="detail-page.html">';
-                            _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                          _html += '</a>';
-                        _html += '</div>';
-                        
-                        _html += '<div>';
-                          _html += '<a href="detail-page.html">';
-                            _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                          _html += '</a>';
-                        _html += '</div>';
-                        
-                        _html += '<div>';
-                          _html += '<a href="detail-page.html">';
-                            _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                          _html += '</a>';
-                        _html += '</div>';
-                        
-                        _html += '<div>';
-                          _html += '<a href="detail-page.html">';
-                            _html += '<img src="{{ asset("themes/EC/images/d9710383434639.5d3c346168dd3.jpg") }}" class="img-fluid" alt="">';
-                          _html += '</a>';
-                        _html += '</div>';*/
-                        
+                                                
                       _html += '</div>';
                       
                       _html += '<div class="title-offset mt-5 relax-offset" data-rellax-speed="2" data-rellax-percentage="0.1">';
@@ -449,7 +399,7 @@
                         _html += '<h3 class="title-3 title-i ">- featured hotel -</h3>';
                         _html += '<p class="font-2 ">';
                           _html += '<i>';
-                            _html += fp1["property_name"];                    
+                            _html += fp1["property_usp"];                    
                           _html += '</i>';
                         _html += '</p>';
                       _html += '</div>';
@@ -465,7 +415,7 @@
                       _html += '<h3 class="title-3 title-i text-right">- featured hotel -</h3>';
                       _html += '<p class="font-2 text-right">';
                         _html += '<i>';
-                          _html += fp2["property_name"];                      
+                          _html += fp2["property_usp"];                      
                         _html += '</i>';
                       _html += '</p>';
                     _html += '</div>';
@@ -478,8 +428,7 @@
                             url:'{{URL::to("propertyimagesbypid/")}}',                            
                             dataType:'json',
                             data: {'propid':_fpid2},
-                            type: 'get',
-                            
+                            type: 'get',                            
                             beforeSend: function(){
                                 //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
                             },
@@ -488,9 +437,7 @@
                                 $(data).each(function(_key, _value){
                                     _fpimg2 += '<div><img src="'+_value+'" class="w-100" alt=""></div>';        
                                 });
-                                $("#fp-img-slk-"+fp2['id']).html(_fpimg2);
-                                
-                                
+                                $("#fp-img-slk-"+fp2['id']).html(_fpimg2);                                
                             }
                         }).done(function(){           
                             $("#fp-img-slk-"+fp2['id']).slick({
@@ -541,8 +488,7 @@
                             //dataType:'html',
                             dataType:'json',
                             data: {'propid':_pid},
-                            type: 'get',
-                            
+                            type: 'get',                            
                             beforeSend: function(){
                                 //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
                             },
@@ -552,8 +498,6 @@
                                     _hp += '<div><img src="'+_value+'" class="w-100" alt=""></div>';        
                                 });
                                 $("#grid-img-"+value['id']).html(_hp);
-                                
-                                
                             }
                         }).done(function(){           
                             $("#grid-img-"+value['id']).slick({
@@ -561,25 +505,13 @@
                                 prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
                                 nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
                             });  
-                        });
+                        });                     
                         
-                        //var property_slug = value['property_slug'];
-          
-                        
-                            /*_html_prop += '<div>';
-                              _html_prop += '<img src="{{ asset("themes/EC/images/29be6592342279.5e49609509d85.jpg") }}" class="w-100" alt="">';
-                            _html_prop += '</div>';
-                            _html_prop += '<div>';
-                              _html_prop += '<img src="{{ asset("themes/EC/images/29be6592342279.5e49609509d85.jpg") }}" class="w-100" alt="">';
-                            _html_prop += '</div>';
-                            _html_prop += '<div>';
-                              _html_prop += '<img src="{{ asset("themes/EC/images/29be6592342279.5e49609509d85.jpg") }}" class="w-100" alt="">';
-                            _html_prop += '</div>';*/
-                          _html_prop += '</div>';
+                        _html_prop += '</div>';
                           _html_prop += '<a href="#">';
                             _html_prop += '<div class="title-offset mt-5 ">';
                               _html_prop += '<h3 class="title-second title-line mb-0">'+value['property_name']+'</h3>';
-                              _html_prop += '<h4 class="title-font-2 title-third">experience</h4>';
+                              _html_prop += '<div class="title-font-2 title-third">Night from $'+value['prc']+'</div>';
                             _html_prop += '</div>';
                           _html_prop += '</a>';
                         _html_prop += '</div>';              
