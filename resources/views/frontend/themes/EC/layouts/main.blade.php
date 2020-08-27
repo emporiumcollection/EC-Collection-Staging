@@ -374,7 +374,7 @@
                             success: function(data){
                                 var _fpimg = '';
                                 $(data).each(function(_key, _value){
-                                    _fpimg += '<div><a href="'+_value['property_slug']+'"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';        
+                                    _fpimg += '<div><a href="'+fp1['property_slug']+'"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';        
                                 });
                                 $("#fp-img-slk-"+fp1['id']).html(_fpimg);                                
                             }
@@ -564,6 +564,32 @@
         });
         $('img.rad-img').photoLoadAfterPageLoad(noImg);*/
     }
+    
+    $('.slider-detail').slick({
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      prevArrow: $('.prev'),
+      nextArrow: $('.next'),
+    });
+    $('video').mediaelementplayer({
+      enableAutosize: true,
+      alwaysShowControls: true,
+      defaultVideoWidth: 480,
+      defaultVideoHeight: 270,
+      videoWidth: -1,
+      videoHeight: -1,
+      audioWidth: 400,
+      audioHeight: 30,
+    });
+
+    $('.prev').click(function () {
+      $('video').trigger('pause');
+    });
+    $('.next').click(function () {
+      $('video').trigger('pause');
+    });
+    
 //var rellax = new Rellax('.relax-offset');
 </script>
 

@@ -181,7 +181,7 @@
       <div class="row mt-5">
         <div class="col-3">
         
-        <?php echo "<pre/>"; print_r($propertyDetail); //die;?>
+        <?php //echo "<pre/>"; print_r($propertyDetail); //die;?>
 
 <ul class="nav flex-column nav-sidebar is-small onstick wow fadeInUp" data-wow-delay=".3s">
   <li class="nav-item">
