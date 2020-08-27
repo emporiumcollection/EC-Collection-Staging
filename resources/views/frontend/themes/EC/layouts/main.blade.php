@@ -150,6 +150,31 @@
 <script type="text/javascript" src="{{ asset('themes/EC/js/all.js') }}"></script>
 
 <script>
+    
+    $('.slider-detail').slick({
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      prevArrow: $('.prev'),
+      nextArrow: $('.next'),
+    });
+    $('video').mediaelementplayer({
+      enableAutosize: true,
+      alwaysShowControls: true,
+      defaultVideoWidth: 480,
+      defaultVideoHeight: 270,
+      videoWidth: -1,
+      videoHeight: -1,
+      audioWidth: 400,
+      audioHeight: 30,
+    });
+
+    $('.prev').click(function () {
+      $('video').trigger('pause');
+    });
+    $('.next').click(function () {
+      $('video').trigger('pause');
+    });
         
     $("#cal1").rangeCalendar({
         minRangeWidth : 1,
@@ -565,30 +590,7 @@
         $('img.rad-img').photoLoadAfterPageLoad(noImg);*/
     }
     
-    $('.slider-detail').slick({
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      prevArrow: $('.prev'),
-      nextArrow: $('.next'),
-    });
-    $('video').mediaelementplayer({
-      enableAutosize: true,
-      alwaysShowControls: true,
-      defaultVideoWidth: 480,
-      defaultVideoHeight: 270,
-      videoWidth: -1,
-      videoHeight: -1,
-      audioWidth: 400,
-      audioHeight: 30,
-    });
-
-    $('.prev').click(function () {
-      $('video').trigger('pause');
-    });
-    $('.next').click(function () {
-      $('video').trigger('pause');
-    });
+    
     
 //var rellax = new Rellax('.relax-offset');
 </script>
