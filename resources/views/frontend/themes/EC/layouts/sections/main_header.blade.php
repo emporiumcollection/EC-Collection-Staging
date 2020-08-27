@@ -47,7 +47,7 @@
           </a>
           <a href="#cityList" class="menu-nav text-menu city-f" data-toggle="collapse" role="button"
             aria-expanded="false" aria-controls="cityList">
-            <span class="label-city" style="background: green;"></span> {{$keyword}}
+            <span class="label-city" style="background: green;"></span> {{--$keyword--}}
           </a>
           <a href="#calcF" class="menu-nav text-menu cal-f" data-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="calcF">
@@ -58,7 +58,7 @@
             <div class="filter-lst expand filter-guest filter-white">
               <div class="input-group">
                 <div class="gust-dropdown">
-                  <div class="guest-option rto"><span class="guest-count">{{$total_guests}}</span> Guest</div>
+                  <div class="guest-option rto"><span class="guest-count">{{--$total_guests--}}</span> Guest</div>
                 </div>
               </div>
             </div>

@@ -1117,6 +1117,243 @@ class PropertyController extends Controller {
         $propertiesArr = array();
 		$crpropertiesArr = array();
 		$relatedgridpropertiesArr = array();
+        $this->data['slug'] = rtrim($request->slug,'-');        
+        
+        $props = \DB::table('tb_properties')->select('tb_properties.*')->whereRaw("TRIM(TRAILING '-' FROM property_slug ) = ?", [$this->data['slug']])->first(); 
+        
+        if (!empty($props)) {
+                        
+            $propertiesArr['data'] = $props;
+            
+            /* Price on Rquest */
+            $prcOnReq = false;
+            $chkseasonset = \DB::table('tb_seasons')->where('property_id', $props->id)->orderBy('season_priority', 'asc')->get();
+            if ($props->default_seasons == 1 || empty($chkseasonset)){
+                $prcOnReq = true;    
+            }                        
+            $propertiesArr['data']->prcOnReq = $prcOnReq;
+            /* End */
+            
+            $propertiesArr['propimage'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+            $propertiesArr['propimage_thumbpath'] = '';
+            $propertiesArr['propimage_thumbpath_dir']= '';
+            $propertiesArr['propimage_containerpath'] = '';
+            if(!empty($propertiesArr['propimage'])){
+                $propertiesArr['propimage_thumbpath'] = (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id);
+    			$propertiesArr['propimage_thumbpath_dir'] = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id))); 
+                $propertiesArr['propimage_containerpath'] = (new ContainerController)->getContainerUserPath($propertiesArr['propimage'][0]->folder_id);
+			}
+			$this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+
+            if ($props->property_category_id != '') {
+                $catss = explode(',', $props->property_category_id);
+                if (!empty($catss)) {
+                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                        return sprintf("FIND_IN_SET('%s', tb_properties.property_category_id)", $v);
+                                    }, array_values($catss))) . ")";
+                }
+				
+                $crpropertiesArr = DB::select(DB::raw("SELECT tb_properties.property_name, tb_properties.property_slug, tb_container_files.file_name, tb_container_files.folder_id FROM tb_properties JOIN tb_properties_images ON tb_properties_images.property_id = tb_properties.id JOIN tb_container_files ON tb_container_files.id = tb_properties_images.file_id JOIN tb_properties_category_package ON tb_properties_category_package.property_id = tb_properties.id WHERE tb_properties.property_type='" . $props->property_type . "' AND tb_properties.property_status = '1' AND tb_properties.id!='" . $props->id . "' AND tb_properties_images.type = 'Property Images' AND tb_properties_category_package.package_id IN (".$this->pckages_ids.")  $getcats GROUP BY  tb_properties.property_slug ORDER BY tb_properties.id desc, tb_container_files.file_sort_num asc LIMIT 2"));
+				
+				
+				$relatedgridquery = "SELECT tb_properties.editor_choice_property,tb_properties.property_usp,tb_properties.feature_property,tb_properties.id,tb_properties.property_name,tb_properties.property_slug,tb_properties.property_category_id FROM tb_properties JOIN tb_properties_category_package ON tb_properties_category_package.property_id = tb_properties.id WHERE property_type='Hotel' AND tb_properties.assign_detail_city = '".$props->assign_detail_city."' AND property_status = '1' AND tb_properties.id != '".$props->id."' AND tb_properties_category_package.package_id IN (".$this->pckages_ids.") ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, editor_choice_property desc, feature_property desc LIMIT 4";
+
+				$relatedgridprops = DB::select(DB::raw($relatedgridquery));
+				if (!empty($relatedgridprops)) {
+					$pr = 0;
+					foreach ($relatedgridprops as $rgprop) {
+						$relatedgridpropertiesArr[$pr]['data'] = $rgprop;
+						$relatedgridpropertiesArr[$pr]['data']->price = '';
+						$checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $rgprop->id)->orderBy('rack_rate', 'DESC')->first();
+						if (!empty($checkseasonPrice)) {
+							$relatedgridpropertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
+						}
+
+						$relatedgridpropertiesArr[$pr]['data']->category_name = '';
+						$cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $rgprop->property_category_id)->where('category_published', 1)->first();
+						if (!empty($cateObjtm)) {
+							$relatedgridpropertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
+						}
+
+						$fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $rgprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+						if (!empty($fileArr)) {
+							$relatedgridpropertiesArr[$pr]['image'] = $fileArr;
+							$relatedgridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
+						}
+						$pr++;
+					}
+				}
+            }
+			
+			$cat_types = \DB::table('tb_properties_category_types')->select('id','category_name','room_desc')->where('property_id', $props->id)->where('status', 0)->where('show_on_booking', 1)->get();
+            if (!empty($cat_types)) {
+                $c = 0;
+                foreach ($cat_types as $type) {
+                    $roomfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.category_id', $type->id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+					$type_cale = '';
+                    $filen = array();
+                    if (!empty($roomfileArr)) {
+						$propertiesArr['roomimgs'][$type->id]['imgs'] = $roomfileArr;
+						$propertiesArr['roomimgs'][$type->id]['imgsrc'] = (new ContainerController)->getThumbpath($roomfileArr[0]->folder_id);
+						$propertiesArr['roomimgs'][$type->id]['imgsrc_dir'] = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($roomfileArr[0]->folder_id)));
+                        $propertiesArr['typedata'][$c] = $type;
+                        $propertiesArr['typedata'][$c]->price = '';
+                        $curnDate = date('Y-m-d');
+                        if ($props->default_seasons != 1) {
+							$checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate', 'tb_seasons.season_name')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $type->id)->where('tb_seasons.property_id', $props->id)->where('tb_seasons_dates.season_from_date', '<=', $curnDate)->where('tb_seasons_dates.season_to_date', '>=', $curnDate)->orderBy('tb_seasons.season_priority', 'asc')->first();
+							//print_r($checkseason); die;
+                        } else {
+                            $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate', 'tb_seasons.season_name')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $type->id)->where('tb_seasons.property_id', 0)->where('tb_seasons_dates.season_from_date', '<=', $curnDate)->where('tb_seasons_dates.season_to_date', '>=', $curnDate)->first();
+                        }
+						
+						if (!empty($checkseason)) {
+							 $propertiesArr['typedata'][$c]->price = $checkseason->rack_rate;
+                             $propertiesArr['typedata'][$c]->season = $checkseason->season_name;
+                        } else {
+                            $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $type->id)->first();
+                            if (!empty($checkseasonPrice_ifnotanyseason)) {
+                                $propertiesArr['typedata'][$c]->price = $checkseasonPrice_ifnotanyseason->rack_rate;
+                                $propertiesArr['typedata'][$c]->season = '';
+                            }
+                        }
+                        
+                        $cat_rooms_price = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_types','tb_properties_category_types.id','=','tb_properties_category_rooms_price.category_id')->leftJoin('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->select('tb_seasons.season_name','tb_properties_category_rooms_price.rack_rate','tb_properties_category_types.category_name')->where('tb_properties_category_rooms_price.category_id', $type->id)->get();                        
+                        
+                        $propertiesArr['typedata'][$c]->seasonwiseprice = $cat_rooms_price;
+                        
+                        //$room_availablity_bytype = \DB::table('tb_properties_category_rooms')->where('tb_properties_category_rooms.category_id', $type->id)->get();                       
+                        //$propertiesArr['typedata'][$c]->room_availablity_bytype = $room_availablity_bytype;   
+                        
+                        $reserved_room_bytype = \DB::table('tb_reservations')->join('td_reserved_rooms','tb_reservations.id','=','td_reserved_rooms.reservation_id')->where('td_reserved_rooms.type_id', $type->id)->get();                                             
+                        
+                        $type_cale = $this->viewcalendar($type->id, $curnDate);
+                        
+                        $propertiesArr['typedata'][$c]->room_calendar = $type_cale;
+                        
+						$c++;
+                    }
+                    
+                    /*------- Custom Plan ---------*/
+                    $custom_plans = \DB::table('tb_properties_custom_plan')->where('property_id', $props->id)->get();
+                    
+                    $propertiesArr['cplans'][$type->id] = $custom_plans;
+                    
+                    //$globalcustomplan = \DB::table('tb_global_custom_plan')->join('tb_global_custom_plan_assined', 'tb_global_custom_plan.id', '=',  'tb_global_custom_plan_assined.global_plan_id')->where('tb_global_custom_plan_assined.property_id', $props->id)->get();
+                    
+                    $globalcustomplan = \DB::table('tb_global_custom_plan_assined')->join('tb_global_custom_plan', 'tb_global_custom_plan_assined.global_plan_id', '=', 'tb_global_custom_plan.id')->select('tb_global_custom_plan.*')->where('property_id', $props->id)->get();
+                    
+                    $override_plans = \DB::table('tb_global_custom_plan_override')->where('property_id', $props->id)->get();
+                    //print_r($override_plans);
+                    $over_arr = array();
+                    $over_plan_obj = array();
+                    if(!empty($override_plans)){
+                        foreach($override_plans as $sio){
+                            $over_arr[] = $sio->global_plan_id;
+                            $over_plan_obj[$sio->global_plan_id] = $sio;
+                        }
+                    }
+                    $gl_plans = array();
+                    if(!empty($globalcustomplan)){
+                        foreach($globalcustomplan as $sip){
+                            if(in_array($sip->id, $over_arr)){
+                                $gl_plans[] = $over_plan_obj[$sip->id];        
+                            }else{
+                                $gl_plans[] = $sip;    
+                            }
+                        }
+                    }
+                    $propertiesArr['overrideplans'][$type->id] = $gl_plans;
+                    //echo "<pre>";
+                    //print_r($propertiesArr); die;
+                    //print_r($custom_plans); print_r($custom_aplans);
+                    //print_r($custom_oplans); die;
+                    /*-------End Custom Plan ---------*/
+                    
+                }
+
+                usort($propertiesArr['typedata'], function($a, $b) {
+                    return trim($a->price) < trim($b->price);
+                });
+            }
+            //echo "<pre>";
+            //print_r($propertiesArr);die;
+            $prop_package = \DB::table('tb_properties_category_package')->join("tb_packages", "tb_packages.id", "=", "tb_properties_category_package.package_id")->where('property_id', $props->id)->first();
+            $package_type = trim($prop_package->package_title);             
+            $package_type = strtolower(str_replace(' ', '-', trim($package_type)));
+            switch($package_type){
+                case "lifestyle-membership":
+                    $type = "lifestyle-collection";                            
+                    break;
+                case "dedicated-membership":
+                    $type = "dedicated-collection";                            
+                    break;
+                case "bespoke-membership":
+                    $type = "bespoke-collection";                            
+                    break;                
+            }           
+            
+            $arc_thumb_path = '';
+            $arr_landscape = array();
+            $arr_portrait = array();
+            $system_module = \DB::table('tb_container')->select('id', 'name', 'display_name')->where('parent_id', 0)->where('name','system-module')->first();
+            if(!empty($system_module)){
+                $sub_sys_mod =  \DB::table('tb_container')->select('id', 'name', 'display_name')->where('parent_id', $system_module->id)->get();
+                if(!empty($sub_sys_mod)){
+                    foreach($sub_sys_mod as $mod){
+                        if($mod->name=="architecture"){
+                            $arc_mod =  \DB::table('tb_container')->select('id', 'name', 'display_name')->where('parent_id', $mod->id)->get();
+                            
+                            if(!empty($arc_mod)){
+                                $arc_thumb_path = (new ContainerController)->getThumbpath($arc_mod[0]->id);
+                                foreach($arc_mod as $a_mod){
+                                    if($a_mod->name=="landscape"){
+                                        $arr_landscape = \DB::table('tb_container')->select('tb_container_files.id','tb_container.display_name','tb_container_files.file_name','tb_container_files.folder_id','tb_container.name', 'tb_container.title', 'tb_container.description')->join('tb_container_files','tb_container_files.folder_id','=','tb_container.id')->where('tb_container.id',$a_mod->id)->orderby('tb_container_files.file_sort_num','asc')->get();
+                                    }
+                                    if($a_mod->name=="portraite"){
+                                        $arr_portrait = \DB::table('tb_container')->select('tb_container_files.id','tb_container.display_name','tb_container_files.file_name','tb_container_files.folder_id','tb_container.name', 'tb_container.title', 'tb_container.description')->join('tb_container_files','tb_container_files.folder_id','=','tb_container.id')->where('tb_container.id',$a_mod->id)->orderby('tb_container_files.file_sort_num','asc')->get();
+                                    }
+                                }
+                                //print_r($arc_mod);    
+                            }            
+                        }                            
+                    }
+                }
+            }
+            
+            $this->data['ptype'] = $type;            
+            
+            $isPackage = $this->checkPropertyPackage($props->id);                        
+            $this->data['propertyPackage'] = $isPackage;      
+            //echo "<pre>";
+            //print_r($this->data['propertyPackage']); die;      
+            
+            $this->data['propertyDetail'] = $propertiesArr;
+            $this->data['relatedproperties'] = $crpropertiesArr;
+    		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
+    	
+    		$this->data['propertyEvents'] = \DB::table('tb_events')->where('property_id', $props->id)->get();
+            
+            $this->data['packages'] = \DB::table('tb_packages')->where('package_category', 'B2C')->where('package_status', 1)->get(); 
+            
+            $this->data['metatags'] = \DB::table('tb_property_metatags')->where('property_id',  $props->id)->first();
+            //print_r($this->data['metatags']); die;           
+            //print_r($this->data['propertyDetail']); die;
+    		//dd($this->data['propertyEvents']);
+            //return view('frontend.themes.emporium.properties.detail', $this->data);
+            
+            return view('frontend.themes.EC.properties.detail', $this->data);
+
+        }else
+        {
+            return response(view('errors.403'), 403);
+        }        
+    }
+	
+    
+	public function getPropertyDetail_26082020(Request $request) {        
+        $propertiesArr = array();
+		$crpropertiesArr = array();
+		$relatedgridpropertiesArr = array();
         $this->data['slug'] = rtrim($request->slug,'-');
         
         //$props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
@@ -2807,8 +3044,8 @@ class PropertyController extends Controller {
         $site_url = '';
         if($sitename=='voyage'){
             //$site_url = 'http://localhost:8181/emporium-staging-forge/public';
-            $site_url = 'https://emporium-voyage.com';              
-            //$site_url = 'http://staging.emporium-voyage.com';
+            //$site_url = 'https://emporium-voyage.com';              
+            $site_url = 'http://staging.emporium-voyage.com';
         }elseif($sitename=='safari'){
             $site_url = 'https://emporium-safari.com';
         }elseif($sitename=='spa'){

@@ -286,7 +286,7 @@
                     
                     $(editorPropertiesArr).each(function(_key, _val){
                     
-                        _html += '<a href="detail-page.html" class="dtl-link">';
+                        _html += '<a href="'+_val['property_slug']+'" class="dtl-link">';
                         _html += '<div class="row">';
                             _html += '<div class="col-8 ">';
                                 _html += '<div class="content-img" style="background: url("http://localhost:8181/emporium-staging-forge/public/themes/EC/images/aaabf028325021.5637326997cb1.jpg") no-repeat center center;" id="ecp-bg-img-'+_val['id']+'"></div>';                        
@@ -327,7 +327,7 @@
                                                 var _ecpimg = '';
                                                 var _ecpbg = '';
                                                 $(data).each(function(_key, _value){
-                                                    _ecpimg += '<div><a href="#"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';                                                           _ecpbg = _value;      
+                                                    _ecpimg += '<div><a href="'+_value['property_slug']+'"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';                                                           _ecpbg = _value;      
                                                 });
                                                 $("#ecp-img-slk-"+_val['id']).html(_ecpimg);
                                                 $("#ecp-bg-img-"+_val['id']).css('background-image', 'url(' + _ecpbg + ')')
@@ -374,7 +374,7 @@
                             success: function(data){
                                 var _fpimg = '';
                                 $(data).each(function(_key, _value){
-                                    _fpimg += '<div><a href="detail-page.html"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';        
+                                    _fpimg += '<div><a href="'+_value['property_slug']+'"><img src="'+_value+'" class="img-fluid" alt=""></a></div>';        
                                 });
                                 $("#fp-img-slk-"+fp1['id']).html(_fpimg);                                
                             }
@@ -408,7 +408,7 @@
               
               }  
               if(typeof fp2 !== 'undefined'){   
-              _html += '<a href="detail-page.html" class="dtl-link">';
+              _html += '<a href="'+fp2['property_slug']+'" class="dtl-link">';
                 _html += '<div class="row mt-5">';
                   _html += '<div class="col-5 ">';
                     _html += '<div class="fetaruer py-5 pl-0 pr-5 ">';
@@ -508,7 +508,7 @@
                         });                     
                         
                         _html_prop += '</div>';
-                          _html_prop += '<a href="#">';
+                          _html_prop += '<a href="'+value['property_slug']+'">';
                             _html_prop += '<div class="title-offset mt-5 ">';
                               _html_prop += '<h3 class="title-second title-line mb-0">'+value['property_name']+'</h3>';
                               _html_prop += '<div class="title-font-2 title-third">Night from $'+value['prc']+'</div>';
