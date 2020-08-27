@@ -190,12 +190,14 @@ class CustomplanController extends Controller {
         $cp_ars = array();
         $cp_booking_days = array();
         $cp_staying_days = array();
+        $cpitems = array();
         if($plan_id > 0){
             $cplan = \DB::table('tb_properties_custom_plan')->where('id', $plan_id)->first();
             $cplan_roomtypes = \DB::table('tb_custom_plan_roomtypes')->where('custom_plan_id', $plan_id)->get();
             $cpab = \DB::table('tb_custom_plan_available_boards')->where('custom_plan_id', $plan_id)->get();
             $cplan_tags = \DB::table('tb_custom_plan_tags')->where('custom_plan_id', $plan_id)->first(); 
-            $cplan_seasons = \DB::table('tb_property_custom_plan_seasons')->select('season_id')->where('plan_id', $plan_id)->get();
+            //$cplan_seasons = \DB::table('tb_property_custom_plan_seasons')->select('season_id')->where('plan_id', $plan_id)->get();
+            $cpitems = \DB::table('tb_custom_plan_items_inc_exc')->where('custom_plan_id', $plan_id)->get();
             if(!empty($cplan_seasons)){
                 foreach($cplan_seasons as $se){
                     $cplan_seas[] = $se->season_id;         
@@ -229,7 +231,8 @@ class CustomplanController extends Controller {
             $res['plan'] = $cplan;
             $res['seasons'] = $cplan_seas;  
             $res['cplan_tags'] = $cplan_tags;
-            $res['cpab'] = $cpab;  
+            $res['cpab'] = $cpab;
+            $res['cpitems'] = $cpitems;  
             $res['cp_ars'] = $cp_ars;
             $res['booking_days'] = $cp_booking_days;
             $res['staying_days'] = $cp_staying_days;        
@@ -596,12 +599,18 @@ class CustomplanController extends Controller {
 		$uid = \Auth::user()->id;
 		$rules['plan_title'] = 'required';
         //print_r($request->all()); die;
+        //$p_img = $request->input('plan_image');
+        //$file = Input::file('plan_image');
+        //print_r($file);  die;
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data['title'] = $request->input('plan_title');
             $room_types = $request->input('room_types');            
             $data['plan_price'] = $request->input('plan_price');
-            $data['price_type'] = $request->input('price_type');            
+            $data['price_type'] = $request->input('price_type'); 
+            
+            $data['available_board'] = $request->input('ab');
+                       
             $data['card_rule'] = $request->input('card_rule');
             $data['booking_code'] = $request->input('booking_code');
             $data['no_of_days'] = $request->input('days_id_advance');            
@@ -643,11 +652,46 @@ class CustomplanController extends Controller {
             
             $abs = $request->input('abs');
             
+            $h_item = $request->input('hid_item');
+            //tb_custom_plan_items_inc_exc
             //$data['plan_season'] = $request->input('plan_season');
             
             //print_r($data); die;
             $data['status'] = 0;
 			//$data['user_id'] = $uid;
+            
+            $destinationPath = public_path() . '/uploads/properties_customplan_imgs/';
+            if (!is_null($request->file('plan_image1'))) {
+                $cplan_file = $request->file('plan_image1');
+                $cplan_filename = $cplan_file->getClientOriginalName();
+                $cplan_extension = $cplan_file->getClientOriginalExtension(); //if you need extension of the file
+                $cplan_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $cplan_extension;
+                $cplan_uploadSuccess = $cplan_file->move($destinationPath, $cplan_filename);
+                if ($cplan_uploadSuccess) {
+                    $data['plan_img1'] = $cplan_filename;
+                }
+            }  
+            if (!is_null($request->file('plan_image2'))) {
+                $cplan_file = $request->file('plan_image2');
+                $cplan_filename = $cplan_file->getClientOriginalName();
+                $cplan_extension = $cplan_file->getClientOriginalExtension(); //if you need extension of the file
+                $cplan_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $cplan_extension;
+                $cplan_uploadSuccess = $cplan_file->move($destinationPath, $cplan_filename);
+                if ($cplan_uploadSuccess) {
+                    $data['plan_img2'] = $cplan_filename;
+                }
+            }  
+            if (!is_null($request->file('plan_image3'))) {
+                $cplan_file = $request->file('plan_image3');
+                $cplan_filename = $cplan_file->getClientOriginalName();
+                $cplan_extension = $cplan_file->getClientOriginalExtension(); //if you need extension of the file
+                $cplan_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $cplan_extension;
+                $cplan_uploadSuccess = $cplan_file->move($destinationPath, $cplan_filename);
+                if ($cplan_uploadSuccess) {
+                    $data['plan_img3'] = $cplan_filename;
+                }
+            }  
+            $data['youtube_url'] = $request->input('plan_youtube_url');          
 			if(!is_null($request->input('property_id_details')))
 			{
 				$data['property_id'] = $request->input('property_id_details');
@@ -681,6 +725,16 @@ class CustomplanController extends Controller {
                             \DB::table('tb_custom_plan_available_boards')->insert($abs_data);
                         }
                     }
+                    if(!empty($h_item)){
+                        foreach($h_item as $si){
+                            $items_data = array(
+                                'custom_plan_id'=>$id,
+                                'item_id'=>$si,
+                                'item_inc_ex'=>$request->input('it_inc_exc_'.$si),
+                            );
+                            \DB::table('tb_custom_plan_items_inc_exc')->insert($items_data);
+                        }
+                    }                    
                     $tdata['custom_plan_id'] = $id;
                     \DB::table('tb_custom_plan_tags')->insert($tdata);
                     
@@ -747,6 +801,17 @@ class CustomplanController extends Controller {
                         \DB::table('tb_custom_plan_available_boards')->insert($abs_data);
                     }
                 }
+                if(!empty($h_item)){
+                    \DB::table('tb_custom_plan_items_inc_exc')->where('custom_plan_id', $edit_id)->delete();
+                    foreach($h_item as $si){
+                        $its_data = array(
+                            'custom_plan_id'=>$id,
+                            'item_id'=>$si,
+                            'item_inc_ex'=>$request->input('eit_inc_exc_'.$si),
+                        );
+                        \DB::table('tb_custom_plan_items_inc_exc')->insert($its_data);
+                    }
+                }
                 \DB::table('tb_custom_plan_tags')->where('custom_plan_id', $edit_id)->delete();
                 $tdata['custom_plan_id'] = $id;
                 \DB::table('tb_custom_plan_tags')->insert($tdata);
@@ -808,7 +873,7 @@ class CustomplanController extends Controller {
 	}
     
     function postCustomplandetails( Request $request)
-	{
+	{ 
 		$uid = \Auth::user()->id;
 		$rules['eplan_title'] = 'required';
         //print_r($request->all()); die;
@@ -825,8 +890,9 @@ class CustomplanController extends Controller {
             $data['max_stay'] = $request->input('emax_stay');
             
             $abs = $request->input('abs');
-            
-            //$data['status'] = 0;			
+            $h_item = $request->input('ehid_item');
+            //$data['status'] = 0;	
+            $data['available_board'] = $request->input('eab');		
 			if(!is_null($request->input('eproperty_id_details')))
 			{
 				$data['property_id'] = $request->input('eproperty_id_details');
@@ -860,7 +926,17 @@ class CustomplanController extends Controller {
                     \DB::table('tb_custom_plan_available_boards')->insert($abs_data);
                 }
             }            
-            
+            if(!empty($h_item)){
+                    \DB::table('tb_custom_plan_items_inc_exc')->where('custom_plan_id', $edit_id)->delete();
+                    foreach($h_item as $si){
+                        $its_data = array(
+                            'custom_plan_id'=>$edit_id,
+                            'item_id'=>$si,
+                            'item_inc_ex'=>$request->input('eit_inc_exc_'.$si),
+                        );
+                        \DB::table('tb_custom_plan_items_inc_exc')->insert($its_data);
+                    }
+                }
             $res['msg'] = 'Custom Plan updated Successfully';		
 			
 			$cplandata = array();
@@ -1010,7 +1086,40 @@ class CustomplanController extends Controller {
 		//$validator = Validator::make($request->all(), $rules);	
 		//if ($validator->passes()) {
 		      
-			$data['description'] = $request->input('eplan_description');       
+			$data['description'] = $request->input('eplan_description');
+            
+            $destinationPath = public_path() . '/uploads/properties_customplan_imgs/';
+            if (!is_null($request->file('eplan_image1'))) {
+                $cplan_file = $request->file('eplan_image1');
+                $cplan_filename = $cplan_file->getClientOriginalName();
+                $cplan_extension = $cplan_file->getClientOriginalExtension(); //if you need extension of the file
+                $cplan_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $cplan_extension;
+                $cplan_uploadSuccess = $cplan_file->move($destinationPath, $cplan_filename);
+                if ($cplan_uploadSuccess) {
+                    $data['plan_img1'] = $cplan_filename;
+                }
+            }  
+            if (!is_null($request->file('eplan_image2'))) {
+                $cplan_file = $request->file('eplan_image2');
+                $cplan_filename = $cplan_file->getClientOriginalName();
+                $cplan_extension = $cplan_file->getClientOriginalExtension(); //if you need extension of the file
+                $cplan_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $cplan_extension;
+                $cplan_uploadSuccess = $cplan_file->move($destinationPath, $cplan_filename);
+                if ($cplan_uploadSuccess) {
+                    $data['plan_img2'] = $cplan_filename;
+                }
+            }  
+            if (!is_null($request->file('eplan_image3'))) {
+                $cplan_file = $request->file('eplan_image3');
+                $cplan_filename = $cplan_file->getClientOriginalName();
+                $cplan_extension = $cplan_file->getClientOriginalExtension(); //if you need extension of the file
+                $cplan_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $cplan_extension;
+                $cplan_uploadSuccess = $cplan_file->move($destinationPath, $cplan_filename);
+                if ($cplan_uploadSuccess) {
+                    $data['plan_img3'] = $cplan_filename;
+                }
+            }  
+            $data['youtube_url'] = $request->input('eplan_youtube_url');         
 			//print_r($staying_available_days);
     		$data['updated'] = date('Y-m-d h:i:s');
             $edit_id = $request->input('desc_edit_id');

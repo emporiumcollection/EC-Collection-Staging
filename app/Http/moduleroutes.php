@@ -60,9 +60,20 @@
                     Route::controller('events', 'EventsController');
                     Route::controller('eventpackages', 'EventpackagesController');
                     Route::controller('eventreservations', 'EventreservationsController');
-                    //Route::controller('storecategories', 'StorecategoriesController');
+                    Route::controller('storecategories', 'StorecategoriesController');
                     Route::controller('customplan', 'CustomplanController');
-                    //Route::controller('teams', 'TeamsController');
+                    Route::controller('teams', 'TeamsController');
                     Route::controller('globalcustomplan', 'GlobalcustomplanController');
                     Route::controller('vatclass', 'VatclassController');
+                    Route::controller('customplanitems', 'CustomplanitemsController');
+                    Route::controller('venue', 'VenueController');
+                    Route::controller('eventtype', 'EventtypeController');
+                    Route::controller('includes', 'IncludesController');
+                    Route::controller('excludes', 'ExcludesController');
+                    Route::controller('languages', 'LanguagesController');
+                    Route::controller('eventwhattodo', 'EventwhattodoController');
+                    Route::controller('eventnotallowed', 'EventnotallowedController');
+                    Route::controller('eventbeforeyougo', 'EventbeforeyougoController');
+                    Route::controller('highlight', 'HighlightController');
+                    Route::controller('meetingpoint', 'MeetingpointController');
                     ?>

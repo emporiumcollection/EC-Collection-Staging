@@ -43,16 +43,18 @@
 				
 				@if($propertyDetail['data']->architecture_title!='' && $propertyDetail['data']->architecture_desciription!='')
 					<li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
-				@endif
+				@endif				
 				
-				<?php /*
 				@if($propertyDetail['data']->restaurant_ids!='' || $propertyDetail['data']->spa_ids!='' || $propertyDetail['data']->bar_ids!='')
 					<li><a href="{{URL::to($propertyDetail['data']->property_slug.'/restaurant')}}">RESTAURANT & BAR</a></li>
-				@endif 
-				*/ ?>
+				@endif				
 				
 				@if($propertyDetail['data']->video_title!='')
 					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
+				@endif
+                
+                @if($propertyDetail['data']->back_link!='')
+					<li><a href="{{ (strpos($propertyDetail['data']->back_link, 'http://') !== false) ? $propertyDetail['data']->back_link : 'http://'.$propertyDetail['data']->back_link }}" class="" target="_blank">Latest News</a></li>
 				@endif
 				
                 <li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK {{$propertyDetail['data']->property_name}} </a></li>

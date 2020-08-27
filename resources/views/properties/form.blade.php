@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('sximo/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}" rel="stylesheet">
 <style>
 .radio-inline{ padding-left: 0px;}
+.bootstrap-tagsinput{ width: 100%; }
 </style>
 <div class="page-content row">
     <!-- Page header -->
@@ -34,6 +36,7 @@
                     <li class=""><a href="#HotelAdress" data-toggle="tab">Hotel Adress</a></li>
                     <li class=""><a href="#Owner" data-toggle="tab">Owner</a></li>
                     <li class=""><a href="#reports" data-toggle="tab">Reports</a></li>
+                    <li class=""><a href="#seo" data-toggle="tab">SEO</a></li>
                     <!--<li class="AgentAgency" ><a href="#AgentAgency" data-toggle="tab" >Agents</a></li>-->
                 </ul>
                 <div class="tab-content">
@@ -148,6 +151,22 @@
                                                 {!! Form::text('baby_tax', $baby_tax, array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
                                             </div>
                                         </div>
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <div class="form-group  " >
+                                    <label for="Hotel Unit Tax" class="control-label col-md-4 text-left">Hotel Unit Tax </label>
+                                    <div class="col-md-6">
+                                        <select name="hotel_unit_tax" class="select2">
+                                            <option>Select</option>
+                                            @if(!empty($vat_classes))
+                                                @foreach($vat_classes as $si)
+                                                    <option value="{{$si->id}}" {{($row['hotel_unit_tax'] == $si->id) ? " selected='selected' " : '' }} >{{$si->vat_tax_name}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div> 
                                     <div class="col-md-2">
 
@@ -392,7 +411,17 @@
 										<a href="{{URL::to('spa')}}" >Add Spas</a>
                                     </div>
                                 </div>
+                                
+                                <div class="form-group  " >
+                                    <label for="back_link" class=" control-label col-md-4 text-left"> Back Link </label>
+                                    <div class="col-md-6">
+                                        <input name="back_link" id="back_link" type="text" class="form-control" value="{{$row['back_link']}}" /> 
+                                    </div> 
+                                    <div class="col-md-2">
 
+                                    </div>
+                                </div>
+                                
                             </div>
 
                             <div class="tab-pane m-t" id="yachtinfo">
@@ -657,7 +686,125 @@
 
                                             </div>
                                         </div> 
+                                        
+                                        <div class="form-group">
+                                            <label for="main_image1" class=" control-label col-md-4 text-left"> Portraite Image1 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='architecture_portraite_image1' id='architecture_portraite_image1'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['architecture_portraite_image1'],'/uploads/properties_subtab_imgs/') !!}
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-2">
 
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="main_image2" class=" control-label col-md-4 text-left"> Portraite Image2 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='architecture_portraite_image2' id='architecture_portraite_image2'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['architecture_portraite_image2'],'/uploads/properties_subtab_imgs/') !!}
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="main_image3" class=" control-label col-md-4 text-left"> Portraite Image3 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='architecture_portraite_image3' id='architecture_portraite_image3'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['architecture_portraite_image3'],'/uploads/properties_subtab_imgs/') !!}
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="main_image4" class=" control-label col-md-4 text-left"> Portraite Image4 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='architecture_portraite_image4' id='architecture_portraite_image4'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['architecture_portraite_image4'],'/uploads/properties_subtab_imgs/') !!}
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="main_image5" class=" control-label col-md-4 text-left"> Landscape Image1 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='architecture_landscape_image1' id='architecture_landscape_image1'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['architecture_landscape_image1'],'/uploads/properties_subtab_imgs/') !!}
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="main_image6" class=" control-label col-md-4 text-left"> Landscape Image2 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='architecture_landscape_image2' id='architecture_landscape_image2'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['architecture_landscape_image2'],'/uploads/properties_subtab_imgs/') !!}
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="Title" class="control-label col-md-4 text-left"> Landscape Image1 hover text </label>
+                                            <div class="col-md-6">
+                                                {!! Form::text('architecture_hovertext_image1', $row['architecture_landscapehovertext_image1'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="form-group  " >
+                                            <label for="Title" class=" control-label col-md-4 text-left"> Landscape Image2 hover text </label>
+                                            <div class="col-md-6">
+                                                {!! Form::text('architecture_hovertext_image2', $row['architecture_landscapehovertext_image2'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="form-group  " >
+                                            <label for="Title" class=" control-label col-md-4 text-left"> Sub-title </label>
+                                            <div class="col-md-6">
+                                                {!! Form::text('architecture_sub_title', $row['architecture_sub_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div> 
+
+                                        <div class="form-group  " >
+                                            <label for="Description" class=" control-label col-md-4 text-left"> Sub-description </label>
+                                            <div class="col-md-6">
+                                                <textarea name="architecture_sub_desciription" class="form-control">{{$row['architecture_sub_desciription']}}</textarea> 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div> 
+                                        
                                         <div class="form-group  " >
                                             <label for="Image" class=" control-label col-md-4 text-left"> Image </label>
                                             <div class="col-md-6">
@@ -672,7 +819,23 @@
 
                                             </div>
                                         </div>
+                                        
+                                        <div class="form-group  " >
+                                            <label for="Image" class=" control-label col-md-4 text-left"> Image 2 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='architecture_image2' id='architecture_image2'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['architecture_image'],'/uploads/properties_subtab_imgs/') !!}
 
+                                                </div>					
+
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+
+                                        
                                         <div class="form-group">
                                             <label for="Video Type" class=" control-label col-md-4 text-left"> Video Type </label>
                                             <div class="col-md-6"> 
@@ -2523,7 +2686,346 @@
                         </div>
 
                     </div>
+                    
+                    
+                    <div class="tab-pane m-t " id="seo"> 
+                        
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#MetaTags" data-toggle="tab">Meta Tags</a></li>
+                            <li class=""><a href="#OpenGraph" data-toggle="tab">Open Graph</a></li>
+                            <li class=""><a href="#TwitterCard" data-toggle="tab">Twitter Card</a></li>                                                     
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane m-t active" id="MetaTags">                        
+                        
+                                <div class="form-group  " >
+                                    <label for="meta_title" class=" control-label col-md-4 text-left"> Meta Title </label>
+                                    <div class="col-md-6">                                
+                                        {!! Form::text('meta_title', (!empty($metatags)) ? $metatags->meta_title : '', array('class'=>'form-control', 'placeholder'=>'' )) !!}                                
+                                     </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                 					
+                                <div class="form-group  " >
+                                    <label for="meta_description" class=" control-label col-md-4 text-left"> Meta Description </label>
+                                    <div class="col-md-6">
+                                        {!! Form::textarea('meta_description', (!empty($metatags)) ? $metatags->meta_description : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                 
+                                <div class="form-group  " >
+                                    <label for="meta_keywords" class=" control-label col-md-4 text-left"> Meta Keywords </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('meta_keywords', (!empty($metatags)) ? $metatags->meta_keywords : '',array('class'=>'form-control', 'placeholder'=>'', 'data-role'=>'tagsinput'  )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                 
+                                <div class="form-group hidden" >
+                                    <label for="canonical_link" class=" control-label col-md-4 text-left"> Canonical link </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('canonical_link', (!empty($metatags)) ? $metatags->canonical_link : '',array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="tab-pane m-t" id="OpenGraph"> 
+                                <div class="form-group  " >
+                                    <label for="og_title" class=" control-label col-md-4 text-left"> OG Title </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_title', (!empty($metatags)) ? $metatags->og_title : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group  " >
+                                    <label for="og_description" class=" control-label col-md-4 text-left"> OG Description </label>
+                                    <div class="col-md-6">
+                                        {!! Form::textarea('og_description', (!empty($metatags)) ? $metatags->og_description : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group  " >
+                                    <label for="og_url" class=" control-label col-md-4 text-left"> OG url </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_url', (!empty($metatags)) ? $metatags->og_url : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                 
+                                <div class="form-group  " >
+                                    <label for="type" class=" control-label col-md-4 text-left"> OG type </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_type', (!empty($metatags)) ? $metatags->og_type : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+                                
+                                <div class="form-group" style="display: none;">
+                                    <label for="og_image" class=" control-label col-md-4 text-left"> OG Image </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_image', (!empty($metatags)) ? $metatags->og_image : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                <!-- upload or link section --!>
+                                <div class="form-group">
+                                    <label for="Video Type" class=" control-label col-md-4 text-left"> Image Type </label>
+                                    <div class="col-md-6"> 
+                                        <label class='radio radio-inline'>
+                                            <input type='radio' name='og_image_type' value ='upload' id='og_image_upload' <?php if(!empty($metatags)){ echo ($metatags->og_upload_type == 'upload') ? 'checked="checked"' : ''; } ?> /> Upload 
+                                        </label>
+                                        <label class='radio radio-inline'>
+                                            <input type='radio' name='og_image_type' value ='link' id='og_image_type_link' <?php if(!empty($metatags)){ echo($metatags->og_upload_type == 'link') ?  'checked="checked"' : '';} ?> /> Link 
+                                        </label> 
+                                    </div> 
 
+                                </div>
+
+                                <div class="form-group og-image-type-upload" style="display:none;" >
+                                    <label for="og_image" class=" control-label col-md-4 text-left"> Image </label>
+                                    <div class="col-md-6">
+                                        <input  type='file' name='og_image_type_upload' id='og_image_type_upload'  />
+                                        <div >
+                                        @if(!empty($metatags))
+                                            {!! SiteHelpers::showUploadedFile($metatags->og_image,'/uploads/properties_subtab_imgs/') !!} 
+                                        @endif   
+                                        </div>					
+
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+
+                                <div class="og-image-type-link" style="display:none;" >
+                                    
+                                    <div class="form-group" >
+                                        <label for="og image Link" class=" control-label col-md-4 text-left"> Link </label>
+                                        <div class="col-md-8">
+                                            <input type='text' name='og_image_type_link' id='og_image_type_link' class="form-control" value="<?php echo (!empty($metatags)) ? $metatags->og_image_link : ''; ?>" />
+                                                                                        
+                                        </div> 
+
+
+                                    </div>
+                                    
+                                </div>
+                                        
+                                <!-- End upload or link section --!>
+                                
+                                <div class="form-group" style="display: none;">
+                                    <label for="og_image_width" class=" control-label col-md-4 text-left"> OG Image Width </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_image_width', (!empty($metatags)) ? $metatags->og_image_width : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                 
+                                <div class="form-group" style="display: none;">
+                                    <label for="og_image_height" class=" control-label col-md-4 text-left"> OG Image Height </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_image_height', (!empty($metatags)) ? $metatags->og_image_height : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group  " >
+                                    <label for="og_sitename" class=" control-label col-md-4 text-left"> OG Sitename </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_sitename', (!empty($metatags)) ? $metatags->og_sitename : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+        
+                                <div class="form-group  " >
+                                    <label for="og_locale" class=" control-label col-md-4 text-left"> OG Locale </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('og_locale', (!empty($metatags)) ? $metatags->og_locale : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="tab-pane m-t" id="TwitterCard">
+                                <div class="form-group  " >
+                                    <label for="article_section" class=" control-label col-md-4 text-left"> Article section </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('article_section', (!empty($metatags)) ? $metatags->article_section : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+        
+                                <div class="form-group  " >
+                                    <label for="article_tags" class=" control-label col-md-4 text-left"> Article tags </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('article_tags', (!empty($metatags)) ? $metatags->article_tags : '',array('class'=>'form-control', 'placeholder'=>'', 'data-role'=>'tagsinput' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+                                
+                                <div class="form-group  " >
+                                    <label for="twitter_url" class=" control-label col-md-4 text-left">Twitter url </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('twitter_url', (!empty($metatags)) ? $metatags->twitter_url : '',array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+                                
+                                <div class="form-group  " >
+                                    <label for="twitter_title" class=" control-label col-md-4 text-left"> Twitter title </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('twitter_title', (!empty($metatags)) ? $metatags->twitter_title : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+                                
+                                <div class="form-group  " >
+                                    <label for="twitter_description" class=" control-label col-md-4 text-left"> Twitter description </label>
+                                    <div class="col-md-6">
+                                        {!! Form::textarea('twitter_description', (!empty($metatags)) ? $metatags->twitter_description : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" style="display: none;">
+                                    <label for="twitter_image" class=" control-label col-md-4 text-left">Twitter image</label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('twitter_image', (!empty($metatags)) ? $metatags->twitter_image : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+                                
+                                <!-- upload or link section --!>
+                                <div class="form-group">
+                                    <label for="Video Type" class=" control-label col-md-4 text-left"> Image Type </label>
+                                    <div class="col-md-6"> 
+                                        <label class='radio radio-inline'>
+                                            <input type='radio' name='twitter_image_type' value ='upload' id='twitter_image_upload' @if(!empty($metatags)) @if($metatags->twitter_upload_type == 'upload') checked="checked" @endif @endif /> Upload 
+                                        </label>
+                                        <label class='radio radio-inline'>
+                                            <input type='radio' name='twitter_image_type' value ='link' id='twitter_image_link' @if(!empty($metatags)) @if($metatags->twitter_upload_type == 'link') checked="checked" @endif  @endif  /> Link 
+                                        </label> 
+                                    </div> 
+
+                                </div>
+
+                                <div class="form-group twitter-image-type-upload" style="display:none;" >
+                                    <label for="twitter_image" class=" control-label col-md-4 text-left"> Image </label>
+                                    <div class="col-md-6">
+                                        <input  type='file' name='twitter_image_type_upload' id='twitter_image_type_upload'  />
+                                        <div >
+                                            @if(!empty($metatags))
+                                                {!! SiteHelpers::showUploadedFile($metatags->twitter_image,'/uploads/properties_subtab_imgs/') !!}
+                                            @endif    
+                                        </div>					
+
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+
+                                <div class="twitter-image-type-link" style="display:none;" >
+                                    
+                                    <div class="form-group" >
+                                        <label for="twitter image Link" class=" control-label col-md-4 text-left"> Link </label>
+                                        <div class="col-md-8">
+                                            <input type='text' name='twitter_image_type_link' id='twitter_image_type_link' class="form-control" value="<?php echo (!empty($metatags)) ? $metatags->twitter_image_link : ''; ?>" />
+                                                                                        
+                                        </div> 
+
+
+                                    </div>
+                                    
+                                </div>
+                                        
+                                <!-- End upload or link section --!>
+                                <div class="form-group  " >
+                                    <label for="twitter_domain" class=" control-label col-md-4 text-left"> Twitter domain </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('twitter_domain', (!empty($metatags)) ? $metatags->twitter_domain : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div> 
+                                
+                                <div class="form-group  " >
+                                    <label for="twitter_card" class=" control-label col-md-4 text-left"> Twitter card </label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('twitter_card', (!empty($metatags)) ? $metatags->twitter_card : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group  " >
+                                    <label for="twitter_creator" class=" control-label col-md-4 text-left">Twitter creator</label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('twitter_creator', (!empty($metatags)) ? $metatags->twitter_creator : '',array('class'=>'form-control', 'placeholder'=>'' )) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>      
+                                
+                                <div class="form-group  " >
+                                    <label for="twitter_site" class=" control-label col-md-4 text-left">Twitter Site</label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('twitter_site', (!empty($metatags)) ? $metatags->twitter_site : '',array('class'=>'form-control', 'placeholder'=>'')) !!} 
+                                    </div> 
+                                    <div class="col-md-2">
+        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                          
+
+                    </div>
+                    
+                    
                     <!--<div class="tab-pane m-t" id="AgentAgency" >
                                                                     
                       <div class="form-group  " >
@@ -2660,10 +3162,66 @@
                 </div>
             </div>		 
         </div>	
-    </div>			 
+    </div>		
+    <script src="{{ asset('sximo/js/typeahead.min.js')}}"></script>
+    <script src="{{ asset('sximo/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>	 
     <script type="text/javascript">
         $(document).ready(function () {
+            
+            $('input[name="meta_keywords"]').tagsinput({
+              itemText: 'label'
+            });
+            $('input[name="article_tags"]').tagsinput();
+            
+            
+            /* OG Upload Image section */
+            if ($('input[type="radio"][id="og_image_upload"]').is(":checked"))
+            {
+                $(".og-image-type-upload").show();
+                $(".og-image-type-link").hide();
+            }
 
+            if ($('input[type="radio"][id="og_image_type_link"]').is(":checked"))
+            {
+                $(".og-image-type-upload").hide();
+                $(".og-image-type-link").show();                
+            }
+
+            $('input[type="radio"][id="og_image_upload"]').on('ifChecked', function () {
+                $(".og-image-type-upload").show();
+                $(".og-image-type-link").hide();
+            });
+
+            $('input[type="radio"][id="og_image_type_link"]').on('ifChecked', function () {
+                $(".og-image-type-upload").hide();
+                $(".og-image-type-link").show();
+            });
+            /* End Upload Image */
+            
+            /* Twitter Upload Image section */
+            if ($('input[type="radio"][id="twitter_image_upload"]').is(":checked"))
+            {
+                $(".twitter-image-type-upload").show();
+                $(".twitter-image-type-link").hide();
+            }
+
+            if ($('input[type="radio"][id="twitter_image_link"]').is(":checked"))
+            {
+                $(".twitter-image-type-upload").hide();
+                $(".twitter-image-type-link").show();                
+            }
+
+            $('input[type="radio"][id="twitter_image_upload"]').on('ifChecked', function () { console.log("heel");
+                $(".twitter-image-type-upload").show();
+                $(".twitter-image-type-link").hide();
+            });
+
+            $('input[type="radio"][id="twitter_image_link"]').on('ifChecked', function () { console.log("ggg");
+                $(".twitter-image-type-upload").hide();
+                $(".twitter-image-type-link").show();
+            });
+            /* End Upload Image */
+            
             $("#property_cat_ids").jCombo("{{ URL::to('properties/comboselect?filter=tb_packages:id:package_title') }}",
             {  input_param: 'allow_user_groups', parent_value: '{{\CommonHelper::getusertype("users-b2c")}}', selected_value : '{{ $property_category }}', condition_param: 'find_in_set' });
 

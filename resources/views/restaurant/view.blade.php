@@ -43,7 +43,7 @@
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>Desciription</td>
-						<td>{{ $row->desciription }} </td>
+						<td>{{ $row->description }} </td>
 						
 					</tr>
 				

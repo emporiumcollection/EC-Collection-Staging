@@ -28,7 +28,7 @@ class DashboardController extends Controller {
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.dashboard':'dashboard.index'; 
-             
+        //print_r($file_name); die;     
         $u_id = \Session::get('uid');  
         //echo $u_id;
         //print_r($request->session()->all()); die;
@@ -97,6 +97,49 @@ class DashboardController extends Controller {
                $this->data['module_id'] = (array_unique($module_id)); 
                $module_pur = \DB::table('tb_module')->wherein('module_id', $module_id)->get();
                //print_r($module_pur); die;*/                         
+            }elseif($gp_id=="supplier"){
+               
+               $this->data['blogs'] = \DB::table('tb_post_articles')->join('tb_news_categories', 'tb_post_articles.cat_id', '=' , 'tb_news_categories.cat_id')->select( 'title_pos_1', 'description_pos_1', 'featured_image', 'external_link')->where('tb_news_categories.cat_slug', 'hotel-dashboard')->where('cat_status', 1)->get(); 
+                                             
+               $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+               
+               $this->data['setupslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+               
+               $prop_id = 0;
+               $property_name = '';
+               /*$obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+               if(!empty($obj_property)){
+                    $prop_id = $obj_property->id;
+                    $property_name = $obj_property->property_name;
+               }*/
+               $this->data['pid'] = $prop_id;
+               
+               $this->data['hotel_name'] = $property_name;
+               
+               //$this->data['cat_types'] = (new PropertiesController)->find_categories_room($prop_id);
+               $this->data['cat_types'] = array();    
+                                                  
+            }elseif($gp_id=="tour-guide"){
+               
+               $this->data['blogs'] = \DB::table('tb_post_articles')->join('tb_news_categories', 'tb_post_articles.cat_id', '=' , 'tb_news_categories.cat_id')->select( 'title_pos_1', 'description_pos_1', 'featured_image', 'external_link')->where('tb_news_categories.cat_slug', 'hotel-dashboard')->where('cat_status', 1)->get(); 
+                                             
+               $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+               
+               $this->data['setupslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+               
+               $prop_id = 0;
+               $property_name = '';
+               /*$obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+               if(!empty($obj_property)){
+                    $prop_id = $obj_property->id;
+                    $property_name = $obj_property->property_name;
+               }*/
+               $this->data['pid'] = $prop_id;
+               
+               $this->data['hotel_name'] = $property_name;
+               
+               //$this->data['cat_types'] = (new PropertiesController)->find_categories_room($prop_id);
+               $this->data['cat_types'] = array();                                       
             }
         }
 		return view($file_name,$this->data);

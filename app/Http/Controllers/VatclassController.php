@@ -143,7 +143,9 @@ class VatclassController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_vatclass');
-				
+			
+            $data['vat_tax_amount'] = $request->input('vat_tax_amount_type');
+            	
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))

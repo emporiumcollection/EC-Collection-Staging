@@ -152,7 +152,7 @@
                         <a class="nav-link" data-toggle="tab" href="#terms_and_conditions">Terms and conditions</a>
                     </li>
                 </ul>
-                <form id="frm_add_custom_plan_details" class="add_custom_plan_details">                 
+                <form id="frm_add_custom_plan_details" class="add_custom_plan_details" enctype="multipart/form-data">                 
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane tc-toppadding active" id="details">
@@ -177,36 +177,49 @@
                                     </select>
                                 </div>        				                                        
                                 <div class="form-group col-lg-8">
-        							<label for="Priority">Discount</label>
+        							<label for="Priority">Price</label>
         							<input type="text" name="plan_price" id="plan_price" class="form-control" />
         						</div>
                                 <div class="form-group col-lg-4">
-                                    <label for="Type">Discount Type</label>
+                                    <label for="Type">Price Type</label>
                                     <select name="price_type" id="price_type" class="form-control">
                                         <option value="0">Percentage</option>
                                         <option value="1">Fixed</option>
                                     </select>											
         						</div>	
+                                
                                 <div class="form-group col-lg-12">
-                                    <label for="Type">Available Boards</label>
+                                    <label for="Type">Items</label>
                                     <div class="boards">
-                                        @if(!empty($boards))
-                                            @foreach($boards as $si)
+                                        @if(!empty($cp_items))
+                                            @foreach($cp_items as $si)
                                             <div class="row abs-padding">
                                                 <div class="col-sm-6">
-                                                    {{$si->board_name}}
-                                                    <input type="hidden" name="abs[]" value="{{$si->id}}">
+                                                    {{$si->title}}
+                                                    <input type="hidden" name="hid_item[]" value="{{$si->id}}">
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <label class="radio-inline"><input type="radio" name="ab_inc_exc_{{$si->id}}" value="0" checked="checked" ><span>Included</span></label>
+                                                    <label class="radio-inline"><input type="radio" name="it_inc_exc_{{$si->id}}" value="0" checked="checked" ><span>Included</span></label>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <label class="radio-inline"><input type="radio" name="ab_inc_exc_{{$si->id}}" value="1"><span>Excluded</span></label>
+                                                    <label class="radio-inline"><input type="radio" name="it_inc_exc_{{$si->id}}" value="1"><span>Excluded</span></label>
                                                 </div>
                                             </div>    
                                             @endforeach
                                         @endif    
-                                    </div>											
+                                    </div>
+                                </div>    
+                                
+                                <div class="form-group col-lg-12">
+                                    <label for="Type">Available Boards</label>
+                                    <select name="ab" class="select2">
+                                        <option value="0">Select</option>
+                                        @if(!empty($boards))
+                                            @foreach($boards as $si)
+                                                <option value="{{$si->id}}">{{$si->board_name}}</option>
+                                            @endforeach
+                                        @endif    
+                                    </select>											
         						</div>	
                                 <div class="form-group col-lg-12">
                                     <label for="Type">Card Rule</label>
@@ -422,6 +435,22 @@
         							<label for="Name">Description </label>        							
                                     <textarea name="plan_description" id="plan_description" class="form-control"></textarea> 
         						</div> 
+                                <div class="form-group col-lg-12">
+        							<label for="Name">Image1 </label>        							
+                                    <input type="file" name="plan_image1" class="form-control" />  
+        						</div>
+                                <div class="form-group col-lg-12">
+        							<label for="Name">Image2 </label>        							
+                                    <input type="file" name="plan_image2" class="form-control" />  
+        						</div>
+                                <div class="form-group col-lg-12">
+        							<label for="Name">Image3 </label>        							
+                                    <input type="file" name="plan_image3" class="form-control" />  
+        						</div>
+                                <div class="form-group col-lg-12">
+        							<label for="Name">Youtube Url </label>        							
+                                    <input type="text" name="plan_youtube_url" id="plan_youtube_url" class="form-control" >
+        						</div>
         						<div class="col-lg-12">
                                     <div class="smessage"></div>
                                 </div>					 
@@ -519,26 +548,39 @@
                                         <option value="1">Fixed</option>
                                     </select>											
         						</div>	
+                                
                                 <div class="form-group col-lg-12">
-                                    <label for="Type">Available Boards</label>
+                                    <label for="Type">Items</label>
                                     <div class="boards">
-                                        @if(!empty($boards))
-                                            @foreach($boards as $si)
+                                        @if(!empty($cp_items))
+                                            @foreach($cp_items as $si)
                                             <div class="row abs-padding">
                                                 <div class="col-sm-6">
-                                                    {{$si->board_name}}
-                                                    <input type="hidden" name="eabs[]" value="{{$si->id}}">
+                                                    {{$si->title}}
+                                                    <input type="hidden" name="ehid_item[]" value="{{$si->id}}">
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <label class="radio-inline"><input type="radio" name="eab_inc_exc_{{$si->id}}" value="0" checked="checked" ><span>Included</span></label>
+                                                    <label class="radio-inline"><input type="radio" name="eit_inc_exc_{{$si->id}}" value="0" checked="checked" class="eit_inc_exc" ><span>Included</span></label>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <label class="radio-inline"><input type="radio" name="eab_inc_exc_{{$si->id}}" value="1"><span>Excluded</span></label>
+                                                    <label class="radio-inline"><input type="radio" name="eit_inc_exc_{{$si->id}}" value="1"><span>Excluded</span></label>
                                                 </div>
                                             </div>    
                                             @endforeach
                                         @endif    
-                                    </div>											
+                                    </div>
+                                </div>    
+                                
+                                <div class="form-group col-lg-12">
+                                    <label for="Type">Available Boards</label>
+                                    <select name="eab" id="eab" class="select2">
+                                        <option value="0">Select</option>
+                                        @if(!empty($boards))
+                                            @foreach($boards as $si)
+                                                <option value="{{$si->id}}">{{$si->board_name}}</option>
+                                            @endforeach
+                                        @endif    
+                                    </select>											
         						</div>	
                                 <div class="form-group col-lg-12">
                                     <label for="Type">Card Rule</label>
@@ -752,13 +794,35 @@
         				</form>
                     </div>
                     <div class="tab-pane tc-toppadding fade" id="edescription">
-                        <form id="add_custom_plan_description" class="add_custom_plan_description">                               
+                        <form id="add_custom_plan_description" class="add_custom_plan_description" enctype="multipart/form-data">                               
                             <input type="hidden" name="desc_property_id" value="{{$pid}}" />
                             <input type="hidden" name="desc_edit_id" id="desc_edit_id" value="" />
         					<div class="row">        							
         						<div class="form-group col-lg-12">
         							<label for="Name">Description </label>        							
                                     <textarea name="eplan_description" id="eplan_description" class="form-control"></textarea> 
+        						</div>
+                                <div class="form-group col-lg-12">
+        							<label for="Image">Image 1 </label>        							
+                                    <input type="file" name="eplan_image1" class="form-control" /> 
+                                    <br />
+                                    <img id="eplan_image_preview1" width="100px" /> 
+        						</div>
+                                <div class="form-group col-lg-12">
+        							<label for="Image">Image 2 </label>        							
+                                    <input type="file" name="eplan_image2" class="form-control" /> 
+                                    <br />
+                                    <img id="eplan_image_preview2" width="100px" /> 
+        						</div>
+                                <div class="form-group col-lg-12">
+        							<label for="Image">Image 3 </label>        							
+                                    <input type="file" name="eplan_image3" class="form-control" /> 
+                                    <br />
+                                    <img id="eplan_image_preview3" width="100px" /> 
+        						</div>
+                                <div class="form-group col-lg-12">
+        							<label for="Name">Youtube Url </label>        							
+                                    <input type="text" name="eplan_youtube_url" id="eplan_youtube_url" class="form-control" >
         						</div> 
         						<div class="col-lg-12">
                                     <div class="descsmessage"></div>
@@ -946,11 +1010,17 @@ $(document).on('click', '.addCustomPlanDetails', function(){
     });     
 });
 
-function addCustomPlanDetails(){
+function addCustomPlanDetails(){ 
+
+    var form = $('#frm_add_custom_plan_details')[0];
+    var formData = new FormData(form);
     $.ajax({
         url: "{{ URL::to('customplan/updatecustomplandetails')}}",
         type: "post",
-        data: $("#frm_add_custom_plan_details").serializeArray(),
+        //data: $("#frm_add_custom_plan_details").serializeArray(),
+        processData: false,
+        contentType: false,
+        data: formData,
         dataType: "json",
         success: function(data){
             var html = '';
@@ -1040,7 +1110,7 @@ function edit_cseason_data(cseasonId){
                   var objcp_booking_days = data.booking_days;
                   var objcp_staying_days = data.staying_days;
                   //console.log(objseason);
-                  
+                  var objcpitems = data.cpitems;
                   console.log(objcpab);
                   
                   if(typeof objplan!='undefined'){
@@ -1060,6 +1130,23 @@ function edit_cseason_data(cseasonId){
                     $('#eplan_price').val(objplan.plan_price);
                     $('#eprice_type').val(objplan.price_type);
                     
+                    //for(int i=0; i < )
+                    if(objcpitems.length==0){                      
+                        $(".eit_inc_exc").each(function(){
+                           $(".eit_inc_exc").iCheck('check'); 
+                        });      
+                    }else{
+                        $.each(objcpitems, function(index, value){
+                            $('input:radio[name="eit_inc_exc_'+value.item_id+'"]').filter('[value="'+value.item_inc_ex+'"]').iCheck('check');      
+                        });
+                    }
+                    if(objplan.available_board != null){
+                        $('#eab').val(objplan.available_board);
+                        $('#eab').trigger('change');
+                    }else{
+                         $('#eab').val('0');
+                        $('#eab').trigger('change');    
+                    }
                     //for(int i=0; i < )
                     $.each(objcpab, function(index, value){
                         $('input:radio[name="eab_inc_exc_'+value.board_id+'"]').filter('[value="'+value.board_inc_ex+'"]').iCheck('check');      
@@ -1162,6 +1249,28 @@ function edit_cseason_data(cseasonId){
                     //$('input[name="estaying_available_days"]').val(objplan.price_type);
                     
                     $('#eplan_description').val(objplan.description);
+                    if(objplan.plan_img1!=null){
+                        $('#eplan_image_preview1').attr('src', "{{Url('/')}}"+"/uploads/properties_customplan_imgs/"+objplan.plan_img1);
+                        $('#eplan_image_preview1').css('display', '');
+                    }else{
+                        $('#eplan_image_preview1').attr('src', "");
+                        $('#eplan_image_preview1').css('display', 'none');
+                    }
+                    if(objplan.plan_img2!=null){
+                        $('#eplan_image_preview2').attr('src', "{{Url('/')}}"+"/uploads/properties_customplan_imgs/"+objplan.plan_img2);
+                        $('#eplan_image_preview2').css('display', '');
+                    }else{
+                        $('#eplan_image_preview2').attr('src', "");
+                        $('#eplan_image_preview2').css('display', 'none');
+                    }
+                    if(objplan.plan_img3!=null){
+                        $('#eplan_image_preview3').attr('src', "{{Url('/')}}"+"/uploads/properties_customplan_imgs/"+objplan.plan_img3);
+                        $('#eplan_image_preview3').css('display', '');
+                    }else{
+                        $('#eplan_image_preview3').attr('src', "");
+                        $('#eplan_image_preview3').css('display', 'none');
+                    }
+                    $('#eplan_youtube_url').val(objplan.youtube_url);
                     $('#eplan_terms_and_conditions').val(objplan.terms_and_condition);
                      
                     
@@ -1369,10 +1478,15 @@ $(document).on('click', '.editCustomPlanAP', function(e){
 });
 $(document).on('click', '.editCustomPlanDesc', function(e){
     e.preventDefault();
+    var form = $('#add_custom_plan_description')[0];
+    var formData = new FormData(form);
     $.ajax({
         url: "{{ URL::to('customplan/editcustomplandesc')}}",
         type: "post",
-        data: $("#add_custom_plan_description").serializeArray(),
+        //data: $("#add_custom_plan_description").serializeArray(),
+        data: formData,
+        processData: false,
+        contentType: false, 
         dataType: "json",
         success: function(data){
             var html = '';

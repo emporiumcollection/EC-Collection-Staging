@@ -13,7 +13,8 @@ $tabs = array(
 		'designer'			=> 'Designer',
         'contract'			=> 'Contract',
         'season'			=> 'Default Season',
-        'citytax'			=> 'City Tax'
+        'citytax'			=> 'City Tax',
+        'suppliercommission'=> 'Supplier commission'
 	);
 
 ?>

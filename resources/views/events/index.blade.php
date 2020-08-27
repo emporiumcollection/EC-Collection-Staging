@@ -21,11 +21,11 @@
 
 <div class="sbox animated fadeInRight">
 	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
-<div class="sbox-tools" >
-		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
-		@if(Session::get('gid') ==1)
-			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
-		@endif 
+        <div class="sbox-tools" >
+    		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
+    		@if(Session::get('gid') ==1)
+    			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
+    		@endif 
 		</div>
 	</div>
 	<div class="sbox-content"> 	
@@ -65,7 +65,7 @@
 						@endif 
 					@endif
 				@endforeach
-				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
+				<th width="150" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
 
@@ -97,7 +97,7 @@
 						@if($access['is_edit'] ==1)
 						<a  href="{{ URL::to('events/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
 						@endif
-												
+						<a  href="{{ URL::to('events/eventsettings/'.$row->id.'/types') }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_config') }}"><i class="fa fa-cogs "></i></a>						
 					
 				</td>				 
                 </tr>

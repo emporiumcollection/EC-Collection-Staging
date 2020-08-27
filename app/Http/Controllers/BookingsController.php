@@ -885,7 +885,7 @@ class BookingsController extends Controller {
             return Redirect::to('dashboard')
                             ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
         
-        $list_booking = \DB::table('tb_reservations')->select('tb_reservations.id', 'tb_properties.property_name', 'tb_properties.city', 'tb_properties.country')->join('tb_properties', 'tb_properties.id', '=', 'tb_reservations.property_id')->where('client_id', \Session::get('uid'))->get();
+        $list_booking = \DB::table('tb_reservations')->select('tb_reservations.id', 'tb_reservations.checkin_date', 'tb_reservations.checkout_date', 'tb_reservations.number_of_nights', 'tb_reservations.adult', 'tb_reservations.junior', 'tb_reservations.baby', 'tb_reservations.guest_title', 'tb_reservations.guest_names', 'tb_reservations.guest_email', 'tb_reservations.total_price', 'tb_reservations.booking_number', 'tb_properties.property_name', 'tb_properties.city', 'tb_properties.country')->join('tb_properties', 'tb_properties.id', '=', 'tb_reservations.property_id')->where('client_id', \Session::get('uid'))->get();
         $address = '';
         $final_array1 = array();
         if(count($list_booking)>0){
@@ -932,6 +932,8 @@ class BookingsController extends Controller {
         //echo "<pre>";*/
         //print_r($final_array1); die;
         $this->data["list_booking"] = json_encode($final_array1);
+        
+        $this->data['reservations'] = $list_booking;
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());        
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.bookings.index':'bookings.index';

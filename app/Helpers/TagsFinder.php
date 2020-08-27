@@ -58,7 +58,7 @@ class TagsFinder {
 			$proprty = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->get();
 		}
         foreach ($proprty as $propt) {
-            $tagStr .= "'" . $propt->property_name . "',";
+            $tagStr .= '"' . $propt->property_name . '",';
         }
         return substr($tagStr, 0, -1);
     }

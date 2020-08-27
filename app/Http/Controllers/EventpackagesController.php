@@ -85,7 +85,10 @@ class EventpackagesController extends Controller {
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
-		return view('eventpackages.index',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.eventpackages.index':'eventpackages.index';
+		//return view('eventpackages.index',$this->data);
+        return view($file_name,$this->data);
 	}	
 
 
@@ -120,7 +123,10 @@ class EventpackagesController extends Controller {
 			$uid = \Auth::user()->id;
 			$this->data['events'] = \DB::table('tb_events')->select('id','title')->where('user_id', $uid)->get();
         }
-		return view('eventpackages.form',$this->data);
+		//return view('eventpackages.form',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.eventpackages.form':'eventpackages.form';
+        return view($file_name,$this->data);
 	}	
 
 	public function getShow( $id = null)
@@ -141,7 +147,10 @@ class EventpackagesController extends Controller {
 		
 		$this->data['id'] = $id;
 		$this->data['access']		= $this->access;
-		return view('eventpackages.view',$this->data);	
+		//return view('eventpackages.view',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.eventpackages.view':'eventpackages.view';
+        return view($file_name,$this->data);	
 	}	
 
 	function postSave( Request $request)

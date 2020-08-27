@@ -27,7 +27,8 @@ $(document).ready(function () {
     });
     
     $(document).on('click', '#down-arrow', function (e) { 
-        $(".chooseadultroom").toggle();
+        /*$(".chooseadultroom").toggle();*/ console.log('hello');
+        $(".whopopup").css('display', '');
         $('.gs-searchbar-main-collection').css('display', 'none');
         e.stopPropagation();
     });
@@ -1931,4 +1932,16 @@ $(document).on('click', '.gs-sb-calendar-to', function(e){ console.log("hello");
 $(document).on('click', '.gs-sb-adult', function(e){
     $("#down-arrow").trigger('click');
     e.stopPropagation();
+});
+
+
+
+//new design 
+
+$(document).on("keyup", ".where", function () {
+    "" == $(this).val() ? ($(".wherepopup").hide(), $(".wherepopup").slideUp(300)) : $(".wherepopup").show();
+});
+
+$(".who-sol").click(function () {
+    $(".whopopup").show();
 });

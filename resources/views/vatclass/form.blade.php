@@ -57,6 +57,18 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
+								  </div> 
+                                  <div class="form-group  " >
+									<label for="Vat Tax Amount type" class=" control-label col-md-4 text-left"> Vat Tax Amount Type </label>
+									<div class="col-md-6">
+                                        <select name="vat_tax_amount_type" class="form-control">
+                                            <option value="0" {{$row['vat_tax_amount_type']==0 ? "selected='selected'" : '' }}>Fixed</option>
+                                            <option value="1" {{$row['vat_tax_amount_type']==1 ? "selected='selected'" : '' }}>Percentage</option>
+                                        </select>									   
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
 								  </div> 					
 								  <div class="form-group  " >
 									<label for="Vat Tax Status" class=" control-label col-md-4 text-left"> Vat Tax Status </label>

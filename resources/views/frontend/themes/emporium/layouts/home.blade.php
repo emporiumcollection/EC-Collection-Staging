@@ -4,13 +4,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content=" @yield('robots')">
     <meta name="keywords" content=" {{ CNF_APPNAME }}, @yield('meta_keywords') ">
     <meta name="description" content=" {{ CNF_APPNAME }} - @yield('meta_description') ">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title> {{ CNF_APPNAME }} - @yield('title') </title>
+    <title> {{ CNF_APPNAME }} - @yield('meta_title') </title>
     
+    @yield('meta_link_sitemap')
+    
+    <meta property="og:url" content="@yield('og_url')" />
+    <meta property="og:title" content="@yield('og_title')" />
+    <meta property="og:description" content="@yield('og_description')" />
+    <meta property="og:type" content="@yield('og_type')" />
+    <!--<meta property="og:image" content="@yield('og_image')" />
+    <meta property="og:image:width" content="@yield('og_image_width')" />
+    <meta property="og:image:height" content="@yield('og_image_height')" /> -->
+    @yield('og_image')
+    <meta property="og:site_name" content="@yield('og_sitename')" />
+    <meta property="og:locale" content="@yield('og_locale')" />
+    
+    <meta property="article:section" content="@yield('article_section')" />
+    @yield('article_tags')
+    
+    <meta property="twitter:url" content="@yield('twitter_url')" />
+    <meta property="twitter:title" content="@yield('twitter_title')" />
+    <meta property="twitter:description" content="@yield('twitter_description')" />
+    @yield('twitter_image')
+    <meta property="twitter:domain" content="@yield('twitter_domain')" />
+    <meta property="twitter:card" content="@yield('twitter_card')" />
+    <meta property="twitter:creator" content="@yield('twitter_creator')" />
+    <meta property="twitter:site" content="@yield('twitter_site')" />
+    <script type="application/ld+json">
+    @yield('jsonld')
+    </script> 
     <!-- Favicon Start -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/images/favicon/apple-icon-57x57.png') }}" />
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/images/favicon/apple-icon-60x60.png') }}" />

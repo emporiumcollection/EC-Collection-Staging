@@ -47,12 +47,14 @@
                   <h3>Welcome to the Emporium Voyage Members Club</h3> 
                   <div class="ai-sign-up-form-error-msg"></div>
                   <div class="ai-sign-up-form-success-msg"></div>
-                  <div class="reltv">
+                  <div class="reltv"> 
                   <select name="user_type" class="user-type" id="sel-user-type">
                      <option value="">I am:</option>
                      <option value="{!! CommonHelper::getusertype('hotel-b2b') !!}">Luxury Hotel</option>
                      <option value="{!! CommonHelper::getusertype('users-b2c') !!}">Luxury Traveler</option>
                      <option value="{!! CommonHelper::getusertype('advertiser-b2b') !!}">Bespoke Advertiser</option>
+                     <option value="{!! CommonHelper::getusertype('supplier') !!}">Supplier</option>
+                     <option value="{!! CommonHelper::getusertype('tour-guide') !!}">Tour Guide</option>
                   </select>
                   </div>
                   

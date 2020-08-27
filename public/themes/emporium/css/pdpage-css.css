@@ -723,6 +723,10 @@ position: absolute;
 
 @media screen and (max-width: 1024px) {
 	.sliderArrow a.nextClick{margin-left:125px;}
+    
+    .luxuryHotelSlider .carousel-caption{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 991px) {

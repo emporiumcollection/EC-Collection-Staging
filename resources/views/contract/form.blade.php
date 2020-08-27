@@ -45,7 +45,7 @@
                                     <label for="Contract Category" class=" control-label col-md-4 text-left"> Contract Category <span class="asterix"> * </span></label>
 									<div class="col-md-6">
 									  
-					                   {{--*/ $contracts_category_opt = array( 'general' => 'General' ,  'sign-up' => 'Sign up' , 'packages' => 'Packages' , 'hotels' => 'Hotels', 'commission' => 'Commission' ); /*--}}
+					                   {{--*/ $contracts_category_opt = array( 'general' => 'General' ,  'sign-up' => 'Sign up' , 'packages' => 'Packages' , 'hotels' => 'Hotels', 'commission' => 'Commission', 'supplier' => 'Supplier', 'supplier_commission' => 'Supplier Commission' ); /*--}}
 					                         <select name='contract_type' rows='5' required  class='select2  select2-offscreen'  >
                                                 <option value="">Select Type</option>
                         						{{--*/

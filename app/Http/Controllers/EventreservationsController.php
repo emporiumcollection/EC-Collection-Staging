@@ -97,7 +97,10 @@ class EventreservationsController extends Controller {
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
-		return view('eventreservations.index',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.eventreservations.index':'eventreservations.index';
+		//return view('eventreservations.index',$this->data);
+        return view($file_name,$this->data);
 	}	
 
 
@@ -133,7 +136,10 @@ class EventreservationsController extends Controller {
 			$this->data['events'] = \DB::table('tb_events')->select('id','title')->where('user_id', $uid)->get();
 			$this->data['proprty'] = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->where('user_id', $uid)->get();
         }
-		return view('eventreservations.form',$this->data);
+		//return view('eventreservations.form',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.eventreservations.form':'eventreservations.form';
+        return view($file_name,$this->data);
 	}	
 
 	public function getShow( $id = null)
@@ -154,7 +160,10 @@ class EventreservationsController extends Controller {
 		
 		$this->data['id'] = $id;
 		$this->data['access']		= $this->access;
-		return view('eventreservations.view',$this->data);	
+		//return view('eventreservations.view',$this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.eventreservations.view':'eventreservations.view';
+        return view($file_name,$this->data);	
 	}	
 
 	function postSave( Request $request)

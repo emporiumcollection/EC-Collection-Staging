@@ -138,44 +138,70 @@ class TagmanagerController extends Controller {
 	}	
 
 	function postSave( Request $request)
-	{
-		
+	{	
 		$rules = $this->validateForm();
+        /*if($request->input('id')==''){
+            $rules['tag_title'] = 'required';
+        }else{
+            $rules['tag_title_u'] = 'required'; 
+        }*/
+        $rules['tag_status'] = 'required'; 
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_tagmanager');
-				
-			if($request->input('id') =='')
-			{
-				$data['created'] = date('y-m-d h:i:s');
+			
+            $tag_title = $request->input('tag_title');
+            $tag_status = $request->input('tag_status');
+            $arr_title = array();
+            if($tag_title != ''){
+                $arr_title = explode(',', $tag_title);
+            }
+            //print_r($request->input('id'));
+			if($request->input('id')=='')
+			{                
+                if(!empty($arr_title)){
+                    $tag_array = array();
+                    foreach($arr_title as $ttl){
+                        $chk_ttl = \DB::table('tb_tags_manager')->where('tag_title', $ttl)->first();
+                        if(empty($chk_ttl)){
+                            $tag_array[] = array('tag_title'=>$ttl, 'tag_status'=>$tag_status, 'created'=>date('y-m-d h:i:s'));
+                        }            
+                    } 
+                    if(!empty($tag_array)){ \DB::table('tb_tags_manager')->insert($tag_array); }       
+                }                
+				//$data['created'] = date('y-m-d h:i:s');
 			}
 			else
-			{
+			{    //print_r("fff"); die;
+			    $data['tag_title'] = $request->input('tag_title_u'); 
 				$data['updated'] = date('y-m-d h:i:s');
-			}
-			$data['parent_tag_id'] = $request->input('parent_tag_id');
-			$id = $this->model->insertRow($data , $request->input('id'));
+                //print_r($data); die;
+                \DB::table('tb_tags_manager')->where('id', $request->input('id'))->update($data);
+			} //die;
+            //print_r($data); die;
+			//$data['parent_tag_id'] = $request->input('parent_tag_id');
+			//$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
 			{
-				$return = 'tagmanager/update/'.$id.'?return='.self::returnUrl();
+				$return = 'tagmanager?return='.self::returnUrl();//$return = 'tagmanager/update/'.$id.'?return='.self::returnUrl();
 			} else {
 				$return = 'tagmanager?return='.self::returnUrl();
 			}
-
+            
 			// Insert logs into database
 			if($request->input('id') =='')
 			{
-				\SiteHelpers::auditTrail( $request , 'New Data with ID '.$id.' Has been Inserted !');
+				\SiteHelpers::auditTrail( $request , 'New Data Has been Inserted !');
 			} else {
-				\SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
+				\SiteHelpers::auditTrail($request ,'Data Has been Updated !');
 			}
 
 			return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
 			
 		} else {
 
-			return Redirect::to('tagmanager/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('tagmanager/update/')->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
@@ -224,6 +250,37 @@ class TagmanagerController extends Controller {
 	  }
 	  return $folder_tree_array;
 	}
-
+    
+    function addtagtitle(Request $request){
+        //$mid = $request->input('mID');  
+        $data['tag_title'] = $request->input('menuTitle');
+        $data['tag_status'] = 1;
+        $data['created'] = date('y-m-d h:i:s');
+        
+        $id = \DB::table('tb_tags_manager')->insertGetId($data);
+        if($id > 0){
+            $res['status']='success';
+            $res['newtag'] = \DB::table('tb_tags_manager')->where('id', $id)->first();    
+        }else{
+            $res['status']='error'; 
+        }
+        /*$arr_title = array();
+        if($tag_title != ''){
+            $arr_title = explode(',', $tag_title);
+        }
+        if(!empty($arr_title)){
+            $tag_array = array();
+            foreach($arr_title as $ttl){
+                $chk_ttl = \DB::table('tb_tags_manager')->where('tag_title', $ttl)->first();
+                if(empty($chk_ttl)){
+                    $tag_array[] = array('tag_title'=>$ttl, 'tag_status'=>$tag_status, 'created'=>date('y-m-d h:i:s'));
+                }            
+            } 
+            if(!empty($tag_array)){ \DB::table('tb_tags_manager')->insert($tag_array); }       
+        }                
+		//$data['created'] = date('y-m-d h:i:s');
+		*/    
+        echo json_encode($res);
+    }
 
 }

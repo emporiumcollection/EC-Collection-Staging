@@ -44,14 +44,16 @@
 }
 .black-heading-big {
 	color: #ABA07C;
-	font-family: ACaslonPro-Regular;
+	/*font-family: ACaslonPro-Regular;*/
+    font-family: sf_ui_textregular;
 	font-size: 36px;
 	text-align: center;
 	font-weight: 700;
 }
 .sub-des-heading {
     color: #6b6b6b;
-    font-family: geomanist-light;
+    /*font-family: geomanist-light;*/
+    font-family: sf_ui_textregular;
     font-size: 16px;
     text-align: center;
 }
@@ -70,7 +72,8 @@
     padding: 15px 10px;
 }
 .choosen-input-align .chosen-container .chosen-results li {
-    font-family: AcaslonPro-Regular;
+    /*font-family: AcaslonPro-Regular;*/
+    font-family: sf_ui_textregular;
     font-size: 19px;
     padding: 15px 10px;
     text-align: left;
@@ -91,7 +94,8 @@
     border: 1px solid #252525;
     box-shadow: 0 0 0 0;
     color: #000;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
     font-size: 16px;
     padding: 8px 15px 8px 25px;
 }
@@ -103,7 +107,8 @@
 }
 .choosen-input-align .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
     color: #6b6b6b;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
 }
 .choosen-input-align .chosen-container .chosen-results li em {
     font-style: normal;
@@ -134,7 +139,8 @@
 }
 .sub-des-heading.suggestions-headin-tittle {
     color: #262626;
-    font-family: ACaslonPro-Regular;
+    /*font-family: ACaslonPro-Regular;*/
+    font-family: sf_ui_textregular;
     font-size: 18px;
     text-align: left;
 }
@@ -154,7 +160,8 @@
 }
 .suggestions-pannel-list-align a {
     color: #6b6b6b;
-    font-family: geomanist-light;
+    /*font-family: geomanist-light;*/
+    font-family: sf_ui_textregular;
     font-size: 17px;
     text-decoration: underline;
 }
@@ -208,7 +215,8 @@
 	border: 1px solid #fff;
 	color: #fff;
 	cursor: pointer;
-	font-family: Geomanist-Light;
+	/*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
 	font-size: 16px;
 	height: 199px;
 	letter-spacing: 4px;
@@ -273,7 +281,8 @@
 .custom-tooltip + .tooltip > .tooltip-inner {
     background-color: #D9DCD8;
     color: #262626;
-    font-family: geomanist-light;
+    /*font-family: geomanist-light;*/
+    font-family: sf_ui_textregular;
     font-size: 15px;
 }
 .custom-tooltip + .tooltip > .tooltip-arrow { 
@@ -283,7 +292,8 @@
 	background: #ABA07C;
 	border: medium none;
 	color: #fff;
-	font-family: Geomanist-Light;
+	/*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
 	font-size: 15px;
 	text-align: center;
 	text-decoration: none;
@@ -343,7 +353,8 @@
     border-radius: 0;
     color: #262626;
     float: left;
-    font-family: AcaslonPro-Regular;
+    /*font-family: AcaslonPro-Regular;*/
+    font-family: sf_ui_textregular;
     font-size: 18px;
     height: 50px;
     padding: 10px 5px;
@@ -354,7 +365,8 @@
     background-color: #ABA07C;
     border: medium none;
     border-radius: 0;
-    font-family: ACaslonPro-Regular;
+    /*font-family: ACaslonPro-Regular;*/
+    font-family: sf_ui_textregular;
     font-size: 18px;
     height: 50px;
     padding: 10px 5px;
@@ -372,7 +384,8 @@
 }
 .smalldes-label {
     color: #c4ccd3;
-    font-family: ACaslonPro-Regular;
+    /*font-family: ACaslonPro-Regular;*/
+    font-family: sf_ui_textregular;
     font-size: 15px;
     font-style: italic;
     margin: 0;
@@ -390,7 +403,8 @@
     border: 1px solid #6b6b6b;
     border-radius: 0;
     color: #6b6b6b;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
     height: 50px;
 }
 .margin-bottom-30{
@@ -398,7 +412,8 @@
 }
 .radio-inline.radio-btn-label {
     color: #262626;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
     font-size: 17px;
     margin-right: 25px;
     padding: 0;
@@ -420,7 +435,8 @@
 }
 .your-account-heading-align > h2 {
     color: #fff;
-    font-family: geomanist-light;
+    /*font-family: geomanist-light;*/
+    font-family: sf_ui_textregular;
     font-size: 30px;
     margin: 0;
     padding: 15px 10px;
@@ -450,7 +466,8 @@
 .ps-login-sign-up-common {
     color: #fff;
     display: inline-block;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
     font-size: 15px;
     padding: 15px 10px;
     text-align: center;
@@ -496,7 +513,8 @@
 }
 .agennt-des-caption {
     color: #6f7187;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
 }
 .agent-profile-outer-align {
     display: table;
@@ -538,7 +556,8 @@
 }
 .small-des-text {
     color: #6b6b6b;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
     font-size: 13px;
     text-align: center;
 }
@@ -652,7 +671,8 @@
 }
 .ps-big-form-heading {
     color: #fff;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
     font-size: 24px;
     text-transform: uppercase;
 }
@@ -704,7 +724,8 @@
 }
 .form-white-samml-des-text {
     color: #fff;
-    font-family: Geomanist-Light;
+    /*font-family: Geomanist-Light;*/
+    font-family: sf_ui_textregular;
     font-size: 14px;
 }
 .ps-form-heading-outer-align .form-white-samml-des-text {
@@ -734,7 +755,8 @@
     border: medium none;
     border-radius: 0;
     color: #fff;
-    font-family: ACaslonPro-Regular;
+    /*font-family: ACaslonPro-Regular;*/
+    font-family: sf_ui_textregular;
 }
 .ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all {
     background-color: #d9dcd8;

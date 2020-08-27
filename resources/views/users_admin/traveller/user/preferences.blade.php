@@ -297,14 +297,14 @@
                                 <h2 class="black-heading-big">When do you normally travel?</h2>
                             </div>
                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                <div id="t-preferences-picker" class="rsidebar datepic-max-width t-datepicker">
-                                    
-                                        <div class="t-check-in"></div>  
-                                        <div class="t-check-out"></div>
-                                        <input type="hidden" value="{{@isset($preferences->earliest_arrival) ? $preferences->earliest_arrival : ''}}" name="hid_preferences_arrive" id="hid_preferences_arrive">
-                                        <input type="hidden" value="{{@isset($preferences->late_check_out) ? $preferences->late_check_out : ''}}" name="hid_preferences_late_check_out" id="hid_preferences_late_check_out">  
-                                    
-                                </div>
+                                
+                                <div id="calendar-pick" >
+                                    <div id="daterangepicker-inline-container2" class="daterangepicker-inline"></div>
+                                    <input type="text" id="datetime_preferences" class="form-control">
+                                    <input type="hidden" value="{{@isset($preferences->earliest_arrival) ? $preferences->earliest_arrival : ''}}" name="preferences_arrive" id="hid_preferences_arrive">
+                                        <input type="hidden" value="{{@isset($preferences->late_check_out) ? $preferences->late_check_out : ''}}" name="preferences_late_check_out" id="hid_preferences_late_check_out">  
+                                    <div class="clearfix"></div>
+                                </div> 
                                 <div class="form-group">
     	<h2 class="black-heading-big">How long do you normally like to travel?</h2>
                                     <select class="form-control ps-input-style ps-input-width" name="stay_time" id="stay_time">
@@ -382,9 +382,9 @@
                     <div class="personalized-pefrences m--hide  pref-top-pad">
                         <div class="row">                                            
                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                <img src="{{URL::to('images/thank-you.gif')}}" style="width: 100%;" />
                             </div> 
-                            <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                            <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center m--padding-20">
                                 <h2 class="black-heading-big">Thank You</h2>
                             </div> 
                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
@@ -522,7 +522,7 @@
         }
         
         
-        $('#t-preferences-picker').tDatePicker({
+/*        $('#t-preferences-picker').tDatePicker({
             'numCalendar':'1',
             'autoClose':true,
             'durationArrowTop':'200',
@@ -539,8 +539,39 @@
             'dateCheckOut':chk_out_date,
             //'dateCheckIn':'@if(isset($_GET['preferences_arrive']) && $_GET['preferences_arrive']!=''){{$_GET['preferences_arrive']}}@else{{'null'}}@endif',
             //'dateCheckOut':'@if(isset($_GET['preferences_late_check_out']) && $_GET['preferences_late_check_out']!=''){{$_GET['preferences_late_check_out']}}@else{{'null'}}@endif'
+        });*/
+        
+        /*$('#datetime_preferences').daterangepicker({
+            opens: 'right',
+            autoApply: true,
+            autoUpdateInput: true,
+            startDate: chk_date, 
+            endDate: chk_out_date                
+        }, function(start, end, label) {
+            $('input[name="datetime_preferences"]').val(start.format('MM/DD/YYYY') + ' - ' +end.format('MM/DD/YYYY'));
+            $('input[name="preferences_arrive"]').val(start.format('YYYY-MM-DD'));
+            $('input[name="preferences_late_check_out"]').val(end.format('YYYY-MM-DD'));            
+            //console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });*/
+        
+        $('#datetime_preferences').daterangepicker();
+        /*var picker2 = $('#datetime_preferences').daterangepicker({ //console.log("hello");
+            //parentEl: "#daterangepicker-inline-container2",
+            autoApply: true,
+            autoUpdateInput: true,
+            startDate: chk_date, 
+            endDate: chk_out_date,  
+            locale:{
+                cancelLabel: 'Clear',
+            }
         });
         
+        picker2.on('apply.daterangepicker', function(ev, picker2) {
+            $('.onrange').html(picker2.startDate.format('DD-MM-YYYY') + ' -> ' + picker2.endDate.format('DD-MM-YYYY'));
+            $('.include-form').fadeIn("fast");
+        });*/
+        //picker2.data('daterangepicker').hide = function () {};
+        //picker2.data('daterangepicker').show();
         
         $('.personalized-service-checkbox-label').click(function (e) {
             $(this).toggleClass('active').siblings().removeClass('active');

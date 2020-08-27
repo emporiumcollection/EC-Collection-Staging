@@ -157,16 +157,17 @@ class CustomerController extends Controller {
             $code = rand(10000, 10000000);
                         
     		$obj_user  = \DB::table('tb_users')->where('email', trim($request->input('email')))->first();
- 
+            $obj_group = \DB::table('tb_groups')->where('name', 'Tour-Guide')->first();
+            
             $user_data['email'] = trim($request->input('email'));
             $user_data['activation'] = $code;
             $user_data['group_id'] = (int) $request->input('user_type');
             $user_data['mobile_number'] =trim($request->input('txtmobileNumber'));
             $user_data['mobile_code'] =trim($request->input('txtmobileDialcode'));
             $user_data['password'] = \Hash::make($request->input('password'));
-            $user_data['member_type'] = $request->input('member_type');
+            $user_data['member_type'] = $request->input('member_type') !='' ? $request->input('member_type') : 'lifestyle-membership';
             
-            if($request->input('user_type') == '3'):
+            if($request->input('user_type') == '3' || $request->input('user_type') == $obj_group->group_id):
                 $user_data['new_user'] = '1';
             endif;
             
@@ -2102,4 +2103,78 @@ $html .= '</div>';
         
         exit;     
     }
+    
+    public function supplier(){
+        if (!\Auth::check())
+            return Redirect::to('/');
+            
+        $user = User::find(\Session::get('uid'));
+        $this->data["guestUserData"]=$user;
+        $this->data['pageTitle'] = "Supplier Wizard";
+        $this->data['pageMetakey'] = "Supplier Wizard";
+        $this->data['pageMetadesc'] = "Supplier Wizard";
+        
+        /** sign up contracts start **/
+        //get contract during signup
+        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description','tb_users_contracts.is_required','tb_users_contracts.is_agree','tb_users_contracts.sort_num')->where('tb_users_contracts.contract_type','supplier')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
+        $resetContracts = array();
+        foreach($usersContracts as $si_contract){
+            $resetContracts[$si_contract->contract_id] = $si_contract;
+        }
+        $this->data['userContracts'] = $resetContracts;        
+        $this->data['contractdata'] = \CommonHelper::get_default_contracts('supplier');     
+        
+        /** sign up contracts end **/
+        
+        /** commission contracts start **/
+        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.*')->where('tb_users_contracts.contract_type','supplier_commission')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->first();
+        $contractdata = \CommonHelper::get_default_contracts('supplier_commission');
+        //print_r($usersContracts); die;
+        if(isset($usersContracts->contract_id)){ $this->data['commision_contractdata'] = $usersContracts; $this->data['commission_contract_selected']=true; }
+        else{ //$this->data['commision_contractdata'] = ((isset($contractdata["common"]))?$contractdata["common"]:array()); $this->data['commission_contract_selected']=false;
+            $this->data['commision_contractdata'] = ((isset($contractdata)) ? $contractdata : array()); $this->data['commission_contract_selected']=false;        
+         }
+        /** commission contracts end **/
+        //print_r($this->data['commision_contractdata']); die;
+        
+        $extra = \DB::table('tb_properties')->where('user_id', $user->id)->first();
+        $this->data['extra'] = $extra;
+        //print_r($extra); die;
+        $this->data['user'] = $user;
+        $property_assigned = \DB::table("tb_properties_users")->join('tb_properties', 'tb_properties_users.property_id', '=', 'tb_properties.id')->where('tb_properties_users.user_id', \Auth::user()->id)->first();
+        //$property_assigned = \DB::table('tb_properties')->where('assigned_user_id', $user->id)->first();
+        
+        $propid = '';
+        if(!empty($property_assigned)){
+            $propid = $property_assigned->id;
+        }
+        
+        $this->data['property_assigned'] = $property_assigned;
+        $this->data['assigned_propid'] = $propid;
+        
+        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'supplier-welcome-wizard')->where('slider_status', 1)->get();
+        
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->whereRaw('FIND_IN_SET('.$group_id.',allow_user_groups)')->where('package_status', 1)->get();
+        if($propid!=''){
+            $this->data['hotelcontacts'] = (new PropertiesController)->get_property_files($propid, 'Hotel Contracts');
+            $this->data['hotel_broch'] = (new PropertiesController)->get_property_files($propid, 'Hotel Brochure');
+        }        
+        
+        $this->data['active_tab']=$user->form_wizard;
+        
+        $this->data['fid'] = \Session::get('uid');
+        
+        $this->data['company_details'] = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
+        
+        $default_commission =  \DB::table('tb_settings')->where('key_value', 'supplier_commission')->first();
+        $this->data['default_commission'] = $default_commission;        
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
+        $t_f = 'whoiam';
+        //if(isset($extra->approved)){ if(!((bool) $extra->approved)){ $t_f = 'approval_pending'; }}
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.customer.'.$t_f:'customer.whoiam';      
+        return view($file_name, $this->data);
+    }
+    
 }

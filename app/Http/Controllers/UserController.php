@@ -465,7 +465,7 @@ class UserController extends Controller {
                 $file_name = $is_demo6.'.user.new_profile';
             }
         }
-        
+        //print_r($file_name); die;
         return view($file_name, $this->data);
     }
     
@@ -2579,7 +2579,7 @@ class UserController extends Controller {
             $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
             $file_name = $is_demo6.'.user.preferences';           
         }
-        
+        //print_r($file_name); die;
         return view($file_name, $this->data);
     }
     public function getSecurity(Request $request){
@@ -2600,4 +2600,365 @@ class UserController extends Controller {
         }
         return view($file_name);
     }
+    
+    public function saveNewSupplierprofile(Request $request){
+        $return_array = array();
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        $rules = array(
+            'first_name' => 'required|alpha_num|min:2',
+            'last_name' => 'required|alpha_num|min:2',
+            'username' => 'required|alpha_num|min:2',
+            'contractSignCheck' => 'required',
+            //'hotelinfo_name' => 'required',
+            'company_name' => 'required',
+            'company_email' => 'required',
+            'company_city' => 'required',
+            'company_country' => 'required',        
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+
+            if (!is_null(Input::file('avatar'))) {
+                $file = $request->file('avatar');
+                $destinationPath = './uploads/users/';
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension(); //if you need extension of the file
+                $newfilename = \Session::get('uid') . '.' . $extension;
+                $uploadSuccess = $request->file('avatar')->move($destinationPath, $newfilename);
+                if ($uploadSuccess) {
+                    $data['avatar'] = $newfilename;
+                }
+            }
+
+            $user = User::find(\Session::get('uid'));
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            //$user->mobile_number=trim($request->input('txtPhoneNumber'));
+            //$user->email = $request->input('txtPhoneNumber');
+            $user->username = $request->input('username');
+            $user->form_wizard = $request->input('form_wizard');
+            $user->contracts = $request->input('contractSignCheck');
+            $user->european = $request->input('european');
+            $user->subscribe_notification = $request->input('subscribe_notification');
+
+            if (isset($data['avatar']))
+                $user->avatar = $newfilename;
+            $user->save();
+            
+            /*$hotelinfo_name = trim($request->input('hotelinfo_name'));
+            $hotelinfo_city = $request->input('hotelinfo_city');
+            $hotelinfo_country = $request->input('hotelinfo_country');
+            $hotelinfo_website = $request->input('hotelinfo_website');
+            
+            $prop_id = '';
+            $obj_prop = \DB::table('tb_properties')->where('property_name', $hotelinfo_name)->first();
+            $super_admin = \DB::table('tb_users')->where('group_id', 1)->where('active', 1)->get();
+            //print_r($super_admin); die;
+            if(!empty($obj_prop)){
+                $prop_user = \DB::table('tb_properties_users')->where('property_id', $obj_prop->id)->get();
+                if(count($prop_user)>0){
+                    $super_admins = array();
+                    $data_prop_user = array();
+                    foreach($prop_user as $si_usr){
+                        $super_admins[]= $si_usr->user_id;
+                    }
+                    foreach($super_admin as $si_usr){
+                        if(!in_array($si_usr->id, $super_admins)){
+                            $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$si_usr->id);
+                        }
+                    }
+                    //if(empty($prop_user)){
+                        //foreach($prop_user as $si_usr){
+                            if(!in_array($user->id, $super_admins)){
+                                $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$user->id);
+                            }
+                        //}                    
+                    //}
+                    if(count($data_prop_user)>0){
+                        \DB::table('tb_properties_users')->insert($data_prop_user);
+                    }
+                }else{
+                    $data_prop_user = array();
+                    foreach($super_admin as $si_adm){
+                         $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$si_adm->id);
+                    }             
+                    $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$user->id);
+                    \DB::table('tb_properties_users')->insert($data_prop_user);   
+                }
+                //\DB::table('tb_properties')->where('id', $obj_prop->id)->update(array('assigned_user_id'=>$user->id));
+                $prop_id =  $obj_prop->id;
+                \DB::table('tb_properties')->where('id', $prop_id)->update(array('user_id'=>$user->id));
+            }else{
+                $hotel_data = array(
+                    'property_name' => trim($request->input('hotelinfo_name')),
+                    'city' => $request->input('hotelinfo_city'),
+                    'country' => $request->input('hotelinfo_country'),
+                    'website' => $request->input('hotelinfo_website'),
+                    'user_id' => $user->id,
+                    //'assigned_user_id' => $user->id,
+                ); 
+                $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);    
+                $data_prop_user = array();
+                foreach($super_admin as $si_adm){
+                     $data_prop_user[] = array('property_id'=>$prop_id, 'user_id'=>$si_adm->id);
+                }             
+                $data_prop_user[] = array('property_id'=>$prop_id, 'user_id'=>$user->id);
+                \DB::table('tb_properties_users')->insert($data_prop_user);                        
+            }*/
+            
+            $hotelinfo_vat_no = trim($request->input('hotelinfo_vat_no'));
+            
+            $company_name = trim($request->input('company_name'));
+            $company_owner = trim($request->input('company_owner'));
+            $contact_person = trim($request->input('contact_person'));
+            $company_email = trim($request->input('company_email'));
+            $company_address = trim($request->input('company_address'));
+            $company_city = trim($request->input('company_city'));
+            $company_country = trim($request->input('company_country'));
+            
+            
+            //if(!empty($hotelinfo_vat_no)){
+                $obj_comp = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
+                $company_data = array(
+                    'user_id'=>$user->id,
+                    'company_tax_number' => $hotelinfo_vat_no,
+                    'company_name' => $company_name,
+                    'company_owner' => $company_owner,
+                    'contact_person' => $contact_person,
+                    'company_email' => $company_email,
+                    'company_address' => $company_address,
+                    'company_city' => $company_city,
+                    'company_country' => $company_country                    
+                );
+                if(empty($obj_comp)){
+                    \DB::table('tb_user_company_details')->insertGetId($company_data);
+                }else{
+                    \DB::table('tb_user_company_details')->where('id', $obj_comp->id)->update($company_data);
+                }
+            //}
+            
+            
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Profile has been saved!';
+            //$return_array['pid'] = $prop_id;
+        } else {
+            
+            $return_array['status'] = 'error';
+            $return_array['va'] = $validator->errors();
+            $return_array['message'] = 'Profile not saved errors occurred!';
+            
+        }
+        
+        echo json_encode($return_array);
+        exit;
+    }
+    
+    public function suppliercommissiontype(Request $request){
+        $id = \Session::get('uid');
+        $supplier_commission_type = trim($request->input('supplier_commission_type'));
+        $form_wizard = trim($request->input('form_wizard')); 
+        $updated = \DB::table('tb_users')->where('id', $id)->update(array('supplier_commission_type'=>$supplier_commission_type, 'form_wizard'=>$form_wizard));
+        
+        $response = array('status' => 'success', 'message' => 'Commission type added successfully');
+        
+        echo json_encode($response);
+    }
+    
+    function getSuppliercontractflipbook()
+	{	   
+		$red = '/';
+        $group_id = \Session::get('gid');
+        $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
+		$downFileName = 'uploads/contract-supplier-'.\Auth::user()->id.'_'.date('d-m-Y').'.pdf';
+        
+        $obj_properties = \DB::table("tb_properties_users")->join('tb_properties', 'tb_properties_users.property_id', '=', 'tb_properties.id')->where('tb_properties_users.user_id', \Auth::user()->id)->first();
+        $property_name = '';
+        if(!empty($obj_properties)){
+            $property_name = $obj_properties->property_name;
+        }
+        //echo $property_name;  die;
+        $selectFields = array('tb_users_contracts.*','tb_users.first_name','tb_users.last_name','tb_users_contracts.contract_type','tb_users_contracts.commission_type','tb_users_contracts.partial_availability_commission','tb_users_contracts.full_availability_commission');
+        $usersContracts = \DB::table('tb_users_contracts')
+                            ->select($selectFields)
+                            ->join('tb_users', 'tb_users_contracts.accepted_by', '=', 'tb_users.id')
+                            ->where('tb_users_contracts.contract_type','supplier')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)
+                            ->orderBy('tb_users_contracts.sort_num','DESC')->get();
+                            
+        $CommissionContracts = \DB::table('tb_users_contracts')
+                            ->select($selectFields)
+                            ->join('tb_users', 'tb_users_contracts.accepted_by', '=', 'tb_users.id')
+                            ->where('tb_users_contracts.contract_type','supplier_commission')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)
+                            ->orderBy('tb_users_contracts.sort_num','ASC')->first();
+        if(isset($CommissionContracts->contract_type)){ $usersContracts[] = $CommissionContracts; }
+        
+        usort($usersContracts, function($a, $b) {
+						return $a->sort_num - $b->sort_num; 
+					});
+        $usersContracts = array_reverse($usersContracts);
+        
+        //$package_price = \DB::table('tb_orders')->where('user_id', \Auth::user()->id)->orderBy('tb_orders.id', 'DESC')->first();
+        
+        $center_content = '';
+        $i = 1;
+        $date_signed = '';
+        $username = '';
+        foreach($usersContracts as $si_contract){
+            $username = trim(ucfirst($si_contract->first_name).' '.ucfirst($si_contract->last_name));
+            $created_on = date_create($si_contract->created_on);
+            $date_signed = date_format($created_on,"d:m:Y");
+            $date_signed2 = date_format($created_on,"Y/m/d");
+            if($i==1){
+                $center_content .= '<div class="Mrgtop200 font13">';
+            }else{
+                $center_content .= '<div class="Mrgtop80 font13">';
+            }
+            
+                 
+                $str_desc = $si_contract->description;
+                $valid_until = date('jS F Y', strtotime('+2 years', strtotime($date_signed2)));
+                $valid_until_year = date('Y', strtotime($valid_until));
+                $date_signedf = date('jS F Y', strtotime($date_signed2));
+                $string_array_replace = array(                    
+                    '{signed_date}'=>$date_signedf,
+                    '{valid_until}'=>$valid_until,
+                    '{valid_until_year}'=>$valid_until_year,
+                    '{annual_fee}'=>(!empty($default_package) ? $default_package->package_price : '2700'),
+                );
+                foreach($string_array_replace as $key => $value){                    
+                    $str_replaced = str_replace($key, $value, $str_desc);
+                    $str_desc = $str_replaced;
+                }                
+                $center_content .= '<p></span><span class="font14">'.$str_desc.'</span></p>';         
+            $center_content .= '</div>';
+        }
+        
+        $contract_first_name = \DB::table('tb_settings')->where('key_value', 'contract_first_name')->first();
+		$contract_last_name = \DB::table('tb_settings')->where('key_value', 'contract_last_name')->first();
+        $contract_company = \DB::table('tb_settings')->where('key_value', 'contract_company')->first();
+        
+        $contract_full_name = '';
+        if(!empty($contract_first_name->content)){
+            $contract_full_name = $contract_first_name->content." ".$contract_last_name->content;
+        }
+        
+        if((strlen($username) > 0) && (strlen($date_signed) > 0)){
+            $center_content .= '<div class="Mrgtop80 font13 tb_page_break">';
+				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
+                $center_content .= '<p class="font13">General terms & conditions apply.</p>';
+                $center_content .= '<table class="tablewc">';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$property_name.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                    $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                $center_content .= '</table>';
+			$center_content .= '</div>';
+        }
+        
+        $pdfHeader = \CommonHelper::getcontractPDFHeader($center_content);
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper('A4');
+        $pdf->loadHTML($pdfHeader);
+        @$pdf->output();
+        $dom_pdf = @$pdf->getDomPDF();
+        
+        $canvas = @$dom_pdf ->get_canvas();
+        $y = $canvas->get_height() - 50;
+        $canvas->page_text(30, $y, 'Page {PAGE_NUM} of {PAGE_COUNT} - Accepted', null, 10, array(0, 0, 0));
+        //return $pdf->stream();
+        //if($viewPDF === true){ return $pdf->stream(); }else{ return $pdf->download($downFileName); }  
+        file_put_contents($downFileName, @$pdf->output());
+		if($downFileName!='')
+		{
+		    $path = Url()."/".$downFileName;
+			//print_r($path); die;
+				$flipimgs = array();
+				$fl=0;
+					
+					$flipimgs[$fl]['imgpath'] = $path;
+					$flipimgs[$fl]['imgname'] = $pdf;
+					$flipimgs[$fl]['file_type'] = 'application/pdf';
+					$flipimgs[$fl]['folder'] = '';
+					
+				$this->data['flips'] = $flipimgs;
+				$this->data['fliptype'] = 'high';
+                
+                $group_id = \Session::get('gid');
+                $is_demo6 = trim(\CommonHelper::isHotelDashBoard($group_id));
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.events.flipbook':'events.flipbook'; 
+				return view($file_name,$this->data);
+			
+		}
+		else
+		{
+			return Redirect::to($red)->with('messagetext','Invalid link.')->with('msgstatus','error');
+		}
+	}
+    
+    public function addUpdateUserSetting(Request $request){
+        $type = $request->input('type');
+        $mkey = $request->input('mkey');
+        $mval = $request->input('mval'); 
+        $response = array(); 
+        if($type == "messages"){
+            
+            if($mval==0){
+               \DB::table('tb_user_setting_messages')->where('user_id', \Auth::user()->id)->where('message_by', $mkey)->delete(); 
+            }else{
+                $mdata = array(
+                    'user_id'=> \Auth::user()->id,
+                    'message_by'=> $mkey,
+                );
+                \DB::table('tb_user_setting_messages')->insert($mdata); 
+            }
+            $response['status'] = "success";
+            $response['message'] = "Setting updated successfully";   
+        }elseif($type == "reminders"){
+            if($mval==0){
+               \DB::table('tb_user_setting_reminders')->where('user_id', \Auth::user()->id)->where('remind_by', $mkey)->delete(); 
+            }else{
+                $mdata = array(
+                    'user_id'=> \Auth::user()->id,
+                    'remind_by'=> $mkey,
+                );
+                \DB::table('tb_user_setting_reminders')->insert($mdata); 
+            }   
+            $response['status'] = "success";
+            $response['message'] = "Setting updated successfully";  
+        }elseif($type == "exOffers"){
+            if($mval==0){
+               \DB::table('tb_user_setting_exclusive_offers')->where('user_id', \Auth::user()->id)->where('exclusive_offer_send_by', $mkey)->delete(); 
+            }else{
+                $mdata = array(
+                    'user_id'=> \Auth::user()->id,
+                    'exclusive_offer_send_by'=> $mkey,
+                );
+                \DB::table('tb_user_setting_exclusive_offers')->insert($mdata); 
+            }
+            $response['status'] = "success";
+            $response['message'] = "Setting updated successfully"; 
+        }elseif($type == "custServices"){
+            if($mval==0){
+               \DB::table('tb_user_setting_customer_services')->where('user_id', \Auth::user()->id)->where('customer_services_by', $mkey)->delete(); 
+            }else{
+                $mdata = array(
+                    'user_id'=> \Auth::user()->id,
+                    'customer_services_by'=> $mkey,
+                );
+                \DB::table('tb_user_setting_customer_services')->insert($mdata); 
+            }
+            $response['status'] = "success";
+            $response['message'] = "Setting updated successfully"; 
+        } 
+        echo json_encode($response);
+        exit();
+    } 
+    
 }

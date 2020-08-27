@@ -10,4 +10,5 @@ Route::get('dashboard', 'Frontend\FrontendPagesController@index');
 Route::get('traveller-dashboard', 'Frontend\FrontendPagesController@index');
 Route::get('hotel-dashboard', 'Frontend\FrontendPagesController@index');
 Route::get('membership-hotel-1', 'Frontend\FrontendPagesController@index');
+Route::get('supplier-welcome-wizard', 'Frontend\FrontendPagesController@index');
 ?>

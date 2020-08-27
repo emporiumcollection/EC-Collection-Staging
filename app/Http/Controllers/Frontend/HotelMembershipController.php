@@ -455,10 +455,30 @@ class HotelMembershipController extends Controller {
             unset($cartItems["advert_advert"]);
             $request->session()->put('hotel_cart', $cartItems);
         }
+        
+        if($request->input('cart')['package']['type']=="supplier"){  print_r($cartPkgType); echo "supplier"; die;
+            unset($cartItems[$cartPkgType]);
+            $request->session()->put('supplier_cart', $cartItems);
+        }
        return ("success");   
 
     }
-    
+    public function getSupplierCartItemRemovedAjax(Request $request){
+
+
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];  
+        $cart = array();
+        $cartObj = $request->input('cart')['package'];
+        
+        $cartItems = $request->session()->get('supplier_cart');
+                
+        if($request->input('cart')['package']['type']=="supplier"){ 
+            unset($cartItems[$cartPkgType]);
+            $request->session()->put('supplier_cart', $cartItems);
+        }
+       return ("success");   
+
+    }
     /*
      * For Saving Hotel Membership Signup into Database
     */
@@ -1221,5 +1241,236 @@ class HotelMembershipController extends Controller {
         }
         echo json_encode($return);
     }
+    
+    public function getsupplierwizardCart(Request $request) {
+        //$request->session()->forget('supplier_cart'); die;
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->whereRaw('FIND_IN_SET('.$group_id.',allow_user_groups)')->where('package_status', 1)->get();
+        //print_r($this->data['packages']); die;
+        $packages_ids = array();
+        foreach($this->data['packages'] as $si_package){
+            $packages_ids[] = $si_package->id;
+        }        
+        $hotelPkgID = array(0);
+        $advertPkgID = '';
+       //print_r($request->session()->get('supplier_cart')); die;
+        if(!empty($request->session()->get('supplier_cart'))){
+            //print_r($request->session()->get('supplier_cart'));
+            foreach ($request->session()->get('supplier_cart') as $cartkey => $cartValue) {
+                if($cartValue['package']['type']=='supplier'){
+                    $hotelPkgID[] = $cartValue['package']['id'];
+                }
+                if($cartValue['package']['type']=='advert'){
+                    $advertPkgID = $cartValue['package']['content']['id'];
+                }
+            }
+        }else{
+            $group_id = \Session::get('gid');
+            $default_package = \DB::table('tb_packages')->whereRaw('FIND_IN_SET('.$group_id.',allow_user_groups)')->where('package_status', 1)->where('package_for', 2)->first();
+            $cartPkgType = $default_package->id.'_supplier';  
+            $cart = array();
+            //$cartObj = $request->input('cart')['package'];
+            
+            $cartItems = $request->session()->get('supplier_cart');
+            $cart[$cartPkgType]['package']['id'] = $default_package->id;
+            $cart[$cartPkgType]['package']['price'] = $default_package->package_price;
+            $cart[$cartPkgType]['package']['qty'] = 1;
+            $cart[$cartPkgType]['package']['type'] = 'supplier';
+            $cart[$cartPkgType]['package']['content'] = '';
+            $cart[$cartPkgType]['package']['fee'] = '';
+            if(!empty($cartItems)){
+                $cartItems = array_merge($cartItems,$cart);
+            }else{
+                $cartItems = $cart;
+            }
+    
+            $request->session()->put('supplier_cart', $cartItems);
+            $hotelPkgID[] = $default_package->id;
+        }
+        //print_r($cart); die;
+        $obj_user = \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
+        //print_r($obj_user);
+        if(!empty($obj_user)){
+            $group_id = \Session::get('gid');
+            $setup_package = \DB::table('tb_packages')->whereRaw('FIND_IN_SET('.$group_id.',allow_user_groups)')->where('package_status', 1)->where('package_for', 1)->first();
+            if(!empty($setup_package)){              
+                if($obj_user->own_hotel_setup){                
+                    $cartPkgType = $setup_package->id.'_supplier';  
+                    $cart = array();  
+                    $cartItems = $request->session()->get('supplier_cart');
+                    if(!isset($cartItems[$cartPkgType])){
+                        $cart[$cartPkgType]['package']['id'] = $setup_package->id;
+                        $cart[$cartPkgType]['package']['price'] = $setup_package->package_price;
+                        $cart[$cartPkgType]['package']['qty'] = 1;
+                        $cart[$cartPkgType]['package']['type'] = 'hotel';
+                        $cart[$cartPkgType]['package']['content'] = '';
+                        $cart[$cartPkgType]['package']['fee'] = '';
+                        if(!empty($cartItems)){
+                            $cartItems = array_merge($cartItems,$cart);
+                        }else{
+                            $cartItems = $cart;
+                        }
+                
+                        $request->session()->put('supplier_cart', $cartItems);
+                        $hotelPkgID[] = $setup_package->id;
+                    }
+                }else{
+                    $cartPkgType = $setup_package->id.'_supplier';                
+                    $cartItems = $request->session()->get('supplier_cart');
+                    unset($cartItems[$cartPkgType]);
+                    $request->session()->put('supplier_cart', $cartItems);  
+                    if(in_array($setup_package->id, $hotelPkgID)){
+                        $key = array_search($setup_package->id, $hotelPkgID);
+                        unset($hotelPkgID[$key]);
+                    }            
+                }
+            }
+        }
+        
+        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_for,tb_pkg.package_description, tb_pkg.package_price_type  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+        $dataPackage = \DB::select($htoelPkgQry);
+		$this->data['packages'] = $dataPackage;
+		$adsdataPackage = array();
+		if($advertPkgID!=''){
+			$adsmainPkgQry  =  "Select *  from tb_advertisement_space where id = '". $advertPkgID."'";
+			$adsdataPackage = \DB::select($adsmainPkgQry);
+		}
+		$this->data['adspackages'] = $adsdataPackage;
+		
+        if(count($packages_ids) > 0){
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $resetContracts = array();
+            foreach($usersContracts as $si_contract){
+                $resetContracts[$si_contract->contract_id] = $si_contract;
+            }
+            $this->data['userContracts'] = $resetContracts;
+            $contracts = \CommonHelper::get_default_contracts('packages','default',0,$packages_ids);
+            $this->data['common_contracts'] = $contracts['common'];
+            $this->data['package_contracts'] = $contracts['packages_wise'];
+        }        
+        
+        $subtract_at_booking_amt = 0;
+        /*if(!empty($request->session()->get('supplier_cart'))){
+            foreach ($request->session()->get('supplier_cart') as $cartkey => $cartValue) {
+				if($cartValue['package']['type']=='hotel' && isset($cartValue['package']['fee'])){
+				    if($cartValue['package']['fee']=='yes')
+                    {   
+                        $vat = $this->data["data"]["vatsettings"]->content;
+                        if(!$obj_user->european){                            
+                            $vat_val = ($cartValue['package']['price'] * $vat/100);
+                            $ex_vat = $cartValue['package']['price'] - $vat_val;
+                            $subtract_at_booking_amt += $ex_vat;
+                        }else{
+					       $subtract_at_booking_amt += $cartValue['package']['price'];
+                        }
+                    }
+				}
+			}
+        }*/
+        $this->data['user'] = $obj_user;
+        $this->data['subtract_at_booking_amt'] = $subtract_at_booking_amt;
+        //print_r($this->data);        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.hotel_cart_ajax':'frontend.hotel_membership.hotel_cart';
+        
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_cart', $this->data);
+    }
+    public function getsupplierwizardCheckout(Request $request) {
+        
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->whereRaw('FIND_IN_SET('.$group_id.',allow_user_groups)')->where('package_status', 1)->get();
+        $packages_ids = array();
+        foreach($this->data['packages'] as $si_package){
+            $packages_ids[] = $si_package->id;
+        }
 
+		$hotelPkgID = array(0);
+		$advertPkgID = '';
+
+		//print_r($request->session()->get('supplier_cart')); die;
+		if(!empty($request->session()->get('supplier_cart'))){
+
+			foreach ($request->session()->get('supplier_cart') as $cartkey => $cartValue) {
+				if($cartValue['package']['type']=='supplier'){
+					$hotelPkgID[] = $cartValue['package']['id'];
+				}
+				if($cartValue['package']['type']=='advert'){
+					$advertPkgID = $cartValue['package']['content']['id'];
+				}
+			}
+		}
+
+		
+		$mainPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_description,tb_pkg.package_price_type   from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+		$dataPackage = \DB::select($mainPkgQry);        
+		$this->data['packages'] = $dataPackage;
+		
+		$adsdataPackage = array();
+		if($advertPkgID!=''){
+			$adsmainPkgQry  =  "Select *  from tb_advertisement_space where id = '". $advertPkgID."'";
+			$adsdataPackage = \DB::select($adsmainPkgQry);
+		}
+		$this->data['adspackages'] = $adsdataPackage;
+        $this->data['pageslider']="";
+        
+        if(count($packages_ids) > 0){
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $resetContracts = array();
+            foreach($usersContracts as $si_contract){
+                $resetContracts[$si_contract->contract_id] = $si_contract;
+            }
+            $this->data['userContracts'] = $resetContracts;
+            $contracts = \CommonHelper::get_default_contracts('packages','default',0,$packages_ids);
+            $this->data['common_contracts'] = $contracts['common'];
+            $this->data['package_contracts'] = $contracts['packages_wise'];
+        }
+        $obj_user = \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
+        $subtract_at_booking_amt = 0;
+        if(!empty($request->session()->get('supplier_cart'))){
+            foreach ($request->session()->get('supplier_cart') as $cartkey => $cartValue) {
+				if($cartValue['package']['type']=='supplier' && $cartValue['package']['fee']=='yes'){
+					$vat = $this->data["data"]["vatsettings"]->content;
+                    if(!$obj_user->european){                            
+                        $vat_val = ($cartValue['package']['price'] * $vat/100);
+                        $ex_vat = $cartValue['package']['price'] - $vat_val;
+                        $subtract_at_booking_amt += $ex_vat;
+                    }else{
+				       $subtract_at_booking_amt += $cartValue['package']['price'];
+                    }
+				}
+			}
+        }
+        
+        $this->data['subtract_at_booking_amt'] = $subtract_at_booking_amt;
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.hotel_checkout_ajax':'frontend.hotel_membership.hotel_checkout';
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_checkout', $this->data);
+    }
+    public function addToCartSupplierWizardAjax(Request $request){
+
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];  
+        $cart = array();
+        $cartObj = $request->input('cart')['package'];
+        
+        $cartItems = $request->session()->get('supplier_cart');
+        $cart[$cartPkgType]['package']['id'] = $cartObj['id'];
+        $cart[$cartPkgType]['package']['price'] = $cartObj['price'];
+        $cart[$cartPkgType]['package']['qty'] = 1;
+        $cart[$cartPkgType]['package']['type'] = $cartObj['type'];
+        $cart[$cartPkgType]['package']['fee'] = $cartObj['fee'];
+        $cart[$cartPkgType]['package']['content'] = (!empty($cartObj['content']))?$cartObj['content']:'';
+        if(!empty($cartItems)){
+            $cartItems = array_merge($cartItems,$cart);
+        }else{
+            $cartItems = $cart;
+        }
+                
+        $request->session()->put('supplier_cart', $cartItems);
+
+        return response()->json(array('status'=>true,'error'=>false));
+
+    }
 }

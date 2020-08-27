@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+<link href="{{ asset('sximo/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}" rel="stylesheet">
+<style>
+    .radio-inline{ padding-left: 0px;}
+    .bootstrap-tagsinput{ width: 100%; }
+</style>
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -34,16 +38,20 @@
 								  <div class="form-group hidethis " style="display:none;">
 									<label for="Id" class=" control-label col-md-4 text-left"> Id </label>
 									<div class="col-md-6">
-									  {!! Form::text('id', $row['id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+									  {!! Form::text('id', $row['id'],array('class'=>'form-control', 'placeholder'=>'', )) !!} 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Tag Title" class=" control-label col-md-4 text-left"> Tag Title </label>
-									<div class="col-md-6">
-									  {!! Form::text('tag_title', $row['tag_title'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+									 <label for="Tag Title" class=" control-label col-md-4 text-left"> Tag Title </label>
+									 <div class="col-md-6">
+                                     @if($id!='')
+									  {!! Form::text('tag_title_u', $row['tag_title'],array('class'=>'form-control', 'placeholder'=>'' )) !!}
+                                     @else
+                                        {!! Form::text('tag_title', $row['tag_title'],array('class'=>'form-control', 'placeholder'=>'', 'data-role'=>'tagsinput' )) !!}   
+                                     @endif 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -98,12 +106,14 @@
 	</div>
 </div>		 
 </div>	
-</div>			 
+</div>		
+<script src="{{ asset('sximo/js/typeahead.min.js')}}"></script>
+<script src="{{ asset('sximo/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>	 
    <script type="text/javascript">
 	$(document).ready(function() { 
-		
-		 
-
+		@if($id=='')
+        $('input[name="tag_title"]').tagsinput();
+        @endif
 		$('.removeCurrentFiles').on('click',function(){
 			var removeUrl = $(this).attr('href');
 			$.get(removeUrl,function(response){});

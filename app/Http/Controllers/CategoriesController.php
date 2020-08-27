@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\controller;
+use App\Http\Controllers\Frontend\DestinationController;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
@@ -125,6 +126,7 @@ class CategoriesController extends Controller {
 		
 		$this->data['id'] = $id;
 		$this->data['parent_categories'] = $this->fetchCategoryTree();
+        $this->data['metatags'] = \DB::table('tb_category_metatags')->where('category_id', $id)->first();
 		return view('categories.form',$this->data);
 	}	
 
@@ -206,6 +208,74 @@ class CategoriesController extends Controller {
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
+            /** Start Meta tags **/
+            $meta_data['category_id'] = $id;
+            $meta_data['meta_title'] = $request->input('meta_title');
+            $meta_data['meta_description'] = $request->input('meta_description');
+            $meta_data['meta_keywords'] = $request->input('meta_keywords');
+            $meta_data['canonical_link'] = $request->input('canonical_link');
+            
+            $meta_data['og_title'] = $request->input('og_title');
+            $meta_data['og_description'] = $request->input('og_description');
+            $meta_data['og_url'] = $request->input('og_url');
+            
+            $meta_data['og_type'] = $request->input('og_type');
+            //$meta_data['og_image'] = $request->input('og_image');
+            //$meta_data['og_image_width'] = $request->input('og_image_width');
+            //$meta_data['og_image_height'] = $request->input('og_image_height');
+            $meta_data['og_sitename'] = $request->input('og_sitename');
+            $meta_data['og_locale'] = $request->input('og_locale');
+            $meta_data['article_section'] = $request->input('article_section');
+            $meta_data['article_tags'] = $request->input('article_tags');
+            $meta_data['twitter_url'] = $request->input('twitter_url');
+            $meta_data['twitter_title'] = $request->input('twitter_title');
+            $meta_data['twitter_description'] = $request->input('twitter_description');
+            $meta_data['twitter_image'] = $request->input('twitter_image');
+            $meta_data['twitter_domain'] = $request->input('twitter_domain');
+            $meta_data['twitter_card'] = $request->input('twitter_card');
+            $meta_data['twitter_creator'] = $request->input('twitter_creator');
+            $meta_data['twitter_site'] = $request->input('twitter_site');                       
+            
+            $meta_data['og_upload_type'] =  $request->input('og_image_type');
+            if (!is_null($request->file('og_image_type_upload'))) {
+                $og_image_type_file = $request->file('og_image_type_upload');
+                $og_image_type_filename = $og_image_type_file->getClientOriginalName();
+                $og_image_type_extension = $og_image_type_file->getClientOriginalExtension(); //if you need extension of the file
+                $og_image_type_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $og_image_type_extension;
+                $og_image_type_uploadSuccess = $og_image_type_file->move($destinationPath, $og_image_type_filename);
+                if ($og_image_type_uploadSuccess) {
+                    $meta_data['og_image'] = $og_image_type_filename;
+                    $meta_data['og_image_width'] = $request->input('og_image_width');
+                    $meta_data['og_image_height'] = $request->input('og_image_height');
+                }
+            }
+            $meta_data['og_image_link'] =  $request->input('og_image_type_link');
+            
+            $meta_data['twitter_upload_type'] =  $request->input('twitter_image_type');
+            if (!is_null($request->file('twitter_image_type_upload'))) {
+                $twitter_image_type_file = $request->file('twitter_image_type_upload');
+                $twitter_image_type_filename = $twitter_image_type_file->getClientOriginalName();
+                $twitter_image_type_extension = $twitter_image_type_file->getClientOriginalExtension(); //if you need extension of the file
+                $twitter_image_type_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $twitter_image_type_extension;
+                $twitter_image_type_uploadSuccess = $twitter_image_type_file->move($destinationPath, $twitter_image_type_filename);
+                if ($twitter_image_type_uploadSuccess) {
+                    $meta_data['twitter_image'] = $twitter_image_type_filename;
+                    //$meta_data['twitter_image_width'] = $request->input('twitter_image_width');
+                    //$meta_data['twitter_image_height'] = $request->input('twitter_image_height');
+                }
+            }
+            $meta_data['twitter_image_link'] =  $request->input('twitter_image_type_link');
+            
+            $check_meta = \DB::table('tb_category_metatags')->where('category_id', $id)->get();
+            if(!empty($check_meta)){
+                \DB::table('tb_category_metatags')->where('category_id', $id)->update($meta_data);
+            }else{
+                $meta_data['created'] = date('Y-m-d H:i:s');
+                \DB::table('tb_category_metatags')->insertGetId($meta_data);    
+            }
+              
+            /** End Meta tags **/
+            
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'categories/update/'.$id.'?return='.self::returnUrl();
@@ -351,5 +421,31 @@ class CategoriesController extends Controller {
 		}
 	}
 
-
+    
+    function fetchDestinationTree($parent = 0, $folder_tree_array = '') 
+	{
+	  if (!is_array($folder_tree_array))
+		$folder_tree_array = array();
+		$uid = \Auth::user()->id;
+		$filter = " AND parent_category_id='".$parent."' AND id != 8";
+		$params = array(
+			'params'	=> $filter,
+			'order'		=> 'asc'
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );
+        //print_r($results); die;
+		if ($results) {
+    		foreach($results['rows'] as $row) {
+    		  $parent = (new DestinationController())->fetchcategoryaliaspath($row->id); 
+                //print_r($parent);
+              $path = implode('/',array_reverse($parent));
+    		  $folder_tree_array[] = array("id" => $row->id, "name" => $path . $row->category_name);
+              
+    		  $folder_tree_array = $this->fetchDestinationTree($row->id, $folder_tree_array);
+    		}
+        }
+	  return $folder_tree_array;
+	}
+    
 }

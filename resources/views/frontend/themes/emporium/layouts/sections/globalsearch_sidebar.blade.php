@@ -106,7 +106,9 @@
                                     <li class="sidebar-li gs-sb-adult">{{--*/ echo ($booking_adults > 1) ? $booking_adults." adults" : $booking_adults." adult";  /* --}} / {{--*/ echo ($booking_rooms > 1) ? $booking_rooms." rooms" : $booking_rooms." room";  /* --}}</li>
                                 </ul>
                             </div>
-                            
+                            <div class="col-md-12">
+                                <button class="btn yellowbtn">Book Now</button>
+                            </div>
                             <div class="col-md-12 margin-bot-30"></div>                 
                         </div>
                             

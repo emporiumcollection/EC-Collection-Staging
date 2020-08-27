@@ -111,6 +111,8 @@ class DesignersController extends Controller {
 		}
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
+        $this->data['creatives'] =  \DB::table('tb_creatives')->where('status', '1')->get();
+        
 		$this->data['id'] = $id;
 		return view('designers.form',$this->data);
 	}	
@@ -170,6 +172,46 @@ class DesignersController extends Controller {
 			}
 			$data['user_id'] = $uid;
 			
+            
+            if(!is_null($request->file('image1')))
+			{
+				$image1 = $request->file('image1'); 
+				$destinationPath = './uploads/designer_images/';
+				$filename_image1 = $image1->getClientOriginalName();
+				$extension_image1 = $image1->getClientOriginalExtension(); //if you need extension of the file
+				$newfilenameimage1 = rand(1111111111, 9999999999).'-'.rand(11111111, 99999999).'.'.$extension_image1;
+				$uploadSuccessimage1 = $image1->move($destinationPath, $newfilenameimage1);				 
+				if( $uploadSuccessimage1 ) {
+					$data['image1'] = $newfilenameimage1; 
+				}
+			}
+            
+            if(!is_null($request->file('image2')))
+			{
+				$image2 = $request->file('image2'); 
+				$destinationPath = './uploads/designer_images/';
+				$filename_image2 = $image2->getClientOriginalName();
+				$extension_image2 = $image2->getClientOriginalExtension(); //if you need extension of the file
+				$newfilenameimage2 = rand(1111111111, 9999999999).'-'.rand(11111111, 99999999).'.'.$extension_image2;
+				$uploadSuccessimage2 = $image2->move($destinationPath, $newfilenameimage2);				 
+				if( $uploadSuccessimage2 ) {
+					$data['image2'] = $newfilenameimage2; 
+				}
+			}
+            
+            if(!is_null($request->file('image3')))
+			{
+				$image3 = $request->file('image3'); 
+				$destinationPath = './uploads/designer_images/';
+				$filename_image3 = $image3->getClientOriginalName();
+				$extension_image3 = $image3->getClientOriginalExtension(); //if you need extension of the file
+				$newfilenameimage3 = rand(1111111111, 9999999999).'-'.rand(11111111, 99999999).'.'.$extension_image3;
+				$uploadSuccessimage3 = $image3->move($destinationPath, $newfilenameimage3);				 
+				if( $uploadSuccessimage3 ) {
+					$data['image3'] = $newfilenameimage3; 
+				}
+			}
+            
 			if(!is_null($request->file('featured_image')))
 			{
 				$featured_image = $request->file('featured_image'); 
@@ -235,6 +277,12 @@ class DesignersController extends Controller {
 				}
 			}
 			
+            $data['creative_id'] = $request->input('creatives');
+            $data['image1_hover'] = $request->input('image1_hover');
+            $data['image1_hover_eng'] = $request->input('image1_hover_eng');
+            $data['image2_description'] = $request->input('image2_description');
+            $data['image2_description_eng'] = $request->input('image2_description_eng');
+            
 			$data['designer_url'] = $request->input('designer_url');
 			$data['designer_num'] = $request->input('designer_num');
 			$data['designer_name_eng'] = $request->input('designer_name_eng');

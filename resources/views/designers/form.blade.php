@@ -41,7 +41,24 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div>
+                                  
+                                  <div class="form-group">
+									<label for="Name" class=" control-label col-md-2 text-left"> Creatives <span class="asterix"> * </span></label>
+									<div class="col-md-8">
+									    <select name='creatives' rows='5' id='creatives' class='select2' >
+                                            @if(!empty($creatives))
+                                            @foreach($creatives as $creative)
+                                            <option value="{{$creative->id}}" {{ (isset($row['creative_id']) && ($row['creative_id']==$creative->id)) ? " selected='selected' " : '' }}>{{$creative->title}}</option>
+                                            @endforeach
+                                            @endif
+                                        </select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
+                                   					
 								  <div class="form-group  " >
 									<label for="Name" class=" control-label col-md-2 text-left"> Name <span class="asterix"> * </span></label>
 									<div class="col-md-8">
@@ -54,7 +71,7 @@
 									 </div>
 								  </div>
 
-									<div class="form-group  " >
+                                    <div class="form-group  " >
 									<label for="Intro Text" class=" control-label col-md-2 text-left"> Intro Text <span class="asterix"> * </span></label>
 									<div class="col-md-8 ldutch">
 									  <textarea name='designer_intro_text' rows='5' id='designer_intro_text' class='form-control editor'  
@@ -85,7 +102,80 @@
 									 	
 									 </div>
 								  </div>
+                                  
+                                  <div class="form-group  " >
+									<label for=" Image" class=" control-label col-md-2 text-left"> Image1 </label>
+									<div class="col-md-8">
+									  <input  type='file' name='image1' id='image1' @if($row['image1'] =='') class='required' @endif style='width:150px !important;'  />									  
+									<div >
+									{!! SiteHelpers::showUploadedFile($row['image1'],'/uploads/designer_images/') !!}
+									
+									</div>					
+					 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 
+                                  
+                                  <div class="form-group  " >
+									<label for="Name" class=" control-label col-md-2 text-left"> Image1 Hover Text <span class="asterix"> * </span></label>
+									<div class="col-md-8">
+									  {!! Form::text('image1_hover', $row['image1_hover'],array('class'=>'form-control ldutch', 'placeholder'=>'', 'required'=>'true'  )) !!}
+
+									  {!! Form::text('image1_hover_eng', $row['image1_hover_eng'],array('class'=>'form-control leng', 'placeholder'=>''  )) !!}
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
+                                  
+                                  <div class="form-group  " >
+									<label for=" Image" class=" control-label col-md-2 text-left"> Image2 </label>
+									<div class="col-md-8">
+									  <input  type='file' name='image2' id='image2' @if($row['image2'] =='') class='required' @endif style='width:150px !important;'  />									  
+									<div >
+									{!! SiteHelpers::showUploadedFile($row['image2'],'/uploads/designer_images/') !!}
+									
+									</div>					
+					 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 
+                                  
+                                  <div class="form-group  " >
+									<label for="Name" class=" control-label col-md-2 text-left"> Image2 Description <span class="asterix"> * </span></label>
+									<div class="col-md-8 ldutch">
+									  <textarea name='image2_description' rows='5' id='image2_description' class='form-control editor'  
+				         required  >{{ $row['image2_description'] }}</textarea> 
+									 </div>
+
+									<div class="col-md-8 leng">
+									  <textarea name='image2_description_eng' rows='5' id='image2_description_eng' class='form-control editor'  
+				         required  >{{ $row['image2_description_eng'] }}</textarea> 
+									 </div>
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
 								  
+                                  <div class="form-group  " >
+									<label for=" Image" class=" control-label col-md-2 text-left"> Image3 </label>
+									<div class="col-md-8">
+									  <input  type='file' name='image3' id='image3' @if($row['image3'] =='') class='required' @endif style='width:150px !important;'  />									  
+									<div >
+									{!! SiteHelpers::showUploadedFile($row['image3'],'/uploads/designer_images/') !!}
+									
+									</div>					
+					 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 
+                                  
 								  <div class="form-group  " >
 									<label for=" Image" class=" control-label col-md-2 text-left"> Featured Image</label>
 									<div class="col-md-8">
