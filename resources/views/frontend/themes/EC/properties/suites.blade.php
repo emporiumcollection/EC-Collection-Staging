@@ -253,10 +253,11 @@
             <h2>{{$propertyDetail['data']->property_name}}</h2>
           </div>
           <div class="container-hotel-list">
-            <div class="hotel-page-list mb-5">
+            
                 <?php //echo "<pre/>"; print_r($propertyDetail['roomimgs']); die; ?>
                 @if(!empty($propertyDetail['typedata']))
                     @foreach($propertyDetail['typedata'] as $sintype)
+                        <div class="hotel-page-list mb-5">
                         <h3>{{$sintype->category_name}}</h3>
                         @if(!empty($propertyDetail['roomimgs']))
                             <div class="hotel-list-slide owl-carousel owl-theme suites-slider"> 
@@ -277,25 +278,28 @@
                              </div> 
                              @endif
                         @endif
+                        
+                        <div class="hotel-meta">
+                            <a href="detail-page.html" class="view more">
+                              VIEW DETAILS
+                            </a>
+                            <div class="hotel-title">
+                              <p class="mb-0">2 Bedrooms</p>
+                              <p class="mb-0 inc">Includes</p>
+                            </div>
+                            <div class="hotel-prices">
+                              € 1499
+                            </div>
+                            <div class="action-hotel">
+                              <a href="deals.html">View Deals</a>
+                              | <a href="#">Add to Favorite</a> | <a href="#">Book this Suite</a>
+                            </div>
+                        </div>
+                    </div>    
                     @endforeach
                 @endif           
-                <div class="hotel-meta">
-                    <a href="detail-page.html" class="view more">
-                      VIEW DETAILS
-                    </a>
-                    <div class="hotel-title">
-                      <p class="mb-0">2 Bedrooms</p>
-                      <p class="mb-0 inc">Includes</p>
-                    </div>
-                    <div class="hotel-prices">
-                      € 1499
-                    </div>
-                    <div class="action-hotel">
-                      <a href="deals.html">View Deals</a>
-                      | <a href="#">Add to Favorite</a> | <a href="#">Book this Suite</a>
-                    </div>
-                </div>
-            </div>
+                
+            
             
           </div>
         </div>
