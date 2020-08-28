@@ -150,7 +150,13 @@
 <script type="text/javascript" src="{{ asset('themes/EC/js/all.js') }}"></script>
 
 <script>
-    
+    $(".suites-slider").slick({
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        prevArrow: $('.prev'),
+        nextArrow: $('.next'),
+    });
     $('.slider-detail').slick({
       infinite: true,
       speed: 300,

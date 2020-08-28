@@ -750,7 +750,9 @@ Route::get('traveller/checkcategoryavailability', 'BookingsController@checkcateg
 Route::get('traveller/get_daywise_price', 'HomeController@get_daywise_price');
 
 Route::get('{slug}/room-availability', 'Frontend\PropertyController@roomavailability');
-
+/** suites */
+Route::get('{slug}/suites', 'Frontend\PropertyController@suites');
+/** End */
 Route::post('topSearch', 'Frontend\PropertyController@topSearch');
 
 Route::post('price_on_request', 'HomeController@price_on_request');
