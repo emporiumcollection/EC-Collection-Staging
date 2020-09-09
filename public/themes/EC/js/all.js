@@ -771,7 +771,7 @@
                 var objpropimg = obj1.propimage;            
                 var img1_path = objproppath +'/'+ objpropimg[0].file_name;
                 var img2_path = objproppath +'/'+ objpropimg[1].file_name;
-                console.log(img1_path);
+                //console.log(img1_path);
                 $("#left-when-featured-img1").attr('src', img1_path);
                 $("#left-when-featured-img2").attr('src', img2_path);            
                 var objprop = obj1.objprop;
@@ -781,7 +781,7 @@
                 for(var i=1; i<4; i++){
                     var ipath = objproppath +'/'+ objpropimg[i].file_name;
                     whensimage += '<div><img src="'+ipath+'" class="img-fluid" alt=""></div>'; 
-                }  console.log(whensimage);
+                }  //console.log(whensimage);
                 $(".when-quick-prev").html(whensimage);
                 
                 var obj2 = data.data[1];
@@ -797,7 +797,7 @@
                 for(var i=1; i<4; i++){
                     var ipath2 = objproppathwho +'/'+ objpropimgwho[i].file_name;
                     whosimage += '<div><img src="'+ipath2+'" class="img-fluid" alt=""></div>'; 
-                }  console.log(whosimage);
+                }  //console.log(whosimage);
                 $(".who-quick-prev").html(whosimage);   
                 
                 $('.quick-prev-when1').slick('unslick');
@@ -851,15 +851,15 @@
     if(obj_adult.length > 0){
         var _adval = $(this).prev().find('.inp-adult').val();
         $(this).prev().find('.inp-adult').val(parseInt(_adval)+1)
-        console.log(_adval);
-        console.log('_adval');
+//        console.log(_adval);
+//        console.log('_adval');
     }
     var obj_child = $(this).prev().find('.inp-child');
     if(obj_child.length > 0){
         var _chval = $(this).prev().find('.inp-child').val();
         $(this).prev().find('.inp-child').val(parseInt(_chval)+1)
-        console.log(_chval);
-        console.log('_chval');
+        //console.log(_chval);
+        //console.log('_chval');
     }
     $(this).closest('.field-count-guest').find('.min').removeClass('disable');
   });
@@ -871,15 +871,15 @@
         if(obj_adult.length > 0){
             var _adval = $(this).next().find('.inp-adult').val();
             $(this).next().find('.inp-adult').val(parseInt(_adval)-1)
-            console.log(_adval);
-            console.log('_adval');
+            //console.log(_adval);
+            //console.log('_adval');
         }
         var obj_child = $(this).next().find('.inp-child');
         if(obj_child.length > 0){
             var _chval = $(this).next().find('.inp-child').val();
             $(this).next().find('.inp-child').val(parseInt(_chval)-1)
-            console.log(_chval);
-            console.log('_chval');
+            //console.log(_chval);
+            //console.log('_chval');
         }
         
       }
@@ -1258,7 +1258,8 @@
     
   });
 
-  $(document).on('click', '.confirm-room-submit', function(){
+  $(document).on('click', '.confirm-room-submit', function(e){
+    e.preventDefault();
     $("#collection_search").submit();  
   });
 
@@ -1441,4 +1442,445 @@
     e.preventDefault();
     $('.sidebar').removeClass('show');
   });
+  
+  
+  
+  
+  $(document).on('click', '.btn-sidebar', function(e){
+    e.preventDefault();
+    var dataClick = $(this).attr('data-sidebar');
+    $(dataClick).addClass('show');
+    $('body').css('overflow', 'hidden');
+    
+    var _type = $('.gal-tab.active').attr('data-type');
+    var _slug = $(this).attr('data-id');
+    //console.log(_type);
+    $("#hid_propid").val(_slug);
+    $.ajax({
+        url: BaseURL+'/galleryimages',        
+        dataType:'json',
+        data: {'propid':_slug, 'type':_type},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var _html = '';
+            if(data.length > 0){
+                $(data).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_hotel').html('');
+                $('#gallery_hotel').html(_html);
+            }else{
+                console.log("no");
+            }
+        }
+    }).done(function(){           
+          
+    }); 
+    
+  });
+  
+  $(document).on('click', '#restaurant_gallery-tab',function(){
+    var _type = $(this).attr('data-type');
+    var _slug = $("#hid_propid").val();
+    
+    $.ajax({
+        url: BaseURL+'/galleryimages',        
+        dataType:'json',
+        data: {'propid':_slug, 'type':_type},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var sidebar = data.sidebar; 
+            console.log(sidebar);
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_restaurant').html('');
+                $('#gallery_restaurant').html(_html);
+            }else{
+                console.log("no");
+            }
+            if((data.sidebar).length > 0){
+                _sidebar += '<li class="nav-item"><a class="nav-link" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">Restaurants</a></li>';
+                $(data.sidebar).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _sidebar += '<li class="nav-item"><a class="nav-link res-sidebar" data-id="'+value['id']+'" data-type="res" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">'+value['title']+'</a></li>'
+                });
+                $('#restaurant-gal-side-tab').html('');
+                $('#restaurant-gal-side-tab').html(_sidebar);
+            }else{
+                console.log("no");
+            }
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  $(document).on('click','.res-sidebar',function(){
+    var id = $(this).attr('data-id');
+    var type = 'res';
+    $.ajax({
+        url: BaseURL+'/restaurantimagebyid',        
+        dataType:'json',
+        data: {'rid':id},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var sidebar = data.sidebar; 
+            console.log(sidebar);
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_restaurant').html('');
+                $('#gallery_restaurant').html(_html);
+            }else{
+                console.log("no");
+            }
+            
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  $(document).on('click', '#bars_gallery-tab',function(){
+    var _type = $(this).attr('data-type');
+    var _slug = $("#hid_propid").val();
+    
+    $.ajax({
+        url: BaseURL+'/galleryimages',        
+        dataType:'json',
+        data: {'propid':_slug, 'type':_type},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_bars').html('');
+                $('#gallery_bars').html(_html);
+            }else{
+                console.log("no");
+            }
+            if((data.sidebar).length > 0){
+                _sidebar += '<li class="nav-item"><a class="nav-link" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">Restaurants</a></li>';
+                $(data.sidebar).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _sidebar += '<li class="nav-item"><a class="nav-link bar-sidebar" data-id="'+value['id']+'" data-type="bar" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">'+value['title']+'</a></li>'
+                });
+                $('#bars-gal-side-tab').html('');
+                $('#bars-gal-side-tab').html(_sidebar);
+            }else{
+                console.log("no");
+            }
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  $(document).on('click','.bar-sidebar',function(){
+    var id = $(this).attr('data-id');
+    var type = 'bar';
+    $.ajax({
+        url: BaseURL+'/restaurantimagebyid',        
+        dataType:'json',
+        data: {'rid':id},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var sidebar = data.sidebar; 
+            console.log(sidebar);
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_restaurant').html('');
+                $('#gallery_restaurant').html(_html);
+            }else{
+                console.log("no");
+            }
+            
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  $(document).on('click','.spa-sidebar',function(){
+    var id = $(this).attr('data-id');
+    var type = 'spa';
+    $.ajax({
+        url: BaseURL+'/restaurantimagebyid',        
+        dataType:'json',
+        data: {'rid':id},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var sidebar = data.sidebar; 
+            console.log(sidebar);
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_restaurant').html('');
+                $('#gallery_restaurant').html(_html);
+            }else{
+                console.log("no");
+            }
+            
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  $(document).on('click', '#spas_gallery-tab',function(){
+    var _type = $(this).attr('data-type');
+    var _slug = $("#hid_propid").val();
+    
+    $.ajax({
+        url: BaseURL+'/galleryimages',        
+        dataType:'json',
+        data: {'propid':_slug, 'type':_type},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_spas').html('');
+                $('#gallery_spas').html(_html);
+            }else{
+                console.log("no");
+            }
+            if((data.sidebar).length > 0){
+                _sidebar += '<li class="nav-item"><a class="nav-link" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">Restaurants</a></li>';
+                $(data.sidebar).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _sidebar += '<li class="nav-item"><a class="nav-link spa-sidebar" data-id="'+value['id']+'" data-type="spa" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">'+value['title']+'</a></li>'
+                });
+                $('#spas-gal-side-tab').html('');
+                $('#spas-gal-side-tab').html(_sidebar);
+            }else{
+                console.log("no");
+            }
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  $(document).on('click', '#suite_gallery-tab',function(){
+    var _type = $(this).attr('data-type');
+    var _slug = $("#hid_propid").val();
+    
+    $.ajax({
+        url: BaseURL+'/galleryimages',        
+        dataType:'json',
+        data: {'propid':_slug, 'type':_type},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_suite').html('');
+                $('#gallery_suite').html(_html);
+            }else{
+                console.log("no");
+            }
+            if((data.sidebar).length > 0){
+                _sidebar += '<li class="nav-item"><a class="nav-link" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">Restaurants</a></li>';
+                $(data.sidebar).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _sidebar += '<li class="nav-item"><a class="nav-link sidebar-suite" data-id="'+value['id']+'" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">'+value['category_name']+'</a></li>'
+                });
+                $('#suite-gal-side-tab').html('');
+                $('#suite-gal-side-tab').html(_sidebar);
+            }else{
+                console.log("no");
+            }
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  $(document).on('click', '.sidebar-suite',function(){
+    var cid = $(this).attr('data-id');
+    var _slug = $("#hid_propid").val();
+    
+    $.ajax({
+        url: BaseURL+'/suiteimagebyid',        
+        dataType:'json',
+        data: {'cid':cid},
+        type: 'get',                            
+        beforeSend: function(){
+            
+        },
+        success: function(data){
+            var _html = '';
+            var _sidebar = '';
+            console.log((data.imgs).length);
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
+                   //console.log(key);
+                   //console.log(value); 
+                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                });
+                $('#gallery_suite').html('');
+                $('#gallery_suite').html(_html);
+            }else{
+                console.log("no");
+            }
+            
+        }
+    }).done(function(){           
+          
+    });
+  });
+  
+  
+  $('.close-sidebar').click(function(e){
+    e.preventDefault();
+    $(this).closest('.sidebar-main').removeClass('show');
+    $(this).closest('body').css('overflow', 'auto');
+  });
+  
+  $('.suite-list').on('click', '.select-sd', function(e){
+    e.preventDefault();
+    $('.suite-board').removeClass('active');
+    $('.suite-tumb').removeClass('hide');
+    $(this).closest('.suite-list').find('.suite-board').addClass('active');
+    $(this).closest('.suite-list').find('.suite-tumb').addClass('hide');
+    $('.suite-list').css('opacity', '.3');
+    $(this).closest('.suite-list').css('opacity', '1');
+  });
+  $('.suite-list').on('click', '.board-close', function(e){
+    e.preventDefault();
+    $('.suite-board').removeClass('active');
+    $('.suite-tumb').removeClass('hide');
+    $('.suite-list').css('opacity', '1');
+  });
+
+  lightGallery(document.getElementById('gallery_hotel'), {
+    thumbnail: true,
+    currentPagerPosition: 'middle',
+    download: false,
+    share: true,
+    escKey: false,
+    closable: false
+  }); 
+  lightGallery(document.getElementById('gallery_restaurant'), {
+    thumbnail: true,
+    currentPagerPosition: 'middle',
+    download: false,
+    share: true,
+    closable: false
+  }); 
+  lightGallery(document.getElementById('gallery_bars'), {
+    thumbnail: true,
+    currentPagerPosition: 'middle',
+    download: false,
+    share: true,
+    closable: false
+  }); 
+  lightGallery(document.getElementById('gallery_experience'), {
+    thumbnail: true,
+    currentPagerPosition: 'middle',
+    download: false,
+    share: true,
+    closable: false
+  }); 
+  lightGallery(document.getElementById('gallery_suite'), {
+    thumbnail: true,
+    currentPagerPosition: 'middle',
+    download: false,
+    share: true,
+    closable: false
+  }); 
+  $('.suite-propa').click(function(e){
+    e.stopPropagation();
+  })
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function () {
+    $('.result-grid').slick('setPosition');
+  })
+  $('#transfers').on('shown.bs.collapse', function () {
+    $('.result-grid').slick('setPosition');
+  })
+  $('#inroom-amenities').on('shown.bs.collapse', function () {
+    $('.result-grid').slick('setPosition');
+  })
+  $('#spa-service').on('shown.bs.collapse', function () {
+    $('.result-grid').slick('setPosition');
+  })
+  $('#experiences').on('shown.bs.collapse', function () {
+    $('.result-grid').slick('setPosition');
+  })
+  
 })();

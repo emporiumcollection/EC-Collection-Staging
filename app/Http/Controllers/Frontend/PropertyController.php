@@ -6986,4 +6986,220 @@ class PropertyController extends Controller {
         return view('frontend.themes.EC.properties.suites', $this->data);
     }
     
+    function galleryimages(Request $request) {
+        $propid = $request->input('propid');
+        $this->data['slug'] = rtrim($propid,'-');        
+        $props = \DB::table('tb_properties')->select('tb_properties.*')->whereRaw("TRIM(TRAILING '-' FROM property_slug ) = ?", [$this->data['slug']])->first();  
+        $type = $request->input('type');
+        $filen = array(); 
+        $arr_data = array();       
+        if($type=="hotel"){
+            
+            $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*',  \DB::raw("(CASE WHEN (tb_container_files.file_display_name = '') THEN tb_container_files.file_name ELSE tb_container_files.file_display_name END) as file_display_name"), 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->get();            
+            
+            if (!empty($fileArr)) {
+                $f = 0;
+                foreach ($fileArr as $file) {
+                    $filen[$f] = $file;
+                    $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                    $f++;
+                }
+            }
+            $arr_data['imgs'] = $filen;
+            $arr_data['sidebar'] = array();
+        }else if($type=="restaurant"){
+            $propid = $props->id;
+            $restaurants = $props->restaurant_ids;
+            
+            if(strlen(trim($restaurants))> 0){
+                $ids = explode(',', $restaurants);                
+                $obj_res = \DB::table('tb_restaurants')->whereIn('id', $ids)->get();                
+                if(!empty($obj_res)){
+                    $r_id = $obj_res[0]->id;                    
+                    
+                    $fetchresgalleryfolder = array();
+            		$resfileArr = \DB::table('tb_images_res_spa_bar')->where('parent_id', $r_id)->where('type', 'res')->first();
+                    
+                    if(!empty($resfileArr)){
+                        $fetchresgalleryfolder = \DB::table('tb_container')->join('tb_container_files', 'tb_container.id', '=', 'tb_container_files.folder_id')->where('tb_container.parent_id', $resfileArr->folder_id)->where('tb_container.name', 'Gallery')->get();
+                    }
+                    if (!empty($fetchresgalleryfolder)) {
+                        $f = 0;
+                        foreach ($fetchresgalleryfolder as $file) {
+                            $filen[$f] = $file;
+                            $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                            $f++;
+                        }
+                        
+                    }   
+                    $arr_data['imgs'] = $filen;
+                    $arr_data['sidebar'] = $obj_res;                                    
+                }
+                
+            }
+                
+        }else if($type=="bars"){
+            $propid = $props->id;
+            $restaurants = $props->bar_ids;
+            if(strlen(trim($restaurants))> 0){
+                $ids = explode(',', $restaurants);                
+                $obj_res = \DB::table('tb_restaurants')->whereIn('id', $ids)->get();                
+                if(!empty($obj_res)){
+                    $r_id = $obj_res[0]->id;                    
+                    
+                    $fetchresgalleryfolder = array();
+            		$resfileArr = \DB::table('tb_images_res_spa_bar')->where('parent_id', $r_id)->where('type', 'bar')->first();
+                    
+                    if(!empty($resfileArr)){
+                        $fetchresgalleryfolder = \DB::table('tb_container')->join('tb_container_files', 'tb_container.id', '=', 'tb_container_files.folder_id')->where('tb_container.parent_id', $resfileArr->folder_id)->where('tb_container.name', 'Gallery')->get();
+                    }
+                    if (!empty($fetchresgalleryfolder)) {
+                        $f = 0;
+                        foreach ($fetchresgalleryfolder as $file) {
+                            $filen[$f] = $file;
+                            $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                            $f++;
+                        }
+                    }
+                    
+                    $arr_data['imgs'] = $filen;
+                    $arr_data['sidebar'] = $obj_res;
+                                                            
+                }
+            }
+        }else if($type=="spa"){
+            $propid = $props->id;
+            $restaurants = $props->spa_ids;
+            if(strlen(trim($restaurants))> 0){
+                $ids = explode(',', $restaurants);                
+                $obj_res = \DB::table('tb_restaurants')->whereIn('id', $ids)->get();                
+                if(!empty($obj_res)){
+                    $r_id = $obj_res[0]->id;                    
+                    
+                    $fetchresgalleryfolder = array();
+            		$resfileArr = \DB::table('tb_images_res_spa_bar')->where('parent_id', $r_id)->where('type', 'spa')->first();
+                    
+                    if(!empty($resfileArr)){
+                        $fetchresgalleryfolder = \DB::table('tb_container')->join('tb_container_files', 'tb_container.id', '=', 'tb_container_files.folder_id')->where('tb_container.parent_id', $resfileArr->folder_id)->where('tb_container.name', 'Gallery')->get();
+                    }
+                    if (!empty($fetchresgalleryfolder)) {
+                        $f = 0;
+                        foreach ($fetchresgalleryfolder as $file) {
+                            $filen[$f] = $file;
+                            $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                            $f++;
+                        }
+                    }
+                    $arr_data['imgs'] = $filen;
+                    $arr_data['sidebar'] = $obj_res;                                       
+                }
+            }
+        }else if($type=="suites"){
+            $cats = array();
+            $property_id = $props->id;
+            $cat_types = \DB::table('tb_properties_category_types')->where('property_id', $property_id)->where('status', 0)->get();
+            if (!empty($cat_types)) {
+                $f_catid = $cat_types[0]->id;
+                $cat_rooms = \DB::table('tb_properties_category_rooms')->where('property_id', $property_id)->where('category_id', $f_catid)->orderBy('id', 'asc')->get();
+                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_display_name', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $property_id)->where('tb_properties_images.category_id', $f_catid)->where('tb_properties_images.type', 'Rooms Images')->get();
+                $filen = array();
+                if (!empty($fileArr)) {
+                    $f = 0;
+                    foreach ($fileArr as $file) {
+                        $filen[$f] = $file;
+                        $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                        $f++;
+                    }
+                }
+                $arr_data['imgs'] = $filen;
+                $arr_data['sidebar'] = $cat_types;
+            }               
+            
+        }
+        //echo json_encode($filen);
+        echo json_encode($arr_data);
+    }
+    function restaurantimagebyid(Request $request){
+        $r_id = $request->input('rid');
+        $type = $request->input('type');
+        //$r_id = $obj_res[0]->id;                    
+        $arr_data = array(); 
+        $filen = array();           
+        $fetchresgalleryfolder = array();
+        if($type=='res'){
+    		$resfileArr = \DB::table('tb_images_res_spa_bar')->where('parent_id', $r_id)->where('type', 'res')->first();
+            
+            if(!empty($resfileArr)){
+                $fetchresgalleryfolder = \DB::table('tb_container')->join('tb_container_files', 'tb_container.id', '=', 'tb_container_files.folder_id')->where('tb_container.parent_id', $resfileArr->folder_id)->where('tb_container.name', 'Gallery')->get();
+            }
+            if (!empty($fetchresgalleryfolder)) {
+                $f = 0;
+                foreach ($fetchresgalleryfolder as $file) {
+                    $filen[$f] = $file;
+                    $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                    $f++;
+                }
+                
+            }   
+            $arr_data['imgs'] = $filen;
+        }elseif($type=='bar'){
+    		$resfileArr = \DB::table('tb_images_res_spa_bar')->where('parent_id', $r_id)->where('type', 'bar')->first();
+            
+            if(!empty($resfileArr)){
+                $fetchresgalleryfolder = \DB::table('tb_container')->join('tb_container_files', 'tb_container.id', '=', 'tb_container_files.folder_id')->where('tb_container.parent_id', $resfileArr->folder_id)->where('tb_container.name', 'Gallery')->get();
+            }
+            if (!empty($fetchresgalleryfolder)) {
+                $f = 0;
+                foreach ($fetchresgalleryfolder as $file) {
+                    $filen[$f] = $file;
+                    $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                    $f++;
+                }
+                
+            }   
+            $arr_data['imgs'] = $filen;
+        }elseif($type=='spa'){
+    		$resfileArr = \DB::table('tb_images_res_spa_bar')->where('parent_id', $r_id)->where('type', 'spa')->first();
+            
+            if(!empty($resfileArr)){
+                $fetchresgalleryfolder = \DB::table('tb_container')->join('tb_container_files', 'tb_container.id', '=', 'tb_container_files.folder_id')->where('tb_container.parent_id', $resfileArr->folder_id)->where('tb_container.name', 'Gallery')->get();
+            }
+            if (!empty($fetchresgalleryfolder)) {
+                $f = 0;
+                foreach ($fetchresgalleryfolder as $file) {
+                    $filen[$f] = $file;
+                    $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                    $f++;
+                }
+                
+            }   
+            $arr_data['imgs'] = $filen;
+        }
+        //$arr_data['sidebar'] = $obj_res;
+        echo json_encode($arr_data);
+    }
+    
+    function suiteimagebyid(Request $request){
+        $f_catid = $request->input('cid');
+        //$type = $request->input('type');
+        //$r_id = $obj_res[0]->id;                    
+        $arr_data = array(); 
+        $filen = array();           
+        
+        $cat_rooms = \DB::table('tb_properties_category_rooms')->where('category_id', $f_catid)->orderBy('id', 'asc')->get();
+        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_display_name', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.category_id', $f_catid)->where('tb_properties_images.type', 'Rooms Images')->get();
+        $filen = array();
+        if (!empty($fileArr)) {
+            $f = 0;
+            foreach ($fileArr as $file) {
+                $filen[$f] = $file;
+                $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                $f++;
+            }
+        }
+        $arr_data['imgs'] = $filen;
+    
+        echo json_encode($arr_data);
+    }
+    
 }

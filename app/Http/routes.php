@@ -489,6 +489,11 @@ Route::post('propertybycollection', 'Frontend\PropertyController@propertybycolle
 Route::post('searchpropertybycollection', 'Frontend\PropertyController@searchpropertybycollection');
 
 Route::get('propertyimagesbypid', 'Frontend\PropertyController@propertyimagesbypid');
+
+Route::get('galleryimages', 'Frontend\PropertyController@galleryimages');
+Route::get('restaurantimagebyid', 'Frontend\PropertyController@restaurantimagebyid');
+Route::get('suiteimagebyid', 'Frontend\PropertyController@suiteimagebyid');
+
 Route::post('propertysearchlistbycollection', 'Frontend\PropertyController@propertysearchlistbycollection');
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
@@ -570,7 +575,7 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 
 // property search urls
 
-Route::get('propertyimagesbypid/{pid}', 'Frontend\PropertyController@propertyImagesByPid');
+
 
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('search-property-ajax', 'Frontend\PropertyController@getSearchPropertyAjax');

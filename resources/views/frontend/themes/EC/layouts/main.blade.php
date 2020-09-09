@@ -512,6 +512,9 @@
                         var _pid = value['id'];
                         
                         _html_prop += '<div class="col-6 mb-5 ">';
+                        
+                        _html_prop += '<div class="inner-wrapper hotel-page-list suite-ontouch no-opacity">';
+                        
                         _html_prop += '<div class="pr-lst result-grid" id="grid-img-'+value['id']+'">';
                         
                         $.ajax({
@@ -537,6 +540,38 @@
                                 nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
                             });  
                         });                     
+                        _html_prop += '</div>'
+                        
+                        
+                        _html_prop += '<a href="#" class="dtl-link">';
+                            _html_prop += '<i class="ico ico-diamon diamon-label fav-button"></i>';
+                        _html_prop += '</a>';
+                        _html_prop += '<div class="hotel-meta full-width is-small">';
+                        
+                        
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
+                        
+                        
+                          //_html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#gallery">';
+                          //  _html_prop += 'View Gallery';
+                          //_html_prop += '</a>';
+                          _html_prop += '<div class="hotel-prices hotel-price-detail d-flex">';
+                            _html_prop += '<div class="row align-items-center justify-content-center">';
+                              _html_prop += '<h3 class="mb-0">1.299</h3>';
+                              _html_prop += '<div class="ml-1">';
+                                _html_prop += '<i class="ico ico-info-green pointer" type="button" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="view-deal" data-target="#price-detail"></i>';
+                              _html_prop += '</div>';
+                              _html_prop += '<div class="ml-2">';
+                                _html_prop += '<span class="pernight"></span>';
+                              _html_prop += '</div>';
+                            _html_prop += '</div>';
+                            //_html_prop += '<p><i><b>Includes breakfast</b></i></p>';
+                          _html_prop += '</div>';
+                        _html_prop += '</div>';
+                        
                         
                         _html_prop += '</div>';
                           _html_prop += '<a href="'+value['property_slug']+'">';
@@ -545,7 +580,7 @@
                               _html_prop += '<div class="title-font-2 title-third">Night from $'+value['prc']+'</div>';
                             _html_prop += '</div>';
                           _html_prop += '</a>';
-                        _html_prop += '</div>';              
+                    _html_prop += '</div>';              
           
                     });
                 }
