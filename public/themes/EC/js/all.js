@@ -1466,8 +1466,8 @@
         },
         success: function(data){
             var _html = '';
-            if(data.length > 0){
-                $(data).each(function(key, value){
+            if((data.imgs).length > 0){
+                $(data.imgs).each(function(key, value){
                    //console.log(key);
                    //console.log(value); 
                    _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
