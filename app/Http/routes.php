@@ -493,6 +493,7 @@ Route::get('propertyimagesbypid', 'Frontend\PropertyController@propertyimagesbyp
 Route::get('galleryimages', 'Frontend\PropertyController@galleryimages');
 Route::get('restaurantimagebyid', 'Frontend\PropertyController@restaurantimagebyid');
 Route::get('suiteimagebyid', 'Frontend\PropertyController@suiteimagebyid');
+Route::get('suitesbyid', 'Frontend\PropertyController@suitesbyid');
 
 Route::post('propertysearchlistbycollection', 'Frontend\PropertyController@propertysearchlistbycollection');
 

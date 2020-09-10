@@ -808,7 +808,7 @@
         </a>
     
     
-        <div class="suites-sidebar h-100">
+        <div class="h-100">
             <div class="d-flex align-items-center mb-5">
                 <a href="#" class="sidebar-back">
                     <i class="ico ico-back"></i>
@@ -856,18 +856,17 @@
                 <div class="col-9 h-100">
                     <div class="sidebar-scroller pp-01">
                         <div class="tab-content" id="suitesside-tabContent">
-                            <div class="tab-pane fade show active" id="suiteslist" role="tabpanel"
-                                aria-labelledby="suiteslist-tab">
+                            <div class="tab-pane fade show active" id="suiteslist" role="tabpanel" aria-labelledby="suiteslist-tab">
                                 <div class="inner-wrapper hotel-page-list">
                                     <div class="pr-lst result-grid">
                                         <div>
-                                            <img src="images/29be6592342279.5e49609509d85.jpg" class="w-100" alt="">
+                                            <img src="{{asset('themes/EC/images/29be6592342279.5e49609509d85.jpg')}}" class="w-100" alt="">
                                         </div>
                                         <div>
-                                            <img src="images/29be6592342279.5e49609509d85.jpg" class="w-100" alt="">
+                                            <img src="{{asset('themes/EC/images/29be6592342279.5e49609509d85.jpg')}}" class="w-100" alt="">
                                         </div>
                                         <div>
-                                            <img src="images/29be6592342279.5e49609509d85.jpg" class="w-100" alt="">
+                                            <img src="{{asset('themes/EC/images/29be6592342279.5e49609509d85.jpg')}}" class="w-100" alt="">
                                         </div>
                                     </div>
                                     <a href="#" class="dtl-link">

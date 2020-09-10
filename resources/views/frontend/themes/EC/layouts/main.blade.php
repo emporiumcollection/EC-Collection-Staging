@@ -549,10 +549,10 @@
                         _html_prop += '<div class="hotel-meta full-width is-small">';
                         
                         
-                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
-                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
-                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
-                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="reviews" data-id="'+value['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="quickinfo" data-id="'+value['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="gallery" data-id="'+value['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
+                            _html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+value['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
                         
                         
                           //_html_prop += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-id="'+value['property_slug']+'" data-sidebar="#gallery">';

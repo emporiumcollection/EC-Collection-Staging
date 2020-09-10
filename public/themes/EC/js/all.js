@@ -1454,33 +1454,127 @@
     
     var _type = $('.gal-tab.active').attr('data-type');
     var _slug = $(this).attr('data-id');
+    
+    var _for = $(this).attr('data-for');
     //console.log(_type);
     $("#hid_propid").val(_slug);
-    $.ajax({
-        url: BaseURL+'/galleryimages',        
-        dataType:'json',
-        data: {'propid':_slug, 'type':_type},
-        type: 'get',                            
-        beforeSend: function(){
-            
-        },
-        success: function(data){
-            var _html = '';
-            if((data.imgs).length > 0){
-                $(data.imgs).each(function(key, value){
-                   //console.log(key);
-                   //console.log(value); 
-                   _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
-                });
-                $('#gallery_hotel').html('');
-                $('#gallery_hotel').html(_html);
-            }else{
-                console.log("no");
+    if(_for=='reviews'){
+        
+    }else if(_for=='quickinfo'){
+        
+    }else if(_for=='gallery'){
+        $.ajax({
+            url: BaseURL+'/galleryimages',        
+            dataType:'json',
+            data: {'propid':_slug, 'type':_type},
+            type: 'get',                            
+            beforeSend: function(){
+                
+            },
+            success: function(data){
+                var _html = '';
+                if((data.imgs).length > 0){
+                    $(data.imgs).each(function(key, value){
+                       //console.log(key);
+                       //console.log(value); 
+                       _html += '<a class="tile" href=""><img src="'+value['imgsrc']+value['file_name']+'" alt=""></a>'
+                    });
+                    $('#gallery_hotel').html('');
+                    $('#gallery_hotel').html(_html);
+                }else{
+                    console.log("no");
+                }
             }
-        }
-    }).done(function(){           
-          
-    }); 
+        }).done(function(){           
+              
+        });
+    }else if(_for=='suites'){
+        $.ajax({
+            url: BaseURL+'/suitesbyid',        
+            dataType:'json',
+            data: {'slug':_slug},
+            type: 'get',                            
+            beforeSend: function(){
+                
+            },
+            success: function(data){
+                var roomimgobj = data.propertyDetail.roomimgs;
+                var sidebarobj = data.propertyDetail.typedata;
+                var sidebar_html = '';
+                var roomimg_html = '';
+                var img_html = '';
+                if(typeof sidebarobj != "undefined"){
+                    $(sidebarobj).each(function(key, val){
+                        sidebar_html += '<li class="nav-item"><a class="nav-link nav-link-sub" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">'+val['category_name']+'</a></li>'; 
+                        //console.log(val['id']);
+                        var _indx = $.inArray( val['id'], roomimgobj);
+                        //console.log(roomimgobj[val['id']]);
+                        if(typeof roomimgobj[val['id']]!='undefined'){
+                            var imgpath = roomimgobj[val['id']]['imgsrc'];
+                            var objimgs = roomimgobj[val['id']]['imgs'];
+                            //$(objimgs).each(function(key, val){
+                            //    img_html += '';       
+                            //});
+                            
+                            roomimg_html += '';                        
+                        
+                            roomimg_html += '<div class="inner-wrapper hotel-page-list">';
+                                roomimg_html += '<div class="pr-lst result-grid">';
+                                    $(objimgs).each(function(key, val){
+                                        roomimg_html += '<div><img src="'+imgpath+'/'+val['file_name']+'" class="w-100" alt=""></div>';       
+                                    });
+                                    /*roomimg_html += '<div>';
+                                        roomimg_html += '<img src="images/29be6592342279.5e49609509d85.jpg" class="w-100" alt="">';
+                                    roomimg_html += '</div>';
+                                    roomimg_html += '<div>';
+                                        roomimg_html += '<img src="images/29be6592342279.5e49609509d85.jpg" class="w-100" alt="">';
+                                    roomimg_html += '</div>';
+                                    roomimg_html += '<div>';
+                                        roomimg_html += '<img src="images/29be6592342279.5e49609509d85.jpg" class="w-100" alt="">';
+                                    roomimg_html += '</div>';*/
+                                roomimg_html += '</div>';
+                                roomimg_html += '<a href="#" class="dtl-link">';
+                                    roomimg_html += '<i class="ico ico-diamon diamon-label fav-button"></i>';
+                                roomimg_html += '</a>';
+                                roomimg_html += '<div class="hotel-meta">';
+                                    roomimg_html += '<a data-toggle="collapse" href="#view-detail" role="button" aria-expanded="false" aria-controls="view-deal" class="view more">VIEW DETAILS</a>';
+                                    roomimg_html += '<div class="hotel-title">';
+                                        roomimg_html += '<p class="mb-0">2 Bedrooms</p>';
+                                        roomimg_html += '<p class="mb-0 inc">Includes</p>';
+                                    roomimg_html += '</div>';
+                                    roomimg_html += '<div class="hotel-prices hotel-price-detail">';
+                                        roomimg_html += '<div class="row align-items-center justify-content-center">';
+                                            roomimg_html += '<h3 class="mb-0">â‚¬ 1.299</h3>';
+                                            roomimg_html += '<div class="ml-1">';
+                                                roomimg_html += '<i class="ico ico-info-green pointer" type="button" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="view-deal" data-target="#price-detail"></i>';
+                                            roomimg_html += '</div>';
+                                            roomimg_html += '<div class="ml-2"><span class="pernight"></span></div>';
+                                        roomimg_html += '</div>';
+                                        roomimg_html += '<p><i><b>Includes breakfast</b></i></p>';
+                                    roomimg_html += '</div>';
+                                    roomimg_html += '<div class="action-hotel">';
+                                        roomimg_html += '<a data-toggle="collapse" href="#view-deal" role="button" aria-expanded="false" aria-controls="view-deal">View Deals</a> | <a href="#">Add to Favorite</a> | <a href="#">Book this Suite</a>';
+                                    roomimg_html += '</div>';
+                                roomimg_html += '</div>';
+                            roomimg_html += '</div>';
+                            
+                        } 
+                    });
+                    $("#suitesside-tab").html('');
+                    $("#suitesside-tab").html(sidebar_html); 
+                    $("#suiteslist").html('');
+                    $("#suiteslist").html(roomimg_html);  
+                    console.log(roomimg_html);
+                    
+                
+                   
+                }
+            }
+        }).done(function(){           
+              
+        });
+    }
+     
     
   });
   
