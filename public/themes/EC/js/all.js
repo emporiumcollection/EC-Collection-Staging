@@ -1566,7 +1566,11 @@
                     $("#suiteslist").html(roomimg_html);  
                     console.log(roomimg_html);
                     
-                
+                    $('.result-grid').slick({
+                        slidesToShow: 1,
+                        prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                        nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+                    });
                    
                 }
             }
