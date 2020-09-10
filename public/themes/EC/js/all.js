@@ -1519,7 +1519,7 @@
                             roomimg_html += '';                        
                         
                             roomimg_html += '<div class="inner-wrapper hotel-page-list">';
-                                roomimg_html += '<div class="pr-lst result-grid">';
+                                roomimg_html += '<div class="pr-lst result-grid suite-imgs">';
                                     $(objimgs).each(function(key, val){
                                         roomimg_html += '<div><img src="'+imgpath+'/'+val['file_name']+'" class="w-100" alt=""></div>';       
                                     });
@@ -1558,6 +1558,8 @@
                                 roomimg_html += '</div>';
                             roomimg_html += '</div>';
                             
+                            
+                            
                         } 
                     });
                     $("#suitesside-tab").html('');
@@ -1566,16 +1568,16 @@
                     $("#suiteslist").html(roomimg_html);  
                     console.log(roomimg_html);
                     
-                    $('.result-grid').slick({
-                        slidesToShow: 1,
-                        prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
-                        nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
-                    });
+                    
                    
                 }
             }
         }).done(function(){           
-              
+            $('.suite-imgs').slick({
+                slidesToShow: 1,
+                prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
+                nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
+            });  
         });
     }
      
