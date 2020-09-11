@@ -494,6 +494,7 @@ Route::get('galleryimages', 'Frontend\PropertyController@galleryimages');
 Route::get('restaurantimagebyid', 'Frontend\PropertyController@restaurantimagebyid');
 Route::get('suiteimagebyid', 'Frontend\PropertyController@suiteimagebyid');
 Route::get('suitesbyid', 'Frontend\PropertyController@suitesbyid');
+Route::get('suitedetails', 'Frontend\PropertyController@suitedetails');
 
 Route::post('propertysearchlistbycollection', 'Frontend\PropertyController@propertysearchlistbycollection');
 
@@ -758,6 +759,7 @@ Route::get('traveller/get_daywise_price', 'HomeController@get_daywise_price');
 Route::get('{slug}/room-availability', 'Frontend\PropertyController@roomavailability');
 /** suites */
 Route::get('{slug}/suites', 'Frontend\PropertyController@suites');
+Route::get('{slug}/{suite}', 'Frontend\PropertyController@suitedetails');
 /** End */
 Route::post('topSearch', 'Frontend\PropertyController@topSearch');
 

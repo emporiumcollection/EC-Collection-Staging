@@ -1505,7 +1505,8 @@
                 var img_html = '';
                 if(typeof sidebarobj != "undefined"){
                     $(sidebarobj).each(function(key, val){
-                        sidebar_html += '<li class="nav-item"><a class="nav-link nav-link-sub" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">'+val['category_name']+'</a></li>'; 
+                        //sidebar_html += '<li class="nav-item"><a class="nav-link nav-link-sub suite-details" data-id="'+val['id']+'" id="suiteslist-tab" data-toggle="pill" href="#suiteslist" role="tab" aria-controls="suiteslist" aria-selected="true">'+val['category_name']+'</a></li>';
+                        sidebar_html += '<li class="nav-item"><a class="nav-link nav-link-sub" href="'+BaseURL+'/'+_slug+'/'+val['category_name']+'" >'+val['category_name']+'</a></li>'; 
                         //console.log(val['id']);
                         var _indx = $.inArray( val['id'], roomimgobj);
                         //console.log(roomimgobj[val['id']]);
@@ -1904,6 +1905,27 @@
           
     });
   });
+  
+  
+  /*$(document).on('click', '.suite-details', function(){
+        var cid = $(this).attr('data-id');
+        var _slug = $("#hid_propid").val();
+        console.log(cid);
+        $.ajax({
+            url: BaseURL+'/suitedetails',        
+            dataType:'json',
+            data: {'cid':cid, 'slug':_slug},
+            type: 'get',                            
+            beforeSend: function(){
+                
+            },
+            success: function(data){
+                console.log(data);                
+            }
+        }).done(function(){           
+              
+        });
+  });*/
   
   
   $('.close-sidebar').click(function(e){

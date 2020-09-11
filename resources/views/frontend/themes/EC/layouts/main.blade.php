@@ -147,6 +147,12 @@
 <script type="text/javascript" src="{{ asset('themes/EC/js/plugin/fullcalendar/daygrid/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('themes/EC/js/plugin/slick/slick.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('themes/EC/js/plugin/wow.min.js') }}"></script>
+
+<script src="{{ asset('themes/EC/js/plugin/lightbox/js/lightgallery.min.js') }}"></script>
+<script src="{{ asset('themes/EC/js/plugin/lightbox/js/lg-thumbnail.js') }}"></script>
+<script src="{{ asset('themes/EC/js/plugin/lightbox/js/lg-share.js') }}"></script>
+<script src="{{ asset('themes/EC/js/plugin/rellax.min.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('themes/EC/js/all.js') }}"></script>
 
 <script>
@@ -560,7 +566,7 @@
                           //_html_prop += '</a>';
                           _html_prop += '<div class="hotel-prices hotel-price-detail d-flex">';
                             _html_prop += '<div class="row align-items-center justify-content-center">';
-                              _html_prop += '<h3 class="mb-0">1.299</h3>';
+                              _html_prop += '<h3 class="mb-0">'+value['prc']+'</h3>';
                               _html_prop += '<div class="ml-1">';
                                 _html_prop += '<i class="ico ico-info-green pointer" type="button" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="view-deal" data-target="#price-detail"></i>';
                               _html_prop += '</div>';
@@ -577,7 +583,7 @@
                           _html_prop += '<a href="'+value['property_slug']+'">';
                             _html_prop += '<div class="title-offset mt-5 ">';
                               _html_prop += '<h3 class="title-second title-line mb-0">'+value['property_name']+'</h3>';
-                              _html_prop += '<div class="title-font-2 title-third">Night from $'+value['prc']+'</div>';
+                              //_html_prop += '<div class="title-font-2 title-third">Night from $'+value['prc']+'</div>';
                             _html_prop += '</div>';
                           _html_prop += '</a>';
                     _html_prop += '</div>';              
@@ -633,7 +639,7 @@
     
     
     
-//var rellax = new Rellax('.relax-offset');
+var rellax = new Rellax('.relax-offset');
 </script>
 
 </body>

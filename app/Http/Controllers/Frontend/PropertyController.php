@@ -7276,5 +7276,61 @@ class PropertyController extends Controller {
         
         echo json_encode($this->data);
     }
-    
+    function suitedetails(Request $request){
+         
+        $prop_slug =  $request->slug;
+        $prop_suite =  $request->suite;  
+        
+        //print_r($prop_slug); print_r($prop_suite); die;                       
+        
+        $props = \DB::table('tb_properties')->select('tb_properties.*')->whereRaw("TRIM(TRAILING '-' FROM property_slug ) = ?", [$prop_slug])->first();
+        $propertiesArr = array();
+        if(!empty($props)){
+            $this->data['props'] = $props;
+            $p_types = \DB::table('tb_properties_category_types')->where('property_id', $props->id)->where('show_on_booking', 1)->where('status', 0)->get();
+            $this->data['ptypes'] = $p_types;
+            
+            $proptype = \DB::table('tb_properties_category_types')->where('category_name', $prop_suite)->first();
+            $this->data['proptype'] = $proptype;
+            if(!empty($proptype)){
+                $f_catid = $proptype->id;
+                $roomfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.category_id', $f_catid)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+				$type_cale = '';
+                $filen = array();
+                if (!empty($roomfileArr)) {
+					$propertiesArr['imgs'] = $roomfileArr;
+					$propertiesArr['imgsrc'] = (new ContainerController)->getThumbpath($roomfileArr[0]->folder_id);
+					
+                    $curnDate = date('Y-m-d');
+                    if ($props->default_seasons != 1) {
+						$checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate', 'tb_seasons.season_name')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $f_catid)->where('tb_seasons.property_id', $props->id)->where('tb_seasons_dates.season_from_date', '<=', $curnDate)->where('tb_seasons_dates.season_to_date', '>=', $curnDate)->orderBy('tb_seasons.season_priority', 'asc')->first();
+						//print_r($checkseason); die;
+                    } else {
+                        $checkseason = \DB::table('tb_properties_category_rooms_price')->join('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->join('tb_seasons_dates','tb_seasons_dates.season_id','=','tb_seasons.id')->select('tb_properties_category_rooms_price.rack_rate', 'tb_seasons.season_name')->where('tb_properties_category_rooms_price.property_id', $props->id)->where('tb_properties_category_rooms_price.category_id', $f_catid)->where('tb_seasons.property_id', 0)->where('tb_seasons_dates.season_from_date', '<=', $curnDate)->where('tb_seasons_dates.season_to_date', '>=', $curnDate)->first();
+                    }
+					
+					if (!empty($checkseason)) {
+						 $propertiesArr['price'] = $checkseason->rack_rate;
+                         $propertiesArr['season'] = $checkseason->season_name; 
+                    } else {
+                        $checkseasonPrice_ifnotanyseason = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('season_id', 0)->where('property_id', $props->id)->where('category_id', $f_catid)->first();
+                        if (!empty($checkseasonPrice_ifnotanyseason)) {
+                            $propertiesArr['price'] = $checkseasonPrice_ifnotanyseason->rack_rate;
+                            $propertiesArr['season'] = '';
+                        }
+                    }
+                    
+                    $cat_rooms_price = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_types','tb_properties_category_types.id','=','tb_properties_category_rooms_price.category_id')->leftJoin('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->select('tb_seasons.season_name','tb_properties_category_rooms_price.rack_rate','tb_properties_category_types.category_name')->where('tb_properties_category_rooms_price.category_id', $f_catid)->get();                        
+                    
+                    $propertiesArr['seasonwiseprice'] = $cat_rooms_price;                        
+                    
+					
+                }
+            } 
+        }
+        //print_r($propertiesArr);
+        $this->data['suitedata'] = $propertiesArr;
+        
+        return view('frontend/themes/EC/properties/suites_details', $this->data);      
+    }
 }
