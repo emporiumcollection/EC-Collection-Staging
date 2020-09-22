@@ -477,7 +477,7 @@ class PropertiesController extends Controller {
             if (is_array($request->input('assigned_user_id'))) {
                 $assigned_users = $request->input('assigned_user_id');
             }
-            
+            print_r($data); die;
             $data['detail_section1_title'] = $request->input('detail_section1_title');
             $data['detail_section1_description_box1'] = $request->input('detail_section1_description_box1');
             $data['detail_section1_description_box2'] = $request->input('detail_section1_description_box2');
