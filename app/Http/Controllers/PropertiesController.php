@@ -1315,10 +1315,10 @@ class PropertiesController extends Controller {
             $data['adult_tax'] = $request->input('adult_tax');
             $data['junior_tax'] = $request->input('junior_tax');
             $data['baby_tax'] = $request->input('baby_tax');
-
-            $id = $this->model->insertRow($data, $request->input('id'));
             echo "<pre/>";
             print_r($data); die;
+            $id = $this->model->insertRow($data, $request->input('id'));
+            
             if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
                 $check_pcats = \DB::table('tb_properties_category_types')->where('property_id', $id)->get();
                 if (!empty($check_pcats)) {
