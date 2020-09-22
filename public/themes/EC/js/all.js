@@ -1461,7 +1461,94 @@
     if(_for=='reviews'){
         
     }else if(_for=='quickinfo'){
-        
+        $.ajax({
+            url: BaseURL+'/quickinfo',        
+            dataType:'json',
+            data: {'propid':_slug},
+            type: 'get',                            
+            beforeSend: function(){
+                
+            },
+            success: function(data){
+                /*var _htmlinfo = '';
+                var objinfo = data.prop_info;
+                if(typeof objinfo != 'undefined'){
+                    //_htmlinfo = objinfo.  
+                    $(objinfo).each(function(key, value){
+                        _htmlinfo += '<div class="col-4 mb-5"><div class="qv-list"><h4>'+value['title']+'</h4>'+value['description']+'</div> </div>';    
+                    });
+                    //$("#prop_info").html('');
+                    //$("#prop_info").html(_htmlinfo);  
+                }*/
+                var objprop = data.prop_details;
+                console.log(objprop);
+                if(typeof objprop != 'undefined'){
+                    var p_address = objprop.address;
+                    if(p_address!=''){
+                        $("#propinfo_address").css('display', '');
+                        $("#propinfo_address_text").html('');
+                        $("#propinfo_address_text").html(p_address);
+                    }else{
+                        $("#propinfo_address").css('display', 'none');
+                    } 
+                    var p_internetpublic = objprop.internetpublic;
+                    var p_internetroom = objprop.internetroom;
+                    $("#propinfo_internet").css('display', '');
+                    $("#propinfo_internet").html('');
+                    var p_internet = '';
+                    p_internet += '<div class="qv-list">';
+                        if(p_internetpublic){
+                            var intp = p_internetpublic ? 'Free' : 'No';
+                            p_internet += '<h4>Internet</h4><p class="mb-0"><b>Public areas :</b> '+intp+'</p>';
+                        }
+                        if(p_internetroom){
+                            var intr = p_internetroom ? 'Free' : 'No';
+                            p_internet += '<p class="mb-0"><b>In room :</b> '+intr+'</p>';
+                        }
+                    p_internet += '</div>';
+                    $("#propinfo_internet").html();
+                    
+                                       
+                }else{
+                    $("#propinfo_address").css('display', 'none');
+                }
+                var objprop = data.prop_details;
+                if(typeof objprop != 'undefined'){
+                    var p_address = objprop.address;
+                    $("#propinfo_address").css('display', '');
+                    $("#propinfo_address_text").html('');
+                    $("#propinfo_address_text").html(p_address);                    
+                }else{
+                    $("#propinfo_address").css('display', 'none');
+                }
+                
+                
+                
+                var _htmlamt = '';
+                var objamn = data.amneties;
+                if(typeof objamn != 'undefined'){
+                    //_htmlinfo = objinfo.  
+                    $(objamn).each(function(key, value){                        
+                        _htmlamt += '<div class="col-md-3 col-sm-6 mb-4"><p class="mb-0">'+value['amenity_title']+'</p></div>';  
+                    });
+                    $("#prop_amenties").html('');
+                    $("#prop_amenties").html(_htmlamt);  
+                }
+                var _htmlusp = '';
+                var objusp = data.prop_usp;
+                if(typeof objusp != 'undefined'){
+                    //_htmlinfo = objinfo.  
+                    $(objusp).each(function(key, value){
+                        var img_path = BaseURL + '/uploads/property_usp/'+value['image_path'];
+                        _htmlusp += '<div class="col text-center"><div class="i-touch"><p><i class="ico"><img style="width:53px" src="'+img_path+'"></i></p><p>'+value['title']+'</p></div></div>';  
+                    });
+                    $("#prop_usp").html('');
+                    $("#prop_usp").html(_htmlusp);  
+                }
+            }
+        }).done(function(){           
+              
+        });    
     }else if(_for=='gallery'){
         $.ajax({
             url: BaseURL+'/galleryimages',        
@@ -2004,5 +2091,14 @@
   $('#experiences').on('shown.bs.collapse', function () {
     $('.result-grid').slick('setPosition');
   })
+  
+  $(document).on("scroll", function(){
+      if($(document).scrollTop() > 100){
+        $(".second-header").addClass("show");
+      }
+      else{
+        $(".second-header").removeClass("show");
+      }
+    });
   
 })();

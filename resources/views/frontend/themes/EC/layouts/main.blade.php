@@ -126,6 +126,11 @@
     
     @yield('content')
     
+    @section('footer')
+        @parent
+        @include('frontend.themes.EC.layouts.sections.footer')
+    @show
+    
 {{-- Site Base URL --}}
 
 <script type="text/javascript">var BaseURL = '{{ url() }}'; </script> 
@@ -154,8 +159,71 @@
 <script src="{{ asset('themes/EC/js/plugin/rellax.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('themes/EC/js/all.js') }}"></script>
+@section('custom_js')
+    @parent
 
+@endsection
 <script>
+    
+    $(document).on('click', ".dest-collection", function(e){
+                e.preventDefault();
+                //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                var d_name = $(this).attr('data-name');
+                var active_cat = $("input[name='activeDestination']").val();
+                var cat = $("input[name='activeDestination']").val();          
+                var coll_type = 'destinations';
+                var req_for = '';
+                var cobj = $(this);
+                
+                console.log(d_name+"/"+cat+"/"+coll_type+"/"+req_for+"/"+cobj);
+                
+                //var token = $("input[name='_token']").val();
+                
+                $.ajax({
+                    url:'{{URL::to("propcollection/")}}',
+                    dataType:'json',
+                    data: {d_name:d_name, coll_type:coll_type, cat:cat},
+                    type: 'post',
+                    success: function(response){
+                        
+                        if(response.type=='dedicated-collection'){                            
+                            var mem_types = response.mem_types;                            
+                            if(mem_types.indexOf("2")>0){
+                                //window.location.href = '{{URL::to('luxury_destinations')}}/'+cat+'/dedicated-collection';
+                                //cat = $("#dd-destination").val();
+                                getPropertyByCollection('dedicated-collection', cat, 1, req_for);
+                                $(".dest-collection").find('a').removeClass('active');
+                                cobj.find('a').addClass('active');
+                                $("#dest_collection").val('dedicated-collection');
+                            }else{
+                                show_modal_content(response.type);  
+                                $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');
+                            }  
+                        }else if(response.type=='bespoke-collection'){
+                            var mem_types = response.mem_types;                            
+                            if(mem_types.indexOf("3")>0){
+                                //window.location.href = '{{URL::to('luxury_experience')}}/'+cat+'/bespoke-collection';
+                                //cat = $("#dd-destination").val();
+                                getPropertyByCollection('bespoke-collection', cat, 1, req_for);
+                                $(".dest-collection").find('a').removeClass('active');
+                                cobj.find('a').addClass('active');
+                                $("#dest_collection").val('bespoke-collection');
+                            }else{
+                                show_modal_content(response.type);  
+                                $("#showMemberLoginPopup").modal({backdrop: 'static', keyboard: false}, 'show');                               
+                            }
+                        }else{
+                            //cat = $("#dd-destination").val();
+                            getPropertyByCollection('lifestyle-collection', cat, 1, req_for);
+                            $(".dest-collection").find('a').removeClass('active');
+                            cobj.find('a').addClass('active');
+                            $("#dest_collection").val('lifestyle-collection'); 
+                            //window.location.href = '{{URL::to('luxury_experience')}}/'+cat+'/lifestyle-collection';
+                        }
+                    }
+                });    
+            });
+    
     $(".suites-slider").slick({
         infinite: true,
         speed: 300,
@@ -270,7 +338,7 @@
                 //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
             },
             success: function(data){
-                $(".collection-tabs").css('display', ''); 
+                /*$(".collection-tabs").css('display', ''); 
                 $("#channel_url").css('display', 'none');
                 $("#social_url").css('display', 'none');
                 var channel_url = data.data.channel_url;
@@ -282,7 +350,7 @@
                 if(social_url!=null){
                     $("#social_url").css('display', '');
                     $("#social_url").attr('data-url', social_url);    
-                }                   
+                } */                  
                 
                 /*var datObj = {};
 				datObj.catID = data.data.dest_id;
@@ -344,7 +412,7 @@
                             _html += '<div class="col-4 ">';
                                 _html += '<div class="title-offset mt-5 ">';
                                     _html += '<h3 class="title-second title-line mb-0">'+_val['property_name']+'</h3>';
-                                    _html += '<h4 class="title-font-2 title-third">experience</h4>';
+                                    //_html += '<h4 class="title-font-2 title-third">experience</h4>';
                                 _html += '</div>';
                             _html += '</div>';
                             _html += '<div class="col-8 ">';
@@ -382,7 +450,7 @@
                                 _html += '</div>';
                             _html += '</div>';
                         _html += '</div>';
-                        
+                        _html += '<div class="line-separate "></div>';
                       });        
                  
             }
@@ -427,7 +495,7 @@
                       
                       _html += '<div class="title-offset mt-5 relax-offset" data-rellax-speed="2" data-rellax-percentage="0.1">';
                         _html += '<h3 class="title-second title-line mb-0">'+fp1["property_name"]+'</h3>';
-                        _html += '<h4 class="title-font-2 title-third">experience</h4>';
+                        //_html += '<h4 class="title-font-2 title-third">experience</h4>';
                       _html += '</div>';
         
                     _html += '</div>';
@@ -489,7 +557,7 @@
                     
                     _html += '<div class="title-offset mt-5 relax-offset" data-rellax-speed="2" data-rellax-percentage="0.1">';
                       _html += '<h3 class="title-second title-line mb-0">'+fp2["property_name"]+'</h3>';
-                      _html += '<h4 class="title-font-2 title-third">experience</h4>';
+                      //_html += '<h4 class="title-font-2 title-third">experience</h4>';
                     _html += '</div>';
                   _html += '</div>';
                 _html += '</div>';
@@ -506,9 +574,9 @@
           
           var _html_prop = '';
           _html_prop += '<div class="row">';
-            _html_prop += '<div class="col-3"></div>';
-            _html_prop += '<div class="col-9">';
-              _html_prop += '<div class="row">';
+            //_html_prop += '<div class="col-3"></div>';
+            //_html_prop += '<div class="col-9">';
+            //  _html_prop += '<div class="row">';
           
                 var propertiesArr = jsonobj.propertiesArr;                      
                 if(typeof propertiesArr!==undefined && propertiesArr.length > 0 ){  
@@ -590,8 +658,8 @@
           
                     });
                 }
-              _html_prop += '</div>';
-            _html_prop += '</div>';
+              //_html_prop += '</div>';
+            //_html_prop += '</div>';
           _html_prop += '</div>';
              
             
@@ -628,6 +696,8 @@
         
         $(".load_property_ajax").html('');
         $(".load_property_ajax").html(_html_prop);
+        
+        var rellax = new Rellax('.relax-offset');
         /*$grid = $('.grid').masonry({
           // options...
         }); 
@@ -640,6 +710,22 @@
     
     
 var rellax = new Rellax('.relax-offset');
+
+var locations = [
+  ['<b>Loaction Name</b>', 11.8166, 122.0942],
+];
+
+var map = L.map('map2').setView([11.206051, 122.447886], 8);
+
+var myIcon = L.icon({
+  iconUrl: 'images/basic_geolocalize-01.svg',
+  iconSize: [40, 45],
+});
+L.tileLayer(
+  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+}).addTo(map);
+
 </script>
 
 </body>
