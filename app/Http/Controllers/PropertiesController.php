@@ -2787,7 +2787,7 @@ function property_images_wetransfer(Request $request) {
             $data['commission'] = $request->input('commission');
             $data['about_property'] = $request->input('about_property');
             $data['property_usp'] = $request->input('property_usp');
-            $data['assigned_user_id'] = $request->input('assigned_user_id');
+            //$data['assigned_user_id'] = $request->input('assigned_user_id');
             
             
             
