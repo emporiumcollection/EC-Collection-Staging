@@ -1356,7 +1356,8 @@ class PropertiesController extends Controller {
             if(count($finproperty_package_relation)){ \DB::table('tb_properties_category_package')->insert($finproperty_package_relation); }
             /** insert property packages relation end **/
             
-            
+            echo "<pre/>";
+            print_r($data); die;
             /** insert property packages relation start **/
             $final_assigned_users = array();            
             \DB::table('tb_properties_users')->where('property_id', $id)->delete();            
@@ -1368,8 +1369,7 @@ class PropertiesController extends Controller {
             if(count($final_assigned_users)){ \DB::table('tb_properties_users')->insert($final_assigned_users); }
             /** insert property packages relation end **/
             
-            echo "<pre/>";
-            print_r($data); die;
+            
             /** Start Meta tags **/
             $meta_data['property_id'] = $id;
             $meta_data['meta_title'] = $request->input('meta_title');
