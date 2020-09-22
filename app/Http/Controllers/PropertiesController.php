@@ -1315,8 +1315,7 @@ class PropertiesController extends Controller {
             $data['adult_tax'] = $request->input('adult_tax');
             $data['junior_tax'] = $request->input('junior_tax');
             $data['baby_tax'] = $request->input('baby_tax');
-echo "<pre/>";
-            print_r($data); die;
+
             $id = $this->model->insertRow($data, $request->input('id'));
 
             if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
@@ -1369,7 +1368,8 @@ echo "<pre/>";
             if(count($final_assigned_users)){ \DB::table('tb_properties_users')->insert($final_assigned_users); }
             /** insert property packages relation end **/
             
-            
+            echo "<pre/>";
+            print_r($data); die;
             /** Start Meta tags **/
             $meta_data['property_id'] = $id;
             $meta_data['meta_title'] = $request->input('meta_title');
