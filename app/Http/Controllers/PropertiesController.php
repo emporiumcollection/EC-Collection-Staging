@@ -1317,7 +1317,8 @@ class PropertiesController extends Controller {
             $data['baby_tax'] = $request->input('baby_tax');
 
             $id = $this->model->insertRow($data, $request->input('id'));
-
+            echo "<pre/>";
+            print_r($data); die;
             if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
                 $check_pcats = \DB::table('tb_properties_category_types')->where('property_id', $id)->get();
                 if (!empty($check_pcats)) {
@@ -1337,8 +1338,7 @@ class PropertiesController extends Controller {
                     }
                 }
             }            
-            echo "<pre/>";
-            print_r($data); die;
+            
             /** insert property packages relation start **/
             $finproperty_package_relation = array();
             $upproperty_package_relation = array();
