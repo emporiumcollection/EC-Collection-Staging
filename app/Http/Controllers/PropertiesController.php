@@ -582,8 +582,7 @@ class PropertiesController extends Controller {
             } else {
                 $data['availableservices'] = '';
             }
-            echo "<pre/>";
-            print_r($data); die;
+            
             $data['pets'] = $request->input('pets');
             $data['carpark'] = $request->input('carpark');
             $data['children_policy'] = $request->input('children_policy');
@@ -1316,7 +1315,8 @@ class PropertiesController extends Controller {
             $data['adult_tax'] = $request->input('adult_tax');
             $data['junior_tax'] = $request->input('junior_tax');
             $data['baby_tax'] = $request->input('baby_tax');
-
+echo "<pre/>";
+            print_r($data); die;
             $id = $this->model->insertRow($data, $request->input('id'));
 
             if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
