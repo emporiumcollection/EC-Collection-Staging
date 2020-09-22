@@ -1217,8 +1217,7 @@ class PropertiesController extends Controller {
                     $data['bar2_video'] = $bar2_videofilename;
                 }
             }
-			echo "<pre/>";
-            print_r($data); die;
+			
 			// bar 3
             $data['bar3_title'] = $request->input('bar3_title');
             $data['bar3_sub_title'] = $request->input('bar3_sub_title');
@@ -1229,6 +1228,8 @@ class PropertiesController extends Controller {
             if (!empty($request->input('bar3_designer'))) {
                 $data['bar3_designer'] = implode(',', $request->input('bar3_designer'));
             }
+            echo "<pre/>";
+            print_r($data); die;
             if ($request->input('bar3_video_type') != '') {
                 $data['bar3_video_type'] = $request->input('bar3_video_type');
             }
