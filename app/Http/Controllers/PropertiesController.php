@@ -1228,8 +1228,6 @@ class PropertiesController extends Controller {
             if (!empty($request->input('bar3_designer'))) {
                 $data['bar3_designer'] = implode(',', $request->input('bar3_designer'));
             }
-            echo "<pre/>";
-            print_r($data); die;
             if ($request->input('bar3_video_type') != '') {
                 $data['bar3_video_type'] = $request->input('bar3_video_type');
             }
@@ -1319,7 +1317,8 @@ class PropertiesController extends Controller {
             $data['baby_tax'] = $request->input('baby_tax');
 
             $id = $this->model->insertRow($data, $request->input('id'));
-            
+            echo "<pre/>";
+            print_r($data); die;
             if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
                 $check_pcats = \DB::table('tb_properties_category_types')->where('property_id', $id)->get();
                 if (!empty($check_pcats)) {
