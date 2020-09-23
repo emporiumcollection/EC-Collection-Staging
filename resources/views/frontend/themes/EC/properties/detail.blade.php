@@ -27,7 +27,7 @@
             @if($metatags->og_image_link!='')
                 <meta property="og:image" content="{{$metatags->og_image_link}}" />
             <?php 
-                $arr_img = getimagesize($metatags->og_image_link);
+                $arr_img = @getimagesize($metatags->og_image_link);
                 if(!empty($arr_img)){
             ?>
                     <meta property="og:image:width" content="{{$arr_img[0]}}" />
@@ -40,7 +40,7 @@
             @if($metatags->og_image!='')                
             <?php 
                 $oipath = url('/').'/uploads/properties_subtab_imgs/'.$metatags->og_image;
-                $arr_img = getimagesize($oipath);
+                $arr_img = @getimagesize($oipath);
                 if(!empty($arr_img)){
             ?>
                     <meta property="og:image" content="{{$oipath}}" />
@@ -84,7 +84,7 @@
                 <meta property="twitter:image" content="{{$metatags->twitter_image_link}}" />
             <?php 
                         
-                $arr_img = getimagesize($metatags->twitter_image_link);
+                $arr_img = @getimagesize($metatags->twitter_image_link);
                 if(!empty($arr_img)){
             ?>
                     <meta property="twitter:width" content="{{$arr_img[0]}}" />
@@ -98,7 +98,7 @@
                 
             <?php 
                 $tipath = url('/').'/uploads/properties_subtab_imgs/'.$metatags->twitter_image;
-                $arr_img = getimagesize($tipath);
+                $arr_img = @getimagesize($tipath);
                 if(!empty($arr_img)){
             ?>
                     <meta property="twitter:image" content="{{$tipath}}" />                        
@@ -136,7 +136,7 @@
                     $jlditem['name']=$type->category_name;
                     $jlditem['author']=CNF_APPNAME;
                     $image_url=$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][0]->file_name;
-                    $arr_img = getimagesize( $propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][0]->file_name );
+                    $arr_img = @getimagesize( $propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][0]->file_name );
                     if(!empty($arr_img)){
                         $imgobj['@type'] = "ImageObject";
                         $imgobj['url'] = $image_url;

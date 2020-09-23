@@ -78,14 +78,14 @@
     .img-box {
         height: 300px;
         color: #fff;
-        background: url(http://staging.emporium-voyage.com/images/bg-map.png) no-repeat center bottom;
+        background: url(/images/bg-map.png) no-repeat center bottom;
         background-size: cover;
         padding: 30px;
         position: relative;
     }
 
   .bg-city.img-box {
-     background: url(http://staging.emporium-voyage.com/images/bg-city.png) no-repeat center bottom;
+     background: url(/images/bg-city.png) no-repeat center bottom;
     background-size: cover;
   }
   .rounds {
@@ -261,7 +261,7 @@ p.gray-tx {
  		<div class="container-box">
      		<div class="header"> 			
     			<div style="border-bottom: 1px solid #ddd; padding: 100px 0; text-align: center;">
-    			     <a href="#"><img src="http://staging.emporium-voyage.com/images/emporium-voyage-logo.png" alt="" style="width: 250px;" /></a>
+    			     <a href="#"><img src="/images/emporium-voyage-logo.png" alt="" style="width: 250px;" /></a>
     			</div>
     			<div class="sections">
                     <div class="container-box">
@@ -300,10 +300,10 @@ p.gray-tx {
                     
                       <div class="social-sec">
                          <ul>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/link-in.png" alt="" /></a></li>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/face-book.png" alt="" /></a></li>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/twitter.png" alt="" /></a></li>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/google-png.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="/images/link-in.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="/images/face-book.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="/images/twitter.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="/images/google-png.png" alt="" /></a></li>
                          </ul>
                       </div>
                     </div>

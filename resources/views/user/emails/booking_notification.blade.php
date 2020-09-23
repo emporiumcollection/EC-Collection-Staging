@@ -81,14 +81,14 @@
             .img-box {
                 height: 300px;
                 color: #fff;
-                background: url(http://staging.emporium-voyage.com/images/bg-map.png) no-repeat center bottom;
+                background: url(/images/bg-map.png) no-repeat center bottom;
                 background-size: cover;
                 padding: 30px;
                 position: relative;
             }
         
           .bg-city.img-box {
-             background: url(http://staging.emporium-voyage.com/images/bg-city.png) no-repeat center bottom;
+             background: url(/images/bg-city.png) no-repeat center bottom;
             background-size: cover;
           }
           .rounds {
@@ -493,7 +493,7 @@
      		<div class="container-box">
          		<div class="header"> 			
         			<div style="border-bottom: 1px solid #ddd; padding: 100px 0; text-align: center;">
-        			     <a href="#"><img src="http://staging.emporium-voyage.com/images/emporium-voyage-logo.png" alt="" style="width: 250px;" /></a>
+        			     <a href="#"><img src="/images/emporium-voyage-logo.png" alt="" style="width: 250px;" /></a>
         			</div>
         			<div class="sections">
                         <div class="container-box">
@@ -1594,10 +1594,10 @@ Please use your Booking reference at the time of payment.
                     
                       <div class="social-sec">
                          <ul style="list-style: none; color: #5d5b5b; text-align: center; padding: 20px 0; margin-bottom: 30px; border-top: 1px solid #fff; border-bottom: 1px solid #fff;">
-                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/link-in.png" alt="" /></a></li>
-                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/face-book.png" alt="" /></a></li>
-                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/twitter.png" alt="" /></a></li>
-                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/google-png.png" alt="" /></a></li>
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="/images/link-in.png" alt="" /></a></li>
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="/images/face-book.png" alt="" /></a></li>
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="/images/twitter.png" alt="" /></a></li>
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="/images/google-png.png" alt="" /></a></li>
                          </ul>
                       </div>
                     </div>

@@ -3050,16 +3050,14 @@ class PropertyController extends Controller {
         $sitename = $request->input("sitename");        
         
         $site_url = '';
-        if($sitename=='voyage'){
-            //$site_url = 'http://localhost:8181/emporium-staging-forge/public';
-            //$site_url = 'https://emporium-voyage.com';              
-            $site_url = 'http://staging.emporium-voyage.com';
+        if($sitename=='voyage'){     
+            $site_url = env('URL_VOYAGE');
         }elseif($sitename=='safari'){
-            $site_url = 'https://emporium-safari.com';
+            $site_url = env('URL_SAFARI');
         }elseif($sitename=='spa'){
-            $site_url = 'https://emporium-spa.com'; 
+            $site_url = env('URL_SPA'); 
         }elseif($sitename=='islands'){
-            $site_url = 'https://emporium-islands.com';
+            $site_url = env('URL_ISLAND');
         }
                 
         $querry_string = $site_url."/globalsearchavailability?s=".$coll_where."&arrive=".$arrive."&departure=".$departure."&type=".$coll_type."&rac=".$rac;       
