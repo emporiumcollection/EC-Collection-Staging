@@ -7641,7 +7641,7 @@ class PropertyController extends Controller {
     }
     
     function quickinfo(Request $request){
-        $prop_slug =  $request->input('propid');
+        $prop_slug =  rtrim($request->input('propid'),'-');;
         $props = \DB::table('tb_properties')->select('tb_properties.*')->whereRaw("TRIM(TRAILING '-' FROM property_slug ) = ?", [$prop_slug])->first();
         $prop_info_arr = array(); 
         //$prop_info = array();
