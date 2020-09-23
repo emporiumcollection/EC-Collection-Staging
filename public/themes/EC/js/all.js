@@ -1515,7 +1515,7 @@
                     
                     var p_children_policy = objprop.children_policy;
                     var p_children_policy_html = '';
-                    if(p_children_policy!=''){
+                    if(p_children_policy!='' && p_children_policy != null){
                         $("#propinfo_children_policy").css('display', '');
                         $("#propinfo_children_policy").html('');
                         p_children_policy_html += '<div class="qv-list"><h4>Children policy</h4><p class="mb-0">'+p_children_policy+'</p></div>';
