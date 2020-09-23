@@ -711,20 +711,7 @@
     
 var rellax = new Rellax('.relax-offset');
 
-var locations = [
-  ['<b>Loaction Name</b>', 11.8166, 122.0942],
-];
 
-var map = L.map('map2').setView([11.206051, 122.447886], 8);
-
-var myIcon = L.icon({
-  iconUrl: 'images/basic_geolocalize-01.svg',
-  iconSize: [40, 45],
-});
-L.tileLayer(
-  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18,
-}).addTo(map);
 
 </script>
 

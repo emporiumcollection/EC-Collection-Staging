@@ -372,8 +372,8 @@
                 <a href="#" class="sidebar-back">
                     <i class="ico ico-back"></i>
                 </a>
-                <h3 class="title-second title-line mb-0">
-                    The Ludlow Hotel
+                <h3 class="title-second title-line mb-0" id="quickinfo_title">
+                    
                 </h3>
             </div>
             <div class="row">
@@ -381,73 +381,37 @@
                     <div class="row mb-5" id="prop_info">
                         
                         <div class="col-4 mb-5" id="propinfo_address">
-                            <div class="qv-list">
-                                <h4>Address</h4>
-                                <i class="fa fa-map-marker" aria-hidden="true" id="propinfo_address_text"></i>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_internet">
-                            <div class="qv-list">
-                                <h4>Internet</h4>
-                                <p class="mb-0"><b>Public areas :</b> Free</p>
-                                <p class="mb-0"><b>In room :</b> Free</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_children_policy">
-                            <div class="qv-list">
-                                <h4>Children policy</h4>
-                                <p class="mb-0">Children are welcome</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_checkinout">
-                            <div class="qv-list">
-                                <h4>Check-in / Check-out</h4>
-                                <p class="mb-0"><b>Check-in :</b> 3 pm</p>
-                                <p class="mb-0"><b>Check-out :</b> noon</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_transfer">
-                            <div class="qv-list">
-                                <h4>Transportation and transfer</h4>
-                                <p class="mb-0"><b>Transfer :</b> subject to supplement</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_smoking_policy">
-                            <div class="qv-list">
-                                <h4>Smooking policy</h4>
-                                <p class="mb-0">Non smooking public spaces</p>
-                                <p class="mb-0"><b>Smooking rooms:</b> not available</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_rooms">
-                            <div class="qv-list">
-                                <h4>Rooms</h4>
-                                    <p class="mb-0">190 rooms and suites</p>
-                                    <p class="mb-0"><b>In-room amenities :</b> iPod dock, flatscreen TV, in-room safe, minibar</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_avs">
-                            <div class="qv-list">
-                                <h4>Available services</h4>
-                                <p class="mb-0">Air conditioned hotel</p>
-                                <p class="mb-0">Laundry service</p>
-                                <p class="mb-0">Concirge service</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_pets">
-                            <div class="qv-list">
-                                <h4>Pets</h4>
-                                <p class="mb-0">Small dogs allowed</p>
-                            </div>
+                            
                         </div>
                         <div class="col-4 mb-5" id="propinfo_parking">
-                            <div class="qv-list">
-                                <h4>Parking</h4>
-                                <p class="mb-0"><b>Car park / valet service :</b> 65 US$ per day</p>
-                            </div>
+                            
                         </div>    
                     </div>
-                    <h4 class="mb-4">Amenities</h4>
+                    <h4 class="mb-4" id="amenity_title"></h4>
                     <div class="row mb-5" id="prop_amenties">
                                                 
                     </div>
@@ -456,7 +420,7 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div id="map"></div>
+                    <div id="map2"></div>
                 </div>
             </div>
             <div class="text-center">

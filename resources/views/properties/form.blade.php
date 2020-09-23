@@ -150,7 +150,21 @@
                                     <div class="col-md-2">
 
                                     </div>
-                                </div> 					
+                                </div> 	
+                                
+                                <div class="form-group">
+                                    <label for="featured_image" class=" control-label col-md-4 text-left"> Featured Image </label>
+                                    <div class="col-md-6">
+                                        <input type='file' name='featured_image' id='featured_image'  />
+                                        <div >
+                                            {!! SiteHelpers::showUploadedFile($row['featured_image'],'/uploads/property/featured_image/') !!}
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                				
                                 <div class="form-group  " >
                                     <label for="City Tax ( in % )" class=" control-label col-md-4 text-left"> City Tax ( in % ) </label>
                                     <div class="col-md-6">
@@ -310,6 +324,12 @@
                                             @endforeach
                                             @endif
                                         </select>           
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="children_policy" class="control-label col-md-4 text-left">Always included in this hotel</label>
+                                    <div class="col-md-6">
+                                        <textarea name="always_included" class="form-control">{{$row['always_included']}}</textarea>        
                                     </div>
                                 </div>
                                 <div class="form-group">

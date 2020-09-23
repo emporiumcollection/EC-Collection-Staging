@@ -560,7 +560,19 @@ class PropertiesController extends Controller {
             } else {
                 $data['property_usp_id'] = '';
             }
-            
+            /** Property grid image ***/
+            $featured_image_path = public_path() . '/uploads/property/featured_image/';;
+            if (!is_null($request->file('featured_image'))) {
+                $featured_image = $request->file('featured_image');
+                $featued_image_filename = $featured_image->getClientOriginalName();
+                $featued_image_ext = $featured_image->getClientOriginalExtension(); //if you need extension of the file
+                $featured_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $featued_image_ext;
+                $featured_image_uploaded = $featured_image->move($featured_image_path, $featured_filename);
+                if ($featured_image_uploaded) {
+                    $data['featured_image'] = $featured_filename;
+                }
+            }
+            /** End ***/
             /** Hotel info ***/            
             $data['internetpublic'] = $request->input('rdinternetpublic');
             $data['internetroom'] = $request->input('rdinternetroom');            
@@ -569,7 +581,8 @@ class PropertiesController extends Controller {
             $data['transfer'] = $request->input('transfer');
             $data['smookingpolicy'] = $request->input('smookingpolicy');
             $data['smookingrooms'] = $request->input('rdsmookingrooms');
-            $data['numberofrooms'] = $request->input('numberofrooms');            
+            $data['numberofrooms'] = $request->input('numberofrooms');
+            $data['always_included'] = $request->input('always_included');            
             //$data['roomamenities'] = $request->input('roomamenities');
             if (!empty($request->input('roomamenities'))) {
                 $data['roomamenities'] = implode(',', $request->input('roomamenities'));
