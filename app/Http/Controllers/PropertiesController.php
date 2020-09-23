@@ -368,6 +368,12 @@ class PropertiesController extends Controller {
         
         $this->data['metatags'] = \DB::table('tb_property_metatags')->where('property_id', $id)->first();
         
+        /** Property USP **/
+        $this->data['propertyusp'] = \DB::table('tb_property_usp')->where('status', 1)->get();
+        /** **/
+        /** available services **/
+        $this->data['availableservices'] = \DB::table('tb_available_services')->where('status', 1)->get();
+        /** **/
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.form':'properties.form'; 
         
@@ -549,6 +555,52 @@ class PropertiesController extends Controller {
                 $data['property_category_id'] = '';
             }
 			
+            if (!empty($request->input('propertyusp'))) {
+                $data['property_usp_id'] = implode(',', $request->input('propertyusp'));
+            } else {
+                $data['property_usp_id'] = '';
+            }
+            /** Property grid image ***/
+            $featured_image_path = public_path() . '/uploads/property/featured_image/';;
+            if (!is_null($request->file('featured_image'))) {
+                $featured_image = $request->file('featured_image');
+                $featued_image_filename = $featured_image->getClientOriginalName();
+                $featued_image_ext = $featured_image->getClientOriginalExtension(); //if you need extension of the file
+                $featured_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $featued_image_ext;
+                $featured_image_uploaded = $featured_image->move($featured_image_path, $featured_filename);
+                if ($featured_image_uploaded) {
+                    $data['featured_image'] = $featured_filename;
+                }
+            }
+            /** End ***/
+            /** Hotel info ***/            
+            $data['internetpublic'] = $request->input('rdinternetpublic');
+            $data['internetroom'] = $request->input('rdinternetroom');            
+            $data['checkin'] = $request->input('checkin');
+            $data['checkout'] = $request->input('checkout');            
+            $data['transfer'] = $request->input('transfer');
+            $data['smookingpolicy'] = $request->input('smookingpolicy');
+            $data['smookingrooms'] = $request->input('rdsmookingrooms');
+            $data['numberofrooms'] = $request->input('numberofrooms');
+            $data['always_included'] = $request->input('always_included');            
+            //$data['roomamenities'] = $request->input('roomamenities');
+            if (!empty($request->input('roomamenities'))) {
+                $data['roomamenities'] = implode(',', $request->input('roomamenities'));
+            } else {
+                $data['roomamenities'] = '';
+            }
+            //$data['availableservices'] = $request->input('availableservices');
+            if (!empty($request->input('availableservices'))) {
+                $data['availableservices'] = implode(',', $request->input('availableservices'));
+            } else {
+                $data['availableservices'] = '';
+            }
+            
+            $data['pets'] = $request->input('pets');
+            $data['carpark'] = $request->input('carpark');
+            $data['children_policy'] = $request->input('children_policy');
+            /** Hotel info End ***/
+            
 			if (!empty($request->input('spaids'))) {
                 $data['spa_ids'] = implode(',', $request->input('spaids'));
             } else {
@@ -1276,9 +1328,9 @@ class PropertiesController extends Controller {
             $data['adult_tax'] = $request->input('adult_tax');
             $data['junior_tax'] = $request->input('junior_tax');
             $data['baby_tax'] = $request->input('baby_tax');
-
+            
             $id = $this->model->insertRow($data, $request->input('id'));
-
+            
             if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
                 $check_pcats = \DB::table('tb_properties_category_types')->where('property_id', $id)->get();
                 if (!empty($check_pcats)) {
@@ -1668,7 +1720,20 @@ class PropertiesController extends Controller {
                 $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_meals':'properties.custom_price';                
                 return view($file_name, $this->data);
             }
+        }elseif ($active == 'property-info') {  
+            $info = \DB::table('tb_properties_info')->where('property_id', $property_id)->get();            
+            $this->data['info'] = $info;            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());      
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.info':'properties.info';                
+            return view($file_name, $this->data);            
+        }elseif ($active == 'property-usp') {  
+            $usp = \DB::table('tb_property_usp')->where('property_id', $property_id)->get();            
+            $this->data['usp'] = $usp;            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());      
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.usp':'properties.usp';                
+            return view($file_name, $this->data);            
         }
+        
         if ($active == 'seasons') {
             $seasonArr = array();
             $checkseason = \DB::table('tb_seasons')->where('property_id', $property_id)->get();

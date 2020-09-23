@@ -76,4 +76,7 @@
                     Route::controller('eventbeforeyougo', 'EventbeforeyougoController');
                     Route::controller('highlight', 'HighlightController');
                     Route::controller('meetingpoint', 'MeetingpointController');
+                    
+                    Route::controller('propertyusp', 'PropertyuspController');
+                    Route::controller('availableservices', 'AvailableservicesController');
                     ?>

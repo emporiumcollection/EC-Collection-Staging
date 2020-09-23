@@ -1461,7 +1461,255 @@
     if(_for=='reviews'){
         
     }else if(_for=='quickinfo'){
-        
+        $.ajax({
+            url: BaseURL+'/quickinfo',        
+            dataType:'json',
+            data: {'propid':_slug},
+            type: 'get',                            
+            beforeSend: function(){
+                
+            },
+            success: function(data){
+                /*var _htmlinfo = '';
+                var objinfo = data.prop_info;
+                if(typeof objinfo != 'undefined'){
+                    //_htmlinfo = objinfo.  
+                    $(objinfo).each(function(key, value){
+                        _htmlinfo += '<div class="col-4 mb-5"><div class="qv-list"><h4>'+value['title']+'</h4>'+value['description']+'</div> </div>';    
+                    });
+                    //$("#prop_info").html('');
+                    //$("#prop_info").html(_htmlinfo);  
+                }*/
+                var objprop = data.prop_details;
+                console.log(objprop);
+                if(typeof objprop != 'undefined'){
+                    $("#quickinfo_title").html('');
+                    $("#quickinfo_title").html(objprop.property_name);
+                    var p_address = objprop.address;
+                    var p_address_html = '';
+                    if(p_address!=''){
+                        $("#propinfo_address").css('display', '');
+                        $("#propinfo_address_text").html('');
+                        p_address_html += '<div class="qv-list"><h4>Address</h4><i class="fa fa-map-marker" aria-hidden="true"></i> '+p_address+' </div>';
+                        $("#propinfo_address").html(p_address_html);
+                    }else{
+                        $("#propinfo_address").css('display', 'none');
+                    } 
+                    var p_internetpublic = objprop.internetpublic;
+                    var p_internetroom = objprop.internetroom;
+                    $("#propinfo_internet").css('display', '');
+                    $("#propinfo_internet").html('');
+                    var p_internet = '';
+                    p_internet += '<div class="qv-list">';
+                        p_internet += '<h4>Internet</h4>';
+                        if(p_internetpublic){
+                            var intp = p_internetpublic ? 'Free' : 'No';
+                            p_internet += '<p class="mb-0"><b>Public areas :</b> '+intp+'</p>';
+                        }
+                        if(p_internetroom){
+                            var intr = p_internetroom ? 'Free' : 'No';
+                            p_internet += '<p class="mb-0"><b>In room :</b> '+intr+'</p>';
+                        }
+                    p_internet += '</div>';
+                    $("#propinfo_internet").html(p_internet);
+                    
+                    var p_children_policy = objprop.children_policy;
+                    var p_children_policy_html = '';
+                    if(p_children_policy!='' && p_children_policy != null){
+                        $("#propinfo_children_policy").css('display', '');
+                        $("#propinfo_children_policy").html('');
+                        p_children_policy_html += '<div class="qv-list"><h4>Children policy</h4><p class="mb-0">'+p_children_policy+'</p></div>';
+                        $("#propinfo_children_policy").html(p_children_policy_html);
+                    }else{
+                        $("#propinfo_children_policy").css('display', 'none');
+                    } 
+                    
+                    var p_checkin = objprop.checkin;
+                    var p_checkout = objprop.checkout;
+                    $("#propinfo_checkinout").css('display', '');
+                    $("#propinfo_checkinout").html('');
+                    var p_checkout_html = '';
+                    p_checkout_html += '<div class="qv-list">';
+                        p_checkout_html += '<h4>Check-in / Check-out</h4>';
+                        if(p_checkin!='' && p_checkin!=null){                            
+                            p_checkout_html += '<p class="mb-0"><b>Check-in :</b> '+p_checkin+'</p>';
+                        }
+                        if(p_checkout!='' && p_checkout != null){                            
+                            p_checkout_html += '<p class="mb-0"><b>Check-out :</b> '+p_checkout+'</p>';
+                        }
+                    p_checkout_html += '</div>';
+                    $("#propinfo_checkinout").html(p_checkout_html);
+                    
+                    var p_transfer = objprop.transfer;
+                    var p_transfer_html = '';
+                    if(typeof p_transfer!='' && p_transfer!=null){
+                        $("#propinfo_transfer").css('display', '');
+                        $("#propinfo_transfer").html('');
+                        p_transfer_html += '<div class="qv-list"><h4>Transportation and transfer</h4><p class="mb-0"><b>Transfer :</b> '+p_transfer+'</p></div>';
+                        $("#propinfo_transfer").html(p_transfer_html);
+                    }else{
+                        $("#propinfo_transfer").css('display', 'none');
+                    }
+                    
+                    var p_smookingpolicy = objprop.smookingpolicy;
+                    var p_smookingrooms = objprop.smookingrooms;
+                    $("#propinfo_smoking_policy").css('display', '');
+                    $("#propinfo_smoking_policy").html('');
+                    var p_smookingpolicy_html = '';
+                    p_smookingpolicy_html += '<div class="qv-list">';
+                        p_smookingpolicy_html += '<h4>Smooking policy</h4>';
+                        if(typeof p_smookingpolicy!='' && p_smookingpolicy!=null){                            
+                            p_smookingpolicy_html += '<p class="mb-0"> '+p_smookingpolicy+'</p>';
+                        }
+                        if(typeof p_smookingrooms!='' && p_smookingrooms!=null){  
+                            var smkp = p_smookingrooms ? 'available' : 'Not available';
+                            p_smookingpolicy_html += '<p class="mb-0"><b>Smooking rooms:</b> '+smkp+'</p>';
+                        }
+                    p_smookingpolicy_html += '</div>';
+                    $("#propinfo_smoking_policy").html(p_smookingpolicy_html);
+                    
+                    var p_numberofrooms = objprop.numberofrooms;
+                    var p_roomamenities = objprop.roomamenities;
+                    $("#propinfo_rooms").css('display', '');
+                    $("#propinfo_rooms").html('');
+                    var p_rooms_html = '';
+                    p_rooms_html += '<div class="qv-list">';
+                        p_rooms_html += '<h4>Rooms</h4>';
+                        if(p_numberofrooms!=''){                            
+                            p_rooms_html += '<p class="mb-0"> '+p_numberofrooms+' rooms and suites</p>';
+                        }
+                        if(typeof p_roomamenities!='' && p_roomamenities!=null){  
+                            //var smkp = p_smookingrooms ? 'available' : 'Not available';
+                            var objRA = data.room_amneties;
+                            var p_ra = '';
+                            if(typeof objRA != 'undefined'){
+                                $(objRA).each(function(key, value){
+                                    p_ra += value['amenity_title']+", ";
+                                });
+                            }                            
+                            p_rooms_html += '<p class="mb-0"><b>In-room amenities :</b> '+p_ra.replace(/, +$/g,"");+'</p>';
+                        }
+                    p_rooms_html += '</div>';
+                    $("#propinfo_rooms").html(p_rooms_html);
+                    
+                    
+                    var p_availableservices = objprop.availableservices;
+                    var p_availableservices_html = '';
+                    if(p_availableservices!='' && p_availableservices!=null){
+                        $("#propinfo_avs").css('display', '');
+                        $("#propinfo_avs").html('');
+                        p_availableservices_html += '<div class="qv-list">';
+                            p_availableservices_html += '<h4>Available services</h4>';
+                            
+                            var objAvs = data.available_services;
+                            var p_avs = '';
+                            if(typeof objAvs != 'undefined'){
+                                $(objAvs).each(function(key, value){
+                                    //p_avs += value['title']+", ";
+                                    p_availableservices_html += '<p class="mb-0">'+value['title']+'</p>';
+                                });
+                            }                            
+                            //p_availableservices_html += '<p class="mb-0">'+p_avs+'</p>';
+                        p_availableservices_html += '</div>';
+                        $("#propinfo_avs").html(p_availableservices_html);
+                    }else{
+                        $("#propinfo_avs").css('display', 'none');
+                    }
+                    
+                    var p_pets = objprop.pets;
+                    var p_pets_html = '';
+                    if(p_pets!='' && p_pets!=null){
+                        $("#propinfo_pets").css('display', '');
+                        $("#propinfo_pets").html('');
+                        p_pets_html += '<div class="qv-list">';
+                            p_pets_html += '<h4>Pets</h4>';
+                            p_pets_html += '<p class="mb-0">'+p_pets+'</p>';
+                        p_pets_html += '</div>';
+                        $("#propinfo_pets").html(p_pets_html);
+                    }else{
+                        $("#propinfo_pets").css('display', 'none');
+                    }
+                    
+                    var p_carpark = objprop.carpark;
+                    var p_carpark_html = '';
+                    if(p_carpark!='' && p_carpark!=null){
+                        $("#propinfo_parking").css('display', '');
+                        $("#propinfo_parking").html('');
+                        p_carpark_html += '<div class="qv-list">';
+                            p_carpark_html += '<h4>Parking</h4>';
+                            p_carpark_html += '<p class="mb-0"><b>Car park / valet service :</b>'+p_carpark+'</p>';
+                        p_carpark_html += '</div>';
+                        $("#propinfo_parking").html(p_carpark_html);
+                    }else{
+                        $("#propinfo_parking").css('display', 'none');
+                    }
+                    
+                    var _lttude = parseFloat(objprop.latitude);
+                    var _lngtude = parseFloat(objprop.longitude);
+                    
+                    var locations = [
+                      ['<b>Loaction Name</b>', _lttude, _lngtude ],
+                    ];
+                    
+                    var map = L.map('map2').setView([_lttude, _lngtude], 8);
+                    
+                    var myIcon = L.icon({
+                      iconUrl: BaseURL+'/images/basic_geolocalize-01.svg',
+                      iconSize: [40, 45],
+                    });
+                    L.tileLayer(
+                      'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                      maxZoom: 18,
+                    }).addTo(map);
+                    
+                    for (var i = 0; i < locations.length; i++) {
+                      var marker = new L.marker([locations[i][1], locations[i][2]], { icon: myIcon })
+                        .bindPopup(locations[i][0])
+                        .addTo(map);
+                    }
+                                      
+                }else{
+                    $("#propinfo_address").css('display', 'none');
+                }
+                /*var objprop = data.prop_details;
+                if(typeof objprop != 'undefined'){
+                    var p_address = objprop.address;
+                    $("#propinfo_address").css('display', '');
+                    $("#propinfo_address_text").html('');
+                    $("#propinfo_address_text").html(p_address);                    
+                }else{
+                    $("#propinfo_address").css('display', 'none');
+                }*/
+                
+                
+                
+                var _htmlamt = '';
+                var objamn = data.amneties;
+                if(typeof objamn != 'undefined'){
+                    $("#amenity_title").html('Amenities');                    
+                    //_htmlinfo = objinfo.  
+                    $(objamn).each(function(key, value){                        
+                        _htmlamt += '<div class="col-md-3 col-sm-6 mb-4"><p class="mb-0">'+value['amenity_title']+'</p></div>';  
+                    });
+                    $("#prop_amenties").html('');
+                    $("#prop_amenties").html(_htmlamt);  
+                }
+                var _htmlusp = '';
+                var objusp = data.prop_usp;
+                if(typeof objusp != 'undefined'){
+                    //_htmlinfo = objinfo.  
+                    $(objusp).each(function(key, value){
+                        var img_path = BaseURL + '/uploads/property_usp/'+value['image_path'];
+                        _htmlusp += '<div class="col text-center"><div class="i-touch"><p><i class="ico"><img style="width:53px" src="'+img_path+'"></i></p><p>'+value['title']+'</p></div></div>';  
+                    });
+                    $("#prop_usp").html('');
+                    $("#prop_usp").html(_htmlusp);  
+                }
+                
+            }
+        }).done(function(){           
+              
+        });    
     }else if(_for=='gallery'){
         $.ajax({
             url: BaseURL+'/galleryimages',        
@@ -2004,5 +2252,14 @@
   $('#experiences').on('shown.bs.collapse', function () {
     $('.result-grid').slick('setPosition');
   })
+  
+  $(document).on("scroll", function(){
+      if($(document).scrollTop() > 100){
+        $(".second-header").addClass("show");
+      }
+      else{
+        $(".second-header").removeClass("show");
+      }
+    });
   
 })();

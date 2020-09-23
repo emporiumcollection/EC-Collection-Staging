@@ -278,8 +278,303 @@ class PropertyController extends Controller {
 		return view('frontend.themes.emporium.properties.list', $this->data);
                     
     }
-    
-    function propertySearch(Request $request) {     
+    function propertySearch(Request $request) {  
+        
+        $membershiptype =  $request->membershiptype;
+                
+		$selCurrency=$request->input("currencyOption");
+        \Session::put('currencyOption', $selCurrency);
+		
+		$this->data["convertedOneUnitPrice"]=0;
+        
+        $keyword = trim($request->cat);
+        $show = 'asc';
+        
+        if($request->segment(1)=='search'){
+           $keyword = $request->s;
+        }
+
+		$sldkeyword = str_replace('-',' ',$keyword);
+		$this->data['slider'] = \DB::table('tb_sliders')->where('slider_category', $sldkeyword)->where('slider_status',1)->orderBy('sort_num','asc')->get();
+		
+
+		$this->data['dateslug'] = '';
+		$arrive = $departure = $adult = $childs = '';
+		if (!is_null($request->arrive) && $request->arrive != '') {
+			\Session::put('arrive', $request->arrive);
+			$this->data['arrive_date'] = $request->arrive;
+			$this->data['dateslug'] = $request->arrive;
+			$arrive = date("Y-m-d", strtotime(trim($request->arrive)));
+		}
+		if (!is_null($request->departure) && $request->departure != '') {
+			\Session::put('departure', $request->departure);
+			$this->data['departure_date'] = $request->departure;
+			$this->data['dateslug'] = $this->data['dateslug'].' to '.$request->departure;
+			$departure = date("Y-m-d", strtotime(trim($request->departure)));
+		}
+
+
+		$catprops = '';   
+        $catname = '';
+        $catalias = '';
+        $catid = '';
+		/* Default package */
+        $pckages_ids = '';
+        $default_package = '';
+        
+        $public_package = \DB::table('tb_packages')->select('id')->where('package_category', 'B2C')->where('is_public', 1)->first();
+        if(!empty($public_package)){
+            $pckages_ids = $public_package->id;            
+        } 
+        
+        $selected_category = '';
+        
+        if($membershiptype!=''){
+            if($membershiptype!='lifestyle-collection'){
+                $exp_membership = explode('-', $membershiptype);
+                if(!empty($exp_membership)){
+                    $_type = $exp_membership[0];
+                    if($_type=='dedicated'){
+                        $mem_package = \DB::table('tb_packages')->select('id')->where('package_title', 'Dedicated Membership')->first();
+                        $pckages_ids = $mem_package->id;   
+                    }else if($_type=='bespoke'){
+                        $mem_package = \DB::table('tb_packages')->select('id')->where('package_title', 'Bespoke Membership')->first();
+                        $pckages_ids = $mem_package->id;  
+                    }
+                }
+                $public_package = \DB::table('tb_packages')->select('id')->where('package_category', 'B2C')->where('is_public', 1)->first();
+            }
+        }else{
+            if (\Auth::check() == true) {
+                if(\Auth::user()->group_id!=1){
+                    $uid = \Auth::user()->id;
+                    $memtype = str_replace('-', ' ', \Auth::user()->member_type); 
+                    $arr_membershiptype = explode('-', \Auth::user()->member_type); 
+                    if(count($arr_membershiptype)>0){
+                        $membershiptype = $arr_membershiptype[0]."-collection";    
+                    }    
+                    //print_r($membershiptype);      
+                    $mem_package = \DB::table('tb_packages')->select('id')->where('package_title', $memtype)->first();
+                    //print_r($mem_package); die;  
+                    if(!empty($mem_package)){
+                        $pckages_ids = $mem_package->id;
+                    }    
+                }
+            }            
+        }
+        $this->data['default_package'] = $default_package;
+        //print_r($pckages_ids); die;   
+        /* End */   
+           
+		$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
+       
+        
+		$this->data['slug'] = $keyword;
+
+		$this->data['action']=request()->segments(1);
+        $this->data['destination_category'] =0;       
+        
+        $search_for = '';
+        
+        $destarr = array();
+        $dd_destarr = array();
+        
+        $m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->where('category_approved', 1)->where('category_published', 1)->first();   
+        $cat_collection = array();                
+        if(!empty($m_collection)){
+            $cat_collection = \DB::table('tb_categories')->where('parent_category_id', $m_collection->id)->where('category_approved', 1)->where('category_published', 1)->orderBy('category_order_num', 'asc')->get();
+        }
+        $this->data['collections'] = $cat_collection;
+        
+        $parent_cat = array();
+        $channel_url = '';
+        $instagram_url = '';
+        $dest_url = array();
+		if(request()->segment(1)=='luxury_destinations' || request()->segment(1)=='luxury_experience'){
+            $channel_url = $cateObj->category_youtube_channel_url;
+            
+            $this->data['destination_category']=$cateObj->id;
+            $instagram_url=$cateObj->category_instagram_channel;
+			
+            
+            
+            
+            //$m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->where('category_approved', 1)->where('category_published', 1)->first();   
+            //$cat_collection = array();  
+            $destinations = array();           
+            //if(!empty($m_collection)){
+            //    $cat_collection = \DB::table('tb_categories')->where('parent_category_id', $m_collection->id)->where('category_approved', 1)->where('category_published', 1)->orderBy('category_order_num', 'asc')->get();
+            //}
+            //$this->data['collections'] = $cat_collection;
+            
+            
+            if(request()->segment(1)=='luxury_destinations'){
+                $search_for="destinations"; 
+                               
+                if (!empty($cateObj)) {
+                    $destinations = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_approved', 1)->where('category_published', 1)->get();
+                    
+                    $dest_has_prop = array();
+                    if(!empty($destinations)){
+                        $selected_category = $destinations[0]->category_name;
+                        foreach($destinations as $dest){
+                            $subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('parent_category_id', $dest->id)->get();
+        					$getcats = '';
+        					$chldIds = array();
+        					if (!empty($subdest)) {
+        						$chldIds = $this->fetchcategoryChildListIds($dest->id);
+        						array_unshift($chldIds, $dest->id);
+        					} else {
+        						$chldIds[] = $dest->id;
+        					}
+                            
+                            $getcats = "";
+                            if (count($chldIds) > 0) { $getcats = " AND (category_id IN(".implode(",",$chldIds)."))"; }
+                            $preprops = DB::select(DB::raw("SELECT COUNT(id) AS total_rows FROM property_categories_split_in_rows WHERE property_status = '1' ".$getcats));
+        
+        					if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+        						$destarr[] = $dest;
+        					}
+                    
+                        }
+                    }                    
+                    
+                    
+                }
+                
+                $cat = trim($request->cat);
+                $country = trim($request->country);
+                $region = trim($request->region);
+                $continent = trim($request->continent);
+                
+                if (!empty($cateObj)) {
+                    if($cateObj->id>0){                        
+        				$dest_url = implode('/',array_reverse($this->fetchcategoryaliaspath($cateObj->id)));
+                    }
+                    $catname = $cateObj->category_name; 
+                    $catalias = $cateObj->category_alias;
+                    $catid =  $cateObj->id;                   
+                }
+                
+                $this->data['dest_url'] = $dest_url;
+                $this->data['dest_cat'] = trim($request->cat);
+                
+                
+                //print_r($this->data); die; $parent_cat
+                $parent_cat = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('id', $cateObj->parent_category_id)->first();
+                
+            }
+            if(request()->segment(1)=='luxury_experience'){
+                $search_for="experience";
+                $this->data['experiences'] = \DB::table('tb_categories')->where('parent_category_id', 8)->where('category_approved', 1)->where('category_published', 1)->get();
+            }
+                        
+            
+            $cObj = \DB::table('tb_categories')->where('category_alias', $request->cat)->where('category_published', 1)->first(); 
+            //print_r($cObj);                   
+            if (!empty($cObj)) {
+                if($cObj->id>0){                        
+    				$dest_url = array_reverse($this->fetchcategorybc($cObj->id));
+                    //$bc_dest[]= $dest_url; 
+                }                    
+            }
+            
+        }
+        $this->data['channel_url'] = $channel_url;
+        $this->data['destination_category_instagram'] = $instagram_url;
+        
+        $dd_destinations = \DB::table('tb_categories')->where('id', '!=', 8)->where('parent_category_id', 0)->where('category_approved', 1)->where('category_published', 1)->get();
+        
+        if(!empty($dd_destinations)){
+            
+            foreach($dd_destinations as $dd_dest){
+                $dd_subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url', 'category_instagram_channel')->where('parent_category_id', $dd_dest->id)->get();
+				$dd_getcats = '';
+				$dd_chldIds = array();
+				if (!empty($dd_subdest)) {
+					$dd_chldIds = $this->fetchcategoryChildListIds($dd_dest->id);
+					array_unshift($dd_chldIds, $dd_dest->id);
+				} else {
+					$dd_chldIds[] = $dd_dest->id;
+				}
+                
+                $dd_getcats = "";
+                if (count($dd_chldIds) > 0) { $dd_getcats = " AND (category_id IN(".implode(",",$dd_chldIds)."))"; }
+                $dd_preprops = DB::select(DB::raw("SELECT COUNT(id) AS total_rows FROM property_categories_split_in_rows WHERE property_status = '1' ".$dd_getcats));
+
+				if (isset($dd_preprops[0]->total_rows) && $dd_preprops[0]->total_rows > 0) {
+					$dd_destarr[] = $dd_dest;
+				}
+        
+            }
+        }
+        $dd_channels = array();
+        if(!empty($dd_destarr)){
+            foreach($dd_destarr as $dd_chnl){
+                if($dd_chnl->category_youtube_channel_url!=''){
+                    $dd_channels[] = $dd_chnl;    
+                }        
+            }    
+        }
+        
+        $dd_social = array();
+        if(!empty($dd_destarr)){
+            foreach($dd_destarr as $d_social){
+                if($d_social->category_instagram_channel!=''){
+                    $dd_social[] = $d_social;    
+                }        
+            }    
+        }
+        $this->data['dd_social'] = $dd_social;
+        //print_r($dd_channels); die;
+        
+        $this->data['parent_cat'] = $parent_cat;
+        
+        $this->data['dd_channels'] = $dd_channels;
+        
+        $youtube_channels = array();
+        if(!empty($destarr)){
+            foreach($destarr as $sin_des){
+                if($sin_des->category_youtube_channel_url!=''){
+                    $youtube_channels[] = $sin_des;        
+                }
+            }
+        }
+        $this->data['youtube_channels'] = $youtube_channels;
+        
+        $instagram_channels = array();
+        if(!empty($destarr)){
+            foreach($destarr as $sin_des){
+                if($sin_des->category_instagram_channel!=''){
+                    $instagram_channels[] = $sin_des;        
+                }
+            }
+        }
+        $this->data['instagram_channels'] = $instagram_channels;
+        
+        $this->data['experiences'] = \DB::table('tb_categories')->where('parent_category_id', 8)->where('category_approved', 1)->where('category_published', 1)->get();
+        
+        $this->data['selected_category'] = $selected_category;
+        $this->data['bc_dest'] = $dest_url; //print_r($this->data['bc_dest']); die;
+        $this->data['destinations'] = $destarr;
+        
+        $this->data['dd_destinations'] = $dd_destarr;
+        
+        $this->data['search_for'] = $search_for;
+        
+        $this->data['req_for'] = request()->segment(1);
+        $this->data['sel_exp'] = trim($request->cat);
+        $this->data['catname'] = $catname;
+        $this->data['catalias'] = $catalias;
+        $this->data['catid'] = $catid;
+        $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
+        if(!empty($cateObj)){
+            $this->data['metatags'] = \DB::table('tb_category_metatags')->where('category_id', $cateObj->id)->first();
+        }
+		return view('frontend.themes.EC.properties.list', $this->data);
+                    
+    }
+    function propertySearch_14092020(Request $request) {     
         $membershiptype =  $request->membershiptype;
                 
 		$selCurrency=$request->input("currencyOption");
@@ -3183,6 +3478,9 @@ class PropertyController extends Controller {
         $type = $request->input('type');        
         $arrive = $request->input('arrive');
         $departure = $request->input('departure');
+        $rac = $request->input('rac');
+        $query_str = $request->query();
+        //print_r($query_str); die;
         
         $arrive_date = '';
         if($arrive!=''){ 
@@ -3197,7 +3495,7 @@ class PropertyController extends Controller {
         $adults = array();
         $childs = array();
         $total_guests = 0;
-        $rac = $request->input('rac');
+        
         if(strlen($rac)>0){
             $rac_arr = explode('r', $rac);
             if(count($rac_arr)>0){
@@ -3227,8 +3525,15 @@ class PropertyController extends Controller {
             $date2 = date_create(date('Y-m-d H:i:s', strtotime($arrive)));
             $diff = date_diff($date1, $date2);
             $number_of_nights = $diff->format("%a");            
-        }        
-                
+        }
+        /** Membership collection **/     
+        $m_collection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->first();   
+        $cat_collection = array();                
+        if(!empty($m_collection)){
+            $cat_collection = \DB::table('tb_categories')->where('parent_category_id', $m_collection->id)->where('category_approved', 1)->where('category_published', 1)->orderBy('category_order_num', 'asc')->get();
+        }
+        $this->data['collections'] = $cat_collection;
+        /** End **/      
         $this->data['experiences'] = \DB::table('tb_categories')->where('category_approved', 1)->where('category_published', 1)->where('parent_category_id', 8)->get();
         $membershiptype = '';        
         $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
@@ -3244,6 +3549,7 @@ class PropertyController extends Controller {
         $this->data['adults'] = $adults;
         $this->data['childs'] = $childs;
         $this->data['number_of_nights'] = $number_of_nights;
+        $this->data['query_str'] = $query_str;
         
         return view('frontend.themes.EC.properties.globalsearchavailability', $this->data);
                     
@@ -7331,4 +7637,37 @@ class PropertyController extends Controller {
         
         return view('frontend/themes/EC/properties/suites_details', $this->data);      
     }
+    
+    function quickinfo(Request $request){
+        $prop_slug =  rtrim($request->input('propid'),'-');;
+        $props = \DB::table('tb_properties')->select('tb_properties.*')->whereRaw("TRIM(TRAILING '-' FROM property_slug ) = ?", [$prop_slug])->first();
+        $prop_info_arr = array(); 
+        //$prop_info = array();
+        $amnties = array();
+        $prop_usp = array();
+        $room_amnties = array(); 
+        $available_services = array();       
+        if(!empty($props)){
+            //$prop_info = \DB::table('tb_properties_info')->where('status', 1)->where('property_id', $props->id)->get();
+            $prop_usp = \DB::table('tb_property_usp')->where('status', 1)->whereIn('id', explode(',', $props->property_usp_id))->get();
+            if(!empty($props->assign_amenities)){
+                $amnties = \DB::table('tb_amenities')->where('amenity_status', 1)->whereIn('id', explode(',', $props->assign_amenities))->get();
+            }
+            if(!empty($props->roomamenities)){
+                $room_amnties = \DB::table('tb_amenities')->where('amenity_status', 1)->whereIn('id', explode(',', $props->roomamenities))->get();
+            }
+            if(!empty($props->availableservices)){
+                $available_services = \DB::table('tb_available_services')->where('status', 1)->whereIn('id', explode(',', $props->availableservices))->get();
+            }
+        }
+        $prop_info_arr['prop_details'] = $props;
+        //$prop_info_arr['prop_info'] = $prop_info;
+        $prop_info_arr['prop_usp'] = $prop_usp;
+        $prop_info_arr['amneties'] = $amnties;
+        $prop_info_arr['room_amneties'] = $room_amnties;
+        $prop_info_arr['available_services'] = $available_services;
+        
+        echo json_encode($prop_info_arr);       
+    }
+    
 }

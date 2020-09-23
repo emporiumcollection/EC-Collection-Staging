@@ -44,15 +44,36 @@
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#propertyinfo" data-toggle="tab">Property Info</a></li>
                             <li class="yachtin" style="display:none;"><a href="#yachtinfo" data-toggle="tab">Yacht Info </a></li>
-                            <li class=""><a href="#rooms_suites" data-toggle="tab">Rooms & Suites</a></li>
+                            <!--<li class=""><a href="#rooms_suites" data-toggle="tab">Rooms & Suites</a></li>-->
                             <li class=""><a href="#architecture_design" data-toggle="tab">Architecture & Design</a></li>
-                            <li class="" ><a href="#spas" data-toggle="tab" >Spas</a></li>
+                            <!--<li class="" ><a href="#spas" data-toggle="tab" >Spas</a></li>
                             <li class="" ><a href="#restaurant" data-toggle="tab" >Restaurant</a></li>
-                            <li class="" ><a href="#bar" data-toggle="tab" >Bar</a></li>
+                            <li class="" ><a href="#bar" data-toggle="tab" >Bar</a></li>-->
                             <li class="" ><a href="#video" data-toggle="tab" >Video</a></li>
                             <li class="" ><a href="#socialmedia" data-toggle="tab" >Social Networks</a></li>
+                            
+                            <li class="" ><a href="#propertyusp" data-toggle="tab" >Property USP</a></li>                            
+                            
                         </ul>
                         <div class="tab-content">
+                            <div class="tab-pane m-t" id="propertyusp">
+                                <div class="form-group  " >
+                                    <label for="Property usp" class=" control-label col-md-4 text-left"> Property USP</label>
+                                    <div class="col-md-6">
+
+                                        <select name='propertyusp[]' id="propertyusp" rows='5'   class='select2 ' multiple="multiple"   > 
+                                            <option  value ="0">-- Select property usp --</option> 
+                                            @foreach($propertyusp as $val)
+                                                <option  value ="{{$val->id}}" {{(isset($row['property_usp_id']) && in_array($val->id,explode(',',$row['property_usp_id']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
+                                            @endforeach						
+                                        </select> 
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="tab-pane m-t active" id="propertyinfo">
 
                                 <div class="form-group hidethis " style="display:none;">
@@ -74,7 +95,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="form-group  " >
+                                <div class="form-group  ">
 									<label for="Property Category" class=" control-label col-md-4 text-left"> Property Category <span class="asterix"> * </span></label>
 									<div class="col-md-6">
 									  <select name='property_category[]' multiple rows='5' id='property_cat_ids' class='select2 ' required  ></select> 
@@ -82,7 +103,7 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-							     </div>
+							    </div>
                                   					
                                 <div class="form-group  " >
                                     <label for="Property Short Name" class=" control-label col-md-4 text-left"> Property Short Name </label>
@@ -105,7 +126,8 @@
                                             foreach ($property_type_opt as $key => $val) {
                                                 echo "<option  value ='$key' " . ($row['property_type'] == $key ? " selected='selected' " : '' ) . ">$val</option>";
                                             }
-                                            ?></select> 
+                                            ?>
+                                        </select> 
                                     </div> 
                                     <div class="col-md-2">
 
@@ -128,7 +150,21 @@
                                     <div class="col-md-2">
 
                                     </div>
-                                </div> 					
+                                </div> 	
+                                
+                                <div class="form-group">
+                                    <label for="featured_image" class=" control-label col-md-4 text-left"> Featured Image </label>
+                                    <div class="col-md-6">
+                                        <input type='file' name='featured_image' id='featured_image'  />
+                                        <div >
+                                            {!! SiteHelpers::showUploadedFile($row['featured_image'],'/uploads/property/featured_image/') !!}
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                				
                                 <div class="form-group  " >
                                     <label for="City Tax ( in % )" class=" control-label col-md-4 text-left"> City Tax ( in % ) </label>
                                     <div class="col-md-6">
@@ -211,7 +247,110 @@
 
                                     </div>
                                 </div> 
-
+                                <div class="form-group">
+                                    <label for="internet" class="control-label col-md-4 text-left">Internet in public areas free</label>
+                                    <div class="col-md-6">
+                                        <label class="radio-inline"><input type="radio" name="rdinternetpublic" value="1"  {{$row['internetpublic']==1 ? "checked='checked'" : '' }}>Yes</label>
+                                        <label class="radio-inline"><input type="radio" name="rdinternetpublic" value="0" {{$row['internetpublic']==0 ? "checked='checked'" : '' }} >No</label>                                                    
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="internet" class="control-label col-md-4 text-left">Internet in room free</label>
+                                    <div class="col-md-6">
+                                        <label class="radio-inline"><input type="radio" name="rdinternetroom" value="1"  {{$row['internetroom']==1 ? "checked='checked'" : '' }}>Yes</label>
+                                        <label class="radio-inline"><input type="radio" name="rdinternetroom" value="0" {{$row['internetroom']==0 ? "checked='checked'" : '' }} >No</label>           
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="Check in" class="control-label col-md-4 text-left">Check in</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="checkin" class="form-control" value="{{$row['checkin']}}" />          
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Check out" class="control-label col-md-4 text-left">Check out</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="checkout" class="form-control" value="{{$row['checkout']}}" />          
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="transfer" class="control-label col-md-4 text-left">Transportation and Transfer</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="transfer" class="form-control" value="{{$row['transfer']}}" />          
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Smooking policy" class="control-label col-md-4 text-left">Smooking policy</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="smookingpolicy" class="form-control" value="{{$row['smookingpolicy']}}" />          
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Smooking rooms" class="control-label col-md-4 text-left">Smooking rooms</label>
+                                    <div class="col-md-6">                                        
+                                        <label class="radio-inline"><input type="radio" name="rdsmookingrooms" value="1"  {{$row['smookingrooms']=='1' ? "checked='checked'" : '' }}>Yes</label>
+                                        <label class="radio-inline"><input type="radio" name="rdsmookingrooms" value="0" {{$row['smookingrooms']=='0' ? "checked='checked'" : '' }} >No</label>          
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="Number of rooms" class="control-label col-md-4 text-left">Number of rooms</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="numberofrooms" class="form-control" value="{{$row['numberofrooms']}}" />          
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Number of rooms" class="control-label col-md-4 text-left">Room amenities</label>
+                                    <div class="col-md-6">                                        
+                                        <select name='roomamenities[]' rows='5' id='roomamenities' class='select2 ' multiple="multiple"  >
+                                            @if(!empty($amenties))
+                                                @foreach($amenties as $amenty)
+                                                <option value="{{$amenty->id}}" {{(isset($row['roomamenities']) && in_array($amenty->id,explode(',',$row['roomamenities']))) ? " selected='selected' " : '' }}>{{$amenty->amenity_title}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>          
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Available services" class="control-label col-md-4 text-left">Available services</label>
+                                    <div class="col-md-6">
+                                        
+                                        <select name='availableservices[]' rows='5' id='availableservices' class='select2 ' multiple="multiple"  >
+                                            @if(!empty($availableservices))
+                                            @foreach($availableservices as $avs)
+                                            <option value="{{$avs->id}}" {{(isset($row['availableservices']) && in_array($avs->id,explode(',',$row['availableservices']))) ? " selected='selected' " : '' }}>{{$avs->title}}</option>
+                                            @endforeach
+                                            @endif
+                                        </select>           
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="children_policy" class="control-label col-md-4 text-left">Always included in this hotel</label>
+                                    <div class="col-md-6">
+                                        <textarea name="always_included" class="form-control">{{$row['always_included']}}</textarea>        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Pets" class="control-label col-md-4 text-left">Pets</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="pets" class="form-control" value="{{$row['pets']}}" />          
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="carpark" class="control-label col-md-4 text-left">Car park / valet service</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="carpark" class="form-control" value="{{$row['carpark']}}" />          
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="children_policy" class="control-label col-md-4 text-left">Children Policy</label>
+                                    <div class="col-md-6">
+                                        <textarea name="children_policy" class="form-control">{{$row['children_policy']}}</textarea>        
+                                    </div>
+                                </div>
                                 <div class="form-group  " >
                                     <label for="Assign Amenities" class=" control-label col-md-4 text-left"> Assign Amenities </label>
                                     <div class="col-md-6">
@@ -226,8 +365,7 @@
                                     <div class="col-md-2">
 
                                     </div>
-                                </div> 
-
+                                </div>                                
                                 <div class="form-group  " >
                                     <label for="Copy Amenities" class=" control-label col-md-4 text-left"> Copy Amenities to Rooms </label>
                                     <div class="col-md-6">
