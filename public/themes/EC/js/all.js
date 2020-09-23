@@ -1531,10 +1531,10 @@
                     var p_checkout_html = '';
                     p_checkout_html += '<div class="qv-list">';
                         p_checkout_html += '<h4>Check-in / Check-out</h4>';
-                        if(p_checkin!=''){                            
+                        if(p_checkin!='' && p_checkin!=null){                            
                             p_checkout_html += '<p class="mb-0"><b>Check-in :</b> '+p_checkin+'</p>';
                         }
-                        if(p_checkout!=''){                            
+                        if(p_checkout!='' && p_checkout != null){                            
                             p_checkout_html += '<p class="mb-0"><b>Check-out :</b> '+p_checkout+'</p>';
                         }
                     p_checkout_html += '</div>';
@@ -1542,7 +1542,7 @@
                     
                     var p_transfer = objprop.transfer;
                     var p_transfer_html = '';
-                    if(p_transfer!=''){
+                    if(typeof p_transfer!='' && p_transfer!=null){
                         $("#propinfo_transfer").css('display', '');
                         $("#propinfo_transfer").html('');
                         p_transfer_html += '<div class="qv-list"><h4>Transportation and transfer</h4><p class="mb-0"><b>Transfer :</b> '+p_transfer+'</p></div>';
@@ -1558,10 +1558,10 @@
                     var p_smookingpolicy_html = '';
                     p_smookingpolicy_html += '<div class="qv-list">';
                         p_smookingpolicy_html += '<h4>Smooking policy</h4>';
-                        if(p_smookingpolicy!=''){                            
+                        if(typeof p_smookingpolicy!='' && p_smookingpolicy!=null){                            
                             p_smookingpolicy_html += '<p class="mb-0"> '+p_smookingpolicy+'</p>';
                         }
-                        if(p_smookingrooms!=''){  
+                        if(typeof p_smookingrooms!='' && p_smookingrooms!=null){  
                             var smkp = p_smookingrooms ? 'available' : 'Not available';
                             p_smookingpolicy_html += '<p class="mb-0"><b>Smooking rooms:</b> '+smkp+'</p>';
                         }
@@ -1578,7 +1578,7 @@
                         if(p_numberofrooms!=''){                            
                             p_rooms_html += '<p class="mb-0"> '+p_numberofrooms+' rooms and suites</p>';
                         }
-                        if(p_roomamenities!=''){  
+                        if(typeof p_roomamenities!='' && p_roomamenities!=null){  
                             //var smkp = p_smookingrooms ? 'available' : 'Not available';
                             var objRA = data.room_amneties;
                             var p_ra = '';
@@ -1595,7 +1595,7 @@
                     
                     var p_availableservices = objprop.availableservices;
                     var p_availableservices_html = '';
-                    if(p_availableservices!=''){
+                    if(p_availableservices!='' && p_availableservices!=null){
                         $("#propinfo_avs").css('display', '');
                         $("#propinfo_avs").html('');
                         p_availableservices_html += '<div class="qv-list">';
@@ -1618,7 +1618,7 @@
                     
                     var p_pets = objprop.pets;
                     var p_pets_html = '';
-                    if(p_pets!=''){
+                    if(p_pets!='' && p_pets!=null){
                         $("#propinfo_pets").css('display', '');
                         $("#propinfo_pets").html('');
                         p_pets_html += '<div class="qv-list">';
@@ -1632,7 +1632,7 @@
                     
                     var p_carpark = objprop.carpark;
                     var p_carpark_html = '';
-                    if(p_carpark!=''){
+                    if(p_carpark!='' && p_carpark!=null){
                         $("#propinfo_parking").css('display', '');
                         $("#propinfo_parking").html('');
                         p_carpark_html += '<div class="qv-list">';
