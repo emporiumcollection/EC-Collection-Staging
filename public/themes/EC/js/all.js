@@ -741,6 +741,8 @@
   $(document).on('click', '.wherepopup .nav-link', function(){
     var asd = $(this).find('.city-l').html();
     $('.where').val(asd);
+    $("#where_selection").html('');
+    $("#where_selection").html(asd);
     $(this).closest('.where-container').removeClass('show');
     $('.when-container').addClass('show');
     $('.wherepopup').hide(); 
@@ -1575,7 +1577,7 @@
                     var p_rooms_html = '';
                     p_rooms_html += '<div class="qv-list">';
                         p_rooms_html += '<h4>Rooms</h4>';
-                        if(p_numberofrooms!=''){                            
+                        if(typeof p_numberofrooms!='' &&  p_numberofrooms != null){                            
                             p_rooms_html += '<p class="mb-0"> '+p_numberofrooms+' rooms and suites</p>';
                         }
                         if(typeof p_roomamenities!='' && p_roomamenities!=null){  
@@ -1734,7 +1736,14 @@
                 }
             }
         }).done(function(){           
-              
+            lightGallery(document.getElementById('gallery_hotel'), {
+                thumbnail: true,
+                currentPagerPosition: 'middle',
+                download: false,
+                share: true,
+                escKey: false,
+                closable: false
+            });  
         });
     }else if(_for=='suites'){
         $.ajax({

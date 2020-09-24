@@ -265,7 +265,7 @@
     
         <div class="tab-content h-100">
             <div id="hotel_gallery" class="tab-pane fade show active" role="tabpanel" aria-labelledby="hotel_gallery-tab">
-                <div class="sidebar-scroller pt-2">
+                <div class="sidebar-scroller pt-2 is-gallery">
                     
                     <div class="gallery-wrapper">
                         <div class="container-gallery" id="gallery_hotel">
@@ -275,7 +275,7 @@
                 </div>
             </div>
             <div id="restaurant_gallery" class="tab-pane fade" role="tabpanel" aria-labelledby="restaurant_gallery-tab">
-                <div class="sidebar-scroller pt-2">
+                <div class="sidebar-scroller pt-2 is-gallery">
                     <div class="gallery-wrapper">
                         <div class="row">
                             <div class="col-3">
@@ -293,7 +293,7 @@
                 </div>
             </div>
             <div id="bars_gallery" class="tab-pane fade" role="tabpanel" aria-labelledby="bars_gallery-tab">
-                <div class="sidebar-scroller pt-2">
+                <div class="sidebar-scroller pt-2 is-gallery">
                     <div class="gallery-wrapper">
                     
                         <div class="row">
@@ -313,7 +313,7 @@
                 </div>
             </div>
             <div id="spas_gallery" class="tab-pane fade" role="tabpanel" aria-labelledby="spas_gallery-tab">
-                <div class="sidebar-scroller pt-2">
+                <div class="sidebar-scroller pt-2 is-gallery">
                     <div class="gallery-wrapper">
                         <div class="row">
                             <div class="col-3">
@@ -331,7 +331,7 @@
                 </div>
             </div>
             <div id="suite_gallery" class="tab-pane fade" role="tabpanel" aria-labelledby="suite_gallery-tab">
-                <div class="sidebar-scroller pt-2">
+                <div class="sidebar-scroller pt-2 is-gallery">
                     <div class="gallery-wrapper">
                         <div class="row">
                             <div class="col-3">
