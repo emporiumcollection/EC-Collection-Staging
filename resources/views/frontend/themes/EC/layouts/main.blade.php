@@ -475,7 +475,7 @@
                                         _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+_val['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
                                         _html += '<div class="hotel-prices hotel-price-detail d-flex">';
                                             _html += '<div class="row align-items-center justify-content-center">';
-                                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+_val["prc"]+' </span></h3>';
+                                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+parseInt(_val["prc"])+' </span></h3>';
                                               _html += '<div class="ml-2"><span class="pernight"></span></div>';
                                             _html += '</div>';
                                         _html += '</div>';
@@ -539,7 +539,7 @@
                         _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+fp2['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
                         _html += '<div class="hotel-prices hotel-price-detail d-flex">';
                             _html += '<div class="row align-items-center justify-content-center">';
-                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+fp2["prc"]+' </span></h3>';
+                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+ parseInt(fp2["prc"])+' </span></h3>';
                               _html += '<div class="ml-2"><span class="pernight"></span></div>';
                             _html += '</div>';
                         _html += '</div>';
@@ -620,7 +620,7 @@
                         _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+fp2['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
                         _html += '<div class="hotel-prices hotel-price-detail d-flex">';
                             _html += '<div class="row align-items-center justify-content-center">';
-                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+fp2["prc"]+' </span></h3>';
+                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+parseInt(fp2["prc"])+' </span></h3>';
                               _html += '<div class="ml-2"><span class="pernight"></span></div>';
                             _html += '</div>';
                         _html += '</div>';
