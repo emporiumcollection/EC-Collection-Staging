@@ -533,13 +533,13 @@
                       
                       
                       _html += '<div class="hotel-meta full-width">';
-                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="reviews" data-id="'+fp2['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
-                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="quickinfo" data-id="'+fp2['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
-                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="gallery" data-id="'+fp2['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
-                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+fp2['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="reviews" data-id="'+fp1['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="quickinfo" data-id="'+fp1['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="gallery" data-id="'+fp1['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+fp1['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
                         _html += '<div class="hotel-prices hotel-price-detail d-flex">';
                             _html += '<div class="row align-items-center justify-content-center">';
-                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+ parseInt(fp2["prc"])+' </span></h3>';
+                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+ parseInt(fp1["prc"])+' </span></h3>';
                               _html += '<div class="ml-2"><span class="pernight"></span></div>';
                             _html += '</div>';
                         _html += '</div>';
@@ -569,7 +569,7 @@
               
               }  
               if(typeof fp2 !== 'undefined'){   
-              _html += '<a href="'+fp2['property_slug']+'" class="dtl-link">';
+              //_html += '<a href="'+fp2['property_slug']+'" class="dtl-link">';
                 _html += '<div class="row mt-5">';
                   _html += '<div class="col-5 ">';
                     _html += '<div class="fetaruer py-5 pl-0 pr-5 ">';
@@ -634,7 +634,7 @@
                     _html += '</div>';
                   _html += '</div>';
                 _html += '</div>';
-              _html += '</a>';
+              //_html += '</a>';
               
               $('.img-offset-slide').slick({
                 slidesToShow: 1,
