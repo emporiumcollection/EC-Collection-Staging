@@ -690,9 +690,23 @@
                         _html_prop += '</div>'
                         
                         
-                        _html_prop += '<a href="#" class="dtl-link">';
-                            _html_prop += '<i class="ico ico-diamon diamon-label fav-button"></i>';
-                        _html_prop += '</a>';
+                        //_html_prop += '<a href="#" class="dtl-link">';
+                        //    _html_prop += '<i class="ico ico-diamon diamon-label fav-button"></i>';
+                        //_html_prop += '</a>';
+                        
+                        
+                        _html_prop += '<div class="my-dropdown">';
+                              _html_prop += '<div class="btn-group dropleft">';
+                                _html_prop += '<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ico ico-diamon diamon-label"></i></a>';
+                                _html_prop += '<div class="dropdown-menu">';
+                                  _html_prop += '<a href="#" class="dropdown-item">Add to collection</a>';
+                                  _html_prop += '<a href="#" class="dropdown-item btn-sidebar create-collection" data-sidebar="#myCollection">Create new collection</a>';
+                                _html_prop += '</div>';
+                              _html_prop += '</div>';
+        
+                        _html_prop += '</div>';
+                        
+                        
                         _html_prop += '<div class="hotel-meta full-width is-small">';
                         
                         
