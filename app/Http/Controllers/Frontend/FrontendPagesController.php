@@ -69,8 +69,27 @@ class FrontendPagesController extends Controller {
 							->with('message', \SiteHelpers::alert('error', \Lang::get('core.note_noexists')));
 		}
     }
-	
 	public function socialYoutube(Request $request)
+	{ //print_r($request->cat); die;
+		$channel_url = '';
+		$catid = '';
+		if (trim($request->cat)!='' && !is_null($request->cat)) {
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_youtube_channel_url')->where('category_alias', trim($request->cat))->where('category_published', 1)->first();
+		}
+		else
+		{
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_youtube_channel_url')->where('parent_category_id', 0)->where('category_published', 1)->where('id', '!=', 8)->orderBy('category_order_num','asc')->first();
+		}
+		
+		if (!empty($cateObjsc)) {
+			$channel_url = $cateObjsc->category_youtube_channel_url;
+			$catid = $cateObjsc->id;
+		}
+		$this->data['channel_url'] = $channel_url;
+		$this->data['catid'] = $catid; //print_r($this->data); die;
+		return view('frontend.themes.EC.pages.social_youtube_page', $this->data);
+	}
+	public function socialYoutube_25092020(Request $request)
 	{
 		$channel_url = '';
 		$catid = '';

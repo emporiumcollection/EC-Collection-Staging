@@ -223,7 +223,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" id="youtube_video">
                 <i class="ico ico-video"></i>
               </a>
             </li>

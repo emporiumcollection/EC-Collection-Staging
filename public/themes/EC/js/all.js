@@ -2269,6 +2269,10 @@
       else{
         $(".second-header").removeClass("show");
       }
-    });
+  });
   
+  $(document).on("click", '#title_main', function(){
+    $("#searchF").toggle();  
+  });
+   
 })();

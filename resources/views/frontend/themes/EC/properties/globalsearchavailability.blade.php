@@ -6,12 +6,17 @@
 {{-- For Meta Description --}}
 @section('meta_description', '')
 {{-- For Page's Content Part --}}
+<style>
+    .experiences{
+        cursor: pointer;
+    }
+</style>
 @section('content')
 <div class="content-em1">
     <div class="content-em">
         <div class="container pt-5">
           <div class="title-main offset-931 mt-5 ">
-            <h2>{{$keyword}} <a href="#"><i class="ico ico-reload reload-offset"></i></a> </h2>
+            <h2 id="title_main">{{$keyword}} <a href="#"><i class="ico ico-reload reload-offset"></i></a> </h2>
             <input type="hidden" name="activeDestination" value="{{$keyword}}" />
             <input type="hidden" name="m_type" value="{{$m_type}}" />
             <input type="hidden" name="hid_propid" value="{{}}" />
@@ -24,19 +29,10 @@
                     <li class="nav-item">
                       <a class="nav-link active" href="#">Experiences</a>
                     </li>
-                    @foreach($experiences as $exp)
-                        @if($sr==1)                
-                            <li class="nav-item">
-                              <a class="nav-link" href="{{URL::to('luxury_experience')}}/{{$exp->category_alias}}">{{ $exp->category_name }}</a>
-                            </li>
-                            <?php $sr++; ?>             
-                        @else
-              
-                            <li class="nav-item">
-                              <a class="nav-link " href="{{URL::to('luxury_experience')}}/{{$exp->category_alias}}">{{ $exp->category_name }}</a>
-                            </li>    
-                   
-                        @endif     
+                    @foreach($experiences as $exp)                                       
+                        <li class="nav-item">
+                          <a class="nav-link experiences" data-exp="{{$exp->category_name}}">{{ $exp->category_name }}</a>
+                        </li>                               
                     @endforeach                   
                 @endif 
                             
