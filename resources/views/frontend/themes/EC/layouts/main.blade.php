@@ -391,10 +391,28 @@
                     
                     $(editorPropertiesArr).each(function(_key, _val){
                     
-                        _html += '<a href="'+_val['property_slug']+'" class="dtl-link">';
+                        //_html += '<a href="'+_val['property_slug']+'" class="dtl-link">';
                         _html += '<div class="row">';
                             _html += '<div class="col-8 ">';
-                                _html += '<div class="content-img" style="background: url("http://localhost:8181/emporium-staging-forge/public/themes/EC/images/aaabf028325021.5637326997cb1.jpg") no-repeat center center;" id="ecp-bg-img-'+_val['id']+'"></div>';                        
+                                //_html += '<div class="content-img" style="background: url("http://localhost:8181/emporium-staging-forge/public/themes/EC/images/aaabf028325021.5637326997cb1.jpg") no-repeat center center;" id="ecp-bg-img-'+_val['id']+'"></div>';
+                                
+                                
+                                _html += '<div class="content-img">';
+                                    _html += '<a href="suite.html" class="dtl-link">';
+                                      _html += '<img id="ecp-bg-img-'+_val['id']+'" alt="">';
+                                    _html += '</a>';
+                                    _html += '<div class="my-dropdown">';
+                                      _html += '<div class="btn-group dropleft">';
+                                        _html += '<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ico ico-diamon diamon-label"></i></a>';
+                                        _html += '<div class="dropdown-menu">';
+                                          _html += '<a href="#" class="dropdown-item">Add to collection</a>';
+                                          _html += '<a href="#" class="dropdown-item btn-sidebar create-collection" data-sidebar="#myCollection">Create new collection</a>';
+                                        _html += '</div>';
+                                      _html += '</div>';                    
+                                    _html += '</div>';
+                                _html += '</div>';
+                                
+                                                       
                             _html += '</div>';
                             
                             _html += '<div class="col-4 ">';
@@ -406,7 +424,7 @@
                                 _html += '</p>';
                             _html += '</div>';
                         _html += '</div>';
-                        _html += '</a>';
+                        //_html += '</a>';
                         
                         _html += '<div class="row relax-offset" data-rellax-speed="2">';
                             _html += '<div class="col-4 ">';
@@ -416,8 +434,8 @@
                                 _html += '</div>';
                             _html += '</div>';
                             _html += '<div class="col-8 ">';
-                                _html += '<div class="img-offset ">';
-                                    _html += '<div class="img-offset-slide" id="ecp-img-slk-'+_val['id']+'">';
+                                _html += '<div class="img-offset hotel-page-list suite-ontouch ">';
+                                    _html += '<div class="img-offset-slide offsets---190" id="ecp-img-slk-'+_val['id']+'">';
                                         
                                         var _ecid = _val['id'];
                                         $.ajax({
@@ -447,6 +465,24 @@
                                         });
                                         
                                     _html += '</div>';
+                                    
+                                    
+                                    
+                                    _html += '<div class="hotel-meta full-width">';
+                                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="reviews" data-id="'+_val['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
+                                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="quickinfo" data-id="'+_val['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
+                                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="gallery" data-id="'+_val['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
+                                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+_val['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
+                                        _html += '<div class="hotel-prices hotel-price-detail d-flex">';
+                                            _html += '<div class="row align-items-center justify-content-center">';
+                                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+parseInt(_val["prc"])+' </span></h3>';
+                                              _html += '<div class="ml-2"><span class="pernight"></span></div>';
+                                            _html += '</div>';
+                                        _html += '</div>';
+                                    _html += '</div>';
+                                    
+                                    
+                                    
                                 _html += '</div>';
                             _html += '</div>';
                         _html += '</div>';
@@ -466,6 +502,7 @@
                 if(typeof fp1 !== 'undefined'){                
                 _html += '<div class="row">';
                     _html += '<div class="col-7 ">';
+                    _html += '<div class="inner-wrapper hotel-page-list suite-ontouch no-opacity">';
                       _html += '<div class="img-offset-slide" id="fp-img-slk-'+fp1['id']+'">';
                         var _fpid = fp1['id'];
                         $.ajax({
@@ -493,6 +530,25 @@
                                                 
                       _html += '</div>';
                       
+                      
+                      
+                      _html += '<div class="hotel-meta full-width">';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="reviews" data-id="'+fp1['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="quickinfo" data-id="'+fp1['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="gallery" data-id="'+fp1['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+fp1['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
+                        _html += '<div class="hotel-prices hotel-price-detail d-flex">';
+                            _html += '<div class="row align-items-center justify-content-center">';
+                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+ parseInt(fp1["prc"])+' </span></h3>';
+                              _html += '<div class="ml-2"><span class="pernight"></span></div>';
+                            _html += '</div>';
+                        _html += '</div>';
+                      _html += '</div>';
+                      
+                  _html += '</div>';    
+                      
+                      
+                      
                       _html += '<div class="title-offset mt-5 relax-offset" data-rellax-speed="2" data-rellax-percentage="0.1">';
                         _html += '<h3 class="title-second title-line mb-0">'+fp1["property_name"]+'</h3>';
                         //_html += '<h4 class="title-font-2 title-third">experience</h4>';
@@ -513,7 +569,7 @@
               
               }  
               if(typeof fp2 !== 'undefined'){   
-              _html += '<a href="'+fp2['property_slug']+'" class="dtl-link">';
+              //_html += '<a href="'+fp2['property_slug']+'" class="dtl-link">';
                 _html += '<div class="row mt-5">';
                   _html += '<div class="col-5 ">';
                     _html += '<div class="fetaruer py-5 pl-0 pr-5 ">';
@@ -526,6 +582,7 @@
                     _html += '</div>';
                   _html += '</div>';
                   _html += '<div class="col-7 ">';
+                  _html += '<div class="inner-wrapper hotel-page-list suite-ontouch no-opacity">';
                     _html += '<div class="img-offset-slide" id="fp-img-slk-'+fp2['id']+'">';
                     
                         var _fpid2 = fp2['id'];
@@ -555,13 +612,29 @@
                     
                     _html += '</div>';
                     
+                    
+                    _html += '<div class="hotel-meta full-width">';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="reviews" data-id="'+fp2['property_slug']+'" data-sidebar="#reviews">Reviews</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="quickinfo" data-id="'+fp2['property_slug']+'" data-sidebar="#quickinfo">Quick info</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="gallery" data-id="'+fp2['property_slug']+'" data-sidebar="#gallery">Gallery</a>';
+                        _html += '<a href="#" class="view bg-btn-gl-001 btn-sidebar" data-for="suites" data-id="'+fp2['property_slug']+'" data-sidebar="#suiteside">Suite(s)</a>';
+                        _html += '<div class="hotel-prices hotel-price-detail d-flex">';
+                            _html += '<div class="row align-items-center justify-content-center">';
+                              _html += '<h3 class="mb-0"><span class="title-font-2 mr-1">From</span> <span class="color-primary">EUR '+parseInt(fp2["prc"])+' </span></h3>';
+                              _html += '<div class="ml-2"><span class="pernight"></span></div>';
+                            _html += '</div>';
+                        _html += '</div>';
+                    _html += '</div>';
+                    
+                    
+                  _html += '</div>';
                     _html += '<div class="title-offset mt-5 relax-offset" data-rellax-speed="2" data-rellax-percentage="0.1">';
                       _html += '<h3 class="title-second title-line mb-0">'+fp2["property_name"]+'</h3>';
                       //_html += '<h4 class="title-font-2 title-third">experience</h4>';
                     _html += '</div>';
                   _html += '</div>';
                 _html += '</div>';
-              _html += '</a>';
+              //_html += '</a>';
               
               $('.img-offset-slide').slick({
                 slidesToShow: 1,
@@ -617,9 +690,23 @@
                         _html_prop += '</div>'
                         
                         
-                        _html_prop += '<a href="#" class="dtl-link">';
-                            _html_prop += '<i class="ico ico-diamon diamon-label fav-button"></i>';
-                        _html_prop += '</a>';
+                        //_html_prop += '<a href="#" class="dtl-link">';
+                        //    _html_prop += '<i class="ico ico-diamon diamon-label fav-button"></i>';
+                        //_html_prop += '</a>';
+                        
+                        
+                        _html_prop += '<div class="my-dropdown">';
+                              _html_prop += '<div class="btn-group dropleft">';
+                                _html_prop += '<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ico ico-diamon diamon-label"></i></a>';
+                                _html_prop += '<div class="dropdown-menu">';
+                                  _html_prop += '<a href="#" class="dropdown-item">Add to collection</a>';
+                                  _html_prop += '<a href="#" class="dropdown-item btn-sidebar create-collection" data-sidebar="#myCollection">Create new collection</a>';
+                                _html_prop += '</div>';
+                              _html_prop += '</div>';
+        
+                        _html_prop += '</div>';
+                        
+                        
                         _html_prop += '<div class="hotel-meta full-width is-small">';
                         
                         

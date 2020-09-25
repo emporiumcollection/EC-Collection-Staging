@@ -115,7 +115,7 @@
               </div>
               <div class="search-results">
                 <h4>Your Selection</h4>
-                <p>New York . -> <span class="onrange"></span></p>
+                <p><span id="where_selection"></span> . -> <span class="onrange"></span></p>
               </div>
               <div class="mt-5 include-form">
                 <!-- <div id="accordion">

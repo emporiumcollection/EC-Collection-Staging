@@ -138,6 +138,12 @@
 <script type="text/javascript" src="{{ asset('themes/EC/js/plugin/fullcalendar/daygrid/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('themes/EC/js/plugin/slick/slick.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('themes/EC/js/plugin/wow.min.js') }}"></script>
+
+<script src="{{ asset('themes/EC/js/plugin/lightbox/js/lightgallery.min.js') }}"></script>
+<script src="{{ asset('themes/EC/js/plugin/lightbox/js/lg-thumbnail.js') }}"></script>
+<script src="{{ asset('themes/EC/js/plugin/lightbox/js/lg-share.js') }}"></script>
+<script src="{{ asset('themes/EC/js/plugin/rellax.min.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('themes/EC/js/all.js') }}"></script>
 
   <script>
