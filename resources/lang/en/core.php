@@ -320,4 +320,5 @@ return array(
     "refferal_invite"			=> "Refferal Invitation",
     "request_refferal_email_to_superadmin"			=> "Request Refferal Email To Super Admin",
      "request_refferal_email_to_user"			=> "Request Refferal Email To User",
+     "btn_hotel_search" => "Hotel's data",
  );

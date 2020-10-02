@@ -87,9 +87,12 @@
                                 </div> 					
                                 <div class="form-group  " >
                                     <label for="Property Name" class=" control-label col-md-4 text-left"> Property Name <span class="asterix"> * </span></label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         {!! Form::text('property_name', $row['property_name'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
                                     </div> 
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-success btn-sm " data-toggle="modal" data-target="#hotelsearch" ><i class="fa  fa-hotel "></i>  {{ Lang::get('core.btn_hotel_search') }} </button>
+                                    </div>
                                     <div class="col-md-2">
 
                                     </div>
@@ -157,7 +160,7 @@
                                     <div class="col-md-6">
                                         <input type='file' name='featured_image' id='featured_image'  />
                                         <div >
-                                            {!! SiteHelpers::showUploadedFile($row['featured_image'],'/uploads/property/featured_image/') !!}
+                                            {!! SiteHelpers::showUploadedFile(@$row['featured_image'],'/uploads/property/featured_image/') !!}
                                         </div>
                                     </div> 
                                     <div class="col-md-2">
@@ -3301,15 +3304,51 @@
             </div>		 
         </div>	
     </div>		
+
+<!-- Modal -->
+<div class="modal fade" id="hotelsearch" tabindex="-1" role="dialog" aria-labelledby="hotelsearchLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hotelsearchLabel">Get Hotel Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="col-12 form-group">
+                    <label for="carpark" class="control-label col-md-4 text-left">Hotel Name</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="search_hotel_txt" class="form-control"  autocomplete="off" value="" />          
+                                    </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Fill hotel data to form</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script src="{{ asset('sximo/js/typeahead.min.js')}}"></script>
-    <script src="{{ asset('sximo/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>	 
+    <script src="{{ asset('sximo/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>	
+    <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script> 
     <script type="text/javascript">
         $(document).ready(function () {
             
             $('input[name="meta_keywords"]').tagsinput({
               itemText: 'label'
             });
-            $('input[name="article_tags"]').tagsinput();
+            $('input[name="article_tags"]').tagsinput();            
+
+            $('#hotelsearch').on('shown.bs.modal', function (e) {
+                $('#search_hotel_txt').autoComplete({
+                        resolverSettings: {
+                            url: 'testdata/test-list.json'
+                        }
+                });
+            });
             
             
             /* OG Upload Image section */
