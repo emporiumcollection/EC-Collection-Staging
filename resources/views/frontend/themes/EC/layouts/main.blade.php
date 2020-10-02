@@ -158,6 +158,8 @@
 <script src="{{ asset('themes/EC/js/plugin/lightbox/js/lg-share.js') }}"></script>
 <script src="{{ asset('themes/EC/js/plugin/rellax.min.js') }}"></script>
 
+<script src="{{ asset('lib/yottie/jquery.yottie.bundled.js')}}"></script>
+
 <script type="text/javascript" src="{{ asset('themes/EC/js/all.js') }}"></script>
 @section('custom_js')
     @parent
@@ -313,13 +315,19 @@
     $(document).ready(function(){
         var active_cat = $("input[name='activeDestination']").val();
         console.log(active_cat);
-        getDestinationPage(active_cat);    
+        getDestinationPage(active_cat, '');    
     });
     
-    function getDestinationPage(item){            
+    $(document).on('click', '.experiences', function(){ 
+        var active_cat = $("input[name='activeDestination']").val();
+        var active_exp = $(this).attr('data-exp');
+        getDestinationPage(active_cat, active_exp); console.log(active_cat+', '+active_exp);             
+    });
+    
+    function getDestinationPage(item, active_exp){            
         var mtype = $("input[name='m_type']").val();                    
         var _cat = item;                      
-        getPropertyByCollection(mtype, _cat, 1, '');  
+        getPropertyByCollection(mtype, _cat, 1, '', active_exp);  
         
         //changeBreadcrumbDropdown(_cat);  
         
@@ -327,17 +335,19 @@
         //$('#gs_sb_criteria').addClass('sdestination');                      
     }
     
-    function getPropertyByCollection(coll_type, cat, page, req_for){ 
+    function getPropertyByCollection(coll_type, cat, page, req_for, active_exp){ console.log(coll_type+', '+cat+', '+page+', '+req_for);
         $.ajax({
             url:'{{URL::to("propertysearchlistbycollection/")}}',
             //dataType:'html',
             dataType:'json',
-            data: {coll_type:coll_type, cat:cat, page:page, req_for:req_for},
+            data: {'coll_type':coll_type, 'cat':cat, 'page':page, 'req_for':req_for, 'active_exp':active_exp},
             type: 'post',
             beforeSend: function(){
                 //$(".load_ajax").html('<div style="margin:0px auto; width:100%;"><img src="'+BaseURL+'/images/ajax-loader.gif" width="50%" /></div>');
             },
             success: function(data){
+                var youtube_url = BaseURL + '/social-youtube/'+data.data.category_alias;
+                $("#youtube_video").attr('href', youtube_url);
                 /*$(".collection-tabs").css('display', ''); 
                 $("#channel_url").css('display', 'none');
                 $("#social_url").css('display', 'none');
@@ -492,13 +502,14 @@
             }
             
             var featurePropertiesArr = jsonobj.featurePropertiesArr;
-            
+            console.log(featurePropertiesArr);
             var i=1; 
             if(typeof featurePropertiesArr !== undefined && featurePropertiesArr.length > 0){                         
                 
                 var fp1 = featurePropertiesArr[0];
                 var fp2 = featurePropertiesArr[1];
-                
+                console.log(fp1);
+                console.log(fp2);
                 if(typeof fp1 !== 'undefined'){                
                 _html += '<div class="row">';
                     _html += '<div class="col-7 ">';
@@ -636,11 +647,11 @@
                 _html += '</div>';
               //_html += '</a>';
               
-              $('.img-offset-slide').slick({
+              /*$('.img-offset-slide').slick({
                 slidesToShow: 1,
                 prevArrow: '<button class="slide-arrow prev-arrow"><i class="ico ico-back"></i></button>',
                 nextArrow: '<button class="slide-arrow next-arrow"><i class="ico ico-next"></i></button>'
-              });
+              });*/
               }
             
           }

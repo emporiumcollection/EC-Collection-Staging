@@ -3535,6 +3535,17 @@ class PropertyController extends Controller {
         $this->data['collections'] = $cat_collection;
         /** End **/      
         $this->data['experiences'] = \DB::table('tb_categories')->where('category_approved', 1)->where('category_published', 1)->where('parent_category_id', 8)->get();
+        
+        $objcat = \DB::table('tb_categories')->where('category_name', $keyword)->where('category_approved', 1)->where('category_published', 1)->first();        
+        $exp = array();
+        if(!empty($objcat)){
+            $query = 'SELECT DISTINCT(category_id), tb_categories.category_name FROM property_categories_split_in_rows JOIN tb_categories ON tb_categories.id= property_categories_split_in_rows.category_id WHERE property_categories_split_in_rows.id IN (SELECT id FROM property_categories_split_in_rows WHERE category_id= '.$objcat->id.' AND property_status=1) AND tb_categories.category_approved=1 AND tb_categories.category_published=1 AND property_categories_split_in_rows.category_id<>'.$objcat->id.' AND property_categories_split_in_rows.category_id<>8 AND tb_categories.parent_category_id=8 ORDER BY property_categories_split_in_rows.category_id ASC';
+            $exp = \DB::select($query);
+        }
+        $this->data['experiences'] = $exp;
+        
+        //print_r($this->data['experiences']); die;
+        
         $membershiptype = '';        
         $this->data['m_type'] = ($membershiptype !='' ? $membershiptype : 'lifestyle-collection');
         
@@ -6017,6 +6028,8 @@ class PropertyController extends Controller {
         $coll_type = $request->input('coll_type'); 
         $cat = $request->input('cat');
         
+        $exp_cat = $request->input('active_exp');
+        
         $membershiptype =  $coll_type;
         $keyword = $cat;
          
@@ -6202,6 +6215,7 @@ class PropertyController extends Controller {
             $this->data['category_image'] = $cateObj->category_image;
             $this->data['category_instagram_tag'] = $cateObj->category_instagram_tag;
             $this->data['category_name'] = $cateObj->category_name;
+            $this->data['category_alias'] = $cateObj->category_alias;
             
             //get all children start
             $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
@@ -6221,14 +6235,30 @@ class PropertyController extends Controller {
 									return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
 								}, array_values($chldIds))) . ")";*/
                 
-                $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr WHERE pr.property_status='1' ".$catcond." GROUP BY pr.id";
-                
-                if(strlen(trim($arrive_date)) > 0){
-                    $ch_queries = "";
-                    $getdestind = "";
-                    if (strlen(trim($departure_date)) > 0) { $getdestind = " AND pctr.room_active_to <= '".$departure_date."'"; }
-                    $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr, tb_properties_category_types pct WHERE pctr.property_id = pr.id AND  pct.property_id = pr.id AND pr.property_status='1' AND  (CASE WHEN pctr.active_full_year = 0 THEN pctr.room_active_from >= '".$arrive_date."' ".$getdestind." ELSE pctr.active_full_year = 1 END) and pct.minimum_stay<=".$number_of_nights." ".$catcond." GROUP BY pr.id";
+                if($exp_cat!=''){
+                    $objexp = \DB::table('tb_categories')->where('category_name', $exp_cat)->where('category_published', 1)->first();
+                    //$ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr WHERE pr.property_status='1' ".$catcond." GROUP BY pr.id";
+                    $ch_queries = "SELECT x1.id FROM ( SELECT pr2.id FROM property_categories_split_in_rows pr2 WHERE pr2.property_status='1' AND pr2.category_id=".$objexp->id." ) x1 NATURAL JOIN ( SELECT pr.id FROM property_categories_split_in_rows pr WHERE  pr.property_status='1' ".$catcond." ) x2  GROUP BY x1.id"; 
                     
+                    if(strlen(trim($arrive_date)) > 0){
+                        $ch_queries = "";
+                        $getdestind = "";
+                        if (strlen(trim($departure_date)) > 0) { $getdestind = " AND pctr.room_active_to <= '".$departure_date."'"; }
+                        
+                        $ch_queries = "SELECT x1.id FROM ( SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr, tb_properties_category_types pct WHERE pctr.property_id = pr.id AND  pct.property_id = pr.id AND pr.property_status='1' AND  (CASE WHEN pctr.active_full_year = 0 THEN pctr.room_active_from >= '".$arrive_date."' ".$getdestind." ELSE pctr.active_full_year = 1 END) and pct.minimum_stay<=".$number_of_nights." ".$catcond." ) x1 NATURAL JOIN (  SELECT pr2.id FROM property_categories_split_in_rows pr2, tb_properties_category_rooms pctr, tb_properties_category_types pct WHERE pctr.property_id = pr2.id AND  pct.property_id = pr2.id AND pr2.property_status='1' AND  (CASE WHEN pctr.active_full_year = 0 THEN pctr.room_active_from >= '".$arrive_date."' ".$getdestind." ELSE pctr.active_full_year = 1 END) and pct.minimum_stay<=".$number_of_nights." AND pr2.category_id=".$objexp->id."  ) x2 GROUP BY x1.id";
+                        
+                    }
+                      
+                }else{                
+                    $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr WHERE pr.property_status='1' ".$catcond." GROUP BY pr.id";
+                    
+                    if(strlen(trim($arrive_date)) > 0){
+                        $ch_queries = "";
+                        $getdestind = "";
+                        if (strlen(trim($departure_date)) > 0) { $getdestind = " AND pctr.room_active_to <= '".$departure_date."'"; }
+                        $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr, tb_properties_category_types pct WHERE pctr.property_id = pr.id AND  pct.property_id = pr.id AND pr.property_status='1' AND  (CASE WHEN pctr.active_full_year = 0 THEN pctr.room_active_from >= '".$arrive_date."' ".$getdestind." ELSE pctr.active_full_year = 1 END) and pct.minimum_stay<=".$number_of_nights." ".$catcond." GROUP BY pr.id";
+                        
+                    }
                 }
                 //print_r($ch_queries); die;
                 $ch_queries = trim($ch_queries);
@@ -7668,6 +7698,19 @@ class PropertyController extends Controller {
         $prop_info_arr['available_services'] = $available_services;
         
         echo json_encode($prop_info_arr);       
+    }
+    
+    function experiencesbydestination(Request $request){
+        $exp = $request->input('cat');
+        $objcat = \DB::table('tb_categories')->where('category_name ', $exp)->where('category_approved', 1)->where('category_published', 1)->get();
+        //print_r($objcat);
+        //echo $exp;
+        $result = array();
+        if(!empty($objcat)){
+            $query = 'SELECT DISTINCT(category_id), category_name FROM property_categories_split_in_rows JOIN tb_categories ON tb_categories.id= property_categories_split_in_rows.category_id WHERE property_categories_split_in_rows.id IN (SELECT id FROM property_categories_split_in_rows WHERE category_id= 204 AND property_status=1) AND tb_categories.category_approved=1 AND tb_categories.category_published=1 ORDER BY property_categories_split_in_rows.category_id ASC';
+            $result = \DB::select($query);
+        }
+        print_r($result);
     }
     
 }
